@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Wash | Detailing & Soin Automobile Premium</title>
+    <title>Planet Food | Detailing & Soin Automobile Premium</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script>
@@ -125,6 +125,20 @@
             max-height: 400px;
             opacity: 1;
         }
+
+        /* Animations au Scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
     </style>
 </head>
 <body class="text-gray-300 font-sans antialiased">
@@ -132,7 +146,7 @@
     <header class="bg-charcoal-900/90 backdrop-blur-lg border-b border-white/5 sticky top-0 z-50 transition-all">
         <div class="max-w-7xl mx-auto px-4 md:px-6 py-4">
             <div class="flex justify-between items-center">
-                <h1 class="text-xl md:text-3xl font-display font-bold text-white tracking-widest uppercase">Car Wash</h1>
+                <h1 class="text-xl md:text-3xl font-display font-bold text-white tracking-widest uppercase">Planet Food</h1>
                 
                 <nav class="hidden md:block">
                     <ul class="flex space-x-8 text-xs font-display tracking-widest uppercase">
@@ -164,7 +178,7 @@
     </header>
 
     <section class="bg-hero min-h-screen flex items-center py-20 px-4 relative">
-        <div class="max-w-5xl mx-auto text-center mt-10 z-10">
+        <div class="max-w-5xl mx-auto text-center mt-10 z-10 reveal active">
             <h2 class="text-4xl sm:text-5xl md:text-7xl font-display font-bold text-white mb-4 md:mb-6 leading-tight tracking-wide uppercase drop-shadow-2xl">
                 L'Excellence <br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-yellow-200 font-light text-3xl sm:text-4xl md:text-6xl tracking-widest">Pour Votre Véhicule</span>
@@ -175,29 +189,29 @@
             </a>
         </div>
         
-        <a href="#services" class="absolute bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce flex flex-col items-center text-gray-500 hover:text-gold-400 transition-colors duration-300">
+        <a href="#services" class="absolute bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce flex flex-col items-center text-gray-500 hover:text-gold-400 transition-colors duration-300 reveal active delay-200">
             <span class="text-[10px] font-display tracking-widest uppercase mb-2">Scroll</span>
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
         </a>
     </section>
 
     <section id="services" class="py-24 md:py-32 max-w-7xl mx-auto px-4 relative">
-        <div class="text-center mb-16 md:mb-20">
+        <div class="text-center mb-16 md:mb-20 reveal">
             <h3 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Notre Expertise</h3>
             <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-            <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full">
+            <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full reveal">
                 <div class="w-12 h-12 mb-6 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl">✨</div>
                 <h4 class="text-lg font-display font-bold tracking-wider uppercase text-white mb-4">Préparation Esthétique</h4>
                 <p class="text-gray-400 font-light leading-relaxed flex-grow text-sm md:text-base">Lavage manuel minutieux, décontamination de la carrosserie et soin des jantes pour une base parfaite.</p>
             </div>
-            <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full">
+            <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full reveal delay-100">
                 <div class="w-12 h-12 mb-6 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl">🔧</div>
                 <h4 class="text-lg font-display font-bold tracking-wider uppercase text-white mb-4">Correction Peinture</h4>
                 <p class="text-gray-400 font-light leading-relaxed flex-grow text-sm md:text-base">Polissage multi-étapes pour effacer les micro-rayures, hologrammes et raviver la profondeur de la couleur.</p>
             </div>
-            <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full sm:col-span-2 md:col-span-1">
+            <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full sm:col-span-2 md:col-span-1 reveal delay-200">
                 <div class="w-12 h-12 mb-6 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl">🛡️</div>
                 <h4 class="text-lg font-display font-bold tracking-wider uppercase text-white mb-4">Protection Céramique</h4>
                 <p class="text-gray-400 font-light leading-relaxed flex-grow text-sm md:text-base">Application d'un traitement céramique ultra-résistant pour une brillance durable et un effet hydrophobe.</p>
@@ -206,12 +220,12 @@
     </section>
 
     <section id="galerie" class="py-24 md:py-32 relative overflow-hidden">
-        <div class="text-center mb-12 md:mb-16 px-4">
+        <div class="text-center mb-12 md:mb-16 px-4 reveal">
             <h3 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Nos Réalisations</h3>
             <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
         </div>
         
-        <div class="max-w-5xl mx-auto px-4">
+        <div class="max-w-5xl mx-auto px-4 reveal delay-100">
             <div class="relative overflow-hidden rounded-2xl shadow-2xl border border-white/5 bg-charcoal-800">
                 
                 <div id="slider-track" class="flex transition-transform duration-700 ease-in-out w-full">
@@ -263,13 +277,13 @@
     </section>
 
     <section id="avis" class="py-24 md:py-32 max-w-7xl mx-auto px-4 relative z-10">
-        <div class="text-center mb-16 md:mb-20">
+        <div class="text-center mb-16 md:mb-20 reveal">
             <h3 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Témoignages</h3>
             <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
             <p class="text-gray-400 font-light max-w-xl mx-auto mt-6 text-sm md:text-base">L'exigence de nos clients est notre meilleure carte de visite.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full">
+            <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full reveal">
                 <div class="text-gold-400 text-xl tracking-widest mb-4">★★★★★</div>
                 <p class="text-gray-300 font-light italic mb-8 flex-grow leading-relaxed text-sm md:text-base">"Un travail d'orfèvre sur ma Model 3. La protection céramique donne une profondeur incroyable à la peinture. Équipe passionnée, minutieuse et très professionnelle."</p>
                 <div class="flex items-center gap-4 border-t border-white/5 pt-6">
@@ -280,7 +294,7 @@
                     </div>
                 </div>
             </div>
-            <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full relative transform md:-translate-y-4">
+            <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full relative transform md:-translate-y-4 reveal delay-100">
                 <div class="text-gold-400 text-xl tracking-widest mb-4">★★★★★</div>
                 <p class="text-gray-300 font-light italic mb-8 flex-grow leading-relaxed text-sm md:text-base">"Je pensais devoir repeindre mon pare-chocs après plusieurs frottements. Le polissage a fait des miracles, la voiture est ressortie comme neuve du showroom."</p>
                 <div class="flex items-center gap-4 border-t border-white/5 pt-6">
@@ -291,7 +305,7 @@
                     </div>
                 </div>
             </div>
-            <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full">
+            <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full reveal delay-200">
                 <div class="text-gold-400 text-xl tracking-widest mb-4">★★★★★</div>
                 <p class="text-gray-300 font-light italic mb-8 flex-grow leading-relaxed text-sm md:text-base">"J'ai confié ma Porsche pour un nettoyage intérieur complet et un soin des cuirs. Le résultat dépasse largement mes attentes, l'habitacle a retrouvé son odeur d'origine."</p>
                 <div class="flex items-center gap-4 border-t border-white/5 pt-6">
@@ -308,12 +322,12 @@
     <section id="tarifs" class="py-24 md:py-32 px-4 relative">
         <div class="absolute inset-0 bg-charcoal-800/30 -skew-y-2 z-0"></div>
         <div class="max-w-7xl mx-auto relative z-10">
-            <div class="text-center mb-16 md:mb-20">
+            <div class="text-center mb-16 md:mb-20 reveal">
                 <h3 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Grille Tarifaire</h3>
                 <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-center">
-                <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col order-2 md:order-1">
+                <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col order-2 md:order-1 reveal">
                     <h4 class="text-lg md:text-xl font-display font-bold tracking-wider uppercase text-white mb-2">Soin Signature</h4>
                     <p class="text-gold-400 font-display font-semibold text-3xl md:text-4xl mb-8">dès 150 <span class="text-sm md:text-lg font-light text-gray-500">CHF</span></p>
                     <ul class="text-gray-400 font-light space-y-4 mb-8 flex-grow text-sm md:text-base">
@@ -323,7 +337,7 @@
                         <li class="flex items-center gap-3"><span class="text-gold-400 text-xs">◆</span> Dressing des plastiques</li>
                     </ul>
                 </div>
-                <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col relative transform md:-translate-y-4 shadow-2xl border-gold-400/30 order-1 md:order-2 mb-8 md:mb-0">
+                <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col relative transform md:-translate-y-4 shadow-2xl border-gold-400/30 order-1 md:order-2 mb-8 md:mb-0 reveal delay-100">
                     <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gold-400 text-charcoal-900 text-[10px] md:text-xs font-display font-bold tracking-widest uppercase py-1.5 px-4 md:px-6 rounded-full shadow-lg whitespace-nowrap">Le plus demandé</div>
                     <h4 class="text-lg md:text-xl font-display font-bold tracking-wider uppercase text-white mb-2 mt-2">Detailing Premium</h4>
                     <p class="text-gold-400 font-display font-semibold text-3xl md:text-4xl mb-8">dès 450 <span class="text-sm md:text-lg font-light text-gray-500">CHF</span></p>
@@ -335,7 +349,7 @@
                         <li class="flex items-center gap-3"><span class="text-gold-400 text-xs">◆</span> Nettoyage cuir & tissus</li>
                     </ul>
                 </div>
-                <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col order-3">
+                <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col order-3 reveal delay-200">
                     <h4 class="text-lg md:text-xl font-display font-bold tracking-wider uppercase text-white mb-2">Céramique</h4>
                     <p class="text-gold-400 font-display font-semibold text-3xl md:text-4xl mb-8">Sur devis</p>
                     <ul class="text-gray-400 font-light space-y-4 mb-8 flex-grow text-sm md:text-base">
@@ -350,12 +364,12 @@
     </section>
 
     <section id="faq" class="py-24 md:py-32 max-w-4xl mx-auto px-4 relative z-10">
-        <div class="text-center mb-12 md:mb-16">
+        <div class="text-center mb-12 md:mb-16 reveal">
             <h3 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Questions Fréquentes</h3>
             <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
         </div>
         <div class="space-y-4">
-            <details class="premium-card rounded-xl group cursor-pointer">
+            <details class="premium-card rounded-xl group cursor-pointer reveal">
                 <summary class="flex justify-between items-center font-display font-bold text-white p-5 md:p-6 outline-none hover:text-gold-400 transition-colors duration-300 text-sm md:text-base">
                     Combien de temps dure une prestation ?
                     <span class="text-gold-400 transition-transform duration-300 group-open:rotate-45 text-xl md:text-2xl leading-none">+</span>
@@ -364,7 +378,7 @@
                     Un Soin Signature prend généralement une demi-journée. Pour un Detailing Premium ou une pose de Céramique, prévoyez l'immobilisation de votre véhicule entre 24h et 48h afin de respecter les temps de séchage.
                 </div>
             </details>
-            <details class="premium-card rounded-xl group cursor-pointer">
+            <details class="premium-card rounded-xl group cursor-pointer reveal delay-100">
                 <summary class="flex justify-between items-center font-display font-bold text-white p-5 md:p-6 outline-none hover:text-gold-400 transition-colors duration-300 text-sm md:text-base">
                     Quelle est la différence avec une station de lavage classique ?
                     <span class="text-gold-400 transition-transform duration-300 group-open:rotate-45 text-xl md:text-2xl leading-none">+</span>
@@ -373,7 +387,7 @@
                     Nous n'utilisons aucun rouleau abrasif. Chaque étape est réalisée à la main avec des produits spécifiques à chaque surface (pH neutre, décontaminant ferreux) pour garantir un résultat parfait sans jamais micro-rayer votre vernis.
                 </div>
             </details>
-            <details class="premium-card rounded-xl group cursor-pointer">
+            <details class="premium-card rounded-xl group cursor-pointer reveal delay-200">
                 <summary class="flex justify-between items-center font-display font-bold text-white p-5 md:p-6 outline-none hover:text-gold-400 transition-colors duration-300 text-sm md:text-base">
                     Combien de temps dure la protection céramique ?
                     <span class="text-gold-400 transition-transform duration-300 group-open:rotate-45 text-xl md:text-2xl leading-none">+</span>
@@ -386,16 +400,16 @@
     </section>
 
     <section id="reservation" class="py-24 md:py-32 max-w-4xl mx-auto px-4 relative z-10">
-        <div class="text-center mb-12 md:mb-16">
+        <div class="text-center mb-12 md:mb-16 reveal">
             <h3 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Demande de Devis</h3>
             <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mb-6"></div>
             <p class="text-gray-400 font-light max-w-xl mx-auto text-sm md:text-base">Laissez-nous vos coordonnées et les détails de votre véhicule, nous vous recontacterons dans les plus brefs délais pour confirmer votre rendez-vous.</p>
         </div>
         
-        <form id="quote-form" class="premium-card p-6 md:p-12 rounded-2xl flex flex-col gap-6">
+        <form id="quote-form" class="premium-card p-6 md:p-12 rounded-2xl flex flex-col gap-6 reveal delay-100">
             
             <input type="hidden" name="access_key" value="VOTRE_CLE_API_WEB3FORMS_ICI">
-            <input type="hidden" name="subject" value="Nouvelle demande de devis sur Car Wash">
+            <input type="hidden" name="subject" value="Nouvelle demande de devis sur Planet Food">
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
@@ -435,13 +449,13 @@
         </form>
     </section>
 
-    <footer class="bg-[#050505] py-16 md:py-20 border-t border-white/5 relative overflow-hidden">
+    <footer class="bg-[#050505] py-16 md:py-20 border-t border-white/5 relative overflow-hidden reveal">
         <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col md:flex-row justify-between items-center md:items-start gap-10">
             <div class="text-center md:text-left">
-                <h1 class="text-xl md:text-2xl font-display font-bold text-white tracking-widest uppercase mb-4">Car Wash</h1>
+                <h1 class="text-xl md:text-2xl font-display font-bold text-white tracking-widest uppercase mb-4">Planet Food</h1>
                 <p class="text-gray-400 font-light mb-1 text-sm md:text-base">123 Route du Lavage</p>
                 <p class="text-gray-400 font-light mb-6 text-sm md:text-base">74100 Annemasse</p>
-                <a href="mailto:contact@planet-food.com" class="text-gold-400 font-display tracking-widest uppercase text-xs md:text-sm hover:text-white transition duration-300">contact@car-wash.com</a>
+                <a href="mailto:contact@planet-food.com" class="text-gold-400 font-display tracking-widest uppercase text-xs md:text-sm hover:text-white transition duration-300">contact@planet-food.com</a>
             </div>
             <div class="text-center md:text-right">
                 <h4 class="text-white font-display font-bold text-xs md:text-sm tracking-widest uppercase mb-4">Informations</h4>
@@ -452,7 +466,7 @@
             </div>
         </div>
         <div class="max-w-7xl mx-auto px-4 mt-12 md:mt-16 text-center text-[10px] md:text-xs text-gray-600 font-display tracking-widest uppercase">
-            &copy; 2026 Car Wash. Tous droits réservés.
+            &copy; 2026 Planet Food. Tous droits réservés.
         </div>
     </footer>
 
@@ -515,7 +529,6 @@
             const object = Object.fromEntries(formData);
             const json = JSON.stringify(object);
 
-            // État de chargement
             submitBtn.innerText = 'Envoi en cours...';
             submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
             submitBtn.disabled = true;
@@ -531,14 +544,12 @@
             .then(async (response) => {
                 let json = await response.json();
                 if (response.status == 200) {
-                    // Succès
                     result.classList.remove('hidden', 'text-red-400');
                     result.classList.add('text-green-400');
                     result.innerHTML = "Votre demande a été envoyée avec succès. Nous vous contacterons très vite !";
                     submitBtn.innerText = 'Message envoyé';
                     form.reset();
                 } else {
-                    // Erreur API
                     console.log(response);
                     result.classList.remove('hidden', 'text-green-400');
                     result.classList.add('text-red-400');
@@ -549,7 +560,6 @@
                 }
             })
             .catch(error => {
-                // Erreur Réseau
                 console.log(error);
                 result.classList.remove('hidden', 'text-green-400');
                 result.classList.add('text-red-400');
@@ -559,6 +569,23 @@
                 submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
             });
         });
+
+        // --- Animations au scroll (Intersection Observer) ---
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Ne joue l'animation qu'une seule fois
+                }
+            });
+        }, {
+            root: null,
+            threshold: 0.1, // Se déclenche quand 10% de l'élément est visible
+            rootMargin: "0px 0px -50px 0px"
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
     </script>
 </body>
 </html>
