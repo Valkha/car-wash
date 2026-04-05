@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentions Légales | Planet Food</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: {
+                            400: '#D4AF37',
+                            500: '#AA8C2C',
+                        },
+                        charcoal: {
+                            900: '#0a0a0a',
+                            800: '#141414',
+                            700: '#1e1e1e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        .premium-card {
+            background: linear-gradient(145deg, #141414 0%, #0a0a0a 100%);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        
+        /* Menu Mobile */
+        #mobile-menu {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 400px;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="text-gray-300 font-sans antialiased flex flex-col min-h-screen">
+    
+    <header class="bg-charcoal-900/90 backdrop-blur-lg border-b border-white/5 sticky top-0 z-50 transition-all">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html"><h1 class="text-xl md:text-3xl font-display font-bold text-white tracking-widest uppercase hover:text-gold-400 transition-colors">Planet Food</h1></a>
+                
+                <nav class="hidden md:block">
+                    <ul class="flex space-x-8 text-xs font-display tracking-widest uppercase">
+                        <li><a href="index.html#services" class="hover:text-gold-400 transition duration-300">Services</a></li>
+                        <li><a href="index.html#galerie" class="hover:text-gold-400 transition duration-300">Galerie</a></li>
+                        <li><a href="index.html#avis" class="hover:text-gold-400 transition duration-300">Avis</a></li>
+                        <li><a href="index.html#tarifs" class="hover:text-gold-400 transition duration-300">Tarifs</a></li>
+                        <li><a href="index.html#faq" class="hover:text-gold-400 transition duration-300">FAQ</a></li>
+                        <li><a href="index.html#reservation" class="text-gold-400 border border-gold-400 px-4 py-2 hover:bg-gold-400 hover:text-charcoal-900 transition duration-300">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+
+            <nav id="mobile-menu" class="md:hidden">
+                <ul class="flex flex-col space-y-4 pt-6 pb-4 text-sm font-display tracking-widest uppercase text-center border-t border-white/5 mt-4">
+                    <li><a href="index.html#services" class="block hover:text-gold-400 transition duration-300 mobile-link">Services</a></li>
+                    <li><a href="index.html#galerie" class="block hover:text-gold-400 transition duration-300 mobile-link">Galerie</a></li>
+                    <li><a href="index.html#avis" class="block hover:text-gold-400 transition duration-300 mobile-link">Avis</a></li>
+                    <li><a href="index.html#tarifs" class="block hover:text-gold-400 transition duration-300 mobile-link">Tarifs</a></li>
+                    <li><a href="index.html#faq" class="block hover:text-gold-400 transition duration-300 mobile-link">FAQ</a></li>
+                    <li><a href="index.html#reservation" class="block text-gold-400 mt-4 mobile-link">Demander un Devis</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow py-24 md:py-32 px-4 relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-5xl font-display font-bold text-white mb-6 tracking-wide uppercase">Mentions Légales</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
+            </div>
+
+            <div class="premium-card p-8 md:p-12 rounded-2xl flex flex-col gap-10">
+                
+                <section>
+                    <h3 class="text-gold-400 font-display font-bold text-lg md:text-xl tracking-widest uppercase mb-4">1. Éditeur du site</h3>
+                    <div class="text-gray-400 font-light leading-relaxed text-sm md:text-base space-y-2">
+                        <p><strong>Raison sociale :</strong> [Nom officiel de l'entreprise]</p>
+                        <p><strong>Forme juridique :</strong> [Statut, ex: SARL au capital de XXX CHF/€]</p>
+                        <p><strong>Siège social :</strong> [Adresse complète, Code Postal, Ville]</p>
+                        <p><strong>Numéro d'immatriculation :</strong> [SIRET / IDE]</p>
+                        <p><strong>Numéro de TVA intracommunautaire :</strong> [Si applicable]</p>
+                        <p><strong>Téléphone :</strong> [Numéro de téléphone]</p>
+                        <p><strong>E-mail :</strong> [Adresse e-mail de contact]</p>
+                    </div>
+                </section>
+
+                <div class="h-px w-full bg-white/5"></div>
+
+                <section>
+                    <h3 class="text-gold-400 font-display font-bold text-lg md:text-xl tracking-widest uppercase mb-4">2. Directeur de la publication</h3>
+                    <div class="text-gray-400 font-light leading-relaxed text-sm md:text-base">
+                        <p>Le directeur de la publication est <strong>[Prénom Nom du Gérant]</strong>, en sa qualité de [Fonction/Titre].</p>
+                    </div>
+                </section>
+
+                <div class="h-px w-full bg-white/5"></div>
+
+                <section>
+                    <h3 class="text-gold-400 font-display font-bold text-lg md:text-xl tracking-widest uppercase mb-4">3. Hébergement</h3>
+                    <div class="text-gray-400 font-light leading-relaxed text-sm md:text-base space-y-2">
+                        <p>Ce site est hébergé par <strong>GitHub Pages</strong>.</p>
+                        <p>GitHub Inc.<br>
+                        88 Colin P Kelly Jr St,<br>
+                        San Francisco, CA 94107, États-Unis.</p>
+                        <p>Site web : <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-gold-400 hover:text-white transition-colors">https://github.com</a></p>
+                    </div>
+                </section>
+
+                <div class="h-px w-full bg-white/5"></div>
+
+                <section>
+                    <h3 class="text-gold-400 font-display font-bold text-lg md:text-xl tracking-widest uppercase mb-4">4. Propriété intellectuelle</h3>
+                    <div class="text-gray-400 font-light leading-relaxed text-sm md:text-base">
+                        <p>L'ensemble du contenu présent sur le site Planet Food (textes, photographies, illustrations, logos, vidéos, structure) est la propriété exclusive de [Nom officiel de l'entreprise] ou de ses partenaires.</p>
+                        <p class="mt-4">Toute reproduction, représentation, modification, publication, transmission, dénaturation, totale ou partielle du site ou de son contenu, par quelque procédé que ce soit, et sur quelque support que ce soit est interdite sans l'autorisation écrite et préalable de l'éditeur.</p>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-[#050505] py-16 md:py-20 border-t border-white/5 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col md:flex-row justify-between items-center md:items-start gap-10">
+            <div class="text-center md:text-left">
+                <h1 class="text-xl md:text-2xl font-display font-bold text-white tracking-widest uppercase mb-4">Planet Food</h1>
+                <p class="text-gray-400 font-light mb-1 text-sm md:text-base">123 Route du Lavage</p>
+                <p class="text-gray-400 font-light mb-6 text-sm md:text-base">74100 Annemasse</p>
+                <a href="mailto:contact@planet-food.com" class="text-gold-400 font-display tracking-widest uppercase text-xs md:text-sm hover:text-white transition duration-300">contact@planet-food.com</a>
+            </div>
+            <div class="text-center md:text-right">
+                <h4 class="text-white font-display font-bold text-xs md:text-sm tracking-widest uppercase mb-4">Informations</h4>
+                <ul class="text-gray-400 font-light text-xs md:text-sm space-y-2">
+                    <li><a href="mentions-legales.html" class="hover:text-gold-400 transition">Mentions Légales</a></li>
+                    <li><a href="politique-confidentialite.html" class="hover:text-gold-400 transition">Politique de Confidentialité (RGPD)</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 mt-12 md:mt-16 text-center text-[10px] md:text-xs text-gray-600 font-display tracking-widest uppercase">
+            &copy; 2026 Planet Food. Tous droits réservés.
+        </div>
+    </footer>
+
+    <script>
+        // Menu Mobile Hamburger
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const links = document.querySelectorAll('.mobile-link');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('open');
+        });
+
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.remove('open');
+            });
+        });
+    </script>
+</body>
+</html>

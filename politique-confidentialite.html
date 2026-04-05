@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politique de Confidentialité | Planet Food</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: {
+                            400: '#D4AF37',
+                            500: '#AA8C2C',
+                        },
+                        charcoal: {
+                            900: '#0a0a0a',
+                            800: '#141414',
+                            700: '#1e1e1e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        .premium-card {
+            background: linear-gradient(145deg, #141414 0%, #0a0a0a 100%);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        
+        /* Menu Mobile */
+        #mobile-menu {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 400px;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="text-gray-300 font-sans antialiased flex flex-col min-h-screen">
+    
+    <header class="bg-charcoal-900/90 backdrop-blur-lg border-b border-white/5 sticky top-0 z-50 transition-all">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html"><h1 class="text-xl md:text-3xl font-display font-bold text-white tracking-widest uppercase hover:text-gold-400 transition-colors">Planet Food</h1></a>
+                
+                <nav class="hidden md:block">
+                    <ul class="flex space-x-8 text-xs font-display tracking-widest uppercase">
+                        <li><a href="index.html#services" class="hover:text-gold-400 transition duration-300">Services</a></li>
+                        <li><a href="index.html#galerie" class="hover:text-gold-400 transition duration-300">Galerie</a></li>
+                        <li><a href="index.html#avis" class="hover:text-gold-400 transition duration-300">Avis</a></li>
+                        <li><a href="index.html#tarifs" class="hover:text-gold-400 transition duration-300">Tarifs</a></li>
+                        <li><a href="index.html#faq" class="hover:text-gold-400 transition duration-300">FAQ</a></li>
+                        <li><a href="index.html#reservation" class="text-gold-400 border border-gold-400 px-4 py-2 hover:bg-gold-400 hover:text-charcoal-900 transition duration-300">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+
+            <nav id="mobile-menu" class="md:hidden">
+                <ul class="flex flex-col space-y-4 pt-6 pb-4 text-sm font-display tracking-widest uppercase text-center border-t border-white/5 mt-4">
+                    <li><a href="index.html#services" class="block hover:text-gold-400 transition duration-300 mobile-link">Services</a></li>
+                    <li><a href="index.html#galerie" class="block hover:text-gold-400 transition duration-300 mobile-link">Galerie</a></li>
+                    <li><a href="index.html#avis" class="block hover:text-gold-400 transition duration-300 mobile-link">Avis</a></li>
+                    <li><a href="index.html#tarifs" class="block hover:text-gold-400 transition duration-300 mobile-link">Tarifs</a></li>
+                    <li><a href="index.html#faq" class="block hover:text-gold-400 transition duration-300 mobile-link">FAQ</a></li>
+                    <li><a href="index.html#reservation" class="block text-gold-400 mt-4 mobile-link">Demander un Devis</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow py-24 md:py-32 px-4 relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-5xl font-display font-bold text-white mb-6 tracking-wide uppercase">Politique de Confidentialité</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
+                <p class="text-gray-400 font-light mt-6 text-sm md:text-base">Mise à jour le 5 avril 2026</p>
+            </div>
+
+            <div class="premium-card p-8 md:p-12 rounded-2xl flex flex-col gap-10">
+                
+                <section>
+                    <h3 class="text-gold-400 font-display font-bold text-lg md:text-xl tracking-widest uppercase mb-4">1. Collecte des données personnelles</h3>
+                    <div class="text-gray-400 font-light leading-relaxed text-sm md:text-base">
+                        <p>Dans le cadre de l'utilisation de notre site, notamment via notre formulaire de contact et de demande de devis, nous sommes amenés à collecter les données suivantes :</p>
+                        <ul class="list-disc list-inside mt-2 ml-4 space-y-1">
+                            <li>Nom complet</li>
+                            <li>Numéro de téléphone</li>
+                            <li>Informations relatives au véhicule (Marque, Modèle, État)</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <div class="h-px w-full bg-white/5"></div>
+
+                <section>
+                    <h3 class="text-gold-400 font-display font-bold text-lg md:text-xl tracking-widest uppercase mb-4">2. Finalité de la collecte</h3>
+                    <div class="text-gray-400 font-light leading-relaxed text-sm md:text-base">
+                        <p>Les données collectées sont strictement nécessaires pour :</p>
+                        <ul class="list-disc list-inside mt-2 ml-4 space-y-1">
+                            <li>Établir un devis personnalisé pour les prestations d'esthétique automobile.</li>
+                            <li>Vous recontacter pour planifier un rendez-vous.</li>
+                            <li>Assurer le suivi commercial de votre dossier.</li>
+                        </ul>
+                        <p class="mt-4">En aucun cas vos données ne seront vendues, cédées ou louées à des tiers à des fins de prospection commerciale.</p>
+                    </div>
+                </section>
+
+                <div class="h-px w-full bg-white/5"></div>
+
+                <section>
+                    <h3 class="text-gold-400 font-display font-bold text-lg md:text-xl tracking-widest uppercase mb-4">3. Transmission et sécurité</h3>
+                    <div class="text-gray-400 font-light leading-relaxed text-sm md:text-base">
+                        <p>Pour le bon fonctionnement de notre formulaire de contact, les données saisies transitent de manière sécurisée via l'API tierce <strong>Web3Forms</strong>, avant de nous être envoyées par courrier électronique. Nous mettons en œuvre toutes les mesures raisonnables pour garantir la sécurité et la confidentialité de vos informations.</p>
+                    </div>
+                </section>
+
+                <div class="h-px w-full bg-white/5"></div>
+
+                <section>
+                    <h3 class="text-gold-400 font-display font-bold text-lg md:text-xl tracking-widest uppercase mb-4">4. Durée de conservation</h3>
+                    <div class="text-gray-400 font-light leading-relaxed text-sm md:text-base">
+                        <p>Vos données personnelles sont conservées pour une durée maximale de trois (3) ans à compter de notre dernier contact, conformément à la réglementation en vigueur (RGPD).</p>
+                    </div>
+                </section>
+
+                <div class="h-px w-full bg-white/5"></div>
+
+                <section>
+                    <h3 class="text-gold-400 font-display font-bold text-lg md:text-xl tracking-widest uppercase mb-4">5. Vos droits (RGPD)</h3>
+                    <div class="text-gray-400 font-light leading-relaxed text-sm md:text-base">
+                        <p>Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification, de portabilité, d'effacement de vos données, ou d'une limitation de leur traitement.</p>
+                        <p class="mt-4">Pour exercer ces droits, vous pouvez nous contacter à tout moment à l'adresse suivante :</p>
+                        <p class="mt-2"><a href="mailto:contact@planet-food.com" class="text-gold-400 hover:text-white transition-colors">contact@planet-food.com</a></p>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-[#050505] py-16 md:py-20 border-t border-white/5 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col md:flex-row justify-between items-center md:items-start gap-10">
+            <div class="text-center md:text-left">
+                <h1 class="text-xl md:text-2xl font-display font-bold text-white tracking-widest uppercase mb-4">Planet Food</h1>
+                <p class="text-gray-400 font-light mb-1 text-sm md:text-base">123 Route du Lavage</p>
+                <p class="text-gray-400 font-light mb-6 text-sm md:text-base">74100 Annemasse</p>
+                <a href="mailto:contact@planet-food.com" class="text-gold-400 font-display tracking-widest uppercase text-xs md:text-sm hover:text-white transition duration-300">contact@planet-food.com</a>
+            </div>
+            <div class="text-center md:text-right">
+                <h4 class="text-white font-display font-bold text-xs md:text-sm tracking-widest uppercase mb-4">Informations</h4>
+                <ul class="text-gray-400 font-light text-xs md:text-sm space-y-2">
+                    <li><a href="mentions-legales.html" class="hover:text-gold-400 transition">Mentions Légales</a></li>
+                    <li><a href="politique-confidentialite.html" class="text-gold-400">Politique de Confidentialité (RGPD)</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 mt-12 md:mt-16 text-center text-[10px] md:text-xs text-gray-600 font-display tracking-widest uppercase">
+            &copy; 2026 Planet Food. Tous droits réservés.
+        </div>
+    </footer>
+
+    <script>
+        // Menu Mobile Hamburger
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const links = document.querySelectorAll('.mobile-link');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('open');
+        });
+
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.remove('open');
+            });
+        });
+    </script>
+</body>
+</html>
