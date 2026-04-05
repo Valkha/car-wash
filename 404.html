@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page introuvable | Car Wash</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: {
+                            400: '#D4AF37',
+                            500: '#AA8C2C',
+                        },
+                        charcoal: {
+                            900: '#0a0a0a',
+                            800: '#141414',
+                            700: '#1e1e1e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+    </style>
+</head>
+<body class="text-gray-300 font-sans antialiased min-h-screen flex flex-col">
+    
+    <header class="bg-charcoal-900/90 backdrop-blur-lg border-b border-white/5 py-4">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 text-center md:text-left">
+            <a href="index.html" class="text-xl md:text-3xl font-display font-bold text-white tracking-widest uppercase hover:text-gold-400 transition-colors">Car Wash</a>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center px-4 py-20">
+        <div class="text-center">
+            <h1 class="text-7xl md:text-9xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-yellow-200 mb-6">404</h1>
+            <h2 class="text-2xl md:text-3xl font-display font-semibold text-white mb-4 uppercase tracking-wider">Oups, ce véhicule a quitté le garage.</h2>
+            <p class="text-gray-400 font-light mb-10 max-w-md mx-auto">La page que vous recherchez n'existe pas, a été déplacée ou n'est plus disponible.</p>
+            <a href="index.html" class="inline-block bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-3 px-8 rounded-lg hover:bg-gold-500 hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all duration-300">
+                Retour à l'accueil
+            </a>
+        </div>
+    </main>
+
+</body>
+</html>

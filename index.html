@@ -162,7 +162,7 @@
         .delay-300 { transition-delay: 300ms; }
     </style>
 </head>
-<body class="text-gray-300 font-sans antialiased">
+<body class="text-gray-300 font-sans antialiased relative">
     
     <header class="bg-charcoal-900/90 backdrop-blur-lg border-b border-white/5 sticky top-0 z-50 transition-all">
         <div class="max-w-7xl mx-auto px-4 md:px-6 py-4">
@@ -491,6 +491,23 @@
         </div>
     </footer>
 
+    <div id="cookie-banner" class="fixed bottom-0 left-0 w-full bg-charcoal-800/95 backdrop-blur-md border-t border-gold-400/20 p-4 md:p-6 z-[100] transform translate-y-full transition-transform duration-500 shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="text-sm text-gray-300 font-light text-center md:text-left">
+                Nous utilisons des cookies pour optimiser votre expérience, analyser notre trafic et vous proposer des services adaptés. 
+                <a href="politique-confidentialite.html" class="text-gold-400 hover:text-white underline decoration-gold-400/30 transition-colors">En savoir plus</a>.
+            </div>
+            <div class="flex gap-3 w-full md:w-auto">
+                <button id="decline-cookies" class="flex-1 md:flex-none border border-white/20 text-gray-300 font-display text-xs font-bold tracking-widest uppercase py-2 px-6 rounded hover:bg-white/5 transition-colors">
+                    Refuser
+                </button>
+                <button id="accept-cookies" class="flex-1 md:flex-none bg-gold-400 text-charcoal-900 font-display text-xs font-bold tracking-widest uppercase py-2 px-6 rounded hover:bg-gold-500 transition-colors shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+                    Accepter
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
         // --- Menu Mobile Hamburger ---
         const btn = document.getElementById('mobile-menu-btn');
@@ -597,16 +614,40 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                    observer.unobserve(entry.target); // Ne joue l'animation qu'une seule fois
+                    observer.unobserve(entry.target);
                 }
             });
         }, {
             root: null,
-            threshold: 0.1, // Se déclenche quand 10% de l'élément est visible
+            threshold: 0.1,
             rootMargin: "0px 0px -50px 0px"
         });
 
         revealElements.forEach(el => revealObserver.observe(el));
+
+        // --- Logique de la bannière de cookies ---
+        document.addEventListener("DOMContentLoaded", () => {
+            const cookieBanner = document.getElementById('cookie-banner');
+            const acceptBtn = document.getElementById('accept-cookies');
+            const declineBtn = document.getElementById('decline-cookies');
+
+            // Vérifier si le choix a déjà été fait
+            if (!localStorage.getItem('cookieConsent')) {
+                // Petit délai pour l'animation d'apparition au chargement
+                setTimeout(() => {
+                    cookieBanner.classList.remove('translate-y-full');
+                }, 1000);
+            }
+
+            // Fonction pour cacher la bannière et sauvegarder le choix
+            const hideBanner = (choice) => {
+                localStorage.setItem('cookieConsent', choice);
+                cookieBanner.classList.add('translate-y-full');
+            };
+
+            acceptBtn.addEventListener('click', () => hideBanner('accepted'));
+            declineBtn.addEventListener('click', () => hideBanner('declined'));
+        });
     </script>
 </body>
 </html>
