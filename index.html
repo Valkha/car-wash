@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planet Food | Detailing & Soin Automobile Premium</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: {
+                            400: '#D4AF37',
+                            500: '#AA8C2C',
+                        },
+                        charcoal: {
+                            900: '#0a0a0a',
+                            800: '#141414',
+                            700: '#1e1e1e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        .bg-hero {
+            background-image: linear-gradient(to bottom, rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 1)), url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .premium-card {
+            background: linear-gradient(145deg, #141414 0%, #0a0a0a 100%);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .premium-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.1);
+        }
+        
+        /* Styles pour la galerie défilante */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .gallery-item {
+            flex: 0 0 auto;
+            width: 85vw; /* Largeur sur mobile */
+            max-width: 600px; /* Largeur max sur desktop */
+            scroll-snap-align: center;
+        }
+        .img-container { 
+            overflow: hidden; 
+            position: relative;
+        }
+        .img-hover { 
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+        }
+        .img-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10,10,10,0.8), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .img-container:hover::after {
+            opacity: 1;
+        }
+        .img-container:hover .img-hover { 
+            transform: scale(1.05); 
+        }
+        
+        /* Styles pour l'accordéon FAQ natif */
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        details[open] summary ~ * { animation: sweep .4s ease-in-out; }
+        @keyframes sweep {
+            0%    {opacity: 0; margin-top: -10px}
+            100%  {opacity: 1; margin-top: 0px}
+        }
+        
+        /* Styles pour le slider avec indicateurs */
+        .slide-overlay {
+            background: linear-gradient(to top, rgba(10,10,10,0.9), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .group:hover .slide-overlay {
+            opacity: 1;
+        }
+        .slider-dot {
+            transition: all 0.3s ease;
+        }
+        .slider-dot.active {
+            background-color: #D4AF37;
+            width: 2rem;
+        }
+        
+        /* Menu Mobile */
+        #mobile-menu {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 400px;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="text-gray-300 font-sans antialiased">
+    
+    <header class="bg-charcoal-900/90 backdrop-blur-lg border-b border-white/5 sticky top-0 z-50 transition-all">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-xl md:text-3xl font-display font-bold text-white tracking-widest uppercase">Planet Food</h1>
+                
+                <nav class="hidden md:block">
+                    <ul class="flex space-x-8 text-xs font-display tracking-widest uppercase">
+                        <li><a href="#services" class="hover:text-gold-400 transition duration-300">Services</a></li>
+                        <li><a href="#galerie" class="hover:text-gold-400 transition duration-300">Galerie</a></li>
+                        <li><a href="#avis" class="hover:text-gold-400 transition duration-300">Avis</a></li>
+                        <li><a href="#tarifs" class="hover:text-gold-400 transition duration-300">Tarifs</a></li>
+                        <li><a href="#faq" class="hover:text-gold-400 transition duration-300">FAQ</a></li>
+                        <li><a href="#reservation" class="text-gold-400 border border-gold-400 px-4 py-2 hover:bg-gold-400 hover:text-charcoal-900 transition duration-300">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+
+            <nav id="mobile-menu" class="md:hidden">
+                <ul class="flex flex-col space-y-4 pt-6 pb-4 text-sm font-display tracking-widest uppercase text-center border-t border-white/5 mt-4">
+                    <li><a href="#services" class="block hover:text-gold-400 transition duration-300 mobile-link">Services</a></li>
+                    <li><a href="#galerie" class="block hover:text-gold-400 transition duration-300 mobile-link">Galerie</a></li>
+                    <li><a href="#avis" class="block hover:text-gold-400 transition duration-300 mobile-link">Avis</a></li>
+                    <li><a href="#tarifs" class="block hover:text-gold-400 transition duration-300 mobile-link">Tarifs</a></li>
+                    <li><a href="#faq" class="block hover:text-gold-400 transition duration-300 mobile-link">FAQ</a></li>
+                    <li><a href="#reservation" class="block text-gold-400 mt-4 mobile-link">Demander un Devis</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="bg-hero min-h-screen flex items-center py-20 px-4 relative">
+        <div class="max-w-5xl mx-auto text-center mt-10 z-10">
+            <h2 class="text-4xl sm:text-5xl md:text-7xl font-display font-bold text-white mb-4 md:mb-6 leading-tight tracking-wide uppercase drop-shadow-2xl">
+                L'Excellence <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-yellow-200 font-light text-3xl sm:text-4xl md:text-6xl tracking-widest">Pour Votre Véhicule</span>
+            </h2>
+            <p class="text-base md:text-xl mb-10 md:mb-12 font-light text-gray-400 max-w-2xl mx-auto px-2">Un service de detailing sur-mesure à deux pas de Genève. Redonnez à votre carrosserie son éclat d'origine grâce à notre expertise.</p>
+            <a href="#services" class="inline-block bg-gold-500/10 border border-gold-400 text-gold-400 font-display font-medium tracking-widest uppercase py-3 md:py-4 px-8 md:px-10 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition duration-300 shadow-[0_0_20px_rgba(212,175,55,0.2)] hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] text-sm md:text-base">
+                Découvrir l'expérience
+            </a>
+        </div>
+        
+        <a href="#services" class="absolute bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce flex flex-col items-center text-gray-500 hover:text-gold-400 transition-colors duration-300">
+            <span class="text-[10px] font-display tracking-widest uppercase mb-2">Scroll</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </a>
+    </section>
+
+    <section id="services" class="py-24 md:py-32 max-w-7xl mx-auto px-4 relative">
+        <div class="text-center mb-16 md:mb-20">
+            <h3 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Notre Expertise</h3>
+            <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+            <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full">
+                <div class="w-12 h-12 mb-6 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl">✨</div>
+                <h4 class="text-lg font-display font-bold tracking-wider uppercase text-white mb-4">Préparation Esthétique</h4>
+                <p class="text-gray-400 font-light leading-relaxed flex-grow text-sm md:text-base">Lavage manuel minutieux, décontamination de la carrosserie et soin des jantes pour une base parfaite.</p>
+            </div>
+            <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full">
+                <div class="w-12 h-12 mb-6 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl">🔧</div>
+                <h4 class="text-lg font-display font-bold tracking-wider uppercase text-white mb-4">Correction Peinture</h4>
+                <p class="text-gray-400 font-light leading-relaxed flex-grow text-sm md:text-base">Polissage multi-étapes pour effacer les micro-rayures, hologrammes et raviver la profondeur de la couleur.</p>
+            </div>
+            <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full sm:col-span-2 md:col-span-1">
+                <div class="w-12 h-12 mb-6 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl">🛡️</div>
+                <h4 class="text-lg font-display font-bold tracking-wider uppercase text-white mb-4">Protection Céramique</h4>
+                <p class="text-gray-400 font-light leading-relaxed flex-grow text-sm md:text-base">Application d'un traitement céramique ultra-résistant pour une brillance durable et un effet hydrophobe.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="galerie" class="py-24 md:py-32 relative overflow-hidden">
+        <div class="text-center mb-12 md:mb-16 px-4">
+            <h3 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Nos Réalisations</h3>
+            <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
+        </div>
+        
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="relative overflow-hidden rounded-2xl shadow-2xl border border-white/5 bg-charcoal-800">
+                
+                <div id="slider-track" class="flex transition-transform duration-700 ease-in-out w-full">
+                    <div class="w-full flex-shrink-0 relative group">
+                        <img src="https://images.unsplash.com/photo-1600706432502-77a0e2e32729?q=80&w=1200&auto=format&fit=crop" alt="Nettoyage jante haute précision" class="w-full h-[50vh] md:h-[60vh] min-h-[350px] object-cover">
+                        <div class="absolute inset-0 slide-overlay flex flex-col justify-end p-6 md:p-10">
+                            <h4 class="text-gold-400 font-display font-bold text-xl md:text-2xl tracking-widest uppercase mb-2 transform md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-500">Décontamination</h4>
+                            <p class="text-gray-300 font-light text-sm md:text-base transform md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-500 delay-75">Soin méticuleux et traitement des jantes alliage.</p>
+                        </div>
+                    </div>
+                    <div class="w-full flex-shrink-0 relative group">
+                        <img src="https://images.unsplash.com/photo-1605810730456-02796eeb8d0b?q=80&w=1200&auto=format&fit=crop" alt="Polissage carrosserie premium" class="w-full h-[50vh] md:h-[60vh] min-h-[350px] object-cover">
+                        <div class="absolute inset-0 slide-overlay flex flex-col justify-end p-6 md:p-10">
+                            <h4 class="text-gold-400 font-display font-bold text-xl md:text-2xl tracking-widest uppercase mb-2 transform md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-500">Correction Peinture</h4>
+                            <p class="text-gray-300 font-light text-sm md:text-base transform md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-500 delay-75">Suppression des micro-rayures et restauration de la brillance.</p>
+                        </div>
+                    </div>
+                    <div class="w-full flex-shrink-0 relative group">
+                        <img src="https://images.unsplash.com/photo-1552930294-6b595f4c2974?q=80&w=1200&auto=format&fit=crop" alt="Véhicule de sport après detailing" class="w-full h-[50vh] md:h-[60vh] min-h-[350px] object-cover">
+                        <div class="absolute inset-0 slide-overlay flex flex-col justify-end p-6 md:p-10">
+                            <h4 class="text-gold-400 font-display font-bold text-xl md:text-2xl tracking-widest uppercase mb-2 transform md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-500">Protection Céramique</h4>
+                            <p class="text-gray-300 font-light text-sm md:text-base transform md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-500 delay-75">Bouclier hydrophobe garantissant un éclat incomparable.</p>
+                        </div>
+                    </div>
+                    <div class="w-full flex-shrink-0 relative group">
+                        <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=1200&auto=format&fit=crop" alt="Rénovation intérieur cuir" class="w-full h-[50vh] md:h-[60vh] min-h-[350px] object-cover">
+                        <div class="absolute inset-0 slide-overlay flex flex-col justify-end p-6 md:p-10">
+                            <h4 class="text-gold-400 font-display font-bold text-xl md:text-2xl tracking-widest uppercase mb-2 transform md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-500">Soin Habitacle</h4>
+                            <p class="text-gray-300 font-light text-sm md:text-base transform md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-500 delay-75">Nettoyage en profondeur, purification et hydratation des cuirs.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="prevSlide()" class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-black/50 text-white backdrop-blur border border-white/10 hover:bg-gold-500 hover:text-charcoal-900 transition-all duration-300 z-20 group">
+                    <svg class="w-5 h-5 md:w-6 md:h-6 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                <button onclick="nextSlide()" class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-black/50 text-white backdrop-blur border border-white/10 hover:bg-gold-500 hover:text-charcoal-900 transition-all duration-300 z-20 group">
+                    <svg class="w-5 h-5 md:w-6 md:h-6 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+                
+                <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20" id="slider-dots">
+                    <div class="slider-dot w-2 h-2 rounded-full bg-white/50 active cursor-pointer" onclick="goToSlide(0)"></div>
+                    <div class="slider-dot w-2 h-2 rounded-full bg-white/50 cursor-pointer" onclick="goToSlide(1)"></div>
+                    <div class="slider-dot w-2 h-2 rounded-full bg-white/50 cursor-pointer" onclick="goToSlide(2)"></div>
+                    <div class="slider-dot w-2 h-2 rounded-full bg-white/50 cursor-pointer" onclick="goToSlide(3)"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="avis" class="py-24 md:py-32 max-w-7xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 md:mb-20">
+            <h3 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Témoignages</h3>
+            <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
+            <p class="text-gray-400 font-light max-w-xl mx-auto mt-6 text-sm md:text-base">L'exigence de nos clients est notre meilleure carte de visite.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full">
+                <div class="text-gold-400 text-xl tracking-widest mb-4">★★★★★</div>
+                <p class="text-gray-300 font-light italic mb-8 flex-grow leading-relaxed text-sm md:text-base">"Un travail d'orfèvre sur ma Model 3. La protection céramique donne une profondeur incroyable à la peinture. Équipe passionnée, minutieuse et très professionnelle."</p>
+                <div class="flex items-center gap-4 border-t border-white/5 pt-6">
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-400 font-display font-bold text-sm md:text-base">ML</div>
+                    <div>
+                        <h5 class="text-white font-display font-bold text-xs md:text-sm tracking-wide uppercase">Marc L.</h5>
+                        <span class="text-gray-500 text-[10px] md:text-xs">Genève</span>
+                    </div>
+                </div>
+            </div>
+            <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full relative transform md:-translate-y-4">
+                <div class="text-gold-400 text-xl tracking-widest mb-4">★★★★★</div>
+                <p class="text-gray-300 font-light italic mb-8 flex-grow leading-relaxed text-sm md:text-base">"Je pensais devoir repeindre mon pare-chocs après plusieurs frottements. Le polissage a fait des miracles, la voiture est ressortie comme neuve du showroom."</p>
+                <div class="flex items-center gap-4 border-t border-white/5 pt-6">
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-400 font-display font-bold text-sm md:text-base">ST</div>
+                    <div>
+                        <h5 class="text-white font-display font-bold text-xs md:text-sm tracking-wide uppercase">Sophie T.</h5>
+                        <span class="text-gray-500 text-[10px] md:text-xs">Lausanne</span>
+                    </div>
+                </div>
+            </div>
+            <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full">
+                <div class="text-gold-400 text-xl tracking-widest mb-4">★★★★★</div>
+                <p class="text-gray-300 font-light italic mb-8 flex-grow leading-relaxed text-sm md:text-base">"J'ai confié ma Porsche pour un nettoyage intérieur complet et un soin des cuirs. Le résultat dépasse largement mes attentes, l'habitacle a retrouvé son odeur d'origine."</p>
+                <div class="flex items-center gap-4 border-t border-white/5 pt-6">
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-400 font-display font-bold text-sm md:text-base">SS</div>
+                    <div>
+                        <h5 class="text-white font-display font-bold text-xs md:text-sm tracking-wide uppercase">Souheil S.</h5>
+                        <span class="text-gray-500 text-[10px] md:text-xs">Genève</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tarifs" class="py-24 md:py-32 px-4 relative">
+        <div class="absolute inset-0 bg-charcoal-800/30 -skew-y-2 z-0"></div>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-16 md:mb-20">
+                <h3 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Grille Tarifaire</h3>
+                <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-center">
+                <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col order-2 md:order-1">
+                    <h4 class="text-lg md:text-xl font-display font-bold tracking-wider uppercase text-white mb-2">Soin Signature</h4>
+                    <p class="text-gold-400 font-display font-semibold text-3xl md:text-4xl mb-8">dès 150 <span class="text-sm md:text-lg font-light text-gray-500">CHF</span></p>
+                    <ul class="text-gray-400 font-light space-y-4 mb-8 flex-grow text-sm md:text-base">
+                        <li class="flex items-center gap-3"><span class="text-gold-400 text-xs">◆</span> Lavage manuel extérieur</li>
+                        <li class="flex items-center gap-3"><span class="text-gold-400 text-xs">◆</span> Aspiration habitacle & coffre</li>
+                        <li class="flex items-center gap-3"><span class="text-gold-400 text-xs">◆</span> Nettoyage des vitres</li>
+                        <li class="flex items-center gap-3"><span class="text-gold-400 text-xs">◆</span> Dressing des plastiques</li>
+                    </ul>
+                </div>
+                <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col relative transform md:-translate-y-4 shadow-2xl border-gold-400/30 order-1 md:order-2 mb-8 md:mb-0">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gold-400 text-charcoal-900 text-[10px] md:text-xs font-display font-bold tracking-widest uppercase py-1.5 px-4 md:px-6 rounded-full shadow-lg whitespace-nowrap">Le plus demandé</div>
+                    <h4 class="text-lg md:text-xl font-display font-bold tracking-wider uppercase text-white mb-2 mt-2">Detailing Premium</h4>
+                    <p class="text-gold-400 font-display font-semibold text-3xl md:text-4xl mb-8">dès 450 <span class="text-sm md:text-lg font-light text-gray-500">CHF</span></p>
+                    <ul class="text-gray-400 font-light space-y-4 mb-8 flex-grow text-sm md:text-base">
+                        <li class="flex items-center gap-3"><span class="text-gold-400 text-xs">◆</span> Soin Signature inclus</li>
+                        <li class="flex items-center gap-3"><span class="text-gold-400 text-xs">◆</span> Décontamination carrosserie</li>
+                        <li class="flex items-center gap-3"><span class="text-gold-400 text-xs">◆</span> Polissage "One Step"</li>
+                        <li class="flex items-center gap-3"><span class="text-gold-400 text-xs">◆</span> Pose de cire Carnauba</li>
+                        <li class="flex items-center gap-3"><span class="text-gold-400 text-xs">◆</span> Nettoyage cuir & tissus</li>
+                    </ul>
+                </div>
+                <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col order-3">
+                    <h4 class="text-lg md:text-xl font-display font-bold tracking-wider uppercase text-white mb-2">Céramique</h4>
+                    <p class="text-gold-400 font-display font-semibold text-3xl md:text-4xl mb-8">Sur devis</p>
+                    <ul class="text-gray-400 font-light space-y-4 mb-8 flex-grow text-sm md:text-base">
+                        <li class="flex items-center gap-3"><span class="text-gold-400 text-xs">◆</span> Detailing Premium inclus</li>
+                        <li class="flex items-center gap-3"><span class="text-gold-400 text-xs">◆</span> Polissage correction totale</li>
+                        <li class="flex items-center gap-3"><span class="text-gold-400 text-xs">◆</span> Traitement Céramique</li>
+                        <li class="flex items-center gap-3"><span class="text-gold-400 text-xs">◆</span> Protection jantes & étriers</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-24 md:py-32 max-w-4xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-12 md:mb-16">
+            <h3 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Questions Fréquentes</h3>
+            <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
+        </div>
+        <div class="space-y-4">
+            <details class="premium-card rounded-xl group cursor-pointer">
+                <summary class="flex justify-between items-center font-display font-bold text-white p-5 md:p-6 outline-none hover:text-gold-400 transition-colors duration-300 text-sm md:text-base">
+                    Combien de temps dure une prestation ?
+                    <span class="text-gold-400 transition-transform duration-300 group-open:rotate-45 text-xl md:text-2xl leading-none">+</span>
+                </summary>
+                <div class="text-gray-400 font-light px-5 md:px-6 pb-5 md:pb-6 leading-relaxed text-sm md:text-base">
+                    Un Soin Signature prend généralement une demi-journée. Pour un Detailing Premium ou une pose de Céramique, prévoyez l'immobilisation de votre véhicule entre 24h et 48h afin de respecter les temps de séchage.
+                </div>
+            </details>
+            <details class="premium-card rounded-xl group cursor-pointer">
+                <summary class="flex justify-between items-center font-display font-bold text-white p-5 md:p-6 outline-none hover:text-gold-400 transition-colors duration-300 text-sm md:text-base">
+                    Quelle est la différence avec une station de lavage classique ?
+                    <span class="text-gold-400 transition-transform duration-300 group-open:rotate-45 text-xl md:text-2xl leading-none">+</span>
+                </summary>
+                <div class="text-gray-400 font-light px-5 md:px-6 pb-5 md:pb-6 leading-relaxed text-sm md:text-base">
+                    Nous n'utilisons aucun rouleau abrasif. Chaque étape est réalisée à la main avec des produits spécifiques à chaque surface (pH neutre, décontaminant ferreux) pour garantir un résultat parfait sans jamais micro-rayer votre vernis.
+                </div>
+            </details>
+            <details class="premium-card rounded-xl group cursor-pointer">
+                <summary class="flex justify-between items-center font-display font-bold text-white p-5 md:p-6 outline-none hover:text-gold-400 transition-colors duration-300 text-sm md:text-base">
+                    Combien de temps dure la protection céramique ?
+                    <span class="text-gold-400 transition-transform duration-300 group-open:rotate-45 text-xl md:text-2xl leading-none">+</span>
+                </summary>
+                <div class="text-gray-400 font-light px-5 md:px-6 pb-5 md:pb-6 leading-relaxed text-sm md:text-base">
+                    Selon la formule choisie et l'entretien régulier de votre véhicule, notre traitement céramique garantit une protection hydrofuge et anti-UV efficace entre 2 et 5 ans.
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <section id="reservation" class="py-24 md:py-32 max-w-4xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-12 md:mb-16">
+            <h3 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Demande de Devis</h3>
+            <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mb-6"></div>
+            <p class="text-gray-400 font-light max-w-xl mx-auto text-sm md:text-base">Laissez-nous vos coordonnées et les détails de votre véhicule, nous vous recontacterons dans les plus brefs délais pour confirmer votre rendez-vous.</p>
+        </div>
+        
+        <form id="quote-form" class="premium-card p-6 md:p-12 rounded-2xl flex flex-col gap-6">
+            
+            <input type="hidden" name="access_key" value="VOTRE_CLE_API_WEB3FORMS_ICI">
+            <input type="hidden" name="subject" value="Nouvelle demande de devis sur Planet Food">
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-[10px] md:text-xs font-display tracking-widest uppercase text-gray-400 mb-2">Nom complet</label>
+                    <input type="text" name="nom" required class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors text-sm" placeholder="Jean Dupont">
+                </div>
+                <div>
+                    <label class="block text-[10px] md:text-xs font-display tracking-widest uppercase text-gray-400 mb-2">Téléphone</label>
+                    <input type="tel" name="telephone" required class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors text-sm" placeholder="+41 79 123 45 67">
+                </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-[10px] md:text-xs font-display tracking-widest uppercase text-gray-400 mb-2">Véhicule (Marque & Modèle)</label>
+                    <input type="text" name="vehicule" required class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors text-sm" placeholder="Porsche 911">
+                </div>
+                <div>
+                    <label class="block text-[10px] md:text-xs font-display tracking-widest uppercase text-gray-400 mb-2">Prestation souhaitée</label>
+                    <select name="prestation" class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors appearance-none cursor-pointer text-sm">
+                        <option class="bg-charcoal-900">Soin Signature</option>
+                        <option class="bg-charcoal-900">Detailing Premium</option>
+                        <option class="bg-charcoal-900">Céramique</option>
+                        <option class="bg-charcoal-900">Autre demande sur-mesure</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <label class="block text-[10px] md:text-xs font-display tracking-widest uppercase text-gray-400 mb-2">Message / État du véhicule</label>
+                <textarea rows="4" name="message" class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors resize-none text-sm" placeholder="Précisez l'état actuel du vernis..."></textarea>
+            </div>
+            
+            <button type="submit" id="submit-btn" class="mt-4 bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-3 md:py-4 rounded-lg hover:bg-gold-500 hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all duration-300 text-sm md:text-base">
+                Envoyer la demande
+            </button>
+
+            <p id="form-result" class="text-center font-medium hidden mt-2 text-sm"></p>
+        </form>
+    </section>
+
+    <footer class="bg-[#050505] py-16 md:py-20 border-t border-white/5 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col md:flex-row justify-between items-center md:items-start gap-10">
+            <div class="text-center md:text-left">
+                <h1 class="text-xl md:text-2xl font-display font-bold text-white tracking-widest uppercase mb-4">Planet Food</h1>
+                <p class="text-gray-400 font-light mb-1 text-sm md:text-base">123 Route du Lavage</p>
+                <p class="text-gray-400 font-light mb-6 text-sm md:text-base">74100 Annemasse</p>
+                <a href="mailto:contact@planet-food.com" class="text-gold-400 font-display tracking-widest uppercase text-xs md:text-sm hover:text-white transition duration-300">contact@planet-food.com</a>
+            </div>
+            <div class="text-center md:text-right">
+                <h4 class="text-white font-display font-bold text-xs md:text-sm tracking-widest uppercase mb-4">Informations</h4>
+                <ul class="text-gray-400 font-light text-xs md:text-sm space-y-2">
+                    <li><a href="#" class="hover:text-gold-400 transition">Mentions Légales</a></li>
+                    <li><a href="#" class="hover:text-gold-400 transition">Politique de Confidentialité (RGPD)</a></li>
+                    <li><a href="#" class="hover:text-gold-400 transition">Conditions Générales de Vente</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 mt-12 md:mt-16 text-center text-[10px] md:text-xs text-gray-600 font-display tracking-widest uppercase">
+            &copy; 2026 Planet Food. Tous droits réservés.
+        </div>
+    </footer>
+
+    <script>
+        // --- Menu Mobile Hamburger ---
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const links = document.querySelectorAll('.mobile-link');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('open');
+        });
+
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.remove('open');
+            });
+        });
+
+        // --- Logique du Slider ---
+        const track = document.getElementById('slider-track');
+        const slides = track.children;
+        const dots = document.querySelectorAll('.slider-dot');
+        let currentSlide = 0;
+
+        function updateSlider() {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, index) => {
+                if(index === currentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide === slides.length - 1) ? 0 : currentSlide + 1;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide === 0) ? slides.length - 1 : currentSlide - 1;
+            updateSlider();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+        }
+
+        // --- Logique d'envoi du Formulaire (Web3Forms AJAX) ---
+        const form = document.getElementById('quote-form');
+        const result = document.getElementById('form-result');
+        const submitBtn = document.getElementById('submit-btn');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            // État de chargement
+            submitBtn.innerText = 'Envoi en cours...';
+            submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+            submitBtn.disabled = true;
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let json = await response.json();
+                if (response.status == 200) {
+                    // Succès
+                    result.classList.remove('hidden', 'text-red-400');
+                    result.classList.add('text-green-400');
+                    result.innerHTML = "Votre demande a été envoyée avec succès. Nous vous contacterons très vite !";
+                    submitBtn.innerText = 'Message envoyé';
+                    form.reset();
+                } else {
+                    // Erreur API
+                    console.log(response);
+                    result.classList.remove('hidden', 'text-green-400');
+                    result.classList.add('text-red-400');
+                    result.innerHTML = "Erreur : " + json.message;
+                    submitBtn.innerText = 'Envoyer la demande';
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+                }
+            })
+            .catch(error => {
+                // Erreur Réseau
+                console.log(error);
+                result.classList.remove('hidden', 'text-green-400');
+                result.classList.add('text-red-400');
+                result.innerHTML = "Une erreur réseau s'est produite. Veuillez réessayer.";
+                submitBtn.innerText = 'Envoyer la demande';
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+            });
+        });
+    </script>
+</body>
+</html>
