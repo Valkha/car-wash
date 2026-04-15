@@ -124,6 +124,27 @@
         .whatsapp-float { position: fixed; bottom: 30px; right: 30px; z-index: 90; transition: all 0.3s ease; }
         .whatsapp-float:hover { transform: scale(1.1) translateY(-5px); }
         .lang-active { color: #D4AF37; font-weight: 700; }
+        /* Animation de fondu pour les 3 images (12 secondes au total) */
+@keyframes auto-crossfade {
+    0%, 25% { opacity: 1; }
+    33%, 92% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.img-fade {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    animation: auto-crossfade 12s infinite;
+}
+
+/* Décalage temporel pour chaque image */
+.img-fade:nth-child(1) { animation-delay: 0s; }
+.img-fade:nth-child(2) { animation-delay: 4s; }
+.img-fade:nth-child(3) { animation-delay: 8s; }
     </style>
 </head>
 <body class="text-gray-300 font-sans antialiased relative">
@@ -244,13 +265,17 @@
                 
                 <div id="slider-track" class="flex transition-transform duration-700 ease-in-out w-full">
                     
-                    <div class="w-full flex-shrink-0 relative group">
-                        <img src="assets/images/realisation-1.webp" alt="Nettoyage et décontamination de jantes à Genève" class="w-full h-[50vh] md:h-[60vh] min-h-[350px] object-cover" loading="lazy">
-                        <div class="absolute inset-0 slide-overlay flex flex-col justify-end p-6 md:p-10">
-                            <h4 class="text-gold-400 font-display font-bold text-xl md:text-2xl tracking-widest uppercase mb-2">Décontamination</h4>
-                            <p class="text-gray-300 font-light text-sm md:text-base">Soin méticuleux et traitement des jantes.</p>
-                        </div>
-                    </div>
+                    <div class="w-full flex-shrink-0 relative group h-[50vh] md:h-[60vh] min-h-[350px] overflow-hidden">
+    
+    <img src="assets/images/MB-01.webp" alt="Nettoyage et décontamination Mercedes - Étape 1" class="img-fade" loading="lazy">
+    <img src="assets/images/MB-02.webp" alt="Nettoyage et décontamination Mercedes - Étape 2" class="img-fade" loading="lazy">
+    <img src="assets/images/MB-03.webp" alt="Nettoyage et décontamination Mercedes - Étape 3" class="img-fade" loading="lazy">
+
+    <div class="absolute inset-0 slide-overlay flex flex-col justify-end p-6 md:p-10 z-10">
+        <h4 class="text-gold-400 font-display font-bold text-xl md:text-2xl tracking-widest uppercase mb-2">Pack Diamant 💎</h4>
+        <p class="text-gray-300 font-light text-sm md:text-base">Cire premium déperlante, soin cuir/alcantara et traitement anti-odeur</p>
+    </div>
+</div>
                     
                     <div class="w-full flex-shrink-0 relative group">
                         <img src="assets/images/realisation-2.webp" alt="Polissage et correction de peinture auto" class="w-full h-[50vh] md:h-[60vh] min-h-[350px] object-cover" loading="lazy">
@@ -261,7 +286,7 @@
                     </div>
                     
                     <div class="w-full flex-shrink-0 relative group">
-                        <img src="assets/images/VW" alt="voiture volkswagen polo 8R noire" class="w-full h-[50vh] md:h-[60vh] min-h-[350px] object-cover" loading="lazy">
+                        <img src="assets/images/VW-8R.webp" alt="voiture volkswagen polo 8R noire" class="w-full h-[50vh] md:h-[60vh] min-h-[350px] object-cover" loading="lazy">
                         <div class="absolute inset-0 slide-overlay flex flex-col justify-end p-6 md:p-10">
                             <h4 class="text-gold-400 font-display font-bold text-xl md:text-2xl tracking-widest uppercase mb-2">Pack Argent 🥈</h4>
                             <p class="text-gray-300 font-light text-sm md:text-base">Restauration de la brillance Showroom</p>
