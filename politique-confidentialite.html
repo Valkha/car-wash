@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy | Clean Cars Wash</title>
+    <title>Politique de Confidentialité | Clean Cars Wash</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script>
@@ -40,6 +40,8 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.03);
         }
+        
+        /* Menu Mobile */
         #mobile-menu {
             transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
             max-height: 0;
@@ -50,69 +52,62 @@
             max-height: 400px;
             opacity: 1;
         }
-        .lang-active { color: #D4AF37; font-weight: 700; }
     </style>
 </head>
 <body class="text-gray-300 font-sans antialiased flex flex-col min-h-screen">
     
     <header class="bg-charcoal-900/90 backdrop-blur-lg border-b border-white/5 sticky top-0 z-50 transition-all">
-        <div class="max-w-7xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
-            <a href="index.html"><h1 class="text-xl md:text-3xl font-display font-bold text-white tracking-widest uppercase hover:text-gold-400 transition-colors">Clean Cars Wash</h1></a>
-            
-            <div class="flex items-center gap-6">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html"><h1 class="text-xl md:text-3xl font-display font-bold text-white tracking-widest uppercase hover:text-gold-400 transition-colors">Clean Cars Wash</h1></a>
+                
                 <nav class="hidden md:block">
                     <ul class="flex space-x-8 text-xs font-display tracking-widest uppercase">
                         <li><a href="index.html#services" class="hover:text-gold-400 transition duration-300">Services</a></li>
-                        <li><a href="index.html#galerie" class="hover:text-gold-400 transition duration-300">Gallery</a></li>
-                        <li><a href="index.html#avis" class="hover:text-gold-400 transition duration-300">Reviews</a></li>
-                        <li><a href="index.html#tarifs" class="hover:text-gold-400 transition duration-300">Pricing</a></li>
+                        <li><a href="index.html#galerie" class="hover:text-gold-400 transition duration-300">Galerie</a></li>
+                        <li><a href="index.html#avis" class="hover:text-gold-400 transition duration-300">Avis</a></li>
+                        <li><a href="index.html#tarifs" class="hover:text-gold-400 transition duration-300">Tarifs</a></li>
                         <li><a href="index.html#faq" class="hover:text-gold-400 transition duration-300">FAQ</a></li>
                         <li><a href="index.html#reservation" class="text-gold-400 border border-gold-400 px-4 py-2 hover:bg-gold-400 hover:text-charcoal-900 transition duration-300">Contact</a></li>
                     </ul>
                 </nav>
 
-                <div class="flex items-center gap-2 text-[10px] font-display tracking-widest uppercase border-l border-white/10 pl-6 h-6">
-                    <a href="../politique-confidentialite.html" class="text-gray-500 hover:text-white transition">FR</a>
-                    <span class="text-gray-700">|</span>
-                    <span class="lang-active">EN</span>
-                </div>
-
                 <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
-        </div>
 
-        <nav id="mobile-menu" class="md:hidden px-4">
-            <ul class="flex flex-col space-y-4 pt-6 pb-4 text-sm font-display tracking-widest uppercase text-center border-t border-white/5 mt-4">
-                <li><a href="index.html#services" class="block hover:text-gold-400 transition duration-300 mobile-link">Services</a></li>
-                <li><a href="index.html#galerie" class="block hover:text-gold-400 transition duration-300 mobile-link">Gallery</a></li>
-                <li><a href="index.html#avis" class="block hover:text-gold-400 transition duration-300 mobile-link">Reviews</a></li>
-                <li><a href="index.html#tarifs" class="block hover:text-gold-400 transition duration-300 mobile-link">Pricing</a></li>
-                <li><a href="index.html#faq" class="block hover:text-gold-400 transition duration-300 mobile-link">FAQ</a></li>
-                <li><a href="index.html#reservation" class="block text-gold-400 mt-4 mobile-link">Get a Quote</a></li>
-            </ul>
-        </nav>
+            <nav id="mobile-menu" class="md:hidden">
+                <ul class="flex flex-col space-y-4 pt-6 pb-4 text-sm font-display tracking-widest uppercase text-center border-t border-white/5 mt-4">
+                    <li><a href="index.html#services" class="block hover:text-gold-400 transition duration-300 mobile-link">Services</a></li>
+                    <li><a href="index.html#galerie" class="block hover:text-gold-400 transition duration-300 mobile-link">Galerie</a></li>
+                    <li><a href="index.html#avis" class="block hover:text-gold-400 transition duration-300 mobile-link">Avis</a></li>
+                    <li><a href="index.html#tarifs" class="block hover:text-gold-400 transition duration-300 mobile-link">Tarifs</a></li>
+                    <li><a href="index.html#faq" class="block hover:text-gold-400 transition duration-300 mobile-link">FAQ</a></li>
+                    <li><a href="index.html#reservation" class="block text-gold-400 mt-4 mobile-link">Demander un Devis</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main class="flex-grow py-24 md:py-32 px-4 relative z-10">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-12 md:mb-16">
-                <h2 class="text-3xl md:text-5xl font-display font-bold text-white mb-6 tracking-wide uppercase">Privacy Policy</h2>
+                <h2 class="text-3xl md:text-5xl font-display font-bold text-white mb-6 tracking-wide uppercase">Politique de Confidentialité</h2>
                 <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
-                <p class="text-gray-400 font-light mt-6 text-sm md:text-base">Updated on April 15, 2026</p>
+                <p class="text-gray-400 font-light mt-6 text-sm md:text-base">Mise à jour le 5 avril 2026</p>
             </div>
 
             <div class="premium-card p-8 md:p-12 rounded-2xl flex flex-col gap-10">
                 
                 <section>
-                    <h3 class="text-gold-400 font-display font-bold text-lg md:text-xl tracking-widest uppercase mb-4">1. Collection of Personal Data</h3>
+                    <h3 class="text-gold-400 font-display font-bold text-lg md:text-xl tracking-widest uppercase mb-4">1. Collecte des données personnelles</h3>
                     <div class="text-gray-400 font-light leading-relaxed text-sm md:text-base">
-                        <p>As part of using our website, particularly through our contact and quote request forms, we collect the following data necessary for our mobile detailing services[cite: 1, 4]:</p>
+                        <p>Dans le cadre de l'utilisation de notre site, notamment via notre formulaire de contact et de demande de devis, nous collectons les données suivantes nécessaires à nos services de detailing mobile[cite: 1, 4]:</p>
                         <ul class="list-disc list-inside mt-2 ml-4 space-y-1">
-                            <li>Full Name</li>
-                            <li>Phone Number [cite: 11]</li>
-                            <li>Vehicle Information (Make, Model, Condition) [cite: 45]</li>
+                            <li>Nom complet</li>
+                            <li>Numéro de téléphone [cite: 11]</li>
+                            <li>Informations relatives au véhicule (Marque, Modèle, État du vernis) [cite: 45]</li>
                         </ul>
                     </div>
                 </section>
@@ -120,43 +115,42 @@
                 <div class="h-px w-full bg-white/5"></div>
 
                 <section>
-                    <h3 class="text-gold-400 font-display font-bold text-lg md:text-xl tracking-widest uppercase mb-4">2. Purpose of Collection</h3>
+                    <h3 class="text-gold-400 font-display font-bold text-lg md:text-xl tracking-widest uppercase mb-4">2. Finalité de la collecte</h3>
                     <div class="text-gray-400 font-light leading-relaxed text-sm md:text-base">
-                        <p>The data collected is strictly reserved for the internal use of <strong>AHMED-YAHIA LM</strong> for[cite: 3]:</p>
+                        <p>Les données collectées sont strictement réservées à l'usage interne de <strong>AHMED-YAHIA LM</strong>  pour :</p>
                         <ul class="list-disc list-inside mt-2 ml-4 space-y-1">
-                            <li>Establishing a personalized quote for your automotive aesthetic needs[cite: 20].</li>
-                            <li>Organizing the pick-up and delivery of your vehicle in Geneva or Vaud[cite: 16, 50].</li>
-                            <li>Ensuring the commercial follow-up of your service requests[cite: 19].</li>
+                            <li>Établir un devis personnalisé pour vos besoins en esthétique automobile[cite: 20].</li>
+                            <li>Organiser la récupération et la livraison de votre véhicule à Genève ou Vaud[cite: 16, 50].</li>
+                            <li>Assurer le suivi commercial de vos demandes d'intervention[cite: 19].</li>
                         </ul>
-                        <p class="mt-4">Under no circumstances will your personal data be sold, assigned, or leased to third parties for commercial solicitation purposes[cite: 22].</p>
+                        <p class="mt-4">Vos données personnelles ne font l'objet d'aucune vente ou location à des tiers à des fins de démarchage commercial[cite: 22].</p>
                     </div>
                 </section>
 
                 <div class="h-px w-full bg-white/5"></div>
 
                 <section>
-                    <h3 class="text-gold-400 font-display font-bold text-lg md:text-xl tracking-widest uppercase mb-4">3. Transmission and Security</h3>
+                    <h3 class="text-gold-400 font-display font-bold text-lg md:text-xl tracking-widest uppercase mb-4">3. Sécurité des informations</h3>
                     <div class="text-gray-400 font-light leading-relaxed text-sm md:text-base">
-                        <p>For the proper functioning of our contact form, the data entered is securely transmitted via the third-party API <strong>Web3Forms</strong> before being sent to us by email. We implement all reasonable measures to ensure the security and confidentiality of your information.</p>
+                        <p>Les données saisies dans nos formulaires transitent via l'API sécurisée <strong>Web3Forms</strong> pour nous parvenir directement par e-mail. Nous appliquons les standards de sécurité nécessaires pour protéger vos informations contre tout accès non autorisé lors de leur transmission.</p>
                     </div>
                 </section>
 
                 <div class="h-px w-full bg-white/5"></div>
 
                 <section>
-                    <h3 class="text-gold-400 font-display font-bold text-lg md:text-xl tracking-widest uppercase mb-4">4. Retention Period</h3>
+                    <h3 class="text-gold-400 font-display font-bold text-lg md:text-xl tracking-widest uppercase mb-4">4. Durée de conservation</h3>
                     <div class="text-gray-400 font-light leading-relaxed text-sm md:text-base">
-                        <p>In accordance with GDPR, we retain your personal data for the duration strictly necessary to process your commercial file, with a maximum limit of three (3) years from our last contact.</p>
+                        <p>Conformément au RGPD, nous conservons vos données pour la durée strictement nécessaire au traitement de votre dossier commercial, avec une limite maximale de trois (3) ans après notre dernier échange.</p>
                     </div>
                 </section>
 
                 <div class="h-px w-full bg-white/5"></div>
 
                 <section>
-                    <h3 class="text-gold-400 font-display font-bold text-lg md:text-xl tracking-widest uppercase mb-4">5. Your Rights</h3>
+                    <h3 class="text-gold-400 font-display font-bold text-lg md:text-xl tracking-widest uppercase mb-4">5. Vos droits</h3>
                     <div class="text-gray-400 font-light leading-relaxed text-sm md:text-base">
-                        <p>In accordance with the General Data Protection Regulation (GDPR), you have the right to access, rectify, port, or erase your data, or limit its processing.</p>
-                        <p class="mt-4">To exercise these rights, you can contact us at any time at the following address:</p>
+                        <p>Vous disposez d'un droit d'accès, de rectification et de suppression de vos données personnelles. Pour exercer ces droits, contactez-nous par e-mail :</p>
                         <p class="mt-2"><a href="mailto:info@cleancarswash.ch" class="text-gold-400 hover:text-white transition-colors font-medium underline">info@cleancarswash.ch</a> [cite: 10]</p>
                     </div>
                 </section>
@@ -169,20 +163,20 @@
         <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col md:flex-row justify-between items-center md:items-start gap-10">
             <div class="text-center md:text-left">
                 <h1 class="text-xl md:text-2xl font-display font-bold text-white tracking-widest uppercase mb-4">Clean Cars Wash</h1>
-                <p class="text-gray-400 font-light mb-1 text-sm md:text-base">AHMED-YAHIA LM</p>
-                <p class="text-gray-400 font-light mb-1 text-sm md:text-base">Rue des pâquis 49, 1201 Genève [cite: 6]</p>
+                <p class="text-gray-400 font-light mb-1 text-sm">AHMED-YAHIA LM </p>
+                <p class="text-gray-400 font-light mb-1 text-sm">Rue des pâquis 49, 1201 Genève [cite: 6]</p>
                 <a href="mailto:info@cleancarswash.ch" class="text-gold-400 font-display tracking-widest uppercase text-xs md:text-sm hover:text-white transition duration-300">info@cleancarswash.ch [cite: 10]</a>
             </div>
             <div class="text-center md:text-right">
-                <h4 class="text-white font-display font-bold text-xs md:text-sm tracking-widest uppercase mb-4">Information</h4>
+                <h4 class="text-white font-display font-bold text-xs md:text-sm tracking-widest uppercase mb-4">Informations</h4>
                 <ul class="text-gray-400 font-light text-xs md:text-sm space-y-2">
-                    <li><a href="legal-notices.html" class="hover:text-gold-400 transition">Legal Notices</a></li>
-                    <li><a href="privacy-policy.html" class="hover:text-gold-400 transition">Privacy Policy</a></li>
+                    <li><a href="mentions-legales.html" class="hover:text-gold-400 transition">Mentions Légales</a></li>
+                    <li><a href="politique-confidentialite.html" class="text-gold-400">Politique de Confidentialité</a></li>
                 </ul>
             </div>
         </div>
         <div class="max-w-7xl mx-auto px-4 mt-12 md:mt-16 text-center text-[10px] md:text-xs text-gray-600 font-display tracking-widest uppercase">
-            &copy; 2026 Clean Cars Wash. All rights reserved. | IDE: CHE377.481.423 [cite: 7]
+            &copy; 2026 Clean Cars Wash. Tous droits réservés. | IDE: CHE377.481.423 [cite: 7]
         </div>
     </footer>
 
