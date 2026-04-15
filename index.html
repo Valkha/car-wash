@@ -37,42 +37,56 @@
     <link rel="preload" as="image" href="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=2070&auto=format&fit=crop" fetchpriority="high">
 
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoWash",
+  "name": "Clean Cars Wash Genève",
+  "image": "https://www.clean-cars-wash.ch/assets/images/MB-01.webp",
+  "@id": "https://www.clean-cars-wash.ch",
+  "url": "https://www.clean-cars-wash.ch",
+  "telephone": "+41782657071",
+  "priceRange": "CHF 89–289",
+  "currenciesAccepted": "CHF",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rue des pâquis 49",
+    "addressLocality": "Genève",
+    "postalCode": "1201",
+    "addressCountry": "CH"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 46.2104,
+    "longitude": 6.1477
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Genève" },
+    { "@type": "State", "name": "Vaud" }
+  ],
+  "openingHoursSpecification": [
     {
-      "@context": "https://schema.org",
-      "@type": "AutoWash",
-      "name": "Clean Cars Wash Genève",
-      "image": "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=1200",
-      "@id": "https://www.car-wash.ch",
-      "url": "https://www.car-wash.ch",
-      "telephone": "+41782657071",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Rue des pâquis 49",
-        "addressLocality": "Genève",
-        "postalCode": "1201",
-        "addressCountry": "CH"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 46.2104,
-        "longitude": 6.1477
-      },
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          "opens": "09:00",
-          "closes": "17:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Saturday",
-          "notes": "Uniquement sur rendez-vous confirmé"
-        }
-      ],
-      "priceRange": "CHF"
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "17:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "notes": "Uniquement sur rendez-vous"
     }
-    </script>
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Packs Detailing",
+    "itemListElement": [
+      { "@type": "Offer", "name": "Pack Argent", "price": "89", "priceCurrency": "CHF" },
+      { "@type": "Offer", "name": "Pack Or", "price": "149", "priceCurrency": "CHF" },
+      { "@type": "Offer", "name": "Pack Diamant", "price": "289", "priceCurrency": "CHF" }
+    ]
+  }
+}
+</script>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     
