@@ -2,7 +2,7 @@
 <html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
     <title>Lavage Auto & Detailing Premium | Entretien Sur Mesure</title>
     <meta name="description" content="Redonnez l'éclat du neuf à votre véhicule. Services de nettoyage auto haut de gamme, detailing et abonnements pour particuliers et professionnels. Demandez votre devis en ligne.">
@@ -10,7 +10,18 @@
     <meta name="author" content="Clean Cars Wash">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.car-wash.ch/">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Clean Cars">
+    <link rel="apple-touch-icon" href="assets/images/logo-v2.png">
     <link rel="icon" type="image/png" href="assets/images/logo-v2.png">
+
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=2070&auto=format&fit=crop" fetchpriority="high">
+    
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -77,7 +88,7 @@
     
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="text-gray-300 font-sans antialiased relative">
+<body class="bg-[#0a0a0a] text-gray-300 font-sans antialiased relative" style="background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px); background-size: 30px 30px;">
     
     <header class="bg-charcoal-900/90 backdrop-blur-lg border-b border-white/5 sticky top-0 z-50 transition-all">
         <div class="max-w-7xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
@@ -105,7 +116,7 @@
                     <a href="en/index.html" class="text-gray-500 hover:text-white transition">EN</a>
                 </div>
 
-                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none" aria-label="Ouvrir le menu principal">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
@@ -134,7 +145,7 @@
                 Découvrir nos Packs
             </a>
         </div>
-        <a href="#services" class="absolute bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce flex flex-col items-center text-gray-500 hover:text-gold-400 transition-colors">
+        <a href="#services" class="absolute bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce flex flex-col items-center text-gray-500 hover:text-gold-400 transition-colors" aria-label="Faire défiler vers les services">
             <span class="text-[10px] font-display tracking-widest uppercase mb-2">Scroll</span>
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
         </a>
@@ -231,17 +242,17 @@
                     </div>
                 </div>
 
-                <button onclick="prevSlide()" class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-black/50 text-white backdrop-blur border border-white/10 z-20 group">
+                <button onclick="prevSlide()" class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-black/50 text-white backdrop-blur border border-white/10 z-20 group" aria-label="Image précédente">
                     <svg class="w-5 h-5 transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                 </button>
-                <button onclick="nextSlide()" class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-black/50 text-white backdrop-blur border border-white/10 z-20 group">
+                <button onclick="nextSlide()" class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-black/50 text-white backdrop-blur border border-white/10 z-20 group" aria-label="Image suivante">
                     <svg class="w-5 h-5 transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </button>
                 
                 <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20" id="slider-dots">
-                    <div class="slider-dot w-2 h-2 rounded-full bg-white/50 active cursor-pointer" onclick="goToSlide(0)"></div>
-                    <div class="slider-dot w-2 h-2 rounded-full bg-white/50 cursor-pointer" onclick="goToSlide(1)"></div>
-                    <div class="slider-dot w-2 h-2 rounded-full bg-white/50 cursor-pointer" onclick="goToSlide(2)"></div>
+                    <div class="slider-dot w-2 h-2 rounded-full bg-white/50 active cursor-pointer" onclick="goToSlide(0)" aria-label="Aller à la diapositive 1"></div>
+                    <div class="slider-dot w-2 h-2 rounded-full bg-white/50 cursor-pointer" onclick="goToSlide(1)" aria-label="Aller à la diapositive 2"></div>
+                    <div class="slider-dot w-2 h-2 rounded-full bg-white/50 cursor-pointer" onclick="goToSlide(2)" aria-label="Aller à la diapositive 3"></div>
                 </div>
             </div>
         </div>
@@ -504,7 +515,7 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/41782657071?text=Bonjour,%20je%20souhaiterais%20obtenir%20un%20devis%20pour%20mon%20v%C3%A9hicule." target="_blank" class="whatsapp-float bg-[#25D366] p-4 rounded-full shadow-2xl hover:bg-[#128C7E] transition-all duration-300 group">
+    <a href="https://wa.me/41782657071?text=Bonjour,%20je%20souhaiterais%20obtenir%20un%20devis%20pour%20mon%20v%C3%A9hicule." target="_blank" class="whatsapp-float bg-[#25D366] p-4 rounded-full shadow-2xl hover:bg-[#128C7E] transition-all duration-300 group" aria-label="Discuter sur WhatsApp">
         <svg class="w-6 h-6 md:w-8 md:h-8 text-white fill-current" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
             <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.4 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-5.5-2.8-23.2-8.5-44.2-27.1-16.4-14.6-27.4-32.7-30.6-38.1-3.2-5.5-.3-8.4 2.4-11.2 2.5-2.5 5.5-6.4 8.3-9.6 2.8-3.2 3.7-5.5 5.5-9.3 1.9-3.7.9-6.9-.5-9.7-1.4-2.8-12.4-29.8-17-40.7-4.5-10.7-9-9.2-12.4-9.4h-10.6c-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 13.2 5.8 23.5 9.2 31.5 11.8 13.3 4.2 25.4 3.6 35 2.2 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"></path>
         </svg>
