@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://www.car-wash.ch/sitemap.xml
+Sitemap: https://valkha.github.io/car-wash/sitemap.xml
