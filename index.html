@@ -394,35 +394,62 @@
     </section>
 
     <section class="py-24 max-w-7xl mx-auto px-4 relative z-10">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div class="reveal">
-                <h3 class="text-2xl font-display font-bold text-white uppercase mb-6 tracking-widest">Solutions Entreprises</h3>
-                <p class="text-gray-400 font-light mb-8">Optimisez votre flotte d'entreprise avec nos tarifs dégressifs exclusifs.</p>
-                <div class="space-y-4">
-                    <div class="flex justify-between border-b border-white/10 pb-2"><span class="text-gray-300">3 à 5 voitures</span> <span class="text-gold-400 font-bold">-10%</span></div>
-                    <div class="flex justify-between border-b border-white/10 pb-2"><span class="text-gray-300">5 à 7 voitures</span> <span class="text-gold-400 font-bold">-20%</span></div>
-                    <div class="flex justify-between border-b border-white/10 pb-2"><span class="text-gray-300">Plus de 7 voitures</span> <span class="text-gold-400 font-bold">-25% + 1 Pack Or offert</span></div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-stretch">
+            
+            <div class="premium-card p-8 md:p-12 rounded-2xl flex flex-col h-full reveal">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-12 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl">🏢</div>
+                    <h3 class="text-xl md:text-2xl font-display font-bold text-white uppercase tracking-widest">Solutions Entreprises</h3>
+                </div>
+                <p class="text-gray-400 font-light mb-8">Optimisez et valorisez votre flotte d'entreprise avec nos tarifs dégressifs exclusifs. Un service sur-mesure pour les professionnels exigeants.</p>
+                
+                <div class="space-y-4 flex-grow">
+                    <div class="flex items-center justify-between p-4 rounded-lg bg-charcoal-800/50 border border-white/5 hover:border-gold-400/30 transition-colors">
+                        <span class="text-gray-300 font-medium text-sm md:text-base">3 à 5 voitures</span> 
+                        <span class="text-gold-400 font-display font-bold text-lg">-10%</span>
+                    </div>
+                    <div class="flex items-center justify-between p-4 rounded-lg bg-charcoal-800/50 border border-white/5 hover:border-gold-400/30 transition-colors">
+                        <span class="text-gray-300 font-medium text-sm md:text-base">5 à 7 voitures</span> 
+                        <span class="text-gold-400 font-display font-bold text-lg">-20%</span>
+                    </div>
+                    <div class="flex items-center justify-between p-5 rounded-lg bg-gradient-to-r from-gold-500/10 to-transparent border border-gold-400/30 relative overflow-hidden">
+                        <div class="absolute left-0 top-0 bottom-0 w-1 bg-gold-400"></div>
+                        <span class="text-white font-medium text-sm md:text-base">Flotte de +7 voitures</span> 
+                        <div class="text-right">
+                            <span class="text-gold-400 font-display font-bold text-xl block leading-none">-25%</span>
+                            <span class="text-[9px] md:text-[10px] text-gray-300 uppercase tracking-widest mt-1 block">+ 1 Pack Or Offert</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="reveal delay-200">
-                <h3 class="text-2xl font-display font-bold text-white uppercase mb-6 tracking-widest">Abonnements Mensuels</h3>
-                <p class="text-gray-400 font-light mb-8">Gardez votre véhicule propre toute l'année avec un lavage régulier.</p>
-                <div class="grid grid-cols-3 gap-4 text-center">
-                    <div class="bg-charcoal-800 p-4 rounded-xl border border-white/5">
-                        <div class="text-[10px] text-gray-500 uppercase mb-2">Argent</div>
-                        <div class="text-gold-400 font-bold">296.-</div>
+
+            <div class="premium-card p-8 md:p-12 rounded-2xl flex flex-col h-full reveal delay-200">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-12 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl">⭐</div>
+                    <h3 class="text-xl md:text-2xl font-display font-bold text-white uppercase tracking-widest">Abonnements Mensuels</h3>
+                </div>
+                <p class="text-gray-400 font-light mb-8">Roulez dans un véhicule impeccable toute l'année. Profitez d'un lavage régulier premium à un tarif privilégié.</p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center flex-grow items-center">
+                    <div class="bg-charcoal-800/80 p-6 rounded-xl border border-white/5 flex flex-col justify-center hover:border-white/20 transition-colors">
+                        <div class="text-xs text-gray-400 uppercase tracking-widest mb-2 font-display">Argent</div>
+                        <div class="text-white font-display font-bold text-xl md:text-2xl">296.- <span class="text-[10px] text-gray-500 font-light">CHF</span></div>
                     </div>
-                    <div class="bg-charcoal-800 p-4 rounded-xl border border-gold-400/20">
-                        <div class="text-[10px] text-gray-500 uppercase mb-2">Or</div>
-                        <div class="text-gold-400 font-bold">496.-</div>
+                    <div class="bg-charcoal-800 p-6 rounded-xl border border-gold-400/50 shadow-[0_0_15px_rgba(212,175,55,0.15)] relative transform sm:-translate-y-2 flex flex-col justify-center">
+                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gold-400 text-charcoal-900 text-[9px] font-bold tracking-widest uppercase py-1 px-3 rounded-full whitespace-nowrap">Populaire</div>
+                        <div class="text-xs text-gold-400 uppercase tracking-widest mb-2 font-display">Or</div>
+                        <div class="text-gold-400 font-display font-bold text-2xl md:text-3xl">496.- <span class="text-[10px] text-gold-400/60 font-light">CHF</span></div>
                     </div>
-                    <div class="bg-charcoal-800 p-4 rounded-xl border border-white/5">
-                        <div class="text-[10px] text-gray-500 uppercase mb-2">Diamant</div>
-                        <div class="text-gold-400 font-bold">867.-</div>
+                    <div class="bg-charcoal-800/80 p-6 rounded-xl border border-white/5 flex flex-col justify-center hover:border-white/20 transition-colors">
+                        <div class="text-xs text-gray-400 uppercase tracking-widest mb-2 font-display">Diamant</div>
+                        <div class="text-white font-display font-bold text-xl md:text-2xl">867.- <span class="text-[10px] text-gray-500 font-light">CHF</span></div>
                     </div>
                 </div>
-                <p class="text-[10px] text-gray-600 mt-4 uppercase italic">Jusqu'à 289.- CHF d'économie par mois.</p>
+                <div class="mt-8 pt-6 border-t border-white/5 text-center">
+                    <p class="text-xs text-gold-400 uppercase tracking-widest font-display font-medium">Jusqu'à 289.- CHF d'économie par mois</p>
+                </div>
             </div>
+
         </div>
     </section>
 
