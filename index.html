@@ -421,31 +421,37 @@
     </section>
 
     <section id="faq" class="py-24 md:py-32 max-w-4xl mx-auto px-4 relative z-10">
-        <div class="text-center mb-12 md:mb-16 reveal">
-            <h2 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Questions Fréquentes</h2>
-            <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
-        </div>
-        <div class="space-y-4">
-            <details class="premium-card rounded-xl group cursor-pointer reveal">
-                <summary class="flex justify-between items-center font-display font-bold text-white p-5 md:p-6 outline-none hover:text-gold-400 transition-colors duration-300 text-sm md:text-base">
+    <div class="text-center mb-12 md:mb-16 reveal">
+        <h2 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Questions Fréquentes</h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
+    </div>
+    <div class="space-y-4">
+        <div class="premium-card rounded-xl reveal">
+            <h3>
+                <button class="faq-trigger w-full flex justify-between items-center font-display font-bold text-white p-5 md:p-6 outline-none hover:text-gold-400 transition-colors duration-300 text-sm md:text-base text-left" 
+                        aria-expanded="false" aria-controls="faq-panel-1">
                     Comment fonctionne la récupération à domicile ?
-                    <span class="text-gold-400 transition-transform duration-300 group-open:rotate-45 text-xl md:text-2xl leading-none">+</span>
-                </summary>
-                <div class="text-gray-400 font-light px-5 md:px-6 pb-5 md:pb-6 leading-relaxed text-sm md:text-base">
-                    C'est très simple ! Nous venons récupérer votre véhicule chez vous ou sur votre lieu de travail (dans toute la zone de Genève et Vaud). Une fois notre prestation de detailing terminée, nous vous le ramenons à la même adresse, sans aucun frais de déplacement supplémentaire.
-                </div>
-            </details>
-            <details class="premium-card rounded-xl group cursor-pointer reveal delay-100">
-                <summary class="flex justify-between items-center font-display font-bold text-white p-5 md:p-6 outline-none hover:text-gold-400 transition-colors duration-300 text-sm md:text-base">
-                    Quels sont les suppléments éventuels ?
-                    <span class="text-gold-400 transition-transform duration-300 group-open:rotate-45 text-xl md:text-2xl leading-none">+</span>
-                </summary>
-                <div class="text-gray-400 font-light px-5 md:px-6 pb-5 md:pb-6 leading-relaxed text-sm md:text-base">
-                    Un supplément de 69.- CHF de l'heure s'applique pour les véhicules extrêmement sales. Nous proposons également la suppression de poils d'animaux (39.90 CHF) et un service plein d'essence (19.90 CHF hors carburant).
-                </div>
-            </details>
+                    <span class="faq-icon text-gold-400 transition-transform duration-300 text-xl md:text-2xl leading-none" aria-hidden="true">+</span>
+                </button>
+            </h3>
+            <div id="faq-panel-1" role="region" aria-hidden="true" class="hidden text-gray-400 font-light px-5 md:px-6 pb-5 md:pb-6 leading-relaxed text-sm md:text-base">
+                C'est très simple ! Nous venons récupérer votre véhicule chez vous ou sur votre lieu de travail (dans toute la zone de Genève et Vaud). Une fois notre prestation de detailing terminée, nous vous le ramenons à la même adresse, sans aucun frais de déplacement supplémentaire.
+            </div>
         </div>
-    </section>
+        <div class="premium-card rounded-xl reveal delay-100">
+            <h3>
+                <button class="faq-trigger w-full flex justify-between items-center font-display font-bold text-white p-5 md:p-6 outline-none hover:text-gold-400 transition-colors duration-300 text-sm md:text-base text-left" 
+                        aria-expanded="false" aria-controls="faq-panel-2">
+                    Quels sont les suppléments éventuels ?
+                    <span class="faq-icon text-gold-400 transition-transform duration-300 text-xl md:text-2xl leading-none" aria-hidden="true">+</span>
+                </button>
+            </h3>
+            <div id="faq-panel-2" role="region" aria-hidden="true" class="hidden text-gray-400 font-light px-5 md:px-6 pb-5 md:pb-6 leading-relaxed text-sm md:text-base">
+                Un supplément de 69.- CHF de l'heure s'applique pour les véhicules extrêmement sales. Nous proposons également la suppression de poils d'animaux (39.90 CHF) et un service plein d'essence (19.90 CHF hors carburant).
+            </div>
+        </div>
+    </div>
+</section>
 
     <section id="reservation" class="py-24 md:py-32 max-w-4xl mx-auto px-4 relative z-10">
         <div class="text-center mb-12 md:mb-16 reveal">
@@ -467,43 +473,40 @@
         </div>
         
         <form id="quote-form" class="premium-card p-6 md:p-12 rounded-2xl flex flex-col gap-6 reveal delay-200">
-            <input type="hidden" name="access_key" value="524d46df-89be-4261-b98c-0213b6572b7e">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                    <label class="block text-[10px] font-display tracking-widest uppercase text-gray-400 mb-2">Nom complet</label>
-                    <input type="text" name="nom" required class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors text-sm" placeholder="Jean Dupont">
-                </div>
-                <div>
-                    <label class="block text-[10px] font-display tracking-widest uppercase text-gray-400 mb-2">Téléphone</label>
-                    <input type="tel" name="telephone" required class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors text-sm" placeholder="+41 78 265 70 71">
-                </div>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                    <label class="block text-[10px] font-display tracking-widest uppercase text-gray-400 mb-2">Véhicule (Marque & Modèle)</label>
-                    <input type="text" name="vehicule" required class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors text-sm" placeholder="Porsche 911">
-                </div>
-                
-                <div>
-                    <label class="block text-[10px] font-display tracking-widest uppercase text-gray-400 mb-2">Prestation souhaitée</label>
-                    <select name="prestation" class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors appearance-none cursor-pointer text-sm">
-                        <option>Pack Argent</option>
-                        <option>Pack Or</option>
-                        <option>Pack Diamant</option>
-                        <option>Abonnement Mensuel</option>
-                        <option>Solution Entreprise</option>
-                    </select>
-                </div>
-                </div>
-            <div>
-                <label class="block text-[10px] font-display tracking-widest uppercase text-gray-400 mb-2">Message / Lieu de récupération</label>
-                <textarea rows="4" name="message" class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors resize-none text-sm" placeholder="Indiquez l'adresse de récupération de votre véhicule..."></textarea>
-            </div>
-            <button type="submit" id="submit-btn" class="cta-devis w-full mt-4">
-                Envoyer la demande
-            </button>
-            <p id="form-result" class="text-center font-medium hidden mt-2 text-sm text-green-400"></p>
-        </form>
+    <input type="hidden" name="access_key" value="524d46df-89be-4261-b98c-0213b6572b7e">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div>
+            <label for="nom" class="block text-[10px] font-display tracking-widest uppercase text-gray-400 mb-2">Nom complet</label>
+            <input type="text" id="nom" name="nom" required autocomplete="name" class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors text-sm" placeholder="Jean Dupont">
+        </div>
+        <div>
+            <label for="telephone" class="block text-[10px] font-display tracking-widest uppercase text-gray-400 mb-2">Téléphone</label>
+            <input type="tel" id="telephone" name="telephone" required autocomplete="tel" class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors text-sm" placeholder="+41 78 265 70 71">
+        </div>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div>
+            <label for="vehicule" class="block text-[10px] font-display tracking-widest uppercase text-gray-400 mb-2">Véhicule (Marque & Modèle)</label>
+            <input type="text" id="vehicule" name="vehicule" required class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors text-sm" placeholder="Porsche 911">
+        </div>
+        <div>
+            <label for="prestation" class="block text-[10px] font-display tracking-widest uppercase text-gray-400 mb-2">Prestation souhaitée</label>
+            <select id="prestation" name="prestation" class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors appearance-none cursor-pointer text-sm">
+                <option>Pack Argent</option>
+                <option>Pack Or</option>
+                <option>Pack Diamant</option>
+                <option>Abonnement Mensuel</option>
+                <option>Solution Entreprise</option>
+            </select>
+        </div>
+    </div>
+    <div>
+        <label for="message" class="block text-[10px] font-display tracking-widest uppercase text-gray-400 mb-2">Message / Lieu de récupération</label>
+        <textarea id="message" rows="4" name="message" class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors resize-none text-sm" placeholder="Indiquez l'adresse de récupération de votre véhicule..."></textarea>
+    </div>
+    <button type="submit" id="submit-btn" class="cta-devis w-full mt-4">Envoyer la demande</button>
+    <p id="form-result" class="text-center font-medium hidden mt-2 text-sm text-green-400"></p>
+</form>
     </section>
 
     <footer class="bg-[#050505] py-16 md:py-20 border-t border-white/5 relative overflow-hidden">
@@ -616,6 +619,20 @@
                 form.reset();
             });
         });
+
+        // FAQ Accordion Logic
+document.querySelectorAll('.faq-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        const panel = document.getElementById(btn.getAttribute('aria-controls'));
+        const icon = btn.querySelector('.faq-icon');
+
+        btn.setAttribute('aria-expanded', String(!expanded));
+        panel.setAttribute('aria-hidden', String(expanded));
+        panel.classList.toggle('hidden');
+        icon.style.transform = expanded ? 'rotate(0deg)' : 'rotate(45deg)';
+    });
+});
     </script>
 </body>
 </html>
