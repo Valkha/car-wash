@@ -136,7 +136,8 @@
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain; /* <-- C'est ceci qui annule le zoom */
+    background-color: #141414; /* Ajoute un fond sombre élégant si l'image ne remplit pas tout le cadre */
     opacity: 0;
     animation: auto-crossfade 12s infinite;
 }
@@ -278,15 +279,7 @@
 </div>
                     
                     <div class="w-full flex-shrink-0 relative group">
-                        <img src="assets/images/realisation-2.webp" alt="Polissage et correction de peinture auto" class="w-full h-[50vh] md:h-[60vh] min-h-[350px] object-cover" loading="lazy">
-                        <div class="absolute inset-0 slide-overlay flex flex-col justify-end p-6 md:p-10">
-                            <h4 class="text-gold-400 font-display font-bold text-xl md:text-2xl tracking-widest uppercase mb-2">Correction Peinture</h4>
-                            <p class="text-gray-300 font-light text-sm md:text-base">Bouclier hydrophobe garantissant un éclat incomparable..</p>
-                        </div>
-                    </div>
-                    
-                    <div class="w-full flex-shrink-0 relative group">
-                        <img src="assets/images/VW-8R.webp" alt="voiture volkswagen polo 8R noire" class="w-full h-[50vh] md:h-[60vh] min-h-[350px] object-cover" loading="lazy">
+                        <img src="assets/images/VW-8R.webp" alt="voiture volkswagen polo 8R noire" class="w-full h-[50vh] md:h-[60vh] min-h-[350px] object-contain" loading="lazy">
                         <div class="absolute inset-0 slide-overlay flex flex-col justify-end p-6 md:p-10">
                             <h4 class="text-gold-400 font-display font-bold text-xl md:text-2xl tracking-widest uppercase mb-2">Pack Argent 🥈</h4>
                             <p class="text-gray-300 font-light text-sm md:text-base">Restauration de la brillance Showroom</p>
