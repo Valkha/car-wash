@@ -1,0 +1,21 @@
+{
+  "name": "Clean Cars Wash",
+  "short_name": "Clean Cars",
+  "description": "Lavage Auto & Detailing Premium à Genève",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#D4AF37",
+  "icons": [
+    {
+      "src": "assets/images/logo-v2.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/logo-v2.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
