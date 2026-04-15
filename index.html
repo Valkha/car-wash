@@ -59,22 +59,10 @@
         "latitude": 46.2104,
         "longitude": 6.1477
       },
-      "areaServed": [
-        { "@type": "City", "name": "Genève" },
-        { "@type": "State", "name": "Vaud" }
-      ],
+      "areaServed": [{ "@type": "City", "name": "Genève" }, { "@type": "State", "name": "Vaud" }],
       "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          "opens": "09:00",
-          "closes": "17:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Saturday",
-          "notes": "Uniquement sur rendez-vous"
-        }
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "17:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "notes": "Uniquement sur rendez-vous" }
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
@@ -88,13 +76,36 @@
     }
     </script>
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "Comment fonctionne la récupération à domicile ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nous récupérons votre véhicule à votre domicile ou bureau à Genève et Vaud, effectuons la prestation de detailing, et vous la ramenons sans frais de déplacement."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Quels sont les tarifs pour un lavage auto premium ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nos packs commencent à 89.- CHF pour l'essentiel (Pack Argent) et vont jusqu'à 289.- CHF pour une rénovation complète (Pack Diamant)."
+        }
+      }]
+    }
+    </script>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="assets/css/tailwind.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="bg-[#0a0a0a] text-gray-300 font-sans antialiased relative" style="background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px); background-size: 30px 30px;">
     
+    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gold-400 z-[100] transition-all duration-150" style="width: 0%;"></div>
+
     <a href="#main-content" class="skip-link">Passer au contenu principal</a>
 
     <header class="bg-charcoal-900/90 backdrop-blur-lg border-b border-white/5 sticky top-0 z-50 transition-all">
@@ -211,13 +222,15 @@
             
             <div class="max-w-5xl mx-auto px-4 reveal delay-100">
                 <div class="relative overflow-hidden rounded-2xl shadow-2xl border border-white/5 bg-charcoal-800" aria-label="Galerie de réalisations" aria-roledescription="carousel">
-                    
                     <div id="slider-track" class="flex transition-transform duration-700 ease-in-out w-full">
+                        
                         <div class="w-full flex-shrink-0 relative group h-[50vh] md:h-[60vh] min-h-[350px] overflow-hidden" role="group" aria-roledescription="diapositive" aria-label="1 sur 3">
-                            <img src="assets/images/MB-01.webp" alt="Détail Mercedes Etape 1" width="800" height="600" class="img-fade">
+                            <picture>
+                                <source srcset="assets/images/MB-01.avif" type="image/avif">
+                                <img src="assets/images/MB-01.webp" alt="Détail Mercedes Etape 1" width="800" height="600" class="img-fade">
+                            </picture>
                             <img src="assets/images/MB-02.webp" alt="Détail Mercedes Etape 2" width="800" height="600" class="img-fade" loading="lazy">
                             <img src="assets/images/MB-03.webp" alt="Détail Mercedes Etape 3" width="800" height="600" class="img-fade" loading="lazy">
-
                             <div class="absolute inset-0 slide-overlay flex flex-col justify-end p-6 md:p-10 z-10">
                                 <h4 class="text-gold-400 font-display font-bold text-xl md:text-2xl tracking-widest uppercase mb-2">Pack Diamant 💎</h4>
                                 <p class="text-gray-300 font-light text-sm md:text-base">Cire premium déperlante, soin cuir/alcantara et traitement anti-odeur</p>
@@ -236,10 +249,7 @@
                             <video 
                                 src="assets/images/video-realisation.mp4" 
                                 class="w-full h-full object-cover" 
-                                autoplay 
-                                loop 
-                                muted 
-                                playsinline
+                                autoplay loop muted playsinline
                                 poster="assets/images/MB-01.webp" 
                                 aria-label="Vidéo de démonstration detailing Mercedes"
                                 title="Vidéo soin premium"
@@ -402,17 +412,20 @@
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center flex-grow items-center">
                         <div class="bg-charcoal-800 p-4 rounded-xl border border-white/5">
                             <div class="text-xs text-gray-400 uppercase tracking-widest mb-1 font-display">Argent</div>
+                            <p class="sr-only">Prix habituel : 356 CHF</p>
                             <del class="text-gray-600 text-[10px] block" aria-hidden="true">356.- CHF</del>
                             <ins class="text-white font-display font-bold text-xl no-underline">296.- <span class="text-[10px] text-gray-500">CHF</span></ins>
                         </div>
                         <div class="bg-charcoal-800 p-4 rounded-xl border border-gold-400/50 shadow-lg relative transform sm:-translate-y-2">
                             <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gold-400 text-charcoal-900 text-[8px] font-bold tracking-widest uppercase py-1 px-2 rounded-full">Top</div>
                             <div class="text-xs text-gold-400 uppercase tracking-widest mb-1 font-display">Or</div>
+                            <p class="sr-only">Prix habituel : 596 CHF</p>
                             <del class="text-gold-400/30 text-[10px] block" aria-hidden="true">596.- CHF</del>
                             <ins class="text-gold-400 font-display font-bold text-2xl no-underline">496.- <span class="text-[10px] text-gold-400/60">CHF</span></ins>
                         </div>
                         <div class="bg-charcoal-800 p-4 rounded-xl border border-white/5">
                             <div class="text-xs text-gray-400 uppercase tracking-widest mb-1 font-display">Diamant</div>
+                            <p class="sr-only">Prix habituel : 1156 CHF</p>
                             <del class="text-gray-600 text-[10px] block" aria-hidden="true">1156.- CHF</del>
                             <ins class="text-white font-display font-bold text-xl no-underline">867.- <span class="text-[10px] text-gray-500">CHF</span></ins>
                         </div>
@@ -549,6 +562,14 @@
     </div>
 
     <script>
+        // GRADE S : Barre de progression dorée
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("scroll-progress").style.width = scrolled + "%";
+        });
+
         // Menu Mobile & ARIA
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
@@ -592,7 +613,7 @@
         function prevSlide() { currentSlide = (currentSlide === 0) ? 2 : currentSlide - 1; updateSlider(); }
         function goToSlide(i) { currentSlide = i; updateSlider(); }
 
-        // Cookie Consent
+        // Cookie Consent Logic
         document.addEventListener("DOMContentLoaded", () => {
             if (!localStorage.getItem('cookieConsent')) {
                 setTimeout(() => document.getElementById('cookie-banner').classList.remove('translate-y-full'), 1000);
@@ -607,7 +628,7 @@
             });
         });
 
-        // Web3Forms Submission
+        // Web3Forms Submission Logic
         const form = document.getElementById('quote-form');
         form.addEventListener('submit', (e) => {
             e.preventDefault();
