@@ -19,9 +19,8 @@
 
     <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
     <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
-    
     <link rel="preload" as="image" href="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=2070&auto=format&fit=crop" fetchpriority="high">
-    
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -116,7 +115,7 @@
                     <a href="en/index.html" class="text-gray-500 hover:text-white transition">EN</a>
                 </div>
 
-                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none" aria-label="Ouvrir le menu principal">
+                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="mobile-menu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
@@ -154,17 +153,17 @@
     <section class="py-16 bg-charcoal-800/30">
         <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div class="reveal">
-                <div class="text-gold-400 text-4xl mb-4">🚚</div>
+                <div class="text-gold-400 text-4xl mb-4" aria-hidden="true">🚚</div>
                 <h3 class="text-white font-display font-bold uppercase tracking-wider mb-2">Récupération & Livraison</h3>
                 <p class="text-gray-400 text-sm font-light">Zéro perte de temps. Nous prenons en charge votre véhicule directement à votre adresse et vous le ramenons après la prestation.</p>
             </div>
             <div class="reveal delay-100">
-                <div class="text-gold-400 text-4xl mb-4">💎</div>
+                <div class="text-gold-400 text-4xl mb-4" aria-hidden="true">💎</div>
                 <h3 class="text-white font-display font-bold uppercase tracking-wider mb-2">Résultat "Showroom"</h3>
                 <p class="text-gray-400 text-sm font-light">Techniques professionnelles et produits haut de gamme pour garantir un éclat comme au premier jour.</p>
             </div>
             <div class="reveal delay-200">
-                <div class="text-gold-400 text-4xl mb-4">⚡</div>
+                <div class="text-gold-400 text-4xl mb-4" aria-hidden="true">⚡</div>
                 <h3 class="text-white font-display font-bold uppercase tracking-wider mb-2">Flexibilité Totale</h3>
                 <p class="text-gray-400 text-sm font-light">Intervention rapide sur Genève et Vaud. Des créneaux adaptés à votre emploi du temps chargé.</p>
             </div>
@@ -173,23 +172,23 @@
 
     <section id="services" class="py-24 md:py-32 max-w-7xl mx-auto px-4 relative">
         <div class="text-center mb-16 md:mb-20 reveal">
-            <h3 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Nos Prestations Detailing</h3>
+            <h2 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Nos Prestations Detailing</h2>
             <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
             <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full reveal">
-                <div class="w-12 h-12 mb-6 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl">🥈</div>
-                <h4 class="text-lg font-display font-bold tracking-wider uppercase text-white mb-4">Pack Argent (Essentiel)</h4>
+                <div class="w-12 h-12 mb-6 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl" aria-hidden="true">🥈</div>
+                <h3 class="text-lg font-display font-bold tracking-wider uppercase text-white mb-4">Pack Argent (Essentiel)</h3>
                 <p class="text-gray-400 font-light leading-relaxed flex-grow text-sm">Lavage extérieur complet à la mousse active, aspiration habitacle et coffre, nettoyage des vitres et séchage manuel. Durée : 1H.</p>
             </div>
             <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full reveal delay-100">
-                <div class="w-12 h-12 mb-6 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl">🥇</div>
-                <h4 class="text-lg font-display font-bold tracking-wider uppercase text-white mb-4">Pack Or (Confort Premium)</h4>
+                <div class="w-12 h-12 mb-6 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl" aria-hidden="true">🥇</div>
+                <h3 class="text-lg font-display font-bold tracking-wider uppercase text-white mb-4">Pack Or (Confort Premium)</h3>
                 <p class="text-gray-400 font-light leading-relaxed flex-grow text-sm">Inclus Pack Argent + Shampoing sièges/tapis, rénovation plastiques intérieurs, nettoyage jantes/pneus et finition parfum. Durée : 2H.</p>
             </div>
             <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full sm:col-span-2 md:col-span-1 reveal delay-200">
-                <div class="w-12 h-12 mb-6 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl">💎</div>
-                <h4 class="text-lg font-display font-bold tracking-wider uppercase text-white mb-4">Pack Diamant (Ultra Detailing)</h4>
+                <div class="w-12 h-12 mb-6 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl" aria-hidden="true">💎</div>
+                <h3 class="text-lg font-display font-bold tracking-wider uppercase text-white mb-4">Pack Diamant (Ultra Detailing)</h3>
                 <p class="text-gray-400 font-light leading-relaxed flex-grow text-sm">Le summum : Inclus Pack Or + Cire premium déperlante, soin cuir/alcantara et traitement anti-odeur. Durée : 3H+.</p>
             </div>
         </div>
@@ -197,16 +196,16 @@
 
     <section id="galerie" class="py-24 md:py-32 relative overflow-hidden">
         <div class="text-center mb-12 md:mb-16 px-4 reveal">
-            <h3 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Nos Réalisations</h3>
+            <h2 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Nos Réalisations</h2>
             <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
         </div>
         
         <div class="max-w-5xl mx-auto px-4 reveal delay-100">
-            <div class="relative overflow-hidden rounded-2xl shadow-2xl border border-white/5 bg-charcoal-800">
+            <div class="relative overflow-hidden rounded-2xl shadow-2xl border border-white/5 bg-charcoal-800" aria-label="Galerie de réalisations" aria-roledescription="carousel">
                 
                 <div id="slider-track" class="flex transition-transform duration-700 ease-in-out w-full">
                     
-                    <div class="w-full flex-shrink-0 relative group h-[50vh] md:h-[60vh] min-h-[350px] overflow-hidden">
+                    <div class="w-full flex-shrink-0 relative group h-[50vh] md:h-[60vh] min-h-[350px] overflow-hidden" role="group" aria-roledescription="diapositive" aria-label="1 sur 3">
                         <img src="assets/images/MB-01.webp" alt="Nettoyage et décontamination Mercedes - Étape 1" width="800" height="600" class="img-fade" loading="lazy">
                         <img src="assets/images/MB-02.webp" alt="Nettoyage et décontamination Mercedes - Étape 2" width="800" height="600" class="img-fade" loading="lazy">
                         <img src="assets/images/MB-03.webp" alt="Nettoyage et décontamination Mercedes - Étape 3" width="800" height="600" class="img-fade" loading="lazy">
@@ -217,14 +216,15 @@
                         </div>
                     </div>
                     
-                    <div class="w-full flex-shrink-0 relative group">
+                    <div class="w-full flex-shrink-0 relative group" role="group" aria-roledescription="diapositive" aria-label="2 sur 3">
                         <img src="assets/images/VW-8R.webp" alt="Volkswagen Polo 8R noire après detailing" width="800" height="533" class="w-full h-[50vh] md:h-[60vh] min-h-[350px] object-contain" loading="lazy">
                         <div class="absolute inset-0 slide-overlay flex flex-col justify-end p-6 md:p-10">
                             <h4 class="text-gold-400 font-display font-bold text-xl md:text-2xl tracking-widest uppercase mb-2">Pack Argent 🥈</h4>
                             <p class="text-gray-300 font-light text-sm md:text-base">Restauration de la brillance Showroom</p>
                         </div>
                     </div>
-                    <div class="w-full flex-shrink-0 relative group h-[50vh] md:h-[60vh] min-h-[350px] bg-charcoal-900">
+
+                    <div class="w-full flex-shrink-0 relative group h-[50vh] md:h-[60vh] min-h-[350px] bg-charcoal-900" role="group" aria-roledescription="diapositive" aria-label="3 sur 3">
                         <video 
                             src="assets/images/video-realisation.mp4" 
                             class="w-full h-full object-cover" 
@@ -250,9 +250,9 @@
                 </button>
                 
                 <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20" id="slider-dots">
-                    <div class="slider-dot w-2 h-2 rounded-full bg-white/50 active cursor-pointer" onclick="goToSlide(0)" aria-label="Aller à la diapositive 1"></div>
-                    <div class="slider-dot w-2 h-2 rounded-full bg-white/50 cursor-pointer" onclick="goToSlide(1)" aria-label="Aller à la diapositive 2"></div>
-                    <div class="slider-dot w-2 h-2 rounded-full bg-white/50 cursor-pointer" onclick="goToSlide(2)" aria-label="Aller à la diapositive 3"></div>
+                    <button class="slider-dot w-2 h-2 rounded-full bg-white/50 active cursor-pointer" onclick="goToSlide(0)" aria-label="Aller à la diapositive 1"></button>
+                    <button class="slider-dot w-2 h-2 rounded-full bg-white/50 cursor-pointer" onclick="goToSlide(1)" aria-label="Aller à la diapositive 2"></button>
+                    <button class="slider-dot w-2 h-2 rounded-full bg-white/50 cursor-pointer" onclick="goToSlide(2)" aria-label="Aller à la diapositive 3"></button>
                 </div>
             </div>
         </div>
@@ -260,40 +260,40 @@
 
     <section id="avis" class="py-24 md:py-32 max-w-7xl mx-auto px-4 relative z-10">
         <div class="text-center mb-16 md:mb-20 reveal">
-            <h3 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Témoignages</h3>
+            <h2 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Témoignages</h2>
             <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
             <p class="text-gray-400 font-light max-w-xl mx-auto mt-6 text-sm md:text-base">L'exigence de nos clients est notre meilleure carte de visite.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full reveal">
-                <div class="text-gold-400 text-xl tracking-widest mb-4">★★★★★</div>
+                <div class="text-gold-400 text-xl tracking-widest mb-4" aria-label="5 étoiles sur 5">★★★★★</div>
                 <p class="text-gray-300 font-light italic mb-8 flex-grow leading-relaxed text-sm md:text-base">"Un travail d'orfèvre sur ma Model 3. La protection céramique donne une profondeur incroyable à la peinture. Équipe passionnée et très professionnelle."</p>
                 <div class="flex items-center gap-4 border-t border-white/5 pt-6">
-                    <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-400 font-display font-bold text-sm">ML</div>
+                    <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-400 font-display font-bold text-sm" aria-hidden="true">ML</div>
                     <div>
-                        <h5 class="text-white font-display font-bold text-xs uppercase">Marc L.</h5>
+                        <h4 class="text-white font-display font-bold text-xs uppercase">Marc L.</h4>
                         <span class="text-gray-500 text-[10px]">Genève</span>
                     </div>
                 </div>
             </div>
             <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full relative transform md:-translate-y-4 reveal delay-100">
-                <div class="text-gold-400 text-xl tracking-widest mb-4">★★★★★</div>
+                <div class="text-gold-400 text-xl tracking-widest mb-4" aria-label="5 étoiles sur 5">★★★★★</div>
                 <p class="text-gray-300 font-light italic mb-8 flex-grow leading-relaxed text-sm md:text-base">"Le polissage a fait des miracles, la voiture est ressortie comme neuve du showroom. Meticuleux et passionné."</p>
                 <div class="flex items-center gap-4 border-t border-white/5 pt-6">
-                    <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-400 font-display font-bold text-sm">ST</div>
+                    <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-400 font-display font-bold text-sm" aria-hidden="true">ST</div>
                     <div>
-                        <h5 class="text-white font-display font-bold text-xs uppercase">Sophie T.</h5>
+                        <h4 class="text-white font-display font-bold text-xs uppercase">Sophie T.</h4>
                         <span class="text-gray-500 text-[10px]">Lausanne</span>
                     </div>
                 </div>
             </div>
             <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full reveal delay-200">
-                <div class="text-gold-400 text-xl tracking-widest mb-4">★★★★★</div>
+                <div class="text-gold-400 text-xl tracking-widest mb-4" aria-label="5 étoiles sur 5">★★★★★</div>
                 <p class="text-gray-300 font-light italic mb-8 flex-grow leading-relaxed text-sm md:text-base">"J'ai confié ma Porsche pour un nettoyage intérieur complet. Le résultat dépasse toutes les attentes, l'habitacle a retrouvé son odeur d'origine."</p>
                 <div class="flex items-center gap-4 border-t border-white/5 pt-6">
-                    <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-400 font-display font-bold text-sm">SS</div>
+                    <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-400 font-display font-bold text-sm" aria-hidden="true">SS</div>
                     <div>
-                        <h5 class="text-white font-display font-bold text-xs uppercase">Souheil S.</h5>
+                        <h4 class="text-white font-display font-bold text-xs uppercase">Souheil S.</h4>
                         <span class="text-gray-500 text-[10px]">Genève</span>
                     </div>
                 </div>
@@ -305,13 +305,13 @@
         <div class="absolute inset-0 bg-charcoal-800/30 -skew-y-2 z-0"></div>
         <div class="max-w-7xl mx-auto relative z-10">
             <div class="text-center mb-16 md:mb-20 reveal">
-                <h3 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Grille Tarifaire (HT)</h3>
+                <h2 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Grille Tarifaire (HT)</h2>
                 <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
                 <p class="text-gray-500 text-[10px] mt-4 uppercase tracking-widest">Prix Hors Taxes (HT)</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-center">
                 <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col order-2 md:order-1 reveal">
-                    <h4 class="text-lg md:text-xl font-display font-bold tracking-wider uppercase text-white mb-2">Pack Argent</h4>
+                    <h3 class="text-lg md:text-xl font-display font-bold tracking-wider uppercase text-white mb-2">Pack Argent</h3>
                     <p class="text-gold-400 font-display font-semibold text-3xl md:text-4xl mb-8">89.- <span class="text-sm md:text-lg font-light text-gray-500">CHF</span></p>
                     <ul class="text-gray-400 font-light space-y-4 mb-8 flex-grow text-sm">
                         <li>◆ Lavage manuel extérieur</li>
@@ -322,7 +322,7 @@
                 </div>
                 <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col relative transform md:-translate-y-4 shadow-2xl border-gold-400/30 order-1 md:order-2 mb-8 md:mb-0 reveal delay-100">
                     <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gold-400 text-charcoal-900 text-[10px] md:text-xs font-display font-bold tracking-widest uppercase py-1.5 px-4 md:px-6 rounded-full shadow-lg whitespace-nowrap">Service Recommandé</div>
-                    <h4 class="text-lg md:text-xl font-display font-bold tracking-wider uppercase text-white mb-2 mt-2">Pack Or</h4>
+                    <h3 class="text-lg md:text-xl font-display font-bold tracking-wider uppercase text-white mb-2 mt-2">Pack Or</h3>
                     <p class="text-gold-400 font-display font-semibold text-3xl md:text-4xl mb-8">149.- <span class="text-sm md:text-lg font-light text-gray-500">CHF</span></p>
                     <ul class="text-gray-400 font-light space-y-4 mb-8 flex-grow text-sm">
                         <li>◆ Inclus le Pack Argent</li>
@@ -333,7 +333,7 @@
                     </ul>
                 </div>
                 <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col order-3 reveal delay-200">
-                    <h4 class="text-lg md:text-xl font-display font-bold tracking-wider uppercase text-white mb-2">Pack Diamant</h4>
+                    <h3 class="text-lg md:text-xl font-display font-bold tracking-wider uppercase text-white mb-2">Pack Diamant</h3>
                     <p class="text-gold-400 font-display font-semibold text-3xl md:text-4xl mb-8">289.- <span class="text-sm md:text-lg font-light text-gray-500">CHF</span></p>
                     <ul class="text-gray-400 font-light space-y-4 mb-8 flex-grow text-sm">
                         <li>◆ Inclus le Pack Or</li>
@@ -352,7 +352,7 @@
             
             <div class="premium-card p-8 md:p-12 rounded-2xl flex flex-col h-full reveal">
                 <div class="flex items-center gap-4 mb-6">
-                    <div class="w-12 h-12 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl">🏢</div>
+                    <div class="w-12 h-12 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl" aria-hidden="true">🏢</div>
                     <h3 class="text-xl md:text-2xl font-display font-bold text-white uppercase tracking-widest">Solutions Entreprises</h3>
                 </div>
                 <p class="text-gray-400 font-light mb-8">Optimisez et valorisez votre flotte d'entreprise avec nos tarifs dégressifs exclusifs. Un service sur-mesure pour les professionnels exigeants.</p>
@@ -379,7 +379,7 @@
 
             <div class="premium-card p-8 md:p-12 rounded-2xl flex flex-col h-full reveal delay-200">
                 <div class="flex items-center gap-4 mb-6">
-                    <div class="w-12 h-12 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl">⭐</div>
+                    <div class="w-12 h-12 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl" aria-hidden="true">⭐</div>
                     <h3 class="text-xl md:text-2xl font-display font-bold text-white uppercase tracking-widest">Abonnements Mensuels</h3>
                 </div>
                 <p class="text-gray-400 font-light mb-8">Roulez dans un véhicule impeccable toute l'année. Profitez d'un lavage régulier premium à un tarif privilégié.</p>
@@ -409,7 +409,7 @@
 
     <section id="faq" class="py-24 md:py-32 max-w-4xl mx-auto px-4 relative z-10">
         <div class="text-center mb-12 md:mb-16 reveal">
-            <h3 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Questions Fréquentes</h3>
+            <h2 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Questions Fréquentes</h2>
             <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
         </div>
         <div class="space-y-4">
@@ -436,7 +436,7 @@
 
     <section id="reservation" class="py-24 md:py-32 max-w-4xl mx-auto px-4 relative z-10">
         <div class="text-center mb-12 md:mb-16 reveal">
-            <h3 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Demande de Devis</h3>
+            <h2 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Demande de Devis</h2>
             <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mb-6"></div>
             <p class="text-gray-400 font-light max-w-xl mx-auto text-sm md:text-base">Laissez-nous vos coordonnées et l'adresse de récupération souhaitée, nous vous recontacterons dans les plus brefs délais.</p>
         </div>
@@ -535,8 +535,24 @@
         // Hamburger & Mobile logic
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
-        btn.addEventListener('click', () => menu.classList.toggle('open'));
-        document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => menu.classList.remove('open')));
+        
+        function toggleMenu(forceClose = false) {
+            const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+            const willExpand = forceClose ? false : !isExpanded;
+            
+            if (willExpand) {
+                menu.classList.add('open');
+                btn.setAttribute('aria-expanded', 'true');
+                btn.setAttribute('aria-label', 'Fermer le menu');
+            } else {
+                menu.classList.remove('open');
+                btn.setAttribute('aria-expanded', 'false');
+                btn.setAttribute('aria-label', 'Ouvrir le menu de navigation');
+            }
+        }
+
+        btn.addEventListener('click', () => toggleMenu());
+        document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => toggleMenu(true)));
 
         // Reveal animations
         const revealObserver = new IntersectionObserver((entries) => {
