@@ -1,0 +1,100 @@
+const fs = require('fs');
+const path = require('path');
+
+// 1. Charger la base de données JSON
+const locationsPath = path.join(__dirname, 'locations.json');
+if (!fs.existsSync(locationsPath)) {
+    console.error("Erreur : Le fichier locations.json est introuvable à la racine.");
+    process.exit(1);
+}
+const locations = JSON.parse(fs.readFileSync(locationsPath, 'utf8'));
+
+// 2. Le Template HTML Sémantique (Optimisé SEO & Tailwind prêt)
+const generateHTML = (loc) => `<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${loc.recommendedService} à ${loc.cityName} | Planet Food Detailing</title>
+    <meta name="description" content="${loc.seoIntroSnippet}">
+    <link rel="canonical" href="https://valkha.github.io/car-wash/services/${loc.cityId}/">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <header class="bg-black text-white p-6">
+        <div class="container mx-auto">
+            <nav>
+                <a href="../../" class="text-xl font-bold">Planet Food</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12">
+        <article>
+            <header class="mb-10">
+                <h1 class="text-4xl font-extrabold mb-4">Expert en ${loc.recommendedService} à ${loc.cityName}</h1>
+                <p class="text-xl text-gray-600">${loc.seoIntroSnippet}</p>
+            </header>
+
+            <section class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+                    <h2 class="text-2xl font-bold mb-4">L'exigence du marché local</h2>
+                    <p class="mb-4">Notre clientèle composée de ${loc.clienteleType.toLowerCase()} exige une discrétion et une qualité sans faille. Intervenant sur le canton de ${loc.region}, notamment ${loc.localLandmark}, nous adaptons nos process à votre environnement.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+                    <h2 class="text-2xl font-bold mb-4">Protection ciblée</h2>
+                    <p>Le contexte environnemental de ${loc.cityName} (${loc.typology.toLowerCase()}) implique des risques spécifiques : ${loc.environmentalPainPoint.toLowerCase()}. Notre ${loc.recommendedService.toLowerCase()} agit comme un bouclier définitif contre ces agressions.</p>
+                </div>
+            </section>
+            
+            <div class="text-center">
+                <a href="../../#contact" class="inline-block bg-black text-white font-bold py-4 px-8 rounded hover:bg-gray-800 transition">Réserver une intervention à ${loc.cityName}</a>
+            </div>
+        </article>
+    </main>
+</body>
+</html>`;
+
+// 3. Génération des fichiers physiques
+locations.forEach(loc => {
+    const dir = path.join(__dirname, 'services', loc.cityId);
+    
+    // Créer le dossier s'il n'existe pas
+    if (!fs.existsSync(dir)){
+        fs.mkdirSync(dir, { recursive: true });
+    }
+
+    // Écrire le fichier index.html
+    const filePath = path.join(dir, 'index.html');
+    fs.writeFileSync(filePath, generateHTML(loc));
+    console.log(`✅ Page générée : /services/${loc.cityId}/index.html`);
+});
+
+// 4. Mise à jour automatique du Sitemap XML
+const generateSitemap = (locations) => {
+    const date = new Date().toISOString().split('T')[0];
+    
+    let urls = locations.map(loc => `
+    <url>
+        <loc>https://valkha.github.io/car-wash/services/${loc.cityId}/</loc>
+        <lastmod>${date}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>`).join('');
+
+    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://valkha.github.io/car-wash/</loc>
+        <lastmod>${date}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>${urls}
+</urlset>`;
+
+    fs.writeFileSync(path.join(__dirname, 'sitemap.xml'), sitemap);
+    console.log(`🗺️  Sitemap.xml mis à jour avec ${locations.length} URLs locales.`);
+};
+
+generateSitemap(locations);
+console.log('🚀 Build SEO Programmique terminé avec succès.');

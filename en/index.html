@@ -101,6 +101,64 @@
     }
     </script>
 
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://valkha.github.io/car-wash/#website",
+      "url": "https://valkha.github.io/car-wash/",
+      "name": "Planet Food",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://valkha.github.io/car-wash/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": ["AutomotiveBusiness", "LocalBusiness"],
+      "@id": "https://valkha.github.io/car-wash/#localbusiness",
+      "name": "Planet Food",
+      "image": "https://valkha.github.io/car-wash/images/logo.png",
+      "priceRange": "$$$",
+      "areaServed": [
+        { "@type": "City", "name": "Genève", "sameAs": "https://www.wikidata.org/wiki/Q71" },
+        { "@type": "City", "name": "Canton de Vaud", "sameAs": "https://www.wikidata.org/wiki/Q11850" }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "142"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services Premium Detailing",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Traitement Céramique Gtechniq",
+              "description": "Protection hydrophobe et anti-micro-rayures pour véhicules de prestige."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "name": "Démonstration Polissage & Detailing à Genève",
+      "description": "Processus complet de correction de vernis sur véhicule de luxe par Planet Food.",
+      "thumbnailUrl": "https://valkha.github.io/car-wash/images/video-thumb.jpg",
+      "contentUrl": "https://valkha.github.io/car-wash/video.mp4",
+      "uploadDate": "2026-04-10T08:00:00+02:00",
+      "publisher": { "@id": "https://valkha.github.io/car-wash/#localbusiness" }
+    }
+  ]
+}
+</script>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/tailwind.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
