@@ -15,16 +15,17 @@ const generateHTML = (loc) => `<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${loc.recommendedService} à ${loc.cityName} | Planet Food Detailing</title>
+    <title>${loc.recommendedService} à ${loc.cityName} | Clean Cars Wash</title>
     <meta name="description" content="${loc.seoIntroSnippet}">
-    <link rel="canonical" href="https://valkha.github.io/car-wash/services/${loc.cityId}/">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="canonical" href="https://www.clean-cars-wash.ch/services/${loc.cityId}/">
+    <link rel="stylesheet" href="../../assets/css/tailwind.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body class="bg-gray-50 text-gray-900">
     <header class="bg-black text-white p-6">
         <div class="container mx-auto">
             <nav>
-                <a href="../../" class="text-xl font-bold">Planet Food</a>
+                <a href="../../" class="text-xl font-bold">Clean Cars Wash</a>
             </nav>
         </div>
     </header>
@@ -48,7 +49,7 @@ const generateHTML = (loc) => `<!DOCTYPE html>
             </section>
             
             <div class="text-center">
-                <a href="../../#contact" class="inline-block bg-black text-white font-bold py-4 px-8 rounded hover:bg-gray-800 transition">Réserver une intervention à ${loc.cityName}</a>
+                <a href="../../#reservation" class="inline-block bg-black text-white font-bold py-4 px-8 rounded hover:bg-gray-800 transition">Réserver une intervention à ${loc.cityName}</a>
             </div>
         </article>
     </main>
@@ -76,7 +77,7 @@ const generateSitemap = (locations) => {
     
     let urls = locations.map(loc => `
     <url>
-        <loc>https://valkha.github.io/car-wash/services/${loc.cityId}/</loc>
+        <loc>https://www.clean-cars-wash.ch/services/${loc.cityId}/</loc>
         <lastmod>${date}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -85,7 +86,7 @@ const generateSitemap = (locations) => {
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://valkha.github.io/car-wash/</loc>
+        <loc>https://www.clean-cars-wash.ch/</loc>
         <lastmod>${date}</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>

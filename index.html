@@ -101,62 +101,16 @@
     }
     </script>
     <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
     {
+      "@context": "https://schema.org",
       "@type": "WebSite",
-      "@id": "https://valkha.github.io/car-wash/#website",
-      "url": "https://valkha.github.io/car-wash/",
-      "name": "Planet Food",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://valkha.github.io/car-wash/search?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    },
-    {
-      "@type": ["AutomotiveBusiness", "LocalBusiness"],
-      "@id": "https://valkha.github.io/car-wash/#localbusiness",
-      "name": "Planet Food",
-      "image": "https://valkha.github.io/car-wash/images/logo.png",
-      "priceRange": "$$$",
-      "areaServed": [
-        { "@type": "City", "name": "Genève", "sameAs": "https://www.wikidata.org/wiki/Q71" },
-        { "@type": "City", "name": "Canton de Vaud", "sameAs": "https://www.wikidata.org/wiki/Q11850" }
-      ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "142"
-      },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Services Premium Detailing",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Traitement Céramique Gtechniq",
-              "description": "Protection hydrophobe et anti-micro-rayures pour véhicules de prestige."
-            }
-          }
-        ]
-      }
-    },
-    {
-      "@type": "VideoObject",
-      "name": "Démonstration Polissage & Detailing à Genève",
-      "description": "Processus complet de correction de vernis sur véhicule de luxe par Planet Food.",
-      "thumbnailUrl": "https://valkha.github.io/car-wash/images/video-thumb.jpg",
-      "contentUrl": "https://valkha.github.io/car-wash/video.mp4",
-      "uploadDate": "2026-04-10T08:00:00+02:00",
-      "publisher": { "@id": "https://valkha.github.io/car-wash/#localbusiness" }
+      "@id": "https://www.clean-cars-wash.ch/#website",
+      "url": "https://www.clean-cars-wash.ch/",
+      "name": "Clean Cars Wash",
+      "description": "Service de lavage auto mobile premium à Genève et Vaud.",
+      "inLanguage": "fr-CH"
     }
-  ]
-}
-</script>
+    </script>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/tailwind.min.css">
@@ -285,10 +239,7 @@
                     <div id="slider-track" class="flex transition-transform duration-700 ease-in-out w-full">
                         
                         <div class="w-full flex-shrink-0 relative group h-[50vh] md:h-[60vh] min-h-[350px] overflow-hidden" role="group" aria-roledescription="diapositive" aria-label="1 sur 3">
-                            <picture>
-                                <source srcset="assets/images/MB-01.avif" type="image/avif">
-                                <img src="assets/images/MB-01.webp" alt="Détail Mercedes Etape 1" width="800" height="600" class="img-fade">
-                            </picture>
+                            <img src="assets/images/MB-01.webp" alt="Mercedes — Étape 1 : préparation de la surface avant detailing" width="800" height="600" class="img-fade">
                             <img src="assets/images/MB-02.webp" alt="Détail Mercedes Etape 2" width="800" height="600" class="img-fade" loading="lazy">
                             <img src="assets/images/MB-03.webp" alt="Détail Mercedes Etape 3" width="800" height="600" class="img-fade" loading="lazy">
                             <div class="absolute inset-0 slide-overlay flex flex-col justify-end p-6 md:p-10 z-10">
@@ -306,11 +257,11 @@
                         </div>
 
                         <div class="w-full flex-shrink-0 relative group h-[50vh] md:h-[60vh] min-h-[350px] bg-charcoal-900" role="group" aria-roledescription="diapositive" aria-label="3 sur 3">
-                            <video 
-                                src="assets/images/video-realisation.mp4" 
-                                class="w-full h-full object-cover" 
-                                autoplay loop muted playsinline
-                                poster="assets/images/MB-01.webp" 
+                            <video
+                                src="assets/images/video-realisation.mp4"
+                                class="w-full h-full object-cover"
+                                autoplay loop muted playsinline preload="none"
+                                poster="assets/images/MB-01.webp"
                                 aria-label="Vidéo de démonstration detailing Mercedes"
                                 title="Vidéo soin premium"
                             ></video>
@@ -607,7 +558,7 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/41782657071?text=Bonjour,%20je%20souhaiterais%20obtenir%20un%20devis." target="_blank" class="whatsapp-float bg-[#25D366] p-4 rounded-full shadow-2xl hover:bg-[#128C7E] transition-all group" aria-label="Discuter avec nous sur WhatsApp">
+    <a href="https://wa.me/41782657071?text=Bonjour,%20je%20souhaiterais%20obtenir%20un%20devis." target="_blank" rel="noopener noreferrer" class="whatsapp-float bg-[#25D366] p-4 rounded-full shadow-2xl hover:bg-[#128C7E] transition-all group" aria-label="Discuter avec nous sur WhatsApp">
         <svg class="w-6 h-6 md:w-8 md:h-8 text-white fill-current" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.4 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-5.5-2.8-23.2-8.5-44.2-27.1-16.4-14.6-27.4-32.7-30.6-38.1-3.2-5.5-.3-8.4 2.4-11.2 2.5-2.5 5.5-6.4 8.3-9.6 2.8-3.2 3.7-5.5 5.5-9.3 1.9-3.7.9-6.9-.5-9.7-1.4-2.8-12.4-29.8-17-40.7-4.5-10.7-9-9.2-12.4-9.4h-10.6c-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 13.2 5.8 23.5 9.2 31.5 11.8 13.3 4.2 25.4 3.6 35 2.2 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"></path></svg>
     </a>
 
@@ -698,11 +649,18 @@
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(Object.fromEntries(new FormData(form)))
-            }).then(() => {
-                document.getElementById('form-result').innerText = "Envoyé avec succès !";
-                document.getElementById('form-result').classList.remove('hidden');
+            }).then(res => {
+                if (!res.ok) throw new Error();
+                const result = document.getElementById('form-result');
+                result.innerText = "Envoyé avec succès !";
+                result.className = 'text-center font-medium mt-2 text-sm text-green-400';
                 btnS.innerText = 'Envoyé !';
                 form.reset();
+            }).catch(() => {
+                const result = document.getElementById('form-result');
+                result.innerText = "Erreur d'envoi. Appelez-nous directement au +41 78 265 70 71.";
+                result.className = 'text-center font-medium mt-2 text-sm text-red-400';
+                btnS.innerText = 'Envoyer la demande';
             });
         });
         if ('serviceWorker' in navigator) {
