@@ -611,9 +611,24 @@
                         </select>
                     </div>
                 </div>
-                <div>
-                    <label for="creneau" class="block text-[10px] font-display tracking-widest uppercase text-gray-400 mb-2">Preferred Time Slot</label>
-                    <input type="text" id="creneau" name="creneau" class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 text-sm" placeholder="e.g. Tuesday 3pm, week of April 22nd">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <label for="date_rdv" class="block text-[10px] font-display tracking-widest uppercase text-gray-400 mb-2">Desired Date</label>
+                        <input type="date" id="date_rdv" name="date_rdv" required class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 text-sm appearance-none">
+                    </div>
+                    <div>
+                        <label for="heure_rdv" class="block text-[10px] font-display tracking-widest uppercase text-gray-400 mb-2">Desired Time</label>
+                        <select id="heure_rdv" name="heure_rdv" required class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 text-sm appearance-none cursor-pointer">
+                            <option value="" disabled selected>— Select —</option>
+                            <option value="09:00">09:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:00">11:00</option>
+                            <option value="13:00">13:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+                        </select>
+                    </div>
                 </div>
                 <div>
                     <label for="message" class="block text-[10px] font-display tracking-widest uppercase text-gray-400 mb-2">Pick-up Address</label>
@@ -789,6 +804,17 @@
         }).catch(err => console.log('SW fail', err));
     });
 }
+    </script>
+    <script>
+        (function () {
+            const d = document.getElementById('date_rdv');
+            if (d) {
+                const t = new Date();
+                d.min = t.getFullYear() + '-' +
+                    String(t.getMonth() + 1).padStart(2, '0') + '-' +
+                    String(t.getDate()).padStart(2, '0');
+            }
+        })();
     </script>
 </body>
 </html>
