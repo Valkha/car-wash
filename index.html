@@ -64,8 +64,9 @@
       },
       "areaServed": [{ "@type": "City", "name": "Genève" }, { "@type": "State", "name": "Vaud" }],
       "openingHoursSpecification": [
-        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "17:00" },
-        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "notes": "Uniquement sur rendez-vous" }
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "18:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "17:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "00:00", "closes": "00:00" }
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
@@ -670,6 +671,15 @@
                 <p class="text-gray-400 font-light mb-1 text-sm">Rue des pâquis 49</p>
                 <p class="text-gray-400 font-light mb-6 text-sm">1201 Genève</p>
                 <a href="mailto:info@cleancarswash.ch" class="text-gold-400 font-display tracking-widest uppercase text-xs md:text-sm hover:text-white transition">info@cleancarswash.ch</a>
+            </div>
+            <div class="text-center">
+                <h4 class="text-white font-display font-bold text-xs md:text-sm tracking-widest uppercase mb-4">Contact &amp; Horaires</h4>
+                <a href="tel:+41782657071" class="block text-[#D4AF37] font-display tracking-widest uppercase text-xs md:text-sm hover:text-white transition mb-4">+41 78 265 70 71</a>
+                <ul class="text-gray-400 font-light text-xs md:text-sm space-y-1">
+                    <li>Lun–Ven : 09h00 – 18h00</li>
+                    <li>Samedi : Sur demande</li>
+                    <li>Dimanche : Fermé</li>
+                </ul>
             </div>
             <div class="text-center md:text-right">
                 <h4 class="text-white font-display font-bold text-xs md:text-sm tracking-widest uppercase mb-4">Informations</h4>

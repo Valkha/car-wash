@@ -53,6 +53,37 @@ const generateHTML = (loc) => `<!DOCTYPE html>
             </div>
         </article>
     </main>
+
+    <footer class="bg-black text-white py-12 border-t border-white/10 mt-16">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-start gap-8">
+            <div>
+                <p class="font-bold text-lg tracking-widest uppercase mb-3">Clean Cars Wash</p>
+                <p class="text-gray-400 text-sm mb-1">AHMED-YAHIA LM</p>
+                <p class="text-gray-400 text-sm mb-1">Rue des pâquis 49</p>
+                <p class="text-gray-400 text-sm mb-4">1201 Genève</p>
+                <a href="mailto:info@cleancarswash.ch" class="text-yellow-400 text-sm hover:text-white transition">info@cleancarswash.ch</a>
+            </div>
+            <div>
+                <p class="font-bold text-xs tracking-widest uppercase mb-3 text-white">Contact &amp; Horaires</p>
+                <a href="tel:+41782657071" class="block text-yellow-400 font-bold text-sm hover:text-white transition mb-3">+41 78 265 70 71</a>
+                <ul class="text-gray-400 text-sm space-y-1">
+                    <li>Lun–Ven : 09h00 – 18h00</li>
+                    <li>Samedi : Sur demande</li>
+                    <li>Dimanche : Fermé</li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-bold text-xs tracking-widest uppercase mb-3 text-white">Informations</p>
+                <ul class="text-gray-400 text-sm space-y-2">
+                    <li><a href="../../mentions-legales.html" class="hover:text-yellow-400 transition">Mentions Légales</a></li>
+                    <li><a href="../../politique-confidentialite.html" class="hover:text-yellow-400 transition">Politique de Confidentialité</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 mt-8 text-center text-xs text-gray-600 tracking-widest uppercase">
+            &copy; 2026 Clean Cars Wash — <a href="../../" class="hover:text-yellow-400 transition">Retour à l'accueil</a>
+        </div>
+    </footer>
 </body>
 </html>`;
 
