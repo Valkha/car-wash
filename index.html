@@ -827,41 +827,9 @@
         })();
     </script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('referral-form').addEventListener('submit', async function(e) {
-                e.preventDefault();
-                const btn = this.querySelector('[type="submit"]');
-                const result = document.getElementById('referral-result');
-                btn.disabled = true;
-                btn.textContent = 'Envoi en cours…';
-                const data = Object.fromEntries(new FormData(this));
-                try {
-                    const res = await fetch('https://api.web3forms.com/submit', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                        body: JSON.stringify(data)
-                    });
-                    if (!res.ok) throw new Error();
-                    result.textContent = '✓ Participation enregistrée ! Nous vous contacterons sous 48h.';
-                    result.classList.remove('hidden', 'text-red-400');
-                    result.classList.add('text-green-400');
-                    this.reset();
-                    setTimeout(() => { document.getElementById('referral-modal').classList.add('hidden'); document.body.classList.remove('overflow-hidden'); }, 3000);
-                } catch {
-                    result.textContent = '✗ Une erreur est survenue. Veuillez réessayer.';
-                    result.classList.remove('hidden', 'text-green-400');
-                    result.classList.add('text-red-400');
-                    btn.disabled = false;
-                    btn.textContent = 'Envoyer ma Participation →';
-                }
-            });
-        });
-    </script>
-
     <!-- MODALE PARRAINAGE -->
-    <div id="referral-modal" class="fixed inset-0 z-[9999] bg-black/80 hidden flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="referral-modal-title" onclick="if(event.target===this){this.classList.add('hidden');document.body.classList.remove('overflow-hidden')}">
-        <div class="bg-[#1a1a1a] border border-[#D4AF37]/30 rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto relative">
+    <div id="referral-modal" class="fixed inset-0 z-[10000] bg-black/95 hidden flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="referral-modal-title" onclick="if(event.target===this){this.classList.add('hidden');document.body.classList.remove('overflow-hidden')}">
+        <div class="relative z-[10001] bg-charcoal-900 border border-gold-400 rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto">
             <div class="sticky top-0 bg-[#1a1a1a] border-b border-[#D4AF37]/20 px-6 md:px-8 py-5 flex items-center justify-between rounded-t-3xl z-10">
                 <div>
                     <p class="text-[10px] font-display tracking-[0.3em] uppercase text-[#D4AF37] mb-1">Programme Parrainage</p>
@@ -939,5 +907,35 @@
             </form>
         </div>
     </div>
+
+    <script>
+        document.getElementById('referral-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('[type="submit"]');
+            const result = document.getElementById('referral-result');
+            btn.disabled = true;
+            btn.textContent = 'Envoi en cours…';
+            const data = Object.fromEntries(new FormData(this));
+            try {
+                const res = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                if (!res.ok) throw new Error();
+                result.textContent = '✓ Participation enregistrée ! Nous vous contacterons sous 48h.';
+                result.classList.remove('hidden', 'text-red-400');
+                result.classList.add('text-green-400');
+                this.reset();
+                setTimeout(() => { document.getElementById('referral-modal').classList.add('hidden'); document.body.classList.remove('overflow-hidden'); }, 3000);
+            } catch {
+                result.textContent = '✗ Une erreur est survenue. Veuillez réessayer.';
+                result.classList.remove('hidden', 'text-green-400');
+                result.classList.add('text-red-400');
+                btn.disabled = false;
+                btn.textContent = 'Envoyer ma Participation →';
+            }
+        });
+    </script>
 </body>
 </html>
