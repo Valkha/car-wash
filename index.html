@@ -675,74 +675,70 @@
                             <option value="149">Pack Or — 149.- CHF</option>
                             <option value="289">Pack Diamant — 289.- CHF</option>
                             <option value="subscription">Abonnement (sur devis)</option>
-                            <option value="0">Solution Entreprise (devis)</option>
+                            <option value="corporate">Solution Entreprise (sur devis)</option>
                         </select>
                     </div>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div>
-                        <label for="date_rdv" class="block text-[10px] font-display tracking-widest uppercase text-gray-400 mb-2">Date souhaitée</label>
-                        <input type="date" id="date_rdv" name="date_rdv" required class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 text-sm appearance-none">
-                    </div>
-                    <div>
-                        <label for="heure_rdv" class="block text-[10px] font-display tracking-widest uppercase text-gray-400 mb-2">Heure souhaitée</label>
-                        <select id="heure_rdv" name="heure_rdv" required class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 text-sm appearance-none cursor-pointer">
-                            <option value="" disabled selected>— Sélectionner —</option>
-                            <option value="09:00">09:00</option>
-                            <option value="10:00">10:00</option>
-                            <option value="11:00">11:00</option>
-                            <option value="13:00">13:00</option>
-                            <option value="14:00">14:00</option>
-                            <option value="15:00">15:00</option>
-                            <option value="16:00">16:00</option>
-                        </select>
-                    </div>
-                </div>
-                <div>
-                    <label for="message" class="block text-[10px] font-display tracking-widest uppercase text-gray-400 mb-2">Adresse de récupération</label>
-                    <textarea id="message" rows="3" name="message" class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 resize-none text-sm" placeholder="Rue, ville, code postal..."></textarea>
-                </div>
-
-                <div id="acompte-block" class="rounded-xl bg-gradient-to-r from-gold-500/10 to-transparent border border-gold-400/30 p-5">
-                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-5">
+                <div id="acompte-block" class="flex flex-col gap-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
-                            <p class="text-[10px] font-display tracking-widest uppercase text-gold-400 mb-1">Acompte à régler (30%)</p>
-                            <p id="deposit-display" class="text-white font-display font-bold text-2xl">26.70.- <span class="text-sm font-light text-gray-400">CHF</span></p>
-                            <p class="text-gray-500 text-xs mt-1">Solde réglé à la livraison</p>
+                            <label for="date_rdv" class="block text-[10px] font-display tracking-widest uppercase text-gray-400 mb-2">Date souhaitée</label>
+                            <input type="date" id="date_rdv" name="date_rdv" required class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 text-sm appearance-none">
+                        </div>
+                        <div>
+                            <label for="heure_rdv" class="block text-[10px] font-display tracking-widest uppercase text-gray-400 mb-2">Heure souhaitée</label>
+                            <select id="heure_rdv" name="heure_rdv" required class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 text-sm appearance-none cursor-pointer">
+                                <option value="" disabled selected>— Sélectionner —</option>
+                                <option value="09:00">09:00</option>
+                                <option value="10:00">10:00</option>
+                                <option value="11:00">11:00</option>
+                                <option value="13:00">13:00</option>
+                                <option value="14:00">14:00</option>
+                                <option value="15:00">15:00</option>
+                                <option value="16:00">16:00</option>
+                            </select>
                         </div>
                     </div>
-                    <p class="text-[10px] font-display tracking-widest uppercase text-gray-500 mb-3">Méthode de paiement</p>
-                    <div class="grid grid-cols-2 gap-3">
-                        <button type="button" id="pay-twint" onclick="selectPayment('TWINT')" class="payment-card flex flex-col items-center justify-center gap-2 bg-charcoal-900 border border-white/10 rounded-lg p-4 transition-all duration-200 hover:border-white/30">
-                            <svg viewBox="0 0 60 22" class="h-6 w-auto" aria-hidden="true">
-                                <rect width="60" height="22" rx="4" fill="#00B0E6"/>
-                                <text x="30" y="15.5" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="11" letter-spacing="1.5" fill="white">TWINT</text>
-                            </svg>
-                            <span class="text-gray-300 text-xs font-display uppercase tracking-widest">Payer par TWINT</span>
-                        </button>
-                        <button type="button" id="pay-card" onclick="selectPayment('CARD')" class="payment-card flex flex-col items-center justify-center gap-2 bg-charcoal-900 border border-white/10 rounded-lg p-4 transition-all duration-200 hover:border-white/30">
-                            <div class="flex items-center gap-2" aria-hidden="true">
-                                <svg viewBox="0 0 42 14" class="h-5 w-auto">
-                                    <text x="1" y="13" font-family="Arial,sans-serif" font-weight="900" font-size="13" fill="#1A1F71">VISA</text>
-                                </svg>
-                                <svg viewBox="0 0 30 20" class="h-5 w-auto">
-                                    <circle cx="11" cy="10" r="9" fill="#EB001B"/>
-                                    <circle cx="19" cy="10" r="9" fill="#F79E1B"/>
-                                    <path d="M15 3.2a9 9 0 0 1 0 13.6A9 9 0 0 1 15 3.2z" fill="#FF5F00"/>
-                                </svg>
-                            </div>
-                            <span class="text-gray-300 text-xs font-display uppercase tracking-widest">Carte Bancaire</span>
-                        </button>
+                    <div>
+                        <label for="message" class="block text-[10px] font-display tracking-widest uppercase text-gray-400 mb-2">Adresse de récupération</label>
+                        <textarea id="message" rows="3" name="message" class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 resize-none text-sm" placeholder="Rue, ville, code postal..."></textarea>
                     </div>
-                    <input type="hidden" id="payment_method" name="payment_method" value="not_selected">
+                    <div class="rounded-xl bg-gradient-to-r from-gold-500/10 to-transparent border border-gold-400/30 p-5">
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-5">
+                            <div>
+                                <p class="text-[10px] font-display tracking-widest uppercase text-gold-400 mb-1">Acompte à régler (30%)</p>
+                                <p id="deposit-display" class="text-white font-display font-bold text-2xl">26.70.- <span class="text-sm font-light text-gray-400">CHF</span></p>
+                                <p class="text-gray-500 text-xs mt-1">Solde réglé à la livraison</p>
+                            </div>
+                        </div>
+                        <p class="text-[10px] font-display tracking-widest uppercase text-gray-500 mb-3">Méthode de paiement</p>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button type="button" id="pay-twint" onclick="selectPayment('TWINT')" class="payment-card flex flex-col items-center justify-center gap-2 bg-charcoal-900 border border-white/10 rounded-lg p-4 transition-all duration-200 hover:border-white/30">
+                                <svg viewBox="0 0 60 22" class="h-6 w-auto" aria-hidden="true">
+                                    <rect width="60" height="22" rx="4" fill="#00B0E6"/>
+                                    <text x="30" y="15.5" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="11" letter-spacing="1.5" fill="white">TWINT</text>
+                                </svg>
+                                <span class="text-gray-300 text-xs font-display uppercase tracking-widest">Payer par TWINT</span>
+                            </button>
+                            <button type="button" id="pay-card" onclick="selectPayment('CARD')" class="payment-card flex flex-col items-center justify-center gap-2 bg-charcoal-900 border border-white/10 rounded-lg p-4 transition-all duration-200 hover:border-white/30">
+                                <div class="flex items-center gap-2" aria-hidden="true">
+                                    <svg viewBox="0 0 42 14" class="h-5 w-auto">
+                                        <text x="1" y="13" font-family="Arial,sans-serif" font-weight="900" font-size="13" fill="#1A1F71">VISA</text>
+                                    </svg>
+                                    <svg viewBox="0 0 30 20" class="h-5 w-auto">
+                                        <circle cx="11" cy="10" r="9" fill="#EB001B"/>
+                                        <circle cx="19" cy="10" r="9" fill="#F79E1B"/>
+                                        <path d="M15 3.2a9 9 0 0 1 0 13.6A9 9 0 0 1 15 3.2z" fill="#FF5F00"/>
+                                    </svg>
+                                </div>
+                                <span class="text-gray-300 text-xs font-display uppercase tracking-widest">Carte Bancaire</span>
+                            </button>
+                        </div>
+                        <input type="hidden" id="payment_method" name="payment_method" value="not_selected">
+                    </div>
                 </div>
 
-                <div id="subscription-msg" class="hidden rounded-xl bg-gradient-to-r from-gold-500/10 to-transparent border border-gold-400/30 p-6 text-center">
-                    <p class="text-gold-400 font-display font-bold tracking-widest uppercase text-sm mb-2">Abonnement</p>
-                    <p class="text-white font-light text-sm">Nous vous contacterons pour personnaliser votre forfait.</p>
-                </div>
-
-                <button type="submit" id="submit-btn" class="cta-devis w-full mt-2">Payer l'acompte et Réserver →</button>
+                <button type="submit" id="submit-button" class="cta-devis w-full mt-2">Payer l'acompte et Réserver →</button>
                 <p class="text-center text-xs text-gray-600 font-light -mt-2">Le lien de paiement vous sera envoyé par SMS/WhatsApp après confirmation du créneau.</p>
                 <p id="form-result" class="text-center font-medium hidden mt-2 text-sm text-green-400"></p>
             </form>
@@ -876,17 +872,32 @@
         }
 
         function handlePrestationChange(val) {
+            const isDevis = val === 'subscription' || val === 'corporate';
             const acompteBlock = document.getElementById('acompte-block');
-            const subscriptionMsg = document.getElementById('subscription-msg');
-            if (val === 'subscription') {
+            const submitBtn = document.getElementById('submit-button');
+
+            if (isDevis) {
                 acompteBlock.classList.add('hidden');
-                subscriptionMsg.classList.remove('hidden');
+                acompteBlock.querySelectorAll('[required]').forEach(el => {
+                    el.dataset.wasRequired = 'true';
+                    el.removeAttribute('required');
+                });
+                submitBtn.textContent = 'Demander un devis \u2192';
             } else {
                 acompteBlock.classList.remove('hidden');
-                subscriptionMsg.classList.add('hidden');
+                acompteBlock.querySelectorAll('[data-was-required]').forEach(el => {
+                    el.setAttribute('required', '');
+                    delete el.dataset.wasRequired;
+                });
+                submitBtn.textContent = "Payer l\u2019acompte et R\u00e9server \u2192";
                 updateDeposit(val);
             }
         }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const select = document.getElementById('prestation');
+            if (select) handlePrestationChange(select.value);
+        });
 
         // Deposit Calculator
         function updateDeposit(val) {
@@ -900,7 +911,7 @@
         const form = document.getElementById('quote-form');
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            const btnS = document.getElementById('submit-btn');
+            const btnS = document.getElementById('submit-button');
             btnS.innerText = 'Envoi...';
             fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
