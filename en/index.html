@@ -648,24 +648,38 @@
                     <textarea id="message" rows="3" name="message" class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 resize-none text-sm" placeholder="Street, city, postal code..."></textarea>
                 </div>
 
-                <div id="booking-system" class="rounded-xl bg-gradient-to-r from-gold-500/10 to-transparent border border-gold-400/30 p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                    <div>
-                        <p class="text-[10px] font-display tracking-widest uppercase text-gold-400 mb-1">Deposit to pay (30%)</p>
-                        <p id="deposit-display" class="text-white font-display font-bold text-2xl">26.70.- <span class="text-sm font-light text-gray-400">CHF</span></p>
-                        <p class="text-gray-500 text-xs mt-1">Balance settled upon delivery</p>
-                    </div>
-                    <div class="flex flex-col gap-2 w-full sm:w-auto">
-                        <div class="flex items-center gap-3 text-xs text-gray-400">
-                            <span class="inline-flex items-center gap-1.5 bg-charcoal-800 border border-white/10 rounded-lg px-3 py-1.5">
-                                <svg class="w-4 h-4 text-[#00b0e6]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
-                                TWINT
-                            </span>
-                            <span class="inline-flex items-center gap-1.5 bg-charcoal-800 border border-white/10 rounded-lg px-3 py-1.5">
-                                <svg class="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-                                Credit Card
-                            </span>
+                <div id="booking-system" class="rounded-xl bg-gradient-to-r from-gold-500/10 to-transparent border border-gold-400/30 p-5">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-5">
+                        <div>
+                            <p class="text-[10px] font-display tracking-widest uppercase text-gold-400 mb-1">Deposit to pay (30%)</p>
+                            <p id="deposit-display" class="text-white font-display font-bold text-2xl">26.70.- <span class="text-sm font-light text-gray-400">CHF</span></p>
+                            <p class="text-gray-500 text-xs mt-1">Balance settled upon delivery</p>
                         </div>
                     </div>
+                    <p class="text-[10px] font-display tracking-widest uppercase text-gray-500 mb-3">Payment method</p>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button type="button" id="pay-twint" onclick="selectPayment('TWINT')" class="payment-card flex flex-col items-center justify-center gap-2 bg-charcoal-900 border border-white/10 rounded-lg p-4 transition-all duration-200 hover:border-white/30">
+                            <svg viewBox="0 0 60 22" class="h-6 w-auto" aria-hidden="true">
+                                <rect width="60" height="22" rx="4" fill="#00B0E6"/>
+                                <text x="30" y="15.5" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="11" letter-spacing="1.5" fill="white">TWINT</text>
+                            </svg>
+                            <span class="text-gray-300 text-xs font-display uppercase tracking-widest">Pay by TWINT</span>
+                        </button>
+                        <button type="button" id="pay-card" onclick="selectPayment('CARD')" class="payment-card flex flex-col items-center justify-center gap-2 bg-charcoal-900 border border-white/10 rounded-lg p-4 transition-all duration-200 hover:border-white/30">
+                            <div class="flex items-center gap-2" aria-hidden="true">
+                                <svg viewBox="0 0 42 14" class="h-5 w-auto">
+                                    <text x="1" y="13" font-family="Arial,sans-serif" font-weight="900" font-size="13" fill="#1A1F71">VISA</text>
+                                </svg>
+                                <svg viewBox="0 0 30 20" class="h-5 w-auto">
+                                    <circle cx="11" cy="10" r="9" fill="#EB001B"/>
+                                    <circle cx="19" cy="10" r="9" fill="#F79E1B"/>
+                                    <path d="M15 3.2a9 9 0 0 1 0 13.6A9 9 0 0 1 15 3.2z" fill="#FF5F00"/>
+                                </svg>
+                            </div>
+                            <span class="text-gray-300 text-xs font-display uppercase tracking-widest">Credit Card</span>
+                        </button>
+                    </div>
+                    <input type="hidden" id="payment_method" name="payment_method" value="not_selected">
                 </div>
 
                 <button type="submit" id="submit-btn" class="cta-devis w-full mt-2">Pay Deposit & Book →</button>
@@ -786,6 +800,20 @@
                 document.getElementById('cookie-banner').classList.add('translate-y-full');
             });
         });
+
+        // Payment Method Selection
+        function selectPayment(method) {
+            document.getElementById('payment_method').value = method;
+            document.querySelectorAll('.payment-card').forEach(card => {
+                card.classList.remove('border-gold-400');
+                card.classList.add('border-white/10');
+                card.style.boxShadow = '';
+            });
+            const selected = document.getElementById(method === 'TWINT' ? 'pay-twint' : 'pay-card');
+            selected.classList.remove('border-white/10');
+            selected.classList.add('border-gold-400');
+            selected.style.boxShadow = '0 0 15px rgba(212,175,55,0.2)';
+        }
 
         // Deposit Calculator
         function updateDeposit(val) {
