@@ -509,7 +509,7 @@
                         </div>
                     </div>
                     <p class="text-xs text-gray-500 font-light italic mb-8">Your contacts will be reached out to by our team with no purchase obligation on their part.</p>
-                    <a href="#" onclick="event.preventDefault();document.getElementById('referral-modal').style.display='flex';document.body.classList.add('overflow-hidden')" class="inline-block bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-3 px-8 rounded-full hover:bg-gold-500 transition-all shadow-lg hover:-translate-y-1 transform">Join the Programme</a>
+                    <a href="#" onclick="event.preventDefault();document.getElementById('referral-modal').classList.remove('hidden');document.body.classList.add('overflow-hidden')" class="inline-block bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-3 px-8 rounded-full hover:bg-gold-500 transition-all shadow-lg hover:-translate-y-1 transform">Join the Programme</a>
                 </div>
             </div>
         </section>
@@ -827,15 +827,47 @@
         })();
     </script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('referral-form').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const btn = this.querySelector('[type="submit"]');
+                const result = document.getElementById('referral-result');
+                btn.disabled = true;
+                btn.textContent = 'Sending…';
+                const data = Object.fromEntries(new FormData(this));
+                try {
+                    const res = await fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        body: JSON.stringify(data)
+                    });
+                    if (!res.ok) throw new Error();
+                    result.textContent = '✓ Entry registered! We will contact you within 48 hours.';
+                    result.classList.remove('hidden', 'text-red-400');
+                    result.classList.add('text-green-400');
+                    this.reset();
+                    setTimeout(() => { document.getElementById('referral-modal').classList.add('hidden'); document.body.classList.remove('overflow-hidden'); }, 3000);
+                } catch {
+                    result.textContent = '✗ An error occurred. Please try again.';
+                    result.classList.remove('hidden', 'text-green-400');
+                    result.classList.add('text-red-400');
+                    btn.disabled = false;
+                    btn.textContent = 'Submit my Entry →';
+                }
+            });
+        });
+    </script>
+
     <!-- REFERRAL MODAL -->
-    <div id="referral-modal" style="display:none" class="fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="referral-modal-title" onclick="if(event.target===this){this.style.display='none';document.body.classList.remove('overflow-hidden')}">
+    <div id="referral-modal" class="fixed inset-0 z-[9999] bg-black/80 hidden flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="referral-modal-title" onclick="if(event.target===this){this.classList.add('hidden');document.body.classList.remove('overflow-hidden')}">
         <div class="bg-[#1a1a1a] border border-[#D4AF37]/30 rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto relative">
             <div class="sticky top-0 bg-[#1a1a1a] border-b border-[#D4AF37]/20 px-6 md:px-8 py-5 flex items-center justify-between rounded-t-3xl z-10">
                 <div>
                     <p class="text-[10px] font-display tracking-[0.3em] uppercase text-[#D4AF37] mb-1">Referral Programme</p>
                     <h2 id="referral-modal-title" class="text-xl font-display font-bold text-white uppercase tracking-wide">Become a Sponsor</h2>
                 </div>
-                <button type="button" onclick="document.getElementById('referral-modal').style.display='none';document.body.classList.remove('overflow-hidden')" class="text-gray-400 hover:text-white transition text-3xl leading-none w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10" aria-label="Close modal">&times;</button>
+                <button type="button" onclick="document.getElementById('referral-modal').classList.add('hidden');document.body.classList.remove('overflow-hidden')" class="text-gray-400 hover:text-white transition text-3xl leading-none w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10" aria-label="Close modal">&times;</button>
             </div>
             <form id="referral-form" class="px-6 md:px-8 py-6 space-y-6">
                 <input type="hidden" name="access_key" value="524d46df-89be-4261-b98c-0213b6572b7e">
@@ -901,41 +933,11 @@
 
                 <div class="flex flex-col sm:flex-row gap-3 pt-2">
                     <button type="submit" class="flex-1 bg-[#D4AF37] text-[#0a0a0a] font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-[#AA8C2C] transition-all shadow-lg">Submit my Entry →</button>
-                    <button type="button" onclick="document.getElementById('referral-modal').style.display='none';document.body.classList.remove('overflow-hidden')" class="flex-1 border border-white/20 text-gray-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:border-white/40 hover:text-white transition-all">Cancel</button>
+                    <button type="button" onclick="document.getElementById('referral-modal').classList.add('hidden');document.body.classList.remove('overflow-hidden')" class="flex-1 border border-white/20 text-gray-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:border-white/40 hover:text-white transition-all">Cancel</button>
                 </div>
                 <p id="referral-result" class="text-center font-medium hidden mt-2 text-sm"></p>
             </form>
         </div>
     </div>
-
-    <script>
-        document.getElementById('referral-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const btn = this.querySelector('[type="submit"]');
-            const result = document.getElementById('referral-result');
-            btn.disabled = true;
-            btn.textContent = 'Sending…';
-            const data = Object.fromEntries(new FormData(this));
-            try {
-                const res = await fetch('https://api.web3forms.com/submit', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-                if (!res.ok) throw new Error();
-                result.textContent = '✓ Entry registered! We will contact you within 48 hours.';
-                result.classList.remove('hidden', 'text-red-400');
-                result.classList.add('text-green-400');
-                this.reset();
-                setTimeout(() => { document.getElementById('referral-modal').style.display = 'none'; document.body.classList.remove('overflow-hidden'); }, 3000);
-            } catch {
-                result.textContent = '✗ An error occurred. Please try again.';
-                result.classList.remove('hidden', 'text-green-400');
-                result.classList.add('text-red-400');
-                btn.disabled = false;
-                btn.textContent = 'Submit my Entry →';
-            }
-        });
-    </script>
 </body>
 </html>
