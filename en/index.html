@@ -526,6 +526,61 @@
             </div>
         </section>
 
+        <section id="abonnements" class="py-24 md:py-32 max-w-6xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-12 md:mb-16 reveal">
+                <p class="text-[10px] font-display tracking-[0.3em] uppercase text-gold-400 mb-3">Regular maintenance</p>
+                <h2 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Subscription Plans</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mb-6"></div>
+                <p class="text-gray-400 font-light max-w-xl mx-auto text-sm md:text-base">Tailored plans to keep your vehicle immaculate year-round. Pricing upon request based on vehicle size.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal">
+                <div class="premium-card rounded-xl p-8 flex flex-col">
+                    <p class="text-[10px] font-display tracking-widest uppercase text-gold-400 mb-3">Essential</p>
+                    <h3 class="text-2xl font-display font-bold text-white mb-2">Essential Plan</h3>
+                    <p class="text-gray-500 text-xs mb-6">Pricing upon request based on vehicle size</p>
+                    <ul class="space-y-3 flex-grow mb-8">
+                        <li class="flex items-start gap-3 text-gray-300 text-sm font-light">
+                            <span class="text-gold-400 mt-0.5">✓</span>
+                            1 interior &amp; exterior wash per month
+                        </li>
+                    </ul>
+                    <a href="#reservation" class="block text-center border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">Request a quote</a>
+                </div>
+                <div class="premium-card rounded-xl p-8 flex flex-col border border-gold-400/40">
+                    <p class="text-[10px] font-display tracking-widest uppercase text-gold-400 mb-3">Serenity</p>
+                    <h3 class="text-2xl font-display font-bold text-white mb-2">Serenity Plan</h3>
+                    <p class="text-gray-500 text-xs mb-6">Pricing upon request based on vehicle size</p>
+                    <ul class="space-y-3 flex-grow mb-8">
+                        <li class="flex items-start gap-3 text-gray-300 text-sm font-light">
+                            <span class="text-gold-400 mt-0.5">✓</span>
+                            2 interior &amp; exterior washes per month
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-300 text-sm font-light">
+                            <span class="text-gold-400 mt-0.5">✓</span>
+                            Protective wax included
+                        </li>
+                    </ul>
+                    <a href="#reservation" class="block text-center bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 transition-all text-sm">Request a quote</a>
+                </div>
+                <div class="premium-card rounded-xl p-8 flex flex-col">
+                    <p class="text-[10px] font-display tracking-widest uppercase text-gold-400 mb-3">Premium</p>
+                    <h3 class="text-2xl font-display font-bold text-white mb-2">Premium Plan</h3>
+                    <p class="text-gray-500 text-xs mb-6">Pricing upon request based on vehicle size</p>
+                    <ul class="space-y-3 flex-grow mb-8">
+                        <li class="flex items-start gap-3 text-gray-300 text-sm font-light">
+                            <span class="text-gold-400 mt-0.5">✓</span>
+                            Unlimited interior &amp; exterior washes
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-300 text-sm font-light">
+                            <span class="text-gold-400 mt-0.5">✓</span>
+                            Leather &amp; fabric care every quarter
+                        </li>
+                    </ul>
+                    <a href="#reservation" class="block text-center border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">Request a quote</a>
+                </div>
+            </div>
+        </section>
+
         <section id="faq" class="py-24 md:py-32 max-w-4xl mx-auto px-4 relative z-10">
             <div class="text-center mb-12 md:mb-16 reveal">
                 <h2 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Frequently Asked Questions</h2>
@@ -615,11 +670,11 @@
                     </div>
                     <div>
                         <label for="prestation" class="block text-[10px] font-display tracking-widest uppercase text-gray-400 mb-2">Desired Service</label>
-                        <select id="prestation" name="prestation" onchange="updateDeposit(this.value)" class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 appearance-none cursor-pointer text-sm">
+                        <select id="prestation" name="prestation" onchange="handlePrestationChange(this.value)" class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 appearance-none cursor-pointer text-sm">
                             <option value="89">Silver Pack — 89.- CHF</option>
                             <option value="149">Gold Pack — 149.- CHF</option>
                             <option value="289">Diamond Pack — 289.- CHF</option>
-                            <option value="0">Subscription (to be defined)</option>
+                            <option value="subscription">Subscription (upon request)</option>
                             <option value="0">Corporate Solution (quote)</option>
                         </select>
                     </div>
@@ -648,7 +703,7 @@
                     <textarea id="message" rows="3" name="message" class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 resize-none text-sm" placeholder="Street, city, postal code..."></textarea>
                 </div>
 
-                <div id="booking-system" class="rounded-xl bg-gradient-to-r from-gold-500/10 to-transparent border border-gold-400/30 p-5">
+                <div id="acompte-block" class="rounded-xl bg-gradient-to-r from-gold-500/10 to-transparent border border-gold-400/30 p-5">
                     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-5">
                         <div>
                             <p class="text-[10px] font-display tracking-widest uppercase text-gold-400 mb-1">Deposit to pay (30%)</p>
@@ -680,6 +735,11 @@
                         </button>
                     </div>
                     <input type="hidden" id="payment_method" name="payment_method" value="not_selected">
+                </div>
+
+                <div id="subscription-msg" class="hidden rounded-xl bg-gradient-to-r from-gold-500/10 to-transparent border border-gold-400/30 p-6 text-center">
+                    <p class="text-gold-400 font-display font-bold tracking-widest uppercase text-sm mb-2">Subscription</p>
+                    <p class="text-white font-light text-sm">We will contact you to tailor your plan.</p>
                 </div>
 
                 <button type="submit" id="submit-btn" class="cta-devis w-full mt-2">Pay Deposit & Book →</button>
@@ -813,6 +873,19 @@
             selected.classList.remove('border-white/10');
             selected.classList.add('border-gold-400');
             selected.style.boxShadow = '0 0 15px rgba(212,175,55,0.2)';
+        }
+
+        function handlePrestationChange(val) {
+            const acompteBlock = document.getElementById('acompte-block');
+            const subscriptionMsg = document.getElementById('subscription-msg');
+            if (val === 'subscription') {
+                acompteBlock.classList.add('hidden');
+                subscriptionMsg.classList.remove('hidden');
+            } else {
+                acompteBlock.classList.remove('hidden');
+                subscriptionMsg.classList.add('hidden');
+                updateDeposit(val);
+            }
         }
 
         // Deposit Calculator
