@@ -796,72 +796,180 @@ details[open] summary ~ * {
 
         <section id="abonnements" class="py-24 md:py-32 relative z-10">
             <div class="w-full max-w-5xl mx-auto px-4">
-            <div class="text-center mb-12 md:mb-16 reveal">
-                <p class="text-[10px] font-display tracking-[0.3em] uppercase text-gold-400 mb-3">Regular maintenance</p>
-                <h2 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Subscription Plans</h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mb-6"></div>
-                <p class="text-gray-400 font-light max-w-xl mx-auto text-sm md:text-base">Tailored plans to keep your vehicle immaculate year-round. Pricing upon request based on vehicle size.</p>
+                <div class="text-center mb-12 md:mb-16 reveal">
+                    <p class="text-[10px] font-display tracking-[0.3em] uppercase text-gold-400 mb-3">Regular maintenance</p>
+                    <h2 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Subscription Plans</h2>
+                    <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mb-8"></div>
+                    <div class="flex flex-wrap justify-center gap-3 mb-4">
+                        <button id="btn-mensuel" onclick="setAboEng('mensuel')" class="px-5 py-2 rounded-full text-xs font-display font-bold uppercase tracking-widest transition-all bg-gold-400 text-charcoal-900">Monthly</button>
+                        <button id="btn-annuel"  onclick="setAboEng('annuel')"  class="px-5 py-2 rounded-full text-xs font-display uppercase tracking-widest transition-all text-gray-400">Annual</button>
+                    </div>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <button id="btn-freq1" onclick="setAboFreq(1)" class="px-5 py-2 rounded-full text-xs font-display font-bold uppercase tracking-widest transition-all bg-gold-400 text-charcoal-900">1×/month</button>
+                        <button id="btn-freq2" onclick="setAboFreq(2)" class="px-5 py-2 rounded-full text-xs font-display uppercase tracking-widest transition-all text-gray-400">2×/month</button>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mt-12">
+
+                    <div class="bg-gray-900/50 border border-gray-800 rounded-2xl p-8 flex flex-col hover:-translate-y-2 hover:border-gold-500/50 transition-all duration-300 relative overflow-hidden">
+                        <p class="text-[10px] font-display tracking-widest uppercase text-gray-400 mb-3">Pack</p>
+                        <h3 class="text-2xl font-display font-bold text-white mb-4">Silver</h3>
+                        <div class="mb-1">
+                            <span id="price-argent" class="text-4xl font-display font-bold text-gold-400">80</span>
+                            <span class="text-gold-400 font-display font-bold text-xl"> CHF</span>
+                            <span class="text-gray-500 text-xs">/period</span>
+                        </div>
+                        <div class="flex items-center gap-2 mb-6">
+                            <span id="base-argent" class="text-gray-600 text-xs" style="text-decoration:line-through">89 CHF</span>
+                            <span id="discount-argent" class="text-green-400 text-xs font-bold">−10%</span>
+                        </div>
+                        <ul class="space-y-3 flex-grow mb-8">
+                            <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Interior + exterior wash</li>
+                            <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Full vacuum</li>
+                            <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Interior windows</li>
+                        </ul>
+                        <a href="#reservation" class="block text-center border border-gold-500 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 hover:text-black transition-all text-sm">Subscribe</a>
+                    </div>
+
+                    <div class="bg-gray-900 border-2 border-gold-500 rounded-2xl p-8 flex flex-col hover:-translate-y-2 transition-all duration-300 relative" style="box-shadow: 0 0 30px rgba(212,175,55,0.15)">
+                        <span class="absolute top-0 right-8 bg-gold-500 text-black text-[10px] font-bold px-3 py-1 rounded-b-lg uppercase tracking-widest">Popular</span>
+                        <p class="text-[10px] font-display tracking-widest uppercase text-gold-400 mb-3 mt-4">Pack</p>
+                        <h3 class="text-2xl font-display font-bold text-white mb-4">Gold</h3>
+                        <div class="mb-1">
+                            <span id="price-or" class="text-4xl font-display font-bold text-gold-400">134.10</span>
+                            <span class="text-gold-400 font-display font-bold text-xl"> CHF</span>
+                            <span class="text-gray-500 text-xs">/period</span>
+                        </div>
+                        <div class="flex items-center gap-2 mb-6">
+                            <span id="base-or" class="text-gray-600 text-xs" style="text-decoration:line-through">149 CHF</span>
+                            <span id="discount-or" class="text-green-400 text-xs font-bold">−10%</span>
+                        </div>
+                        <ul class="space-y-3 flex-grow mb-8">
+                            <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Everything in Silver</li>
+                            <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Seat shampooing</li>
+                            <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Protective wax</li>
+                            <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Premium air freshener</li>
+                        </ul>
+                        <a href="#reservation" class="block text-center bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 transition-all text-sm">Subscribe</a>
+                    </div>
+
+                    <div class="bg-gray-900/50 border border-gray-800 rounded-2xl p-8 flex flex-col hover:-translate-y-2 hover:border-gold-500/50 transition-all duration-300 relative overflow-hidden">
+                        <p class="text-[10px] font-display tracking-widest uppercase text-gray-400 mb-3">Pack</p>
+                        <h3 class="text-2xl font-display font-bold text-white mb-4">Diamond</h3>
+                        <div class="mb-1">
+                            <span id="price-diamant" class="text-4xl font-display font-bold text-gold-400">251</span>
+                            <span class="text-gold-400 font-display font-bold text-xl"> CHF</span>
+                            <span class="text-gray-500 text-xs">/period</span>
+                        </div>
+                        <div class="flex items-center gap-2 mb-6">
+                            <span id="base-diamant" class="text-gray-600 text-xs" style="text-decoration:line-through">289 CHF</span>
+                            <span id="discount-diamant" class="text-green-400 text-xs font-bold">−13%</span>
+                        </div>
+                        <ul class="space-y-3 flex-grow mb-8">
+                            <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Everything in Gold</li>
+                            <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Leather / plastic treatment</li>
+                            <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Pick-up &amp; delivery</li>
+                            <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Before/after photo report</li>
+                        </ul>
+                        <a href="#reservation" class="block text-center border border-gold-500 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 hover:text-black transition-all text-sm">Subscribe</a>
+                    </div>
+
+                </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mt-12">
+        </section>
 
-                <div class="bg-gray-900/50 border border-gray-800 rounded-2xl p-8 flex flex-col hover:-translate-y-2 hover:border-gold-500/50 transition-all duration-300 relative overflow-hidden">
-                    <svg class="w-10 h-10 text-gold-400 mb-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
-                    </svg>
-                    <p class="text-[10px] font-display tracking-widest uppercase text-gold-400 mb-3">Essential</p>
-                    <h3 class="text-2xl font-display font-bold text-white mb-2">Essential Plan</h3>
-                    <p class="text-gray-500 text-xs mb-6">Pricing upon request based on vehicle size</p>
-                    <ul class="space-y-3 flex-grow mb-8">
-                        <li class="flex items-start gap-3 text-gray-300 text-sm font-light">
-                            <span class="text-gold-400 mt-0.5">✓</span>
-                            1 interior &amp; exterior wash per month
-                        </li>
-                    </ul>
-                    <a href="#reservation" class="block text-center border border-gold-500 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 hover:text-black transition-all text-sm">Request a quote</a>
+        <section id="combos" class="py-24 md:py-32 relative z-10">
+            <div class="w-full max-w-5xl mx-auto px-4">
+                <div class="text-center mb-12 md:mb-16 reveal">
+                    <p class="text-[10px] font-display tracking-[0.3em] uppercase text-gold-400 mb-3">Save more</p>
+                    <h2 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Best Value Combos</h2>
+                    <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
                 </div>
+                <div class="flex flex-col md:flex-row gap-6 lg:gap-8">
 
-                <div class="bg-gray-900 border-2 border-gold-500 rounded-2xl p-8 flex flex-col hover:-translate-y-2 transition-all duration-300 relative" style="box-shadow: 0 0 30px rgba(212,175,55,0.15)">
-                    <span class="absolute top-0 right-8 bg-gold-500 text-black text-[10px] font-bold px-3 py-1 rounded-b-lg uppercase tracking-widest">Recommended</span>
-                    <svg class="w-10 h-10 text-gold-400 mb-5 mt-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                    </svg>
-                    <p class="text-[10px] font-display tracking-widest uppercase text-gold-400 mb-3">Serenity</p>
-                    <h3 class="text-2xl font-display font-bold text-white mb-2">Serenity Plan</h3>
-                    <p class="text-gray-500 text-xs mb-6">Pricing upon request based on vehicle size</p>
-                    <ul class="space-y-3 flex-grow mb-8">
-                        <li class="flex items-start gap-3 text-gray-300 text-sm font-light">
-                            <span class="text-gold-400 mt-0.5">✓</span>
-                            2 interior &amp; exterior washes per month
-                        </li>
-                        <li class="flex items-start gap-3 text-gray-300 text-sm font-light">
-                            <span class="text-gold-400 mt-0.5">✓</span>
-                            Protective wax included
-                        </li>
-                    </ul>
-                    <a href="#reservation" class="block text-center bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 transition-all text-sm">Request a quote</a>
+                    <div class="flex-1 bg-gray-900/50 border border-gray-800 rounded-2xl p-8 flex flex-col hover:-translate-y-2 hover:border-gold-500/50 transition-all duration-300">
+                        <p class="text-[10px] font-display tracking-widest uppercase text-gold-400 mb-2">Combo</p>
+                        <h3 class="text-xl font-display font-bold text-white mb-1">Excellence</h3>
+                        <p class="text-gray-500 text-xs mb-5">Gold Pack + Silver Pack</p>
+                        <div class="flex items-end gap-3 mb-6">
+                            <span class="text-4xl font-display font-bold text-gold-400">190 <span class="text-xl">CHF</span></span>
+                            <div class="pb-1">
+                                <span class="text-gray-600 text-sm block" style="text-decoration:line-through">238 CHF</span>
+                                <span class="text-green-400 text-xs font-bold">−20%</span>
+                            </div>
+                        </div>
+                        <ul class="space-y-3 flex-grow mb-8">
+                            <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>1 Gold detailing + 1 Silver wash</li>
+                            <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Valid for 30 days</li>
+                            <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Flexible scheduling</li>
+                        </ul>
+                        <a href="#reservation" class="block text-center border border-gold-500 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 hover:text-black transition-all text-sm">Book Now</a>
+                    </div>
+
+                    <div class="flex-1 bg-gray-900 border-2 border-gold-500 rounded-2xl p-8 flex flex-col hover:-translate-y-2 transition-all duration-300 relative" style="box-shadow: 0 0 30px rgba(212,175,55,0.15)">
+                        <span class="absolute top-0 right-8 bg-gold-500 text-black text-[10px] font-bold px-3 py-1 rounded-b-lg uppercase tracking-widest">Best value</span>
+                        <p class="text-[10px] font-display tracking-widest uppercase text-gold-400 mb-2 mt-4">Combo</p>
+                        <h3 class="text-xl font-display font-bold text-white mb-1">Prestige</h3>
+                        <p class="text-gray-500 text-xs mb-5">Diamond Pack + Silver Pack</p>
+                        <div class="flex items-end gap-3 mb-6">
+                            <span class="text-4xl font-display font-bold text-gold-400">302 <span class="text-xl">CHF</span></span>
+                            <div class="pb-1">
+                                <span class="text-gray-600 text-sm block" style="text-decoration:line-through">378 CHF</span>
+                                <span class="text-green-400 text-xs font-bold">−20%</span>
+                            </div>
+                        </div>
+                        <ul class="space-y-3 flex-grow mb-8">
+                            <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>1 Diamond detailing + 1 Silver wash</li>
+                            <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Valid for 30 days</li>
+                            <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Pick-up included</li>
+                            <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Before/after photo report</li>
+                        </ul>
+                        <a href="#reservation" class="block text-center bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 transition-all text-sm">Book Now</a>
+                    </div>
+
                 </div>
-
-                <div class="bg-gray-900/50 border border-gray-800 rounded-2xl p-8 flex flex-col hover:-translate-y-2 hover:border-gold-500/50 transition-all duration-300 relative overflow-hidden">
-                    <svg class="w-10 h-10 text-gold-400 mb-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"/>
-                    </svg>
-                    <p class="text-[10px] font-display tracking-widest uppercase text-gold-400 mb-3">Premium</p>
-                    <h3 class="text-2xl font-display font-bold text-white mb-2">Premium Plan</h3>
-                    <p class="text-gray-500 text-xs mb-6">Pricing upon request based on vehicle size</p>
-                    <ul class="space-y-3 flex-grow mb-8">
-                        <li class="flex items-start gap-3 text-gray-300 text-sm font-light">
-                            <span class="text-gold-400 mt-0.5">✓</span>
-                            Unlimited interior &amp; exterior washes
-                        </li>
-                        <li class="flex items-start gap-3 text-gray-300 text-sm font-light">
-                            <span class="text-gold-400 mt-0.5">✓</span>
-                            Leather &amp; fabric care every quarter
-                        </li>
-                    </ul>
-                    <a href="#reservation" class="block text-center border border-gold-500 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 hover:text-black transition-all text-sm">Request a quote</a>
-                </div>
-
             </div>
+        </section>
+
+        <section id="referral" class="py-24 md:py-32 relative z-10">
+            <div class="w-full max-w-5xl mx-auto px-4">
+                <div class="rounded-3xl overflow-hidden relative" style="background: linear-gradient(135deg, #141414 0%, #1a1500 50%, #141414 100%); border: 1px solid rgba(212,175,55,0.2);">
+                    <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(rgba(212,175,55,0.4) 1px, transparent 1px); background-size: 20px 20px;"></div>
+                    <div class="relative z-10 p-10 md:p-16">
+                        <div class="text-center mb-10 reveal">
+                            <div class="text-5xl mb-4">🤝</div>
+                            <p class="text-[10px] font-display tracking-[0.3em] uppercase text-gold-400 mb-3">Exclusive programme</p>
+                            <h2 class="text-3xl md:text-4xl font-display font-semibold text-white mb-4 tracking-wide uppercase">Referral Programme</h2>
+                            <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mb-6"></div>
+                            <p class="text-gold-400 font-display font-bold text-lg md:text-xl">Refer 5 people = 1 Free Gold Wash</p>
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+                            <div class="text-center p-4">
+                                <div class="text-3xl mb-2">🚗</div>
+                                <p class="text-white font-display font-bold text-sm uppercase tracking-wider mb-1">Refer</p>
+                                <p class="text-gray-400 text-xs font-light">Share your unique link with friends &amp; family</p>
+                            </div>
+                            <div class="text-center p-4">
+                                <div class="text-3xl mb-2">🎁</div>
+                                <p class="text-white font-display font-bold text-sm uppercase tracking-wider mb-1">They benefit</p>
+                                <p class="text-gray-400 text-xs font-light">−10% on their 1st wash</p>
+                            </div>
+                            <div class="text-center p-4">
+                                <div class="text-3xl mb-2">🎰</div>
+                                <p class="text-white font-display font-bold text-sm uppercase tracking-wider mb-1">Accumulate</p>
+                                <p class="text-gray-400 text-xs font-light">Track your validated referrals</p>
+                            </div>
+                            <div class="text-center p-4">
+                                <div class="text-3xl mb-2">⭐</div>
+                                <p class="text-white font-display font-bold text-sm uppercase tracking-wider mb-1">Collect</p>
+                                <p class="text-gray-400 text-xs font-light">Get 1 free Gold Wash after 5 referrals</p>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <a href="mailto:info@cleancarswash.ch?subject=Referral%20Programme" class="inline-block bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-4 px-10 rounded-full hover:bg-gold-500 transition-all text-sm">Become a Referrer</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1234,6 +1342,31 @@ details[open] summary ~ * {
                 btnS.innerText = 'Send Request';
             });
         });
+        (function() {
+            var P = {
+                argent:  { m1:['80','89 CHF','−10%'],       m2:['142.40','178 CHF','−20%'], a1:['75.60','89 CHF','−15%'],   a2:['133','178 CHF','−25%']   },
+                or:      { m1:['134.10','149 CHF','−10%'],   m2:['238.40','298 CHF','−20%'], a1:['126.65','149 CHF','−15%'], a2:['223','298 CHF','−25%']   },
+                diamant: { m1:['251','289 CHF','−13%'],      m2:['445','578 CHF','−23%'],    a1:['239','289 CHF','−17%'],    a2:['421','578 CHF','−27%']   }
+            };
+            var eng = 'm', freq = 1;
+            var ON  = 'px-5 py-2 rounded-full text-xs font-display font-bold uppercase tracking-widest transition-all bg-gold-400 text-charcoal-900';
+            var OFF = 'px-5 py-2 rounded-full text-xs font-display uppercase tracking-widest transition-all text-gray-400';
+            function render() {
+                var k = eng + freq;
+                ['argent','or','diamant'].forEach(function(p) {
+                    var d = P[p][k];
+                    document.getElementById('price-' + p).textContent    = d[0];
+                    document.getElementById('base-' + p).textContent     = d[1];
+                    document.getElementById('discount-' + p).textContent = d[2];
+                });
+                document.getElementById('btn-mensuel').className = eng==='m' ? ON : OFF;
+                document.getElementById('btn-annuel').className  = eng==='a' ? ON : OFF;
+                document.getElementById('btn-freq1').className   = freq===1  ? ON : OFF;
+                document.getElementById('btn-freq2').className   = freq===2  ? ON : OFF;
+            }
+            window.setAboEng  = function(e) { eng  = e==='mensuel' ? 'm' : 'a'; render(); };
+            window.setAboFreq = function(f) { freq = +f; render(); };
+        })();
         /* TODO: Enable once sw.js is configured
         if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
