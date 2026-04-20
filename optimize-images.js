@@ -76,6 +76,14 @@ const tasks = [
         format: 'webp',
         quality: 90,
         label: 'logo-v2.webp → logo-v2-tiny.webp (header retina)'
+    },
+    {
+        input: path.join(IMAGES_DIR, 'logo-v2.webp'),
+        output: path.join(IMAGES_DIR, 'logo-mobile.webp'),
+        width: 100,
+        format: 'webp',
+        quality: 90,
+        label: 'logo-v2.webp → logo-mobile.webp (mobile header)'
     }
 ];
 
