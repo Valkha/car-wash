@@ -60,6 +60,22 @@ const tasks = [
         format: 'webp',
         quality: 80,
         label: 'MB-01-opt.webp → MB-01-opt-sm.webp (mobile srcset)'
+    },
+    {
+        input: path.join(IMAGES_DIR, 'MB-01-opt.webp'),
+        output: path.join(IMAGES_DIR, 'MB-01-opt-xs.webp'),
+        width: 600,
+        format: 'webp',
+        quality: 80,
+        label: 'MB-01-opt.webp → MB-01-opt-xs.webp (600w srcset)'
+    },
+    {
+        input: path.join(IMAGES_DIR, 'logo-v2.webp'),
+        output: path.join(IMAGES_DIR, 'logo-v2-tiny.webp'),
+        width: 120,
+        format: 'webp',
+        quality: 90,
+        label: 'logo-v2.webp → logo-v2-tiny.webp (header retina)'
     }
 ];
 
