@@ -44,6 +44,22 @@ const tasks = [
         format: 'webp',
         quality: 90,
         label: 'logo-v2.png → logo-v2.webp'
+    },
+    {
+        input: path.join(IMAGES_DIR, 'hero-bg-raw.jpg'),
+        output: path.join(IMAGES_DIR, 'hero-bg-opt.webp'),
+        width: 1200,
+        format: 'webp',
+        quality: 75,
+        label: 'hero-bg-raw.jpg → hero-bg-opt.webp (LCP hero background)'
+    },
+    {
+        input: path.join(IMAGES_DIR, 'MB-01-opt.webp'),
+        output: path.join(IMAGES_DIR, 'MB-01-opt-sm.webp'),
+        width: 400,
+        format: 'webp',
+        quality: 80,
+        label: 'MB-01-opt.webp → MB-01-opt-sm.webp (mobile srcset)'
     }
 ];
 

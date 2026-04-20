@@ -39,7 +39,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=2070&auto=format&fit=crop" fetchpriority="high">
+    <link rel="preload" as="image" href="../assets/images/hero-bg-opt.webp" fetchpriority="high">
 
     <script type="application/ld+json">
     {
@@ -118,6 +118,11 @@
 
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@300;400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet"></noscript>
+    <style>
+        .bg-hero{background-image:linear-gradient(to bottom,rgba(10,10,10,.4),rgba(10,10,10,1)),url('../assets/images/hero-bg-opt.webp');background-size:cover;background-position:center}
+        #mobile-menu{max-height:0;opacity:0;overflow:hidden;transition:max-height .3s ease-in-out,opacity .3s ease-in-out}
+        #mobile-menu.open{max-height:500px;opacity:1}
+    </style>
     <link rel="stylesheet" href="../assets/css/tailwind.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
@@ -285,7 +290,10 @@
                     <div id="slider-track" class="flex transition-transform duration-700 ease-in-out w-full">
                         
                         <div class="w-full flex-shrink-0 relative group h-[50vh] md:h-[60vh] min-h-[350px] overflow-hidden" role="group" aria-roledescription="slide" aria-label="1 of 3">
-                            <img src="../assets/images/MB-01-opt.webp" alt="Mercedes — Step 1: surface preparation before detailing" width="800" height="600" class="img-fade" fetchpriority="high">
+                            <img src="../assets/images/MB-01-opt.webp"
+                                 srcset="../assets/images/MB-01-opt-sm.webp 400w, ../assets/images/MB-01-opt.webp 800w"
+                                 sizes="(max-width: 480px) 400px, 800px"
+                                 alt="Mercedes — Step 1: surface preparation before detailing" width="800" height="600" class="img-fade" fetchpriority="high">
                             <img src="../assets/images/MB-02-opt.webp" alt="Shampoo application on Mercedes wheels and trim — detailing step 2" width="800" height="600" class="img-fade" loading="lazy">
                             <img src="../assets/images/MB-03-opt.webp" alt="Final wax and shine on Mercedes bodywork — detailing step 3" width="800" height="600" class="img-fade" loading="lazy">
                             <div class="absolute inset-0 slide-overlay flex flex-col justify-end p-6 md:p-10 z-10">
@@ -816,11 +824,18 @@
 
     <script>
         // GRADE S: Golden Progress Bar
+        let _scrollTicking = false;
         window.addEventListener('scroll', () => {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.getElementById("scroll-progress").style.width = scrolled + "%";
+            if (!_scrollTicking) {
+                requestAnimationFrame(() => {
+                    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    const scrolled = (winScroll / height) * 100;
+                    document.getElementById("scroll-progress").style.width = scrolled + "%";
+                    _scrollTicking = false;
+                });
+                _scrollTicking = true;
+            }
         });
 
         // Mobile Menu & ARIA
