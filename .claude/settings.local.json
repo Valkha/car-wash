@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Bash(node generate-pages.js)"
+      "Bash(node generate-pages.js)",
+      "Bash(npm install *)",
+      "Bash(node optimize-images.js)",
+      "Bash(sed -i 's|<img src=\"assets/images/logo-v2\\\\.png\"|<img src=\"assets/images/logo-v2.webp\"|g' abonnements.html)",
+      "Bash(sed -i 's|<img src=\"../assets/images/logo-v2\\\\.png\"|<img src=\"../assets/images/logo-v2.webp\"|g' en/subscriptions.html)"
     ]
   }
 }
