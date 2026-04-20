@@ -20,12 +20,14 @@
     <meta property="og:title" content="Premium Mobile Car Wash in Geneva | Clean Cars Wash">
     <meta property="og:description" content="Professional mobile detailing service in Geneva and Vaud. Home pick-up, showroom results. Silver, Gold, and Diamond packages.">
     <meta property="og:image" content="https://www.clean-cars-wash.ch/assets/images/MB-01.webp">
+    <meta property="og:image:alt" content="Premium Mercedes detailing — Clean Cars Wash Geneva">
     <meta property="og:locale" content="en_US">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Premium Mobile Car Wash Geneva | Clean Cars Wash">
     <meta name="twitter:image" content="https://www.clean-cars-wash.ch/assets/images/MB-01.webp">
-    
+    <meta name="twitter:description" content="Professional mobile detailing in Geneva and Vaud. Home pick-up, showroom results. Silver, Gold, Diamond packages.">
+
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Clean Cars">
@@ -114,6 +116,7 @@
     }
     </script>
 
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@300;400;600;700&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/tailwind.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
@@ -282,9 +285,9 @@
                     <div id="slider-track" class="flex transition-transform duration-700 ease-in-out w-full">
                         
                         <div class="w-full flex-shrink-0 relative group h-[50vh] md:h-[60vh] min-h-[350px] overflow-hidden" role="group" aria-roledescription="slide" aria-label="1 of 3">
-                            <img src="../assets/images/MB-01.webp" alt="Mercedes — Step 1: surface preparation before detailing" width="800" height="600" class="img-fade">
-                            <img src="../assets/images/MB-02.webp" alt="Mercedes Detailing Step 2" width="800" height="600" class="img-fade" loading="lazy">
-                            <img src="../assets/images/MB-03.webp" alt="Mercedes Detailing Step 3" width="800" height="600" class="img-fade" loading="lazy">
+                            <img src="../assets/images/MB-01.webp" alt="Mercedes — Step 1: surface preparation before detailing" width="800" height="600" class="img-fade" fetchpriority="high">
+                            <img src="../assets/images/MB-02.webp" alt="Shampoo application on Mercedes wheels and trim — detailing step 2" width="800" height="600" class="img-fade" loading="lazy">
+                            <img src="../assets/images/MB-03.webp" alt="Final wax and shine on Mercedes bodywork — detailing step 3" width="800" height="600" class="img-fade" loading="lazy">
                             <div class="absolute inset-0 slide-overlay flex flex-col justify-end p-6 md:p-10 z-10">
                                 <h4 class="text-gold-400 font-display font-bold text-xl md:text-2xl tracking-widest uppercase mb-2">Diamond Pack 💎</h4>
                                 <p class="text-gray-300 font-light text-sm md:text-base">Premium wax, leather care, and deep decontamination</p>
@@ -323,9 +326,9 @@
                     </button>
                     
                     <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20" id="slider-dots">
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 active" onclick="goToSlide(0)" aria-label="Go to slide 1"></button>
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50" onclick="goToSlide(1)" aria-label="Go to slide 2"></button>
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50" onclick="goToSlide(2)" aria-label="Go to slide 3"></button>
+                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 active p-3 -m-3" onclick="goToSlide(0)" aria-label="Go to slide 1"></button>
+                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-3 -m-3" onclick="goToSlide(1)" aria-label="Go to slide 2"></button>
+                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-3 -m-3" onclick="goToSlide(2)" aria-label="Go to slide 3"></button>
                     </div>
                 </div>
             </div>
@@ -347,7 +350,7 @@
                     <div class="flex items-center gap-4 border-t border-white/5 pt-6">
                         <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-400 font-display font-bold text-sm" aria-hidden="true">ML</div>
                         <div>
-                            <h4 class="text-white font-display font-bold text-xs uppercase">Marc L.</h4>
+                            <p class="text-white font-display font-bold text-xs uppercase">Marc L.</p>
                             <span class="text-gray-500 text-[10px]">Geneva</span>
                         </div>
                     </div>
@@ -361,7 +364,7 @@
                     <div class="flex items-center gap-4 border-t border-white/5 pt-6">
                         <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-400 font-display font-bold text-sm" aria-hidden="true">ST</div>
                         <div>
-                            <h4 class="text-white font-display font-bold text-xs uppercase">Sophie T.</h4>
+                            <p class="text-white font-display font-bold text-xs uppercase">Sophie T.</p>
                             <span class="text-gray-500 text-[10px]">Lausanne</span>
                         </div>
                     </div>
@@ -375,7 +378,7 @@
                     <div class="flex items-center gap-4 border-t border-white/5 pt-6">
                         <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-400 font-display font-bold text-sm" aria-hidden="true">SS</div>
                         <div>
-                            <h4 class="text-white font-display font-bold text-xs uppercase">Souheil S.</h4>
+                            <p class="text-white font-display font-bold text-xs uppercase">Souheil S.</p>
                             <span class="text-gray-500 text-[10px]">Geneva</span>
                         </div>
                     </div>
@@ -653,6 +656,7 @@
             <form id="quote-form" class="premium-card p-6 md:p-10 rounded-2xl flex flex-col gap-6 reveal delay-200">
                 <input type="hidden" name="access_key" value="524d46df-89be-4261-b98c-0213b6572b7e">
                 <input type="hidden" name="subject" value="New Booking — Clean Cars Wash">
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1" autocomplete="off">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                         <label for="nom" class="block text-[10px] font-display tracking-widest uppercase text-gray-400 mb-2">Full Name</label>
@@ -784,7 +788,7 @@
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
             <p class="text-xs text-gray-300">We use cookies to optimize your experience. <a href="privacy-policy.html" class="text-gold-400 underline">Details</a>.</p>
             <div class="flex gap-4">
-                <button id="decline-cookies" class="text-xs uppercase">Decline</button>
+                <button id="decline-cookies" class="text-xs uppercase text-gray-400 px-4 py-2 hover:text-white transition">Decline</button>
                 <button id="accept-cookies" class="bg-gold-400 text-charcoal-900 text-xs font-bold px-6 py-2 rounded">Accept</button>
             </div>
         </div>
@@ -911,6 +915,11 @@
         const form = document.getElementById('quote-form');
         form.addEventListener('submit', (e) => {
             e.preventDefault();
+            const isDevis = ['subscription', 'corporate'].includes(document.getElementById('prestation').value);
+            if (!isDevis && document.getElementById('payment_method').value === 'not_selected') {
+                alert('Please select a payment method (TWINT or Credit/Debit Card).');
+                return;
+            }
             const btnS = document.getElementById('submit-button');
             btnS.innerText = 'Sending...';
             fetch('https://api.web3forms.com/submit', {
@@ -924,6 +933,8 @@
                 result.className = 'text-center font-medium mt-2 text-sm text-green-400';
                 btnS.innerText = 'Sent!';
                 form.reset();
+                const selectEl = document.getElementById('prestation');
+                if (selectEl) handlePrestationChange(selectEl.value);
             }).catch(() => {
                 const result = document.getElementById('form-result');
                 result.innerText = "Submission failed. Please call us directly at +41 78 265 70 71.";
@@ -931,6 +942,7 @@
                 btnS.innerText = 'Send Request';
             });
         });
+        /* TODO: Enable once sw.js is configured
         if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('../sw.js').then(reg => {
@@ -938,6 +950,7 @@
         }).catch(err => console.log('SW fail', err));
     });
 }
+        */
     </script>
     <script>
         (function () {

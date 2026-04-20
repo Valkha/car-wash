@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
-    <title>Lavage Auto & Detailing Premium | Entretien Sur Mesure</title>
+    <title>Lavage Auto Premium à Genève | Clean Cars Wash</title>
     <meta name="description" content="Redonnez l'éclat du neuf à votre véhicule. Services de nettoyage auto haut de gamme, detailing et abonnements pour particuliers et professionnels. Demandez votre devis en ligne.">
     <meta name="keywords" content="clean cars wash, lavage auto genève, detailing genève, lavage auto mobile, nettoyage voiture domicile, protection céramique genève, AHMED-YAHIA LM">
     <meta name="author" content="Clean Cars Wash">
@@ -20,12 +20,14 @@
     <meta property="og:title" content="Lavage Auto Premium à Genève | Clean Cars Wash">
     <meta property="og:description" content="Service de detailing mobile sur Genève et Vaud. Récupération à domicile, résultat showroom. Packs Argent, Or, Diamant.">
     <meta property="og:image" content="https://www.clean-cars-wash.ch/assets/images/MB-01.webp">
+    <meta property="og:image:alt" content="Detailing premium sur Mercedes — Clean Cars Wash Genève">
     <meta property="og:locale" content="fr_CH">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Lavage Auto Premium à Genève | Clean Cars Wash">
     <meta name="twitter:image" content="https://www.clean-cars-wash.ch/assets/images/MB-01.webp">
-    
+    <meta name="twitter:description" content="Service de detailing mobile sur Genève et Vaud. Récupération à domicile, résultat showroom.">
+
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Clean Cars">
@@ -113,6 +115,7 @@
     }
     </script>
 
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@300;400;600;700&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/tailwind.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -138,7 +141,7 @@
                         <li><a href="#galerie" class="hover:text-gold-400 transition duration-300">Galerie</a></li>
                         <li><a href="#avis" class="hover:text-gold-400 transition duration-300">Avis</a></li>
                         <li><a href="#tarifs" class="hover:text-gold-400 transition duration-300">Tarifs</a></li>
-                        <li><a href="abonnements.html" class="hover:text-gold-400 transition duration-300">Abonnements</a></li>
+                        <li><a href="#abonnements" class="hover:text-gold-400 transition duration-300">Abonnements</a></li>
                         <li><a href="#faq" class="hover:text-gold-400 transition duration-300">FAQ</a></li>
                         <li><a href="#reservation" class="text-gold-400 border border-gold-400 px-4 py-2 hover:bg-gold-400 hover:text-charcoal-900 transition duration-300">Réserver</a></li>
                     </ul>
@@ -162,7 +165,7 @@
                 <li><a href="#galerie" class="block hover:text-gold-400 mobile-link">Galerie</a></li>
                 <li><a href="#avis" class="block hover:text-gold-400 mobile-link">Avis</a></li>
                 <li><a href="#tarifs" class="block hover:text-gold-400 mobile-link">Tarifs</a></li>
-                <li><a href="abonnements.html" class="block hover:text-gold-400 mobile-link">Abonnements</a></li>
+                <li><a href="#abonnements" class="block hover:text-gold-400 mobile-link">Abonnements</a></li>
                 <li><a href="#faq" class="block hover:text-gold-400 mobile-link">FAQ</a></li>
                 <li><a href="#reservation" class="block text-gold-400 mobile-link">Réserver un Créneau</a></li>
             </ul>
@@ -281,9 +284,9 @@
                     <div id="slider-track" class="flex transition-transform duration-700 ease-in-out w-full">
                         
                         <div class="w-full flex-shrink-0 relative group h-[50vh] md:h-[60vh] min-h-[350px] overflow-hidden" role="group" aria-roledescription="diapositive" aria-label="1 sur 3">
-                            <img src="assets/images/MB-01.webp" alt="Mercedes — Étape 1 : préparation de la surface avant detailing" width="800" height="600" class="img-fade">
-                            <img src="assets/images/MB-02.webp" alt="Détail Mercedes Etape 2" width="800" height="600" class="img-fade" loading="lazy">
-                            <img src="assets/images/MB-03.webp" alt="Détail Mercedes Etape 3" width="800" height="600" class="img-fade" loading="lazy">
+                            <img src="assets/images/MB-01.webp" alt="Mercedes — Étape 1 : préparation de la surface avant detailing" width="800" height="600" class="img-fade" fetchpriority="high">
+                            <img src="assets/images/MB-02.webp" alt="Application de shampoing sur jantes et plastiques Mercedes — étape 2 detailing" width="800" height="600" class="img-fade" loading="lazy">
+                            <img src="assets/images/MB-03.webp" alt="Finition cire et brillance finale sur carrosserie Mercedes — étape 3 detailing" width="800" height="600" class="img-fade" loading="lazy">
                             <div class="absolute inset-0 slide-overlay flex flex-col justify-end p-6 md:p-10 z-10">
                                 <h4 class="text-gold-400 font-display font-bold text-xl md:text-2xl tracking-widest uppercase mb-2">Pack Diamant 💎</h4>
                                 <p class="text-gray-300 font-light text-sm md:text-base">Cire premium déperlante, soin cuir/alcantara et traitement anti-odeur</p>
@@ -322,9 +325,9 @@
                     </button>
                     
                     <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20" id="slider-dots">
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 active" onclick="goToSlide(0)" aria-label="Aller à la diapositive 1"></button>
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50" onclick="goToSlide(1)" aria-label="Aller à la diapositive 2"></button>
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50" onclick="goToSlide(2)" aria-label="Aller à la diapositive 3"></button>
+                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 active p-3 -m-3" onclick="goToSlide(0)" aria-label="Aller à la diapositive 1"></button>
+                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-3 -m-3" onclick="goToSlide(1)" aria-label="Aller à la diapositive 2"></button>
+                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-3 -m-3" onclick="goToSlide(2)" aria-label="Aller à la diapositive 3"></button>
                     </div>
                 </div>
             </div>
@@ -346,7 +349,7 @@
                     <div class="flex items-center gap-4 border-t border-white/5 pt-6">
                         <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-400 font-display font-bold text-sm" aria-hidden="true">ML</div>
                         <div>
-                            <h4 class="text-white font-display font-bold text-xs uppercase">Marc L.</h4>
+                            <p class="text-white font-display font-bold text-xs uppercase">Marc L.</p>
                             <span class="text-gray-500 text-[10px]">Genève</span>
                         </div>
                     </div>
@@ -360,7 +363,7 @@
                     <div class="flex items-center gap-4 border-t border-white/5 pt-6">
                         <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-400 font-display font-bold text-sm" aria-hidden="true">ST</div>
                         <div>
-                            <h4 class="text-white font-display font-bold text-xs uppercase">Sophie T.</h4>
+                            <p class="text-white font-display font-bold text-xs uppercase">Sophie T.</p>
                             <span class="text-gray-500 text-[10px]">Lausanne</span>
                         </div>
                     </div>
@@ -374,7 +377,7 @@
                     <div class="flex items-center gap-4 border-t border-white/5 pt-6">
                         <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-400 font-display font-bold text-sm" aria-hidden="true">SS</div>
                         <div>
-                            <h4 class="text-white font-display font-bold text-xs uppercase">Souheil S.</h4>
+                            <p class="text-white font-display font-bold text-xs uppercase">Souheil S.</p>
                             <span class="text-gray-500 text-[10px]">Genève</span>
                         </div>
                     </div>
@@ -483,7 +486,7 @@
                     </div>
                     <div class="pt-6 border-t border-white/5 text-center">
                         <p class="text-xs text-gray-400 mb-4 font-light">Mensuel ou annuel · 1 ou 2 lavages/mois · Formules Combo disponibles</p>
-                        <a href="abonnements.html" class="inline-block bg-gold-400/10 border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-8 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">Voir les Abonnements →</a>
+                        <a href="#abonnements" class="inline-block bg-gold-400/10 border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-8 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">Voir les Abonnements →</a>
                     </div>
                 </div>
             </div>
@@ -652,6 +655,7 @@
             <form id="quote-form" class="premium-card p-6 md:p-10 rounded-2xl flex flex-col gap-6 reveal delay-200">
                 <input type="hidden" name="access_key" value="524d46df-89be-4261-b98c-0213b6572b7e">
                 <input type="hidden" name="subject" value="Nouvelle Réservation — Clean Cars Wash">
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1" autocomplete="off">
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
@@ -784,7 +788,7 @@
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
             <p class="text-xs text-gray-300">Nous utilisons des cookies pour optimiser votre expérience. <a href="./politique-confidentialite.html" class="text-gold-400 underline">Détails</a>.</p>
             <div class="flex gap-4">
-                <button id="decline-cookies" class="text-xs uppercase">Refuser</button>
+                <button id="decline-cookies" class="text-xs uppercase text-gray-400 px-4 py-2 hover:text-white transition">Refuser</button>
                 <button id="accept-cookies" class="bg-gold-400 text-charcoal-900 text-xs font-bold px-6 py-2 rounded">Accepter</button>
             </div>
         </div>
@@ -911,6 +915,11 @@
         const form = document.getElementById('quote-form');
         form.addEventListener('submit', (e) => {
             e.preventDefault();
+            const isDevis = ['subscription', 'corporate'].includes(document.getElementById('prestation').value);
+            if (!isDevis && document.getElementById('payment_method').value === 'not_selected') {
+                alert('Veuillez sélectionner une méthode de paiement (TWINT ou Carte bancaire).');
+                return;
+            }
             const btnS = document.getElementById('submit-button');
             btnS.innerText = 'Envoi...';
             fetch('https://api.web3forms.com/submit', {
@@ -924,6 +933,8 @@
                 result.className = 'text-center font-medium mt-2 text-sm text-green-400';
                 btnS.innerText = 'Envoyé !';
                 form.reset();
+                const selectEl = document.getElementById('prestation');
+                if (selectEl) handlePrestationChange(selectEl.value);
             }).catch(() => {
                 const result = document.getElementById('form-result');
                 result.innerText = "Erreur d'envoi. Appelez-nous directement au +41 78 265 70 71.";
@@ -931,6 +942,7 @@
                 btnS.innerText = 'Envoyer la demande';
             });
         });
+        /* TODO: Activer une fois sw.js configuré
         if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js').then(reg => {
@@ -938,6 +950,7 @@
         }).catch(err => console.log('SW fail', err));
     });
 }
+        */
     </script>
     <script>
         (function () {
