@@ -75,9 +75,8 @@ const generateHTML = (loc) => `<!DOCTYPE html>
             <div>
                 <p class="font-bold text-xs tracking-widest uppercase mb-3 text-white">Informations</p>
                 <ul class="text-gray-400 text-sm space-y-2">
-                    <li><a href="../../mentions-legales.html" class="hover:text-yellow-400 transition">Mentions Légales</a></li>
+                    <li><a href="../../mentions-legales.html" class="hover:text-yellow-400 transition">Mentions Légales &amp; CGV</a></li>
                     <li><a href="../../politique-confidentialite.html" class="hover:text-yellow-400 transition">Politique de Confidentialité</a></li>
-                    <li><a href="../../cgv.html" class="hover:text-yellow-400 transition">CGV</a></li>
                 </ul>
             </div>
         </div>
