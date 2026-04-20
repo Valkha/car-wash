@@ -8,7 +8,8 @@
       "Bash(sed -i 's|<img src=\"../assets/images/logo-v2\\\\.png\"|<img src=\"../assets/images/logo-v2.webp\"|g' en/subscriptions.html)",
       "Bash(curl -L \"https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=90&w=2070&auto=format&fit=crop\" -o \"c:/Users/adrie/Desktop/Code/PROJETS/car-wash/assets/images/hero-bg-raw.jpg\" --max-time 30)",
       "Bash(node -e ' *)",
-      "Bash(node inject-sections.js)"
+      "Bash(node inject-sections.js)",
+      "Bash(node fix-css-lint.js)"
     ]
   }
 }
