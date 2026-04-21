@@ -376,10 +376,6 @@ details[open] summary ~ * {
 .skip-link:focus {
     top: 0;
 }
-#fresha-booking-wrapper{position:relative;min-height:800px;width:100%;overflow:hidden}
-#fresha-loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2;transition:opacity .4s ease}
-.fresha-spinner{width:44px;height:44px;border:3px solid rgba(212,175,55,.2);border-top-color:#D4AF37;border-radius:50%;animation:fresha-spin .85s linear infinite}
-@keyframes fresha-spin{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body class="bg-[#0a0a0a] text-gray-300 font-sans antialiased relative" style="background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px); background-size: 30px 30px;">
@@ -831,7 +827,7 @@ details[open] summary ~ * {
                             <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Aspirateur complet</li>
                             <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Vitres intérieures</li>
                         </ul>
-                        <a href="https://widget.fresha.com/book-now/clean-cars-wash-wpehdcel/paid-plans?pId=2855020" data-fresha-plan="subscriptions" class="block text-center border border-gold-500 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 hover:text-black transition-all text-sm">S'abonner</a>
+                        <a href="https://www.fresha.com/book-now/clean-cars-wash-wpehdcel/paid-plans?pId=2855020" target="_blank" rel="noopener noreferrer" class="block text-center border border-gold-500 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 hover:text-black transition-all text-sm">S'abonner</a>
                     </div>
 
                     <div class="bg-gray-900 border-2 border-gold-500 rounded-2xl p-8 flex flex-col hover:-translate-y-2 transition-all duration-300 relative" style="box-shadow: 0 0 30px rgba(212,175,55,0.15)">
@@ -853,7 +849,7 @@ details[open] summary ~ * {
                             <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Cire protectrice</li>
                             <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Désodorisant premium</li>
                         </ul>
-                        <a href="https://widget.fresha.com/book-now/clean-cars-wash-wpehdcel/paid-plans?pId=2855020" data-fresha-plan="subscriptions" class="block text-center bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 transition-all text-sm">S'abonner</a>
+                        <a href="https://www.fresha.com/book-now/clean-cars-wash-wpehdcel/paid-plans?pId=2855020" target="_blank" rel="noopener noreferrer" class="block text-center bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 transition-all text-sm">S'abonner</a>
                     </div>
 
                     <div class="bg-gray-900/50 border border-gray-800 rounded-2xl p-8 flex flex-col hover:-translate-y-2 hover:border-gold-500/50 transition-all duration-300 relative overflow-hidden">
@@ -874,7 +870,7 @@ details[open] summary ~ * {
                             <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Prise en charge &amp; restitution</li>
                             <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Rapport photos avant/après</li>
                         </ul>
-                        <a href="https://widget.fresha.com/book-now/clean-cars-wash-wpehdcel/paid-plans?pId=2855020" data-fresha-plan="subscriptions" class="block text-center border border-gold-500 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 hover:text-black transition-all text-sm">S'abonner</a>
+                        <a href="https://www.fresha.com/book-now/clean-cars-wash-wpehdcel/paid-plans?pId=2855020" target="_blank" rel="noopener noreferrer" class="block text-center border border-gold-500 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 hover:text-black transition-all text-sm">S'abonner</a>
                     </div>
 
                 </div>
@@ -1003,15 +999,20 @@ details[open] summary ~ * {
                 </div>
             </div>
 
-            <div id="fresha-booking-wrapper" class="reveal delay-200">
-                <div id="fresha-loader"><div class="fresha-spinner"></div></div>
-                <iframe id="fresha-iframe"
-                    src="https://widget.fresha.com/book-now/clean-cars-wash-wpehdcel/services?lid=2953388&eid=5219003&pId=2855020"
-                    allow="payment"
-                    loading="lazy"
-                    title="Réservation Clean Cars Wash — Fresha"
-                    style="width:100%;height:800px;border:none;opacity:0;transition:opacity 0.5s ease-in-out;display:block;">
-                </iframe>
+            <div class="booking-interface reveal delay-200">
+                <div style="background:linear-gradient(135deg,#141414 0%,#1a1500 50%,#141414 100%);border:1px solid rgba(212,175,55,0.3);border-radius:1.5rem;padding:3.5rem 2rem;text-align:center;position:relative;overflow:hidden;">
+                    <div style="position:absolute;inset:0;opacity:0.04;background-image:radial-gradient(rgba(212,175,55,0.5) 1px,transparent 1px);background-size:20px 20px;pointer-events:none;"></div>
+                    <div style="position:relative;z-index:1;">
+                        <p class="text-[10px] font-display tracking-[0.3em] uppercase text-gold-400 mb-5">Réservation Sécurisée</p>
+                        <p class="text-white font-display text-xl md:text-2xl font-light mb-10 max-w-lg mx-auto">Planifiez votre prestation en quelques clics.</p>
+                        <a href="https://www.fresha.com/book-now/clean-cars-wash-wpehdcel/services?lid=2953388&eid=5219003&pId=2855020" target="_blank" rel="noopener noreferrer" class="cta-devis inline-block mb-10">ACCÉDER À L’AGENDA SÉCURISÉ →</a>
+                        <div class="flex flex-wrap justify-center gap-6 md:gap-10">
+                            <span class="text-gray-400 text-[10px] font-display tracking-widest uppercase flex items-center gap-2">🔒 Paiement Sécurisé</span>
+                            <span class="text-gray-400 text-[10px] font-display tracking-widest uppercase flex items-center gap-2">⏱️ Confirmation Immédiate</span>
+                            <span class="text-gray-400 text-[10px] font-display tracking-widest uppercase flex items-center gap-2">🚗 Service Premium</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -1159,40 +1160,6 @@ details[open] summary ~ * {
             }
             window.setAboEng  = function(e) { eng  = e==='mensuel' ? 'm' : 'a'; render(); };
             window.setAboFreq = function(f) { freq = +f; render(); };
-        })();
-        // Fresha Widget Loader
-        (function () {
-            var iframe = document.getElementById('fresha-iframe');
-            var loader = document.getElementById('fresha-loader');
-            if (!iframe || !loader) return;
-            iframe.addEventListener('load', function () {
-                loader.style.opacity = '0';
-                setTimeout(function () {
-                    loader.style.display = 'none';
-                    iframe.style.opacity = '1';
-                }, 400);
-            });
-        })();
-        // Fresha Plan Navigation
-        (function () {
-            var PLANS_URL = 'https://widget.fresha.com/book-now/clean-cars-wash-wpehdcel/paid-plans?pId=2855020';
-            document.addEventListener('click', function (e) {
-                var btn = e.target.closest('[data-fresha-plan]');
-                if (!btn) return;
-                e.preventDefault();
-                var iframe = document.getElementById('fresha-iframe');
-                var loader = document.getElementById('fresha-loader');
-                if (!iframe || !loader) return;
-                iframe.style.opacity = '0';
-                loader.style.display = 'flex';
-                loader.style.opacity = '1';
-                iframe.src = PLANS_URL;
-                document.getElementById('reservation').scrollIntoView({ behavior: 'smooth' });
-                iframe.onload = function () {
-                    loader.style.opacity = '0';
-                    setTimeout(function () { loader.style.display = 'none'; iframe.style.opacity = '1'; }, 400);
-                };
-            });
         })();
         /* TODO: Activer une fois sw.js configuré
         if ('serviceWorker' in navigator) {
