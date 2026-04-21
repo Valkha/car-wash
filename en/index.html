@@ -1022,9 +1022,9 @@ details[open] summary ~ * {
                     <div>
                         <label for="prestation" class="block text-[10px] font-display tracking-widest uppercase text-gray-400 mb-2">Desired Service</label>
                         <select id="prestation" name="prestation" onchange="handlePrestationChange(this.value)" class="w-full bg-charcoal-800/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 appearance-none cursor-pointer text-sm">
-                            <option value="89">Silver Pack — 89.- CHF</option>
-                            <option value="149">Gold Pack — 149.- CHF</option>
-                            <option value="289">Diamond Pack — 289.- CHF</option>
+                            <option value="Silver Pack (89 CHF)">Silver Pack — 89.- CHF</option>
+                            <option value="Gold Pack (149 CHF)">Gold Pack — 149.- CHF</option>
+                            <option value="Diamond Pack (289 CHF)">Diamond Pack — 289.- CHF</option>
                             <option value="subscription">Subscription (upon request)</option>
                             <option value="corporate">Corporate Solution (upon request)</option>
                         </select>
@@ -1263,7 +1263,12 @@ details[open] summary ~ * {
 
         // Deposit Calculator
         function updateDeposit(val) {
-            const price = parseFloat(val) || 0;
+            const PRICE_MAP = {
+                'Silver Pack (89 CHF)': 89,
+                'Gold Pack (149 CHF)': 149,
+                'Diamond Pack (289 CHF)': 289
+            };
+            const price = PRICE_MAP[val] || 0;
             const deposit = (price * 0.3).toFixed(2);
             const el = document.getElementById('deposit-display');
             if (el) el.innerHTML = price > 0 ? `${deposit}.- <span class="text-sm font-light text-gray-400">CHF</span>` : `<span class="text-sm font-light text-gray-400">Upon quote</span>`;
