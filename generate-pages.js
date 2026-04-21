@@ -106,6 +106,23 @@ locations.forEach(loc => {
 const generateSitemap = (locations) => {
     const date = new Date().toISOString().split('T')[0];
     
+    const staticPages = [
+        { url: 'https://www.clean-cars-wash.ch/',                              changefreq: 'weekly',  priority: '1.0' },
+        { url: 'https://www.clean-cars-wash.ch/en/',                           changefreq: 'weekly',  priority: '1.0' },
+        { url: 'https://www.clean-cars-wash.ch/mentions-legales.html',         changefreq: 'yearly',  priority: '0.3' },
+        { url: 'https://www.clean-cars-wash.ch/politique-confidentialite.html',changefreq: 'yearly',  priority: '0.3' },
+        { url: 'https://www.clean-cars-wash.ch/en/legal-notices.html',         changefreq: 'yearly',  priority: '0.3' },
+        { url: 'https://www.clean-cars-wash.ch/en/privacy-policy.html',        changefreq: 'yearly',  priority: '0.3' },
+    ];
+
+    const staticUrls = staticPages.map(p => `
+    <url>
+        <loc>${p.url}</loc>
+        <lastmod>${date}</lastmod>
+        <changefreq>${p.changefreq}</changefreq>
+        <priority>${p.priority}</priority>
+    </url>`).join('');
+
     let urls = locations.map(loc => `
     <url>
         <loc>https://www.clean-cars-wash.ch/services/${loc.cityId}/</loc>
@@ -115,17 +132,11 @@ const generateSitemap = (locations) => {
     </url>`).join('');
 
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>https://www.clean-cars-wash.ch/</loc>
-        <lastmod>${date}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>1.0</priority>
-    </url>${urls}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${staticUrls}${urls}
 </urlset>`;
 
     fs.writeFileSync(path.join(__dirname, 'sitemap.xml'), sitemap);
-    console.log(`🗺️  Sitemap.xml mis à jour avec ${locations.length} URLs locales.`);
+    console.log(`🗺️  Sitemap.xml mis à jour : ${staticPages.length} pages statiques + ${locations.length} pages locales.`);
 };
 
 generateSitemap(locations);
