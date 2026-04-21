@@ -14,7 +14,8 @@
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
       "Bash(node fresha-plans.js)",
-      "Bash(node booking-interface.js)"
+      "Bash(node booking-interface.js)",
+      "Bash(git rm *)"
     ]
   }
 }
