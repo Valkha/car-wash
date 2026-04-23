@@ -17,7 +17,11 @@
       "Bash(node booking-interface.js)",
       "Bash(git rm *)",
       "Bash(grep -rn \"www\\\\.cleancarswash\\\\.ch\\\\|//cleancarswash\\\\.ch\" --include=\"*.html\" --include=\"*.js\" --include=\"*.json\" --include=\"*.xml\" .)",
-      "Bash(xargs sed *)"
+      "Bash(xargs sed *)",
+      "Bash(npm uninstall *)",
+      "Bash(npm run *)",
+      "Bash(git push *)",
+      "Bash(git pull *)"
     ]
   }
 }
