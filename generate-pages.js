@@ -81,7 +81,7 @@ const generateHTML = (loc) => `<!DOCTYPE html>
             </div>
         </div>
         <div class="container mx-auto px-4 mt-8 text-center text-xs text-gray-600 tracking-widest uppercase">
-            &copy; 2026 Clean Cars Wash — <a href="../../" class="hover:text-yellow-400 transition">Retour à l'accueil</a>
+            &copy; 2026 Clean Cars Wash — <a href="../../" class="hover:text-yellow-400 transition">Retour à l'accueil</a> | <span style="opacity:0.7;">CHE-377.481.423 TVA</span>
         </div>
     </footer>
 </body>
