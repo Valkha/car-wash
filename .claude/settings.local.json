@@ -15,7 +15,9 @@
       "Bash(git commit -m ' *)",
       "Bash(node fresha-plans.js)",
       "Bash(node booking-interface.js)",
-      "Bash(git rm *)"
+      "Bash(git rm *)",
+      "Bash(grep -rn \"www\\\\.cleancarswash\\\\.ch\\\\|//cleancarswash\\\\.ch\" --include=\"*.html\" --include=\"*.js\" --include=\"*.json\" --include=\"*.xml\" .)",
+      "Bash(xargs sed *)"
     ]
   }
 }

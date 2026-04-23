@@ -61,7 +61,7 @@ const generateHTML = (loc) => `<!DOCTYPE html>
                 <p class="text-gray-400 text-sm mb-1">AHMED-YAHIA LM</p>
                 <p class="text-gray-400 text-sm mb-1">Rue des pâquis 49</p>
                 <p class="text-gray-400 text-sm mb-4">1201 Genève</p>
-                <a href="mailto:info@cleancarswash.ch" class="text-yellow-400 text-sm hover:text-white transition">info@cleancarswash.ch</a>
+                <a href="mailto:info@clean-cars-wash.ch" class="text-yellow-400 text-sm hover:text-white transition">info@clean-cars-wash.ch</a>
             </div>
             <div>
                 <p class="font-bold text-xs tracking-widest uppercase mb-3 text-white">Contact &amp; Horaires</p>
