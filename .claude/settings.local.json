@@ -21,7 +21,8 @@
       "Bash(npm uninstall *)",
       "Bash(npm run *)",
       "Bash(git push *)",
-      "Bash(git pull *)"
+      "Bash(git pull *)",
+      "Bash(node move-referral.js)"
     ]
   }
 }
