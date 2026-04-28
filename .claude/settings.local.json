@@ -25,7 +25,8 @@
       "Bash(node move-referral.js)",
       "Bash(python3 -c ' *)",
       "Bash(node -e \"const l=require\\('fs'\\).readFileSync\\('index.html','utf8'\\).split\\('\\\\n'\\)[1014];console.log\\(JSON.stringify\\(l.substring\\(50,110\\)\\)\\);for\\(let i=55;i<110;i++\\)if\\(l.charCodeAt\\(i\\)>127\\)console.log\\(i+1,l.charCodeAt\\(i\\).toString\\(16\\),l[i]\\);\")",
-      "Bash(node -e \"const l=require\\('fs'\\).readFileSync\\('index.html','utf8'\\).split\\('\\\\n'\\)[1014];let bad=false;for\\(let i=0;i<l.length;i++\\)if\\(l.charCodeAt\\(i\\)>127\\){console.log\\('BAD col',i+1,l.charCodeAt\\(i\\).toString\\(16\\)\\);bad=true;}if\\(!bad\\)console.log\\('OK - no non-ASCII on line 1015'\\);\")"
+      "Bash(node -e \"const l=require\\('fs'\\).readFileSync\\('index.html','utf8'\\).split\\('\\\\n'\\)[1014];let bad=false;for\\(let i=0;i<l.length;i++\\)if\\(l.charCodeAt\\(i\\)>127\\){console.log\\('BAD col',i+1,l.charCodeAt\\(i\\).toString\\(16\\)\\);bad=true;}if\\(!bad\\)console.log\\('OK - no non-ASCII on line 1015'\\);\")",
+      "Bash(grep -v \"ccw-contact\\\\|^[0-9]*:.*<!--\\\\|^[0-9]*:.*\\\\\\\\.css\\\\|tailwind\")"
     ]
   }
 }
