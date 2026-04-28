@@ -551,7 +551,7 @@ details[open] summary ~ * {
                             <img src="../assets/images/MB-01-opt.webp"
                                  srcset="../assets/images/MB-01-opt-sm.webp 400w, ../assets/images/MB-01-opt-xs.webp 600w, ../assets/images/MB-01-opt.webp 800w"
                                  sizes="(max-width: 480px) 100vw, 800px"
-                                 alt="Mercedes — Step 1: surface preparation before detailing" width="800" height="600" class="img-fade" loading="lazy">
+                                 alt="Mercedes — Step 1: surface preparation before detailing" width="800" height="600" class="img-fade" loading="eager" fetchpriority="high">
                             <img src="../assets/images/MB-02-opt.webp" alt="Shampoo application on Mercedes wheels and trim — detailing step 2" width="800" height="600" class="img-fade" loading="lazy">
                             <img src="../assets/images/MB-03-opt.webp" alt="Final wax and shine on Mercedes bodywork — detailing step 3" width="800" height="600" class="img-fade" loading="lazy">
                             <div class="absolute inset-0 slide-overlay flex flex-col justify-end p-6 md:p-10 z-10">
@@ -661,7 +661,7 @@ details[open] summary ~ * {
                     <p class="text-gray-500 text-[10px] mt-4 uppercase tracking-widest">Prices excluding VAT</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-center">
-                    <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col order-2 md:order-1 reveal">
+                    <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col order-1 md:order-1 reveal">
                         <h3 class="text-lg md:text-xl font-display font-bold tracking-wider uppercase text-white mb-2">Silver Pack</h3>
                         <p class="text-gold-400 font-display font-semibold text-3xl md:text-4xl mb-8">89.- <span class="text-sm md:text-lg font-light text-gray-500">CHF excl. VAT</span></p>
                         <ul class="text-gray-400 font-light space-y-4 mb-8 flex-grow text-sm">
@@ -671,7 +671,7 @@ details[open] summary ~ * {
                             <li>◆ Microfiber drying</li>
                         </ul>
                     </div>
-                    <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col relative transform md:-translate-y-4 shadow-2xl border-gold-400/30 order-1 md:order-2 mb-8 md:mb-0 reveal delay-100">
+                    <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col relative transform md:-translate-y-4 shadow-2xl border-gold-400/30 order-2 md:order-2 mb-8 md:mb-0 reveal delay-100">
                         <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gold-400 text-charcoal-900 text-[10px] md:text-xs font-display font-bold tracking-widest uppercase py-1.5 px-4 md:px-6 rounded-full shadow-lg whitespace-nowrap">Recommended Service</div>
                         <h3 class="text-lg md:text-xl font-display font-bold tracking-wider uppercase text-white mb-2 mt-2">Gold Pack</h3>
                         <p class="text-gold-400 font-display font-semibold text-3xl md:text-4xl mb-8">149.- <span class="text-sm md:text-lg font-light text-gray-500">CHF excl. VAT</span></p>
