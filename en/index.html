@@ -252,14 +252,10 @@ details[open] summary ~ * {
 /* ==========================================================================
    Slider Elements
    ========================================================================== */
-.slide-overlay { 
-    background: linear-gradient(to top, rgba(10,10,10,0.9), transparent); 
-    opacity: 0; 
-    transition: opacity 0.4s ease; 
-}
-
-.group:hover .slide-overlay { 
-    opacity: 1; 
+.slide-overlay {
+    background: linear-gradient(to top, rgba(10,10,10,0.9), transparent);
+    opacity: 1;
+    transition: opacity 0.4s ease;
 }
 
 .slider-dot { 
@@ -338,7 +334,7 @@ details[open] summary ~ * {
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     background-color: #141414;
     opacity: 0;
     animation: auto-crossfade 12s infinite;
@@ -551,9 +547,9 @@ details[open] summary ~ * {
                             <img src="../assets/images/MB-01-opt.webp"
                                  srcset="../assets/images/MB-01-opt-sm.webp 400w, ../assets/images/MB-01-opt-xs.webp 600w, ../assets/images/MB-01-opt.webp 800w"
                                  sizes="(max-width: 480px) 100vw, 800px"
-                                 alt="Mercedes — Step 1: surface preparation before detailing" width="800" height="600" class="img-fade" loading="eager" fetchpriority="high">
-                            <img src="../assets/images/MB-02-opt.webp" alt="Shampoo application on Mercedes wheels and trim — detailing step 2" width="800" height="600" class="img-fade" loading="lazy">
-                            <img src="../assets/images/MB-03-opt.webp" alt="Final wax and shine on Mercedes bodywork — detailing step 3" width="800" height="600" class="img-fade" loading="lazy">
+                                 alt="Mercedes — Step 1: surface preparation before detailing" width="800" height="600" class="img-fade" style="animation-delay:0s" loading="eager" fetchpriority="high">
+                            <img src="../assets/images/MB-02-opt.webp" alt="Shampoo application on Mercedes wheels and trim — detailing step 2" width="800" height="600" class="img-fade" style="animation-delay:4s" loading="lazy">
+                            <img src="../assets/images/MB-03-opt.webp" alt="Final wax and shine on Mercedes bodywork — detailing step 3" width="800" height="600" class="img-fade" style="animation-delay:8s" loading="lazy">
                             <div class="absolute inset-0 slide-overlay flex flex-col justify-end p-6 md:p-10 z-10">
                                 <h4 class="text-gold-400 font-display font-bold text-xl md:text-2xl tracking-widest uppercase mb-2">Diamond Pack 💎</h4>
                                 <p class="text-gray-300 font-light text-sm md:text-base">Premium wax, leather care, and deep decontamination</p>
