@@ -68,8 +68,7 @@
       "areaServed": [{ "@type": "City", "name": "Genève" }, { "@type": "State", "name": "Vaud" }],
       "openingHoursSpecification": [
         { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "18:00" },
-        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "17:00" },
-        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "00:00", "closes": "00:00" }
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "17:00" }
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
@@ -1185,6 +1184,7 @@ details[open] summary ~ * {
             }
             window.setAboEng  = function(e) { eng  = e==='mensuel' ? 'm' : 'a'; render(); };
             window.setAboFreq = function(f) { freq = +f; render(); };
+            render();
         })();
         /* TODO: Activer une fois sw.js configuré
         if ('serviceWorker' in navigator) {
