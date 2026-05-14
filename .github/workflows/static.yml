@@ -15,6 +15,8 @@ jobs:
         with:
           node-version: 20
       - run: npm install
+      - name: Fix Vite binary permissions
+        run: chmod +x node_modules/.bin/vite
       - run: npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
