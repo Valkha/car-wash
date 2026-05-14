@@ -38,7 +38,10 @@
       "Bash(sed -i 's|\"/assets/|\"../assets/|g' en/index.html)",
       "Bash(git commit -m 'fix\\(build\\): chemins assets relatifs pour compilation Vite *)",
       "Bash(git commit -m 'fix\\(ci\\): chmod +x vite binary - fix exit code 127 on Linux runner *)",
-      "Bash(git commit -m 'fix\\(build\\): vite config MPA definitive + audit casse Linux *)"
+      "Bash(git commit -m 'fix\\(build\\): vite config MPA definitive + audit casse Linux *)",
+      "Bash(sed -i 's|src=\"assets/images/video-realisation.mp4\"|src=\"/video-realisation.mp4\"|g' index.html)",
+      "Bash(sed -i 's|src=\"../assets/images/video-realisation.mp4\"|src=\"/video-realisation.mp4\"|g' en/index.html)",
+      "Bash(git commit -m 'fix\\(assets\\): deplacement de la video dans le dossier public pour garantir son inclusion par le bundler Vite *)"
     ]
   }
 }
