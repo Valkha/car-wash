@@ -789,7 +789,7 @@ details[open] summary ~ * {
                             <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Aspirateur complet</li>
                             <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Vitres intérieures</li>
                         </ul>
-                        <a href="TON_LIEN_SUMUP_ICI" target="_blank" rel="noopener noreferrer" class="block text-center border border-gold-500 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 hover:text-black transition-all text-sm">S'abonner</a>
+                        <a id="link-argent" href="TON_LIEN_SUMUP_ICI" target="_blank" rel="noopener noreferrer" class="block text-center border border-gold-500 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 hover:text-black transition-all text-sm">S'abonner</a>
                     </div>
 
                     <div class="bg-gray-900 border-2 border-gold-500 rounded-2xl p-8 flex flex-col hover:-translate-y-2 transition-all duration-300 relative" style="box-shadow: 0 0 30px rgba(212,175,55,0.15)">
@@ -811,7 +811,7 @@ details[open] summary ~ * {
                             <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Cire protectrice</li>
                             <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Désodorisant premium</li>
                         </ul>
-                        <a href="TON_LIEN_SUMUP_ICI" target="_blank" rel="noopener noreferrer" class="block text-center bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 transition-all text-sm">S'abonner</a>
+                        <a id="link-or" href="TON_LIEN_SUMUP_ICI" target="_blank" rel="noopener noreferrer" class="block text-center bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 transition-all text-sm">S'abonner</a>
                     </div>
 
                     <div class="bg-gray-900/50 border border-gray-800 rounded-2xl p-8 flex flex-col hover:-translate-y-2 hover:border-gold-500/50 transition-all duration-300 relative overflow-hidden">
@@ -832,7 +832,7 @@ details[open] summary ~ * {
                             <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Prise en charge &amp; restitution</li>
                             <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Rapport photos avant/après</li>
                         </ul>
-                        <a href="TON_LIEN_SUMUP_ICI" target="_blank" rel="noopener noreferrer" class="block text-center border border-gold-500 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 hover:text-black transition-all text-sm">S'abonner</a>
+                        <a id="link-diamant" href="TON_LIEN_SUMUP_ICI" target="_blank" rel="noopener noreferrer" class="block text-center border border-gold-500 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 hover:text-black transition-all text-sm">S'abonner</a>
                     </div>
 
                 </div>
@@ -1138,9 +1138,24 @@ details[open] summary ~ * {
 
         (function() {
             var P = {
-                argent:  { m1:['80','89 CHF','−10%'],       m2:['142.40','178 CHF','−20%'], a1:['75.60','89 CHF','−15%'],   a2:['133','178 CHF','−25%']   },
-                or:      { m1:['134.10','149 CHF','−10%'],   m2:['238.40','298 CHF','−20%'], a1:['126.65','149 CHF','−15%'], a2:['223','298 CHF','−25%']   },
-                diamant: { m1:['251','289 CHF','−13%'],      m2:['445','578 CHF','−23%'],    a1:['239','289 CHF','−17%'],    a2:['421','578 CHF','−27%']   }
+                argent:  {
+                    m1:['80','89 CHF','−10%', 'https://pay.sumup.com/b2c/QS43FNTF'],
+                    m2:['142.40','178 CHF','−20%', 'https://pay.sumup.com/b2c/Q26M5L13'],
+                    a1:['75.60','89 CHF','−15%', 'https://pay.sumup.com/b2c/QEDK3H0B'],
+                    a2:['133','178 CHF','−25%', 'https://pay.sumup.com/b2c/QWO3BLJI']
+                },
+                or: {
+                    m1:['134.10','149 CHF','−10%', 'https://pay.sumup.com/b2c/QL8XVAA5'],
+                    m2:['238.40','298 CHF','−20%', 'https://pay.sumup.com/b2c/QLTZKJ1I'],
+                    a1:['126.65','149 CHF','−15%', 'https://pay.sumup.com/b2c/QII2I63J'],
+                    a2:['223','298 CHF','−25%', 'https://pay.sumup.com/b2c/QI5YE2M7']
+                },
+                diamant: {
+                    m1:['251','289 CHF','−13%', 'https://pay.sumup.com/b2c/Q7T56VYC'],
+                    m2:['445','578 CHF','−23%', 'https://pay.sumup.com/b2c/QSYCNRJ6'],
+                    a1:['239','289 CHF','−17%', 'https://pay.sumup.com/b2c/QOW0LRXL'],
+                    a2:['421','578 CHF','−27%', 'https://pay.sumup.com/b2c/QC3KLGQ2']
+                }
             };
             var eng = 'm', freq = 1;
             var ON  = 'px-5 py-2 rounded-full text-xs font-display font-bold uppercase tracking-widest transition-all bg-gold-400 text-charcoal-900';
@@ -1152,6 +1167,7 @@ details[open] summary ~ * {
                     document.getElementById('price-' + p).textContent    = d[0];
                     document.getElementById('base-' + p).textContent     = d[1];
                     document.getElementById('discount-' + p).textContent = d[2];
+                    document.getElementById('link-' + p).href            = d[3];
                 });
                 document.getElementById('btn-mensuel').className = eng==='m' ? ON : OFF;
                 document.getElementById('btn-annuel').className  = eng==='a' ? ON : OFF;
