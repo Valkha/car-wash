@@ -140,12 +140,14 @@ body {
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
-    object-position: center 78% !important;
+    /* On redescend l'axe vertical de 78% a 55% pour recentrer l'Audi */
+    object-position: center 55% !important;
 }
 @media (min-width: 1024px) {
     .bg-hero img {
-        transform: scale(1.05);
-        transform-origin: bottom center;
+        /* On garde un leger zoom mais on change l'origine pour la centrer verticalement */
+        transform: scale(1.08);
+        transform-origin: center center;
     }
 }
 .bg-hero::before {
