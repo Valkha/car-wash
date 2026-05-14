@@ -37,7 +37,8 @@
       "Bash(sed -i 's|\"/assets/|\"./assets/|g' index.html)",
       "Bash(sed -i 's|\"/assets/|\"../assets/|g' en/index.html)",
       "Bash(git commit -m 'fix\\(build\\): chemins assets relatifs pour compilation Vite *)",
-      "Bash(git commit -m 'fix\\(ci\\): chmod +x vite binary - fix exit code 127 on Linux runner *)"
+      "Bash(git commit -m 'fix\\(ci\\): chmod +x vite binary - fix exit code 127 on Linux runner *)",
+      "Bash(git commit -m 'fix\\(build\\): vite config MPA definitive + audit casse Linux *)"
     ]
   }
 }
