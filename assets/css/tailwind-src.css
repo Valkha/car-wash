@@ -13,7 +13,7 @@
 
 @layer components {
   .premium-service-card {
-    @apply bg-gradient-to-b from-zinc-900/80 to-black border border-zinc-800 rounded-xl p-8 shadow-xl backdrop-blur-sm transition-all duration-300;
+    @apply bg-linear-to-b from-zinc-900/80 to-black border border-zinc-800 rounded-xl p-8 shadow-xl backdrop-blur-sm transition-all duration-300;
   }
   .premium-service-card:hover {
     @apply -translate-y-2 border-gold-400/40 shadow-[0_8px_30px_rgb(212,175,55,0.15)];
