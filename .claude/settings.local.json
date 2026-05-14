@@ -33,7 +33,10 @@
       "Bash(node _gen_mobile_hero.mjs)",
       "Bash(sed -i 's|href=\"assets/css/tailwind-src.css\"|href=\"/assets/css/tailwind-src.css\"|g' index.html)",
       "Bash(sed -i 's|href=\"../assets/css/tailwind-src.css\"|href=\"/assets/css/tailwind-src.css\"|g' en/index.html)",
-      "Bash(git commit -m 'fix\\(deploy\\): switch to GitHub Actions automated build *)"
+      "Bash(git commit -m 'fix\\(deploy\\): switch to GitHub Actions automated build *)",
+      "Bash(sed -i 's|\"/assets/|\"./assets/|g' index.html)",
+      "Bash(sed -i 's|\"/assets/|\"../assets/|g' en/index.html)",
+      "Bash(git commit -m 'fix\\(build\\): chemins assets relatifs pour compilation Vite *)"
     ]
   }
 }
