@@ -135,6 +135,20 @@ body {
     position: relative;
     overflow: hidden;
 }
+.bg-hero img {
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 78% !important;
+}
+@media (min-width: 1024px) {
+    .bg-hero img {
+        transform: scale(1.05);
+        transform-origin: bottom center;
+    }
+}
 .bg-hero::before {
     content: '';
     position: absolute;

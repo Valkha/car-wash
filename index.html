@@ -134,6 +134,20 @@ body {
     position: relative;
     overflow: hidden;
 }
+.bg-hero img {
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 78% !important;
+}
+@media (min-width: 1024px) {
+    .bg-hero img {
+        transform: scale(1.05);
+        transform-origin: bottom center;
+    }
+}
 .bg-hero::before {
     content: '';
     position: absolute;
@@ -397,7 +411,7 @@ details[open] summary ~ * {
                         <li><a href="#services" class="hover:text-gold-400 transition duration-300">Services</a></li>
                         <li><a href="#galerie" class="hover:text-gold-400 transition duration-300">Galerie</a></li>
                         <li><a href="#avis" class="hover:text-gold-400 transition duration-300">Avis</a></li>
-                        <li><a href="#services" class="hover:text-gold-400 transition duration-300">Tarifs</a></li>
+                        <li><a href="#tarifs" class="hover:text-gold-400 transition duration-300">Tarifs</a></li>
                         <li><a href="#abonnements" class="hover:text-gold-400 transition duration-300">Abonnements</a></li>
                         <li><a href="#faq" class="hover:text-gold-400 transition duration-300">FAQ</a></li>
                         <li><a href="#reservation" class="text-gold-400 border border-gold-400 px-4 py-2 hover:bg-gold-400 hover:text-charcoal-900 transition duration-300">Réserver</a></li>
@@ -421,7 +435,7 @@ details[open] summary ~ * {
                 <li><a href="#services" class="block hover:text-gold-400 mobile-link">Services</a></li>
                 <li><a href="#galerie" class="block hover:text-gold-400 mobile-link">Galerie</a></li>
                 <li><a href="#avis" class="block hover:text-gold-400 mobile-link">Avis</a></li>
-                <li><a href="#services" class="block hover:text-gold-400 mobile-link">Tarifs</a></li>
+                <li><a href="#tarifs" class="block hover:text-gold-400 mobile-link">Tarifs</a></li>
                 <li><a href="#abonnements" class="block hover:text-gold-400 mobile-link">Abonnements</a></li>
                 <li><a href="#faq" class="block hover:text-gold-400 mobile-link">FAQ</a></li>
                 <li><a href="#reservation" class="block text-gold-400 mobile-link">Réserver un Créneau</a></li>
@@ -430,8 +444,8 @@ details[open] summary ~ * {
     </header>
 
     <main id="main-content">
-        <section class="bg-hero min-h-screen flex items-center py-20 px-4 relative object-bottom">
-            <img src="assets/images/hero-bg-opt.webp" alt="Clean Cars Wash hero" class="absolute inset-0 w-full h-full object-cover z-0" fetchpriority="high" loading="eager" aria-hidden="true">
+        <section class="bg-hero min-h-screen flex items-center py-20 px-4 relative">
+            <img src="assets/images/hero-bg-opt.webp" alt="Clean Cars Wash hero" class="absolute inset-0 w-full h-full object-cover object-[center_80%] z-0" fetchpriority="high" loading="eager" aria-hidden="true">
             <div class="relative max-w-5xl mx-auto text-center mt-10 z-10 reveal active">
                 <h1 class="text-4xl sm:text-5xl md:text-7xl font-display font-bold text-white mb-4 md:mb-6 leading-tight tracking-wide uppercase drop-shadow-2xl">
                     L'Excellence<br>
@@ -471,7 +485,7 @@ details[open] summary ~ * {
                     <div class="premium-card p-8 rounded-2xl text-center reveal delay-200">
                         <div class="w-14 h-14 mx-auto mb-5 rounded-full bg-gold-400/10 flex items-center justify-center text-3xl" aria-hidden="true">🏢</div>
                         <h3 class="text-white font-display font-bold uppercase tracking-widest mb-3">Entreprises</h3>
-                        <p class="text-gray-400 text-sm font-light leading-relaxed">Flottes de 3 à 50+ véhicules. Tarifs dégressifs, facturation entreprise, intervention planifiée. <a href="#services" class="text-gold-400 hover:text-white transition underline">Voir les remises flotte</a>.</p>
+                        <p class="text-gray-400 text-sm font-light leading-relaxed">Flottes de 3 à 50+ véhicules. Tarifs dégressifs, facturation entreprise, intervention planifiée. <a href="#tarifs" class="text-gold-400 hover:text-white transition underline">Voir les remises flotte</a>.</p>
                     </div>
                 </div>
 
@@ -511,50 +525,22 @@ details[open] summary ~ * {
             <div class="text-center mb-16 md:mb-20 reveal">
                 <h2 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Nos Prestations Detailing</h2>
                 <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
-                <p class="text-gray-500 text-[10px] mt-4 uppercase tracking-widest">Prix Hors Taxes (HT)</p>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
                 <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full reveal">
-                    <div class="w-12 h-12 mb-5 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl" aria-hidden="true">🥈</div>
-                    <h3 class="text-lg md:text-xl font-display font-bold tracking-wider uppercase text-white mb-2">Pack Argent</h3>
-                    <p class="text-gold-400 font-display font-semibold text-3xl md:text-4xl mb-4">89.- <span class="text-sm md:text-lg font-light text-gray-500">CHF HT</span></p>
-                    <p class="text-gray-400 font-light leading-relaxed text-sm mb-4">Lavage extérieur complet à la mousse active, aspiration habitacle et coffre, nettoyage des vitres et séchage manuel. Durée : 1H.</p>
-                    <ul class="text-gray-400 font-light space-y-2 text-sm mb-6 flex-grow">
-                        <li>◆ Lavage manuel extérieur</li>
-                        <li>◆ Aspiration habitacle & coffre</li>
-                        <li>◆ Nettoyage des vitres</li>
-                        <li>◆ Séchage microfibre</li>
-                    </ul>
-                    <a href="https://sumupbookings.com/clean-car-wash-geneva" target="_blank" rel="noopener noreferrer" class="block text-center border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">Réserver</a>
+                    <div class="w-12 h-12 mb-6 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl" aria-hidden="true">🥈</div>
+                    <h3 class="text-lg font-display font-bold tracking-wider uppercase text-white mb-4">Pack Argent (Essentiel)</h3>
+                    <p class="text-gray-400 font-light leading-relaxed flex-grow text-sm">Lavage extérieur complet à la mousse active, aspiration habitacle et coffre, nettoyage des vitres et séchage manuel. Durée : 1H.</p>
                 </div>
-                <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full reveal delay-100 relative shadow-[0_0_20px_rgba(212,175,55,0.2)] border-gold-400/30">
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gold-400 text-charcoal-900 text-[10px] md:text-xs font-display font-bold tracking-widest uppercase py-1.5 px-4 md:px-6 rounded-full shadow-lg whitespace-nowrap">Service Recommandé</div>
-                    <div class="w-12 h-12 mb-5 mt-2 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl" aria-hidden="true">🥇</div>
-                    <h3 class="text-lg md:text-xl font-display font-bold tracking-wider uppercase text-white mb-2">Pack Or</h3>
-                    <p class="text-gold-400 font-display font-semibold text-3xl md:text-4xl mb-4">149.- <span class="text-sm md:text-lg font-light text-gray-500">CHF HT</span></p>
-                    <p class="text-gray-400 font-light leading-relaxed text-sm mb-4">Inclus Pack Argent + Shampoing sièges/tapis, rénovation plastiques intérieurs, nettoyage jantes/pneus et finition parfum. Durée : 2H.</p>
-                    <ul class="text-gray-400 font-light space-y-2 text-sm mb-6 flex-grow">
-                        <li>◆ Inclus le Pack Argent</li>
-                        <li>◆ Shampoing sièges & tapis</li>
-                        <li>◆ Rénovation plastiques</li>
-                        <li>◆ Nettoyage jantes & pneus</li>
-                        <li>◆ Finition parfumée</li>
-                    </ul>
-                    <a href="https://sumupbookings.com/clean-car-wash-geneva" target="_blank" rel="noopener noreferrer" class="block text-center bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 transition-all text-sm">Réserver</a>
+                <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full reveal delay-100">
+                    <div class="w-12 h-12 mb-6 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl" aria-hidden="true">🥇</div>
+                    <h3 class="text-lg font-display font-bold tracking-wider uppercase text-white mb-4">Pack Or (Confort Premium)</h3>
+                    <p class="text-gray-400 font-light leading-relaxed flex-grow text-sm">Inclus Pack Argent + Shampoing sièges/tapis, rénovation plastiques intérieurs, nettoyage jantes/pneus et finition parfum. Durée : 2H.</p>
                 </div>
                 <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full sm:col-span-2 md:col-span-1 reveal delay-200">
-                    <div class="w-12 h-12 mb-5 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl" aria-hidden="true">💎</div>
-                    <h3 class="text-lg md:text-xl font-display font-bold tracking-wider uppercase text-white mb-2">Pack Diamant</h3>
-                    <p class="text-gold-400 font-display font-semibold text-3xl md:text-4xl mb-4">289.- <span class="text-sm md:text-lg font-light text-gray-500">CHF HT</span></p>
-                    <p class="text-gray-400 font-light leading-relaxed text-sm mb-4">Le summum : Inclus Pack Or + Cire premium déperlante, soin cuir/alcantara et traitement anti-odeur. Durée : 3H+.</p>
-                    <ul class="text-gray-400 font-light space-y-2 text-sm mb-6 flex-grow">
-                        <li>◆ Inclus le Pack Or</li>
-                        <li>◆ Cire premium déperlante</li>
-                        <li>◆ Soin cuir ou Alcantara</li>
-                        <li>◆ Traitement anti-odeur</li>
-                        <li>◆ Finitions ultra-précises</li>
-                    </ul>
-                    <a href="https://sumupbookings.com/clean-car-wash-geneva" target="_blank" rel="noopener noreferrer" class="block text-center border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">Réserver</a>
+                    <div class="w-12 h-12 mb-6 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl" aria-hidden="true">💎</div>
+                    <h3 class="text-lg font-display font-bold tracking-wider uppercase text-white mb-4">Pack Diamant (Ultra Detailing)</h3>
+                    <p class="text-gray-400 font-light leading-relaxed flex-grow text-sm">Le summum : Inclus Pack Or + Cire premium déperlante, soin cuir/alcantara et traitement anti-odeur. Durée : 3H+.</p>
                 </div>
             </div>
         </section>
@@ -674,6 +660,51 @@ details[open] summary ~ * {
             </div>
         </section>
 
+        <section id="tarifs" class="py-24 md:py-32 px-4 relative">
+            <div class="absolute inset-0 bg-charcoal-800/30 -skew-y-2 z-0"></div>
+            <div class="max-w-7xl mx-auto relative z-10">
+                <div class="text-center mb-16 md:mb-20 reveal">
+                    <h2 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Grille Tarifaire (HT)</h2>
+                    <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
+                    <p class="text-gray-500 text-[10px] mt-4 uppercase tracking-widest">Prix Hors Taxes (HT)</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-center">
+                    <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col order-1 md:order-1 reveal">
+                        <h3 class="text-lg md:text-xl font-display font-bold tracking-wider uppercase text-white mb-2">Pack Argent</h3>
+                        <p class="text-gold-400 font-display font-semibold text-3xl md:text-4xl mb-8">89.- <span class="text-sm md:text-lg font-light text-gray-500">CHF HT</span></p>
+                        <ul class="text-gray-400 font-light space-y-4 mb-8 flex-grow text-sm">
+                            <li>◆ Lavage manuel extérieur</li>
+                            <li>◆ Aspiration habitacle & coffre</li>
+                            <li>◆ Nettoyage des vitres</li>
+                            <li>◆ Séchage microfibre</li>
+                        </ul>
+                    </div>
+                    <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col relative transform md:-translate-y-4 shadow-2xl border-gold-400/30 order-2 md:order-2 mb-8 md:mb-0 reveal delay-100">
+                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gold-400 text-charcoal-900 text-[10px] md:text-xs font-display font-bold tracking-widest uppercase py-1.5 px-4 md:px-6 rounded-full shadow-lg whitespace-nowrap">Service Recommandé</div>
+                        <h3 class="text-lg md:text-xl font-display font-bold tracking-wider uppercase text-white mb-2 mt-2">Pack Or</h3>
+                        <p class="text-gold-400 font-display font-semibold text-3xl md:text-4xl mb-8">149.- <span class="text-sm md:text-lg font-light text-gray-500">CHF HT</span></p>
+                        <ul class="text-gray-400 font-light space-y-4 mb-8 flex-grow text-sm">
+                            <li>◆ Inclus le Pack Argent</li>
+                            <li>◆ Shampoing sièges & tapis</li>
+                            <li>◆ Rénovation plastiques</li>
+                            <li>◆ Nettoyage jantes & pneus</li>
+                            <li>◆ Finition parfumée</li>
+                        </ul>
+                    </div>
+                    <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col order-3 reveal delay-200">
+                        <h3 class="text-lg md:text-xl font-display font-bold tracking-wider uppercase text-white mb-2">Pack Diamant</h3>
+                        <p class="text-gold-400 font-display font-semibold text-3xl md:text-4xl mb-8">289.- <span class="text-sm md:text-lg font-light text-gray-500">CHF HT</span></p>
+                        <ul class="text-gray-400 font-light space-y-4 mb-8 flex-grow text-sm">
+                            <li>◆ Inclus le Pack Or</li>
+                            <li>◆ Cire premium déperlante</li>
+                            <li>◆ Soin cuir ou Alcantara</li>
+                            <li>◆ Traitement anti-odeur</li>
+                            <li>◆ Finitions ultra-précises</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section class="py-24 max-w-7xl mx-auto px-4 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-stretch">
@@ -770,7 +801,7 @@ details[open] summary ~ * {
                             <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Aspirateur complet</li>
                             <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Vitres intérieures</li>
                         </ul>
-                        <a id="link-argent" href="https://sumupbookings.com/clean-car-wash-geneva" target="_blank" rel="noopener noreferrer" class="block text-center border border-gold-500 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 hover:text-black transition-all text-sm">S'abonner</a>
+                        <a href="TON_LIEN_SUMUP_ICI" target="_blank" rel="noopener noreferrer" class="block text-center border border-gold-500 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 hover:text-black transition-all text-sm">S'abonner</a>
                     </div>
 
                     <div class="bg-gray-900 border-2 border-gold-500 rounded-2xl p-8 flex flex-col hover:-translate-y-2 transition-all duration-300 relative" style="box-shadow: 0 0 30px rgba(212,175,55,0.15)">
@@ -792,7 +823,7 @@ details[open] summary ~ * {
                             <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Cire protectrice</li>
                             <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Désodorisant premium</li>
                         </ul>
-                        <a id="link-or" href="https://sumupbookings.com/clean-car-wash-geneva" target="_blank" rel="noopener noreferrer" class="block text-center bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 transition-all text-sm">S'abonner</a>
+                        <a href="TON_LIEN_SUMUP_ICI" target="_blank" rel="noopener noreferrer" class="block text-center bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 transition-all text-sm">S'abonner</a>
                     </div>
 
                     <div class="bg-gray-900/50 border border-gray-800 rounded-2xl p-8 flex flex-col hover:-translate-y-2 hover:border-gold-500/50 transition-all duration-300 relative overflow-hidden">
@@ -813,7 +844,7 @@ details[open] summary ~ * {
                             <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Prise en charge &amp; restitution</li>
                             <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Rapport photos avant/après</li>
                         </ul>
-                        <a id="link-diamant" href="https://sumupbookings.com/clean-car-wash-geneva" target="_blank" rel="noopener noreferrer" class="block text-center border border-gold-500 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 hover:text-black transition-all text-sm">S'abonner</a>
+                        <a href="TON_LIEN_SUMUP_ICI" target="_blank" rel="noopener noreferrer" class="block text-center border border-gold-500 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 hover:text-black transition-all text-sm">S'abonner</a>
                     </div>
 
                 </div>
@@ -980,7 +1011,7 @@ details[open] summary ~ * {
             </div>
 
             <div class="flex flex-col items-center gap-6 reveal delay-100">
-                <a href="https://sumupbookings.com/clean-car-wash-geneva" target="_blank" rel="noopener noreferrer" class="cta-devis inline-block">
+                <a href="TON_LIEN_SUMUP_ICI" target="_blank" rel="noopener noreferrer" class="cta-devis inline-block">
                     RÉSERVER EN LIGNE
                 </a>
 
@@ -1119,24 +1150,9 @@ details[open] summary ~ * {
 
         (function() {
             var P = {
-                argent:  {
-                    m1:['80','89 CHF','−10%', 'https://pay.sumup.com/b2c/QS43FNTF'],
-                    m2:['142.40','178 CHF','−20%', 'https://pay.sumup.com/b2c/Q26M5L13'],
-                    a1:['75.60','89 CHF','−15%', 'https://pay.sumup.com/b2c/QEDK3H0B'],
-                    a2:['133','178 CHF','−25%', 'https://pay.sumup.com/b2c/QWO3BLJI']
-                },
-                or: {
-                    m1:['134.10','149 CHF','−10%', 'https://pay.sumup.com/b2c/QL8XVAA5'],
-                    m2:['238.40','298 CHF','−20%', 'https://pay.sumup.com/b2c/QLTZKJ1I'],
-                    a1:['126.65','149 CHF','−15%', 'https://pay.sumup.com/b2c/QII2I63J'],
-                    a2:['223','298 CHF','−25%', 'https://pay.sumup.com/b2c/QI5YE2M7']
-                },
-                diamant: {
-                    m1:['251','289 CHF','−13%', 'https://pay.sumup.com/b2c/Q7T56VYC'],
-                    m2:['445','578 CHF','−23%', 'https://pay.sumup.com/b2c/QSYCNRJ6'],
-                    a1:['239','289 CHF','−17%', 'https://pay.sumup.com/b2c/QOW0LRXL'],
-                    a2:['421','578 CHF','−27%', 'https://pay.sumup.com/b2c/QC3KLGQ2']
-                }
+                argent:  { m1:['80','89 CHF','−10%'],       m2:['142.40','178 CHF','−20%'], a1:['75.60','89 CHF','−15%'],   a2:['133','178 CHF','−25%']   },
+                or:      { m1:['134.10','149 CHF','−10%'],   m2:['238.40','298 CHF','−20%'], a1:['126.65','149 CHF','−15%'], a2:['223','298 CHF','−25%']   },
+                diamant: { m1:['251','289 CHF','−13%'],      m2:['445','578 CHF','−23%'],    a1:['239','289 CHF','−17%'],    a2:['421','578 CHF','−27%']   }
             };
             var eng = 'm', freq = 1;
             var ON  = 'px-5 py-2 rounded-full text-xs font-display font-bold uppercase tracking-widest transition-all bg-gold-400 text-charcoal-900';
@@ -1148,7 +1164,6 @@ details[open] summary ~ * {
                     document.getElementById('price-' + p).textContent    = d[0];
                     document.getElementById('base-' + p).textContent     = d[1];
                     document.getElementById('discount-' + p).textContent = d[2];
-                    document.getElementById('link-' + p).href            = d[3];
                 });
                 document.getElementById('btn-mensuel').className = eng==='m' ? ON : OFF;
                 document.getElementById('btn-annuel').className  = eng==='a' ? ON : OFF;
@@ -1157,7 +1172,6 @@ details[open] summary ~ * {
             }
             window.setAboEng  = function(e) { eng  = e==='mensuel' ? 'm' : 'a'; render(); };
             window.setAboFreq = function(f) { freq = +f; render(); };
-            render();
         })();
         /* TODO: Activer une fois sw.js configuré
         if ('serviceWorker' in navigator) {
