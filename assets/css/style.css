@@ -20,13 +20,14 @@ body {
     height: 100% !important;
     object-fit: cover !important;
     /* On redescend l'axe vertical de 78% à 55% pour recentrer l'Audi */
-    object-position: center 55% !important;
+    /* L’entre-deux parfait pour centrer la R8 juste sous le texte */
+    object-position: center 68% !important;
 }
 
 @media (min-width: 1024px) {
     .bg-hero img {
         /* On garde un léger zoom mais on change l'origine pour la centrer verticalement */
-        transform: scale(1.08);
+        transform: scale(1.05);
         transform-origin: center center;
     }
 }
