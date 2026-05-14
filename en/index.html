@@ -432,7 +432,10 @@ details[open] summary ~ * {
 
     <main id="main-content">
         <section class="bg-hero min-h-screen flex items-center py-20 px-4 relative">
-            <img src="../assets/images/hero-bg-opt.webp" alt="Clean Cars Wash hero" class="absolute inset-0 w-full h-full object-cover z-0" fetchpriority="high" loading="eager" aria-hidden="true">
+            <picture>
+                <source media="(max-width: 768px)" srcset="../assets/images/hero-bg-mobile.webp">
+                <img src="../assets/images/hero-bg-opt.webp" alt="Clean Cars Wash hero" class="absolute inset-0 w-full h-full object-cover z-0" fetchpriority="high" loading="eager" aria-hidden="true">
+            </picture>
             <div class="relative max-w-5xl mx-auto text-center mt-10 z-10 reveal active">
                 <h1 class="text-4xl sm:text-5xl md:text-7xl font-display font-bold text-white mb-4 md:mb-6 leading-tight tracking-wide uppercase drop-shadow-2xl">
                     Excellence<br>
