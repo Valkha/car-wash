@@ -41,7 +41,8 @@
       "Bash(git commit -m 'fix\\(build\\): vite config MPA definitive + audit casse Linux *)",
       "Bash(sed -i 's|src=\"assets/images/video-realisation.mp4\"|src=\"/video-realisation.mp4\"|g' index.html)",
       "Bash(sed -i 's|src=\"../assets/images/video-realisation.mp4\"|src=\"/video-realisation.mp4\"|g' en/index.html)",
-      "Bash(git commit -m 'fix\\(assets\\): deplacement de la video dans le dossier public pour garantir son inclusion par le bundler Vite *)"
+      "Bash(git commit -m 'fix\\(assets\\): deplacement de la video dans le dossier public pour garantir son inclusion par le bundler Vite *)",
+      "Bash(git commit -m 'fix\\(infra\\): rollback vers Netlify et ajout du netlify.toml pour la compilation Vite *)"
     ]
   }
 }
