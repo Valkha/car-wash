@@ -106,6 +106,27 @@
           "@type": "Answer",
           "text": "Our packages start at 89.- CHF for the essentials (Silver Pack) and go up to 289.- CHF for a full restoration (Diamond Pack)."
         }
+      }, {
+        "@type": "Question",
+        "name": "How long should I wait after a seat shampoo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Allow a minimum of 4 to 6 hours of drying time before heavy use. In summer, drying is usually faster. We recommend leaving the windows slightly open to help ventilation."
+        }
+      }, {
+        "@type": "Question",
+        "name": "What payment methods do you accept?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A 30% deposit is required online at the time of booking via our secure SumUp link (credit card, Apple Pay, Google Pay). The balance is settled at the end of the service."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Do you operate in bad weather?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we operate in all weather conditions thanks to our professional equipment. In case of extreme conditions (storm, snow), we contact the client to adapt the protocol or agree on a free reschedule."
+        }
       }]
     }
     </script>
@@ -161,7 +182,7 @@
                     <span class="lang-active py-2 px-1">EN</span>
                 </div>
 
-                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal-900 p-1.5 -mr-1.5" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal-900 p-1.5 -mr-1.5" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu" data-label-open="Open navigation menu" data-label-close="Close menu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
@@ -894,6 +915,39 @@
                         An additional charge of 69.- CHF excl. VAT per hour applies for extremely dirty vehicles. We also offer pet hair removal (39.90 CHF excl. VAT).
                     </div>
                 </div>
+                <div class="premium-card rounded-xl reveal delay-200">
+                    <h3 class="text-base font-display font-semibold text-white">
+                        <button class="faq-trigger w-full flex justify-between items-center font-display font-bold text-white p-5 md:p-6 outline-none hover:text-gold-400 transition-colors text-sm md:text-base text-left" aria-expanded="false" aria-controls="faq-panel-3">
+                            How long should I wait after a seat shampoo?
+                            <span class="faq-icon text-gold-400 transition-transform duration-300 text-xl md:text-2xl leading-none" aria-hidden="true">+</span>
+                        </button>
+                    </h3>
+                    <div id="faq-panel-3" role="region" aria-hidden="true" class="hidden text-gray-400 font-light px-5 md:px-6 pb-5 md:pb-6 leading-relaxed text-sm md:text-base">
+                        Allow a minimum of 4 to 6 hours of drying time before heavy use. In summer, drying is usually faster. We recommend leaving the windows slightly open to help ventilation.
+                    </div>
+                </div>
+                <div class="premium-card rounded-xl reveal delay-300">
+                    <h3 class="text-base font-display font-semibold text-white">
+                        <button class="faq-trigger w-full flex justify-between items-center font-display font-bold text-white p-5 md:p-6 outline-none hover:text-gold-400 transition-colors text-sm md:text-base text-left" aria-expanded="false" aria-controls="faq-panel-4">
+                            What payment methods do you accept?
+                            <span class="faq-icon text-gold-400 transition-transform duration-300 text-xl md:text-2xl leading-none" aria-hidden="true">+</span>
+                        </button>
+                    </h3>
+                    <div id="faq-panel-4" role="region" aria-hidden="true" class="hidden text-gray-400 font-light px-5 md:px-6 pb-5 md:pb-6 leading-relaxed text-sm md:text-base">
+                        A 30% deposit is required online at the time of booking via our secure SumUp link (credit card, Apple Pay, Google Pay). The balance is settled at the end of the service.
+                    </div>
+                </div>
+                <div class="premium-card rounded-xl reveal delay-300">
+                    <h3 class="text-base font-display font-semibold text-white">
+                        <button class="faq-trigger w-full flex justify-between items-center font-display font-bold text-white p-5 md:p-6 outline-none hover:text-gold-400 transition-colors text-sm md:text-base text-left" aria-expanded="false" aria-controls="faq-panel-5">
+                            Do you operate in bad weather?
+                            <span class="faq-icon text-gold-400 transition-transform duration-300 text-xl md:text-2xl leading-none" aria-hidden="true">+</span>
+                        </button>
+                    </h3>
+                    <div id="faq-panel-5" role="region" aria-hidden="true" class="hidden text-gray-400 font-light px-5 md:px-6 pb-5 md:pb-6 leading-relaxed text-sm md:text-base">
+                        Yes, we operate in all weather conditions thanks to our professional equipment. In case of extreme conditions (storm, snow), we contact the client to adapt the protocol or agree on a free reschedule.
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1029,129 +1083,6 @@
         </div>
     </div>
 
-    <script>
-        // GRADE S: Golden Progress Bar
-        let _scrollTicking = false;
-        window.addEventListener('scroll', () => {
-            if (!_scrollTicking) {
-                requestAnimationFrame(() => {
-                    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-                    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                    const scrolled = (winScroll / height) * 100;
-                    document.getElementById("scroll-progress").style.width = scrolled + "%";
-                    _scrollTicking = false;
-                });
-                _scrollTicking = true;
-            }
-        });
-
-        // Mobile Menu & ARIA
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        function toggleMenu(forceClose = false) {
-            const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-            const willExpand = forceClose ? false : !isExpanded;
-            menu.classList.toggle('open', willExpand);
-            btn.setAttribute('aria-expanded', String(willExpand));
-            btn.setAttribute('aria-label', willExpand ? 'Close menu' : 'Open navigation menu');
-        }
-        btn.addEventListener('click', () => toggleMenu());
-        document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => toggleMenu(true)));
-
-        // FAQ Accordion
-        document.querySelectorAll('.faq-trigger').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const expanded = btn.getAttribute('aria-expanded') === 'true';
-                const panel = document.getElementById(btn.getAttribute('aria-controls'));
-                const icon = btn.querySelector('.faq-icon');
-                btn.setAttribute('aria-expanded', String(!expanded));
-                panel.setAttribute('aria-hidden', String(expanded));
-                panel.classList.toggle('hidden');
-                icon.classList.toggle('open', !expanded);
-            });
-        });
-
-        // Reveal animations
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-        // Slider Logic
-        const track = document.getElementById('slider-track');
-        let currentSlide = 0;
-        function updateSlider() { 
-            track.style.transform = `translateX(-${currentSlide * 100}%)`;
-            document.querySelectorAll('.slider-dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
-        }
-        function nextSlide() { currentSlide = (currentSlide === 2) ? 0 : currentSlide + 1; updateSlider(); }
-        function prevSlide() { currentSlide = (currentSlide === 0) ? 2 : currentSlide - 1; updateSlider(); }
-        function goToSlide(i) { currentSlide = i; updateSlider(); }
-
-
-        (function() {
-            var P = {
-                argent:  {
-                    m1:['80','89 CHF','−10%', 'https://pay.sumup.com/b2c/QS43FNTF'],
-                    m2:['142.40','178 CHF','−20%', 'https://pay.sumup.com/b2c/Q26M5L13'],
-                    a1:['75.60','89 CHF','−15%', 'https://pay.sumup.com/b2c/QEDK3H0B'],
-                    a2:['133','178 CHF','−25%', 'https://pay.sumup.com/b2c/QWO3BLJI']
-                },
-                or: {
-                    m1:['134.10','149 CHF','−10%', 'https://pay.sumup.com/b2c/QL8XVAA5'],
-                    m2:['238.40','298 CHF','−20%', 'https://pay.sumup.com/b2c/QLTZKJ1I'],
-                    a1:['126.65','149 CHF','−15%', 'https://pay.sumup.com/b2c/QII2I63J'],
-                    a2:['223','298 CHF','−25%', 'https://pay.sumup.com/b2c/QI5YE2M7']
-                },
-                diamant: {
-                    m1:['251','289 CHF','−13%', 'https://pay.sumup.com/b2c/Q7T56VYC'],
-                    m2:['445','578 CHF','−23%', 'https://pay.sumup.com/b2c/QSYCNRJ6'],
-                    a1:['239','289 CHF','−17%', 'https://pay.sumup.com/b2c/QOW0LRXL'],
-                    a2:['421','578 CHF','−27%', 'https://pay.sumup.com/b2c/QC3KLGQ2']
-                }
-            };
-            var eng = 'm', freq = 1;
-            var ON  = 'px-5 py-3.5 rounded-full text-xs font-display font-bold uppercase tracking-widest transition-all bg-gold-400 text-charcoal-900';
-            var OFF = 'px-5 py-3.5 rounded-full text-xs font-display uppercase tracking-widest transition-all text-gray-400';
-            function render() {
-                var k = eng + freq;
-                ['argent','or','diamant'].forEach(function(p) {
-                    var d = P[p][k];
-                    document.getElementById('price-' + p).textContent    = d[0];
-                    document.getElementById('base-' + p).textContent     = d[1];
-                    document.getElementById('discount-' + p).textContent = d[2];
-                    document.getElementById('link-' + p).href            = d[3];
-                });
-                document.getElementById('btn-mensuel').className = eng==='m' ? ON : OFF;
-                document.getElementById('btn-annuel').className  = eng==='a' ? ON : OFF;
-                document.getElementById('btn-freq1').className   = freq===1  ? ON : OFF;
-                document.getElementById('btn-freq2').className   = freq===2  ? ON : OFF;
-            }
-            window.setAboEng  = function(e) { eng  = e==='mensuel' ? 'm' : 'a'; render(); };
-            window.setAboFreq = function(f) { freq = +f; render(); };
-            render();
-        })();
-        /* TODO: Enable once sw.js is configured
-        if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('../sw.js').then(reg => {
-            console.log('Grade S+ : Service Worker activé !');
-        }).catch(err => console.log('SW fail', err));
-    });
-}
-        */
-    </script>
-    <script>
-        (function () {
-            const d = document.getElementById('date_rdv');
-            if (d) {
-                const t = new Date();
-                d.min = t.getFullYear() + '-' +
-                    String(t.getMonth() + 1).padStart(2, '0') + '-' +
-                    String(t.getDate()).padStart(2, '0');
-            }
-        })();
-    </script>
 
     <!-- Modal Call Us -->
     <div id="ccw-contact-modal" class="hidden fixed inset-0 items-center justify-center px-4" style="z-index:300;" role="dialog" aria-modal="true" aria-labelledby="ccw-modal-title">
@@ -1180,11 +1111,7 @@
             <p class="text-gray-600 text-[10px] mt-5 uppercase tracking-widest font-display">Tap outside to close</p>
         </div>
     </div>
-    <script>
-    function ccwModalOpen(){var m=document.getElementById("ccw-contact-modal");m.classList.remove("hidden");m.classList.add("flex");document.body.style.overflow="hidden";}
-    function ccwModalClose(){var m=document.getElementById("ccw-contact-modal");m.classList.add("hidden");m.classList.remove("flex");document.body.style.overflow="";}
-    document.addEventListener("keydown",function(e){if(e.key==="Escape")ccwModalClose();});
-    </script>
+    <script src="../assets/js/app.js" defer></script>
 
 </body>
 </html>
