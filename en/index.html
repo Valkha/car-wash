@@ -21,11 +21,15 @@
     <meta property="og:description" content="Professional mobile detailing service in Geneva and Vaud. Home pick-up, showroom results. Silver, Gold, and Diamond packages.">
     <meta property="og:image" content="https://www.clean-cars-wash.ch/assets/images/MB-01-opt.webp">
     <meta property="og:image:alt" content="Premium Mercedes detailing — Clean Cars Wash Geneva">
-    <meta property="og:locale" content="en_GB">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Clean Cars Wash">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Premium Mobile Car Wash Geneva | Clean Cars Wash">
     <meta name="twitter:image" content="https://www.clean-cars-wash.ch/assets/images/MB-01-opt.webp">
+    <meta name="twitter:image:alt" content="Premium Mercedes detailing — Clean Cars Wash Geneva">
     <meta name="twitter:description" content="Professional mobile detailing in Geneva and Vaud. Home pick-up, showroom results. Silver, Gold, Diamond packages.">
 
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -40,6 +44,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="image" href="../assets/images/hero-bg-opt.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="../assets/images/hero-bg-mobile.webp" media="(max-width: 768px)" fetchpriority="high">
 
     <script type="application/ld+json">
     {
@@ -131,7 +136,7 @@
             <a href="index.html" class="flex items-center gap-3 group" aria-label="Clean Cars Wash — Home">
                 <picture>
                     <source media="(max-width: 767px)" srcset="../assets/images/logo-mobile.webp">
-                    <img src="../assets/images/logo-v2-tiny.webp" alt="Clean Cars Wash Logo" width="120" height="34" class="h-14 md:h-16 w-auto -my-2 md:-my-3 object-contain transition-transform group-hover:scale-105">
+                    <img src="../assets/images/logo-v2-tiny.webp" alt="Clean Cars Wash Logo" width="120" height="34" class="h-8 md:h-16 w-auto md:-my-3 object-contain transition-transform group-hover:scale-105">
                 </picture>
                 <span class="text-xl md:text-2xl font-display font-bold text-white tracking-widest uppercase group-hover:text-gold-400 transition-colors hidden sm:block">Clean Cars Wash</span>
             </a>
@@ -142,7 +147,7 @@
                         <li><a href="#services" class="hover:text-gold-400 transition duration-300">Services</a></li>
                         <li><a href="#galerie" class="hover:text-gold-400 transition duration-300">Gallery</a></li>
                         <li><a href="#avis" class="hover:text-gold-400 transition duration-300">Reviews</a></li>
-                        <li><a href="#services" class="hover:text-gold-400 transition duration-300">Pricing</a></li>
+                        <li><a href="#abonnements" class="hover:text-gold-400 transition duration-300">Pricing</a></li>
                         <li><a href="subscriptions.html" class="hover:text-gold-400 transition duration-300">Subscriptions</a></li>
                         <li><a href="#faq" class="hover:text-gold-400 transition duration-300">FAQ</a></li>
                         <li><a href="#reservation" class="text-gold-400 border border-gold-400 px-4 py-2 hover:bg-gold-400 hover:text-charcoal-900 transition duration-300">Book</a></li>
@@ -155,7 +160,7 @@
                     <span class="lang-active">EN</span>
                 </div>
 
-                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal-900 p-1.5 -mr-1.5" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
@@ -867,7 +872,7 @@
             </div>
             <div class="space-y-4">
                 <div class="premium-card rounded-xl reveal">
-                    <h3>
+                    <h3 class="text-base font-display font-semibold text-white">
                         <button class="faq-trigger w-full flex justify-between items-center font-display font-bold text-white p-5 md:p-6 outline-none hover:text-gold-400 transition-colors text-sm md:text-base text-left" aria-expanded="false" aria-controls="faq-panel-1">
                             How does home pick-up work?
                             <span class="faq-icon text-gold-400 transition-transform duration-300 text-xl md:text-2xl leading-none" aria-hidden="true">+</span>
@@ -878,7 +883,7 @@
                     </div>
                 </div>
                 <div class="premium-card rounded-xl reveal delay-100">
-                    <h3>
+                    <h3 class="text-base font-display font-semibold text-white">
                         <button class="faq-trigger w-full flex justify-between items-center font-display font-bold text-white p-5 md:p-6 outline-none hover:text-gold-400 transition-colors text-sm md:text-base text-left" aria-expanded="false" aria-controls="faq-panel-2">
                             Are there any additional fees?
                             <span class="faq-icon text-gold-400 transition-transform duration-300 text-xl md:text-2xl leading-none" aria-hidden="true">+</span>
