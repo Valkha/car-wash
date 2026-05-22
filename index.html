@@ -2,6 +2,7 @@
 <html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
     <title>Lavage Auto Premium à Genève | Clean Cars Wash</title>
@@ -135,7 +136,7 @@
             <a href="index.html" class="flex items-center gap-3 group" aria-label="Clean Cars Wash — Accueil">
                 <picture>
                     <source media="(max-width: 767px)" srcset="assets/images/logo-mobile.webp">
-                    <img src="assets/images/logo-v2-tiny.webp" alt="Logo Clean Cars Wash" width="120" height="34" class="h-8 md:h-16 w-auto md:-my-3 object-contain transition-transform group-hover:scale-105">
+                    <img src="assets/images/logo-v2-tiny.webp" alt="Logo Clean Cars Wash" width="120" height="34" loading="eager" class="h-8 md:h-16 w-auto md:-my-3 object-contain transition-transform group-hover:scale-105">
                 </picture>
                 <span class="text-xl md:text-2xl font-display font-bold text-white tracking-widest uppercase group-hover:text-gold-400 transition-colors hidden sm:block">Clean Cars Wash</span>
             </a>
@@ -153,10 +154,10 @@
                     </ul>
                 </nav>
 
-                <div class="flex items-center gap-2 text-[10px] font-display tracking-widest uppercase border-l border-white/10 pl-6 h-6">
-                    <span class="lang-active">FR</span>
+                <div class="flex items-center gap-2 text-xs font-display tracking-widest uppercase border-l border-white/10 pl-6">
+                    <span class="lang-active py-2 px-1">FR</span>
                     <span class="text-gray-700" aria-hidden="true">|</span>
-                    <a href="en/index.html" class="text-gray-500 hover:text-white transition">EN</a>
+                    <a href="en/index.html" class="text-gray-500 hover:text-white transition py-2 px-1">EN</a>
                 </div>
 
                 <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal-900 p-1.5 -mr-1.5" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="mobile-menu">
@@ -683,12 +684,12 @@
                     <h2 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Formules Abonnement</h2>
                     <div class="w-20 h-1 bg-linear-to-r from-transparent via-gold-400 to-transparent mx-auto mb-8"></div>
                     <div class="flex flex-wrap justify-center gap-3 mb-4">
-                        <button id="btn-mensuel" onclick="setAboEng('mensuel')" class="px-5 py-2 rounded-full text-xs font-display font-bold uppercase tracking-widest transition-all bg-gold-400 text-charcoal-900">Mensuel</button>
-                        <button id="btn-annuel"  onclick="setAboEng('annuel')"  class="px-5 py-2 rounded-full text-xs font-display uppercase tracking-widest transition-all text-gray-400">Annuel</button>
+                        <button id="btn-mensuel" onclick="setAboEng('mensuel')" class="px-5 py-3.5 rounded-full text-xs font-display font-bold uppercase tracking-widest transition-all bg-gold-400 text-charcoal-900">Mensuel</button>
+                        <button id="btn-annuel"  onclick="setAboEng('annuel')"  class="px-5 py-3.5 rounded-full text-xs font-display uppercase tracking-widest transition-all text-gray-400">Annuel</button>
                     </div>
                     <div class="flex flex-wrap justify-center gap-3">
-                        <button id="btn-freq1" onclick="setAboFreq(1)" class="px-5 py-2 rounded-full text-xs font-display font-bold uppercase tracking-widest transition-all bg-gold-400 text-charcoal-900">1×/mois</button>
-                        <button id="btn-freq2" onclick="setAboFreq(2)" class="px-5 py-2 rounded-full text-xs font-display uppercase tracking-widest transition-all text-gray-400">2×/mois</button>
+                        <button id="btn-freq1" onclick="setAboFreq(1)" class="px-5 py-3.5 rounded-full text-xs font-display font-bold uppercase tracking-widest transition-all bg-gold-400 text-charcoal-900">1×/mois</button>
+                        <button id="btn-freq2" onclick="setAboFreq(2)" class="px-5 py-3.5 rounded-full text-xs font-display uppercase tracking-widest transition-all text-gray-400">2×/mois</button>
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mt-12">
@@ -999,7 +1000,7 @@
                 <a href="mailto:info@clean-cars-wash.ch" class="text-gold-400 font-display tracking-widest uppercase text-xs md:text-sm hover:text-white transition">info@clean-cars-wash.ch</a>
             </div>
             <div class="text-center">
-                <h4 class="text-white font-display font-bold text-xs md:text-sm tracking-widest uppercase mb-4">Contact &amp; Horaires</h4>
+                <p class="text-white font-display font-bold text-xs md:text-sm tracking-widest uppercase mb-4">Contact &amp; Horaires</p>
                 <a href="tel:+41782657071" class="block text-gold-400 font-display tracking-widest uppercase text-xs md:text-sm hover:text-white transition mb-4">+41 78 265 70 71</a>
                 <ul class="text-gray-400 font-light text-xs md:text-sm space-y-1">
                     <li>Lun–Ven : 09h00 – 18h00</li>
@@ -1109,8 +1110,8 @@
                 }
             };
             var eng = 'm', freq = 1;
-            var ON  = 'px-5 py-2 rounded-full text-xs font-display font-bold uppercase tracking-widest transition-all bg-gold-400 text-charcoal-900';
-            var OFF = 'px-5 py-2 rounded-full text-xs font-display uppercase tracking-widest transition-all text-gray-400';
+            var ON  = 'px-5 py-3.5 rounded-full text-xs font-display font-bold uppercase tracking-widest transition-all bg-gold-400 text-charcoal-900';
+            var OFF = 'px-5 py-3.5 rounded-full text-xs font-display uppercase tracking-widest transition-all text-gray-400';
             function render() {
                 var k = eng + freq;
                 ['argent','or','diamant'].forEach(function(p) {
