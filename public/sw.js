@@ -7,7 +7,7 @@ const PRECACHE = [
   '/assets/images/hero-bg-mobile.webp',
   '/assets/images/logo-v2-tiny.webp',
   '/assets/images/logo-mobile.webp',
-  '/assets/js/app.js',
+  '/js/app.js',
   '/manifest.json'
 ];
 
