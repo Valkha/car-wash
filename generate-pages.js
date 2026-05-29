@@ -18,8 +18,56 @@ const generateHTML = (loc) => `<!DOCTYPE html>
     <title>${loc.recommendedService} à ${loc.cityName} | Clean Cars Wash</title>
     <meta name="description" content="${loc.seoIntroSnippet}">
     <link rel="canonical" href="https://www.clean-cars-wash.ch/services/${loc.cityId}/">
-    <link rel="stylesheet" href="../../assets/css/tailwind.min.css">
-    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/tailwind-src.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": ["LocalBusiness", "AutoWash"],
+          "name": "Clean Cars Wash ${loc.cityName}",
+          "@id": "https://www.clean-cars-wash.ch/services/${loc.cityId}/",
+          "url": "https://www.clean-cars-wash.ch/services/${loc.cityId}/",
+          "telephone": "+41782657071",
+          "priceRange": "CHF 89–289",
+          "image": "https://www.clean-cars-wash.ch/assets/images/MB-01-opt.webp",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "${loc.cityName}",
+            "addressRegion": "${loc.region}",
+            "addressCountry": "CH"
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "${loc.cityName}"
+          },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Packs Detailing",
+            "itemListElement": [
+              { "@type": "Offer", "name": "Pack Argent", "price": "89", "priceCurrency": "CHF" },
+              { "@type": "Offer", "name": "Pack Or", "price": "149", "priceCurrency": "CHF" },
+              { "@type": "Offer", "name": "Pack Diamant", "price": "289", "priceCurrency": "CHF" }
+            ]
+          }
+        },
+        {
+          "@type": "Service",
+          "name": "${loc.recommendedService} à ${loc.cityName}",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Clean Cars Wash"
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "${loc.cityName}"
+          },
+          "description": "${loc.seoIntroSnippet}",
+          "url": "https://www.clean-cars-wash.ch/services/${loc.cityId}/"
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-gray-50 text-gray-900">
     <header class="bg-black text-white p-6">
