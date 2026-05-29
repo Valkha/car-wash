@@ -146,8 +146,8 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="./assets/css/tailwind-src.css">
 </head>
-<body class="bg-charcoal-900 text-gray-300 font-sans antialiased relative" style="background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px); background-size: 30px 30px;">    
-    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gold-400 z-100 transition-all duration-150" style="width: 0%;"></div>
+<body class="bg-charcoal-900 text-gray-300 font-sans antialiased relative overflow-x-hidden" style="background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px); background-size: 30px 30px;">    
+    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gold-400 z-[100] transition-all duration-150" style="width: 0%;"></div>
 
     <a href="#main-content" class="skip-link">Passer au contenu principal</a>
 
@@ -165,12 +165,12 @@
             <div class="flex items-center gap-6">
                 <nav class="hidden md:block">
                     <ul class="flex space-x-8 text-xs font-display tracking-widest uppercase">
-                        <li><a href="#services" class="hover:text-gold-400 transition duration-300">Services</a></li>
-                        <li><a href="#galerie" class="hover:text-gold-400 transition duration-300">Galerie</a></li>
-                        <li><a href="#avis" class="hover:text-gold-400 transition duration-300">Avis</a></li>
-                        <li><a href="#abonnements" class="hover:text-gold-400 transition duration-300">Tarifs</a></li>
-                        <li><a href="#abonnements" class="hover:text-gold-400 transition duration-300">Abonnements</a></li>
-                        <li><a href="#faq" class="hover:text-gold-400 transition duration-300">FAQ</a></li>
+                        <li><a href="#services" class="py-2 hover:text-gold-400 transition duration-300">Services</a></li>
+                        <li><a href="#galerie" class="py-2 hover:text-gold-400 transition duration-300">Galerie</a></li>
+                        <li><a href="#avis" class="py-2 hover:text-gold-400 transition duration-300">Avis</a></li>
+                        <li><a href="#abonnements" class="py-2 hover:text-gold-400 transition duration-300">Tarifs</a></li>
+                        <li><a href="#abonnements" class="py-2 hover:text-gold-400 transition duration-300">Abonnements</a></li>
+                        <li><a href="#faq" class="py-2 hover:text-gold-400 transition duration-300">FAQ</a></li>
                         <li><a href="#reservation" class="text-gold-400 border border-gold-400 px-4 py-2 hover:bg-gold-400 hover:text-charcoal-900 transition duration-300">Réserver</a></li>
                     </ul>
                 </nav>
@@ -181,7 +181,7 @@
                     <a href="en/index.html" class="text-gray-500 hover:text-white transition py-2 px-1">EN</a>
                 </div>
 
-                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal-900 p-1.5 -mr-1.5" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="mobile-menu" data-label-open="Ouvrir le menu de navigation" data-label-close="Fermer le menu">
+                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal-900 p-2 -mr-2" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="mobile-menu" data-label-open="Ouvrir le menu de navigation" data-label-close="Fermer le menu">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
@@ -239,7 +239,7 @@
             </a>
         </section>
 
-        <section class="py-20 md:py-24 bg-charcoal-800/30">
+        <section class="py-24 md:py-32 bg-charcoal-800/30">
             <div class="max-w-7xl mx-auto px-4">
 
                 <div class="text-center mb-12 reveal">
@@ -578,7 +578,7 @@
                 <div class="relative overflow-hidden rounded-2xl shadow-2xl border border-white/5 bg-charcoal-800" aria-label="Galerie de réalisations" aria-roledescription="carousel">
                     <div id="slider-track" class="flex transition-transform duration-700 ease-in-out w-full">
                         
-                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-87.5 overflow-hidden" role="group" aria-roledescription="diapositive" aria-label="1 sur 3">
+                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-[350px] overflow-hidden" role="group" aria-roledescription="diapositive" aria-label="1 sur 3">
                             <img src="assets/images/MB-01-opt.webp"
                                  srcset="assets/images/MB-01-opt-sm.webp 400w, assets/images/MB-01-opt-xs.webp 600w, assets/images/MB-01-opt.webp 800w"
                                  sizes="(max-width: 480px) 100vw, 800px"
@@ -591,15 +591,15 @@
                             </div>
                         </div>
                         
-                        <div class="w-full shrink-0 relative group" role="group" aria-roledescription="diapositive" aria-label="2 sur 3">
-                            <img src="assets/images/VW-8R-opt.webp" alt="Volkswagen Polo 8R noire après detailing" width="800" height="533" class="w-full h-[50vh] md:h-[60vh] min-h-87.5 object-contain" loading="lazy">
+                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh]" role="group" aria-roledescription="diapositive" aria-label="2 sur 3">
+                            <img src="assets/images/VW-8R-opt.webp" alt="Volkswagen Polo 8R noire après detailing" width="800" height="533" class="w-full h-[50vh] md:h-[60vh] min-h-[350px] object-contain" loading="lazy">
                             <div class="absolute inset-0 slide-overlay flex flex-col justify-end p-6 md:p-10">
                                 <h4 class="text-gold-400 font-display font-bold text-xl md:text-2xl tracking-widest uppercase mb-2">Pack Argent 🥈</h4>
                                 <p class="text-gray-300 font-light text-sm md:text-base">Restauration de la brillance Showroom</p>
                             </div>
                         </div>
 
-                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-87.5 bg-charcoal-900" role="group" aria-roledescription="diapositive" aria-label="3 sur 3">
+                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-[350px] bg-charcoal-900" role="group" aria-roledescription="diapositive" aria-label="3 sur 3">
                             <video
                                 src="/video-realisation.mp4"
                                 class="w-full h-full object-cover"
@@ -615,17 +615,17 @@
                         </div>
                     </div>
 
-                    <button onclick="prevSlide()" class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-black/50 text-white backdrop-blur border border-white/10 z-20 group" aria-label="Image précédente">
+                    <button onclick="prevSlide()" class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center rounded-full bg-black/50 text-white backdrop-blur border border-white/10 z-20 group" aria-label="Image précédente">
                         <svg class="w-5 h-5 transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                     </button>
-                    <button onclick="nextSlide()" class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-black/50 text-white backdrop-blur border border-white/10 z-20 group" aria-label="Image suivante">
+                    <button onclick="nextSlide()" class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center rounded-full bg-black/50 text-white backdrop-blur border border-white/10 z-20 group" aria-label="Image suivante">
                         <svg class="w-5 h-5 transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                     </button>
                     
                     <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20" id="slider-dots">
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 active p-3 -m-3" onclick="goToSlide(0)" aria-label="Aller à la diapositive 1"></button>
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-3 -m-3" onclick="goToSlide(1)" aria-label="Aller à la diapositive 2"></button>
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-3 -m-3" onclick="goToSlide(2)" aria-label="Aller à la diapositive 3"></button>
+                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 active p-[18px] -m-[18px]" onclick="goToSlide(0)" aria-label="Aller à la diapositive 1"></button>
+                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-[18px] -m-[18px]" onclick="goToSlide(1)" aria-label="Aller à la diapositive 2"></button>
+                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-[18px] -m-[18px]" onclick="goToSlide(2)" aria-label="Aller à la diapositive 3"></button>
                     </div>
                 </div>
             </div>
