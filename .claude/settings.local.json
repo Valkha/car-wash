@@ -42,7 +42,15 @@
       "Bash(sed -i 's|src=\"assets/images/video-realisation.mp4\"|src=\"/video-realisation.mp4\"|g' index.html)",
       "Bash(sed -i 's|src=\"../assets/images/video-realisation.mp4\"|src=\"/video-realisation.mp4\"|g' en/index.html)",
       "Bash(git commit -m 'fix\\(assets\\): deplacement de la video dans le dossier public pour garantir son inclusion par le bundler Vite *)",
-      "Bash(git commit -m 'fix\\(infra\\): rollback vers Netlify et ajout du netlify.toml pour la compilation Vite *)"
+      "Bash(git commit -m 'fix\\(infra\\): rollback vers Netlify et ajout du netlify.toml pour la compilation Vite *)",
+      "Bash(grep -c \"Content-Security-Policy\\\\|en/#website\\\\|Contact.*Horaires.*</p>\\\\|text-xs.*border-l\\\\|py-3\\\\.5 rounded-full\\\\|loading=\\\\\"eager\\\\\".*logo\\\\|h3.*nus\" index.html)",
+      "Bash(grep -c \"Content-Security-Policy\\\\|en/#website\\\\|Contact.*Hours.*</p>\\\\|text-xs.*border-l\\\\|py-3\\\\.5 rounded-full\\\\|loading=\\\\\"eager\\\\\".*logo\" en/index.html)",
+      "Bash(New-Item -ItemType Directory -Force -Path \"c:\\\\Users\\\\adrie\\\\Desktop\\\\Code\\\\PROJETS\\\\car-wash\\\\assets\\\\js\")",
+      "Bash(Out-Null)",
+      "Bash(node -e \"const fs=require\\('fs'\\); const css=fs.readFileSync\\('assets/css/tailwind-src.css','utf8'\\); console.log\\(css.substring\\(0,100\\)\\);\")",
+      "Bash(git mv *)",
+      "Bash(git reset *)",
+      "Bash(node --input-type=module -e ' *)"
     ]
   }
 }

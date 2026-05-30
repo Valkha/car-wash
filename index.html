@@ -147,7 +147,7 @@
     <link rel="stylesheet" href="./assets/css/tailwind-src.css">
 </head>
 <body class="bg-charcoal-900 text-gray-300 font-sans antialiased relative overflow-x-hidden" style="background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px); background-size: 30px 30px;">    
-    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gold-400 z-[100] transition-all duration-150" style="width: 0%;"></div>
+    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gold-400 z-100 transition-all duration-150" style="width: 0%;"></div>
 
     <a href="#main-content" class="skip-link">Passer au contenu principal</a>
 
@@ -578,7 +578,7 @@
                 <div class="relative overflow-hidden rounded-2xl shadow-2xl border border-white/5 bg-charcoal-800" aria-label="Galerie de réalisations" aria-roledescription="carousel">
                     <div id="slider-track" class="flex transition-transform duration-700 ease-in-out w-full">
                         
-                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-[350px] overflow-hidden" role="group" aria-roledescription="diapositive" aria-label="1 sur 3">
+                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-87.5 overflow-hidden" role="group" aria-roledescription="diapositive" aria-label="1 sur 3">
                             <img src="assets/images/MB-01-opt.webp"
                                  srcset="assets/images/MB-01-opt-sm.webp 400w, assets/images/MB-01-opt-xs.webp 600w, assets/images/MB-01-opt.webp 800w"
                                  sizes="(max-width: 480px) 100vw, 800px"
@@ -592,14 +592,14 @@
                         </div>
                         
                         <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh]" role="group" aria-roledescription="diapositive" aria-label="2 sur 3">
-                            <img src="assets/images/VW-8R-opt.webp" alt="Volkswagen Polo 8R noire après detailing" width="800" height="533" class="w-full h-[50vh] md:h-[60vh] min-h-[350px] object-contain" loading="lazy">
+                            <img src="assets/images/VW-8R-opt.webp" alt="Volkswagen Polo 8R noire après detailing" width="800" height="533" class="w-full h-[50vh] md:h-[60vh] min-h-87.5 object-contain" loading="lazy">
                             <div class="absolute inset-0 slide-overlay flex flex-col justify-end p-6 md:p-10">
                                 <h4 class="text-gold-400 font-display font-bold text-xl md:text-2xl tracking-widest uppercase mb-2">Pack Argent 🥈</h4>
                                 <p class="text-gray-300 font-light text-sm md:text-base">Restauration de la brillance Showroom</p>
                             </div>
                         </div>
 
-                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-[350px] bg-charcoal-900" role="group" aria-roledescription="diapositive" aria-label="3 sur 3">
+                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-87.5 bg-charcoal-900" role="group" aria-roledescription="diapositive" aria-label="3 sur 3">
                             <video
                                 src="/video-realisation.mp4"
                                 class="w-full h-full object-cover"
@@ -623,9 +623,9 @@
                     </button>
                     
                     <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20" id="slider-dots">
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 active p-[18px] -m-[18px]" onclick="goToSlide(0)" aria-label="Aller à la diapositive 1"></button>
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-[18px] -m-[18px]" onclick="goToSlide(1)" aria-label="Aller à la diapositive 2"></button>
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-[18px] -m-[18px]" onclick="goToSlide(2)" aria-label="Aller à la diapositive 3"></button>
+                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 active p-4.5 -m-4.5" onclick="goToSlide(0)" aria-label="Aller à la diapositive 1"></button>
+                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-4.5 -m-4.5" onclick="goToSlide(1)" aria-label="Aller à la diapositive 2"></button>
+                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-4.5 -m-4.5" onclick="goToSlide(2)" aria-label="Aller à la diapositive 3"></button>
                     </div>
                 </div>
             </div>
