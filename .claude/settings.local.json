@@ -50,7 +50,11 @@
       "Bash(node -e \"const fs=require\\('fs'\\); const css=fs.readFileSync\\('assets/css/tailwind-src.css','utf8'\\); console.log\\(css.substring\\(0,100\\)\\);\")",
       "Bash(git mv *)",
       "Bash(git reset *)",
-      "Bash(node --input-type=module -e ' *)"
+      "Bash(node --input-type=module -e ' *)",
+      "Bash(npx vite *)",
+      "Bash(sed -n '248,253p' index.html)",
+      "Bash(sed -n '272,277p' index.html)",
+      "Bash(sed -n '523,527p' index.html)"
     ]
   }
 }
