@@ -522,8 +522,8 @@
                 <div class="w-20 h-1 bg-linear-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
                 <p class="text-gray-500 text-[10px] mt-4 uppercase tracking-widest">Prix Hors Taxes (HT)</p>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-                <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full reveal">
+            <div class="flex flex-nowrap overflow-x-auto snap-x snap-mandatory pb-6 hide-scrollbar md:grid md:grid-cols-3 md:overflow-visible md:snap-none gap-6 md:gap-8">
+                <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full reveal snap-center shrink-0 w-[85vw] md:w-auto">
                     <div class="w-12 h-12 mb-5 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl" aria-hidden="true">🥈</div>
                     <h3 class="text-lg md:text-xl font-display font-bold tracking-wider uppercase text-white mb-2">Pack Argent</h3>
                     <p class="text-gold-400 font-display font-semibold text-3xl md:text-4xl mb-4">89.- <span class="text-sm md:text-lg font-light text-gray-500">CHF HT</span></p>
@@ -536,7 +536,7 @@
                     </ul>
                     <a href="https://sumupbookings.com/clean-car-wash-geneva" target="_blank" rel="noopener noreferrer" class="block text-center border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">Réserver</a>
                 </div>
-                <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full reveal delay-100 relative shadow-[0_0_20px_rgba(212,175,55,0.2)] border-gold-400/30">
+                <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full reveal delay-100 relative shadow-[0_0_20px_rgba(212,175,55,0.2)] border-gold-400/30 snap-center shrink-0 w-[85vw] md:w-auto">
                     <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gold-400 text-charcoal-900 text-[10px] md:text-xs font-display font-bold tracking-widest uppercase py-1.5 px-4 md:px-6 rounded-full shadow-lg whitespace-nowrap">Service Recommandé</div>
                     <div class="w-12 h-12 mb-5 mt-2 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl" aria-hidden="true">🥇</div>
                     <h3 class="text-lg md:text-xl font-display font-bold tracking-wider uppercase text-white mb-2">Pack Or</h3>
@@ -551,7 +551,7 @@
                     </ul>
                     <a href="https://sumupbookings.com/clean-car-wash-geneva" target="_blank" rel="noopener noreferrer" class="block text-center bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 transition-all text-sm">Réserver</a>
                 </div>
-                <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full sm:col-span-2 md:col-span-1 reveal delay-200">
+                <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full sm:col-span-2 md:col-span-1 reveal delay-200 snap-center shrink-0 w-[85vw] md:w-auto">
                     <div class="w-12 h-12 mb-5 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl" aria-hidden="true">💎</div>
                     <h3 class="text-lg md:text-xl font-display font-bold tracking-wider uppercase text-white mb-2">Pack Diamant</h3>
                     <p class="text-gold-400 font-display font-semibold text-3xl md:text-4xl mb-4">289.- <span class="text-sm md:text-lg font-light text-gray-500">CHF HT</span></p>
@@ -576,9 +576,9 @@
             
             <div class="max-w-5xl mx-auto px-4 reveal delay-100">
                 <div class="relative overflow-hidden rounded-2xl shadow-2xl border border-white/5 bg-charcoal-800" aria-label="Galerie de réalisations" aria-roledescription="carousel">
-                    <div id="slider-track" class="flex transition-transform duration-700 ease-in-out w-full">
+                    <div id="slider-track" class="flex transition-transform duration-700 ease-in-out w-full overflow-x-auto snap-x snap-mandatory hide-scrollbar md:overflow-visible md:snap-none">
                         
-                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-87.5 overflow-hidden" role="group" aria-roledescription="diapositive" aria-label="1 sur 3">
+                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-[350px] overflow-hidden snap-center" role="group" aria-roledescription="diapositive" aria-label="1 sur 3">
                             <img src="assets/images/MB-01-opt.webp"
                                  srcset="assets/images/MB-01-opt-sm.webp 400w, assets/images/MB-01-opt-xs.webp 600w, assets/images/MB-01-opt.webp 800w"
                                  sizes="(max-width: 480px) 100vw, 800px"
@@ -591,15 +591,15 @@
                             </div>
                         </div>
                         
-                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh]" role="group" aria-roledescription="diapositive" aria-label="2 sur 3">
-                            <img src="assets/images/VW-8R-opt.webp" alt="Volkswagen Polo 8R noire après detailing" width="800" height="533" class="w-full h-[50vh] md:h-[60vh] min-h-87.5 object-contain" loading="lazy">
+                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] snap-center" role="group" aria-roledescription="diapositive" aria-label="2 sur 3">
+                            <img src="assets/images/VW-8R-opt.webp" alt="Volkswagen Polo 8R noire après detailing" width="800" height="533" class="w-full h-[50vh] md:h-[60vh] min-h-[350px] object-contain" loading="lazy">
                             <div class="absolute inset-0 slide-overlay flex flex-col justify-end p-6 md:p-10">
                                 <h4 class="text-gold-400 font-display font-bold text-xl md:text-2xl tracking-widest uppercase mb-2">Pack Argent 🥈</h4>
                                 <p class="text-gray-300 font-light text-sm md:text-base">Restauration de la brillance Showroom</p>
                             </div>
                         </div>
 
-                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-87.5 bg-charcoal-900" role="group" aria-roledescription="diapositive" aria-label="3 sur 3">
+                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-[350px] bg-charcoal-900 snap-center" role="group" aria-roledescription="diapositive" aria-label="3 sur 3">
                             <video
                                 src="/video-realisation.mp4"
                                 class="w-full h-full object-cover"
