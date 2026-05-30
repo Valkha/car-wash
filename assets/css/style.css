@@ -287,21 +287,7 @@ details[open] summary ~ * {
 .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 .hide-scrollbar::-webkit-scrollbar { display: none; }
 
-/* ==========================================================================
-   Mobile App Layout — Vertical Section Snap Scroll
-   ========================================================================== */
-@media (max-width: 767px) {
-    html { scroll-snap-type: y proximity; }
-    #main-content > section { scroll-snap-align: start; }
-
-    section#abonnements,
-    section#combos,
-    section#avis {
-        min-height: 100dvh;
-        padding-top: 1.5rem;
-        padding-bottom: 1.5rem;
-    }
-}
+/* Vertical section snap disabled — horizontal carousels only */
 
 /* ==========================================================================
    Carousel Pagination Dots
