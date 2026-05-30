@@ -1,4 +1,4 @@
-const CACHE = 'ccw-v1';
+const CACHE = 'ccw-v2';
 const PRECACHE = [
   '/',
   '/en/',
@@ -27,6 +27,20 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
+
+  // Network-only bypass for local dev (Vite dev server + HMR)
+  const url = e.request.url;
+  if (
+    url.includes('localhost') ||
+    url.includes('127.0.0.1') ||
+    url.includes('/@vite/') ||
+    url.includes('/@fs/') ||
+    url.includes('/__vite') ||
+    url.includes('?t=') // Vite HMR timestamp query
+  ) {
+    return fetch(e.request);
+  }
+
   e.respondWith(
     caches.match(e.request).then(cached => {
       if (cached) return cached;
