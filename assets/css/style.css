@@ -286,3 +286,38 @@ details[open] summary ~ * {
    ========================================================================== */
 .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 .hide-scrollbar::-webkit-scrollbar { display: none; }
+
+/* ==========================================================================
+   Mobile App Layout — Vertical Section Snap Scroll
+   ========================================================================== */
+@media (max-width: 767px) {
+    html { scroll-snap-type: y proximity; }
+    #main-content > section { scroll-snap-align: start; }
+
+    section#abonnements,
+    section#combos,
+    section#avis {
+        min-height: 100dvh;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+}
+
+/* ==========================================================================
+   Carousel Pagination Dots
+   ========================================================================== */
+.ccw-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+.ccw-dot.active {
+    width: 24px;
+    background-color: #D4AF37;
+}
