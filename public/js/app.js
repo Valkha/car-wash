@@ -129,6 +129,38 @@ function ccwModalClose() {
 }
 document.addEventListener('keydown', function (e) { if (e.key === 'Escape') ccwModalClose(); });
 
+// Carousel dots — Subscriptions & Reviews
+(function () {
+    function initCarouselDots(trackId, dotsId) {
+        var track = document.getElementById(trackId);
+        var dotsContainer = document.getElementById(dotsId);
+        if (!track || !dotsContainer) return;
+        var dots = Array.from(dotsContainer.querySelectorAll('.ccw-dot'));
+        var cards = Array.from(track.children);
+        if (!dots.length || !cards.length) return;
+
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    var idx = cards.indexOf(entry.target);
+                    if (idx !== -1) dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+                }
+            });
+        }, { root: track, threshold: 0.55 });
+
+        cards.forEach(function (card) { observer.observe(card); });
+
+        dots.forEach(function (dot, i) {
+            dot.addEventListener('click', function () {
+                if (cards[i]) cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+            });
+        });
+    }
+
+    initCarouselDots('abo-track', 'abo-dots');
+    initCarouselDots('avis-track', 'avis-dots');
+})();
+
 // Service Worker registration
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
