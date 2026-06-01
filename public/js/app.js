@@ -55,8 +55,9 @@ function updateSlider() {
     sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
     document.querySelectorAll('.slider-dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
 }
-function nextSlide() { currentSlide = (currentSlide === 2) ? 0 : currentSlide + 1; updateSlider(); }
-function prevSlide() { currentSlide = (currentSlide === 0) ? 2 : currentSlide - 1; updateSlider(); }
+function slideCount() { return sliderTrack ? sliderTrack.children.length : 0; }
+function nextSlide() { const n = slideCount(); currentSlide = (currentSlide >= n - 1) ? 0 : currentSlide + 1; updateSlider(); }
+function prevSlide() { const n = slideCount(); currentSlide = (currentSlide <= 0) ? n - 1 : currentSlide - 1; updateSlider(); }
 function goToSlide(i) { currentSlide = i; updateSlider(); }
 
 // Subscription Tabs (SumUp pricing)
