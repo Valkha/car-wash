@@ -4,76 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Legal Notice &amp; Terms | Clean Cars Wash</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="../assets/images/logo-v2.png">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Montserrat', 'sans-serif'],
-                    },
-                    colors: {
-                        gold: {
-                            400: '#D4AF37',
-                            500: '#AA8C2C',
-                        },
-                        charcoal: {
-                            900: '#0a0a0a',
-                            800: '#141414',
-                            700: '#1e1e1e',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="../assets/css/tailwind-src.css">
     
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body class="text-gray-300 font-sans antialiased flex flex-col min-h-screen">
     
     <header class="bg-charcoal-900/90 backdrop-blur-lg border-b border-white/5 sticky top-0 z-50 transition-all">
-        <div class="max-w-7xl mx-auto px-4 md:px-6 py-4">
-            <div class="flex justify-between items-center">
-                <a href="index.html"><h1 class="text-xl md:text-3xl font-display font-bold text-white tracking-widest uppercase hover:text-gold-400 transition-colors">Clean Cars Wash</h1></a>
-                
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
+            
+            <a href="index.html" class="flex items-center gap-3 group" aria-label="Clean Cars Wash — Home">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="../assets/images/logo-mobile.webp">
+                    <img src="../assets/images/logo-v2-tiny.webp" alt="Clean Cars Wash Logo" width="120" height="34" loading="eager" class="h-8 md:h-16 w-auto md:-my-3 object-contain transition-transform group-hover:scale-105">
+                </picture>
+                <span class="text-xl md:text-2xl font-display font-bold text-white tracking-widest uppercase group-hover:text-gold-400 transition-colors hidden sm:block">Clean Cars Wash</span>
+            </a>
+            
+            <div class="flex items-center gap-6">
                 <nav class="hidden md:block">
                     <ul class="flex space-x-8 text-xs font-display tracking-widest uppercase">
-                        <li><a href="index.html#services" class="hover:text-gold-400 transition duration-300">Services</a></li>
-                        <li><a href="index.html#gallery" class="hover:text-gold-400 transition duration-300">Gallery</a></li>
-                        <li><a href="index.html#reviews" class="hover:text-gold-400 transition duration-300">Reviews</a></li>
-                        <li><a href="index.html#pricing" class="hover:text-gold-400 transition duration-300">Pricing</a></li>
-                        <li><a href="index.html#faq" class="hover:text-gold-400 transition duration-300">FAQ</a></li>
-                        <li><a href="index.html#booking" class="text-gold-400 border border-gold-400 px-4 py-2 hover:bg-gold-400 hover:text-charcoal-900 transition duration-300">Contact</a></li>
+                        <li><a href="/en/#services" class="py-2 hover:text-gold-400 transition duration-300">Services</a></li>
+                        <li><a href="/en/#galerie" class="py-2 hover:text-gold-400 transition duration-300">Gallery</a></li>
+                        <li><a href="/en/#avis" class="py-2 hover:text-gold-400 transition duration-300">Reviews</a></li>
+                        <li><a href="/en/#abonnements" class="py-2 hover:text-gold-400 transition duration-300">Pricing</a></li>
+                        <li><a href="subscriptions.html" class="py-2 hover:text-gold-400 transition duration-300">Subscriptions</a></li>
+                        <li><a href="/en/#faq" class="py-2 hover:text-gold-400 transition duration-300">FAQ</a></li>
+                        <li><a href="/en/#reservation" class="text-gold-400 border border-gold-400 px-4 py-2 hover:bg-gold-400 hover:text-charcoal-900 transition duration-300">Book</a></li>
                     </ul>
                 </nav>
 
-                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                <div class="flex items-center gap-2 text-xs font-display tracking-widest uppercase border-l border-white/10 pl-6">
+                    <a href="../index.html" class="text-gray-500 hover:text-white transition py-2 px-1">FR</a>
+                    <span class="text-gray-700" aria-hidden="true">|</span>
+                    <span class="lang-active py-2 px-1">EN</span>
+                </div>
+
+                <a href="/en/#reservation" class="md:hidden text-[10px] font-display font-bold tracking-widest uppercase text-charcoal-900 bg-gold-400 px-3 py-1.5 rounded-full transition-all active:scale-95 whitespace-nowrap mr-2">Book</a>
+                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal-900 p-2 -mr-2" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu" data-label-open="Open navigation menu" data-label-close="Close menu">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
-
-            <nav id="mobile-menu" class="md:hidden">
-                <ul class="flex flex-col space-y-4 pt-6 pb-4 text-sm font-display tracking-widest uppercase text-center border-t border-white/5 mt-4">
-                    <li><a href="index.html#services" class="block hover:text-gold-400 transition duration-300 mobile-link">Services</a></li>
-                    <li><a href="index.html#gallery" class="block hover:text-gold-400 transition duration-300 mobile-link">Gallery</a></li>
-                    <li><a href="index.html#reviews" class="block hover:text-gold-400 transition duration-300 mobile-link">Reviews</a></li>
-                    <li><a href="index.html#pricing" class="block hover:text-gold-400 transition duration-300 mobile-link">Pricing</a></li>
-                    <li><a href="index.html#faq" class="block hover:text-gold-400 transition duration-300 mobile-link">FAQ</a></li>
-                    <li><a href="index.html#booking" class="block text-gold-400 mt-4 mobile-link">Request a Quote</a></li>
-                </ul>
-            </nav>
         </div>
+
+        <nav id="mobile-menu" class="md:hidden px-4">
+            <ul class="flex flex-col space-y-4 pt-6 pb-4 text-sm font-display tracking-widest uppercase text-center border-t border-white/5 mt-4">
+                <li><a href="/en/#services" class="block hover:text-gold-400 mobile-link">Services</a></li>
+                <li><a href="/en/#galerie" class="block hover:text-gold-400 mobile-link">Gallery</a></li>
+                <li><a href="/en/#avis" class="block hover:text-gold-400 mobile-link">Reviews</a></li>
+                <li><a href="/en/#services" class="block hover:text-gold-400 mobile-link">Pricing</a></li>
+                <li><a href="subscriptions.html" class="block hover:text-gold-400 mobile-link">Subscriptions</a></li>
+                <li><a href="/en/#faq" class="block hover:text-gold-400 mobile-link">FAQ</a></li>
+                <li><a href="/en/#reservation" class="block text-gold-400 mobile-link">Book a Slot</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <main class="flex-grow py-24 md:py-32 px-4 relative z-10">
+    <main class="grow py-24 md:py-32 px-4 relative z-10">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-12 md:mb-16">
                 <h2 class="text-3xl md:text-5xl font-display font-bold text-white mb-6 tracking-wide uppercase">Legal Notice &amp; Terms</h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
+                <div class="w-20 h-1 bg-linear-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
             </div>
 
             <div class="premium-card p-8 md:p-12 rounded-2xl flex flex-col gap-10">
@@ -178,13 +171,23 @@
         </div>
     </main>
 
-    <footer class="bg-[#050505] py-16 md:py-20 border-t border-white/5 relative overflow-hidden">
+    <footer class="bg-[#050505] py-16 pb-24 md:py-20 border-t border-white/5 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col md:flex-row justify-between items-center md:items-start gap-10">
             <div class="text-center md:text-left">
-                <h1 class="text-xl md:text-2xl font-display font-bold text-white tracking-widest uppercase mb-4">Clean Cars Wash</h1>
-                <p class="text-gray-400 font-light mb-1 text-sm md:text-base">AHMED-YAHIA LM</p>
-                <p class="text-gray-400 font-light mb-1 text-sm md:text-base">Chemin des Vergers, 1208 Geneva</p>
-                <a href="mailto:info@clean-cars-wash.ch" class="text-gold-400 font-display tracking-widest uppercase text-xs md:text-sm hover:text-white transition duration-300">info@clean-cars-wash.ch</a>
+                <p class="text-xl md:text-2xl font-display font-bold text-white tracking-widest uppercase mb-4">Clean Cars Wash</p>
+                <p class="text-gray-400 font-light mb-1 text-sm">AHMED-YAHIA LM</p>
+                <p class="text-gray-400 font-light mb-1 text-sm">Chemin des Vergers</p>
+                <p class="text-gray-400 font-light mb-6 text-sm">1208 Geneva</p>
+                <a href="mailto:info@clean-cars-wash.ch" class="text-gold-400 font-display tracking-widest uppercase text-xs md:text-sm hover:text-white transition">info@clean-cars-wash.ch</a>
+            </div>
+            <div class="text-center">
+                <p class="text-white font-display font-bold text-xs md:text-sm tracking-widest uppercase mb-4">Contact &amp; Hours</p>
+                <a href="tel:+41782657071" class="block text-gold-400 font-display tracking-widest uppercase text-xs md:text-sm hover:text-white transition mb-4">+41 78 265 70 71</a>
+                <ul class="text-gray-400 font-light text-xs md:text-sm space-y-1">
+                    <li>Mon–Fri: 09:00 AM – 06:00 PM</li>
+                    <li>Saturday: On request</li>
+                    <li>Sunday: Closed</li>
+                </ul>
             </div>
             <div class="text-center md:text-right">
                 <h4 class="text-white font-display font-bold text-xs md:text-sm tracking-widest uppercase mb-4">Information</h4>
