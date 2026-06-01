@@ -209,12 +209,10 @@ details[open] summary ~ * {
 /* ==========================================================================
    Floating Elements
    ========================================================================== */
-.whatsapp-float { 
-    position: fixed; 
-    bottom: 30px; 
-    right: 30px; 
-    z-index: 90; 
-    transition: all 0.3s ease; 
+.whatsapp-float {
+    position: fixed;
+    z-index: 90;
+    transition: all 0.3s ease;
 }
 
 .whatsapp-float:hover { 
