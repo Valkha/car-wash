@@ -161,6 +161,49 @@ document.addEventListener('keydown', function (e) { if (e.key === 'Escape') ccwM
     initCarouselDots('avis-track', 'avis-dots');
 })();
 
+// Scroll-snap carousels — dynamic pagination dots (mobile)
+document.addEventListener('DOMContentLoaded', () => {
+    const scrollContainers = document.querySelectorAll('.scroll-container');
+
+    scrollContainers.forEach(container => {
+        // Trouver le conteneur de points juste en dessous
+        const dotsWrapper = container.nextElementSibling;
+        if (!dotsWrapper || !dotsWrapper.classList.contains('scroll-dots')) return;
+
+        // Cibler les éléments enfants qui snappent
+        const items = container.querySelectorAll('.snap-center');
+        if (items.length < 2) return; // Pas de pagination si moins de 2 éléments
+
+        // 1. Générer les points dynamiquement
+        items.forEach((_, index) => {
+            const dot = document.createElement('div');
+            // Le premier point est actif (gold), les autres inactifs (charcoal)
+            dot.className = `w-2 h-2 rounded-full transition-colors duration-300 ${index === 0 ? 'bg-gold-400' : 'bg-charcoal-700'}`;
+            dotsWrapper.appendChild(dot);
+        });
+
+        const dots = dotsWrapper.querySelectorAll('div');
+
+        // 2. Observer le défilement pour synchroniser les points
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const index = Array.from(items).indexOf(entry.target);
+                    dots.forEach((dot, i) => {
+                        dot.classList.toggle('bg-gold-400', i === index);
+                        dot.classList.toggle('bg-charcoal-700', i !== index);
+                    });
+                }
+            });
+        }, {
+            root: container,
+            threshold: 0.6 // S'active quand 60% de la carte est visible
+        });
+
+        items.forEach(item => observer.observe(item));
+    });
+});
+
 // Service Worker registration
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
