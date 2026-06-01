@@ -4,75 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Politique de Confidentialité | Clean Cars Wash</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="assets/images/logo-v2.png">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Montserrat', 'sans-serif'],
-                    },
-                    colors: {
-                        gold: {
-                            400: '#D4AF37',
-                            500: '#AA8C2C',
-                        },
-                        charcoal: {
-                            900: '#0a0a0a',
-                            800: '#141414',
-                            700: '#1e1e1e',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="./assets/css/tailwind-src.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="text-gray-300 font-sans antialiased flex flex-col min-h-screen">
     
     <header class="bg-charcoal-900/90 backdrop-blur-lg border-b border-white/5 sticky top-0 z-50 transition-all">
-        <div class="max-w-7xl mx-auto px-4 md:px-6 py-4">
-            <div class="flex justify-between items-center">
-                <a href="index.html"><h1 class="text-xl md:text-3xl font-display font-bold text-white tracking-widest uppercase hover:text-gold-400 transition-colors">Clean Cars Wash</h1></a>
-                
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
+            
+            <a href="index.html" class="flex items-center gap-3 group" aria-label="Clean Cars Wash — Accueil">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="assets/images/logo-mobile.webp">
+                    <img src="assets/images/logo-v2-tiny.webp" alt="Logo Clean Cars Wash" width="120" height="34" loading="eager" class="h-8 md:h-16 w-auto md:-my-3 object-contain transition-transform group-hover:scale-105">
+                </picture>
+                <span class="text-xl md:text-2xl font-display font-bold text-white tracking-widest uppercase group-hover:text-gold-400 transition-colors hidden sm:block">Clean Cars Wash</span>
+            </a>
+            
+            <div class="flex items-center gap-6">
                 <nav class="hidden md:block">
                     <ul class="flex space-x-8 text-xs font-display tracking-widest uppercase">
-                        <li><a href="index.html#services" class="hover:text-gold-400 transition duration-300">Services</a></li>
-                        <li><a href="index.html#galerie" class="hover:text-gold-400 transition duration-300">Galerie</a></li>
-                        <li><a href="index.html#avis" class="hover:text-gold-400 transition duration-300">Avis</a></li>
-                        <li><a href="index.html#tarifs" class="hover:text-gold-400 transition duration-300">Tarifs</a></li>
-                        <li><a href="index.html#faq" class="hover:text-gold-400 transition duration-300">FAQ</a></li>
-                        <li><a href="index.html#reservation" class="text-gold-400 border border-gold-400 px-4 py-2 hover:bg-gold-400 hover:text-charcoal-900 transition duration-300">Contact</a></li>
+                        <li><a href="/#services" class="py-2 hover:text-gold-400 transition duration-300">Services</a></li>
+                        <li><a href="/#galerie" class="py-2 hover:text-gold-400 transition duration-300">Galerie</a></li>
+                        <li><a href="/#avis" class="py-2 hover:text-gold-400 transition duration-300">Avis</a></li>
+                        <li><a href="/#abonnements" class="py-2 hover:text-gold-400 transition duration-300">Tarifs</a></li>
+                        <li><a href="/#abonnements" class="py-2 hover:text-gold-400 transition duration-300">Abonnements</a></li>
+                        <li><a href="/#faq" class="py-2 hover:text-gold-400 transition duration-300">FAQ</a></li>
+                        <li><a href="/#reservation" class="text-gold-400 border border-gold-400 px-4 py-2 hover:bg-gold-400 hover:text-charcoal-900 transition duration-300">Réserver</a></li>
                     </ul>
                 </nav>
 
-                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                <div class="flex items-center gap-2 text-xs font-display tracking-widest uppercase border-l border-white/10 pl-6">
+                    <span class="lang-active py-2 px-1">FR</span>
+                    <span class="text-gray-700" aria-hidden="true">|</span>
+                    <a href="en/index.html" class="text-gray-500 hover:text-white transition py-2 px-1">EN</a>
+                </div>
+
+                <a href="/#reservation" class="md:hidden text-[10px] font-display font-bold tracking-widest uppercase text-charcoal-900 bg-gold-400 px-3 py-1.5 rounded-full transition-all active:scale-95 whitespace-nowrap mr-2">Réserver</a>
+                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal-900 p-2 -mr-2" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="mobile-menu" data-label-open="Ouvrir le menu de navigation" data-label-close="Fermer le menu">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
-
-            <nav id="mobile-menu" class="md:hidden">
-                <ul class="flex flex-col space-y-4 pt-6 pb-4 text-sm font-display tracking-widest uppercase text-center border-t border-white/5 mt-4">
-                    <li><a href="index.html#services" class="block hover:text-gold-400 transition duration-300 mobile-link">Services</a></li>
-                    <li><a href="index.html#galerie" class="block hover:text-gold-400 transition duration-300 mobile-link">Galerie</a></li>
-                    <li><a href="index.html#avis" class="block hover:text-gold-400 transition duration-300 mobile-link">Avis</a></li>
-                    <li><a href="index.html#tarifs" class="block hover:text-gold-400 transition duration-300 mobile-link">Tarifs</a></li>
-                    <li><a href="index.html#faq" class="block hover:text-gold-400 transition duration-300 mobile-link">FAQ</a></li>
-                    <li><a href="index.html#reservation" class="block text-gold-400 mt-4 mobile-link">Demander un Devis</a></li>
-                </ul>
-            </nav>
         </div>
+
+        <nav id="mobile-menu" class="md:hidden px-4">
+            <ul class="flex flex-col space-y-4 pt-6 pb-4 text-sm font-display tracking-widest uppercase text-center border-t border-white/5 mt-4">
+                <li><a href="/#services" class="block hover:text-gold-400 mobile-link">Services</a></li>
+                <li><a href="/#galerie" class="block hover:text-gold-400 mobile-link">Galerie</a></li>
+                <li><a href="/#avis" class="block hover:text-gold-400 mobile-link">Avis</a></li>
+                <li><a href="/#services" class="block hover:text-gold-400 mobile-link">Tarifs</a></li>
+                <li><a href="/#abonnements" class="block hover:text-gold-400 mobile-link">Abonnements</a></li>
+                <li><a href="/#faq" class="block hover:text-gold-400 mobile-link">FAQ</a></li>
+                <li><a href="/#reservation" class="block text-gold-400 mobile-link">Réserver un Créneau</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <main class="flex-grow py-24 md:py-32 px-4 relative z-10">
+    <main class="grow py-24 md:py-32 px-4 relative z-10">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-12 md:mb-16">
                 <h2 class="text-3xl md:text-5xl font-display font-bold text-white mb-6 tracking-wide uppercase">Politique de Confidentialité</h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
+                <div class="w-20 h-1 bg-linear-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
                 <p class="text-gray-400 font-light mt-6 text-sm md:text-base">Mise à jour le 5 avril 2026</p>
             </div>
 
@@ -132,24 +125,34 @@
         </div>
     </main>
 
-    <footer class="bg-[#050505] py-16 md:py-20 border-t border-white/5 relative overflow-hidden">
+    <footer class="bg-[#050505] py-16 pb-24 md:py-20 border-t border-white/5 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col md:flex-row justify-between items-center md:items-start gap-10">
             <div class="text-center md:text-left">
-                <h1 class="text-xl md:text-2xl font-display font-bold text-white tracking-widest uppercase mb-4">Clean Cars Wash [cite: 1]</h1>
-                <p class="text-gray-400 font-light mb-1 text-sm">AHMED-YAHIA LM [cite: 3]</p>
-                <p class="text-gray-400 font-light mb-1 text-sm">Chemin des Vergers, 1208 Genève [cite: 6]</p>
-                <a href="mailto:info@clean-cars-wash.ch" class="text-gold-400 font-display tracking-widest uppercase text-xs md:text-sm hover:text-white transition duration-300">info@clean-cars-wash.ch [cite: 10]</a>
+                <p class="text-xl md:text-2xl font-display font-bold text-white tracking-widest uppercase mb-4">Clean Cars Wash</p>
+                <p class="text-gray-400 font-light mb-1 text-sm">AHMED-YAHIA LM</p>
+                <p class="text-gray-400 font-light mb-1 text-sm">Chemin des Vergers</p>
+                <p class="text-gray-400 font-light mb-6 text-sm">1208 Genève</p>
+                <a href="mailto:info@clean-cars-wash.ch" class="text-gold-400 font-display tracking-widest uppercase text-xs md:text-sm hover:text-white transition">info@clean-cars-wash.ch</a>
+            </div>
+            <div class="text-center">
+                <p class="text-white font-display font-bold text-xs md:text-sm tracking-widest uppercase mb-4">Contact &amp; Horaires</p>
+                <a href="tel:+41782657071" class="block text-gold-400 font-display tracking-widest uppercase text-xs md:text-sm hover:text-white transition mb-4">+41 78 265 70 71</a>
+                <ul class="text-gray-400 font-light text-xs md:text-sm space-y-1">
+                    <li>Lun–Ven : 09h00 – 18h00</li>
+                    <li>Samedi : Sur demande</li>
+                    <li>Dimanche : Fermé</li>
+                </ul>
             </div>
             <div class="text-center md:text-right">
                 <h4 class="text-white font-display font-bold text-xs md:text-sm tracking-widest uppercase mb-4">Informations</h4>
                 <ul class="text-gray-400 font-light text-xs md:text-sm space-y-2">
-                    <li><a href="mentions-legales.html" class="hover:text-gold-400 transition">Mentions Légales</a></li>
-                    <li><a href="politique-confidentialite.html" class="text-gold-400">Politique de Confidentialité</a></li>
+                    <li><a href="./mentions-legales.html" class="hover:text-gold-400 transition">Mentions Légales &amp; CGV</a></li>
+                    <li><a href="./politique-confidentialite.html" class="hover:text-gold-400 transition">Politique de Confidentialité (RGPD)</a></li>
                 </ul>
             </div>
         </div>
         <div class="max-w-7xl mx-auto px-4 mt-12 md:mt-16 text-center text-[10px] md:text-xs text-gray-600 font-display tracking-widest uppercase">
-            &copy; 2026 Clean Cars Wash[cite: 1]. Tous droits réservés. | IDE: CHE377.481.423 [cite: 7]
+            &copy; 2026 Clean Cars Wash. Tous droits réservés. | <span style="opacity:0.7;">CHE-377.481.423 TVA</span>
         </div>
     </footer>
 
