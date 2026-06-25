@@ -115,8 +115,7 @@ const generateHTML = (loc) => `<!DOCTYPE html>
                 <p class="font-bold text-xs tracking-widest uppercase mb-3 text-white">Contact &amp; Horaires</p>
                 <a href="tel:+41782657071" class="block text-yellow-400 font-bold text-sm hover:text-white transition mb-3">+41 78 265 70 71</a>
                 <ul class="text-gray-400 text-sm space-y-1">
-                    <li>Lun–Ven : 09h00 – 18h00</li>
-                    <li>Samedi : Sur demande</li>
+                    <li>Lun–Sam : 07h30 – 22h00</li>
                     <li>Dimanche : Fermé</li>
                 </ul>
             </div>
