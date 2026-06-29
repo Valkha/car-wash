@@ -15,6 +15,16 @@ const generateHTML = (loc) => `<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QMTGD5E2NW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QMTGD5E2NW');
+    </script>
+    <!-- End Google Analytics -->
+
     <title>${loc.recommendedService} à ${loc.cityName} | Clean Cars Wash</title>
     <meta name="description" content="${loc.seoIntroSnippet}">
     <link rel="canonical" href="https://www.clean-cars-wash.ch/services/${loc.cityId}/">
