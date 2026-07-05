@@ -130,6 +130,25 @@ function ccwModalClose() {
 }
 document.addEventListener('keydown', function (e) { if (e.key === 'Escape') ccwModalClose(); });
 
+// Location Choice Modal (Packs / Combos — home-or-work vs garage CCW)
+function ccwLocationModalOpen(homeUrl, garageUrl) {
+    var home = document.getElementById('ccw-location-home');
+    var garage = document.getElementById('ccw-location-garage');
+    if (home) home.href = homeUrl;
+    if (garage) garage.href = garageUrl;
+    var m = document.getElementById('ccw-location-modal');
+    m.classList.remove('hidden');
+    m.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+}
+function ccwLocationModalClose() {
+    var m = document.getElementById('ccw-location-modal');
+    m.classList.add('hidden');
+    m.classList.remove('flex');
+    document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape') ccwLocationModalClose(); });
+
 // Carousel dots — Subscriptions & Reviews
 (function () {
     function initCarouselDots(trackId, dotsId) {
