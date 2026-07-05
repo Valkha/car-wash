@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.google.com">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <!-- Google Tag Manager -->
@@ -10,9 +10,19 @@
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-PPHNPBPG');</script>
+    })(window,document,'script','dataLayer','GTM-5W69QPT3');</script>
     <!-- End Google Tag Manager -->
-    
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QMTGD5E2NW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QMTGD5E2NW');
+    </script>
+    <!-- End Google Analytics -->
+
     <title>Premium Car Wash & Detailing | Bespoke Auto Care Geneva</title>
     <meta name="description" content="Restore your vehicle's showroom shine. High-end mobile car wash, detailing, and subscriptions for individuals and professionals in Geneva & Vaud. Request a quote online.">
     <meta name="keywords" content="clean cars wash, car wash geneva, mobile detailing, ceramic coating geneva, auto care vaud, AHMED-YAHIA LM">
@@ -81,16 +91,15 @@
       },
       "areaServed": [{ "@type": "City", "name": "Geneva" }, { "@type": "State", "name": "Vaud" }],
       "openingHoursSpecification": [
-        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "18:00" },
-        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "17:00" }
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "07:30", "closes": "22:00" }
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Detailing Packages",
         "itemListElement": [
-          { "@type": "Offer", "name": "Silver Pack", "price": "89", "priceCurrency": "CHF" },
-          { "@type": "Offer", "name": "Gold Pack", "price": "149", "priceCurrency": "CHF" },
-          { "@type": "Offer", "name": "Diamond Pack", "price": "289", "priceCurrency": "CHF" }
+          { "@type": "Offer", "name": "Silver Pack", "price": "96.20", "priceCurrency": "CHF" },
+          { "@type": "Offer", "name": "Gold Pack", "price": "161.05", "priceCurrency": "CHF" },
+          { "@type": "Offer", "name": "Diamond Pack", "price": "312.40", "priceCurrency": "CHF" }
         ]
       }
     }
@@ -112,7 +121,7 @@
         "name": "What are the prices for a premium car wash?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Our packages start at 89.- CHF for the essentials (Silver Pack) and go up to 289.- CHF for a full restoration (Diamond Pack)."
+          "text": "Our packages start at 96.20 CHF incl. VAT for the essentials (Silver Pack) and go up to 312.40 CHF incl. VAT for a full restoration (Diamond Pack)."
         }
       }, {
         "@type": "Question",
@@ -157,7 +166,7 @@
 </head>
 <body class="bg-charcoal-900 text-gray-300 font-sans antialiased relative overflow-x-hidden" style="background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px); background-size: 30px 30px;">
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PPHNPBPG"
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5W69QPT3"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gold-400 z-100 transition-all duration-150" style="width: 0%;"></div>
@@ -187,6 +196,11 @@
                         <li><a href="#reservation" class="text-gold-400 border border-gold-400 px-4 py-2 hover:bg-gold-400 hover:text-charcoal-900 transition duration-300">Book</a></li>
                     </ul>
                 </nav>
+
+                <a href="tel:+41782657071" class="hidden lg:flex items-center gap-2 text-xs font-display tracking-widest uppercase text-gold-400 hover:text-white transition" aria-label="Call Clean Cars Wash">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                    +41 78 265 70 71
+                </a>
 
                 <div class="flex items-center gap-2 text-xs font-display tracking-widest uppercase border-l border-white/10 pl-6">
                     <a href="../index.html" class="text-gray-500 hover:text-white transition py-2 px-1">FR</a>
@@ -243,8 +257,8 @@
                     </span>
                 </div>
 
-                <a href="#services" class="inline-block bg-gold-500/10 border border-gold-400 text-gold-400 font-display font-medium tracking-widest uppercase py-3 md:py-4 px-8 md:px-10 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all shadow-xl">
-                    Discover Our Packages
+                <a href="#services" class="inline-block bg-gold-400 border border-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-3 md:py-4 px-8 md:px-10 rounded-full hover:bg-gold-500 transition-all shadow-xl">
+                    Book My Slot
                 </a>
             </div>
             <a href="#services" class="absolute bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce flex flex-col items-center text-gray-500 hover:text-gold-400 transition-colors" aria-label="Scroll to services">
@@ -317,7 +331,8 @@
                 <div class="text-center mb-14 reveal">
                     <p class="text-gold-400 font-display text-xs tracking-[0.3em] uppercase mb-3">Price Transparency</p>
                     <h2 class="text-3xl md:text-4xl font-display font-semibold text-white mb-5 tracking-wide uppercase">Why Our Customers Choose Us</h2>
-                    <p class="text-gray-400 font-light max-w-xl mx-auto">Compare for yourself. No hidden fees, no bad surprises — just a fixed price (excl. VAT) announced upfront.</p>
+                    <p class="text-gray-400 font-light max-w-xl mx-auto">Compare for yourself. No hidden fees, no bad surprises — just a fixed price (incl. VAT) announced upfront.</p>
+                    <p class="text-gray-500 font-light text-xs max-w-xl mx-auto mt-3">Excluding special cases (extremely dirty vehicle, pet hair) detailed in our <a href="#faq" class="text-gold-400 hover:text-white underline transition">FAQ</a>.</p>
                 </div>
 
                 <!-- ── Mobile view: stacked cards (hidden on md+) ── -->
@@ -398,7 +413,7 @@
                                 </div>
                                 <div class="flex items-center gap-1.5">
                                     <svg class="w-3.5 h-3.5 text-gold-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                                    <span class="text-gold-400 text-sm font-bold">149 CHF (Gold)</span>
+                                    <span class="text-gold-400 text-sm font-bold">161.05 CHF (Gold)</span>
                                 </div>
                             </div>
                         </div>
@@ -425,7 +440,7 @@
                                 </div>
                                 <div class="flex items-center gap-1.5">
                                     <svg class="w-3.5 h-3.5 text-gold-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                                    <span class="text-gold-400 text-sm font-bold">289 CHF (Diamond)</span>
+                                    <span class="text-gold-400 text-sm font-bold">312.40 CHF (Diamond)</span>
                                 </div>
                             </div>
                         </div>
@@ -468,12 +483,12 @@
                             <tr class="bg-zinc-950/60 hover:bg-zinc-900/40 transition-colors duration-200">
                                 <td class="py-5 px-6 text-gray-300 font-medium">Full Cleaning at home</td>
                                 <td class="py-5 px-6 text-center"><span class="inline-flex items-center gap-2 text-gray-500"><svg class="w-4 h-4 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg><span class="line-through">~ 239 CHF</span></span></td>
-                                <td class="py-5 px-6 text-center"><span class="inline-flex items-center gap-2 text-gold-400 font-bold"><svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>149 CHF (Gold Pack)</span></td>
+                                <td class="py-5 px-6 text-center"><span class="inline-flex items-center gap-2 text-gold-400 font-bold"><svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>161.05 CHF (Gold Pack)</span></td>
                             </tr>
                             <tr class="bg-zinc-900/30 hover:bg-zinc-900/40 transition-colors duration-200">
                                 <td class="py-5 px-6 text-gray-300 font-medium">Premium Detailing at home</td>
                                 <td class="py-5 px-6 text-center"><span class="inline-flex items-center gap-2 text-gray-500"><svg class="w-4 h-4 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg><span class="line-through">~ 549 CHF</span></span></td>
-                                <td class="py-5 px-6 text-center"><span class="inline-flex items-center gap-2 text-gold-400 font-bold"><svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>289 CHF (Diamond Pack)</span></td>
+                                <td class="py-5 px-6 text-center"><span class="inline-flex items-center gap-2 text-gold-400 font-bold"><svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>312.40 CHF (Diamond Pack)</span></td>
                             </tr>
                         </tbody>
                     </table>
@@ -510,7 +525,7 @@
                 <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full reveal snap-center shrink-0 w-[85vw] md:w-auto">
                     <div class="w-12 h-12 mb-5 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl" aria-hidden="true">🥈</div>
                     <h3 class="text-lg md:text-xl font-display font-bold tracking-wider uppercase text-white mb-2">Silver Pack</h3>
-                    <p class="text-gold-400 font-display font-semibold text-3xl md:text-4xl mb-4">89.- <span class="text-sm md:text-lg font-light text-gray-500">CHF excl. VAT</span></p>
+                    <p class="text-gold-400 font-display font-semibold text-3xl md:text-4xl mb-4">96.20 <span class="text-sm md:text-lg font-light text-gray-500">CHF incl. VAT</span></p>
                     <p class="text-gray-400 font-light leading-relaxed text-sm mb-4">Full active foam exterior wash, cabin and trunk vacuuming, window cleaning, and manual drying. Duration: 1H.</p>
                     <ul class="text-gray-400 font-light space-y-2 text-sm mb-6 grow">
                         <li>◆ Manual exterior wash</li>
@@ -518,13 +533,13 @@
                         <li>◆ Window cleaning</li>
                         <li>◆ Microfiber drying</li>
                     </ul>
-                    <a href="https://sumupbookings.com/clean-car-wash-geneva" target="_blank" rel="noopener noreferrer" class="block text-center border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">Book Now</a>
+                    <button type="button" onclick="ccwLocationModalOpen('https://pay.sumup.com/b2c/Q6Y7S4NR','https://pay.sumup.com/b2c/QIGMP59T')" class="block w-full text-center border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">Book Now</button>
                 </div>
                 <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full reveal delay-100 relative shadow-[0_0_20px_rgba(212,175,55,0.2)] border-gold-400/30 snap-center shrink-0 w-[85vw] md:w-auto">
                     <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gold-400 text-charcoal-900 text-[10px] md:text-xs font-display font-bold tracking-widest uppercase py-1.5 px-4 md:px-6 rounded-full shadow-lg whitespace-nowrap">Recommended Service</div>
                     <div class="w-12 h-12 mb-5 mt-2 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl" aria-hidden="true">🥇</div>
                     <h3 class="text-lg md:text-xl font-display font-bold tracking-wider uppercase text-white mb-2">Gold Pack</h3>
-                    <p class="text-gold-400 font-display font-semibold text-3xl md:text-4xl mb-4">149.- <span class="text-sm md:text-lg font-light text-gray-500">CHF excl. VAT</span></p>
+                    <p class="text-gold-400 font-display font-semibold text-3xl md:text-4xl mb-4">161.05 <span class="text-sm md:text-lg font-light text-gray-500">CHF incl. VAT</span></p>
                     <p class="text-gray-400 font-light leading-relaxed text-sm mb-4">Includes Silver Pack + Seat/carpet shampoo, interior plastic renovation, rim/tire cleaning, and scent finish. Duration: 2H.</p>
                     <ul class="text-gray-400 font-light space-y-2 text-sm mb-6 grow">
                         <li>◆ Includes Silver Pack</li>
@@ -533,12 +548,12 @@
                         <li>◆ Rim & tire cleaning</li>
                         <li>◆ Scented finish</li>
                     </ul>
-                    <a href="https://sumupbookings.com/clean-car-wash-geneva" target="_blank" rel="noopener noreferrer" class="block text-center bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 transition-all text-sm">Book Now</a>
+                    <button type="button" onclick="ccwLocationModalOpen('https://pay.sumup.com/b2c/QWNWDMWG','https://pay.sumup.com/b2c/QAH099Z0')" class="block w-full text-center bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 transition-all text-sm">Book Now</button>
                 </div>
                 <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full sm:col-span-2 md:col-span-1 reveal delay-200 snap-center shrink-0 w-[85vw] md:w-auto">
                     <div class="w-12 h-12 mb-5 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl" aria-hidden="true">💎</div>
                     <h3 class="text-lg md:text-xl font-display font-bold tracking-wider uppercase text-white mb-2">Diamond Pack</h3>
-                    <p class="text-gold-400 font-display font-semibold text-3xl md:text-4xl mb-4">289.- <span class="text-sm md:text-lg font-light text-gray-500">CHF excl. VAT</span></p>
+                    <p class="text-gold-400 font-display font-semibold text-3xl md:text-4xl mb-4">312.40 <span class="text-sm md:text-lg font-light text-gray-500">CHF incl. VAT</span></p>
                     <p class="text-gray-400 font-light leading-relaxed text-sm mb-4">The ultimate: Includes Gold Pack + Premium hydrophobic wax, leather/alcantara care, and anti-odor treatment. Duration: 3H+.</p>
                     <ul class="text-gray-400 font-light space-y-2 text-sm mb-6 grow">
                         <li>◆ Includes Gold Pack</li>
@@ -547,7 +562,7 @@
                         <li>◆ Anti-odor treatment</li>
                         <li>◆ Ultra-precise finishing</li>
                     </ul>
-                    <a href="https://sumupbookings.com/clean-car-wash-geneva" target="_blank" rel="noopener noreferrer" class="block text-center border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">Book Now</a>
+                    <button type="button" onclick="ccwLocationModalOpen('https://pay.sumup.com/b2c/Q8AI7M1K','https://pay.sumup.com/b2c/QVURB3CK')" class="block w-full text-center border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">Book Now</button>
                 </div>
             </div>
             <div class="scroll-dots flex justify-center items-center gap-2 mt-3 mb-4 md:hidden" aria-hidden="true"></div>
@@ -567,9 +582,9 @@
                         <h3 class="text-xl font-display font-bold text-white mb-1">Excellence</h3>
                         <p class="text-gray-500 text-xs mb-5">Gold Pack + Silver Pack</p>
                         <div class="flex items-end gap-3 mb-6">
-                            <span class="text-4xl font-display font-bold text-gold-400">190 <span class="text-xl">CHF</span></span> <span class="text-gray-500 text-sm font-normal">excl. VAT</span>
+                            <span class="text-4xl font-display font-bold text-gold-400">205.40 <span class="text-xl">CHF</span></span> <span class="text-gray-500 text-sm font-normal">incl. VAT</span>
                             <div class="pb-1">
-                                <span class="text-gray-600 text-sm block" style="text-decoration:line-through">238 CHF</span>
+                                <span class="text-gray-600 text-sm block" style="text-decoration:line-through">257.30 CHF</span>
                                 <span class="text-green-400 text-xs font-bold">−20%</span>
                             </div>
                         </div>
@@ -578,7 +593,7 @@
                             <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Valid for 30 days</li>
                             <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Flexible scheduling</li>
                         </ul>
-                        <a href="https://sumupbookings.com/clean-car-wash-geneva" target="_blank" rel="noopener noreferrer" class="block text-center border border-gold-500 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 hover:text-black transition-all text-sm">Book Now</a>
+                        <button type="button" onclick="ccwLocationModalOpen('https://pay.sumup.com/b2c/QK5871PT','https://pay.sumup.com/b2c/QUVTHY9A')" class="block w-full text-center border border-gold-500 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 hover:text-black transition-all text-sm">Book Now</button>
                     </div>
 
                     <div class="flex-1 bg-linear-to-b from-zinc-900 to-black backdrop-blur-sm border-2 border-gold-500 rounded-2xl p-8 flex flex-col hover:-translate-y-2 transition-all duration-300 relative" style="box-shadow: 0 0 30px rgba(212,175,55,0.15)">
@@ -587,9 +602,9 @@
                         <h3 class="text-xl font-display font-bold text-white mb-1">Prestige</h3>
                         <p class="text-gray-500 text-xs mb-5">Diamond Pack + Silver Pack</p>
                         <div class="flex items-end gap-3 mb-6">
-                            <span class="text-4xl font-display font-bold text-gold-400">302 <span class="text-xl">CHF</span></span> <span class="text-gray-500 text-sm font-normal">excl. VAT</span>
+                            <span class="text-4xl font-display font-bold text-gold-400">326.45 <span class="text-xl">CHF</span></span> <span class="text-gray-500 text-sm font-normal">incl. VAT</span>
                             <div class="pb-1">
-                                <span class="text-gray-600 text-sm block" style="text-decoration:line-through">378 CHF</span>
+                                <span class="text-gray-600 text-sm block" style="text-decoration:line-through">408.60 CHF</span>
                                 <span class="text-green-400 text-xs font-bold">−20%</span>
                             </div>
                         </div>
@@ -599,7 +614,7 @@
                             <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Pick-up included</li>
                             <li class="flex items-start gap-3 text-gray-300 text-sm font-light"><span class="text-gold-400 mt-0.5">✓</span>Before/after photo report</li>
                         </ul>
-                        <a href="https://sumupbookings.com/clean-car-wash-geneva" target="_blank" rel="noopener noreferrer" class="block text-center bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 transition-all text-sm">Book Now</a>
+                        <button type="button" onclick="ccwLocationModalOpen('https://pay.sumup.com/b2c/Q59W9REH','https://pay.sumup.com/b2c/QHZTCOGZ')" class="block w-full text-center bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-3 px-6 rounded-full hover:bg-gold-500 transition-all text-sm">Book Now</button>
                     </div>
 
                 </div>
@@ -800,7 +815,7 @@
                         <p class="text-[10px] font-display tracking-[0.3em] uppercase text-gold-400 mb-3">Referral Program</p>
                         <h2 class="text-2xl md:text-4xl font-display font-bold text-white uppercase tracking-wide mb-4">Share the passion, get rewarded</h2>
                         <div class="w-16 h-px bg-linear-to-r from-transparent via-gold-400 to-transparent mx-auto mb-4"></div>
-                        <p class="text-base text-gray-400 font-light max-w-xl mx-auto">Refer 5 people and earn a complimentary Gold Pack wash worth <span class="text-gold-400 font-bold">CHF 149.- excl. VAT</span></p>
+                        <p class="text-base text-gray-400 font-light max-w-xl mx-auto">Refer 5 people and earn a complimentary Gold Pack wash worth <span class="text-gold-400 font-bold">CHF 161.05 incl. VAT</span></p>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-10">
                         <div class="text-center">
@@ -816,7 +831,7 @@
                         <div class="text-center">
                             <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-gold-400/10 border border-gold-400/20 flex items-center justify-center text-2xl font-display font-bold text-gold-400">3</div>
                             <h3 class="font-display font-bold text-white text-sm uppercase tracking-widest mb-2">You earn</h3>
-                            <p class="text-gray-400 text-sm font-light leading-relaxed">Once 5 of your referrals have completed their wash, we offer you a complimentary Gold Pack Wash (value CHF 149.- excl. VAT).</p>
+                            <p class="text-gray-400 text-sm font-light leading-relaxed">Once 5 of your referrals have completed their wash, we offer you a complimentary Gold Pack Wash (value CHF 161.05 incl. VAT).</p>
                         </div>
                     </div>
                     <div class="text-center">
@@ -861,13 +876,14 @@
                         <p class="text-gold-400 font-semibold text-sm">🛡️ How does your booking work?</p>
                         <p class="text-gray-300 text-sm font-light leading-relaxed">• 1. Secure your time slot with a simple deposit <span class="text-gray-400">(balance paid on-site)</span>.</p>
                         <p class="text-gray-300 text-sm font-light leading-relaxed">• 2. Fill in your vehicle details via the form right after payment.</p>
+                        <p class="text-gray-300 text-sm font-light leading-relaxed">• 3. Free cancellation up to 24h before your appointment.</p>
                     </div>
                 </div>
             </div>
 
             <div class="flex flex-col items-center gap-6 reveal delay-100">
                 <div class="flex flex-col items-center">
-                    <a href="https://sumupbookings.com/clean-car-wash-geneva" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-linear-to-r from-gold-400 to-yellow-500 text-charcoal-900 font-display font-black tracking-widest uppercase py-5 px-12 md:px-16 rounded-full shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:shadow-[0_0_50px_rgba(212,175,55,0.7)] hover:scale-105 transition-all duration-300 text-lg md:text-xl">
+                    <a href="https://sumupbookings.com/clean-car-wash-geneva" target="_blank" rel="noopener noreferrer" data-track="conversion-booking" class="inline-flex items-center gap-3 bg-linear-to-r from-gold-400 to-yellow-500 text-charcoal-900 font-display font-black tracking-widest uppercase py-5 px-12 md:px-16 rounded-full shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:shadow-[0_0_50px_rgba(212,175,55,0.7)] hover:scale-105 transition-all duration-300 text-lg md:text-xl">
                         <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
                         BOOK ONLINE
                     </a>
@@ -974,7 +990,7 @@
                         </button>
                     </h3>
                     <div id="faq-panel-2" role="region" aria-hidden="true" class="hidden text-gray-400 font-light px-5 md:px-6 pb-5 md:pb-6 leading-relaxed text-sm md:text-base">
-                        An additional charge of 69.- CHF excl. VAT per hour applies for extremely dirty vehicles. We also offer pet hair removal (39.90 CHF excl. VAT).
+                        An additional charge of 74.60 CHF incl. VAT per hour applies for extremely dirty vehicles. We also offer pet hair removal (43.15 CHF incl. VAT).
                     </div>
                 </div>
                 <div class="premium-card rounded-xl reveal delay-200">
@@ -1027,8 +1043,7 @@
                 <p class="text-white font-display font-bold text-xs md:text-sm tracking-widest uppercase mb-4">Contact &amp; Hours</p>
                 <a href="tel:+41782657071" class="block text-gold-400 font-display tracking-widest uppercase text-xs md:text-sm hover:text-white transition mb-4">+41 78 265 70 71</a>
                 <ul class="text-gray-400 font-light text-xs md:text-sm space-y-1">
-                    <li>Mon–Fri: 09:00 AM – 06:00 PM</li>
-                    <li>Saturday: On request</li>
+                    <li>Mon–Sat: 07:30 AM – 10:00 PM</li>
                     <li>Sunday: Closed</li>
                 </ul>
             </div>
@@ -1075,6 +1090,31 @@
                    class="flex items-center justify-center gap-3 border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-6 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">
                     <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                     +41 78 265 70 71
+                </a>
+            </div>
+            <p class="text-gray-600 text-[10px] mt-5 uppercase tracking-widest font-display">Tap outside to close</p>
+        </div>
+    </div>
+
+    <!-- Modal Choice of service location (Packs / Combos) -->
+    <div id="ccw-location-modal" class="hidden fixed inset-0 items-center justify-center px-4" style="z-index:300;" role="dialog" aria-modal="true" aria-labelledby="ccw-location-modal-title">
+        <div class="absolute inset-0 backdrop-blur" style="background:rgba(0,0,0,0.75);" onclick="ccwLocationModalClose()" aria-hidden="true"></div>
+        <div class="relative bg-charcoal-800 border border-gold-400/30 rounded-2xl p-8 w-full max-w-xs text-center" style="box-shadow:0 25px 50px rgba(0,0,0,.6);">
+            <button onclick="ccwLocationModalClose()" class="absolute top-3 right-3 w-9 h-9 flex items-center justify-center text-gray-400 hover:text-white rounded-full hover:bg-white/10 transition-colors" aria-label="Close">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <p class="text-[10px] font-display tracking-[0.3em] uppercase text-gold-400 mb-3" id="ccw-location-modal-title">Booking</p>
+            <p class="text-white font-display font-bold text-lg leading-snug mb-7">Where would you like<br>to be served&nbsp;?</p>
+            <div class="flex flex-col gap-4">
+                <a id="ccw-location-home" href="#" target="_blank" rel="noopener noreferrer" data-track="conversion-booking"
+                   onclick="ccwLocationModalClose()"
+                   class="flex items-center justify-center gap-3 bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-4 px-6 rounded-full hover:bg-gold-500 transition-all text-sm">
+                    At home / at work
+                </a>
+                <a id="ccw-location-garage" href="#" target="_blank" rel="noopener noreferrer" data-track="conversion-booking"
+                   onclick="ccwLocationModalClose()"
+                   class="flex items-center justify-center gap-3 border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-6 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">
+                    At the CCW garage
                 </a>
             </div>
             <p class="text-gray-600 text-[10px] mt-5 uppercase tracking-widest font-display">Tap outside to close</p>
