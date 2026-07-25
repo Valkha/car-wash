@@ -54,7 +54,9 @@
       "Bash(npx vite *)",
       "Bash(sed -n '248,253p' index.html)",
       "Bash(sed -n '272,277p' index.html)",
-      "Bash(sed -n '523,527p' index.html)"
+      "Bash(sed -n '523,527p' index.html)",
+      "Read(//tmp/**)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:5173/)"
     ]
   }
 }

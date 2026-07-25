@@ -111,6 +111,13 @@
       "@type": "FAQPage",
       "mainEntity": [{
         "@type": "Question",
+        "name": "What do I need to prepare for a home service?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Three things to have ready before our arrival: a private parking space (required), an accessible 230V power outlet (required), and ideally a water point (recommended). If no parking or outlet is available on our arrival, the full service fee remains due and will be invoiced."
+        }
+      }, {
+        "@type": "Question",
         "name": "How does home pick-up work?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -566,6 +573,12 @@
                 </div>
             </div>
             <div class="scroll-dots flex justify-center items-center gap-2 mt-3 mb-4 md:hidden" aria-hidden="true"></div>
+            <p class="text-center mt-8">
+                <a href="#conditions-intervention" class="conditions-link">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    Home-service requirements
+                </a>
+            </p>
         </section>
 
         <section id="combos" class="py-24 md:py-32 relative z-10">
@@ -618,6 +631,12 @@
                     </div>
 
                 </div>
+                <p class="text-center mt-8">
+                    <a href="#conditions-intervention" class="conditions-link">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Home-service requirements
+                    </a>
+                </p>
             </div>
         </section>
 
@@ -707,6 +726,12 @@
                     <button class="ccw-dot" aria-label="View Gold Pack"></button>
                     <button class="ccw-dot" aria-label="View Diamond Pack"></button>
                 </div>
+                <p class="text-center mt-8">
+                    <a href="#conditions-intervention" class="conditions-link">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Home-service requirements
+                    </a>
+                </p>
             </div>
         </section>
 
@@ -907,6 +932,40 @@
                     <span class="text-sm md:text-base">Call Us!</span>
                 </button>
             </div>
+
+            <div id="conditions-intervention" class="conditions-intervention reveal">
+                <p class="conditions-eyebrow">Before your service</p>
+                <h3 class="conditions-title">What you need to prepare</h3>
+                <ul class="conditions-list" role="list">
+                    <li>
+                        <span aria-hidden="true">🅿️</span>
+                        <div>
+                            <strong>Private parking space <span class="badge-req">Required</span></strong>
+                            <p>Garage, driveway, or residential parking. Car washing on public roads is illegal in Switzerland.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span aria-hidden="true">⚡</span>
+                        <div>
+                            <strong>230V power outlet <span class="badge-req">Required</span></strong>
+                            <p>Accessible from the vehicle's location for the full duration of the service.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span aria-hidden="true">💧</span>
+                        <div>
+                            <strong>Water point <span class="badge-opt">Recommended</span></strong>
+                            <p>Not essential depending on the chosen service — our team will confirm at booking.</p>
+                        </div>
+                    </li>
+                </ul>
+                <p class="conditions-legal">
+                    By confirming your booking, you confirm these conditions are met at the given address.
+                    <strong>If our team cannot intervene on arrival</strong>
+                    (no parking, no outlet, or no vehicle access),
+                    the full service fee remains due and will be invoiced.
+                </p>
+            </div>
         </section>
 
         <section id="avis" class="py-24 md:py-32 max-w-7xl mx-auto px-4 relative z-10">
@@ -971,6 +1030,23 @@
                 <div class="w-20 h-1 bg-linear-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
             </div>
             <div class="space-y-4">
+                <div class="premium-card rounded-xl reveal">
+                    <h3 class="text-base font-display font-semibold text-white">
+                        <button class="faq-trigger w-full flex justify-between items-center font-display font-bold text-white p-5 md:p-6 outline-none hover:text-gold-400 transition-colors text-sm md:text-base text-left" aria-expanded="false" aria-controls="faq-panel-conditions-en">
+                            What do I need to prepare for a home service?
+                            <span class="faq-icon text-gold-400 transition-transform duration-300 text-xl md:text-2xl leading-none" aria-hidden="true">+</span>
+                        </button>
+                    </h3>
+                    <div id="faq-panel-conditions-en" role="region" aria-hidden="true" class="hidden text-gray-400 font-light px-5 md:px-6 pb-5 md:pb-6 leading-relaxed text-sm md:text-base">
+                        <p>Three things to have ready before our arrival:</p>
+                        <ul class="list-disc pl-5 space-y-1 my-2">
+                            <li><strong class="text-white font-semibold">A private parking space</strong> (required) — garage, driveway, or residential parking. Car washing on public roads is illegal in Switzerland.</li>
+                            <li><strong class="text-white font-semibold">A 230V power outlet</strong> (required) — accessible from the vehicle's location.</li>
+                            <li><strong class="text-white font-semibold">A water point</strong> (recommended) — not essential depending on the service chosen.</li>
+                        </ul>
+                        <p>If no parking or outlet is available on our arrival, the full service fee remains due and will be invoiced.</p>
+                    </div>
+                </div>
                 <div class="premium-card rounded-xl reveal">
                     <h3 class="text-base font-display font-semibold text-white">
                         <button class="faq-trigger w-full flex justify-between items-center font-display font-bold text-white p-5 md:p-6 outline-none hover:text-gold-400 transition-colors text-sm md:text-base text-left" aria-expanded="false" aria-controls="faq-panel-1">
