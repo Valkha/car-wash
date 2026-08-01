@@ -434,3 +434,20 @@ details[open] summary ~ * {
     width: 24px;
     background-color: #D4AF37;
 }
+
+/* Pricing prefix */
+.price-from {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #9ca3af; /* gris doux, cohérent avec le thème dark */
+  margin-bottom: 0.15rem;
+}
+
+.price-currency {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #9ca3af;
+  vertical-align: baseline;
+}
