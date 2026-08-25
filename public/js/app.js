@@ -131,11 +131,20 @@ function ccwModalClose() {
 document.addEventListener('keydown', function (e) { if (e.key === 'Escape') ccwModalClose(); });
 
 // Location Choice Modal (Packs / Combos — home-or-work vs garage CCW)
-function ccwLocationModalOpen(homeUrl, garageUrl) {
+// Les deux options mènent à la page SumUp Bookings (créneau + acompte).
+// SumUp n'expose pas d'URL par prestation : on affiche donc le libellé exact
+// à sélectionner sur place, pour chaque lieu d'intervention.
+var CCW_BOOKINGS_URL = 'https://www.sumupbookings.com/clean-car-wash-geneva#services';
+
+function ccwLocationModalOpen(homeLabel, garageLabel) {
     var home = document.getElementById('ccw-location-home');
     var garage = document.getElementById('ccw-location-garage');
-    if (home) home.href = homeUrl;
-    if (garage) garage.href = garageUrl;
+    if (home) home.href = CCW_BOOKINGS_URL;
+    if (garage) garage.href = CCW_BOOKINGS_URL;
+    var homeTxt = document.getElementById('ccw-location-home-label');
+    var garageTxt = document.getElementById('ccw-location-garage-label');
+    if (homeTxt) homeTxt.textContent = homeLabel || '';
+    if (garageTxt) garageTxt.textContent = garageLabel || '';
     var m = document.getElementById('ccw-location-modal');
     m.classList.remove('hidden');
     m.classList.add('flex');
