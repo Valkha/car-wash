@@ -130,26 +130,90 @@ function ccwModalClose() {
 }
 document.addEventListener('keydown', function (e) { if (e.key === 'Escape') ccwModalClose(); });
 
-// Location Choice Modal (Packs / Combos — home-or-work vs garage CCW)
-// Les deux options mènent à la page SumUp Bookings (créneau + acompte).
-// SumUp n'expose pas d'URL par prestation : on affiche donc le libellé exact
-// à sélectionner sur place, pour chaque lieu d'intervention.
-var CCW_BOOKINGS_URL = 'https://www.sumupbookings.com/clean-car-wash-geneva#services';
+// ==========================================================================
+// Réservation SumUp Bookings — lien direct par prestation
+// --------------------------------------------------------------------------
+// Chaque offre existe en deux variantes dans SumUp (domicile / garage).
+// Au clic on crée un panier via l'API publique Bookings, puis on redirige
+// vers le checkout de CE panier : le client choisit son créneau AVANT de
+// payer, et ses coordonnées sont collectées à l'étape 2.
+//
+// Si l'appel échoue (API modifiée, réseau, CSP), on retombe sur la page de
+// réservation générique — jamais de bouton mort, jamais de paiement sans
+// créneau.
+// ==========================================================================
+var CCW_BOOKINGS_SHOP = 'clean-car-wash-geneva';
+var CCW_BOOKINGS_URL = 'https://www.sumupbookings.com/' + CCW_BOOKINGS_SHOP + '#services';
+var CCW_BOOKINGS_API = 'https://api.sumup.com/public/bookings/' + CCW_BOOKINGS_SHOP;
+var CCW_BOOKINGS_CHECKOUT = 'https://www.sumupbookings.com/' + CCW_BOOKINGS_SHOP + '/checkout';
 
-function ccwLocationModalOpen(homeLabel, garageLabel) {
-    var home = document.getElementById('ccw-location-home');
-    var garage = document.getElementById('ccw-location-garage');
-    if (home) home.href = CCW_BOOKINGS_URL;
-    if (garage) garage.href = CCW_BOOKINGS_URL;
+// Identifiants relevés dans l'API SumUp le 25/08/2026.
+// Si une prestation est recréée dans SumUp, son serviceId change : il faut
+// alors mettre à jour la ligne correspondante ici.
+var CCW_OFFERS = {
+    argent: {
+        home:   { label: '[1] Pack Argent - Au Domicile/Travail (Acompte 30%)', service: '054f5bac-7131-438c-866f-ed4126781f66', variant: '6486c6b0-adea-4e75-8917-d5e1173eddce' },
+        garage: { label: '[1] Pack Argent - Au Garage (Acompte 30%)',           service: 'ea902077-46dd-4abe-b3c5-958010e9ab84', variant: 'db6f5f91-3c1e-4917-aff1-8b3be324efd5' }
+    },
+    or: {
+        home:   { label: '[2] Pack Or - Au Domicile/Travail (Acompte 30%)',     service: '43834e2e-33f3-4640-b149-81c178ade6c9', variant: '55938d59-b0a2-45d8-bef2-bb8be1c752ff' },
+        garage: { label: '[2] Pack Or - Au Garage (Acompte 30%)',               service: '7c78ee37-4dab-4bd7-aef8-6d20fc3b6b77', variant: '5b55126e-a9c3-4f25-ac39-d15de8d1370c' }
+    },
+    diamant: {
+        home:   { label: '[3] Pack Diamant - Au Domicile/Travail (Acompte 30%)', service: '7270085a-93a3-481b-b860-3415e910c632', variant: '1bd8cdbf-2d55-425f-95e0-b5aaa803c56a' },
+        garage: { label: '[3] Pack Diamant - Au Garage (Acompte 30%)',           service: 'a60b8bcb-4a74-4869-9f47-e7427db2507a', variant: '4921ee33-9267-40e9-8cbe-f5f7d7c05411' }
+    },
+    excellence: {
+        home:   { label: 'Combo Excellence - Au Domicile/Travail (Acompte 30%) - 1er rdv', service: '63e72870-0cc7-4110-9573-f55f999a4530', variant: '3338d0c4-60a1-4bfd-b059-814b3629ba79' },
+        garage: { label: 'Combo Excellence - Au Garage (Acompte 30%) - 1er rdv',           service: '5c61248f-5fdc-4e12-8651-db94704cd654', variant: '17fdc0d6-e253-4f85-af78-d514f6ba6675' }
+    },
+    prestige: {
+        home:   { label: 'Combo Prestige - Au Domicile/Travail (Acompte 30%) - 1er rdv',   service: '826ed5ef-5e77-4bab-9a0c-0bd3c30a8696', variant: '46cfba06-23c3-40b3-bc0f-e5373a4d2c4d' },
+        garage: { label: 'Combo Prestige - Au Garage (Acompte 30%) - 1er rdv',             service: 'd455c5ec-b8d3-4d00-aa5d-d9076c9fbb95', variant: '84cafaab-4aa1-4816-83ba-f437cb92d57a' }
+    }
+};
+
+var ccwCurrentOffer = null;
+var ccwBookingBusy = false;
+
+function ccwFormatDate(d) {
+    var mm = ('0' + (d.getMonth() + 1)).slice(-2);
+    var dd = ('0' + d.getDate()).slice(-2);
+    return d.getFullYear() + '-' + mm + '-' + dd;
+}
+
+// Relâche le verrou anti-double-clic et remet les boutons dans leur état normal.
+// Indispensable au retour arrière : le navigateur restaure la page depuis son
+// cache avec l'état JS intact, donc sans ce reset le verrou resterait enclenché
+// et plus aucun clic ne fonctionnerait.
+function ccwBookingReset() {
+    ccwBookingBusy = false;
+    ['home', 'garage'].forEach(function (place) {
+        var btn = document.getElementById('ccw-location-' + place);
+        if (btn) {
+            btn.removeAttribute('aria-busy');
+            btn.classList.remove('opacity-60');
+        }
+    });
+}
+
+// pageshow se déclenche aussi lors d'une restauration depuis le cache du
+// navigateur (event.persisted), là où load ne se déclenche pas.
+window.addEventListener('pageshow', ccwBookingReset);
+
+function ccwLocationModalOpen(offerKey) {
+    ccwBookingReset();
+    ccwCurrentOffer = CCW_OFFERS[offerKey] || null;
     var homeTxt = document.getElementById('ccw-location-home-label');
     var garageTxt = document.getElementById('ccw-location-garage-label');
-    if (homeTxt) homeTxt.textContent = homeLabel || '';
-    if (garageTxt) garageTxt.textContent = garageLabel || '';
+    if (homeTxt) homeTxt.textContent = ccwCurrentOffer ? ccwCurrentOffer.home.label : '';
+    if (garageTxt) garageTxt.textContent = ccwCurrentOffer ? ccwCurrentOffer.garage.label : '';
     var m = document.getElementById('ccw-location-modal');
     m.classList.remove('hidden');
     m.classList.add('flex');
     document.body.style.overflow = 'hidden';
 }
+
 function ccwLocationModalClose() {
     var m = document.getElementById('ccw-location-modal');
     m.classList.add('hidden');
@@ -157,6 +221,52 @@ function ccwLocationModalClose() {
     document.body.style.overflow = '';
 }
 document.addEventListener('keydown', function (e) { if (e.key === 'Escape') ccwLocationModalClose(); });
+
+function ccwBookingGo(place) {
+    if (ccwBookingBusy) return;
+    var offer = ccwCurrentOffer && ccwCurrentOffer[place];
+    if (!offer) { window.location.href = CCW_BOOKINGS_URL; return; }
+
+    ccwBookingBusy = true;
+    var btn = document.getElementById('ccw-location-' + place);
+    if (btn) {
+        btn.setAttribute('aria-busy', 'true');
+        btn.classList.add('opacity-60');
+    }
+
+    var settled = false;
+    var fallback = function () {
+        if (settled) return;
+        settled = true;
+        window.location.href = CCW_BOOKINGS_URL;
+    };
+    // Filet de sécurité : si l'API ne répond pas en 8s, on n'immobilise pas le client.
+    var timer = setTimeout(fallback, 8000);
+
+    fetch(CCW_BOOKINGS_API + '/carts', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', 'accept': 'application/json' },
+        body: JSON.stringify({ items: [{ serviceId: offer.service, variantId: offer.variant, position: 0 }] })
+    }).then(function (r) {
+        return r.ok ? r.json() : null;
+    }).then(function (data) {
+        clearTimeout(timer);
+        var cartId = data && data.cart && data.cart.cartId;
+        if (!cartId) { fallback(); return; }
+        if (settled) return;
+        settled = true;
+        var today = new Date();
+        var end = new Date(today.getTime() + 6 * 86400000);
+        window.location.href = CCW_BOOKINGS_CHECKOUT +
+            '?selectedDate=' + ccwFormatDate(today) +
+            '&startDate=' + ccwFormatDate(today) +
+            '&endDate=' + ccwFormatDate(end) +
+            '&cartId=' + encodeURIComponent(cartId);
+    }).catch(function () {
+        clearTimeout(timer);
+        fallback();
+    });
+}
 
 // Carousel dots — Subscriptions & Reviews
 (function () {
