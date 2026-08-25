@@ -582,6 +582,124 @@ a:focus-visible .nav-swap > span:last-child {
 }
 
 /* ==========================================================================
+   Reflet spéculaire au survol — le lustre qui glisse sur une carrosserie
+   --------------------------------------------------------------------------
+   On anime la POSITION D'UN DÉGRADÉ dans un pseudo-élément qui couvre la
+   carte, et non un élément qui la traverse : pas besoin d'overflow:hidden
+   sur la carte, donc le badge « Service recommandé » qui déborde du haut
+   n'est jamais rogné.
+   ========================================================================== */
+.premium-card,
+.premium-service-card {
+    position: relative;
+}
+
+.premium-card::after,
+.premium-service-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    background: linear-gradient(105deg,
+        transparent 36%,
+        rgba(255, 255, 255, 0.10) 46%,
+        rgba(255, 255, 255, 0.18) 50%,
+        rgba(255, 255, 255, 0.10) 54%,
+        transparent 64%);
+    background-size: 250% 100%;
+    background-position: 170% 0;
+    transition: opacity 0.25s ease;
+}
+
+.premium-card:hover::after,
+.premium-service-card:hover::after {
+    opacity: 1;
+    background-position: -70% 0;
+    transition: background-position 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.2s ease;
+}
+
+/* ==========================================================================
+   Texte lustré — le doré qui se réfléchit lentement
+   ========================================================================== */
+@keyframes ccw-shine {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* La couleur de repli reste appliquée en dur : le lustre n'est activé que si
+   le navigateur sait découper un dégradé sur du texte. Sans cette garde, un
+   navigateur non compatible afficherait du texte transparent, donc invisible. */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    .hero-eyebrow,
+    .section-index {
+        background: linear-gradient(90deg,
+            #8a7326 0%, #D4AF37 42%, #fff6cf 50%, #D4AF37 58%, #8a7326 100%);
+        background-size: 200% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: ccw-shine 5s linear infinite;
+    }
+}
+
+/* Le numéro de section garde son gris : on force sa couleur de remplissage
+   pour qu'il échappe au background-clip du parent. */
+.section-index em {
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* ==========================================================================
+   Titre du hero — entrée en cascade, une seule fois au chargement
+   --------------------------------------------------------------------------
+   Portée par le DÉPLACEMENT, jamais depuis une opacité nulle : le texte
+   reste lisible même si l'animation ne joue pas.
+   ========================================================================== */
+@keyframes ccw-rise {
+    from { opacity: 0.3; transform: translateY(0.16em); }
+    to   { opacity: 1;   transform: translateY(0); }
+}
+
+.hero-lockup .line-fill     { animation: ccw-rise 0.95s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.hero-lockup .line-outline  { animation: ccw-rise 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.09s both; }
+.hero-lockup .line-keywords { animation: ccw-rise 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both; }
+
+/* ==========================================================================
+   Bordure animée du CTA principal
+   ========================================================================== */
+@property --ccw-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes ccw-angle {
+    to { --ccw-angle: 360deg; }
+}
+
+.cta-star {
+    position: relative;
+    isolation: isolate;
+}
+
+.cta-star::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    z-index: -1;
+    background: conic-gradient(from var(--ccw-angle),
+        transparent 0 58%,
+        rgba(212, 175, 55, 0.9) 74%,
+        #fff6cf 80%,
+        transparent 88% 100%);
+    animation: ccw-angle 4.5s linear infinite;
+}
+
+/* ==========================================================================
    Mouvement réduit — respect de la préférence système
    ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
@@ -604,4 +722,27 @@ a:focus-visible .nav-swap > span:last-child {
     .img-fade:first-child { opacity: 1; }
 
     .nav-swap > span:last-child { display: none; }
+
+    /* Effets décoratifs : on coupe le mouvement, on garde la lisibilité */
+    .hero-eyebrow,
+    .section-index {
+        animation: none;
+        background: none;
+        -webkit-background-clip: initial;
+        background-clip: initial;
+        color: #D4AF37;
+    }
+
+    .hero-lockup .line-fill,
+    .hero-lockup .line-outline,
+    .hero-lockup .line-keywords {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+
+    .cta-star::before { animation: none; }
+
+    .premium-card::after,
+    .premium-service-card::after { display: none; }
 }
