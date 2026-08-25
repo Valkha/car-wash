@@ -17,6 +17,13 @@ const locations = JSON.parse(fs.readFileSync(locationsPath, 'utf8'));
 // directement dans services/{ville}/index.html est écrasée au déploiement
 // suivant. Modifier ici, jamais là-bas.
 // ==========================================================================
+// Villes de la même région, hors la page courante : sert à créer un maillage
+// entre les pages villes, qui autrement ne se lient jamais entre elles.
+const villesVoisines = (loc, max = 6) => locations
+    .filter(v => v.region === loc.region && v.cityId !== loc.cityId)
+    .sort((a, b) => a.cityName.localeCompare(b.cityName, 'fr'))
+    .slice(0, max);
+
 const generateHTML = (loc) => `<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -149,6 +156,14 @@ const generateHTML = (loc) => `<!DOCTYPE html>
                 <p class="text-gray-400 font-light text-sm leading-relaxed mb-8 max-w-xl mx-auto">Nous nous déplaçons chez vous ou sur votre lieu de travail, sans frais supplémentaires. Choisissez votre créneau en ligne et réglez un acompte de 30&nbsp;%&nbsp;; le solde se règle sur place.</p>
                 <a href="/#services" class="inline-block bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-4 px-10 rounded-full hover:bg-gold-500 transition-all shadow-[0_0_20px_rgba(212,175,55,0.2)]" data-track="conversion-booking">Réserver à ${loc.cityName}</a>
             </section>
+
+            <nav class="pb-16 md:pb-24" aria-label="Autres villes desservies">
+                <p class="text-[10px] font-display font-bold tracking-[0.3em] uppercase text-gold-400 mb-4">Nous intervenons aussi sur le canton de ${loc.region}</p>
+                <ul class="flex flex-wrap gap-x-4 gap-y-2 text-xs md:text-sm text-gray-500 font-light">
+                    ${villesVoisines(loc).map(v => `<li><a href="/services/${v.cityId}/" class="hover:text-gold-400 transition">${v.cityName}</a></li>`).join('\n                    ')}
+                    <li><a href="/#services" class="text-gold-400 hover:text-white transition">Toutes nos prestations →</a></li>
+                </ul>
+            </nav>
         </article>
     </main>
 
@@ -211,6 +226,8 @@ const generateSitemap = (locations) => {
         { url: 'https://www.clean-cars-wash.ch/politique-confidentialite.html',changefreq: 'yearly',  priority: '0.3' },
         { url: 'https://www.clean-cars-wash.ch/en/legal-notices.html',         changefreq: 'yearly',  priority: '0.3' },
         { url: 'https://www.clean-cars-wash.ch/en/privacy-policy.html',        changefreq: 'yearly',  priority: '0.3' },
+        { url: 'https://www.clean-cars-wash.ch/abonnements.html',              changefreq: 'monthly', priority: '0.7' },
+        { url: 'https://www.clean-cars-wash.ch/en/subscriptions.html',         changefreq: 'monthly', priority: '0.7' },
     ];
 
     const staticUrls = staticPages.map(p => `
@@ -233,8 +250,11 @@ const generateSitemap = (locations) => {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${staticUrls}${urls}
 </urlset>`;
 
-    fs.writeFileSync(path.join(__dirname, 'sitemap.xml'), sitemap);
-    console.log(`🗺️  Sitemap.xml mis à jour : ${staticPages.length} pages statiques + ${locations.length} pages locales.`);
+    // Le sitemap DOIT être écrit dans public/ : Vite ne copie que ce dossier
+    // vers dist/. Écrit à la racine du dépôt, il n'était jamais déployé et
+    // répondait 404 en production.
+    fs.writeFileSync(path.join(__dirname, 'public', 'sitemap.xml'), sitemap);
+    console.log(`🗺️  public/sitemap.xml mis à jour : ${staticPages.length} pages statiques + ${locations.length} pages locales.`);
 };
 
 generateSitemap(locations);
