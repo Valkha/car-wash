@@ -191,10 +191,14 @@ details[open] summary ~ * {
 /* ==========================================================================
    Animations & Delays
    ========================================================================== */
+/* L'entrée est portée par le DÉPLACEMENT, pas par l'opacité.
+   Opacité de départ à 0.4 (et non 0) : si le JS échoue ou tarde,
+   le contenu reste lisible au lieu de disparaître. */
 .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity: 0.4;
+    transform: translateY(48px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal.active {
@@ -450,4 +454,154 @@ details[open] summary ~ * {
   font-weight: 400;
   color: #9ca3af;
   vertical-align: baseline;
+}
+
+/* ==========================================================================
+   Hero — composition typographique
+   ========================================================================== */
+.hero-eyebrow {
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #D4AF37;
+}
+
+/* Borné par la HAUTEUR autant que par la largeur : un titre calé sur vw seul
+   déborde sur un écran large et court. Plafond en rem pour rester dans le
+   conteneur max-w-7xl quelle que soit la largeur d'écran. */
+.hero-lockup {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 0.86;
+    letter-spacing: -0.015em;
+    font-size: clamp(3rem, min(12vw, 17vh), 8.5rem);
+}
+
+.hero-lockup .line-fill {
+    display: block;
+    color: #fff;
+}
+
+.hero-lockup .line-outline {
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 0.021em #D4AF37;
+    text-stroke: 0.021em #D4AF37;
+}
+
+/* Repli si le navigateur ne sait pas tracer un contour de texte */
+@supports not ((-webkit-text-stroke: 1px #000) or (text-stroke: 1px #000)) {
+    .hero-lockup .line-outline { color: #D4AF37; }
+}
+
+.hero-lockup .line-keywords {
+    display: block;
+    font-size: clamp(0.7rem, 1.1vw, 0.875rem);
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    line-height: 1.6;
+    color: #9ca3af;
+    margin-top: 1.4rem;
+}
+
+/* Calque décoratif : ne porte aucun sens, donc peut vivre en faible opacité */
+.hero-monogram {
+    position: absolute;
+    right: -0.07em;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: clamp(9rem, 27vw, 24rem);
+    line-height: 0.78;
+    letter-spacing: -0.045em;
+    color: rgba(212, 175, 55, 0.05);
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+}
+
+/* ==========================================================================
+   Rythme éditorial des sections
+   ========================================================================== */
+.section-index {
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #D4AF37;
+}
+
+.section-index em {
+    font-style: normal;
+    color: rgba(255, 255, 255, 0.3);
+    margin-right: 0.7em;
+}
+
+.section-rule {
+    width: 3.5rem;
+    height: 1px;
+    background: linear-gradient(to right, #D4AF37, transparent);
+    margin-top: 1rem;
+}
+
+/* ==========================================================================
+   Micro-interaction — hover text-swap
+   ========================================================================== */
+.nav-swap {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+}
+
+.nav-swap > span {
+    display: block;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-swap > span:last-child {
+    position: absolute;
+    inset: 0;
+    transform: translateY(100%);
+    color: #D4AF37;
+}
+
+.nav-swap:hover > span:first-child,
+a:focus-visible .nav-swap > span:first-child {
+    transform: translateY(-100%);
+}
+
+.nav-swap:hover > span:last-child,
+a:focus-visible .nav-swap > span:last-child {
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   Mouvement réduit — respect de la préférence système
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    /* État FINAL affiché, jamais l'état initial */
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .img-fade { animation: none; opacity: 0; }
+    .img-fade:first-child { opacity: 1; }
+
+    .nav-swap > span:last-child { display: none; }
 }
