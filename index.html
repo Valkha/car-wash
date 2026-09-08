@@ -24,7 +24,7 @@
     <!-- End Google Analytics -->
 
     <title>Lavage Auto Premium à Genève | Clean Cars Wash</title>
-    <meta name="description" content="Detailing mobile premium sur Genève et Vaud. Packs Argent, Or, Diamant dès 89 CHF. Récupération domicile sans frais.">
+    <meta name="description" content="Offre de septembre : Pack Diamant à 199 CHF au lieu de 312.40. Detailing mobile premium sur Genève et Vaud, déplacement offert. Réservation en ligne.">
     <meta name="keywords" content="clean cars wash, lavage auto genève, detailing genève, lavage auto mobile, nettoyage voiture domicile, protection céramique genève, AHMED-YAHIA LM">
     <meta name="author" content="Clean Cars Wash">
     <meta name="robots" content="index, follow">
@@ -75,7 +75,7 @@
       "url": "https://www.clean-cars-wash.ch",
       "telephone": "+41782657071",
       "vatID": "CHE-377.481.423",
-      "priceRange": "CHF 89–289",
+      "priceRange": "CHF 96–312",
       "currenciesAccepted": "CHF",
       "address": {
         "@type": "PostalAddress",
@@ -99,7 +99,7 @@
         "itemListElement": [
           { "@type": "Offer", "name": "Pack Argent", "price": "96.20", "priceCurrency": "CHF" },
           { "@type": "Offer", "name": "Pack Or", "price": "161.05", "priceCurrency": "CHF" },
-          { "@type": "Offer", "name": "Pack Diamant", "price": "312.40", "priceCurrency": "CHF" }
+          { "@type": "Offer", "name": "Pack Diamant — Offre de septembre", "price": "199.00", "priceCurrency": "CHF", "priceValidUntil": "2026-09-30", "availability": "https://schema.org/LimitedAvailability", "url": "https://www.clean-cars-wash.ch/#promo" }
         ]
       }
     }
@@ -178,6 +178,16 @@
     <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gold-400 z-100 transition-all duration-150" style="width: 0%;"></div>
 
     <a href="#main-content" class="skip-link">Passer au contenu principal</a>
+
+    <!-- ===== BANDEAU PROMO SEPTEMBRE 2026 — retirer apres le 30/09/2026 ===== -->
+    <div id="ccw-promo-bar" data-promo-until="2026-09-30" class="bg-gold-400 text-charcoal-900">
+        <a href="#promo" class="max-w-7xl mx-auto px-4 py-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center font-display font-bold text-[11px] md:text-xs tracking-widest uppercase hover:opacity-80 transition-opacity">
+            <span>Promotion de septembre</span>
+            <span class="hidden sm:inline opacity-60" aria-hidden="true">|</span>
+            <span class="font-normal tracking-wide normal-case">Pack Diamant à 199 CHF au lieu de 312.40</span>
+            <span class="underline underline-offset-2">J'en profite &rarr;</span>
+        </a>
+    </div>
 
     <header class="bg-charcoal-900/90 backdrop-blur-lg border-b border-white/5 sticky top-0 z-50 transition-all">
         <div class="max-w-7xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
@@ -279,6 +289,39 @@
                 <span class="text-[10px] font-display tracking-widest uppercase mb-2">Scroll</span>
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
             </a>
+        </section>
+
+        <!-- ===== SECTION PROMO SEPTEMBRE 2026 — retirer apres le 30/09/2026 ===== -->
+        <section id="promo" data-promo-until="2026-09-30" class="py-16 md:py-24 px-4 relative z-10">
+            <div class="max-w-5xl mx-auto premium-card rounded-3xl p-8 md:p-12 reveal" style="border-color:rgba(212,175,55,.35);">
+                <p class="hero-eyebrow mb-4">Promotion exceptionnelle — tout le mois de septembre</p>
+                <div class="grid gap-10 md:grid-cols-2 md:items-start">
+                    <div>
+                        <h2 class="text-4xl md:text-6xl font-display font-bold text-white uppercase tracking-tight leading-[0.95] mb-2">Pack Diamant</h2>
+                        <div class="flex items-end flex-wrap gap-x-4 gap-y-1 mb-4">
+                            <span class="text-5xl md:text-6xl font-display font-bold text-gold-400 leading-none">199 CHF</span>
+                            <span class="text-gray-500 text-sm">TTC</span>
+                            <span class="text-gray-600 text-base" style="text-decoration:line-through">312.40 CHF</span>
+                        </div>
+                        <p class="inline-block bg-gold-400/10 border border-gold-400/40 text-gold-400 font-display font-bold text-xs tracking-widest uppercase px-4 py-2 rounded-full mb-6">Économisez 113 CHF</p>
+                        <p class="text-gray-400 font-light leading-relaxed mb-8">Offrez à votre véhicule un nettoyage complet et une finition premium avec Clean Cars Wash Genève.</p>
+                        <button type="button" onclick="ccwLocationModalOpen('diamant')" data-track="conversion-booking" class="cta-star cursor-pointer inline-block bg-gold-400 border border-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-4 px-10 rounded-full hover:bg-gold-500 transition-all">Réserver mon Pack Diamant</button>
+                        <p class="text-gray-500 text-xs mt-6 leading-relaxed">Offre valable jusqu'au 30 septembre 2026, dans la limite des disponibilités.<br>Clean Cars Wash — Genève</p>
+                    </div>
+                    <ul class="grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-3 text-sm text-gray-300 font-light">
+                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-gold-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Nettoyage complet intérieur &amp; extérieur</span></li>
+                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-gold-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Nettoyage des jantes et pneus</span></li>
+                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-gold-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Shampoing des sièges et tapis</span></li>
+                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-gold-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Nettoyage des plastiques intérieurs</span></li>
+                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-gold-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Nettoyage du coffre en profondeur</span></li>
+                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-gold-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Soin du cuir &amp; Alcantara</span></li>
+                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-gold-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Finitions détaillées</span></li>
+                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-gold-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Traitement anti-odeurs</span></li>
+                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-gold-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Cire premium déperlante</span></li>
+                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-gold-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Parfum premium</span></li>
+                    </ul>
+                </div>
+            </div>
         </section>
 
         <section class="py-24 md:py-32 bg-charcoal-800/30">
@@ -570,8 +613,9 @@
                 <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full sm:col-span-2 md:col-span-1 reveal delay-200 snap-center shrink-0 w-[85vw] md:w-auto">
                     <div class="w-12 h-12 mb-5 rounded-full bg-gold-400/10 flex items-center justify-center text-gold-400 text-2xl" aria-hidden="true">💎</div>
                     <h3 class="text-lg md:text-xl font-display font-bold tracking-wider uppercase text-white mb-2">Pack Diamant</h3>
-                    <p class="price-from">À partir de</p>
-                    <p class="price-amount text-gold-400 font-display font-semibold text-3xl md:text-4xl mb-4">312.40 <span class="price-currency">CHF TTC</span></p>
+                    <p class="price-from">Offre de septembre</p>
+                    <p class="price-amount text-gold-400 font-display font-semibold text-3xl md:text-4xl mb-1">199.00 <span class="price-currency">CHF TTC</span></p>
+                    <p class="text-gray-600 text-sm mb-4" style="text-decoration:line-through">312.40 CHF</p>
                     <p class="text-gray-400 font-light leading-relaxed text-sm mb-4">Le summum : Inclus Pack Or + Cire premium déperlante, soin cuir/alcantara et traitement anti-odeur. Durée : 3H+.</p>
                     <ul class="text-gray-400 font-light space-y-2 text-sm mb-6 grow">
                         <li>◆ Inclus le Pack Or</li>
