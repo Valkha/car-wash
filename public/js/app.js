@@ -131,6 +131,25 @@ function ccwModalClose() {
 document.addEventListener('keydown', function (e) { if (e.key === 'Escape') ccwModalClose(); });
 
 // ==========================================================================
+// Promotions datées — garde-fou anti-promo périmée
+// --------------------------------------------------------------------------
+// Tout élément portant data-promo-until="AAAA-MM-JJ" disparaît au lendemain
+// de cette date. Le contenu est présent et visible dans le HTML servi : si le
+// JS ne s'exécute pas pendant la promo, elle s'affiche normalement. Le script
+// ne fait que RETIRER une offre expirée, jamais afficher une offre absente.
+// ==========================================================================
+(function () {
+    var elements = document.querySelectorAll('[data-promo-until]');
+    if (!elements.length) return;
+    var maintenant = new Date();
+    Array.prototype.forEach.call(elements, function (el) {
+        var fin = new Date(el.getAttribute('data-promo-until') + 'T23:59:59');
+        if (isNaN(fin.getTime())) return;
+        if (maintenant > fin) el.remove();
+    });
+})();
+
+// ==========================================================================
 // Réservation SumUp Bookings — lien direct par prestation
 // --------------------------------------------------------------------------
 // Chaque offre existe en deux variantes dans SumUp (domicile / garage).
