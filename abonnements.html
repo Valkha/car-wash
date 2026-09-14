@@ -4,23 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-5W69QPT3');</script>
-    <!-- End Google Tag Manager -->
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QMTGD5E2NW"></script>
+    <!-- Google Tag Manager + Google Analytics -->
+    <!-- Chargés après le premier rendu (audit perf du 14.09.2026) : les deux scripts
+         pèsent ~290 Ko et passaient avant l'image du hero sur mobile. La file
+         dataLayer est créée tout de suite : aucun évènement n'est perdu. -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-QMTGD5E2NW');
+      dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+      (function () {
+        var charge = false;
+        function charger() {
+          if (charge) return;
+          charge = true;
+          ['https://www.googletagmanager.com/gtm.js?id=GTM-5W69QPT3',
+           'https://www.googletagmanager.com/gtag/js?id=G-QMTGD5E2NW'].forEach(function (src) {
+            var s = document.createElement('script');
+            s.async = true;
+            s.src = src;
+            document.head.appendChild(s);
+          });
+        }
+        ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function (type) {
+          window.addEventListener(type, charger, { once: true, passive: true });
+        });
+        window.addEventListener('load', function () { setTimeout(charger, 3500); });
+      })();
     </script>
-    <!-- End Google Analytics -->
+    <!-- End Google Tag Manager + Google Analytics -->
 
     <title>Abonnements Détailing Sur-Mesure | Clean Cars Wash Genève</title>
     <meta name="description" content="Formules d'abonnement mensuelles et annuelles pour particuliers, professionnels et entreprises. Pack Argent dès 80.- CHF/mois. Combos et offres multi-véhicules disponibles.">
