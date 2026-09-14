@@ -62,7 +62,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="image" href="assets/images/hero-bg-opt.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/images/hero-bg-opt.webp" media="(min-width: 769px)" fetchpriority="high">
     <link rel="preload" as="image" href="assets/images/hero-bg-mobile.webp" media="(max-width: 768px)" fetchpriority="high">
 
     <script type="application/ld+json">
@@ -800,7 +800,7 @@
                 <div class="relative overflow-hidden rounded-2xl shadow-2xl border border-white/5 bg-charcoal-800" aria-label="Galerie de réalisations" aria-roledescription="carousel">
                     <div id="slider-track" class="flex transition-transform duration-700 ease-in-out w-full overflow-x-auto overflow-y-hidden snap-x snap-mandatory hide-scrollbar scroll-pl-4 md:overflow-visible md:snap-none">
                         <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-87.5 overflow-hidden snap-center" role="group" aria-roledescription="diapositive" aria-label="1 sur 6">
-                            <img src="assets/images/1.jpeg" alt="Detailing auto et nettoyage premium Genève - Réalisation 1" width="800" height="600" class="w-full h-full object-cover" loading="eager" fetchpriority="high">
+                            <img src="assets/images/1.jpeg" alt="Detailing auto et nettoyage premium Genève - Réalisation 1" width="800" height="600" class="w-full h-full object-cover" loading="lazy" decoding="async">
                         </div>
 
                         <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-87.5 overflow-hidden snap-center" role="group" aria-roledescription="diapositive" aria-label="2 sur 6">
