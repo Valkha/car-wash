@@ -194,18 +194,20 @@ details[open] summary ~ * {
 /* ==========================================================================
    Animations & Delays
    ========================================================================== */
-/* L'entrée est portée par le DÉPLACEMENT, pas par l'opacité.
-   Opacité de départ à 0.4 (et non 0) : si le JS échoue ou tarde,
-   le contenu reste lisible au lieu de disparaître. */
+/* L'entrée est portée par le DÉPLACEMENT, et par lui seul.
+   Audit P15 (15.09.2026) : l'opacité de départ valait 0.4. Les sections
+   sous la ligne de flottaison n'ayant jamais reçu `.active` au moment de
+   l'audit, axe mesurait tout leur texte à 40 % d'opacité -- 24 des 66
+   échecs de contraste venaient de là (du blanc pur rendu en #707070).
+   Le même texte restait durablement délavé pour un visiteur sans JS.
+   Le déplacement suffit à porter l'entrée ; l'opacité ne rendait aucun
+   service qu'elle ne faisait pas payer. */
 .reveal {
-    opacity: 0.4;
     transform: translateY(48px);
-    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal.active {
-    opacity: 1;
     transform: translateY(0);
 }
 
@@ -426,18 +428,32 @@ details[open] summary ~ * {
 /* ==========================================================================
    Carousel Pagination Dots
    ========================================================================== */
+/* Audit P15 (15.09.2026) : la pastille mesurait 8x8 px -- la cible tactile
+   aussi, donc trois fois moins que le minimum WCAG 2.5.8 (24x24). Le bouton
+   porte desormais la cible, le ::after porte le dessin : meme apparence,
+   surface tapable triplee. */
 .ccw-dot {
-    width: 8px;
-    height: 8px;
+    width: 24px;
+    height: 24px;
     border-radius: 9999px;
-    background: rgba(255, 255, 255, 0.2);
+    background: transparent;
     border: none;
     cursor: pointer;
     padding: 0;
     flex-shrink: 0;
+    display: grid;
+    place-items: center;
+}
+.ccw-dot::after {
+    content: "";
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.2);
     transition: width 0.3s ease, background-color 0.3s ease;
 }
-.ccw-dot.active {
+.ccw-dot.active::after {
     width: 24px;
     background-color: #D4AF37;
 }
@@ -650,6 +666,26 @@ a:focus-visible .nav-swap > span:last-child {
            Trois passages suffisent a montrer l'effet a l'arrivee ; ensuite le
            telephone du client n'a plus rien a repeindre. */
         animation: ccw-shine 5s linear 3;
+    }
+
+    /* Audit P15 (15.09.2026) : sur la trace en profil propre, Script
+       Evaluation ne pese que 45 ms, mais Style & Layout 1295 ms et
+       Rendering 1277 ms. La seule source de peinture continue de la page
+       est ce lustre : `background-position` sur neuf elements en
+       background-clip, hors compositeur, donc repeints sur le fil
+       principal image par image. Sur mobile, ou le budget CPU est celui
+       qui compte, on garde la couleur et on laisse tomber le reflet.
+       CRITERE DE FALSIFICATION : si Style & Layout ne baisse pas au
+       prochain rapport en profil propre, cette regle est annulee. */
+    @media (max-width: 1023px) {
+        .hero-eyebrow,
+        .section-index {
+            animation: none;
+            /* Sans animation, background-position retomberait a 0% -- soit le
+               bout sombre du degrade (#8a7326). On le cale au centre : le doré
+               vif et son reflet, en une seule peinture au lieu de 900. */
+            background-position: 50% 0;
+        }
     }
 }
 
