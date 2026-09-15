@@ -362,9 +362,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Service Worker registration
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(() => {});
-    });
-}
+// Service worker retire le 15.09.2026 (audit).
+// Il n'a jamais reussi a s'installer : 6 des 9 entrees de PRECACHE (CSS, manifeste,
+// images) n'existent pas dans dist/ parce que Vite hache les noms au build, donc
+// cache.addAll rejetait et l'installation echouait. Chaque visiteur payait le
+// telechargement de sw.js et des 404 a chaque visite, pour aucun cache en retour.
+// Retire plutot que repare : un site statique de 44 pages servi par un CDN n'a pas
+// besoin de cache hors ligne, et un SW repare serait a maintenir a chaque build.
+// public/sw.js subsiste volontairement sous forme de pierre tombale -- voir ce fichier.
