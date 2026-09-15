@@ -452,10 +452,6 @@
                 tM.setAttribute('aria-selected', 'false');
             }
         }
-
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
-        }
     </script>
     <style>
         .active-tab { background-color: #D4AF37; color: #0a0a0a; }
