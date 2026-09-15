@@ -747,6 +747,18 @@ a:focus-visible .nav-swap > span:last-child {
     animation: ccw-angle 4.5s linear 6;
 }
 
+/* Audit P16 (15.09.2026) : ce sont les 2 derniers elements que PageSpeed
+   signale en animation non composee (9 avant P15). Une propriete custom
+   declaree via @property ne peut pas etre interpolee par le compositeur :
+   chaque image repeint le degrade conique entier sur le fil principal.
+   Sous 1024 px, le halo s'arrete a sa position de depart. */
+@media (max-width: 1023px) {
+    .cta-star::before {
+        animation: none;
+        --ccw-angle: 300deg;
+    }
+}
+
 /* ==========================================================================
    Mouvement réduit — respect de la préférence système
    ========================================================================== */
