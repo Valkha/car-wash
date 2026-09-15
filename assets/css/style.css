@@ -141,9 +141,12 @@ details[open] summary ~ * {
     animation: sweep .4s ease-in-out; 
 }
 
-@keyframes sweep { 
-    0% { opacity: 0; margin-top: -10px; } 
-    100% { opacity: 1; margin-top: 0px; } 
+/* Audit P13 : animait `margin-top`, ce qui force une MISE EN PAGE a chaque
+   image. `transform` est delegue au compositeur : meme rendu visuel, aucun
+   travail sur le fil principal. */
+@keyframes sweep {
+    0%   { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 /* ==========================================================================
@@ -641,7 +644,12 @@ a:focus-visible .nav-swap > span:last-child {
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
-        animation: ccw-shine 5s linear infinite;
+        /* Audit P13 (15.09.2026) : etait `infinite`. Animer background-position
+           sur du texte en background-clip force une PEINTURE a chaque image, sur
+           le fil principal, indefiniment -- sur 9 elements de la page d'accueil.
+           Trois passages suffisent a montrer l'effet a l'arrivee ; ensuite le
+           telephone du client n'a plus rien a repeindre. */
+        animation: ccw-shine 5s linear 3;
     }
 }
 
@@ -696,7 +704,11 @@ a:focus-visible .nav-swap > span:last-child {
         rgba(212, 175, 55, 0.9) 74%,
         #fff6cf 80%,
         transparent 88% 100%);
-    animation: ccw-angle 4.5s linear infinite;
+    /* Audit P13 : etait `infinite`. --ccw-angle est declaree via @property, donc
+       elle interpole vraiment -- et repeint le degrade conique entier a chaque
+       image, sans fin. Six passages font 27 secondes de halo a l'arrivee, large
+       pour attirer l'oeil, puis le cout tombe a zero. */
+    animation: ccw-angle 4.5s linear 6;
 }
 
 /* ==========================================================================
@@ -745,65 +757,4 @@ a:focus-visible .nav-swap > span:last-child {
 
     .premium-card::after,
     .premium-service-card::after { display: none; }
-}
-
-/* ─────────────────────────────────────────────────────────────────────────
-   Audit P12 (15.09.2026) — sauter la mise en page des sections hors écran.
-
-   Mesure PageSpeed du 15.09, accueil mobile, score 88 : FCP et LCP tous deux
-   à 2,9 s. Répartition du LCP : TTFB 0 ms + chargement 210 ms + téléchargement
-   150 ms + **délai d'affichage 2 010 ms**. Les trois causes évidentes sont
-   écartées par la mesure — le chemin critique réseau est terminé à 398 ms, le
-   Total Blocking Time est à 0 ms (donc aucun JavaScript ne bloque), et l'image
-   du hero mobile pèse 50 Ko, téléchargée en 150 ms.
-
-   Reste le seul suspect possible : le style, la mise en page et la peinture de
-   **1 040 éléments** répartis sur **13 sections**, sur un document de 16 085 px
-   de haut à 412 px de large — alors qu'**une seule section est visible** au
-   premier écran.
-
-   `content-visibility: auto` demande au navigateur de sauter ce travail tant
-   qu'une section n'approche pas du viewport.
-
-   Les `contain-intrinsic-size` ne sont pas devinés : ce sont les hauteurs
-   RÉELLES mesurées à 412 x 823 sur la production. Sans elles, les sections
-   escamotées auraient une hauteur nulle et la barre de défilement sauterait au
-   scroll — ce qui dégraderait un CLS aujourd'hui à 0. Le mot-clé `auto` laisse
-   en plus le navigateur mémoriser la taille réelle après le premier rendu.
-
-   PIÈGE, rencontré et corrigé : `contain-intrinsic-size` décrit la boîte de
-   CONTENU, pas la boîte de bordure. Une première version utilisait les hauteurs
-   renvoyées par getBoundingClientRect(), padding compris — le document gagnait
-   alors 2 242 px (+14 %), soit exactement les 192 px de `py-24` des douze
-   sections. Les valeurs ci-dessous sont donc hauteur - padding - bordures.
-   Vérifié en injectant la règle sur la production : écart de 2 px sur 16 085,
-   et les sections escamotées se rendent bien lorsqu'on les atteint.
-
-   Limité à 1024 px : c'est la largeur où les hauteurs ont été mesurées. Au-delà,
-   la mise en page change et ces valeurs seraient fausses.
-   ───────────────────────────────────────────────────────────────────────── */
-@media (max-width: 1024px) {
-  main > section:not(:first-of-type) {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 900px; /* défaut pour toute section non listée */
-  }
-
-  #promo            { contain-intrinsic-size: auto  927px; }
-  #qui-sommes-nous  { contain-intrinsic-size: auto 1132px; }
-  #comparatif       { contain-intrinsic-size: auto 1104px; }
-  #services         { contain-intrinsic-size: auto  918px; }
-  #combos           { contain-intrinsic-size: auto 1086px; }
-  #abonnements      { contain-intrinsic-size: auto  925px; }
-  #galerie          { contain-intrinsic-size: auto  562px; }
-  #entreprises      { contain-intrinsic-size: auto  778px; }
-  #referral-section { contain-intrinsic-size: auto 1073px; }
-  #reservation      { contain-intrinsic-size: auto 2024px; }
-  #avis             { contain-intrinsic-size: auto  581px; }
-  #faq              { contain-intrinsic-size: auto  660px; }
-}
-
-/* Un lien d'ancre vers une section escamotée doit pouvoir l'atteindre : sans
-   cela, le navigateur ne trouve pas la cible tant qu'elle n'est pas rendue. */
-@media (max-width: 1024px) {
-  main > section:target { content-visibility: visible; }
 }
