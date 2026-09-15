@@ -4,6 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
+    <!-- Google Tag Manager + Google Analytics -->
+    <!-- Chargés après le premier rendu (audit perf du 14.09.2026) : les deux scripts
+         pèsent ~290 Ko et passaient avant l'image du hero sur mobile. La file
+         dataLayer est créée tout de suite : aucun évènement n'est perdu. -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QMTGD5E2NW');
+      dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+      (function () {
+        var charge = false;
+        function charger() {
+          if (charge) return;
+          charge = true;
+          ['https://www.googletagmanager.com/gtm.js?id=GTM-5W69QPT3',
+           'https://www.googletagmanager.com/gtag/js?id=G-QMTGD5E2NW'].forEach(function (src) {
+            var s = document.createElement('script');
+            s.async = true;
+            s.src = src;
+            document.head.appendChild(s);
+          });
+        }
+        ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function (type) {
+          window.addEventListener(type, charger, { once: true, passive: true });
+        });
+        window.addEventListener('load', function () { setTimeout(charger, 3500); });
+      })();
+    </script>
+    <!-- End Google Tag Manager + Google Analytics -->
+
     <title>Bespoke Detailing Subscriptions | Clean Cars Wash Geneva</title>
     <meta name="description" content="Monthly and annual subscription plans for individuals, professionals and businesses. Silver Pack from 80.- CHF/month. Combo and multi-vehicle plans available.">
     <meta name="author" content="Clean Cars Wash">
@@ -18,21 +49,24 @@
     <meta property="og:url" content="https://www.clean-cars-wash.ch/en/subscriptions.html">
     <meta property="og:title" content="Bespoke Detailing Subscriptions | Clean Cars Wash">
     <meta property="og:description" content="Monthly and annual plans. Up to -27% off single-service rates. Family vehicle combos available.">
-    <meta property="og:image" content="https://www.clean-cars-wash.ch/assets/images/MB-01.webp">
+    <meta property="og:image" content="https://www.clean-cars-wash.ch/assets/images/MB-01-opt.webp">
     <meta property="og:locale" content="en_US">
 
-    <link rel="manifest" href="/assets/manifest-Bj9l-feE.json">
+    <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#D4AF37">
-    <link rel="apple-touch-icon" href="/assets/logo-v2-D_47O4Ns.png">
-    <link rel="icon" type="image/png" href="/assets/logo-v2-D_47O4Ns.png">
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/tailwind.min.css">
-  <link rel="stylesheet" crossorigin href="/assets/style-CSgMePWh.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" crossorigin href="/assets/tailwind-src--nNejzmX.css">
 </head>
 <body class="bg-[#0a0a0a] text-gray-300 font-sans antialiased relative" style="background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 30px 30px;">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5W69QPT3"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gold-400 z-[100] transition-all duration-150" style="width:0%"></div>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -47,7 +81,7 @@
                 <nav class="hidden md:block">
                     <ul class="flex space-x-8 text-xs font-display tracking-widest uppercase">
                         <li><a href="index.html#services" class="hover:text-gold-400 transition duration-300">Services</a></li>
-                        <li><a href="index.html#tarifs" class="hover:text-gold-400 transition duration-300">Pricing</a></li>
+                        <li><a href="index.html#services" class="hover:text-gold-400 transition duration-300">Pricing</a></li>
                         <li><a href="subscriptions.html" class="text-gold-400">Subscriptions</a></li>
                         <li><a href="index.html#faq" class="hover:text-gold-400 transition duration-300">FAQ</a></li>
                         <li><a href="index.html#reservation" class="text-gold-400 border border-gold-400 px-4 py-2 hover:bg-gold-400 hover:text-charcoal-900 transition duration-300">Book</a></li>
@@ -66,7 +100,7 @@
         <nav id="mobile-menu" class="md:hidden px-4">
             <ul class="flex flex-col space-y-4 pt-6 pb-4 text-sm font-display tracking-widest uppercase text-center border-t border-white/5 mt-4">
                 <li><a href="index.html#services" class="block hover:text-gold-400 mobile-link">Services</a></li>
-                <li><a href="index.html#tarifs" class="block hover:text-gold-400 mobile-link">Pricing</a></li>
+                <li><a href="index.html#services" class="block hover:text-gold-400 mobile-link">Pricing</a></li>
                 <li><a href="subscriptions.html" class="block text-gold-400">Subscriptions</a></li>
                 <li><a href="index.html#reservation" class="block text-gold-400 mobile-link">Book a Slot</a></li>
             </ul>
@@ -352,8 +386,8 @@
             <div class="text-center md:text-left">
                 <p class="text-xl font-display font-bold text-white tracking-widest uppercase mb-4">Clean Cars Wash</p>
                 <p class="text-gray-400 font-light mb-1 text-sm">AHMED-YAHIA LM</p>
-                <p class="text-gray-400 font-light mb-1 text-sm">Rue des pâquis 49</p>
-                <p class="text-gray-400 font-light mb-6 text-sm">1201 Geneva</p>
+                <p class="text-gray-400 font-light mb-1 text-sm">Chemin des Vergers</p>
+                <p class="text-gray-400 font-light mb-6 text-sm">1208 Geneva</p>
                 <a href="mailto:info@clean-cars-wash.ch" class="text-gold-400 font-display tracking-widest uppercase text-xs hover:text-white transition">info@clean-cars-wash.ch</a>
             </div>
             <div class="text-center md:text-right">
@@ -417,10 +451,6 @@
                 tA.setAttribute('aria-selected', 'true');
                 tM.setAttribute('aria-selected', 'false');
             }
-        }
-
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => navigator.serviceWorker.register('../sw.js').catch(() => {}));
         }
     </script>
     <style>
