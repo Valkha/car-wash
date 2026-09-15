@@ -20,8 +20,16 @@
         function charger() {
           if (charge) return;
           charge = true;
-          ['https://www.googletagmanager.com/gtm.js?id=GTM-5W69QPT3',
-           'https://www.googletagmanager.com/gtag/js?id=G-QMTGD5E2NW'].forEach(function (src) {
+          /* Audit P16 (15.09.2026) : cette liste chargeait AUSSI
+             gtag/js?id=G-QMTGD5E2NW en direct. Or le conteneur GTM charge
+             deja GA4 lui-meme (PageSpeed le voit arriver en
+             gtag/js?id=G-QMTGD5E2NW&cx=c&gtm=...). La meme bibliotheque de
+             167 Kio etait donc telechargee et executee DEUX FOIS : 448 Kio de
+             Tag Manager au total, 319 ms de fil principal, 4 des 5 taches
+             longues de la page. GTM seul suffit -- la mesure part du meme
+             conteneur, par le meme dataLayer. Pour revenir en arriere : remettre
+             l'URL gtag/js dans le tableau. */
+          ['https://www.googletagmanager.com/gtm.js?id=GTM-5W69QPT3'].forEach(function (src) {
             var s = document.createElement('script');
             s.async = true;
             s.src = src;
@@ -182,7 +190,7 @@
 
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet"></noscript>
-  <link rel="stylesheet" crossorigin href="/assets/tailwind-src--nNejzmX.css">
+  <link rel="stylesheet" crossorigin href="/assets/tailwind-src-DoxPaVhS.css">
 </head>
 <body class="bg-charcoal-900 text-gray-300 font-sans antialiased relative overflow-x-hidden" style="background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px); background-size: 30px 30px;">
     <!-- Google Tag Manager (noscript) -->

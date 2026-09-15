@@ -19,8 +19,10 @@
         function charger() {
           if (charge) return;
           charge = true;
-          ['https://www.googletagmanager.com/gtm.js?id=GTM-5W69QPT3',
-           'https://www.googletagmanager.com/gtag/js?id=G-QMTGD5E2NW'].forEach(function (src) {
+          /* Audit P16 (15.09.2026) : GA4 etait aussi charge en direct ici,
+             alors que le conteneur GTM le charge deja lui-meme -- 167 Kio et
+             173 ms de fil principal en double. Voir rapport §21. */
+          ['https://www.googletagmanager.com/gtm.js?id=GTM-5W69QPT3'].forEach(function (src) {
             var s = document.createElement('script');
             s.async = true;
             s.src = src;
@@ -93,7 +95,7 @@
       ]
     }
     </script>
-  <link rel="stylesheet" crossorigin href="/assets/tailwind-src--nNejzmX.css">
+  <link rel="stylesheet" crossorigin href="/assets/tailwind-src-DoxPaVhS.css">
 </head>
 <body class="text-gray-300 antialiased">
     <!-- Google Tag Manager (noscript) -->
