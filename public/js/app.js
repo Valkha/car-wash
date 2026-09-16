@@ -138,14 +138,34 @@ document.addEventListener('keydown', function (e) { if (e.key === 'Escape') ccwM
 // JS ne s'exécute pas pendant la promo, elle s'affiche normalement. Le script
 // ne fait que RETIRER une offre expirée, jamais afficher une offre absente.
 // ==========================================================================
+// Sur une page entièrement dédiée à une promo, retirer l'offre laisserait une
+// page vide. data-promo-expired-after désigne donc le bloc de repli, placé dans
+// un <template> : son contenu n'est pas parsé comme contenu du document, ce qui
+// évite un second <h1> visible des moteurs pendant la promo. Il est inséré une
+// fois l'échéance passée. La polarité reste la même — pendant la promo, un JS
+// en échec laisse l'offre visible et le repli absent.
 (function () {
-    var elements = document.querySelectorAll('[data-promo-until]');
-    if (!elements.length) return;
     var maintenant = new Date();
-    Array.prototype.forEach.call(elements, function (el) {
-        var fin = new Date(el.getAttribute('data-promo-until') + 'T23:59:59');
-        if (isNaN(fin.getTime())) return;
-        if (maintenant > fin) el.remove();
+
+    function echeance(el, attribut) {
+        var d = new Date(el.getAttribute(attribut) + 'T23:59:59');
+        return isNaN(d.getTime()) ? null : d;
+    }
+
+    Array.prototype.forEach.call(document.querySelectorAll('[data-promo-until]'), function (el) {
+        var fin = echeance(el, 'data-promo-until');
+        if (fin && maintenant > fin) el.remove();
+    });
+
+    Array.prototype.forEach.call(document.querySelectorAll('[data-promo-expired-after]'), function (el) {
+        var fin = echeance(el, 'data-promo-expired-after');
+        if (!fin || maintenant <= fin) return;
+        if (el.tagName === 'TEMPLATE') {
+            el.parentNode.insertBefore(el.content.cloneNode(true), el);
+            el.remove();
+        } else {
+            el.removeAttribute('hidden');
+        }
     });
 })();
 
