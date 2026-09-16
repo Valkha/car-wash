@@ -243,6 +243,8 @@ const generateSitemap = (locations) => {
         { url: 'https://www.clean-cars-wash.ch/en/privacy-policy.html',        changefreq: 'yearly',  priority: '0.3' },
         { url: 'https://www.clean-cars-wash.ch/abonnements.html',              changefreq: 'monthly', priority: '0.7' },
         { url: 'https://www.clean-cars-wash.ch/en/subscriptions.html',         changefreq: 'monthly', priority: '0.7' },
+        { url: 'https://www.clean-cars-wash.ch/promo.html',                    changefreq: 'weekly',  priority: '0.9' },
+        { url: 'https://www.clean-cars-wash.ch/en/promo.html',                 changefreq: 'weekly',  priority: '0.9' },
     ];
 
     const staticUrls = staticPages.map(p => `
