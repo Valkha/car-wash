@@ -1,0 +1,46 @@
+# Dépendances — réinstallées par `npm install`, y compris par la CI
+# (.github/workflows/static.yml lance `npm install` avant chaque build)
+node_modules/
+
+# Build — regénéré par `npm run build`. La CI le reconstruit depuis les
+# sources et déploie son propre dist : la version versionnée ne servait
+# à rien et polluait chaque diff (les noms de fichiers sont hachés).
+dist/
+
+# Caches
+.vite/
+.cache/
+*.tsbuildinfo
+
+# Doublons morts à la racine.
+# Vite ne copie QUE public/ dans dist/, donc un robots.txt ou un
+# sitemap.xml à la racine n'est jamais déployé — c'est ce qui causait
+# les 404 en production. Les vrais fichiers sont dans public/.
+/robots.txt
+/sitemap.xml
+/sw.js
+
+# Notes de travail internes, non destinées au dépôt public
+*.old
+
+# Variables d'environnement
+.env
+.env.*
+!.env.example
+
+# Système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Éditeurs
+.vscode/
+.idea/
+*.swp
+*~
+
+# Logs
+*.log
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
