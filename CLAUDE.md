@@ -42,12 +42,11 @@ This is a **multilingual static site** for a Swiss premium car detailing service
 
 **The URL is permanent and must never change** — it is printed on marketing material and accumulates SEO authority campaign after campaign. It replaced a dated `promo.html` on 19.09.2026.
 
-The page is split in two:
+**No dated offer is running.** The September 2026 offer (Diamond Pack at CHF 199) was removed on 05.10.2026. The page currently stands on its **five permanent sections**, which is what it was designed for: what's always included (travel free in Geneva, no large-vehicle surcharge, fixed VAT-inclusive pricing), fleet discounts (−10/−20/−25 %), referral programme (5 referrals = 1 free Gold Pack), subscriptions (−10 % / −13 %), and the three booking steps.
 
-- **One dated block** carrying `data-promo-until="YYYY-MM-DD"` — the current month's offer. The guard in `public/js/app.js` removes it from the DOM once the date has passed.
-- **Five permanent sections** that never expire — what's always included (free travel, no large-vehicle surcharge, fixed VAT-inclusive pricing), fleet discounts (−10/−20/−25 %), referral programme (5 referrals = 1 free Gold Pack), subscriptions (−10 % / −13 %), and the three booking steps.
+**To run a new campaign:** insert one dated `<section>` carrying `data-promo-until="YYYY-MM-DD"` just before the "01 All year round" section, and add an `Offer` object to the JSON-LD with the same `priceValidUntil`. The guard in `public/js/app.js` removes the block from the DOM once the date has passed. Never touch the `<title>`, the `<h1>` or the permanent sections — the page must stay substantial when no offer runs, otherwise Google demotes it and printed QR codes land on an empty page.
 
-**To run a new campaign:** replace only the dated `<section>` and the `Offer` object in the JSON-LD. Never touch the `<title>`, the `<h1>` or the permanent sections — the page must stay substantial when no offer is running, otherwise Google demotes it and printed QR codes land on an empty page. Both files carry a header comment restating this.
+**The guard only covers what sits inside the dated block.** In September 2026 the promotional price also appeared outside it — on the Diamond Pack card of both homepages, in the `<meta description>`, and in the homepage `Offer` JSON-LD. Those stayed live for five days after the offer ended, advertising CHF 199 while SumUp still charged a deposit computed on CHF 312.40. A campaign therefore has two kinds of edits: the dated block (self-expiring) and everything else (**manual removal required**). The checklist for ending a campaign is: dated block, promo bar, `meta description`, `Offer` JSON-LD, and any pack card whose price changed — on both FR and EN.
 
 45 internal links point at the hub: nav (desktop + mobile), promo bar, promo section button, Diamond card label and footer on both homepages, plus the footer of all 38 location pages.
 
