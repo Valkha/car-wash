@@ -36,15 +36,24 @@
          PERMANENT PAGE. The /en/promos.html URL never changes: it is printed on
          marketing material and accumulates SEO authority campaign after campaign.
 
-         To change the offer: replace ONLY the block marked "OFFER OF THE MONTH"
-         below, plus the "Offer" object in the JSON-LD. Never touch the title,
-         the h1 or the permanent sections. The data-promo-until attribute removes
-         the dated block automatically (script in public/js/app.js): the page
-         stays full without it.
+         NO DATED OFFER RUNNING (the September 2026 offer was removed on
+         05.10.2026). The five sections below are permanent.
+
+         To launch a campaign: insert ONE dated block just before the
+         "01 All year round" section, carrying data-promo-until="YYYY-MM-DD",
+         and add an "Offer" object to the JSON-LD with the same priceValidUntil.
+         The script in public/js/app.js removes the block once the date passes,
+         and the page stays full without it.
+
+         WARNING: the guard only covers what sits INSIDE the dated block. In
+         September 2026 the promotional price also appeared on the Diamond Pack
+         card of the homepage, outside the guard — it stayed up for five days
+         after the offer ended. Any promotional price must live inside a dated
+         block, or be removed by hand.
          ========================================================================= -->
 
     <title>Offers &amp; Promotions — Car Wash Geneva | Clean Cars Wash</title>
-    <meta name="description" content="All Clean Cars Wash offers: offer of the month, fleet discounts up to 25% off, referral programme, subscriptions. Travel always included across Geneva.">
+    <meta name="description" content="Fleet discounts up to 25% off, referral programme (5 referrals = 1 free Gold Pack), subscriptions 10% to 13% off. Travel always included across the canton of Geneva.">
     <meta name="author" content="Clean Cars Wash">
     <meta name="robots" content="index, follow">
 
@@ -56,7 +65,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.clean-cars-wash.ch/en/promos.html">
     <meta property="og:title" content="Offers &amp; Promotions — Clean Cars Wash Geneva">
-    <meta property="og:description" content="Offer of the month, fleet discounts up to 25% off, referral programme and subscriptions. Travel always included across Geneva.">
+    <meta property="og:description" content="Fleet discounts up to 25% off, referral programme and subscriptions. Travel always included across the canton of Geneva.">
     <meta property="og:image" content="https://www.clean-cars-wash.ch/assets/images/MB-01-opt.webp">
     <meta property="og:image:alt" content="Premium detailing — Clean Cars Wash Geneva">
     <meta property="og:image:width" content="1200">
@@ -66,7 +75,7 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Offers &amp; Promotions — Clean Cars Wash Geneva">
-    <meta name="twitter:description" content="Offer of the month, fleet discounts, referral programme and subscriptions. Travel included across Geneva.">
+    <meta name="twitter:description" content="Fleet discounts, referral programme and subscriptions. Travel included across the canton of Geneva.">
     <meta name="twitter:image" content="https://www.clean-cars-wash.ch/assets/images/MB-01-opt.webp">
 
     <link rel="apple-touch-icon" href="../assets/images/logo-v2.png">
@@ -81,45 +90,22 @@
 
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "BreadcrumbList",
+      "itemListElement": [
         {
-          "@type": "Offer",
-          "name": "Diamond Pack — September offer",
-          "description": "Complete interior and exterior cleaning, leather and Alcantara care, premium hydrophobic wax and anti-odour treatment.",
-          "price": "199.00",
-          "priceCurrency": "CHF",
-          "priceValidUntil": "2026-09-30",
-          "availability": "https://schema.org/LimitedAvailability",
-          "url": "https://www.clean-cars-wash.ch/en/promos.html",
-          "validFrom": "2026-09-01",
-          "validThrough": "2026-09-30",
-          "areaServed": [
-            { "@type": "City", "name": "Geneva" },
-            { "@type": "AdministrativeArea", "name": "Vaud" }
-          ],
-          "offeredBy": {
-            "@type": "AutoWash",
-            "name": "Clean Cars Wash",
-            "telephone": "+41782657071",
-            "url": "https://www.clean-cars-wash.ch/",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "Chemin des Vergers",
-              "postalCode": "1208",
-              "addressLocality": "Geneva",
-              "addressCountry": "CH"
-            }
-          }
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.clean-cars-wash.ch/en/"
         },
         {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clean-cars-wash.ch/en/" },
-            { "@type": "ListItem", "position": 2, "name": "Offers & Promotions", "item": "https://www.clean-cars-wash.ch/en/promos.html" }
-          ]
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Offers & Promotions",
+          "item": "https://www.clean-cars-wash.ch/en/promos.html"
         }
-      ]
+      ],
+      "@context": "https://schema.org"
     }
     </script>
 </head>
@@ -162,59 +148,6 @@
                 the offer of the month, fleet discounts for businesses, the referral programme and our subscriptions.
                 Travel is always included, and every price shown includes VAT.
             </p>
-        </section>
-
-        <!-- =====================================================================
-             OFFER OF THE MONTH — THE ONLY BLOCK TO REPLACE BETWEEN CAMPAIGNS.
-             Removed automatically after the data-promo-until date.
-             Remember to update the "Offer" object in the JSON-LD at the same time.
-             ===================================================================== -->
-        <section data-promo-until="2026-09-30" class="pb-14 md:pb-20">
-            <div class="premium-card rounded-3xl p-8 md:p-12" style="border-color:rgba(212,175,55,.35);">
-                <p class="hero-eyebrow mb-4">Offer of the month — all through September</p>
-
-                <div class="grid gap-10 md:grid-cols-2 md:items-start">
-                    <div>
-                        <h2 class="text-3xl md:text-5xl font-display font-bold text-white uppercase tracking-tight leading-[0.95] mb-3">Diamond Pack</h2>
-
-                        <div class="flex items-end flex-wrap gap-x-4 gap-y-1 mb-4">
-                            <span class="text-5xl md:text-6xl font-display font-bold text-gold-400 leading-none">CHF 199</span>
-                            <span class="text-gray-400 text-sm">incl. VAT</span>
-                            <span class="text-gray-400 text-base" style="text-decoration:line-through">312.40 CHF</span>
-                        </div>
-
-                        <p class="inline-block bg-gold-400/10 border border-gold-400/40 text-gold-400 font-display font-bold text-xs tracking-widest uppercase px-4 py-2 rounded-full mb-6">Save CHF 113</p>
-
-                        <p class="text-gray-400 font-light leading-relaxed mb-8">
-                            Give your vehicle a complete clean and a premium finish with Clean Cars Wash Geneva.
-                            We come to your home, your workplace, or you drop the car at our workshop.
-                        </p>
-
-                        <button type="button" onclick="ccwLocationModalOpen('diamant')" data-track="conversion-booking"
-                                class="cta-star cursor-pointer inline-block bg-gold-400 border border-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-4 px-10 rounded-full hover:bg-gold-500 transition-all">
-                            Book my Diamond Pack
-                        </button>
-
-                        <p class="text-gray-400 text-xs mt-6 leading-relaxed">
-                            Offer valid until 30 September 2026, subject to availability.<br>
-                            Service duration: approximately 3 h 30.
-                        </p>
-                    </div>
-
-                    <ul class="grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-3 text-sm text-gray-300 font-light">
-                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-gold-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Complete interior &amp; exterior cleaning</span></li>
-                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-gold-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Wheel and tyre cleaning</span></li>
-                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-gold-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Seat and mat shampooing</span></li>
-                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-gold-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Interior plastics cleaning</span></li>
-                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-gold-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Deep boot cleaning</span></li>
-                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-gold-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Leather &amp; Alcantara care</span></li>
-                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-gold-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Detailed finishing</span></li>
-                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-gold-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Anti-odour treatment</span></li>
-                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-gold-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Premium hydrophobic wax</span></li>
-                        <li class="flex items-start gap-2"><svg class="w-4 h-4 text-gold-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Premium fragrance</span></li>
-                    </ul>
-                </div>
-            </div>
         </section>
 
         <!-- ===== FROM HERE ON: PERMANENT SECTIONS ===== -->
