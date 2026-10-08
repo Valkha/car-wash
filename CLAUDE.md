@@ -42,7 +42,13 @@ This is a **multilingual static site** for a Swiss premium car detailing service
 
 **The URL is permanent and must never change** — it is printed on marketing material and accumulates SEO authority campaign after campaign. It replaced a dated `promo.html` on 19.09.2026.
 
-**No dated offer is running.** The September 2026 offer (Diamond Pack at CHF 199) was removed on 05.10.2026. The page currently stands on its **five permanent sections**, which is what it was designed for: what's always included (travel free in Geneva, no large-vehicle surcharge, fixed VAT-inclusive pricing), fleet discounts (−10/−20/−25 %), referral programme (5 referrals = 1 free Gold Pack), subscriptions (−10 % / −13 %), and the three booking steps.
+**Offer running: PROMO-OCT-2026.** 20% off every pack and combo, 1–31 October 2026, limited to the first 100 customers. Subscriptions, surcharges and Vaud travel fees are excluded. The deposit stays 30% of the **standard** rate — SumUp is untouched — and the 20% comes off the balance settled on site.
+
+It lives in exactly **four places**, each carrying the marker comment `PROMO-OCT-2026`: the promo bar on both homepages and the dated block on both offers hubs. `grep -rn "PROMO-OCT-2026"` finds all four. It expires on its own on 31.10.2026 at midnight (local time), and must be **deleted by hand** as soon as the owner reports the 100 customers reached, since nothing on the site counts them.
+
+No discounted price appears outside those four blocks — not on the pack cards, not in any `meta description`, not in any `Offer` JSON-LD, which all keep the standard rate. That is the direct lesson of September 2026, described below.
+
+The page also stands on its **five permanent sections**, which is what it was designed for: what's always included (travel free in Geneva, no large-vehicle surcharge, fixed VAT-inclusive pricing), fleet discounts (−10/−20/−25 %), referral programme (5 referrals = 1 free Gold Pack), subscriptions (−10 % / −13 %), and the three booking steps.
 
 **To run a new campaign:** insert one dated `<section>` carrying `data-promo-until="YYYY-MM-DD"` just before the "01 All year round" section, and add an `Offer` object to the JSON-LD with the same `priceValidUntil`. The guard in `public/js/app.js` removes the block from the DOM once the date has passed. Never touch the `<title>`, the `<h1>` or the permanent sections — the page must stay substantial when no offer runs, otherwise Google demotes it and printed QR codes land on an empty page.
 
