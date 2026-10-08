@@ -6,7 +6,8 @@ window.addEventListener('scroll', () => {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (winScroll / height) * 100;
-            document.getElementById('scroll-progress').style.width = scrolled + '%';
+            const barre = document.getElementById('scroll-progress');
+            if (barre) barre.style.width = scrolled + '%';
             _scrollTicking = false;
         });
         _scrollTicking = true;
@@ -26,8 +27,13 @@ function toggleMenu(forceClose = false) {
     const labelClose = menuBtn.dataset.labelClose;
     menuBtn.setAttribute('aria-label', willExpand ? labelClose : labelOpen);
 }
-menuBtn.addEventListener('click', () => toggleMenu());
-document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => toggleMenu(true)));
+// Les pages secondaires (promos, zones) ont un header simplifie, sans burger.
+// Sans ce garde, menuBtn est null et l'erreur stoppe TOUT le reste du fichier,
+// garde-fou des promos datees compris : une offre expiree resterait affichee.
+if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => toggleMenu());
+    document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => toggleMenu(true)));
+}
 
 // FAQ Accordion
 document.querySelectorAll('.faq-trigger').forEach(trigger => {
@@ -101,7 +107,9 @@ function goToSlide(i) { currentSlide = i; updateSlider(); }
     }
     window.setAboEng  = function (e) { eng  = e === 'mensuel' ? 'm' : 'a'; render(); };
     window.setAboFreq = function (f) { freq = +f; render(); };
-    render();
+    // Meme raison que pour le menu : hors de l'accueil, ces elements n'existent
+    // pas et render() ferait tout echouer a partir d'ici.
+    if (document.getElementById('price-argent') && document.getElementById('btn-mensuel')) render();
 })();
 
 // Date picker — set min to today
