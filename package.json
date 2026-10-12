@@ -8,7 +8,7 @@
     "build": "npm run generate && npm run optimize && vite build",
     "preview": "vite preview",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "generate": "node generate-pages.js",
+    "generate": "node generate-pages.js && node generate-prestations.js",
     "optimize": "node optimize-images.js || echo \"⚠️  Source images not found — optimize step skipped.\""
   },
   "keywords": [],
