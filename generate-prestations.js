@@ -1,0 +1,331 @@
+/*
+ * ============================================================================
+ * GENERATEUR DES PAGES PRESTATIONS
+ * ----------------------------------------------------------------------------
+ * Source de verite : prestations.json
+ * Produit : 5 pages FR a la racine + 5 pages EN dans en/
+ *
+ * MEME PRINCIPE QUE generate-pages.js : le gabarit vit ici, editer un fichier
+ * produit ne sert a rien, `npm run build` le reecrit.
+ *
+ * Choix de conception, a ne pas defaire sans raison :
+ *  - AUCUNE IMAGE. Le patron a fourni des affiches avec le texte incruste ;
+ *    elles ne sont pas utilisees. Le texte est en HTML, donc lisible par Google
+ *    et par les lecteurs d'ecran, et l'accueil ne gagne pas un octet.
+ *  - PAS DE app.js. Ces pages n'ont ni modale ni bloc date : inutile de leur
+ *    servir le fichier. Elles n'ont donc pas non plus de menu burger.
+ *  - Le JSON-LD porte le TARIF STANDARD, jamais le prix promotionnel. En
+ *    septembre 2026 un prix remise pose hors bloc date etait reste cinq jours
+ *    en ligne apres la fin de l'offre ; voir CLAUDE.md.
+ *  - La remise d'octobre apparait dans un bloc data-promo-until, donc elle
+ *    disparait seule. Le prix barre n'existe nulle part ailleurs.
+ * ============================================================================
+ */
+
+const fs = require('fs');
+const path = require('path');
+
+const prestations = JSON.parse(fs.readFileSync(path.join(__dirname, 'prestations.json'), 'utf8'));
+
+const BASE = 'https://www.clean-cars-wash.ch';
+const TEL = '+41782657071';
+
+// Promo en cours. Mettre a null des qu'elle est terminee : les blocs dates
+// disparaissent alors des 10 pages d'un coup.
+const PROMO = { remise: 0.20, jusquAu: '2026-10-31', marqueur: 'PROMO-OCT-2026' };
+
+// Arrondi suisse aux 5 centimes
+function remise(prix) {
+    const n = parseFloat(prix) * (1 - PROMO.remise);
+    return (Math.round(n * 20) / 20).toFixed(2);
+}
+
+const T = {
+    fr: {
+        lang: 'fr', autre: 'en', libelleAutre: 'EN', locale: 'fr_CH',
+        skip: 'Passer au contenu principal', accueil: 'Accueil',
+        appeler: 'Appeler Clean Cars Wash au +41 78 265 70 71',
+        apartirde: 'À partir de', prixFixe: 'Prix fixe', ttc: 'CHF TTC',
+        promoTitre: 'Offre d\'octobre', promoAu: 'jusqu\'au 31 octobre',
+        promoTexte: n => `<strong class="text-white">&minus;20 % sur cette prestation</strong> jusqu'au 31 octobre 2026, pour les 100 premiers clients. Soit ${n} CHF TTC au lieu du tarif habituel. La remise est déduite du solde réglé sur place.`,
+        devisTitre: 'Cette prestation se réserve sur devis',
+        devisTexte: 'Elle ne passe pas par la réservation en ligne : chaque véhicule est différent et le tarif se confirme après examen. Appelez-nous, nous vous répondons directement.',
+        appelerCta: 'Appeler pour un devis', whatsapp: 'Écrire sur WhatsApp',
+        voirPrestations: 'Voir toutes nos prestations',
+        horaires: ['Lun–Sam : 07h30 – 22h00', 'Dimanche : Fermé'],
+        contactTitre: 'Contact &amp; Horaires', infosTitre: 'Informations',
+        liens: [
+            ['./', 'Accueil'], ['./#services', 'Nos prestations'],
+            ['./promos.html', 'Promotions &amp; Offres'], ['./zones.html', 'Zones &amp; frais de déplacement'],
+            ['./abonnements.html', 'Abonnements'], ['./mentions-legales.html', 'Mentions Légales &amp; CGV']
+        ],
+        ville: 'Genève', tva: 'CHE-377.481.423 TVA'
+    },
+    en: {
+        lang: 'en', autre: 'fr', libelleAutre: 'FR', locale: 'en_GB',
+        skip: 'Skip to main content', accueil: 'Home',
+        appeler: 'Call Clean Cars Wash on +41 78 265 70 71',
+        apartirde: 'From', prixFixe: 'Fixed price', ttc: 'CHF incl. VAT',
+        promoTitre: 'October offer', promoAu: 'until 31 October',
+        promoTexte: n => `<strong class="text-white">20% off this service</strong> until 31 October 2026, for the first 100 customers. That is CHF ${n} incl. VAT instead of the usual rate. The discount comes off the balance settled on site.`,
+        devisTitre: 'This service is quoted, not booked online',
+        devisTexte: 'It does not go through online booking: every vehicle differs and the price is confirmed after an inspection. Call us and we answer directly.',
+        appelerCta: 'Call for a quote', whatsapp: 'Message on WhatsApp',
+        voirPrestations: 'See all our services',
+        horaires: ['Mon–Sat: 07:30 AM – 10:00 PM', 'Sunday: Closed'],
+        contactTitre: 'Contact &amp; Opening hours', infosTitre: 'Information',
+        liens: [
+            ['./', 'Home'], ['./#services', 'Our services'],
+            ['promos.html', 'Offers &amp; Promotions'], ['zones.html', 'Service areas &amp; travel fees'],
+            ['subscriptions.html', 'Subscriptions'], ['legal-notices.html', 'Legal Notice &amp; Terms']
+        ],
+        ville: 'Geneva', tva: 'CHE-377.481.423 VAT'
+    }
+};
+
+function page(presta, langue) {
+    const t = T[langue];
+    const d = presta[langue];
+    const slugFr = presta.id;
+    const slugEn = presta.slugEn;
+    const slug = langue === 'fr' ? slugFr : slugEn;
+    const url = langue === 'fr' ? `${BASE}/${slugFr}.html` : `${BASE}/en/${slugEn}.html`;
+    const urlFr = `${BASE}/${slugFr}.html`;
+    const urlEn = `${BASE}/en/${slugEn}.html`;
+    const r = langue === 'fr' ? './' : '../';
+    const lienAutre = langue === 'fr' ? `en/${slugEn}.html` : `../${slugFr}.html`;
+
+    const sections = d.sections.map((s, i) => `
+        <section class="pb-14 md:pb-20">
+            <p class="section-index mb-3"><em>0${i + 1}</em>${s.surtitre}</p>
+            <h2 class="text-2xl md:text-4xl font-display font-bold text-white uppercase tracking-tight leading-[0.95] mb-8">${s.titre}</h2>
+            <div class="grid gap-6 md:grid-cols-2">
+${s.items.map(([titre, texte]) => `                <div class="premium-card rounded-2xl p-6 md:p-8">
+                    <h3 class="text-white font-display font-bold uppercase tracking-wider text-sm mb-2">${titre}</h3>
+                    <p class="text-gray-400 font-light text-sm leading-relaxed">${texte}</p>
+                </div>`).join('\n')}
+            </div>
+        </section>`).join('\n');
+
+    const blocPromo = PROMO ? `
+        <!-- ${PROMO.marqueur} — bloc daté, retiré seul le ${PROMO.jusquAu} à minuit. -->
+        <section data-promo-until="${PROMO.jusquAu}" class="pb-14 md:pb-20">
+            <div class="premium-card rounded-2xl p-6 md:p-8" style="border-color:rgba(212,175,55,.35);">
+                <p class="text-gold-400 font-display font-bold text-xs tracking-[0.3em] uppercase mb-3">${t.promoTitre}</p>
+                <p class="text-gray-400 font-light text-sm leading-relaxed">${t.promoTexte(remise(presta.prix))}</p>
+            </div>
+        </section>` : '';
+
+    return `<!DOCTYPE html>
+<html lang="${t.lang}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.google.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QMTGD5E2NW');
+      dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+      (function () {
+        var charge = false;
+        function charger() {
+          if (charge) return;
+          charge = true;
+          ['https://www.googletagmanager.com/gtm.js?id=GTM-5W69QPT3'].forEach(function (src) {
+            var s = document.createElement('script');
+            s.async = true; s.src = src; document.head.appendChild(s);
+          });
+        }
+        ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function (type) {
+          window.addEventListener(type, charger, { once: true, passive: true });
+        });
+        window.addEventListener('load', function () { setTimeout(charger, 3500); });
+      })();
+    </script>
+
+    <!-- Page generee par generate-prestations.js depuis prestations.json. Ne pas editer ici. -->
+
+    <title>${d.titrePage}</title>
+    <meta name="description" content="${d.description}">
+    <meta name="author" content="Clean Cars Wash">
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical" href="${url}">
+    <link rel="alternate" hreflang="fr" href="${urlFr}">
+    <link rel="alternate" hreflang="en" href="${urlEn}">
+    <link rel="alternate" hreflang="x-default" href="${urlFr}">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="${url}">
+    <meta property="og:title" content="${d.nom} — Clean Cars Wash ${t.ville}">
+    <meta property="og:description" content="${d.description}">
+    <meta property="og:locale" content="${t.locale}">
+    <meta property="og:site_name" content="Clean Cars Wash">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="${d.nom} — Clean Cars Wash ${t.ville}">
+    <meta name="twitter:description" content="${d.description}">
+
+    <link rel="apple-touch-icon" href="${r}assets/images/logo-v2.png">
+    <link rel="icon" type="image/png" href="${r}assets/images/logo-v2.png">
+    <meta name="theme-color" content="#D4AF37">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="${r}assets/css/tailwind-src.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Service",
+          "name": "${d.nom}",
+          "description": "${d.description.replace(/"/g, '\\"')}",
+          "serviceType": "${d.nom}",
+          "url": "${url}",
+          "areaServed": [
+            { "@type": "City", "name": "${t.ville}" },
+            { "@type": "AdministrativeArea", "name": "Vaud" }
+          ],
+          "provider": {
+            "@type": "AutoWash",
+            "name": "Clean Cars Wash",
+            "telephone": "${TEL}",
+            "url": "${BASE}/",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Chemin des Vergers",
+              "postalCode": "1208",
+              "addressLocality": "${t.ville}",
+              "addressCountry": "CH"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "${presta.prix}",
+            "priceCurrency": "CHF"${presta.prixDes ? ',\n            "priceSpecification": { "@type": "PriceSpecification", "minPrice": "' + presta.prix + '", "priceCurrency": "CHF" }' : ''}
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "${t.accueil}", "item": "${BASE}/${langue === 'en' ? 'en/' : ''}" },
+            { "@type": "ListItem", "position": 2, "name": "${d.nom}", "item": "${url}" }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body class="text-gray-300 antialiased">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5W69QPT3"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <a href="#main-content" class="skip-link">${t.skip}</a>
+
+    <header class="bg-charcoal-900/90 backdrop-blur-lg border-b border-white/5 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center gap-4">
+            <a href="${r}" class="flex items-center gap-3 group" aria-label="Clean Cars Wash — ${t.accueil}">
+                <img src="${r}assets/images/logo-v2-tiny.webp" alt="Logo Clean Cars Wash" width="120" height="34" loading="eager" class="h-9 md:h-11 w-auto object-contain transition-transform group-hover:scale-105">
+                <span class="text-xs md:text-sm font-display font-bold text-white tracking-[0.2em] uppercase whitespace-nowrap group-hover:text-gold-400 transition-colors hidden sm:block">Clean Cars Wash</span>
+            </a>
+            <div class="flex items-center gap-3 md:gap-5">
+                <a href="tel:${TEL}" class="hidden sm:flex items-center justify-center w-9 h-9 shrink-0 rounded-full border border-gold-400/40 text-gold-400 hover:bg-gold-400 hover:text-charcoal-900 transition-colors" title="${t.appeler}">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                    <span class="sr-only">${t.appeler}</span>
+                </a>
+                <div class="flex items-center gap-2 text-[10px] font-display tracking-widest uppercase border-l border-white/10 pl-4">
+                    ${langue === 'fr'
+                        ? `<span class="lang-active">FR</span>\n                    <span class="text-gray-700" aria-hidden="true">|</span>\n                    <a href="${lienAutre}" class="text-gray-500 hover:text-white transition">EN</a>`
+                        : `<a href="${lienAutre}" class="text-gray-500 hover:text-white transition">FR</a>\n                    <span class="text-gray-700" aria-hidden="true">|</span>\n                    <span class="lang-active">EN</span>`}
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" class="max-w-5xl mx-auto px-4 md:px-6">
+
+        <section class="pt-14 pb-10 md:pt-20 md:pb-12">
+            <p class="hero-eyebrow mb-5">${d.eyebrow}</p>
+            <h1 class="text-4xl md:text-6xl font-display font-bold text-white uppercase tracking-tight leading-[0.95] mb-6">
+                ${d.h1a}<br><span class="text-gold-400">${d.h1b}</span>
+            </h1>
+            <p class="text-gray-400 font-light leading-relaxed max-w-2xl mb-8">${d.accroche}</p>
+            <p class="flex items-end flex-wrap gap-x-4 gap-y-1">
+                <span class="text-gray-500 text-sm">${presta.prixDes ? t.apartirde : t.prixFixe}</span>
+                <span class="text-4xl md:text-5xl font-display font-bold text-gold-400 leading-none">${presta.prix}</span>
+                <span class="text-gray-400 text-sm">${t.ttc}</span>
+            </p>
+        </section>
+${blocPromo}
+${sections}
+
+        <section class="pb-16 md:pb-24">
+            <div class="premium-card rounded-3xl p-8 md:p-12">
+                <h2 class="text-xl md:text-2xl font-display font-bold text-white uppercase tracking-tight mb-4">${t.devisTitre}</h2>
+                <p class="text-gray-400 font-light leading-relaxed mb-6">${t.devisTexte}</p>
+                <p class="text-gray-400 font-light text-sm leading-relaxed mb-8">${d.duree}</p>
+                <div class="flex flex-wrap gap-3">
+                    <a href="tel:${TEL}" class="inline-block bg-gold-400 border border-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-4 px-10 rounded-full hover:bg-gold-500 transition-all">${t.appelerCta}</a>
+                    <a href="https://wa.me/41782657071" target="_blank" rel="noopener noreferrer" class="inline-block border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-8 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">${t.whatsapp}</a>
+                    <a href="${r}#services" class="inline-block border border-white/15 text-gray-300 font-display font-bold tracking-widest uppercase text-xs py-4 px-6 rounded-full hover:border-gold-400 hover:text-gold-400 transition-all">${t.voirPrestations}</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#050505] border-t border-white/5 py-12">
+        <div class="max-w-5xl mx-auto px-4 md:px-6 flex flex-col md:flex-row justify-between items-start gap-8">
+            <div>
+                <p class="font-display font-bold text-sm tracking-[0.2em] uppercase text-white mb-3">Clean Cars Wash</p>
+                <p class="text-gray-500 text-sm mb-1">AHMED-YAHIA LM</p>
+                <p class="text-gray-500 text-sm mb-1">Chemin des Vergers</p>
+                <p class="text-gray-500 text-sm mb-4">1208 ${t.ville}</p>
+                <a href="mailto:info@clean-cars-wash.ch" class="text-gold-400 text-sm hover:text-white transition">info@clean-cars-wash.ch</a>
+            </div>
+            <div>
+                <p class="font-display font-bold text-[10px] tracking-[0.3em] uppercase text-white mb-3">${t.contactTitre}</p>
+                <a href="tel:${TEL}" class="block text-gold-400 font-display font-bold text-sm hover:text-white transition mb-3">+41 78 265 70 71</a>
+                <ul class="text-gray-500 text-sm space-y-1">
+${t.horaires.map(h => `                    <li>${h}</li>`).join('\n')}
+                </ul>
+            </div>
+            <div>
+                <p class="font-display font-bold text-[10px] tracking-[0.3em] uppercase text-white mb-3">${t.infosTitre}</p>
+                <ul class="text-gray-500 text-sm space-y-2">
+${t.liens.map(([href, lib]) => `                    <li><a href="${href}" class="hover:text-gold-400 transition">${lib}</a></li>`).join('\n')}
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-5xl mx-auto px-4 md:px-6 mt-10 pt-6 border-t border-white/5 text-center text-[10px] text-gray-600 tracking-[0.2em] uppercase">
+            &copy; 2026 Clean Cars Wash &nbsp;|&nbsp; <span style="opacity:.7;">${t.tva}</span>
+        </div>
+    </footer>
+${PROMO ? `
+    <!-- Garde-fou des promos datees, copie minimale de celui de public/js/app.js.
+         Ces pages ne chargent PAS app.js : 15 Ko pour une seule fonction, et elles
+         n'ont ni modale ni menu burger. Sans ce script, le bloc date ci-dessus
+         resterait affiche apres son echeance. Execute en fin de body, donc avant
+         le premier rendu visible du bloc. -->
+    <script>(function(){var m=new Date();Array.prototype.forEach.call(document.querySelectorAll('[data-promo-until]'),function(e){var f=new Date(e.getAttribute('data-promo-until')+'T23:59:59');if(!isNaN(f.getTime())&&m>f){e.remove();}});})();</script>` : ''}
+</body>
+</html>
+`;
+}
+
+let n = 0;
+prestations.forEach(p => {
+    fs.writeFileSync(path.join(__dirname, `${p.id}.html`), page(p, 'fr'));
+    fs.writeFileSync(path.join(__dirname, 'en', `${p.slugEn}.html`), page(p, 'en'));
+    console.log(`✅ ${p.id}.html + en/${p.slugEn}.html`);
+    n += 2;
+});
+console.log(`🧾 ${n} pages prestations générées depuis prestations.json.`);
+
+module.exports = { prestations, remise, PROMO };

@@ -42,9 +42,9 @@ This is a **multilingual static site** for a Swiss premium car detailing service
 
 **The URL is permanent and must never change** — it is printed on marketing material and accumulates SEO authority campaign after campaign. It replaced a dated `promo.html` on 19.09.2026.
 
-**Offer running: PROMO-OCT-2026.** 20% off every pack and combo, 1–31 October 2026, limited to the first 100 customers. Subscriptions, surcharges and Vaud travel fees are excluded. The deposit stays 30% of the **standard** rate — SumUp is untouched — and the 20% comes off the balance settled on site.
+**Offer running: PROMO-OCT-2026.** 20% off **every service except subscriptions**, 1–31 October 2026, limited to the first 100 customers. Scope was widened on 12.10.2026 to include the five specialist services. Still excluded: subscriptions, surcharges (very dirty vehicle, pet hair) and Vaud travel fees — those are transport and restoration costs, not services sold. The deposit stays 30% of the **standard** rate — SumUp is untouched — and the 20% comes off the balance settled on site.
 
-It lives in exactly **four places**, each carrying the marker comment `PROMO-OCT-2026`: the promo bar on both homepages and the dated block on both offers hubs. `grep -rn "PROMO-OCT-2026"` finds all four. It expires on its own on 31.10.2026 at midnight (local time), and must be **deleted by hand** as soon as the owner reports the 100 customers reached, since nothing on the site counts them.
+It lives in **14 blocks**: the promo bar on both homepages, the dated block on both offers hubs, and one dated block on each of the 10 specialist-service pages (regenerated from `PROMO` in `generate-prestations.js` — set it to `null` to drop all ten at once). `grep -rn "PROMO-OCT-2026"` finds the hand-written four. Everything expires on its own on 31.10.2026 at midnight (local time), and must be **deleted by hand** as soon as the owner reports the 100 customers reached, since nothing on the site counts them.
 
 No discounted price appears outside those four blocks — not on the pack cards, not in any `meta description`, not in any `Offer` JSON-LD, which all keep the standard rate. That is the direct lesson of September 2026, described below.
 
@@ -57,6 +57,27 @@ The page also stands on its **five permanent sections**, which is what it was de
 **The guard only covers what sits inside the dated block.** In September 2026 the promotional price also appeared outside it — on the Diamond Pack card of both homepages, in the `<meta description>`, and in the homepage `Offer` JSON-LD. Those stayed live for five days after the offer ended, advertising CHF 199 while SumUp still charged a deposit computed on CHF 312.40. A campaign therefore has two kinds of edits: the dated block (self-expiring) and everything else (**manual removal required**). The checklist for ending a campaign is: dated block, promo bar, `meta description`, `Offer` JSON-LD, and any pack card whose price changed — on both FR and EN.
 
 45 internal links point at the hub: nav (desktop + mobile), promo bar, promo section button, Diamond card label and footer on both homepages, plus the footer of all 38 location pages.
+
+### Specialist services (5 pages FR + 5 EN, generated)
+
+Added 12.10.2026. **`prestations.json` is the source of truth, `generate-prestations.js` builds the pages** — same principle as the location pages: editing a produced file is pointless, `npm run build` overwrites it.
+
+| FR | EN | Price |
+|---|---|---|
+| `ciel-etoile.html` | `en/starlight-headliner.html` | from CHF 499.00 |
+| `ppf.html` | `en/ppf.html` | from CHF 999.00 |
+| `covering.html` | `en/covering.html` | from CHF 999.00 |
+| `polish-ceramique.html` | `en/ceramic-polish.html` | from CHF 999.00 |
+| `nettoyage-chassis.html` | `en/chassis-cleaning.html` | CHF 159.90 fixed |
+
+Design choices, not to be undone without reason:
+
+- **No images at all.** The owner supplied poster graphics with the text baked in. They are not used: baked-in text is invisible to Google and to screen readers, and four posters would have cost 600 Kb–1 Mb on the homepage. All the content is HTML. The posters are not in the repo.
+- **`app.js` is not loaded.** These pages have no modal and no burger menu. Instead each carries a **247-byte inline guard** at the end of `<body>`, a minimal copy of the dated-promo guard. Without it the dated block would never expire — the exact bug that hit the offers hubs until 08.10.2026.
+- **The JSON-LD carries the standard price only**, never the promotional one, and the discounted price exists only inside the dated block.
+- These services are **quoted, not booked online** — no SumUp link. CTA is phone + WhatsApp.
+
+Internal linking: a card block (section 05, `#prestations`) on both homepages, footer links on both homepages, and a "Nos prestations spécialisées" block in the location-page template, so all 38 city pages link to the five. 44 pages link to them in total.
 
 ### Travel fees (`zones.html` / `en/zones.html`)
 

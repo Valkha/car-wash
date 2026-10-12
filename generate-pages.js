@@ -182,6 +182,17 @@ const generateHTML = (loc) => `<!DOCTYPE html>
         </article>
     </main>
 
+    <section class="max-w-5xl mx-auto px-4 md:px-6 pb-16">
+        <p class="font-display font-bold text-[10px] tracking-[0.3em] uppercase text-gold-400 mb-4">Nos prestations spécialisées</p>
+        <ul class="flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-400 font-light">
+            <li><a href="/ciel-etoile.html" class="hover:text-gold-400 transition">Ciel étoilé</a></li>
+            <li><a href="/ppf.html" class="hover:text-gold-400 transition">PPF &mdash; film de protection</a></li>
+            <li><a href="/covering.html" class="hover:text-gold-400 transition">Covering</a></li>
+            <li><a href="/polish-ceramique.html" class="hover:text-gold-400 transition">Pack Polish Céramique</a></li>
+            <li><a href="/nettoyage-chassis.html" class="hover:text-gold-400 transition">Nettoyage châssis &amp; moteur</a></li>
+        </ul>
+    </section>
+
     <footer class="bg-charcoal-900 border-t border-white/10 py-12">
         <div class="max-w-5xl mx-auto px-4 md:px-6 flex flex-col md:flex-row justify-between items-start gap-8">
             <div>
@@ -249,6 +260,17 @@ const generateSitemap = (locations) => {
         { url: 'https://www.clean-cars-wash.ch/en/promos.html',                changefreq: 'weekly',  priority: '0.9' },
         { url: 'https://www.clean-cars-wash.ch/zones.html',                    changefreq: 'monthly', priority: '0.8' },
         { url: 'https://www.clean-cars-wash.ch/en/zones.html',                 changefreq: 'monthly', priority: '0.8' },
+        // Prestations spécialisées — pages générées par generate-prestations.js
+        { url: 'https://www.clean-cars-wash.ch/ciel-etoile.html',              changefreq: 'monthly', priority: '0.8' },
+        { url: 'https://www.clean-cars-wash.ch/en/starlight-headliner.html',   changefreq: 'monthly', priority: '0.8' },
+        { url: 'https://www.clean-cars-wash.ch/ppf.html',                      changefreq: 'monthly', priority: '0.8' },
+        { url: 'https://www.clean-cars-wash.ch/en/ppf.html',                   changefreq: 'monthly', priority: '0.8' },
+        { url: 'https://www.clean-cars-wash.ch/covering.html',                 changefreq: 'monthly', priority: '0.8' },
+        { url: 'https://www.clean-cars-wash.ch/en/covering.html',              changefreq: 'monthly', priority: '0.8' },
+        { url: 'https://www.clean-cars-wash.ch/polish-ceramique.html',         changefreq: 'monthly', priority: '0.8' },
+        { url: 'https://www.clean-cars-wash.ch/en/ceramic-polish.html',        changefreq: 'monthly', priority: '0.8' },
+        { url: 'https://www.clean-cars-wash.ch/nettoyage-chassis.html',        changefreq: 'monthly', priority: '0.8' },
+        { url: 'https://www.clean-cars-wash.ch/en/chassis-cleaning.html',      changefreq: 'monthly', priority: '0.8' },
     ];
 
     const staticUrls = staticPages.map(p => `
