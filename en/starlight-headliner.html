@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.google.com">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.google.com https://api.sumup.com">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <script>
@@ -231,16 +231,26 @@
             </div>
         </section>
 
+
         <section class="pb-16 md:pb-24">
             <div class="premium-card rounded-3xl p-8 md:p-12">
-                <h2 class="text-xl md:text-2xl font-display font-bold text-white uppercase tracking-tight mb-4">This service is quoted, not booked online</h2>
-                <p class="text-gray-400 font-light leading-relaxed mb-6">It does not go through online booking: every vehicle differs and the price is confirmed after an inspection. Call us and we answer directly.</p>
+                <h2 class="text-xl md:text-2xl font-display font-bold text-white uppercase tracking-tight mb-4">Book this service</h2>
+                <p class="text-gray-400 font-light leading-relaxed mb-6">You book your appointment online and pay a deposit of <strong class="text-white">CHF 149.70</strong>, which is 30% of the base rate. The balance is confirmed after an inspection and settled on site.</p>
+                <div class="flex items-start gap-3 rounded-2xl p-4 md:p-5 mb-8" style="background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.28);">
+                    <svg class="w-5 h-5 shrink-0 mt-0.5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <p class="text-gray-300 font-light text-sm leading-relaxed">The 30-minute slot you book is a <strong class="text-white">drop-off appointment</strong> — time to hand the vehicle over and go through the details. The work itself takes <strong class="text-white">half a day minimum</strong>.</p>
+                </div>
                 <p class="text-gray-400 font-light text-sm leading-relaxed mb-8">The headliner is removed, worked on, then refitted. The quote follows an inspection of the vehicle and of the layout you want.</p>
                 <div class="flex flex-wrap gap-3">
-                    <a href="tel:+41782657071" class="inline-block bg-gold-400 border border-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-4 px-10 rounded-full hover:bg-gold-500 transition-all">Call for a quote</a>
-                    <a href="https://wa.me/41782657071" target="_blank" rel="noopener noreferrer" class="inline-block border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-8 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">Message on WhatsApp</a>
+                    <button type="button" id="ccw-book-direct" data-track="conversion-booking" onclick="ccwBookingDirect('ciel-etoile', 'garage')"
+                            class="cursor-pointer w-full sm:w-auto text-center bg-gold-400 border border-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase text-sm py-4 px-6 md:px-10 rounded-full hover:bg-gold-500 transition-all">Book my drop-off</button>
+                    <a href="tel:+41782657071" class="inline-block w-full sm:w-auto text-center border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-6 md:px-8 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">Call for a quote</a>
+                    <a href="https://wa.me/41782657071" target="_blank" rel="noopener noreferrer" class="inline-block border border-white/15 text-gray-300 font-display font-bold tracking-widest uppercase text-xs py-4 px-6 rounded-full hover:border-gold-400 hover:text-gold-400 transition-all">Message on WhatsApp</a>
                     <a href="../#services" class="inline-block border border-white/15 text-gray-300 font-display font-bold tracking-widest uppercase text-xs py-4 px-6 rounded-full hover:border-gold-400 hover:text-gold-400 transition-all">See all our services</a>
                 </div>
+                <noscript>
+                    <p class="text-gray-400 text-sm mt-6"><a href="https://www.sumupbookings.com/clean-car-wash-geneva#services" class="text-gold-400 underline underline-offset-2">Book online</a></p>
+                </noscript>
             </div>
         </section>
 
@@ -280,11 +290,19 @@
         </div>
     </footer>
 
+
     <!-- Garde-fou des promos datees, copie minimale de celui de public/js/app.js.
-         Ces pages ne chargent PAS app.js : 15 Ko pour une seule fonction, et elles
-         n'ont ni modale ni menu burger. Sans ce script, le bloc date ci-dessus
-         resterait affiche apres son echeance. Execute en fin de body, donc avant
-         le premier rendu visible du bloc. -->
+         Redondant depuis que ces pages chargent app.js, mais conserve a dessein :
+         app.js est en defer, donc il s'execute apres le premier rendu. Ce script
+         inline, lui, retire le bloc perime AVANT que le client ne le voie. 247
+         octets pour eviter un clignotement sur une offre expiree. -->
     <script>(function(){var m=new Date();Array.prototype.forEach.call(document.querySelectorAll('[data-promo-until]'),function(e){var f=new Date(e.getAttribute('data-promo-until')+'T23:59:59');if(!isNaN(f.getTime())&&m>f){e.remove();}});})();</script>
+
+    <!-- app.js porte la logique de reservation SumUp (creation du panier puis
+         redirection vers le calendrier de CE service). Charge en defer : ne
+         bloque pas le rendu, ne compte pas dans le LCP, et il est deja en cache
+         pour tout visiteur venu de l'accueil. Le chemin est absolu pour que les
+         pages EN, situees dans en/, le trouvent aussi. -->
+    <script src="/js/app.js" defer></script>
 </body>
 </html>

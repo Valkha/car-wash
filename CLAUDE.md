@@ -73,9 +73,22 @@ Added 12.10.2026. **`prestations.json` is the source of truth, `generate-prestat
 Design choices, not to be undone without reason:
 
 - **No images at all.** The owner supplied poster graphics with the text baked in. They are not used: baked-in text is invisible to Google and to screen readers, and four posters would have cost 600 Kb–1 Mb on the homepage. All the content is HTML. The posters are not in the repo.
-- **`app.js` is not loaded.** These pages have no modal and no burger menu. Instead each carries a **247-byte inline guard** at the end of `<body>`, a minimal copy of the dated-promo guard. Without it the dated block would never expire — the exact bug that hit the offers hubs until 08.10.2026.
 - **The JSON-LD carries the standard price only**, never the promotional one, and the discounted price exists only inside the dated block.
-- These services are **quoted, not booked online** — no SumUp link yet. CTA is phone + WhatsApp. SumUp integration is pending: see `SUMUP-NOUVELLES-PRESTATIONS.md` (untracked working file).
+- Each page still carries the **247-byte inline promo guard** at the end of `<body>`. It is redundant with `app.js` since 13.10.2026, and kept on purpose: `app.js` is `defer`, so it runs after first paint, while the inline copy removes an expired block before the customer sees it.
+
+### Online booking on the specialist pages (13.10.2026)
+
+The 7 SumUp services were created on 13.10.2026 and the pages are now **bookable online** — they were quote-only until then. Three consequences for the code:
+
+- **`app.js` is loaded** (`<script src="/js/app.js" defer>`, root-absolute so the `en/` pages resolve it). It is the single source of the booking logic; do not inline a second copy.
+- **The CSP had to be widened.** These pages did not allow `https://api.sumup.com` in `connect-src`. Without it the browser blocks the cart call silently, the `catch` fires, and every customer lands on the generic service list — September's bug with no error message. Any new page that books must carry it.
+- **`prestations.json` holds a `sumup` block per service** (serviceId + variantId, `garage` and `home`). The same ids live in `CCW_OFFERS` in `app.js`. `generate-prestations.js` **fails the build** if the two diverge, if a `home` variant contradicts the `domicile` flag, or if the duration cannot be read back (below).
+
+Three services exist at the workshop only (ciel étoilé, PPF, covering): one button, `ccwBookingDirect()`, no modal. Polish and châssis have both variants and get the home/garage modal, same markup as the homepage.
+
+**The duration is written once per page and read back, never retyped.** The booking button carries an information bubble stating that the 30-minute slot is a drop-off appointment, followed by the real duration — which the generator *extracts* from the `<strong>` inside the `immobilisation` field rather than repeating it. Typing it a second time is what produced the "une journée complète" / "plusieurs jours" contradiction on the polish page. If that `<strong>` disappears, the build fails rather than shipping a page with no duration.
+
+`nettoyage-chassis` is the exception: its SumUp slot (2 h) *is* the real duration, so its bubble says the opposite — the slot matches the work, the car is handed straight back.
 
 **Where each service can be carried out** (confirmed by the owner 13.10.2026) — stated in a "Lieu" section on every page:
 

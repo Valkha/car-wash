@@ -72,7 +72,7 @@
       ],
       "lieuAtelier": "Le pavillon doit être déposé puis reposé : la prestation se fait exclusivement dans notre atelier.",
       "lieuDomicile": null,
-      "immobilisation": "Comptez une <strong class=\"text-white\">demi-journée minimum</strong>. Le pavillon est déposé, travaillé puis reposé : le véhicule reste à l'atelier pendant toute l'intervention."
+      "immobilisation": "Comptez <strong class=\"text-white\">une demi-journée minimum</strong>. Le pavillon est déposé, travaillé puis reposé : le véhicule reste à l'atelier pendant toute l'intervention."
     },
     "en": {
       "nom": "Starlight headliner",
@@ -142,7 +142,16 @@
       "lieuDomicile": null,
       "immobilisation": "Allow <strong class=\"text-white\">half a day minimum</strong>. The headliner is removed, worked on and refitted: the vehicle stays in the workshop throughout."
     },
-    "domicile": false
+    "domicile": false,
+    "acompte": "149.70",
+    "priseEnCharge": true,
+    "sumup": {
+      "garage": {
+        "label": "[4] Ciel Étoilé - Au Garage (Acompte 30%)",
+        "service": "67c63ca8-1f4a-4c87-8048-3201c5a32390",
+        "variant": "2548318a-16a6-4ee4-90e7-90d3fa20b980"
+      }
+    }
   },
   {
     "id": "ppf",
@@ -187,7 +196,7 @@
       ],
       "lieuAtelier": "La pose de film exige un environnement sans poussière : la prestation se fait exclusivement dans notre atelier.",
       "lieuDomicile": null,
-      "immobilisation": "Comptez une <strong class=\"text-white\">journée complète minimum</strong>, davantage pour un véhicule entièrement couvert. Le véhicule reste à l'atelier pendant la pose : prévoyez une solution de mobilité."
+      "immobilisation": "Comptez <strong class=\"text-white\">une journée complète minimum</strong>, davantage pour un véhicule entièrement couvert. Le véhicule reste à l'atelier pendant la pose : prévoyez une solution de mobilité."
     },
     "en": {
       "nom": "PPF — paint protection film",
@@ -227,7 +236,16 @@
       "lieuDomicile": null,
       "immobilisation": "Allow <strong class=\"text-white\">one full day minimum</strong>, more for a fully covered vehicle. The car stays in the workshop while the film is applied: plan alternative transport."
     },
-    "domicile": false
+    "domicile": false,
+    "acompte": "299.70",
+    "priseEnCharge": true,
+    "sumup": {
+      "garage": {
+        "label": "[5] PPF - Au Garage (Acompte 30%)",
+        "service": "6d09b637-d560-4329-80d3-700fb2f959ce",
+        "variant": "672eaa80-ab1e-4e60-b678-4f9da5be5714"
+      }
+    }
   },
   {
     "id": "covering",
@@ -270,7 +288,7 @@
       "motsClesVilles": [],
       "lieuAtelier": "La pose de film exige un environnement sans poussière et une température maîtrisée : la prestation se fait exclusivement dans notre atelier.",
       "lieuDomicile": null,
-      "immobilisation": "Comptez une <strong class=\"text-white\">journée complète minimum</strong>, davantage selon la surface couverte. Le véhicule reste immobilisé : prévoyez une solution de mobilité."
+      "immobilisation": "Comptez <strong class=\"text-white\">une journée complète minimum</strong>, davantage selon la surface couverte. Le véhicule reste immobilisé : prévoyez une solution de mobilité."
     },
     "en": {
       "nom": "Vehicle wrapping",
@@ -310,7 +328,16 @@
       "lieuDomicile": null,
       "immobilisation": "Allow <strong class=\"text-white\">one full day minimum</strong>, more depending on the area covered. The vehicle stays off the road: plan alternative transport."
     },
-    "domicile": false
+    "domicile": false,
+    "acompte": "299.70",
+    "priseEnCharge": true,
+    "sumup": {
+      "garage": {
+        "label": "[6] Covering - Au Garage (Acompte 30%)",
+        "service": "68af8873-65c1-4701-be0d-bcc99f45e9a8",
+        "variant": "ee911a81-ffd4-4ad8-bc22-4de4fcebe992"
+      }
+    }
   },
   {
     "id": "polish-ceramique",
@@ -472,7 +499,21 @@
       "lieuDomicile": "Possible at your place, but <strong class=\"text-white\">only inside a closed garage</strong>. The ceramic tolerates neither dust nor rain while it cures. No water point is needed.",
       "immobilisation": "Allow <strong class=\"text-white\">one full day minimum</strong>, often more depending on the state of the lacquer. The vehicle stays off the road for the whole curing time: plan alternative transport."
     },
-    "domicile": true
+    "domicile": true,
+    "acompte": "299.70",
+    "priseEnCharge": true,
+    "sumup": {
+      "garage": {
+        "label": "[7] Pack Polish Céramique - Au Garage (Acompte 30%)",
+        "service": "f9552255-8d67-4d19-a751-10b1b940ec1d",
+        "variant": "15202063-04e4-46dc-9d0f-6278a40f536b"
+      },
+      "home": {
+        "label": "[7] Pack Polish Céramique - Au Domicile/Travail (Acompte 30%)",
+        "service": "68562a3f-9ebe-4dd7-8a9f-bfdaded595e3",
+        "variant": "47196cbb-1763-42c5-afb1-76ee32f8aef3"
+      }
+    }
   },
   {
     "id": "nettoyage-chassis",
@@ -547,6 +588,20 @@
       "lieuDomicile": "Possible at your place, on two conditions: a <strong class=\"text-white\">private parking space</strong> and an <strong class=\"text-white\">accessible water point</strong>. Washing on public roads is prohibited in Switzerland.",
       "immobilisation": null
     },
-    "domicile": true
+    "domicile": true,
+    "acompte": "47.95",
+    "priseEnCharge": false,
+    "sumup": {
+      "garage": {
+        "label": "[8] Nettoyage Châssis & Moteur - Au Garage (Acompte 30%)",
+        "service": "d5c18d11-013b-4692-996a-500ecc0db199",
+        "variant": "40bc67e3-ddc8-43c1-a436-0bb53199a2a2"
+      },
+      "home": {
+        "label": "[8] Nettoyage Châssis & Moteur - Au Domicile/Travail (Acompte 30%)",
+        "service": "d1f46ce4-e316-47b6-a100-79b2b10fc8a1",
+        "variant": "bb486c1c-8768-4751-9da1-494b288d0f4b"
+      }
+    }
   }
 ]

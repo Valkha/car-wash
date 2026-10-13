@@ -40,6 +40,55 @@ function remise(prix) {
     return (Math.round(n * 20) / 20).toFixed(2);
 }
 
+function arrondi5(n) {
+    return (Math.round(n * 20) / 20).toFixed(2);
+}
+
+// La duree reelle n'est ecrite QU'UNE FOIS par prestation, dans le bloc
+// immobilisation de prestations.json. La bulle d'information placee pres du
+// bouton de reservation la relit ici plutot que de la repeter : en septembre,
+// la page polish annoncait "une journee complete" en haut et "plusieurs jours"
+// en bas parce que la duree etait saisie a deux endroits.
+function dureeReelle(presta, langue) {
+    const m = presta[langue].immobilisation &&
+        presta[langue].immobilisation.match(/<strong class="text-white">(.*?)<\/strong>/);
+    if (!m) {
+        throw new Error(
+            `[${presta.id}/${langue}] duree introuvable : le bloc "immobilisation" doit ` +
+            `contenir la duree dans un <strong class="text-white">…</strong>. ` +
+            `Sans elle, la bulle de reservation ne peut pas l'afficher.`
+        );
+    }
+    return m[1];
+}
+
+// Les identifiants SumUp vivent a deux endroits : prestations.json (pour le
+// gabarit) et public/js/app.js (pour l'execution). S'ils divergent, le bouton
+// mene a la liste generique sans rien signaler — le bug de septembre. On fait
+// donc echouer le build.
+function verifierIdentifiantsSumUp() {
+    const appjs = fs.readFileSync(path.join(__dirname, 'public', 'js', 'app.js'), 'utf8');
+    prestations.forEach(p => {
+        if (!p.sumup) throw new Error(`[${p.id}] bloc "sumup" absent de prestations.json.`);
+        if (!!p.sumup.home !== !!p.domicile) {
+            throw new Error(`[${p.id}] incoherence : domicile=${p.domicile} mais sumup.home=${!!p.sumup.home}.`);
+        }
+        Object.keys(p.sumup).forEach(lieu => {
+            [p.sumup[lieu].service, p.sumup[lieu].variant].forEach(id => {
+                if (!appjs.includes(id)) {
+                    throw new Error(
+                        `[${p.id}/${lieu}] l'identifiant ${id} est dans prestations.json ` +
+                        `mais absent de public/js/app.js : le bouton tomberait sur la liste generique.`
+                    );
+                }
+            });
+        });
+        if (!appjs.includes(`'${p.id}': {`)) {
+            throw new Error(`[${p.id}] cle absente de CCW_OFFERS dans public/js/app.js.`);
+        }
+    });
+}
+
 const T = {
     fr: {
         lang: 'fr', autre: 'en', libelleAutre: 'EN', locale: 'fr_CH',
@@ -52,10 +101,20 @@ const T = {
         lieuAtelierTitre: 'À notre atelier', lieuDomicileTitre: 'À votre domicile',
         lieuAtelierSeul: 'Atelier uniquement',
         immobilisationTitre: 'Votre véhicule reste immobilisé',
-        devisTitre: 'Cette prestation se réserve sur devis',
-        devisTexte: 'Elle ne passe pas par la réservation en ligne : chaque véhicule est différent et le tarif se confirme après examen. Appelez-nous, nous vous répondons directement.',
-        appelerCta: 'Appeler pour un devis', whatsapp: 'Écrire sur WhatsApp',
+        reserverTitre: 'Réserver cette prestation',
+        reserverDevis: a => `Vous bloquez votre rendez-vous en ligne et réglez un acompte de <strong class="text-white">${a} CHF</strong>, soit 30 % du tarif de base. Le solde est confirmé après examen du véhicule et réglé sur place.`,
+        reserverFerme: (a, s) => `Vous bloquez votre créneau en ligne et réglez un acompte de <strong class="text-white">${a} CHF</strong>, soit 30 % du prix. Le solde de ${s} CHF est réglé sur place à la fin de la prestation.`,
+        bullePriseEnCharge: duree => `Le créneau de 30 minutes que vous réservez est un <strong class="text-white">rendez-vous de prise en charge</strong> — le temps de déposer le véhicule et de faire le point. La prestation, elle, demande <strong class="text-white">${duree}</strong>.`,
+        bulleDureeReelle: 'Le créneau que vous réservez correspond à la <strong class="text-white">durée réelle de la prestation</strong>, et non à un simple rendez-vous de dépôt.',
+        ctaReserverPriseEnCharge: 'Réserver ma prise en charge', ctaReserver: 'Réserver mon créneau',
+        sansJs: 'Réservation en ligne',
+        appelerCta: 'Appeler pour un devis', appelerSimple: 'Nous appeler', whatsapp: 'Écrire sur WhatsApp',
         voirPrestations: 'Voir toutes nos prestations',
+        modaleTitre: 'Réservation', modaleQuestion: 'Où souhaitez-vous<br>être servi&nbsp;?',
+        modaleCreneau: 'Vous choisirez votre créneau, puis réglerez l\'acompte de 30&nbsp;%.',
+        modaleZones: 'Déplacement offert à Genève. Sur Vaud, forfait de 39.90 ou 59.90&nbsp;CHF TTC réglé sur place',
+        modaleZonesLien: 'voir les zones', modaleHome: 'À domicile / au travail', modaleGarage: 'Au garage CCW',
+        modaleFermer: 'Fermer', modaleDehors: 'Touchez en dehors pour fermer',
         horaires: ['Lun–Sam : 07h30 – 22h00', 'Dimanche : Fermé'],
         contactTitre: 'Contact &amp; Horaires', infosTitre: 'Informations',
         liens: [
@@ -76,10 +135,20 @@ const T = {
         lieuAtelierTitre: 'At our workshop', lieuDomicileTitre: 'At your place',
         lieuAtelierSeul: 'Workshop only',
         immobilisationTitre: 'Your vehicle stays off the road',
-        devisTitre: 'This service is quoted, not booked online',
-        devisTexte: 'It does not go through online booking: every vehicle differs and the price is confirmed after an inspection. Call us and we answer directly.',
-        appelerCta: 'Call for a quote', whatsapp: 'Message on WhatsApp',
+        reserverTitre: 'Book this service',
+        reserverDevis: a => `You book your appointment online and pay a deposit of <strong class="text-white">CHF ${a}</strong>, which is 30% of the base rate. The balance is confirmed after an inspection and settled on site.`,
+        reserverFerme: (a, s) => `You book your slot online and pay a deposit of <strong class="text-white">CHF ${a}</strong>, which is 30% of the price. The balance of CHF ${s} is settled on site once the work is done.`,
+        bullePriseEnCharge: duree => `The 30-minute slot you book is a <strong class="text-white">drop-off appointment</strong> — time to hand the vehicle over and go through the details. The work itself takes <strong class="text-white">${duree}</strong>.`,
+        bulleDureeReelle: 'The slot you book matches the <strong class="text-white">actual duration of the work</strong>, not just a drop-off appointment.',
+        ctaReserverPriseEnCharge: 'Book my drop-off', ctaReserver: 'Book my slot',
+        sansJs: 'Book online',
+        appelerCta: 'Call for a quote', appelerSimple: 'Call us', whatsapp: 'Message on WhatsApp',
         voirPrestations: 'See all our services',
+        modaleTitre: 'Booking', modaleQuestion: 'Where would you like<br>to be served&nbsp;?',
+        modaleCreneau: 'You will pick your slot, then pay the 30% deposit.',
+        modaleZones: 'Travel included in Geneva. In Vaud, a flat fee of CHF 39.90 or 59.90 incl. VAT is settled on site',
+        modaleZonesLien: 'see the areas', modaleHome: 'At home / at work', modaleGarage: 'At the CCW workshop',
+        modaleFermer: 'Close', modaleDehors: 'Tap outside to close',
         horaires: ['Mon–Sat: 07:30 AM – 10:00 PM', 'Sunday: Closed'],
         contactTitre: 'Contact &amp; Opening hours', infosTitre: 'Information',
         liens: [
@@ -146,6 +215,82 @@ ${d.lieuDomicile ? `                <div class="premium-card rounded-2xl p-6 md:
             </div>
         </section>`;
 
+    // ------------------------------------------------------------------
+    // Bloc de reservation
+    // ------------------------------------------------------------------
+    // Ces prestations sont desormais reservables en ligne : le client bloque un
+    // creneau SumUp et regle 30 % d'acompte. Pour les quatre prestations longues,
+    // le creneau declare dans SumUp est de 30 minutes — c'est un rendez-vous de
+    // depot, pas la duree du travail (voir CLAUDE.md). La bulle le dit, sinon un
+    // client qui reserve a 14h croit recuperer sa voiture a 14h30.
+    const bulle = presta.priseEnCharge
+        ? t.bullePriseEnCharge(dureeReelle(presta, langue))
+        : t.bulleDureeReelle;
+
+    const texteAcompte = presta.prixDes
+        ? t.reserverDevis(presta.acompte)
+        : t.reserverFerme(presta.acompte, arrondi5(parseFloat(presta.prix) - parseFloat(presta.acompte)));
+
+    // Deux variantes SumUp => modale de choix. Une seule => appel direct, on
+    // n'ouvre pas une modale pour une question qui n'a qu'une reponse.
+    const ctaReserver = presta.domicile
+        ? `<button type="button" data-track="conversion-booking" onclick="ccwLocationModalOpen('${presta.id}')"
+                            class="cursor-pointer w-full sm:w-auto text-center bg-gold-400 border border-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase text-sm py-4 px-6 md:px-10 rounded-full hover:bg-gold-500 transition-all">${presta.priseEnCharge ? t.ctaReserverPriseEnCharge : t.ctaReserver}</button>`
+        : `<button type="button" id="ccw-book-direct" data-track="conversion-booking" onclick="ccwBookingDirect('${presta.id}', 'garage')"
+                            class="cursor-pointer w-full sm:w-auto text-center bg-gold-400 border border-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase text-sm py-4 px-6 md:px-10 rounded-full hover:bg-gold-500 transition-all">${presta.priseEnCharge ? t.ctaReserverPriseEnCharge : t.ctaReserver}</button>`;
+
+    const blocReservation = `
+        <section class="pb-16 md:pb-24">
+            <div class="premium-card rounded-3xl p-8 md:p-12">
+                <h2 class="text-xl md:text-2xl font-display font-bold text-white uppercase tracking-tight mb-4">${t.reserverTitre}</h2>
+                <p class="text-gray-400 font-light leading-relaxed mb-6">${texteAcompte}</p>
+                <div class="flex items-start gap-3 rounded-2xl p-4 md:p-5 mb-8" style="background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.28);">
+                    <svg class="w-5 h-5 shrink-0 mt-0.5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <p class="text-gray-300 font-light text-sm leading-relaxed">${bulle}</p>
+                </div>
+                <p class="text-gray-400 font-light text-sm leading-relaxed mb-8">${d.duree}</p>
+                <div class="flex flex-wrap gap-3">
+                    ${ctaReserver}
+                    <a href="tel:${TEL}" class="inline-block w-full sm:w-auto text-center border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-6 md:px-8 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">${presta.prixDes ? t.appelerCta : t.appelerSimple}</a>
+                    <a href="https://wa.me/41782657071" target="_blank" rel="noopener noreferrer" class="inline-block border border-white/15 text-gray-300 font-display font-bold tracking-widest uppercase text-xs py-4 px-6 rounded-full hover:border-gold-400 hover:text-gold-400 transition-all">${t.whatsapp}</a>
+                    <a href="${r}#services" class="inline-block border border-white/15 text-gray-300 font-display font-bold tracking-widest uppercase text-xs py-4 px-6 rounded-full hover:border-gold-400 hover:text-gold-400 transition-all">${t.voirPrestations}</a>
+                </div>
+                <noscript>
+                    <p class="text-gray-400 text-sm mt-6"><a href="https://www.sumupbookings.com/clean-car-wash-geneva#services" class="text-gold-400 underline underline-offset-2">${t.sansJs}</a></p>
+                </noscript>
+            </div>
+        </section>
+`;
+
+    // Modale de choix du lieu, reprise de l'accueil. Uniquement sur les deux
+    // prestations qui existent en deux variantes SumUp.
+    const blocModale = presta.domicile ? `
+    <div id="ccw-location-modal" class="hidden fixed inset-0 items-center justify-center px-4" style="z-index:300;" role="dialog" aria-modal="true" aria-labelledby="ccw-location-modal-title">
+        <div class="absolute inset-0 backdrop-blur" style="background:rgba(0,0,0,0.75);" onclick="ccwLocationModalClose()" aria-hidden="true"></div>
+        <div class="relative bg-charcoal-800 border border-gold-400/30 rounded-2xl p-8 w-full max-w-xs text-center" style="box-shadow:0 25px 50px rgba(0,0,0,.6);">
+            <button onclick="ccwLocationModalClose()" class="absolute top-3 right-3 w-9 h-9 flex items-center justify-center text-gray-400 hover:text-white rounded-full hover:bg-white/10 transition-colors" aria-label="${t.modaleFermer}">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <p class="text-[10px] font-display tracking-[0.3em] uppercase text-gold-400 mb-3" id="ccw-location-modal-title">${t.modaleTitre}</p>
+            <p class="text-white font-display font-bold text-lg leading-snug mb-3">${t.modaleQuestion}</p>
+            <p class="text-gray-400 text-xs leading-snug mb-3">${t.modaleCreneau}</p>
+            <p class="text-gray-400 text-[11px] leading-snug mb-6">${t.modaleZones} — <a href="./zones.html" class="text-gold-400 underline underline-offset-2">${t.modaleZonesLien}</a>.</p>
+            <div class="flex flex-col gap-5">
+                <div>
+                    <button type="button" id="ccw-location-home" data-track="conversion-booking" onclick="ccwBookingGo('home')"
+                            class="cursor-pointer w-full flex items-center justify-center gap-3 bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-4 px-6 rounded-full hover:bg-gold-500 transition-all text-sm">${t.modaleHome}</button>
+                    <p class="text-gray-400 text-[10px] leading-snug mt-2"><span id="ccw-location-home-label" class="text-gray-400"></span></p>
+                </div>
+                <div>
+                    <button type="button" id="ccw-location-garage" data-track="conversion-booking" onclick="ccwBookingGo('garage')"
+                            class="cursor-pointer w-full flex items-center justify-center gap-3 border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-6 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">${t.modaleGarage}</button>
+                    <p class="text-gray-400 text-[10px] leading-snug mt-2"><span id="ccw-location-garage-label" class="text-gray-400"></span></p>
+                </div>
+            </div>
+            <p class="text-gray-400 text-[10px] mt-5 uppercase tracking-widest font-display">${t.modaleDehors}</p>
+        </div>
+    </div>` : '';
+
     const blocPromo = PROMO ? `
         <!-- ${PROMO.marqueur} — bloc daté, retiré seul le ${PROMO.jusquAu} à minuit. -->
         <section data-promo-until="${PROMO.jusquAu}" class="pb-14 md:pb-20">
@@ -159,7 +304,7 @@ ${d.lieuDomicile ? `                <div class="premium-card rounded-2xl p-6 md:
 <html lang="${t.lang}">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.google.com">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.google.com https://api.sumup.com">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <script>
@@ -305,19 +450,7 @@ ${blocImmobilisation}${blocPromo}
 ${sections}
 ${blocLieu}
 
-        <section class="pb-16 md:pb-24">
-            <div class="premium-card rounded-3xl p-8 md:p-12">
-                <h2 class="text-xl md:text-2xl font-display font-bold text-white uppercase tracking-tight mb-4">${t.devisTitre}</h2>
-                <p class="text-gray-400 font-light leading-relaxed mb-6">${t.devisTexte}</p>
-                <p class="text-gray-400 font-light text-sm leading-relaxed mb-8">${d.duree}</p>
-                <div class="flex flex-wrap gap-3">
-                    <a href="tel:${TEL}" class="inline-block bg-gold-400 border border-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-4 px-10 rounded-full hover:bg-gold-500 transition-all">${t.appelerCta}</a>
-                    <a href="https://wa.me/41782657071" target="_blank" rel="noopener noreferrer" class="inline-block border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-8 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">${t.whatsapp}</a>
-                    <a href="${r}#services" class="inline-block border border-white/15 text-gray-300 font-display font-bold tracking-widest uppercase text-xs py-4 px-6 rounded-full hover:border-gold-400 hover:text-gold-400 transition-all">${t.voirPrestations}</a>
-                </div>
-            </div>
-        </section>
-
+${blocReservation}
     </main>
 
     <footer class="bg-[#050505] border-t border-white/5 py-12">
@@ -347,17 +480,27 @@ ${t.liens.map(([href, lib]) => `                    <li><a href="${href}" class=
             &copy; 2026 Clean Cars Wash &nbsp;|&nbsp; <span style="opacity:.7;">${t.tva}</span>
         </div>
     </footer>
+${blocModale}
 ${PROMO ? `
     <!-- Garde-fou des promos datees, copie minimale de celui de public/js/app.js.
-         Ces pages ne chargent PAS app.js : 15 Ko pour une seule fonction, et elles
-         n'ont ni modale ni menu burger. Sans ce script, le bloc date ci-dessus
-         resterait affiche apres son echeance. Execute en fin de body, donc avant
-         le premier rendu visible du bloc. -->
+         Redondant depuis que ces pages chargent app.js, mais conserve a dessein :
+         app.js est en defer, donc il s'execute apres le premier rendu. Ce script
+         inline, lui, retire le bloc perime AVANT que le client ne le voie. 247
+         octets pour eviter un clignotement sur une offre expiree. -->
     <script>(function(){var m=new Date();Array.prototype.forEach.call(document.querySelectorAll('[data-promo-until]'),function(e){var f=new Date(e.getAttribute('data-promo-until')+'T23:59:59');if(!isNaN(f.getTime())&&m>f){e.remove();}});})();</script>` : ''}
+
+    <!-- app.js porte la logique de reservation SumUp (creation du panier puis
+         redirection vers le calendrier de CE service). Charge en defer : ne
+         bloque pas le rendu, ne compte pas dans le LCP, et il est deja en cache
+         pour tout visiteur venu de l'accueil. Le chemin est absolu pour que les
+         pages EN, situees dans en/, le trouvent aussi. -->
+    <script src="/js/app.js" defer></script>
 </body>
 </html>
 `;
 }
+
+verifierIdentifiantsSumUp();
 
 let n = 0;
 prestations.forEach(p => {

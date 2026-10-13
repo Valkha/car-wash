@@ -124,14 +124,19 @@ function goToSlide(i) { currentSlide = i; updateSlider(); }
 })();
 
 // Contact Modal
+// Les gardes ne sont pas cosmetiques : ccwModalClose est appelee sur chaque
+// touche Echap, y compris sur les pages qui n'ont pas cette modale (promos,
+// zones, prestations). Sans elles, une simple touche Echap levait une erreur.
 function ccwModalOpen() {
     var m = document.getElementById('ccw-contact-modal');
+    if (!m) return;
     m.classList.remove('hidden');
     m.classList.add('flex');
     document.body.style.overflow = 'hidden';
 }
 function ccwModalClose() {
     var m = document.getElementById('ccw-contact-modal');
+    if (!m) return;
     m.classList.add('hidden');
     m.classList.remove('flex');
     document.body.style.overflow = '';
@@ -217,6 +222,30 @@ var CCW_OFFERS = {
     prestige: {
         home:   { label: 'Combo Prestige - Au Domicile/Travail (Acompte 30%) - 1er rdv',   service: '826ed5ef-5e77-4bab-9a0c-0bd3c30a8696', variant: '46cfba06-23c3-40b3-bc0f-e5373a4d2c4d' },
         garage: { label: 'Combo Prestige - Au Garage (Acompte 30%) - 1er rdv',             service: 'd455c5ec-b8d3-4d00-aa5d-d9076c9fbb95', variant: '84cafaab-4aa1-4816-83ba-f437cb92d57a' }
+    },
+
+    // Prestations specialisees, relevees dans l'API SumUp le 13/10/2026.
+    // Trois d'entre elles n'existent qu'a l'atelier : elles n'ont pas de cle
+    // "home", et leurs pages appellent ccwBookingDirect() sans passer par la
+    // modale. Les deux autres ont les deux variantes, comme les packs.
+    // Ces identifiants sont dupliques dans prestations.json ; generate-prestations.js
+    // verifie au build qu'ils concordent et echoue sinon.
+    'ciel-etoile': {
+        garage: { label: '[4] Ciel Étoilé - Au Garage (Acompte 30%)',  service: '67c63ca8-1f4a-4c87-8048-3201c5a32390', variant: '2548318a-16a6-4ee4-90e7-90d3fa20b980' }
+    },
+    'ppf': {
+        garage: { label: '[5] PPF - Au Garage (Acompte 30%)',          service: '6d09b637-d560-4329-80d3-700fb2f959ce', variant: '672eaa80-ab1e-4e60-b678-4f9da5be5714' }
+    },
+    'covering': {
+        garage: { label: '[6] Covering - Au Garage (Acompte 30%)',     service: '68af8873-65c1-4701-be0d-bcc99f45e9a8', variant: 'ee911a81-ffd4-4ad8-bc22-4de4fcebe992' }
+    },
+    'polish-ceramique': {
+        home:   { label: '[7] Pack Polish Céramique - Au Domicile/Travail (Acompte 30%)',  service: '68562a3f-9ebe-4dd7-8a9f-bfdaded595e3', variant: '47196cbb-1763-42c5-afb1-76ee32f8aef3' },
+        garage: { label: '[7] Pack Polish Céramique - Au Garage (Acompte 30%)',            service: 'f9552255-8d67-4d19-a751-10b1b940ec1d', variant: '15202063-04e4-46dc-9d0f-6278a40f536b' }
+    },
+    'nettoyage-chassis': {
+        home:   { label: '[8] Nettoyage Châssis & Moteur - Au Domicile/Travail (Acompte 30%)', service: 'd1f46ce4-e316-47b6-a100-79b2b10fc8a1', variant: 'bb486c1c-8768-4751-9da1-494b288d0f4b' },
+        garage: { label: '[8] Nettoyage Châssis & Moteur - Au Garage (Acompte 30%)',           service: 'd5c18d11-013b-4692-996a-500ecc0db199', variant: '40bc67e3-ddc8-43c1-a436-0bb53199a2a2' }
     }
 };
 
@@ -235,8 +264,8 @@ function ccwFormatDate(d) {
 // et plus aucun clic ne fonctionnerait.
 function ccwBookingReset() {
     ccwBookingBusy = false;
-    ['home', 'garage'].forEach(function (place) {
-        var btn = document.getElementById('ccw-location-' + place);
+    ['ccw-location-home', 'ccw-location-garage', 'ccw-book-direct'].forEach(function (id) {
+        var btn = document.getElementById(id);
         if (btn) {
             btn.removeAttribute('aria-busy');
             btn.classList.remove('opacity-60');
@@ -253,9 +282,11 @@ function ccwLocationModalOpen(offerKey) {
     ccwCurrentOffer = CCW_OFFERS[offerKey] || null;
     var homeTxt = document.getElementById('ccw-location-home-label');
     var garageTxt = document.getElementById('ccw-location-garage-label');
-    if (homeTxt) homeTxt.textContent = ccwCurrentOffer ? ccwCurrentOffer.home.label : '';
-    if (garageTxt) garageTxt.textContent = ccwCurrentOffer ? ccwCurrentOffer.garage.label : '';
+    // Trois prestations specialisees n'existent qu'a l'atelier : pas de cle home.
+    if (homeTxt) homeTxt.textContent = (ccwCurrentOffer && ccwCurrentOffer.home) ? ccwCurrentOffer.home.label : '';
+    if (garageTxt) garageTxt.textContent = (ccwCurrentOffer && ccwCurrentOffer.garage) ? ccwCurrentOffer.garage.label : '';
     var m = document.getElementById('ccw-location-modal');
+    if (!m) return;
     m.classList.remove('hidden');
     m.classList.add('flex');
     document.body.style.overflow = 'hidden';
@@ -263,9 +294,19 @@ function ccwLocationModalOpen(offerKey) {
 
 function ccwLocationModalClose() {
     var m = document.getElementById('ccw-location-modal');
+    if (!m) return;
     m.classList.add('hidden');
     m.classList.remove('flex');
     document.body.style.overflow = '';
+}
+
+// Reservation sans choix de lieu — pages prestations a l'atelier uniquement.
+// Le bouton declenche directement la creation du panier : pas de modale a
+// ouvrir pour une question qui n'a qu'une reponse possible.
+function ccwBookingDirect(offerKey, place) {
+    ccwBookingReset();
+    ccwCurrentOffer = CCW_OFFERS[offerKey] || null;
+    ccwBookingGo(place || 'garage');
 }
 document.addEventListener('keydown', function (e) { if (e.key === 'Escape') ccwLocationModalClose(); });
 
@@ -275,7 +316,8 @@ function ccwBookingGo(place) {
     if (!offer) { window.location.href = CCW_BOOKINGS_URL; return; }
 
     ccwBookingBusy = true;
-    var btn = document.getElementById('ccw-location-' + place);
+    // Pages prestations sans modale : le bouton porte ccw-book-direct.
+    var btn = document.getElementById('ccw-location-' + place) || document.getElementById('ccw-book-direct');
     if (btn) {
         btn.setAttribute('aria-busy', 'true');
         btn.classList.add('opacity-60');
