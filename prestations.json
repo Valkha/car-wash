@@ -66,13 +66,13 @@
           ]
         }
       ],
-      "duree": "Comptez une journée d'atelier. Le pavillon est déposé, travaillé, puis reposé.",
+      "duree": "Comptez une demi-journée d'atelier minimum. Le pavillon est déposé, travaillé, puis reposé.",
       "motsClesVilles": [
         "ciel étoilé"
       ],
       "lieuAtelier": "Le pavillon doit être déposé puis reposé : la prestation se fait exclusivement dans notre atelier.",
       "lieuDomicile": null,
-      "immobilisation": null
+      "immobilisation": "Comptez une <strong class=\"text-white\">demi-journée minimum</strong>. Le pavillon est déposé, travaillé puis reposé : le véhicule reste à l'atelier pendant toute l'intervention."
     },
     "en": {
       "nom": "Starlight headliner",
@@ -136,11 +136,11 @@
           ]
         }
       ],
-      "duree": "Allow one full day in the workshop. The headliner is removed, worked on, then refitted.",
+      "duree": "Allow half a day in the workshop at least. The headliner is removed, worked on, then refitted.",
       "motsClesVilles": [],
       "lieuAtelier": "The headliner has to be removed and refitted: this service is carried out in our workshop only.",
       "lieuDomicile": null,
-      "immobilisation": null
+      "immobilisation": "Allow <strong class=\"text-white\">half a day minimum</strong>. The headliner is removed, worked on and refitted: the vehicle stays in the workshop throughout."
     },
     "domicile": false
   },
@@ -266,11 +266,11 @@
           ]
         }
       ],
-      "duree": "Le devis dépend de la surface : éléments isolés, demi-covering ou véhicule complet. Le tarif annoncé correspond à un covering partiel.",
+      "duree": "Comptez une journée complète minimum. Le devis dépend de la surface : éléments isolés, demi-covering ou véhicule complet. Le tarif annoncé correspond à un covering partiel.",
       "motsClesVilles": [],
       "lieuAtelier": "La pose de film exige un environnement sans poussière et une température maîtrisée : la prestation se fait exclusivement dans notre atelier.",
       "lieuDomicile": null,
-      "immobilisation": null
+      "immobilisation": "Comptez une <strong class=\"text-white\">journée complète minimum</strong>, davantage selon la surface couverte. Le véhicule reste immobilisé : prévoyez une solution de mobilité."
     },
     "en": {
       "nom": "Vehicle wrapping",
@@ -304,11 +304,11 @@
           ]
         }
       ],
-      "duree": "The quote depends on the area covered: individual panels, half wrap or full vehicle. The price shown corresponds to a partial wrap.",
+      "duree": "Allow one full day minimum. The quote depends on the area covered: individual panels, half wrap or full vehicle. The price shown corresponds to a partial wrap.",
       "motsClesVilles": [],
       "lieuAtelier": "Film application requires a dust-free environment and controlled temperature: this service is carried out in our workshop only.",
       "lieuDomicile": null,
-      "immobilisation": null
+      "immobilisation": "Allow <strong class=\"text-white\">one full day minimum</strong>, more depending on the area covered. The vehicle stays off the road: plan alternative transport."
     },
     "domicile": false
   },
@@ -507,7 +507,7 @@
           ]
         }
       ],
-      "duree": "Parfait avant la visite technique du véhicule : un dessous propre se contrôle plus vite et ne masque aucun défaut.",
+      "duree": "Comptez environ 2 heures. Le véhicule vous est rendu dans la foulée. Parfait avant la visite technique : un dessous propre se contrôle plus vite et ne masque aucun défaut.",
       "motsClesVilles": [],
       "lieuAtelier": "Dans notre atelier à Genève, sur pont, pour un accès complet au dessous de caisse.",
       "lieuDomicile": "Possible chez vous, à deux conditions : une <strong class=\"text-white\">place de parking privative</strong> et un <strong class=\"text-white\">point d'eau accessible</strong>. Le lavage sur voie publique est interdit en Suisse.",
@@ -541,7 +541,7 @@
           ]
         }
       ],
-      "duree": "Ideal before the vehicle inspection: a clean underbody is quicker to check and hides no defect.",
+      "duree": "Allow around 2 hours. The vehicle is handed straight back. Ideal before the inspection: a clean underbody is quicker to check and hides no defect.",
       "motsClesVilles": [],
       "lieuAtelier": "In our Geneva workshop, on a lift, for full access to the underbody.",
       "lieuDomicile": "Possible at your place, on two conditions: a <strong class=\"text-white\">private parking space</strong> and an <strong class=\"text-white\">accessible water point</strong>. Washing on public roads is prohibited in Switzerland.",
