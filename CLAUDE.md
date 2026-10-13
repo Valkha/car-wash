@@ -85,7 +85,9 @@ Design choices, not to be undone without reason:
 
 When SumUp is wired up this means **7 services, not 5** — the two with a home option need both variants, like the packs.
 
-**Watch the shared calendar.** The owner handles a polish himself while an employee keeps doing the packs, so a polish booking must *not* empty the day. With a single SumUp calendar it would: an 8-hour service occupies the calendar for 8 hours. Two calendars (owner / employee) are needed, with services assigned accordingly — same family of problem as the "last bookable slot computed backwards from closing time" that closed whole days in September 2026.
+**The SumUp duration is not the duration of the work.** Decided 13.10.2026: one single calendar, managed by Ichem; occasional extra staff are not in it. A long job must therefore *not* consume calendar capacity, so the four long services (ciel étoilé, PPF, covering, polish) are declared at **30 minutes — the drop-off appointment**, not the hours of work. Declaring a polish at 8 hours would make SumUp refuse bookings the shop could actually honour, the same family of problem as the "last bookable slot computed backwards from closing time" that closed whole days in September 2026. The trade-off is accepted: SumUp will take three polishes on the same day, and Ichem arbitrates manually. `nettoyage-chassis` keeps its real duration — the car is handed back the same day.
+
+Consequence for the site: wherever a booking button is added to these pages, it must say the slot is a **prise en charge**, otherwise a customer booking at 14:00 expects the car back at 14:30.
 
 Internal linking: a card block (section 05, `#prestations`) on both homepages, footer links on both homepages, and a "Nos prestations spécialisées" block in the location-page template, so all 38 city pages link to the five. 44 pages link to them in total.
 
