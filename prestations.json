@@ -181,13 +181,13 @@
           ]
         }
       ],
-      "duree": "Le devis dépend des éléments couverts : face avant seule, kit partiel ou véhicule complet. Le tarif annoncé correspond à une protection de face avant.",
+      "duree": "Comptez une journée complète d'atelier. Le devis dépend des éléments couverts : face avant seule, kit partiel ou véhicule complet. Le tarif annoncé correspond à une protection de face avant.",
       "motsClesVilles": [
         "PPF"
       ],
       "lieuAtelier": "La pose de film exige un environnement sans poussière : la prestation se fait exclusivement dans notre atelier.",
       "lieuDomicile": null,
-      "immobilisation": null
+      "immobilisation": "Comptez une <strong class=\"text-white\">journée complète</strong>, davantage pour un véhicule entièrement couvert. Le véhicule reste à l'atelier pendant la pose : prévoyez une solution de mobilité."
     },
     "en": {
       "nom": "PPF — paint protection film",
@@ -221,11 +221,11 @@
           ]
         }
       ],
-      "duree": "The quote depends on which panels are covered: front end only, partial kit or full vehicle. The price shown corresponds to front-end protection.",
+      "duree": "Allow one full day in the workshop. The quote depends on which panels are covered: front end only, partial kit or full vehicle. The price shown corresponds to front-end protection.",
       "motsClesVilles": [],
       "lieuAtelier": "Film application requires a dust-free environment: this service is carried out in our workshop only.",
       "lieuDomicile": null,
-      "immobilisation": null
+      "immobilisation": "Allow <strong class=\"text-white\">one full day</strong>, more for a fully covered vehicle. The car stays in the workshop while the film is applied: plan alternative transport."
     },
     "domicile": false
   },
