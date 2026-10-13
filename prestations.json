@@ -66,7 +66,7 @@
           ]
         }
       ],
-      "duree": "Comptez une demi-journée d'atelier minimum. Le pavillon est déposé, travaillé, puis reposé.",
+      "duree": "Le pavillon est déposé, travaillé, puis reposé. Le devis est établi après examen du véhicule et du tracé souhaité.",
       "motsClesVilles": [
         "ciel étoilé"
       ],
@@ -136,7 +136,7 @@
           ]
         }
       ],
-      "duree": "Allow half a day in the workshop at least. The headliner is removed, worked on, then refitted.",
+      "duree": "The headliner is removed, worked on, then refitted. The quote follows an inspection of the vehicle and of the layout you want.",
       "motsClesVilles": [],
       "lieuAtelier": "The headliner has to be removed and refitted: this service is carried out in our workshop only.",
       "lieuDomicile": null,
@@ -181,13 +181,13 @@
           ]
         }
       ],
-      "duree": "Comptez une journée complète d'atelier. Le devis dépend des éléments couverts : face avant seule, kit partiel ou véhicule complet. Le tarif annoncé correspond à une protection de face avant.",
+      "duree": "Le devis dépend des éléments couverts : face avant seule, kit partiel ou véhicule complet. Le tarif annoncé correspond à une protection de face avant.",
       "motsClesVilles": [
         "PPF"
       ],
       "lieuAtelier": "La pose de film exige un environnement sans poussière : la prestation se fait exclusivement dans notre atelier.",
       "lieuDomicile": null,
-      "immobilisation": "Comptez une <strong class=\"text-white\">journée complète</strong>, davantage pour un véhicule entièrement couvert. Le véhicule reste à l'atelier pendant la pose : prévoyez une solution de mobilité."
+      "immobilisation": "Comptez une <strong class=\"text-white\">journée complète minimum</strong>, davantage pour un véhicule entièrement couvert. Le véhicule reste à l'atelier pendant la pose : prévoyez une solution de mobilité."
     },
     "en": {
       "nom": "PPF — paint protection film",
@@ -221,11 +221,11 @@
           ]
         }
       ],
-      "duree": "Allow one full day in the workshop. The quote depends on which panels are covered: front end only, partial kit or full vehicle. The price shown corresponds to front-end protection.",
+      "duree": "The quote depends on which panels are covered: front end only, partial kit or full vehicle. The price shown corresponds to front-end protection.",
       "motsClesVilles": [],
       "lieuAtelier": "Film application requires a dust-free environment: this service is carried out in our workshop only.",
       "lieuDomicile": null,
-      "immobilisation": "Allow <strong class=\"text-white\">one full day</strong>, more for a fully covered vehicle. The car stays in the workshop while the film is applied: plan alternative transport."
+      "immobilisation": "Allow <strong class=\"text-white\">one full day minimum</strong>, more for a fully covered vehicle. The car stays in the workshop while the film is applied: plan alternative transport."
     },
     "domicile": false
   },
@@ -266,7 +266,7 @@
           ]
         }
       ],
-      "duree": "Comptez une journée complète minimum. Le devis dépend de la surface : éléments isolés, demi-covering ou véhicule complet. Le tarif annoncé correspond à un covering partiel.",
+      "duree": "Le devis dépend de la surface : éléments isolés, demi-covering ou véhicule complet. Le tarif annoncé correspond à un covering partiel.",
       "motsClesVilles": [],
       "lieuAtelier": "La pose de film exige un environnement sans poussière et une température maîtrisée : la prestation se fait exclusivement dans notre atelier.",
       "lieuDomicile": null,
@@ -304,7 +304,7 @@
           ]
         }
       ],
-      "duree": "Allow one full day minimum. The quote depends on the area covered: individual panels, half wrap or full vehicle. The price shown corresponds to a partial wrap.",
+      "duree": "The quote depends on the area covered: individual panels, half wrap or full vehicle. The price shown corresponds to a partial wrap.",
       "motsClesVilles": [],
       "lieuAtelier": "Film application requires a dust-free environment and controlled temperature: this service is carried out in our workshop only.",
       "lieuDomicile": null,
@@ -387,7 +387,7 @@
           ]
         }
       ],
-      "duree": "Plusieurs jours d'atelier selon l'état de la laque. Le devis est établi après examen du véhicule.",
+      "duree": "Le devis est établi après examen du véhicule : c'est l'état de la laque qui détermine le travail de correction nécessaire.",
       "motsClesVilles": [
         "Traitement Céramique 9H",
         "céramique"
@@ -466,7 +466,7 @@
           ]
         }
       ],
-      "duree": "Several days in the workshop depending on the state of the lacquer. The quote follows an inspection of the vehicle.",
+      "duree": "The quote follows an inspection of the vehicle: the state of the lacquer determines how much correction work is needed.",
       "motsClesVilles": [],
       "lieuAtelier": "In our Geneva workshop, under the best light and temperature conditions.",
       "lieuDomicile": "Possible at your place, but <strong class=\"text-white\">only inside a closed garage</strong>. The ceramic tolerates neither dust nor rain while it cures. No water point is needed.",
