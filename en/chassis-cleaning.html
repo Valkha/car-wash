@@ -196,11 +196,10 @@
             <div class="grid gap-6 md:grid-cols-2">
                 <div class="premium-card rounded-2xl p-6 md:p-8">
                     <h3 class="text-white font-display font-bold uppercase tracking-wider text-sm mb-2">At our workshop</h3>
-                    <p class="text-gray-400 font-light text-sm leading-relaxed">In our Geneva workshop, on a lift, for full access to the underbody.</p>
+                    <p class="text-gray-400 font-light text-sm leading-relaxed">In our Geneva workshop, on a lift. The lift is essential: it is the only way to reach the whole underbody, which is why this service is not carried out at your place.</p>
                 </div>
-                <div class="premium-card rounded-2xl p-6 md:p-8" style="border-color:rgba(212,175,55,.3);">
-                    <h3 class="text-white font-display font-bold uppercase tracking-wider text-sm mb-2">At your place</h3>
-                    <p class="text-gray-400 font-light text-sm leading-relaxed">Possible at your place, on two conditions: a <strong class="text-white">private parking space</strong> and an <strong class="text-white">accessible water point</strong>. Washing on public roads is prohibited in Switzerland.</p>
+                <div class="premium-card rounded-2xl p-6 md:p-8 flex items-center" style="opacity:.55;">
+                    <p class="text-gray-400 font-light text-sm leading-relaxed"><strong class="text-gray-300">Workshop only.</strong></p>
                 </div>
             </div>
         </section>
@@ -216,7 +215,7 @@
                 </div>
                 <p class="text-gray-400 font-light text-sm leading-relaxed mb-8">Allow around 2 hours. The vehicle is handed straight back. Ideal before the inspection: a clean underbody is quicker to check and hides no defect.</p>
                 <div class="flex flex-wrap gap-3">
-                    <button type="button" data-track="conversion-booking" onclick="ccwLocationModalOpen('nettoyage-chassis')"
+                    <button type="button" id="ccw-book-direct" data-track="conversion-booking" onclick="ccwBookingDirect('nettoyage-chassis', 'garage')"
                             class="cursor-pointer w-full sm:w-auto text-center bg-gold-400 border border-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase text-sm py-4 px-6 md:px-10 rounded-full hover:bg-gold-500 transition-all">Book my slot</button>
                     <a href="tel:+41782657071" class="inline-block w-full sm:w-auto text-center border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-6 md:px-8 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">Call us</a>
                     <a href="https://wa.me/41782657071" target="_blank" rel="noopener noreferrer" class="inline-block border border-white/15 text-gray-300 font-display font-bold tracking-widest uppercase text-xs py-4 px-6 rounded-full hover:border-gold-400 hover:text-gold-400 transition-all">Message on WhatsApp</a>
@@ -264,31 +263,6 @@
         </div>
     </footer>
 
-    <div id="ccw-location-modal" class="hidden fixed inset-0 items-center justify-center px-4" style="z-index:300;" role="dialog" aria-modal="true" aria-labelledby="ccw-location-modal-title">
-        <div class="absolute inset-0 backdrop-blur" style="background:rgba(0,0,0,0.75);" onclick="ccwLocationModalClose()" aria-hidden="true"></div>
-        <div class="relative bg-charcoal-800 border border-gold-400/30 rounded-2xl p-8 w-full max-w-xs text-center" style="box-shadow:0 25px 50px rgba(0,0,0,.6);">
-            <button onclick="ccwLocationModalClose()" class="absolute top-3 right-3 w-9 h-9 flex items-center justify-center text-gray-400 hover:text-white rounded-full hover:bg-white/10 transition-colors" aria-label="Close">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-            </button>
-            <p class="text-[10px] font-display tracking-[0.3em] uppercase text-gold-400 mb-3" id="ccw-location-modal-title">Booking</p>
-            <p class="text-white font-display font-bold text-lg leading-snug mb-3">Where would you like<br>to be served&nbsp;?</p>
-            <p class="text-gray-400 text-xs leading-snug mb-3">You will pick your slot, then pay the 30% deposit.</p>
-            <p class="text-gray-400 text-[11px] leading-snug mb-6">Travel included in Geneva. In Vaud, a flat fee of CHF 39.90 or 59.90 incl. VAT is settled on site — <a href="./zones.html" class="text-gold-400 underline underline-offset-2">see the areas</a>.</p>
-            <div class="flex flex-col gap-5">
-                <div>
-                    <button type="button" id="ccw-location-home" data-track="conversion-booking" onclick="ccwBookingGo('home')"
-                            class="cursor-pointer w-full flex items-center justify-center gap-3 bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-4 px-6 rounded-full hover:bg-gold-500 transition-all text-sm">At home / at work</button>
-                    <p class="text-gray-400 text-[10px] leading-snug mt-2"><span id="ccw-location-home-label" class="text-gray-400"></span></p>
-                </div>
-                <div>
-                    <button type="button" id="ccw-location-garage" data-track="conversion-booking" onclick="ccwBookingGo('garage')"
-                            class="cursor-pointer w-full flex items-center justify-center gap-3 border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-6 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">At the CCW workshop</button>
-                    <p class="text-gray-400 text-[10px] leading-snug mt-2"><span id="ccw-location-garage-label" class="text-gray-400"></span></p>
-                </div>
-            </div>
-            <p class="text-gray-400 text-[10px] mt-5 uppercase tracking-widest font-display">Tap outside to close</p>
-        </div>
-    </div>
 
     <!-- Garde-fou des promos datees, copie minimale de celui de public/js/app.js.
          Redondant depuis que ces pages chargent app.js, mais conserve a dessein :

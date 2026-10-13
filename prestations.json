@@ -550,8 +550,8 @@
       ],
       "duree": "Comptez environ 2 heures. Le véhicule vous est rendu dans la foulée. Parfait avant la visite technique : un dessous propre se contrôle plus vite et ne masque aucun défaut.",
       "motsClesVilles": [],
-      "lieuAtelier": "Dans notre atelier à Genève, sur pont, pour un accès complet au dessous de caisse.",
-      "lieuDomicile": "Possible chez vous, à deux conditions : une <strong class=\"text-white\">place de parking privative</strong> et un <strong class=\"text-white\">point d'eau accessible</strong>. Le lavage sur voie publique est interdit en Suisse.",
+      "lieuAtelier": "Dans notre atelier à Genève, sur pont. Le pont est indispensable : c'est le seul moyen d'atteindre le dessous de caisse en entier, et c'est pourquoi cette prestation ne se fait pas à domicile.",
+      "lieuDomicile": null,
       "immobilisation": null
     },
     "en": {
@@ -584,11 +584,11 @@
       ],
       "duree": "Allow around 2 hours. The vehicle is handed straight back. Ideal before the inspection: a clean underbody is quicker to check and hides no defect.",
       "motsClesVilles": [],
-      "lieuAtelier": "In our Geneva workshop, on a lift, for full access to the underbody.",
-      "lieuDomicile": "Possible at your place, on two conditions: a <strong class=\"text-white\">private parking space</strong> and an <strong class=\"text-white\">accessible water point</strong>. Washing on public roads is prohibited in Switzerland.",
+      "lieuAtelier": "In our Geneva workshop, on a lift. The lift is essential: it is the only way to reach the whole underbody, which is why this service is not carried out at your place.",
+      "lieuDomicile": null,
       "immobilisation": null
     },
-    "domicile": true,
+    "domicile": false,
     "acompte": "47.95",
     "priseEnCharge": false,
     "sumup": {
@@ -596,11 +596,6 @@
         "label": "[8] Nettoyage Châssis & Moteur - Au Garage (Acompte 30%)",
         "service": "d5c18d11-013b-4692-996a-500ecc0db199",
         "variant": "40bc67e3-ddc8-43c1-a436-0bb53199a2a2"
-      },
-      "home": {
-        "label": "[8] Nettoyage Châssis & Moteur - Au Domicile/Travail (Acompte 30%)",
-        "service": "d1f46ce4-e316-47b6-a100-79b2b10fc8a1",
-        "variant": "bb486c1c-8768-4751-9da1-494b288d0f4b"
       }
     }
   }
