@@ -243,8 +243,10 @@ var CCW_OFFERS = {
         home:   { label: '[7] Pack Polish Céramique - Au Domicile/Travail (Acompte 30%)',  service: '68562a3f-9ebe-4dd7-8a9f-bfdaded595e3', variant: '47196cbb-1763-42c5-afb1-76ee32f8aef3' },
         garage: { label: '[7] Pack Polish Céramique - Au Garage (Acompte 30%)',            service: 'f9552255-8d67-4d19-a751-10b1b940ec1d', variant: '15202063-04e4-46dc-9d0f-6278a40f536b' }
     },
+    // Atelier uniquement depuis le 13.10.2026 : le pont est indispensable pour
+    // atteindre le dessous de caisse. La variante domicile a existe quelques
+    // heures, elle est retiree ici et desactivee dans SumUp.
     'nettoyage-chassis': {
-        home:   { label: '[8] Nettoyage Châssis & Moteur - Au Domicile/Travail (Acompte 30%)', service: 'd1f46ce4-e316-47b6-a100-79b2b10fc8a1', variant: 'bb486c1c-8768-4751-9da1-494b288d0f4b' },
         garage: { label: '[8] Nettoyage Châssis & Moteur - Au Garage (Acompte 30%)',           service: 'd5c18d11-013b-4692-996a-500ecc0db199', variant: '40bc67e3-ddc8-43c1-a436-0bb53199a2a2' }
     }
 };

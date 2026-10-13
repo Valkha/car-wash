@@ -84,7 +84,7 @@ The 7 SumUp services were created on 13.10.2026 and the pages are now **bookable
 - **The CSP had to be widened.** These pages did not allow `https://api.sumup.com` in `connect-src`. Without it the browser blocks the cart call silently, the `catch` fires, and every customer lands on the generic service list — September's bug with no error message. Any new page that books must carry it.
 - **`prestations.json` holds a `sumup` block per service** (serviceId + variantId, `garage` and `home`). The same ids live in `CCW_OFFERS` in `app.js`. `generate-prestations.js` **fails the build** if the two diverge, if a `home` variant contradicts the `domicile` flag, or if the duration cannot be read back (below).
 
-Three services exist at the workshop only (ciel étoilé, PPF, covering): one button, `ccwBookingDirect()`, no modal. Polish and châssis have both variants and get the home/garage modal, same markup as the homepage.
+Four services exist at the workshop only (ciel étoilé, PPF, covering, nettoyage châssis): one button, `ccwBookingDirect()`, no modal. Only polish céramique has both variants and gets the home/garage modal, same markup as the homepage.
 
 **The duration is written once per page and read back, never retyped.** The booking button carries an information bubble stating that the 30-minute slot is a drop-off appointment, followed by the real duration — which the generator *extracts* from the `<strong>` inside the `immobilisation` field rather than repeating it. Typing it a second time is what produced the "une journée complète" / "plusieurs jours" contradiction on the polish page. If that `<strong>` disappears, the build fails rather than shipping a page with no duration.
 
@@ -126,11 +126,16 @@ the whole script, so every later task — including the banners — never ran.
 
 **Where each service can be carried out** (confirmed by the owner 13.10.2026) — stated in a "Lieu" section on every page:
 
-- **Workshop only:** ciel étoilé (the headliner has to come off), PPF and covering (both need a dust-free environment).
-- **Workshop or at the customer's:** polish céramique (**closed garage only**, no water point needed) and nettoyage châssis (**private parking + accessible water point**).
+- **Workshop only:** ciel étoilé (the headliner has to come off), PPF and covering (both need a dust-free environment), and nettoyage châssis (the lift is the only way to reach the whole underbody).
+- **Workshop or at the customer's:** polish céramique only — **closed garage required**, no water point needed.
 - **Polish céramique immobilises the vehicle for a full day minimum.** This is shown as a highlighted warning directly under the price, before the customer commits.
 
-When SumUp is wired up this means **7 services, not 5** — the two with a home option need both variants, like the packs.
+That makes **6 SumUp services, not 5** — polish céramique is the only one needing both variants, like the packs.
+
+Nettoyage châssis was briefly listed as available at the customer's, on 13.10.2026, with a private
+parking space and a water point as conditions. The owner corrected it the same day: it is workshop
+only. The `[8] … - Au Domicile/Travail` SumUp article was created then, and has had its Bookings
+visibility switched off rather than being deleted.
 
 **The SumUp duration is not the duration of the work.** Decided 13.10.2026: one single calendar, managed by Ichem; occasional extra staff are not in it. A long job must therefore *not* consume calendar capacity, so the four long services (ciel étoilé, PPF, covering, polish) are declared at **30 minutes — the drop-off appointment**, not the hours of work. Declaring a polish at 8 hours would make SumUp refuse bookings the shop could actually honour, the same family of problem as the "last bookable slot computed backwards from closing time" that closed whole days in September 2026. The trade-off is accepted: SumUp will take three polishes on the same day, and Ichem arbitrates manually. `nettoyage-chassis` keeps its real duration — the car is handed back the same day.
 
