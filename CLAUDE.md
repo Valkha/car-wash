@@ -75,7 +75,17 @@ Design choices, not to be undone without reason:
 - **No images at all.** The owner supplied poster graphics with the text baked in. They are not used: baked-in text is invisible to Google and to screen readers, and four posters would have cost 600 Kb–1 Mb on the homepage. All the content is HTML. The posters are not in the repo.
 - **`app.js` is not loaded.** These pages have no modal and no burger menu. Instead each carries a **247-byte inline guard** at the end of `<body>`, a minimal copy of the dated-promo guard. Without it the dated block would never expire — the exact bug that hit the offers hubs until 08.10.2026.
 - **The JSON-LD carries the standard price only**, never the promotional one, and the discounted price exists only inside the dated block.
-- These services are **quoted, not booked online** — no SumUp link. CTA is phone + WhatsApp.
+- These services are **quoted, not booked online** — no SumUp link yet. CTA is phone + WhatsApp. SumUp integration is pending: see `SUMUP-NOUVELLES-PRESTATIONS.md` (untracked working file).
+
+**Where each service can be carried out** (confirmed by the owner 13.10.2026) — stated in a "Lieu" section on every page:
+
+- **Workshop only:** ciel étoilé (the headliner has to come off), PPF and covering (both need a dust-free environment).
+- **Workshop or at the customer's:** polish céramique (**closed garage only**, no water point needed) and nettoyage châssis (**private parking + accessible water point**).
+- **Polish céramique immobilises the vehicle for a full day minimum.** This is shown as a highlighted warning directly under the price, before the customer commits.
+
+When SumUp is wired up this means **7 services, not 5** — the two with a home option need both variants, like the packs.
+
+**Watch the shared calendar.** The owner handles a polish himself while an employee keeps doing the packs, so a polish booking must *not* empty the day. With a single SumUp calendar it would: an 8-hour service occupies the calendar for 8 hours. Two calendars (owner / employee) are needed, with services assigned accordingly — same family of problem as the "last bookable slot computed backwards from closing time" that closed whole days in September 2026.
 
 Internal linking: a card block (section 05, `#prestations`) on both homepages, footer links on both homepages, and a "Nos prestations spécialisées" block in the location-page template, so all 38 city pages link to the five. 44 pages link to them in total.
 
