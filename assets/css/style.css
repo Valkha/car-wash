@@ -478,6 +478,46 @@ details[open] summary ~ * {
 /* ==========================================================================
    Hero — composition typographique
    ========================================================================== */
+/* ==========================================================================
+   Bande hero des pages prestations
+   --------------------------------------------------------------------------
+   La bande reste DANS la colonne de contenu (max-w-5xl = 1024 px), largeur
+   native des images. En pleine largeur, une source de 1024 px serait agrandie
+   et donc floue sur un ecran large ; contenue, elle est toujours a l'echelle 1.
+
+   Deux voiles distincts. Sur grand ecran, un degrade horizontal : tres dense a
+   gauche ou se pose le texte, presque transparent a droite ou vit le sujet.
+   Sous 768 px le texte occupe toute la largeur et passe donc par-dessus le
+   sujet : le degrade horizontal ne protegerait plus rien, on bascule sur un
+   voile vertical plus dense.
+   ========================================================================== */
+.presta-hero-voile {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg,
+            rgba(10, 10, 10, .97) 0%,
+            rgba(10, 10, 10, .90) 40%,
+            rgba(10, 10, 10, .42) 72%,
+            rgba(10, 10, 10, .28) 100%),
+        linear-gradient(180deg,
+            rgba(10, 10, 10, .30) 0%,
+            rgba(10, 10, 10, 0) 38%,
+            rgba(10, 10, 10, .60) 100%);
+}
+
+/* Valeurs calees sur une mesure, pas a l'oeil : avec un voile a .70, le surtitre
+   dore tombait a 3.6:1 sur le pixel le plus clair de l'image, sous le seuil WCAG
+   de 4.5:1 pour le petit texte. A .80, il repasse au-dessus. */
+@media (max-width: 767px) {
+    .presta-hero-voile {
+        background: linear-gradient(180deg,
+            rgba(10, 10, 10, .80) 0%,
+            rgba(10, 10, 10, .86) 55%,
+            rgba(10, 10, 10, .95) 100%);
+    }
+}
+
 .hero-eyebrow {
     font-family: "Montserrat", sans-serif;
     font-size: 0.625rem;

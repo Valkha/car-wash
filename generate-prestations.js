@@ -89,6 +89,24 @@ function verifierIdentifiantsSumUp() {
     });
 }
 
+// Le bandeau hero est l'element LCP et il est precharge : s'il manque, la page
+// part en production avec un bloc vide et un prechargement en 404. On echoue au
+// build plutot que de laisser passer ca.
+function verifierBandeaux() {
+    prestations.forEach(p => {
+        ['avif', 'webp'].forEach(ext => {
+            const f = path.join(__dirname, 'assets', 'images', 'prestations', `${p.id}.${ext}`);
+            if (!fs.existsSync(f)) {
+                throw new Error(
+                    `[${p.id}] bandeau manquant : assets/images/prestations/${p.id}.${ext}. ` +
+                    `Deposez la source dans assets/images/prestations-src/${p.id}.png ` +
+                    `puis relancez "npm run optimize".`
+                );
+            }
+        });
+    });
+}
+
 const T = {
     fr: {
         lang: 'fr', autre: 'en', libelleAutre: 'EN', locale: 'fr_CH',
@@ -362,6 +380,12 @@ ${d.lieuDomicile ? `                <div class="premium-card rounded-2xl p-6 md:
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="${r}assets/css/tailwind-src.css">
 
+    <!-- Bandeau hero : c'est l'element LCP de la page, donc on le precharge.
+         Le type AVIF fait que les navigateurs qui ne le lisent pas ignorent ce
+         prechargement et tombent sur le repli WebP du <picture>, sans telecharger
+         les deux. -->
+    <link rel="preload" as="image" type="image/avif" href="${r}assets/images/prestations/${presta.id}.avif" fetchpriority="high">
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -434,17 +458,29 @@ ${d.lieuDomicile ? `                <div class="premium-card rounded-2xl p-6 md:
 
     <main id="main-content" class="max-w-5xl mx-auto px-4 md:px-6">
 
-        <section class="pt-14 pb-10 md:pt-20 md:pb-12">
-            <p class="hero-eyebrow mb-5">${d.eyebrow}</p>
-            <h1 class="text-4xl md:text-6xl font-display font-bold text-white uppercase tracking-tight leading-[0.95] mb-6">
-                ${d.h1a}<br><span class="text-gold-400">${d.h1b}</span>
-            </h1>
-            <p class="text-gray-400 font-light leading-relaxed max-w-2xl mb-8">${d.accroche}</p>
-            <p class="flex items-end flex-wrap gap-x-4 gap-y-1">
-                <span class="text-gray-500 text-sm">${presta.prixDes ? t.apartirde : t.prixFixe}</span>
-                <span class="text-4xl md:text-5xl font-display font-bold text-gold-400 leading-none">${presta.prix}</span>
-                <span class="text-gray-400 text-sm">${t.ttc}</span>
-            </p>
+        <!-- Rapport 1024/572 impose a partir de md : c'est le rapport natif des
+             images, donc aucun recadrage et aucun sujet perdu, quelle que soit la
+             largeur de l'ecran. Sous md, la hauteur suit le texte. -->
+        <section class="relative overflow-hidden rounded-3xl mt-6 mb-10 md:mb-12 md:aspect-[1024/572] md:flex md:items-center">
+            <picture>
+                <source type="image/avif" srcset="${r}assets/images/prestations/${presta.id}.avif">
+                <img src="${r}assets/images/prestations/${presta.id}.webp" alt="" aria-hidden="true"
+                     width="1024" height="572" fetchpriority="high" loading="eager"
+                     class="absolute inset-0 w-full h-full object-cover object-right md:object-center">
+            </picture>
+            <div class="presta-hero-voile" aria-hidden="true"></div>
+            <div class="relative z-10 w-full px-6 py-14 md:px-12 md:py-0">
+                <p class="hero-eyebrow mb-5">${d.eyebrow}</p>
+                <h1 class="text-4xl md:text-6xl font-display font-bold text-white uppercase tracking-tight leading-[0.95] mb-6">
+                    ${d.h1a}<br><span class="text-gold-400">${d.h1b}</span>
+                </h1>
+                <p class="text-gray-300 font-light leading-relaxed max-w-2xl mb-8">${d.accroche}</p>
+                <p class="flex items-end flex-wrap gap-x-4 gap-y-1">
+                    <span class="text-gray-400 text-sm">${presta.prixDes ? t.apartirde : t.prixFixe}</span>
+                    <span class="text-4xl md:text-5xl font-display font-bold text-gold-400 leading-none">${presta.prix}</span>
+                    <span class="text-gray-300 text-sm">${t.ttc}</span>
+                </p>
+            </div>
         </section>
 ${blocImmobilisation}${blocPromo}
 ${sections}
@@ -501,6 +537,7 @@ ${PROMO ? `
 }
 
 verifierIdentifiantsSumUp();
+verifierBandeaux();
 
 let n = 0;
 prestations.forEach(p => {
