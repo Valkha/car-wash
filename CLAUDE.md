@@ -72,7 +72,7 @@ Added 12.10.2026. **`prestations.json` is the source of truth, `generate-prestat
 
 Design choices, not to be undone without reason:
 
-- **No images at all.** The owner supplied poster graphics with the text baked in. They are not used: baked-in text is invisible to Google and to screen readers, and four posters would have cost 600 Kb–1 Mb on the homepage. All the content is HTML. The posters are not in the repo.
+- **The owner's poster graphics are still not used.** They carry their text baked into the pixels — invisible to Google and to screen readers — and weigh 600 Kb–1 Mb each. All page content stays in HTML. The posters are not in the repo. The hero banners added on 13.10.2026 (below) are a different thing: purely decorative images carrying no text.
 - **The JSON-LD carries the standard price only**, never the promotional one, and the discounted price exists only inside the dated block.
 - Each page still carries the **247-byte inline promo guard** at the end of `<body>`. It is redundant with `app.js` since 13.10.2026, and kept on purpose: `app.js` is `defer`, so it runs after first paint, while the inline copy removes an expired block before the customer sees it.
 
@@ -89,6 +89,40 @@ Three services exist at the workshop only (ciel étoilé, PPF, covering): one bu
 **The duration is written once per page and read back, never retyped.** The booking button carries an information bubble stating that the 30-minute slot is a drop-off appointment, followed by the real duration — which the generator *extracts* from the `<strong>` inside the `immobilisation` field rather than repeating it. Typing it a second time is what produced the "une journée complète" / "plusieurs jours" contradiction on the polish page. If that `<strong>` disappears, the build fails rather than shipping a page with no duration.
 
 `nettoyage-chassis` is the exception: its SumUp slot (2 h) *is* the real duration, so its bubble says the opposite — the slot matches the work, the car is handed straight back.
+
+### Hero banners (13.10.2026)
+
+Each specialist page opens on a decorative banner. Sources are AI-generated in the CCW art
+direction (black / gold, wet workshop floor, warm amber strips) from the prompts kept in
+`PROMPTS-IMAGES-PRESTATIONS.md` (untracked). Pipeline:
+
+`assets/images/prestations-src/<id>.png` → `npm run optimize` → `assets/images/prestations/<id>.{avif,webp}`
+at 1024 px wide. FR and EN share one file; Vite hashes it once for both.
+
+- **The banner is NOT full-bleed.** It stays inside the content column (`max-w-5xl` = 1024 px),
+  which is the native width of the images. Measured from 1280 to 3440 px: the rendered banner is
+  976 px wide at every viewport, so it is never upscaled and never soft on a wide screen. Going
+  full-bleed would stretch a 1024 px source across 2560 px.
+- **`md:aspect-[1024/572]`** reproduces the native ratio, so nothing of the image is cropped on
+  desktop. Below `md` the height follows the text and the image is positioned `object-right`.
+- **Two separate veils**, in `.presta-hero-voile` (`assets/css/style.css`). Desktop: a horizontal
+  gradient, dense on the left where the text sits, near-transparent on the right where the subject
+  lives. Mobile: a vertical gradient, because the text spans the full width and a horizontal
+  gradient would protect nothing. The mobile opacities are set from a measurement, not by eye — at
+  `.70` the gold eyebrow fell to 3.6:1 against the brightest pixel, under the 4.5:1 WCAG floor; at
+  `.80` the worst case is 5.3:1.
+- The image is `alt=""` and `aria-hidden` — it is decorative, every fact is in the HTML.
+- It is the **LCP element**, so it is preloaded with `type="image/avif"`: browsers without AVIF
+  ignore the preload and fall back to the WebP in the `<picture>`, instead of fetching both.
+- `generate-prestations.js` **fails the build** if a banner is missing, rather than shipping an
+  empty band and a 404 preload.
+
+Cost: 12–28 Kb per page. The whole page, HTML + banner, lands between 19 and 35 Kb — against 183 Kb
+for the homepage, which is already green.
+
+`optimize-images.js` now **skips a missing source instead of throwing**. Several historical sources
+(`MB-01.webp`, `hero-bg-raw.jpg`) are not in the repo; the first one raised an ENOENT that killed
+the whole script, so every later task — including the banners — never ran.
 
 **Where each service can be carried out** (confirmed by the owner 13.10.2026) — stated in a "Lieu" section on every page:
 

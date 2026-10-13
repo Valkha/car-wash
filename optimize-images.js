@@ -4,6 +4,29 @@ const path = require('path');
 
 const IMAGES_DIR = path.join(__dirname, 'assets', 'images');
 
+// Bandeaux hero des pages prestations.
+// Sources : assets/images/prestations-src/<id>.png, generees le 13.10.2026.
+// Largeur de sortie 1024 px = largeur exacte de la colonne de contenu
+// (max-w-5xl). La bande n'est volontairement PAS en pleine largeur : sur un
+// ecran large, une image de 1024 px etiree serait floue. Contenue, elle reste
+// a sa taille native quelle que soit la largeur de l'ecran.
+const PRESTATIONS = ['ciel-etoile', 'ppf', 'covering', 'polish-ceramique', 'nettoyage-chassis'];
+
+const tachesPrestations = PRESTATIONS.flatMap(id => [
+    {
+        input: path.join(IMAGES_DIR, 'prestations-src', `${id}.png`),
+        output: path.join(IMAGES_DIR, 'prestations', `${id}.avif`),
+        width: 1024, format: 'avif', quality: 50,
+        label: `prestations-src/${id}.png → prestations/${id}.avif`
+    },
+    {
+        input: path.join(IMAGES_DIR, 'prestations-src', `${id}.png`),
+        output: path.join(IMAGES_DIR, 'prestations', `${id}.webp`),
+        width: 1024, format: 'webp', quality: 68,
+        label: `prestations-src/${id}.png → prestations/${id}.webp (repli)`
+    }
+]);
+
 const tasks = [
     {
         input: path.join(IMAGES_DIR, 'MB-01.webp'),
@@ -94,9 +117,12 @@ async function optimizeImage(task) {
 
     if (task.format === 'webp') {
         pipeline.webp({ quality: task.quality });
+    } else if (task.format === 'avif') {
+        pipeline.avif({ quality: task.quality, effort: 4 });
     }
 
     const buffer = await pipeline.toBuffer();
+    fs.mkdirSync(path.dirname(task.output), { recursive: true });
     fs.writeFileSync(task.output, buffer);
 
     const after = fs.statSync(task.output).size;
@@ -109,8 +135,18 @@ async function optimizeImage(task) {
 
 (async () => {
     console.log('🖼️  Optimisation des images — Clean Cars Wash\n');
-    for (const task of tasks) {
+    let ignorees = 0;
+    // Une source absente ne doit plus arreter le script. Plusieurs sources
+    // historiques (MB-01.webp, hero-bg-raw.jpg) ne sont pas dans le depot : la
+    // premiere levait une ENOENT qui tuait tout le reste, donc les taches
+    // suivantes ne s'executaient jamais.
+    for (const task of [...tasks, ...tachesPrestations]) {
+        if (!fs.existsSync(task.input)) {
+            console.log(`⏭️  ${task.label} — source absente, ignoree.`);
+            ignorees++;
+            continue;
+        }
         await optimizeImage(task);
     }
-    console.log('\n🚀 Toutes les images ont été optimisées.');
+    console.log(`\n🚀 Images optimisées.${ignorees ? ` ${ignorees} tâche(s) ignorée(s), source absente.` : ''}`);
 })();
