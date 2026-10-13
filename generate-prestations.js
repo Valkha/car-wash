@@ -48,6 +48,10 @@ const T = {
         apartirde: 'À partir de', prixFixe: 'Prix fixe', ttc: 'CHF TTC',
         promoTitre: 'Offre d\'octobre', promoAu: 'jusqu\'au 31 octobre',
         promoTexte: n => `<strong class="text-white">&minus;20 % sur cette prestation</strong> jusqu'au 31 octobre 2026, pour les 100 premiers clients. Soit ${n} CHF TTC au lieu du tarif habituel. La remise est déduite du solde réglé sur place.`,
+        lieuTitre: 'Où se déroule la prestation', lieuSurtitre: 'Lieu',
+        lieuAtelierTitre: 'À notre atelier', lieuDomicileTitre: 'À votre domicile',
+        lieuAtelierSeul: 'Atelier uniquement',
+        immobilisationTitre: 'Votre véhicule reste immobilisé',
         devisTitre: 'Cette prestation se réserve sur devis',
         devisTexte: 'Elle ne passe pas par la réservation en ligne : chaque véhicule est différent et le tarif se confirme après examen. Appelez-nous, nous vous répondons directement.',
         appelerCta: 'Appeler pour un devis', whatsapp: 'Écrire sur WhatsApp',
@@ -68,6 +72,10 @@ const T = {
         apartirde: 'From', prixFixe: 'Fixed price', ttc: 'CHF incl. VAT',
         promoTitre: 'October offer', promoAu: 'until 31 October',
         promoTexte: n => `<strong class="text-white">20% off this service</strong> until 31 October 2026, for the first 100 customers. That is CHF ${n} incl. VAT instead of the usual rate. The discount comes off the balance settled on site.`,
+        lieuTitre: 'Where the work is done', lieuSurtitre: 'Location',
+        lieuAtelierTitre: 'At our workshop', lieuDomicileTitre: 'At your place',
+        lieuAtelierSeul: 'Workshop only',
+        immobilisationTitre: 'Your vehicle stays off the road',
         devisTitre: 'This service is quoted, not booked online',
         devisTexte: 'It does not go through online booking: every vehicle differs and the price is confirmed after an inspection. Call us and we answer directly.',
         appelerCta: 'Call for a quote', whatsapp: 'Message on WhatsApp',
@@ -106,6 +114,37 @@ ${s.items.map(([titre, texte]) => `                <div class="premium-card roun
                 </div>`).join('\n')}
             </div>
         </section>`).join('\n');
+
+    // Immobilisation : avertissement place haut, juste sous le prix, parce que
+    // c'est une contrainte que le client doit connaitre AVANT de s'engager.
+    const blocImmobilisation = d.immobilisation ? `
+        <section class="pb-10">
+            <div class="premium-card rounded-2xl p-6 md:p-8 flex items-start gap-4" style="border-color:rgba(249,115,22,.4);">
+                <svg class="w-6 h-6 shrink-0 mt-0.5" style="color:#f97316;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <div>
+                    <h2 class="text-white font-display font-bold uppercase tracking-wider text-sm mb-2">${t.immobilisationTitre}</h2>
+                    <p class="text-gray-400 font-light text-sm leading-relaxed">${d.immobilisation}</p>
+                </div>
+            </div>
+        </section>` : '';
+
+    const blocLieu = `
+        <section class="pb-14 md:pb-20">
+            <p class="section-index mb-3"><em>${String(d.sections.length + 1).padStart(2, '0')}</em>${t.lieuSurtitre}</p>
+            <h2 class="text-2xl md:text-4xl font-display font-bold text-white uppercase tracking-tight leading-[0.95] mb-8">${t.lieuTitre}</h2>
+            <div class="grid gap-6 md:grid-cols-2">
+                <div class="premium-card rounded-2xl p-6 md:p-8">
+                    <h3 class="text-white font-display font-bold uppercase tracking-wider text-sm mb-2">${t.lieuAtelierTitre}</h3>
+                    <p class="text-gray-400 font-light text-sm leading-relaxed">${d.lieuAtelier}</p>
+                </div>
+${d.lieuDomicile ? `                <div class="premium-card rounded-2xl p-6 md:p-8" style="border-color:rgba(212,175,55,.3);">
+                    <h3 class="text-white font-display font-bold uppercase tracking-wider text-sm mb-2">${t.lieuDomicileTitre}</h3>
+                    <p class="text-gray-400 font-light text-sm leading-relaxed">${d.lieuDomicile}</p>
+                </div>` : `                <div class="premium-card rounded-2xl p-6 md:p-8 flex items-center" style="opacity:.55;">
+                    <p class="text-gray-400 font-light text-sm leading-relaxed"><strong class="text-gray-300">${t.lieuAtelierSeul}.</strong></p>
+                </div>`}
+            </div>
+        </section>`;
 
     const blocPromo = PROMO ? `
         <!-- ${PROMO.marqueur} — bloc daté, retiré seul le ${PROMO.jusquAu} à minuit. -->
@@ -262,8 +301,9 @@ ${s.items.map(([titre, texte]) => `                <div class="premium-card roun
                 <span class="text-gray-400 text-sm">${t.ttc}</span>
             </p>
         </section>
-${blocPromo}
+${blocImmobilisation}${blocPromo}
 ${sections}
+${blocLieu}
 
         <section class="pb-16 md:pb-24">
             <div class="premium-card rounded-3xl p-8 md:p-12">
