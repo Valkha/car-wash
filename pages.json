@@ -131,7 +131,7 @@
     "gabarit": "commercial",
     "fr": {
       "titre": "Lavage et detailing auto en atelier à Genève | Clean Cars Wash",
-      "description": "Notre atelier à Genève (Chemin des Vergers) : polish céramique, PPF, covering, ciel étoilé, nettoyage châssis sur pont, et tous nos packs au garage. Réservation en ligne.",
+      "description": "Notre atelier à Genève (Chemin des Vergers) : polish céramique, PPF, covering, ciel étoilé, nettoyage châssis, et tous nos packs au garage. Réservation en ligne.",
       "h1": "Lavage et detailing auto en atelier à Genève",
       "accroche": "Un atelier équipé pour les soins les plus poussés.",
       "intro": "Pour les prestations profondes, votre véhicule est pris en charge dans notre atelier, Chemin des Vergers à Genève. Certaines prestations ne peuvent se faire qu'ici ; tous nos packs y sont aussi disponibles.",
@@ -139,7 +139,7 @@
     },
     "en": {
       "titre": "Car wash and detailing in our Geneva workshop | Clean Cars Wash",
-      "description": "Our workshop in Geneva (Chemin des Vergers): ceramic polish, PPF, wrapping, starlight headliner, chassis cleaning on a lift, and all our packs at the garage. Online booking.",
+      "description": "Our workshop in Geneva (Chemin des Vergers): ceramic polish, PPF, wrapping, starlight headliner, chassis cleaning, and all our packs at the garage. Online booking.",
       "h1": "Car wash and detailing in our Geneva workshop",
       "accroche": "A workshop equipped for the most thorough care.",
       "intro": "For deep treatments, your vehicle is handled in our workshop, Chemin des Vergers in Geneva. Some services can only be carried out here; all our packs are available here too.",
@@ -149,13 +149,13 @@
       { "type": "cartes", "colonnes": 3,
         "fr": { "label": "Ce que vous y gagnez", "titre": "Ce que l’atelier permet",
           "cartes": [
-            { "titre": "Le pont élévateur", "texte": "Le seul moyen d'atteindre tout le dessous de caisse : c'est pourquoi le nettoyage châssis & moteur se fait exclusivement à l'atelier." },
+            { "titre": "Le châssis et le moteur", "texte": "Le nettoyage châssis & moteur se fait exclusivement à l'atelier, jamais à domicile." },
             { "titre": "Un environnement sans poussière", "texte": "La pose de film (PPF) et le covering l'exigent : ces prestations se font exclusivement à l'atelier." },
             { "titre": "Le temps qu’il faut", "texte": "Ciel étoilé, PPF, covering ou polish : le véhicule reste à l'atelier pendant toute l'intervention, la durée réelle est indiquée sur chaque page." }
           ] },
         "en": { "label": "What you gain", "titre": "What the workshop makes possible",
           "cartes": [
-            { "titre": "The lift", "texte": "The only way to reach the whole underbody: that is why chassis & engine cleaning is carried out in the workshop only." },
+            { "titre": "Chassis and engine", "texte": "Chassis & engine cleaning is carried out in the workshop only, never at your place." },
             { "titre": "A dust-free environment", "texte": "Film application (PPF) and wrapping require it: these services are carried out in the workshop only." },
             { "titre": "The time it takes", "texte": "Starlight headliner, PPF, wrapping or polish: the vehicle stays in the workshop throughout, and the real duration is stated on each page." }
           ] } },

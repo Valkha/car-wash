@@ -31,7 +31,7 @@
   ],
   "combos": [
     {
-      "id": "excellence", "prix": "228.00", "prixSepare": "257.30", "badge": null,
+      "id": "excellence", "prix": "228.00", "prixSepare": "257.25", "badge": null,
       "sumup": {
         "home":   { "service": "63e72870-0cc7-4110-9573-f55f999a4530", "variant": "3338d0c4-60a1-4bfd-b059-814b3629ba79" },
         "garage": { "service": "5c61248f-5fdc-4e12-8651-db94704cd654", "variant": "17fdc0d6-e253-4f85-af78-d514f6ba6675" }
@@ -51,14 +51,14 @@
   ],
   "abonnements": [
     { "id": "argent", "badge": null,
-      "fr": { "nom": "Argent", "inclus": ["Lavage intérieur + extérieur", "Aspirateur complet", "Vitres intérieures"] },
-      "en": { "nom": "Silver", "inclus": ["Interior + exterior wash", "Full vacuum", "Interior windows"] } },
-    { "id": "or", "badge": { "fr": "Populaire", "en": "Popular" },
-      "fr": { "nom": "Or", "inclus": ["Tout le Pack Argent", "Shampoing sièges", "Cire protectrice", "Désodorisant premium"] },
-      "en": { "nom": "Gold", "inclus": ["Everything in Silver", "Seat shampooing", "Protective wax", "Premium air freshener"] } },
+      "fr": { "nom": "Argent", "inclus": ["Lavage manuel extérieur", "Aspiration habitacle & coffre", "Nettoyage des vitres", "Séchage microfibre"] },
+      "en": { "nom": "Silver", "inclus": ["Manual exterior wash", "Cabin & trunk vacuum", "Window cleaning", "Microfiber drying"] } },
+    { "id": "or", "badge": null,
+      "fr": { "nom": "Or", "inclus": ["Inclus le Pack Argent", "Shampoing sièges & tapis", "Rénovation plastiques", "Nettoyage jantes & pneus", "Finition parfumée"] },
+      "en": { "nom": "Gold", "inclus": ["Includes Silver Pack", "Seat & carpet shampoo", "Plastic renovation", "Rim & tire cleaning", "Scented finish"] } },
     { "id": "diamant", "badge": null,
-      "fr": { "nom": "Diamant", "inclus": ["Tout le Pack Or", "Traitement cuir / plastiques", "Prise en charge & restitution", "Rapport photos avant/après"] },
-      "en": { "nom": "Diamond", "inclus": ["Everything in Gold", "Leather / plastic treatment", "Pick-up & delivery", "Before/after photo report"] } }
+      "fr": { "nom": "Diamant", "inclus": ["Inclus le Pack Or", "Cire premium déperlante", "Soin cuir ou Alcantara", "Traitement anti-odeur", "Finitions ultra-précises"] },
+      "en": { "nom": "Diamond", "inclus": ["Includes Gold Pack", "Premium hydrophobic wax", "Leather or Alcantara care", "Anti-odor treatment", "Ultra-precise finishing"] } }
   ],
   "supplements": {
     "fr": [

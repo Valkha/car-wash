@@ -107,7 +107,7 @@
         "titre": "Lavage à domicile ou en atelier : avantages et limites de chacun",
         "description": "À domicile, vous ne vous déplacez pas ; en atelier, tout est possible. Ce que chaque option permet, ce qu'elle demande, et comment choisir.",
         "corps": [
-          { "p": "<strong>Les deux donnent le même résultat sur nos formules d'entretien : le choix dépend de votre journée et de la prestation.</strong> À domicile, vous ne bougez pas ; à l'atelier, toutes nos prestations sont possibles, y compris celles qui demandent un pont ou un environnement sans poussière." },
+          { "p": "<strong>Les deux donnent le même résultat sur nos formules d'entretien : le choix dépend de votre journée et de la prestation.</strong> À domicile, vous ne bougez pas ; à l'atelier, toutes nos prestations sont possibles, y compris celles qui demandent un environnement sans poussière." },
           { "h2": "À domicile : ce que vous gagnez" },
           { "ul": [
             "Aucun déplacement : nous intervenons chez vous ou au travail, vous continuez votre journée.",
@@ -123,7 +123,7 @@
           { "encadre": { "titre": "Le service à domicile en détail", "texte": "Prix par zone, conditions d'intervention et prestations disponibles chez vous.", "bouton": ["Le lavage à domicile", "@a-domicile"] } },
           { "h2": "En atelier : ce que vous gagnez" },
           { "ul": [
-            "Le pont élévateur : indispensable pour le nettoyage complet du châssis.",
+            "Le nettoyage châssis & moteur : uniquement à l'atelier.",
             "Un environnement sans poussière : indispensable pour le PPF et le covering.",
             "Aucune condition à réunir chez vous : ni place, ni prise, ni point d'eau."
           ] },
@@ -140,7 +140,7 @@
         "titre": "Car wash at home or in the workshop: pros and limits of each",
         "description": "At home, you don't travel; in the workshop, everything is possible. What each option allows, what it requires, and how to choose.",
         "corps": [
-          { "p": "<strong>Both give the same result on our maintenance packages: the choice depends on your day and on the service.</strong> At home, you don't move; in the workshop, all our services are possible, including those that need a lift or a dust-free environment." },
+          { "p": "<strong>Both give the same result on our maintenance packages: the choice depends on your day and on the service.</strong> At home, you don't move; in the workshop, all our services are possible, including those that need a dust-free environment." },
           { "h2": "At home: what you gain" },
           { "ul": [
             "No travel: we work at your home or office, you carry on with your day.",
@@ -156,7 +156,7 @@
           { "encadre": { "titre": "The at-home service in detail", "texte": "Prices by zone, requirements and services available at your place.", "bouton": ["Car wash at home", "@a-domicile"] } },
           { "h2": "In the workshop: what you gain" },
           { "ul": [
-            "The lift: essential for a complete chassis clean.",
+            "Chassis & engine cleaning: workshop only.",
             "A dust-free environment: essential for PPF and wrapping.",
             "Nothing to provide at your place: no parking space, outlet or water point."
           ] },
@@ -187,7 +187,7 @@
             "<strong>Entre les roues :</strong> passages de roue et arches, là où la corrosion commence toujours."
           ] },
           { "h2": "Pourquoi à l'atelier" },
-          { "p": "Le pont élévateur est le seul moyen d'atteindre le dessous de caisse en entier. C'est pourquoi cette prestation se fait exclusivement dans notre <a href=\"@atelier\" data-cta>atelier à Genève</a>, et jamais à domicile." },
+          { "p": "Cette prestation se fait exclusivement dans notre <a href=\"@atelier\" data-cta>atelier à Genève</a>, et jamais à domicile." },
           { "encadre": { "titre": "Réservez avant votre contrôle", "texte": "Créneau de 2 heures, prix fixe, véhicule rendu le jour même.", "bouton": ["Réserver le nettoyage châssis", "@nettoyage-chassis"] } },
           { "h2": "Quand le réserver" },
           { "p": "Dans les jours qui précèdent votre rendez-vous de contrôle, pour présenter un véhicule propre. Vous réservez votre créneau en ligne et réglez un acompte de 30 % ; le solde est réglé sur place." },
@@ -206,7 +206,7 @@
             "<strong>Between the wheels:</strong> wheel wells and arches, where corrosion always starts."
           ] },
           { "h2": "Why in the workshop" },
-          { "p": "The lift is the only way to reach the whole underbody. That is why this service is carried out exclusively in our <a href=\"@atelier\" data-cta>workshop in Geneva</a>, never at home." },
+          { "p": "This service is carried out exclusively in our <a href=\"@atelier\" data-cta>workshop in Geneva</a>, never at home." },
           { "encadre": { "titre": "Book before your inspection", "texte": "2-hour slot, fixed price, vehicle returned the same day.", "bouton": ["Book the chassis cleaning", "@nettoyage-chassis"] } },
           { "h2": "When to book it" },
           { "p": "In the days before your inspection appointment, to present a clean vehicle. You book your slot online and pay a 30% deposit; the balance is settled on site." },

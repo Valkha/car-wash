@@ -558,7 +558,7 @@
       ],
       "duree": "Comptez environ 2 heures. Le véhicule vous est rendu dans la foulée. Parfait avant la visite technique : un dessous propre se contrôle plus vite et ne masque aucun défaut.",
       "motsClesVilles": [],
-      "lieuAtelier": "Dans notre atelier à Genève, sur pont. Le pont est indispensable : c'est le seul moyen d'atteindre le dessous de caisse en entier, et c'est pourquoi cette prestation ne se fait pas à domicile.",
+      "lieuAtelier": "Dans notre atelier à Genève. Cette prestation se fait uniquement à l'atelier, jamais à domicile.",
       "lieuDomicile": null,
       "immobilisation": null,
       "resume": "Châssis, compartiment moteur et passages de roue. Parfait avant la visite technique."
@@ -593,7 +593,7 @@
       ],
       "duree": "Allow around 2 hours. The vehicle is handed straight back. Ideal before the inspection: a clean underbody is quicker to check and hides no defect.",
       "motsClesVilles": [],
-      "lieuAtelier": "In our Geneva workshop, on a lift. The lift is essential: it is the only way to reach the whole underbody, which is why this service is not carried out at your place.",
+      "lieuAtelier": "In our Geneva workshop. This service is carried out in the workshop only, never at your place.",
       "lieuDomicile": null,
       "immobilisation": null,
       "resume": "Chassis, engine bay and wheel arches. Ideal before the vehicle inspection."

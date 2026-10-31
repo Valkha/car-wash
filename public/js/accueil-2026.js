@@ -254,7 +254,7 @@ class Component extends DCLogic {
       segAt: s.mode === 'atelier' ? { bg: '#0a0a0a', fg: '#ffffff' } : { bg: 'transparent', fg: '#1A1A1A' },
       packs: packs,
       combos: [
-        { nom: 'Combo Excellence', compose: 'Pack Or + Pack Argent', prix: '228.00', separe: '257.30', eco: '29.30', badge: false },
+        { nom: 'Combo Excellence', compose: 'Pack Or + Pack Argent', prix: '228.00', separe: '257.25', eco: '29.25', badge: false },
         { nom: 'Combo Prestige', compose: 'Pack Diamant + Pack Argent', prix: '366.00', separe: '408.60', eco: '42.60', badge: true }
       ],
       prestations: [
@@ -262,7 +262,7 @@ class Component extends DCLogic {
         { nom: 'PPF', href: '/ppf.html', de: 'dès ', prix: '999', note: 'à l’atelier', img: '/images/accueil/ppf.webp' },
         { nom: 'Covering', href: '/covering.html', de: 'dès ', prix: '999', note: 'à l’atelier', img: '/images/accueil/covering.webp' },
         { nom: 'Ciel étoilé', href: '/ciel-etoile.html', de: 'dès ', prix: '499', note: 'à l’atelier', img: '/images/accueil/ciel-etoile.webp' },
-        { nom: 'Châssis & moteur', href: '/nettoyage-chassis.html', de: '', prix: '159.90', note: 'prix fixe, sur pont', img: '/images/accueil/nettoyage-chassis.webp' }
+        { nom: 'Châssis & moteur', href: '/nettoyage-chassis.html', de: '', prix: '159.90', note: 'prix fixe, à l’atelier', img: '/images/accueil/nettoyage-chassis.webp' }
       ],
       addr: this.addrVals(),
       q1: q1,
@@ -278,7 +278,7 @@ class Component extends DCLogic {
         { nom: 'Pack Diamant', pop: false, inclus: 'Tout le Pack Or · traitement cuir / plastiques · prise en charge & restitution · rapport photos avant/après' }
       ],
       faits: [
-        'Atelier équipé à Genève : pont élévateur, environnement sans poussière',
+        'Atelier à Genève, Chemin des Vergers : environnement sans poussière',
         'Prix TTC fixes, annoncés avant de réserver',
         'Aucun supplément grande voiture',
         'À domicile : déplacement offert dans tout le canton de Genève',
