@@ -133,3 +133,9 @@ main:not(.mq-accueil) .font-display.uppercase:not(.text-xs):not(.text-sm):not(.t
 #ccw-promo-bar{ display:none !important }
 main:not(.mq-accueil) .premium-card h2, main:not(.mq-accueil) a.premium-card h2{ font-size:22px !important; line-height:1.2 !important; letter-spacing:-.01em !important }
 .da-pastille__titre{ margin:0; font-family:Montserrat,sans-serif; font-weight:900; font-size:22px; line-height:1.1; color:#fff !important }
+
+/* Bascule Mensuel / Annuel (Abonnements) sur section claire : fond fonce plein, textes lisibles (contraste, audit 31.10.2026) */
+main:not(.mq-accueil) [role="tablist"].bg-charcoal-800\/60{ background:var(--da-noir) !important; border-color:var(--da-noir) !important }
+main:not(.mq-accueil) [role="tablist"] .tab-btn:not(.active-tab){ color:#E6E6E6 !important }
+main:not(.mq-accueil) [role="tablist"] .tab-btn:not(.active-tab) .text-gold-400{ color:#F2D675 !important }
+main:not(.mq-accueil) [role="tablist"] .tab-btn.active-tab .text-gold-400{ color:var(--da-noir) !important }

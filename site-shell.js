@@ -155,7 +155,7 @@ function carteConcours(langue) {
             <a class="da-pastille__cta" href="${urlReserver(langue)}">${esc(t.reserver)}</a>
             <a class="da-pastille__lien" href="${url('jeu-concours', langue)}">${esc(t.voir)}</a>
         </div>
-        <button class="da-pastille__btn" type="button" aria-expanded="false" aria-controls="ccw-concours-pop" data-b>
+        <button class="da-pastille__btn" type="button" aria-label="${esc(t.eb)} : ${esc(C.lot[langue])}" aria-expanded="false" aria-controls="ccw-concours-pop" data-b>
             <span class="da-pastille__ico">${ICO_CADEAU}</span>
             <span class="da-pastille__txt"><span class="da-pastille__eb">${esc(t.eb)}</span><span class="da-pastille__t">${esc(C.lot[langue])}</span><span class="da-pastille__s" data-s></span></span>
         </button>

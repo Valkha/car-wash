@@ -83,8 +83,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="image" href="assets/images/hero-bg-opt.webp" media="(min-width: 769px)" fetchpriority="high">
-    <link rel="preload" as="image" href="assets/images/hero-bg-mobile.webp" media="(max-width: 768px)" fetchpriority="high">
+    <link rel="preload" as="image" href="/images/accueil/hero-bg-opt.webp" media="(min-width: 769px)" fetchpriority="high">
+    <link rel="preload" as="image" href="/images/accueil/hero-bg-mobile.webp" media="(max-width: 768px)" fetchpriority="high">
 
     <script type="application/ld+json">
     {
@@ -269,7 +269,7 @@ window.matchMedia("(min-width: 1024px)").addEventListener("change",function(e){i
 
 
 <section id="top" style="position: relative; background: #0a0a0a; color: #ffffff; overflow: hidden">
-<img src="/images/accueil/hero-bg-opt.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .6">
+<picture><source media="(max-width: 768px)" srcset="/images/accueil/hero-bg-mobile.webp" width="768" height="960"><img src="/images/accueil/hero-bg-opt.webp" alt="" width="1280" height="1600" fetchpriority="high" decoding="async" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .6"></picture>
 <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,10,10,.96) 0%, rgba(10,10,10,.78) 42%, rgba(10,10,10,.15) 100%)"></div>
 <div aria-hidden="true" style="position: absolute; right: -6%; bottom: -14%; font-family: Montserrat, sans-serif; font-weight: 900; font-size: 30vw; line-height: .8; color: rgba(212,175,55,.07); letter-spacing: -.04em">CCW</div>
 <div style="position: relative; max-width: 1240px; margin: 0 auto; padding: clamp(32px, 6vw, 64px) 20px clamp(48px, 8vw, 96px); display: flex; flex-wrap: wrap; align-items: center; gap: clamp(32px, 5vw, 48px)">
@@ -518,9 +518,9 @@ Environ 3 h 30
 <span style="font-size: 14px; color: #BDBDBD; font-weight: 600">Le concours commence dans</span>
 <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px">
 <div style="background: #0a0a0a; border: 1px solid #2E2E2E; border-radius: 16px; padding: 16px 6px; text-align: center"><div style="font-family: Montserrat, sans-serif; font-weight: 900; font-size: 38px; color: #D4AF37; font-variant-numeric: tabular-nums">00</div><div style="font-size: 12px; color: #BDBDBD">jours</div></div>
-<div style="background: #0a0a0a; border: 1px solid #2E2E2E; border-radius: 16px; padding: 16px 6px; text-align: center"><div style="font-family: Montserrat, sans-serif; font-weight: 900; font-size: 38px; color: #D4AF37; font-variant-numeric: tabular-nums">06</div><div style="font-size: 12px; color: #BDBDBD">heures</div></div>
-<div style="background: #0a0a0a; border: 1px solid #2E2E2E; border-radius: 16px; padding: 16px 6px; text-align: center"><div style="font-family: Montserrat, sans-serif; font-weight: 900; font-size: 38px; color: #D4AF37; font-variant-numeric: tabular-nums">24</div><div style="font-size: 12px; color: #BDBDBD">min</div></div>
-<div style="background: #0a0a0a; border: 1px solid #2E2E2E; border-radius: 16px; padding: 16px 6px; text-align: center"><div style="font-family: Montserrat, sans-serif; font-weight: 900; font-size: 38px; color: #D4AF37; font-variant-numeric: tabular-nums">51</div><div style="font-size: 12px; color: #BDBDBD">s</div></div>
+<div style="background: #0a0a0a; border: 1px solid #2E2E2E; border-radius: 16px; padding: 16px 6px; text-align: center"><div style="font-family: Montserrat, sans-serif; font-weight: 900; font-size: 38px; color: #D4AF37; font-variant-numeric: tabular-nums">05</div><div style="font-size: 12px; color: #BDBDBD">heures</div></div>
+<div style="background: #0a0a0a; border: 1px solid #2E2E2E; border-radius: 16px; padding: 16px 6px; text-align: center"><div style="font-family: Montserrat, sans-serif; font-weight: 900; font-size: 38px; color: #D4AF37; font-variant-numeric: tabular-nums">54</div><div style="font-size: 12px; color: #BDBDBD">min</div></div>
+<div style="background: #0a0a0a; border: 1px solid #2E2E2E; border-radius: 16px; padding: 16px 6px; text-align: center"><div style="font-family: Montserrat, sans-serif; font-weight: 900; font-size: 38px; color: #D4AF37; font-variant-numeric: tabular-nums">40</div><div style="font-size: 12px; color: #BDBDBD">s</div></div>
 </div>
 <div style="border-top: 1px solid #2E2E2E; padding-top: 16px; display: flex; flex-direction: column; gap: 6px; font-size: 15px; color: #DADADA">
 <div><strong style="color: #ffffff">Lot :</strong> iPhone 18 Pro Max neuf, 256 Go, violet</div>
@@ -624,12 +624,12 @@ Environ 3 h 30
 <div class="zoom" style="border-radius: 18px; overflow: hidden; background: #000000"><img src="/images/accueil/avant-apres-carrosserie.webp" alt="Avant / après : lavage extérieur, avant d’une petite citadine blanche couvert d’insectes puis propre" width="800" height="866" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 3 / 4; object-fit: contain; display: block"></div>
 <div class="zoom" style="border-radius: 18px; overflow: hidden; background: #000000"><img src="/images/accueil/avant-apres-portiere.webp" alt="Avant / après : panneau de porte intérieur en cuir, taches et traces retirées" width="800" height="1200" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 3 / 4; object-fit: contain; display: block"></div>
 <div style="border-radius: 18px; overflow: hidden; background: #000000"><video src="/images/accueil/avant-apres-video.mp4" poster="/images/accueil/avant-apres-video-poster.webp" controls="" muted="" loop="" playsinline="" preload="none" width="720" height="900" aria-label="Vidéo avant / après : nettoyage d’un coffre, moquette débarrassée de la poussière et des débris" style="width: 100%; aspect-ratio: 3 / 4; object-fit: contain; display: block"></video></div>
-<div class="zoom" style="border-radius: 18px; overflow: hidden"><img src="/images/accueil/1.jpeg" alt="Mercedes Classe G blanche après lavage" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block"></div>
-<div class="zoom" style="border-radius: 18px; overflow: hidden"><img src="/images/accueil/2.jpeg" alt="Véhicule client après prestation" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block"></div>
-<div class="zoom" style="border-radius: 18px; overflow: hidden"><img src="/images/accueil/3.jpeg" alt="Véhicule client après prestation" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block"></div>
-<div class="zoom" style="border-radius: 18px; overflow: hidden"><img src="/images/accueil/4.jpeg" alt="Véhicule client après prestation" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block"></div>
-<div class="zoom" style="border-radius: 18px; overflow: hidden"><img src="/images/accueil/5.jpeg" alt="Véhicule client après prestation" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block"></div>
-<div class="zoom" style="border-radius: 18px; overflow: hidden"><img src="/images/accueil/6.jpeg" alt="Véhicule client après prestation" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block"></div>
+<div class="zoom" style="border-radius: 18px; overflow: hidden"><img loading="lazy" decoding="async" src="/images/accueil/1.jpeg" alt="Mercedes Classe G blanche après lavage" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block"></div>
+<div class="zoom" style="border-radius: 18px; overflow: hidden"><img loading="lazy" decoding="async" src="/images/accueil/2.jpeg" alt="Véhicule client après prestation" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block"></div>
+<div class="zoom" style="border-radius: 18px; overflow: hidden"><img loading="lazy" decoding="async" src="/images/accueil/3.jpeg" alt="Véhicule client après prestation" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block"></div>
+<div class="zoom" style="border-radius: 18px; overflow: hidden"><img loading="lazy" decoding="async" src="/images/accueil/4.jpeg" alt="Véhicule client après prestation" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block"></div>
+<div class="zoom" style="border-radius: 18px; overflow: hidden"><img loading="lazy" decoding="async" src="/images/accueil/5.jpeg" alt="Véhicule client après prestation" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block"></div>
+<div class="zoom" style="border-radius: 18px; overflow: hidden"><img loading="lazy" decoding="async" src="/images/accueil/6.jpeg" alt="Véhicule client après prestation" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block"></div>
 </div>
 </div>
 </section>
@@ -643,7 +643,7 @@ Environ 3 h 30
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 22px">
 <a class="zoom lift" href="/atelier.html" style="position: relative; min-height: 460px; border-radius: 28px; overflow: hidden; color: #ffffff; text-decoration: none; display: flex; align-items: flex-end">
-<img src="/images/accueil/VW-8R-opt.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+<img loading="lazy" decoding="async" src="/images/accueil/VW-8R-opt.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
 <span style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,10,0) 25%, rgba(10,10,10,.92) 100%)"></span>
 <span style="position: relative; padding: 32px; display: flex; flex-direction: column; gap: 10px">
 <span style="align-self: flex-start; background: #D4AF37; color: #0a0a0a; border-radius: 999px; padding: 5px 12px; font-size: 12px; font-weight: 900">NOTRE ATELIER · CHEMIN DES VERGERS, GENÈVE</span>
@@ -653,7 +653,7 @@ Environ 3 h 30
 </span>
 </a>
 <a class="zoom lift" href="/a-domicile.html" style="position: relative; min-height: 460px; border-radius: 28px; overflow: hidden; color: #ffffff; text-decoration: none; display: flex; align-items: flex-end">
-<img src="/images/accueil/MB-01-opt.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+<img loading="lazy" decoding="async" src="/images/accueil/MB-01-opt.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
 <span style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,10,0) 25%, rgba(10,10,10,.92) 100%)"></span>
 <span style="position: relative; padding: 32px; display: flex; flex-direction: column; gap: 10px">
 <span style="align-self: flex-start; background: #ffffff; color: #0a0a0a; border-radius: 999px; padding: 5px 12px; font-size: 12px; font-weight: 900">DÉPLACEMENT OFFERT À GENÈVE</span>
@@ -706,7 +706,7 @@ Environ 3 h 30
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px">
 
 <a class="zoom lift" href="/polish-ceramique.html" style="background: #141414; border: 1px solid #262626; border-radius: 20px; overflow: hidden; text-decoration: none; color: #ffffff; display: flex; flex-direction: column">
-<span style="display: block; overflow: hidden"><img src="/images/accueil/polish-ceramique.webp" alt="" style="width: 100%; height: 140px; object-fit: cover; display: block"></span>
+<span style="display: block; overflow: hidden"><img loading="lazy" decoding="async" src="/images/accueil/polish-ceramique.webp" alt="" style="width: 100%; height: 140px; object-fit: cover; display: block"></span>
 <span style="padding: 18px; display: flex; flex-direction: column; gap: 6px">
 <span style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 18px">Polish céramique</span>
 <span style="font-size: 14px; color: #BDBDBD">dès <strong style="color: #D4AF37; font-size: 16px">999 CHF</strong> · sur devis</span>
@@ -714,7 +714,7 @@ Environ 3 h 30
 </a>
 
 <a class="zoom lift" href="/ppf.html" style="background: #141414; border: 1px solid #262626; border-radius: 20px; overflow: hidden; text-decoration: none; color: #ffffff; display: flex; flex-direction: column">
-<span style="display: block; overflow: hidden"><img src="/images/accueil/ppf.webp" alt="" style="width: 100%; height: 140px; object-fit: cover; display: block"></span>
+<span style="display: block; overflow: hidden"><img loading="lazy" decoding="async" src="/images/accueil/ppf.webp" alt="" style="width: 100%; height: 140px; object-fit: cover; display: block"></span>
 <span style="padding: 18px; display: flex; flex-direction: column; gap: 6px">
 <span style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 18px">PPF</span>
 <span style="font-size: 14px; color: #BDBDBD">dès <strong style="color: #D4AF37; font-size: 16px">999 CHF</strong> · à l’atelier</span>
@@ -722,7 +722,7 @@ Environ 3 h 30
 </a>
 
 <a class="zoom lift" href="/covering.html" style="background: #141414; border: 1px solid #262626; border-radius: 20px; overflow: hidden; text-decoration: none; color: #ffffff; display: flex; flex-direction: column">
-<span style="display: block; overflow: hidden"><img src="/images/accueil/covering.webp" alt="" style="width: 100%; height: 140px; object-fit: cover; display: block"></span>
+<span style="display: block; overflow: hidden"><img loading="lazy" decoding="async" src="/images/accueil/covering.webp" alt="" style="width: 100%; height: 140px; object-fit: cover; display: block"></span>
 <span style="padding: 18px; display: flex; flex-direction: column; gap: 6px">
 <span style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 18px">Covering</span>
 <span style="font-size: 14px; color: #BDBDBD">dès <strong style="color: #D4AF37; font-size: 16px">999 CHF</strong> · à l’atelier</span>
@@ -730,7 +730,7 @@ Environ 3 h 30
 </a>
 
 <a class="zoom lift" href="/ciel-etoile.html" style="background: #141414; border: 1px solid #262626; border-radius: 20px; overflow: hidden; text-decoration: none; color: #ffffff; display: flex; flex-direction: column">
-<span style="display: block; overflow: hidden"><img src="/images/accueil/ciel-etoile.webp" alt="" style="width: 100%; height: 140px; object-fit: cover; display: block"></span>
+<span style="display: block; overflow: hidden"><img loading="lazy" decoding="async" src="/images/accueil/ciel-etoile.webp" alt="" style="width: 100%; height: 140px; object-fit: cover; display: block"></span>
 <span style="padding: 18px; display: flex; flex-direction: column; gap: 6px">
 <span style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 18px">Ciel étoilé</span>
 <span style="font-size: 14px; color: #BDBDBD">dès <strong style="color: #D4AF37; font-size: 16px">499 CHF</strong> · à l’atelier</span>
@@ -738,7 +738,7 @@ Environ 3 h 30
 </a>
 
 <a class="zoom lift" href="/nettoyage-chassis.html" style="background: #141414; border: 1px solid #262626; border-radius: 20px; overflow: hidden; text-decoration: none; color: #ffffff; display: flex; flex-direction: column">
-<span style="display: block; overflow: hidden"><img src="/images/accueil/nettoyage-chassis.webp" alt="" style="width: 100%; height: 140px; object-fit: cover; display: block"></span>
+<span style="display: block; overflow: hidden"><img loading="lazy" decoding="async" src="/images/accueil/nettoyage-chassis.webp" alt="" style="width: 100%; height: 140px; object-fit: cover; display: block"></span>
 <span style="padding: 18px; display: flex; flex-direction: column; gap: 6px">
 <span style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 18px">Châssis &amp; moteur</span>
 <span style="font-size: 14px; color: #BDBDBD"><strong style="color: #D4AF37; font-size: 16px">159.90 CHF</strong> · prix fixe, à l’atelier</span>
@@ -955,7 +955,7 @@ Environ 3 h 30
 
 
 <section id="top" style="position: relative; background: #0a0a0a; color: #ffffff; overflow: hidden">
-<img src="/images/accueil/hero-bg-opt.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .6">
+<picture><source media="(max-width: 768px)" srcset="/images/accueil/hero-bg-mobile.webp" width="768" height="960"><img src="/images/accueil/hero-bg-opt.webp" alt="" width="1280" height="1600" fetchpriority="high" decoding="async" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .6"></picture>
 <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,10,10,.96) 0%, rgba(10,10,10,.78) 42%, rgba(10,10,10,.15) 100%)"></div>
 <div aria-hidden="true" style="position: absolute; right: -6%; bottom: -14%; font-family: Montserrat, sans-serif; font-weight: 900; font-size: 30vw; line-height: .8; color: rgba(212,175,55,.07); letter-spacing: -.04em">CCW</div>
 <div style="position: relative; max-width: 1240px; margin: 0 auto; padding: clamp(32px, 6vw, 64px) 20px clamp(48px, 8vw, 96px); display: flex; flex-wrap: wrap; align-items: center; gap: clamp(32px, 5vw, 48px)">
@@ -1189,12 +1189,12 @@ Environ {{p.duree}}
 <div class="zoom" style="border-radius: 18px; overflow: hidden; background: #000000"><img src="/images/accueil/avant-apres-carrosserie.webp" alt="Avant / après : lavage extérieur, avant d’une petite citadine blanche couvert d’insectes puis propre" width="800" height="866" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 3 / 4; object-fit: contain; display: block"></div>
 <div class="zoom" style="border-radius: 18px; overflow: hidden; background: #000000"><img src="/images/accueil/avant-apres-portiere.webp" alt="Avant / après : panneau de porte intérieur en cuir, taches et traces retirées" width="800" height="1200" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 3 / 4; object-fit: contain; display: block"></div>
 <div style="border-radius: 18px; overflow: hidden; background: #000000"><video src="/images/accueil/avant-apres-video.mp4" poster="/images/accueil/avant-apres-video-poster.webp" controls muted loop playsinline preload="none" width="720" height="900" aria-label="Vidéo avant / après : nettoyage d’un coffre, moquette débarrassée de la poussière et des débris" style="width: 100%; aspect-ratio: 3 / 4; object-fit: contain; display: block"></video></div>
-<div class="zoom" style="border-radius: 18px; overflow: hidden"><img src="/images/accueil/1.jpeg" alt="Mercedes Classe G blanche après lavage" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block"></div>
-<div class="zoom" style="border-radius: 18px; overflow: hidden"><img src="/images/accueil/2.jpeg" alt="Véhicule client après prestation" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block"></div>
-<div class="zoom" style="border-radius: 18px; overflow: hidden"><img src="/images/accueil/3.jpeg" alt="Véhicule client après prestation" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block"></div>
-<div class="zoom" style="border-radius: 18px; overflow: hidden"><img src="/images/accueil/4.jpeg" alt="Véhicule client après prestation" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block"></div>
-<div class="zoom" style="border-radius: 18px; overflow: hidden"><img src="/images/accueil/5.jpeg" alt="Véhicule client après prestation" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block"></div>
-<div class="zoom" style="border-radius: 18px; overflow: hidden"><img src="/images/accueil/6.jpeg" alt="Véhicule client après prestation" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block"></div>
+<div class="zoom" style="border-radius: 18px; overflow: hidden"><img loading="lazy" decoding="async" src="/images/accueil/1.jpeg" alt="Mercedes Classe G blanche après lavage" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block"></div>
+<div class="zoom" style="border-radius: 18px; overflow: hidden"><img loading="lazy" decoding="async" src="/images/accueil/2.jpeg" alt="Véhicule client après prestation" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block"></div>
+<div class="zoom" style="border-radius: 18px; overflow: hidden"><img loading="lazy" decoding="async" src="/images/accueil/3.jpeg" alt="Véhicule client après prestation" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block"></div>
+<div class="zoom" style="border-radius: 18px; overflow: hidden"><img loading="lazy" decoding="async" src="/images/accueil/4.jpeg" alt="Véhicule client après prestation" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block"></div>
+<div class="zoom" style="border-radius: 18px; overflow: hidden"><img loading="lazy" decoding="async" src="/images/accueil/5.jpeg" alt="Véhicule client après prestation" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block"></div>
+<div class="zoom" style="border-radius: 18px; overflow: hidden"><img loading="lazy" decoding="async" src="/images/accueil/6.jpeg" alt="Véhicule client après prestation" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block"></div>
 </div>
 </div>
 </section>
@@ -1208,7 +1208,7 @@ Environ {{p.duree}}
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 22px">
 <a class="zoom lift" href="/atelier.html" style="position: relative; min-height: 460px; border-radius: 28px; overflow: hidden; color: #ffffff; text-decoration: none; display: flex; align-items: flex-end">
-<img src="/images/accueil/VW-8R-opt.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+<img loading="lazy" decoding="async" src="/images/accueil/VW-8R-opt.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
 <span style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,10,0) 25%, rgba(10,10,10,.92) 100%)"></span>
 <span style="position: relative; padding: 32px; display: flex; flex-direction: column; gap: 10px">
 <span style="align-self: flex-start; background: #D4AF37; color: #0a0a0a; border-radius: 999px; padding: 5px 12px; font-size: 12px; font-weight: 900">NOTRE ATELIER · CHEMIN DES VERGERS, GENÈVE</span>
@@ -1218,7 +1218,7 @@ Environ {{p.duree}}
 </span>
 </a>
 <a class="zoom lift" href="/a-domicile.html" style="position: relative; min-height: 460px; border-radius: 28px; overflow: hidden; color: #ffffff; text-decoration: none; display: flex; align-items: flex-end">
-<img src="/images/accueil/MB-01-opt.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+<img loading="lazy" decoding="async" src="/images/accueil/MB-01-opt.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
 <span style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,10,0) 25%, rgba(10,10,10,.92) 100%)"></span>
 <span style="position: relative; padding: 32px; display: flex; flex-direction: column; gap: 10px">
 <span style="align-self: flex-start; background: #ffffff; color: #0a0a0a; border-radius: 999px; padding: 5px 12px; font-size: 12px; font-weight: 900">DÉPLACEMENT OFFERT À GENÈVE</span>
@@ -1259,7 +1259,7 @@ Environ {{p.duree}}
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px">
 <sc-for list="{{prestations}}" as="s" hint-placeholder-count="5">
 <a class="zoom lift" href="{{s.href}}" style="background: #141414; border: 1px solid #262626; border-radius: 20px; overflow: hidden; text-decoration: none; color: #ffffff; display: flex; flex-direction: column">
-<span style="display: block; overflow: hidden"><img src="{{s.img}}" alt="" style="width: 100%; height: 140px; object-fit: cover; display: block"></span>
+<span style="display: block; overflow: hidden"><img loading="lazy" decoding="async" src="{{s.img}}" alt="" style="width: 100%; height: 140px; object-fit: cover; display: block"></span>
 <span style="padding: 18px; display: flex; flex-direction: column; gap: 6px">
 <span style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 18px">{{s.nom}}</span>
 <span style="font-size: 14px; color: #BDBDBD">{{s.de}}<strong style="color: #D4AF37; font-size: 16px">{{s.prix}} CHF</strong> · {{s.note}}</span>
@@ -1513,7 +1513,7 @@ Environ {{p.duree}}
             <a class="da-pastille__cta" href="/reserver.html">Réserver pour participer</a>
             <a class="da-pastille__lien" href="/jeu-concours.html">Voir le concours</a>
         </div>
-        <button class="da-pastille__btn" type="button" aria-expanded="false" aria-controls="ccw-concours-pop" data-b>
+        <button class="da-pastille__btn" type="button" aria-label="JEU-CONCOURS : iPhone 18 Pro Max" aria-expanded="false" aria-controls="ccw-concours-pop" data-b>
             <span class="da-pastille__ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"></rect><path d="M12 8v13M3 12h18M12 8S10 3 7.5 4.5 9 8 12 8zM12 8s2-5 4.5-3.5S15 8 12 8z"></path></svg></span>
             <span class="da-pastille__txt"><span class="da-pastille__eb">JEU-CONCOURS</span><span class="da-pastille__t">iPhone 18 Pro Max</span><span class="da-pastille__s" data-s></span></span>
         </button>
