@@ -63,11 +63,11 @@
   "supplements": {
     "fr": [
       ["Véhicule extrêmement sale", "74.60 CHF TTC de l'heure"],
-      ["Suppression de poils d'animaux", "49.90 CHF TTC"]
+      ["Suppression de poils d'animaux", "dès 49.90 CHF TTC"]
     ],
     "en": [
       ["Extremely dirty vehicle", "CHF 74.60 incl. VAT per hour"],
-      ["Pet hair removal", "CHF 49.90 incl. VAT"]
+      ["Pet hair removal", "from CHF 49.90 incl. VAT"]
     ]
   }
 }

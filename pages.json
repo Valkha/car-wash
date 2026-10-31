@@ -262,14 +262,14 @@
       { "type": "faq",
         "fr": { "label": "Questions pratiques", "titre": "Paiement & déroulement", "items": [
           ["Quels moyens de paiement acceptez-vous ?", "Un acompte de 30 % est requis en ligne lors de la réservation via notre lien SumUp sécurisé (carte bancaire, Apple Pay, Google Pay). Le solde est réglé directement à la fin de la prestation."],
-          ["Puis-je annuler ?", "Oui : l'annulation est gratuite jusqu'à 24 h avant le rendez-vous."],
-          ["Quels sont les suppléments éventuels ?", "Un supplément de 74.60 CHF TTC de l'heure s'applique pour les véhicules extrêmement sales. Nous proposons aussi la suppression de poils d'animaux (49.90 CHF TTC)."],
+          ["Puis-je annuler ?", "Oui. Jusqu'à 24 h avant le rendez-vous, l'annulation est sans frais : l'acompte est reporté sur une prochaine réservation. Moins de 24 h avant, il reste acquis."],
+          ["Quels sont les suppléments éventuels ?", "Un supplément de 74.60 CHF TTC de l'heure s'applique pour les véhicules extrêmement sales. Nous proposons aussi la suppression de poils d'animaux (dès 49.90 CHF TTC)."],
           ["Combien de temps faut-il attendre après un shampoing des sièges ?", "Comptez 4 à 6 heures de séchage minimum avant une utilisation intensive. En période estivale, le séchage est généralement plus rapide. Nous vous conseillons de laisser les fenêtres légèrement ouvertes pour faciliter l'évaporation."]
         ] },
         "en": { "label": "Practical questions", "titre": "Payment & how it works", "items": [
           ["What payment methods do you accept?", "A 30% deposit is required online at the time of booking via our secure SumUp link (credit card, Apple Pay, Google Pay). The balance is settled at the end of the service."],
-          ["Can I cancel?", "Yes: cancellation is free up to 24 hours before the appointment."],
-          ["Are there any additional fees?", "An additional charge of CHF 74.60 incl. VAT per hour applies for extremely dirty vehicles. We also offer pet hair removal (CHF 49.90 incl. VAT)."],
+          ["Can I cancel?", "Yes. Up to 24 hours before the appointment, cancelling costs nothing: the deposit is carried over to a future booking. Less than 24 hours before, it is kept."],
+          ["Are there any additional fees?", "An additional charge of CHF 74.60 incl. VAT per hour applies for extremely dirty vehicles. We also offer pet hair removal (from CHF 49.90 incl. VAT)."],
           ["How long should I wait after a seat shampoo?", "Allow a minimum of 4 to 6 hours of drying time before heavy use. In summer, drying is usually faster. We recommend leaving the windows slightly open to help ventilation."]
         ] } },
       { "type": "cta" }

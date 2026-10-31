@@ -108,8 +108,10 @@ function gardeInline() {
 }
 
 // Pastille du concours (DA 31.10.2026) : bouton rond fixe en bas a droite, qui
-// ouvre un encart (reserver, voir le concours, masquer). Visible pendant le
-// concours seulement (dates de site.json, simulation ?ccw-maintenant en local).
+// ouvre un encart (reserver, voir le concours, masquer). Visible des maintenant
+// en annonce (« Des le 1er novembre ») puis pendant le concours, retiree le
+// lendemain de la fin (dates de site.json, simulation ?ccw-maintenant en local).
+// data-debut et non data-promo-from : le garde-fou des dates la retirerait avant le debut.
 // Masquee pour la visite si on la ferme (sessionStorage, dans un try/catch).
 // Ses styles sont dans assets/css/da-2026.css.
 const ICO_CADEAU = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"></rect><path d="M12 8v13M3 12h18M12 8S10 3 7.5 4.5 9 8 12 8zM12 8s2-5 4.5-3.5S15 8 12 8z"></path></svg>';
@@ -117,17 +119,17 @@ const ICO_TEL = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" str
 const ICO_WA = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4A8.5 8.5 0 1 1 8 19.6z"></path><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1.2-1.4-2-1-1 .8c-1-.4-1.8-1.2-2.2-2.2l.8-1-1-2z"></path></svg>';
 
 const TXT_PASTILLE = {
-    fr: { eb: 'JEU-CONCOURS', ebPop: 'JEU-CONCOURS · NOVEMBRE', titre: `Un ${C.lot.fr} à gagner`, texte: 'Chaque prestation réalisée et payée du 1er au 30 novembre = 1 participation.',
+    fr: { eb: 'JEU-CONCOURS', ebPop: 'JEU-CONCOURS · NOVEMBRE', titre: `Un ${C.lot.fr} à gagner`, texte: 'Une prestation réalisée et payée du 1er au 30 novembre suffit pour participer (une participation par personne).',
         reserver: 'Réserver pour participer', voir: 'Voir le concours', masquer: 'Masquer l’offre', avant: 'Dès le 1er novembre', reste: 'Plus que ', commence: 'Commence dans ', fin: 'Fin dans ',
         appeler: 'Appeler', barre: `Réserver · dès ${'{PRIX}'} CHF` },
-    en: { eb: 'GIVEAWAY', ebPop: 'GIVEAWAY · NOVEMBER', titre: `Win an ${C.lot.en}`, texte: 'Every service carried out and paid for from 1 to 30 November = 1 entry.',
+    en: { eb: 'GIVEAWAY', ebPop: 'GIVEAWAY · NOVEMBER', titre: `Win an ${C.lot.en}`, texte: 'One service carried out and paid for between 1 and 30 November is all it takes (one entry per person).',
         reserver: 'Book to enter', voir: 'See the giveaway', masquer: 'Hide the offer', avant: 'From 1 November', reste: 'Only ', commence: 'Starts in ', fin: 'Ends in ',
         appeler: 'Call', barre: `Book · from CHF ${'{PRIX}'}` },
 };
 
 function scriptCarte(t) {
     return '<script>(function(){var d=document.getElementById("ccw-concours");if(!d)return;' + JS_MAINTENANT +
-        'var st=new Date(d.getAttribute("data-promo-from")+"T00:00:00"),en=new Date(d.getAttribute("data-promo-until")+"T23:59:59");' +
+        'var st=new Date(d.getAttribute("data-debut")+"T00:00:00"),en=new Date(d.getAttribute("data-promo-until")+"T23:59:59");' +
         'if(isNaN(st.getTime())||isNaN(en.getTime())||n>en){d.remove();return}' +
         'try{if(sessionStorage.getItem("ccwPastille"))return}catch(x){}' +
         'var dec=n.getTime()-Date.now(),pop=d.querySelector("[data-pop]"),b=d.querySelector("[data-b]"),s=d.querySelector("[data-s]"),cd=d.querySelector("[data-cd]");' +
@@ -143,7 +145,7 @@ function scriptCarte(t) {
 function carteConcours(langue) {
     const t = TXT_PASTILLE[langue];
     return `
-    <div id="ccw-concours" class="da-pastille" data-concours data-promo-from="${C.debut}" data-promo-until="${C.fin}" hidden>
+    <div id="ccw-concours" class="da-pastille" data-concours data-debut="${C.debut}" data-promo-until="${C.fin}" hidden>
         <div class="da-pastille__pop" id="ccw-concours-pop" role="dialog" aria-label="${esc(t.ebPop)}" data-pop hidden>
             <button class="da-pastille__x" type="button" aria-label="${esc(t.masquer)}" data-x>&times;</button>
             <span class="da-pastille__eb">${esc(t.ebPop)}</span>

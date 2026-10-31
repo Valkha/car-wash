@@ -197,8 +197,8 @@ class Component extends DCLogic {
     };
 
     const faqData = [
+      ['Comment se passe le paiement ?', 'Vous choisissez votre formule et le lieu, puis votre créneau, et vous réglez un acompte de 30 % en ligne, sécurisé par SumUp. Le solde se règle sur place. Jusqu’à 24 h avant le rendez-vous, vous pouvez annuler sans frais : l’acompte est reporté sur une prochaine réservation. Moins de 24 h avant, il reste acquis.'],
       ['Le déplacement est-il payant ?', 'Il est offert dans tout le canton de Genève. Sur Vaud, un forfait fixe s’ajoute selon le district : 39.90 CHF (Nyon, Morges, Ouest lausannois, Lausanne, Gros-de-Vaud) ou 59.90 CHF pour les autres districts. Il est annoncé avant de payer.'],
-      ['Comment se passe le paiement ?', 'Vous choisissez votre formule et le lieu, puis votre créneau, et vous réglez un acompte de 30 % en ligne, sécurisé par SumUp. Le solde se règle sur place. L’annulation est gratuite jusqu’à 24 h avant le rendez-vous.'],
       ['Comment participer au jeu-concours ?', 'Il suffit qu’une prestation soit réalisée et payée entre le 1er et le 30 novembre 2026 : vous êtes inscrit automatiquement, une participation par personne. Tirage au sort le 22 décembre.'],
       ['Quelle différence entre un polish et un traitement céramique ?', 'Le polish corrige la laque (micro-rayures, traces de lavage) ; la céramique la protège et fait perler l’eau. La céramique vient toujours après la correction : c’est ce que réunit le Pack Polish Céramique, dès 999 CHF TTC sur devis.'],
       ['Combien de temps le véhicule est-il immobilisé pour un polish céramique ?', 'Comptez une journée complète minimum, souvent davantage selon l’état de la laque. Le polish céramique se fait à l’atelier, ou chez vous dans un garage fermé : la céramique ne supporte ni la poussière ni la pluie pendant la prise.'],
@@ -230,11 +230,11 @@ class Component extends DCLogic {
         { nom: 'Amina D.', ini: 'AD', texte: 'Ma voiture était dans un état catastrophique et je l’ai récupérée impeccable, propre dans les moindres détails. En plus de la qualité du travail, j’ai apprécié le sérieux, la gentillesse et le professionnalisme de l’équipe. […]' }
       ],
       etapes: [
-        { n: '1', titre: 'Choisissez', texte: 'Votre formule et le lieu : chez vous, au travail ou à l’atelier.' },
+        { n: '1', titre: 'Choisissez', texte: 'Votre formule et le lieu : à l’atelier, chez vous ou au travail.' },
         { n: '2', titre: 'Réservez', texte: 'Votre créneau en ligne, avec un acompte sécurisé de 30 %.' },
-        { n: '3', titre: 'Récupérez', texte: 'Une voiture comme neuve, sans avoir bougé de chez vous.' }
+        { n: '3', titre: 'Récupérez', texte: 'Une voiture comme neuve, prête à repartir.' }
       ],
-      modeNote: 'Mêmes prix à domicile et à l’atelier. Déplacement offert à Genève, forfait fixe sur Vaud.',
+      modeNote: 'Mêmes prix à l’atelier et à domicile. À domicile : déplacement offert à Genève, forfait fixe sur Vaud. Deux suppléments seulement, annoncés avant de réserver : véhicule extrêmement sale (74.60 CHF de l’heure) et poils d’animaux (dès 49.90 CHF).',
       setDomicile: () => this.setState({ mode: 'domicile' }),
       setAtelier: () => this.setState({ mode: 'atelier' }),
       segDom: s.mode === 'domicile' ? { bg: '#0a0a0a', fg: '#ffffff' } : { bg: 'transparent', fg: '#1A1A1A' },
@@ -245,11 +245,11 @@ class Component extends DCLogic {
         { nom: 'Combo Prestige', compose: 'Pack Diamant + Pack Argent', prix: '366.00', separe: '408.60', eco: '42.60', badge: true }
       ],
       prestations: [
-        { nom: 'Polish céramique', href: '/polish-ceramique.html', prix: '999', note: 'sur devis', img: '/images/accueil/polish-ceramique.webp' },
-        { nom: 'PPF', href: '/ppf.html', prix: '999', note: 'sur devis', img: '/images/accueil/ppf.webp' },
-        { nom: 'Covering', href: '/covering.html', prix: '999', note: 'sur devis', img: '/images/accueil/covering.webp' },
-        { nom: 'Ciel étoilé', href: '/ciel-etoile.html', prix: '499', note: 'à l’atelier', img: '/images/accueil/ciel-etoile.webp' },
-        { nom: 'Châssis & moteur', href: '/nettoyage-chassis.html', prix: '159.90', note: 'sur pont', img: '/images/accueil/nettoyage-chassis.webp' }
+        { nom: 'Polish céramique', href: '/polish-ceramique.html', de: 'dès ', prix: '999', note: 'sur devis', img: '/images/accueil/polish-ceramique.webp' },
+        { nom: 'PPF', href: '/ppf.html', de: 'dès ', prix: '999', note: 'à l’atelier', img: '/images/accueil/ppf.webp' },
+        { nom: 'Covering', href: '/covering.html', de: 'dès ', prix: '999', note: 'à l’atelier', img: '/images/accueil/covering.webp' },
+        { nom: 'Ciel étoilé', href: '/ciel-etoile.html', de: 'dès ', prix: '499', note: 'à l’atelier', img: '/images/accueil/ciel-etoile.webp' },
+        { nom: 'Châssis & moteur', href: '/nettoyage-chassis.html', de: '', prix: '159.90', note: 'prix fixe, sur pont', img: '/images/accueil/nettoyage-chassis.webp' }
       ],
       addr: this.addrVals(),
       q1: q1,
@@ -264,11 +264,12 @@ class Component extends DCLogic {
         { nom: 'Pack Diamant', pop: false, inclus: 'Tout le Pack Or · traitement cuir / plastiques · prise en charge & restitution · rapport photos avant/après' }
       ],
       faits: [
+        'Atelier équipé à Genève : pont élévateur, environnement sans poussière',
         'Prix TTC fixes, annoncés avant de réserver',
         'Aucun supplément grande voiture',
-        'Déplacement offert dans tout le canton de Genève',
+        'À domicile : déplacement offert dans tout le canton de Genève',
         'Acompte de 30 % sécurisé par SumUp, solde sur place',
-        'Annulation gratuite jusqu’à 24 h avant le rendez-vous',
+        'Report sans frais jusqu’à 24 h avant : l’acompte passe sur la réservation suivante',
         'Entreprise enregistrée — TVA CHE-377.481.423'
       ],
       articles: [
