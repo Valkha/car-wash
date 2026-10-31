@@ -247,7 +247,7 @@ class Component extends DCLogic {
         { n: '2', titre: 'Réservez', texte: 'Votre créneau en ligne, avec un acompte sécurisé de 30 %.' },
         { n: '3', titre: 'Récupérez', texte: 'Une voiture comme neuve, prête à repartir.' }
       ],
-      modeNote: 'Mêmes prix à l’atelier et à domicile. À domicile : déplacement offert à Genève, forfait fixe sur Vaud. Deux suppléments seulement, annoncés avant de réserver : véhicule extrêmement sale (74.60 CHF de l’heure) et poils d’animaux (dès 49.90 CHF).',
+      modeNote: 'Mêmes prix à l’atelier et à domicile. À domicile : déplacement offert à Genève, forfait fixe sur Vaud.',
       setDomicile: () => this.setState({ mode: 'domicile' }),
       setAtelier: () => this.setState({ mode: 'atelier' }),
       segDom: s.mode === 'domicile' ? { bg: '#0a0a0a', fg: '#ffffff' } : { bg: 'transparent', fg: '#1A1A1A' },
@@ -262,7 +262,7 @@ class Component extends DCLogic {
         { nom: 'PPF', href: '/ppf.html', de: 'dès ', prix: '999', note: 'à l’atelier', img: '/images/accueil/ppf.webp' },
         { nom: 'Covering', href: '/covering.html', de: 'dès ', prix: '999', note: 'à l’atelier', img: '/images/accueil/covering.webp' },
         { nom: 'Ciel étoilé', href: '/ciel-etoile.html', de: 'dès ', prix: '499', note: 'à l’atelier', img: '/images/accueil/ciel-etoile.webp' },
-        { nom: 'Châssis & moteur', href: '/nettoyage-chassis.html', de: '', prix: '159.90', note: 'prix fixe, à l’atelier', img: '/images/accueil/nettoyage-chassis.webp' }
+        { nom: 'Châssis & moteur', href: '/nettoyage-chassis.html', de: '', prix: '159.90', note: 'à l’atelier', img: '/images/accueil/nettoyage-chassis.webp' }
       ],
       addr: this.addrVals(),
       q1: q1,
@@ -279,7 +279,7 @@ class Component extends DCLogic {
       ],
       faits: [
         'Atelier à Genève, Chemin des Vergers : environnement sans poussière',
-        'Prix TTC fixes, annoncés avant de réserver',
+        'Prix TTC, annoncés avant de réserver',
         'Aucun supplément grande voiture',
         'À domicile : déplacement offert dans tout le canton de Genève',
         'Acompte de 30 % sécurisé par SumUp, solde sur place',

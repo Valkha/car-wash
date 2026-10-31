@@ -215,7 +215,7 @@ const TX = {
         critere: 'Critère', agences: 'Agences classiques', nous: 'Clean Cars Wash',
         comparatif: [
             ['Frais de déplacement', '+ 100 CHF', 'Offert à Genève · dès {o} CHF sur Vaud'],
-            ['Supplément grande voiture', "Jusqu'à + 50 CHF", '0 CHF (prix fixe)'],
+            ['Supplément grande voiture', "Jusqu'à + 50 CHF", '0 CHF'],
             ['Nettoyage complet à domicile', '~ 239 CHF', '{or} CHF (Pack Or)'],
             ['Detailing premium à domicile', '~ 549 CHF', '{diamant} CHF (Pack Diamant)'],
         ],
@@ -237,7 +237,7 @@ const TX = {
         critere: 'Criterion', agences: 'Typical agencies', nous: 'Clean Cars Wash',
         comparatif: [
             ['Travel fees', '+ 100 CHF', 'Included in Geneva · from CHF {o} in Vaud'],
-            ['Large vehicle surcharge', 'Up to + 50 CHF', '0 CHF (fixed price)'],
+            ['Large vehicle surcharge', 'Up to + 50 CHF', '0 CHF'],
             ['Full cleaning at home', '~ 239 CHF', '{or} CHF (Gold Pack)'],
             ['Premium detailing at home', '~ 549 CHF', '{diamant} CHF (Diamond Pack)'],
         ],

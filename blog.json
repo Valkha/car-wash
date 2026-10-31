@@ -13,7 +13,7 @@
         "titre": "Combien coûte un lavage auto à domicile à Genève ?",
         "description": "Un lavage auto à domicile à Genève coûte à partir de {prix:argent} CHF TTC, déplacement offert. Ce qui fait varier le prix, le cas de Vaud et les abonnements.",
         "corps": [
-          { "p": "<strong>Chez Clean Cars Wash, un lavage auto à domicile à Genève coûte à partir de {prix:argent} CHF TTC</strong> (Pack Argent), déplacement compris dans tout le canton. Comptez {prix:or} CHF pour le Pack Or et {prix:diamant} CHF pour le Pack Diamant. Ces prix sont fixes, TTC, et il n'y a pas de supplément pour une grande voiture." },
+          { "p": "<strong>Chez Clean Cars Wash, un lavage auto à domicile à Genève coûte à partir de {prix:argent} CHF TTC</strong> (Pack Argent), déplacement compris dans tout le canton. Comptez {prix:or} CHF pour le Pack Or et {prix:diamant} CHF pour le Pack Diamant. Ces prix sont TTC, et il n'y a pas de supplément pour une grande voiture." },
           { "h2": "Ce qui est compris à chaque niveau" },
           { "ul": [
             "<strong>Pack Argent — {prix:argent} CHF :</strong> lavage extérieur à la mousse active, aspiration de l'habitacle et du coffre, vitres, séchage à la microfibre. Environ {dpack:argent}.",
@@ -37,7 +37,7 @@
         "titre": "How much does a car wash at home cost in Geneva?",
         "description": "A car wash at your home in Geneva costs from CHF {prix:argent} incl. VAT, travel included. What makes the price vary, the case of Vaud and subscriptions.",
         "corps": [
-          { "p": "<strong>At Clean Cars Wash, a car wash at your home in Geneva costs from CHF {prix:argent} incl. VAT</strong> (Silver Pack), travel included across the canton. Allow CHF {prix:or} for the Gold Pack and CHF {prix:diamant} for the Diamond Pack. These prices are fixed, include VAT, and there is no surcharge for a large car." },
+          { "p": "<strong>At Clean Cars Wash, a car wash at your home in Geneva costs from CHF {prix:argent} incl. VAT</strong> (Silver Pack), travel included across the canton. Allow CHF {prix:or} for the Gold Pack and CHF {prix:diamant} for the Diamond Pack. These prices include VAT, and there is no surcharge for a large car." },
           { "h2": "What each level includes" },
           { "ul": [
             "<strong>Silver Pack — CHF {prix:argent}:</strong> active foam exterior wash, cabin and trunk vacuuming, windows, microfiber drying. About {dpack:argent}.",
@@ -179,7 +179,7 @@
         "titre": "Préparer sa visite technique : le nettoyage du châssis",
         "description": "Un dessous de caisse propre se contrôle plus vite et ne masque aucun défaut. Ce que comprend un nettoyage châssis & moteur, sa durée et son prix.",
         "corps": [
-          { "p": "<strong>Avant une visite technique, faites nettoyer le dessous de votre voiture : un châssis propre se contrôle plus vite et ne masque aucun défaut.</strong> Notre <a href=\"@nettoyage-chassis\" data-cta>nettoyage châssis &amp; moteur</a> coûte {presta:nettoyage-chassis} CHF TTC, prix fixe, et dure environ 2 heures : le véhicule vous est rendu dans la foulée." },
+          { "p": "<strong>Avant une visite technique, faites nettoyer le dessous de votre voiture : un châssis propre se contrôle plus vite et ne masque aucun défaut.</strong> Notre <a href=\"@nettoyage-chassis\" data-cta>nettoyage châssis &amp; moteur</a> coûte {presta:nettoyage-chassis} CHF TTC et dure environ 2 heures : le véhicule vous est rendu dans la foulée." },
           { "h2": "Ce qui est nettoyé" },
           { "ul": [
             "<strong>Le châssis :</strong> dessous de caisse dégagé de la boue, du sel et des dépôts accumulés.",
@@ -188,17 +188,17 @@
           ] },
           { "h2": "Pourquoi à l'atelier" },
           { "p": "Cette prestation se fait exclusivement dans notre <a href=\"@atelier\" data-cta>atelier à Genève</a>, et jamais à domicile." },
-          { "encadre": { "titre": "Réservez avant votre contrôle", "texte": "Créneau de 2 heures, prix fixe, véhicule rendu le jour même.", "bouton": ["Réserver le nettoyage châssis", "@nettoyage-chassis"] } },
+          { "encadre": { "titre": "Réservez avant votre contrôle", "texte": "Créneau de 2 heures, véhicule rendu le jour même.", "bouton": ["Réserver le nettoyage châssis", "@nettoyage-chassis"] } },
           { "h2": "Quand le réserver" },
           { "p": "Dans les jours qui précèdent votre rendez-vous de contrôle, pour présenter un véhicule propre. Vous réservez votre créneau en ligne et réglez un acompte de 30 % ; le solde est réglé sur place." },
-          { "rappel": { "texte": "Un dessous propre, en deux heures, à prix fixe.", "bouton": ["Voir le nettoyage châssis & moteur", "@nettoyage-chassis"] } }
+          { "rappel": { "texte": "Un dessous propre, en deux heures.", "bouton": ["Voir le nettoyage châssis & moteur", "@nettoyage-chassis"] } }
         ]
       },
       "en": {
         "titre": "Getting ready for your vehicle inspection: chassis cleaning",
         "description": "A clean underbody is inspected faster and hides no defect. What a chassis & engine clean includes, how long it takes and what it costs.",
         "corps": [
-          { "p": "<strong>Before a vehicle inspection, have the underside of your car cleaned: a clean chassis is inspected faster and hides no defect.</strong> Our <a href=\"@nettoyage-chassis\" data-cta>chassis &amp; engine cleaning</a> costs CHF {presta:nettoyage-chassis} incl. VAT, fixed price, and takes about 2 hours: the vehicle is handed straight back to you." },
+          { "p": "<strong>Before a vehicle inspection, have the underside of your car cleaned: a clean chassis is inspected faster and hides no defect.</strong> Our <a href=\"@nettoyage-chassis\" data-cta>chassis &amp; engine cleaning</a> costs CHF {presta:nettoyage-chassis} incl. VAT and takes about 2 hours: the vehicle is handed straight back to you." },
           { "h2": "What gets cleaned" },
           { "ul": [
             "<strong>The chassis:</strong> underbody cleared of mud, salt and accumulated deposits.",
@@ -207,10 +207,10 @@
           ] },
           { "h2": "Why in the workshop" },
           { "p": "This service is carried out exclusively in our <a href=\"@atelier\" data-cta>workshop in Geneva</a>, never at home." },
-          { "encadre": { "titre": "Book before your inspection", "texte": "2-hour slot, fixed price, vehicle returned the same day.", "bouton": ["Book the chassis cleaning", "@nettoyage-chassis"] } },
+          { "encadre": { "titre": "Book before your inspection", "texte": "2-hour slot, vehicle returned the same day.", "bouton": ["Book the chassis cleaning", "@nettoyage-chassis"] } },
           { "h2": "When to book it" },
           { "p": "In the days before your inspection appointment, to present a clean vehicle. You book your slot online and pay a 30% deposit; the balance is settled on site." },
-          { "rappel": { "texte": "A clean underbody, in two hours, at a fixed price.", "bouton": ["See chassis & engine cleaning", "@nettoyage-chassis"] } }
+          { "rappel": { "texte": "A clean underbody, in two hours.", "bouton": ["See chassis & engine cleaning", "@nettoyage-chassis"] } }
         ]
       }
     }

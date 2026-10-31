@@ -8,6 +8,7 @@
 .zoom:hover img{transform:scale(1.06)}
 .mq-burger{display:none}
 .mq-sticky{display:none}
+.mq-show-s{display:none}
 .mq-pastille{bottom:24px}
 @keyframes ccwPulse{0%{box-shadow:0 0 0 0 rgba(212,175,55,.55)}70%{box-shadow:0 0 0 16px rgba(212,175,55,0)}100%{box-shadow:0 0 0 0 rgba(212,175,55,0)}}
 .pulse{animation:ccwPulse 2.2s ease-out infinite}
@@ -23,6 +24,7 @@
 .mq-sticky{display:flex !important}
 .mq-pastille{bottom:88px;right:12px !important}
 .mq-hide-s{display:none !important}
+.mq-show-s{display:grid !important}
 .mq-reco{order:-1;top:0 !important}
 .mq-step-line{display:none !important}
 }
