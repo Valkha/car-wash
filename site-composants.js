@@ -51,7 +51,7 @@ function liens(html, langue) {
 
 const T = {
     fr: {
-        apartir: 'À partir de', ttc: 'CHF TTC', ht: '/période HT', duree: 'Durée', reserverFormule: 'Réserver cette formule',
+        apartir: 'À partir de', ttc: 'CHF TTC', ht: '/période TTC', duree: 'Durée', reserverFormule: 'Réserver cette formule',
         voirDetail: 'Voir le détail', auLieu: 'au lieu de', separement: 'séparément', abonner: "S'abonner",
         mensuel: 'Mensuel', annuel: 'Annuel', fois1: '1×/mois', fois2: '2×/mois', pack: 'Pack', combo: 'Combo',
         des: 'Dès', fixe: 'Prix fixe', atelier: 'Atelier', atelierDomicile: 'Atelier ou domicile', voirPresta: 'Découvrir',
@@ -61,7 +61,7 @@ const T = {
         zonesNote: 'Le forfait est ajouté une fois par déplacement, réglé sur place avec le solde. Il ne fait pas partie de l’acompte en ligne.',
     },
     en: {
-        apartir: 'From', ttc: 'CHF incl. VAT', ht: '/period excl. VAT', duree: 'Duration', reserverFormule: 'Book this package',
+        apartir: 'From', ttc: 'CHF incl. VAT', ht: '/period incl. VAT', duree: 'Duration', reserverFormule: 'Book this package',
         voirDetail: 'See details', auLieu: 'instead of', separement: 'separately', abonner: 'Subscribe',
         mensuel: 'Monthly', annuel: 'Annual', fois1: '1×/month', fois2: '2×/month', pack: 'Pack', combo: 'Combo',
         des: 'From', fixe: 'Fixed price', atelier: 'Workshop', atelierDomicile: 'Workshop or at home', voirPresta: 'Discover',

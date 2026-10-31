@@ -100,9 +100,9 @@ const generateHTML = (loc) => `<!DOCTYPE html>
             "@type": "OfferCatalog",
             "name": "Packs Detailing",
             "itemListElement": [
-              { "@type": "Offer", "name": "Pack Argent", "price": "96.20", "priceCurrency": "CHF" },
-              { "@type": "Offer", "name": "Pack Or", "price": "161.05", "priceCurrency": "CHF" },
-              { "@type": "Offer", "name": "Pack Diamant", "price": "312.40", "priceCurrency": "CHF" }
+              { "@type": "Offer", "name": "Pack Argent", "price": "98.60", "priceCurrency": "CHF" },
+              { "@type": "Offer", "name": "Pack Or", "price": "165.10", "priceCurrency": "CHF" },
+              { "@type": "Offer", "name": "Pack Diamant", "price": "320.20", "priceCurrency": "CHF" }
             ]
           }
         },

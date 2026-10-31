@@ -70,22 +70,22 @@ function goToSlide(i) { currentSlide = i; updateSlider(); }
 (function () {
     var P = {
         argent: {
-            m1: ['80',     '89 CHF',  '−10%', 'https://pay.sumup.com/b2c/QS43FNTF'],
-            m2: ['142.40', '178 CHF', '−20%', 'https://pay.sumup.com/b2c/Q26M5L13'],
-            a1: ['75.60',  '89 CHF',  '−15%', 'https://pay.sumup.com/b2c/QEDK3H0B'],
-            a2: ['133',    '178 CHF', '−25%', 'https://pay.sumup.com/b2c/QWO3BLJI']
+            m1: ['88.65', '98.60 CHF', '−10%', 'https://pay.sumup.com/b2c/QS43FNTF'],
+            m2: ['157.80', '197.20 CHF', '−20%', 'https://pay.sumup.com/b2c/Q26M5L13'],
+            a1: ['83.75', '98.60 CHF', '−15%', 'https://pay.sumup.com/b2c/QEDK3H0B'],
+            a2: ['147.35', '197.20 CHF', '−25%', 'https://pay.sumup.com/b2c/QWO3BLJI']
         },
         or: {
-            m1: ['134.10', '149 CHF', '−10%', 'https://pay.sumup.com/b2c/QL8XVAA5'],
-            m2: ['238.40', '298 CHF', '−20%', 'https://pay.sumup.com/b2c/QLTZKJ1I'],
-            a1: ['126.65', '149 CHF', '−15%', 'https://pay.sumup.com/b2c/QII2I63J'],
-            a2: ['223',    '298 CHF', '−25%', 'https://pay.sumup.com/b2c/QI5YE2M7']
+            m1: ['148.60', '165.10 CHF', '−10%', 'https://pay.sumup.com/b2c/QL8XVAA5'],
+            m2: ['264.15', '330.20 CHF', '−20%', 'https://pay.sumup.com/b2c/Q1VLT18G'],
+            a1: ['140.35', '165.10 CHF', '−15%', 'https://pay.sumup.com/b2c/QII2I63J'],
+            a2: ['247.10', '330.20 CHF', '−25%', 'https://pay.sumup.com/b2c/QI5YE2M7']
         },
         diamant: {
-            m1: ['251', '289 CHF', '−13%', 'https://pay.sumup.com/b2c/Q7T56VYC'],
-            m2: ['445', '578 CHF', '−23%', 'https://pay.sumup.com/b2c/QSYCNRJ6'],
-            a1: ['239', '289 CHF', '−17%', 'https://pay.sumup.com/b2c/QOW0LRXL'],
-            a2: ['421', '578 CHF', '−27%', 'https://pay.sumup.com/b2c/QC3KLGQ2']
+            m1: ['278.10', '320.20 CHF', '−13%', 'https://pay.sumup.com/b2c/Q7T56VYC'],
+            m2: ['493.05', '640.40 CHF', '−23%', 'https://pay.sumup.com/b2c/QSYCNRJ6'],
+            a1: ['264.80', '320.20 CHF', '−17%', 'https://pay.sumup.com/b2c/QOW0LRXL'],
+            a2: ['466.50', '640.40 CHF', '−27%', 'https://pay.sumup.com/b2c/QC3KLGQ2']
         }
     };
     var eng = 'm', freq = 1;

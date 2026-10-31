@@ -173,9 +173,9 @@ class Component extends DCLogic {
     const pillDark = (sel) => sel ? { bg: '#D4AF37', fg: '#0a0a0a', border: '#D4AF37' } : { bg: 'transparent', fg: '#ffffff', border: '#3A3A3A' };
 
     const packsData = [
-      { id: 'argent', nom: 'Pack Argent', prix: '96.20', duree: '1 h 30', resume: 'Le lavage complet, dehors et dedans.', inclus: ['Lavage manuel extérieur', 'Aspiration habitacle & coffre', 'Nettoyage des vitres', 'Séchage microfibre'] },
-      { id: 'or', nom: 'Pack Or', prix: '161.05', duree: '2 h 30', resume: 'Le Pack Argent, plus l’intérieur remis à neuf.', inclus: ['Inclus le Pack Argent', 'Shampoing sièges & tapis', 'Rénovation plastiques', 'Nettoyage jantes & pneus', 'Finition parfumée'], reco: true },
-      { id: 'diamant', nom: 'Pack Diamant', prix: '312.40', duree: '3 h 30', resume: 'Le soin le plus complet : protection et cuir.', inclus: ['Inclus le Pack Or', 'Cire premium déperlante', 'Soin cuir ou Alcantara', 'Traitement anti-odeur', 'Finitions ultra-précises'] }
+      { id: 'argent', nom: 'Pack Argent', prix: '98.60', duree: '1 h 30', resume: 'Le lavage complet, dehors et dedans.', inclus: ['Lavage manuel extérieur', 'Aspiration habitacle & coffre', 'Nettoyage des vitres', 'Séchage microfibre'] },
+      { id: 'or', nom: 'Pack Or', prix: '165.10', duree: '2 h 30', resume: 'Le Pack Argent, plus l’intérieur remis à neuf.', inclus: ['Inclus le Pack Argent', 'Shampoing sièges & tapis', 'Rénovation plastiques', 'Nettoyage jantes & pneus', 'Finition parfumée'], reco: true },
+      { id: 'diamant', nom: 'Pack Diamant', prix: '320.20', duree: '3 h 30', resume: 'Le soin le plus complet : protection et cuir.', inclus: ['Inclus le Pack Or', 'Cire premium déperlante', 'Soin cuir ou Alcantara', 'Traitement anti-odeur', 'Finitions ultra-précises'] }
     ];
     const packs = packsData.map((p) => p.reco
       ? Object.assign({}, p, { cls: 'mq-reco', bg: '#0a0a0a', fg: '#ffffff', border: '#D4AF37', muted: '#BDBDBD', check: '#D4AF37', priceColor: '#D4AF37', ctaBg: '#D4AF37', ctaFg: '#0a0a0a', ctaBorder: '#D4AF37', lift: -12, shadow: '0 30px 70px rgba(10,10,10,.28)' })
@@ -254,8 +254,8 @@ class Component extends DCLogic {
       segAt: s.mode === 'atelier' ? { bg: '#0a0a0a', fg: '#ffffff' } : { bg: 'transparent', fg: '#1A1A1A' },
       packs: packs,
       combos: [
-        { nom: 'Combo Excellence', compose: 'Pack Or + Pack Argent', prix: '228.00', separe: '257.25', eco: '29.25', badge: false },
-        { nom: 'Combo Prestige', compose: 'Pack Diamant + Pack Argent', prix: '366.00', separe: '408.60', eco: '42.60', badge: true }
+        { nom: 'Combo Excellence', compose: 'Pack Or + Pack Argent', prix: '228.00', separe: '263.70', eco: '35.70', badge: false },
+        { nom: 'Combo Prestige', compose: 'Pack Diamant + Pack Argent', prix: '366.00', separe: '418.80', eco: '52.80', badge: true }
       ],
       prestations: [
         { nom: 'Polish céramique', href: '/polish-ceramique.html', de: 'dès ', prix: '999', note: 'sur devis', img: '/images/accueil/polish-ceramique.webp' },
@@ -289,7 +289,7 @@ class Component extends DCLogic {
       articles: [
         { href: '/blog/polissage-phares-jaunis-geneve.html', date: '31 octobre 2026', titre: 'Phares jaunis ou opaques : retrouvez une meilleure visibilité grâce au polissage professionnel', desc: 'Pourquoi les phares jaunissent, les risques de rouler avec des optiques opaques, et notre méthode de rénovation.' },
         { href: '/blog/nettoyage-poils-chien-voiture-geneve.html', date: '30 octobre 2026', titre: 'Poils de chien dans votre voiture : comment retrouver un intérieur impeccable ?', desc: 'Pourquoi les poils résistent à l’aspirateur, notre méthode, et le prix du supplément : dès 49.90 CHF TTC.' },
-        { href: '/blog/prix-lavage-auto-domicile-geneve.html', date: '23 octobre 2026', titre: 'Combien coûte un lavage auto à domicile à Genève ?', desc: 'Un lavage auto à domicile à Genève coûte à partir de 96.20 CHF TTC, déplacement offert. Ce qui fait varier le prix, le cas de Vaud et les abonnements.' }
+        { href: '/blog/prix-lavage-auto-domicile-geneve.html', date: '23 octobre 2026', titre: 'Combien coûte un lavage auto à domicile à Genève ?', desc: 'Un lavage auto à domicile à Genève coûte à partir de 98.60 CHF TTC, déplacement offert. Ce qui fait varier le prix, le cas de Vaud et les abonnements.' }
       ]
     };
   }

@@ -2,7 +2,7 @@
   "_comment": "Source de verite des offres (packs, combos, abonnements), relue par generate-site.js pour Tarifs, Reserver et l'accueil : un prix ne s'ecrit qu'ici. Les identifiants SumUp sont compares cle par cle avec CCW_OFFERS (public/js/app.js) au build. Les prix et liens de paiement des abonnements vivent dans app.js (tableau P) et y sont relus.",
   "packs": [
     {
-      "id": "argent", "prix": "96.20", "emoji": "🥈", "badge": null,
+      "id": "argent", "prix": "98.60", "emoji": "🥈", "badge": null,
       "sumup": {
         "home":   { "service": "054f5bac-7131-438c-866f-ed4126781f66", "variant": "6486c6b0-adea-4e75-8917-d5e1173eddce" },
         "garage": { "service": "ea902077-46dd-4abe-b3c5-958010e9ab84", "variant": "db6f5f91-3c1e-4917-aff1-8b3be324efd5" }
@@ -11,7 +11,7 @@
       "en": { "nom": "Silver Pack", "resume": "The complete wash, outside and in.", "description": "Full active foam exterior wash, cabin and trunk vacuuming, window cleaning, and manual drying.", "duree": "1 h 30", "inclus": ["Manual exterior wash", "Cabin & trunk vacuum", "Window cleaning", "Microfiber drying"] }
     },
     {
-      "id": "or", "prix": "161.05", "emoji": "🥇", "badge": { "fr": "Service recommandé", "en": "Recommended service" },
+      "id": "or", "prix": "165.10", "emoji": "🥇", "badge": { "fr": "Service recommandé", "en": "Recommended service" },
       "sumup": {
         "home":   { "service": "43834e2e-33f3-4640-b149-81c178ade6c9", "variant": "55938d59-b0a2-45d8-bef2-bb8be1c752ff" },
         "garage": { "service": "7c78ee37-4dab-4bd7-aef8-6d20fc3b6b77", "variant": "5b55126e-a9c3-4f25-ac39-d15de8d1370c" }
@@ -20,7 +20,7 @@
       "en": { "nom": "Gold Pack", "resume": "The Silver Pack, plus the interior brought back.", "description": "Includes Silver Pack + seat/carpet shampoo, interior plastic renovation, rim/tire cleaning, and scent finish.", "duree": "2 h 30", "inclus": ["Includes Silver Pack", "Seat & carpet shampoo", "Plastic renovation", "Rim & tire cleaning", "Scented finish"] }
     },
     {
-      "id": "diamant", "prix": "312.40", "emoji": "💎", "badge": null,
+      "id": "diamant", "prix": "320.20", "emoji": "💎", "badge": null,
       "sumup": {
         "home":   { "service": "7270085a-93a3-481b-b860-3415e910c632", "variant": "1bd8cdbf-2d55-425f-95e0-b5aaa803c56a" },
         "garage": { "service": "a60b8bcb-4a74-4869-9f47-e7427db2507a", "variant": "4921ee33-9267-40e9-8cbe-f5f7d7c05411" }
@@ -31,7 +31,7 @@
   ],
   "combos": [
     {
-      "id": "excellence", "prix": "228.00", "prixSepare": "257.25", "badge": null,
+      "id": "excellence", "prix": "228.00", "prixSepare": "263.70", "badge": null,
       "sumup": {
         "home":   { "service": "63e72870-0cc7-4110-9573-f55f999a4530", "variant": "3338d0c4-60a1-4bfd-b059-814b3629ba79" },
         "garage": { "service": "5c61248f-5fdc-4e12-8651-db94704cd654", "variant": "17fdc0d6-e253-4f85-af78-d514f6ba6675" }
@@ -40,7 +40,7 @@
       "en": { "nom": "Combo Excellence", "compose": "Gold Pack + Silver Pack", "resume": "One Gold detailing, then a Silver maintenance wash.", "inclus": ["1 Gold detailing + 1 Silver wash", "Valid for 30 days", "Flexible scheduling"] }
     },
     {
-      "id": "prestige", "prix": "366.00", "prixSepare": "408.60", "badge": { "fr": "Meilleure valeur", "en": "Best value" },
+      "id": "prestige", "prix": "366.00", "prixSepare": "418.80", "badge": { "fr": "Meilleure valeur", "en": "Best value" },
       "sumup": {
         "home":   { "service": "826ed5ef-5e77-4bab-9a0c-0bd3c30a8696", "variant": "46cfba06-23c3-40b3-bc0f-e5373a4d2c4d" },
         "garage": { "service": "d455c5ec-b8d3-4d00-aa5d-d9076c9fbb95", "variant": "84cafaab-4aa1-4816-83ba-f437cb92d57a" }
