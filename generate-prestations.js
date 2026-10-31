@@ -9,11 +9,14 @@
  * produit ne sert a rien, `npm run build` le reecrit.
  *
  * Choix de conception, a ne pas defaire sans raison :
- *  - AUCUNE IMAGE. Le client a fourni des affiches avec le texte incruste ;
- *    elles ne sont pas utilisees. Le texte est en HTML, donc lisible par Google
- *    et par les lecteurs d'ecran, et l'accueil ne gagne pas un octet.
- *  - PAS DE app.js. Ces pages n'ont ni modale ni bloc date : inutile de leur
- *    servir le fichier. Elles n'ont donc pas non plus de menu burger.
+ *  - AUCUNE AFFICHE DU CLIENT. Elles portent leur texte incruste dans l'image,
+ *    invisible pour Google et les lecteurs d'ecran. Tout le contenu est en HTML.
+ *    Le bandeau hero (depuis le 13.10.2026) est une image purement decorative,
+ *    sans texte, alt="" : ce n'est pas la meme chose.
+ *  - app.js EST CHARGE (depuis le 13.10.2026) : il porte la logique de
+ *    reservation SumUp. Pas de menu burger pour autant, le header est simplifie.
+ *  - Les identifiants SumUp sont compares cle par cle avec CCW_OFFERS au build
+ *    (verifierIdentifiantsSumUp) : au moindre ecart, le build echoue.
  *  - Le JSON-LD porte le TARIF STANDARD, jamais le prix promotionnel. En
  *    septembre 2026 un prix remise pose hors bloc date etait reste cinq jours
  *    en ligne apres la fin de l'offre.
@@ -24,6 +27,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const shell = require('./site-shell.js');
 
 const prestations = JSON.parse(fs.readFileSync(path.join(__dirname, 'prestations.json'), 'utf8'));
 
@@ -52,7 +56,8 @@ function arrondi5(n) {
 function dureeReelle(presta, langue) {
     const m = presta[langue].immobilisation &&
         presta[langue].immobilisation.match(/<strong class="text-white">(.*?)<\/strong>/);
-    if (!m) {
+    // Un <strong> vide passait la garde et produisait "demande ." (audit 13.10.2026).
+    if (!m || !m[1].replace(/<[^>]*>|&nbsp;/g, "").trim()) {
         throw new Error(
             `[${presta.id}/${langue}] duree introuvable : le bloc "immobilisation" doit ` +
             `contenir la duree dans un <strong class="text-white">…</strong>. ` +
@@ -63,29 +68,62 @@ function dureeReelle(presta, langue) {
 }
 
 // Les identifiants SumUp vivent a deux endroits : prestations.json (pour le
-// gabarit) et public/js/app.js (pour l'execution). S'ils divergent, le bouton
-// mene a la liste generique sans rien signaler — le bug de septembre. On fait
-// donc echouer le build.
-function verifierIdentifiantsSumUp() {
+// gabarit) et CCW_OFFERS dans public/js/app.js (pour l'execution). S'ils
+// divergent, le client tombe sur la liste generique, ou pire, sur le calendrier
+// d'une AUTRE prestation — sans aucun message. On fait donc echouer le build.
+//
+// La comparaison se fait CLE PAR CLE. Une premiere version se contentait de
+// verifier que chaque identifiant figurait "quelque part" dans app.js : elle
+// laissait passer une permutation PPF <-> covering (le client reservait un PPF
+// et obtenait un creneau covering) et un identifiant vide (audit du 13.10.2026).
+const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
+
+function lireOffresAppJs() {
     const appjs = fs.readFileSync(path.join(__dirname, 'public', 'js', 'app.js'), 'utf8');
+    const debut = appjs.indexOf('var CCW_OFFERS = {');
+    const fin = appjs.indexOf('\n};', debut);
+    if (debut < 0 || fin < 0) {
+        throw new Error('CCW_OFFERS introuvable dans public/js/app.js : impossible de verifier les identifiants SumUp.');
+    }
+    const litteral = appjs.slice(debut + 'var CCW_OFFERS = '.length, fin + 2);
+    // Fichier du depot, pas une donnee externe : l'evaluer est sans risque.
+    return new Function('return (' + litteral + ');')();
+}
+
+function verifierIdentifiantsSumUp() {
+    const offres = lireOffresAppJs();
     prestations.forEach(p => {
         if (!p.sumup) throw new Error(`[${p.id}] bloc "sumup" absent de prestations.json.`);
         if (!!p.sumup.home !== !!p.domicile) {
             throw new Error(`[${p.id}] incoherence : domicile=${p.domicile} mais sumup.home=${!!p.sumup.home}.`);
         }
+        const offre = offres[p.id];
+        if (!offre) throw new Error(`[${p.id}] cle absente de CCW_OFFERS dans public/js/app.js.`);
+
+        const lieuxJson = Object.keys(p.sumup).sort().join(',');
+        const lieuxApp = Object.keys(offre).sort().join(',');
+        if (lieuxJson !== lieuxApp) {
+            throw new Error(
+                `[${p.id}] variantes differentes : prestations.json a [${lieuxJson}], ` +
+                `app.js a [${lieuxApp}].`
+            );
+        }
+
         Object.keys(p.sumup).forEach(lieu => {
-            [p.sumup[lieu].service, p.sumup[lieu].variant].forEach(id => {
-                if (!appjs.includes(id)) {
+            ['service', 'variant'].forEach(champ => {
+                const json = p.sumup[lieu][champ];
+                const app = offre[lieu][champ];
+                if (!UUID.test(json || '')) {
+                    throw new Error(`[${p.id}/${lieu}] ${champ} invalide dans prestations.json : "${json}".`);
+                }
+                if (json !== app) {
                     throw new Error(
-                        `[${p.id}/${lieu}] l'identifiant ${id} est dans prestations.json ` +
-                        `mais absent de public/js/app.js : le bouton tomberait sur la liste generique.`
+                        `[${p.id}/${lieu}] ${champ} different : prestations.json="${json}", ` +
+                        `app.js="${app}". Le bouton menerait a une autre prestation ou a la liste generique.`
                     );
                 }
             });
         });
-        if (!appjs.includes(`'${p.id}': {`)) {
-            throw new Error(`[${p.id}] cle absente de CCW_OFFERS dans public/js/app.js.`);
-        }
     });
 }
 
@@ -130,16 +168,11 @@ const T = {
         voirPrestations: 'Voir toutes nos prestations',
         modaleTitre: 'Réservation', modaleQuestion: 'Où souhaitez-vous<br>être servi&nbsp;?',
         modaleCreneau: 'Vous choisirez votre créneau, puis réglerez l\'acompte de 30&nbsp;%.',
-        modaleZones: 'Déplacement offert à Genève. Sur Vaud, forfait de 39.90 ou 59.90&nbsp;CHF TTC réglé sur place',
+        modaleZones: `Déplacement offert à Genève. Sur Vaud, forfait de ${shell.SITE.deplacement.orange.prix} ou ${shell.SITE.deplacement.rouge.prix}&nbsp;CHF TTC réglé sur place`,
         modaleZonesLien: 'voir les zones', modaleHome: 'À domicile / au travail', modaleGarage: 'Au garage CCW',
         modaleFermer: 'Fermer', modaleDehors: 'Touchez en dehors pour fermer',
-        horaires: ['Lun–Sam : 07h30 – 22h00', 'Dimanche : Fermé'],
+        horaires: ['Tous les jours : 07h30 – 22h00'],
         contactTitre: 'Contact &amp; Horaires', infosTitre: 'Informations',
-        liens: [
-            ['./', 'Accueil'], ['./#services', 'Nos prestations'],
-            ['./promos.html', 'Promotions &amp; Offres'], ['./zones.html', 'Zones &amp; frais de déplacement'],
-            ['./abonnements.html', 'Abonnements'], ['./mentions-legales.html', 'Mentions Légales &amp; CGV']
-        ],
         ville: 'Genève', tva: 'CHE-377.481.423 TVA'
     },
     en: {
@@ -162,18 +195,13 @@ const T = {
         sansJs: 'Book online',
         appelerCta: 'Call for a quote', appelerSimple: 'Call us', whatsapp: 'Message on WhatsApp',
         voirPrestations: 'See all our services',
-        modaleTitre: 'Booking', modaleQuestion: 'Where would you like<br>to be served&nbsp;?',
+        modaleTitre: 'Booking', modaleQuestion: 'Where would you like<br>to be served?',
         modaleCreneau: 'You will pick your slot, then pay the 30% deposit.',
-        modaleZones: 'Travel included in Geneva. In Vaud, a flat fee of CHF 39.90 or 59.90 incl. VAT is settled on site',
+        modaleZones: `Travel included in Geneva. In Vaud, a flat fee of CHF ${shell.SITE.deplacement.orange.prix} or ${shell.SITE.deplacement.rouge.prix} incl. VAT is settled on site`,
         modaleZonesLien: 'see the areas', modaleHome: 'At home / at work', modaleGarage: 'At the CCW workshop',
         modaleFermer: 'Close', modaleDehors: 'Tap outside to close',
-        horaires: ['Mon–Sat: 07:30 AM – 10:00 PM', 'Sunday: Closed'],
+        horaires: ['Every day: 07:30 AM – 10:00 PM'],
         contactTitre: 'Contact &amp; Opening hours', infosTitre: 'Information',
-        liens: [
-            ['./', 'Home'], ['./#services', 'Our services'],
-            ['promos.html', 'Offers &amp; Promotions'], ['zones.html', 'Service areas &amp; travel fees'],
-            ['subscriptions.html', 'Subscriptions'], ['legal-notices.html', 'Legal Notice &amp; Terms']
-        ],
         ville: 'Geneva', tva: 'CHE-377.481.423 VAT'
     }
 };
@@ -271,7 +299,7 @@ ${d.lieuDomicile ? `                <div class="premium-card rounded-2xl p-6 md:
                     ${ctaReserver}
                     <a href="tel:${TEL}" class="inline-block w-full sm:w-auto text-center border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-6 md:px-8 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">${presta.prixDes ? t.appelerCta : t.appelerSimple}</a>
                     <a href="https://wa.me/41782657071" target="_blank" rel="noopener noreferrer" class="inline-block border border-white/15 text-gray-300 font-display font-bold tracking-widest uppercase text-xs py-4 px-6 rounded-full hover:border-gold-400 hover:text-gold-400 transition-all">${t.whatsapp}</a>
-                    <a href="${r}#services" class="inline-block border border-white/15 text-gray-300 font-display font-bold tracking-widest uppercase text-xs py-4 px-6 rounded-full hover:border-gold-400 hover:text-gold-400 transition-all">${t.voirPrestations}</a>
+                    <a href="${langue === 'fr' ? '/tarifs.html' : '/en/prices.html'}" class="inline-block border border-white/15 text-gray-300 font-display font-bold tracking-widest uppercase text-xs py-4 px-6 rounded-full hover:border-gold-400 hover:text-gold-400 transition-all">${t.voirPrestations}</a>
                 </div>
                 <noscript>
                     <p class="text-gray-400 text-sm mt-6"><a href="https://www.sumupbookings.com/clean-car-wash-geneva#services" class="text-gold-400 underline underline-offset-2">${t.sansJs}</a></p>
@@ -436,25 +464,7 @@ ${d.lieuDomicile ? `                <div class="premium-card rounded-2xl p-6 md:
 
     <a href="#main-content" class="skip-link">${t.skip}</a>
 
-    <header class="bg-charcoal-900/90 backdrop-blur-lg border-b border-white/5 sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center gap-4">
-            <a href="${r}" class="flex items-center gap-3 group" aria-label="Clean Cars Wash — ${t.accueil}">
-                <img src="${r}assets/images/logo-v2-tiny.webp" alt="Logo Clean Cars Wash" width="120" height="34" loading="eager" class="h-9 md:h-11 w-auto object-contain transition-transform group-hover:scale-105">
-                <span class="text-xs md:text-sm font-display font-bold text-white tracking-[0.2em] uppercase whitespace-nowrap group-hover:text-gold-400 transition-colors hidden sm:block">Clean Cars Wash</span>
-            </a>
-            <div class="flex items-center gap-3 md:gap-5">
-                <a href="tel:${TEL}" class="hidden sm:flex items-center justify-center w-9 h-9 shrink-0 rounded-full border border-gold-400/40 text-gold-400 hover:bg-gold-400 hover:text-charcoal-900 transition-colors" title="${t.appeler}">
-                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                    <span class="sr-only">${t.appeler}</span>
-                </a>
-                <div class="flex items-center gap-2 text-[10px] font-display tracking-widest uppercase border-l border-white/10 pl-4">
-                    ${langue === 'fr'
-                        ? `<span class="lang-active">FR</span>\n                    <span class="text-gray-700" aria-hidden="true">|</span>\n                    <a href="${lienAutre}" class="text-gray-500 hover:text-white transition">EN</a>`
-                        : `<a href="${lienAutre}" class="text-gray-500 hover:text-white transition">FR</a>\n                    <span class="text-gray-700" aria-hidden="true">|</span>\n                    <span class="lang-active">EN</span>`}
-                </div>
-            </div>
-        </div>
-    </header>
+    ${shell.repereHeader(langue === 'fr' ? `${presta.id}.html` : `en/${presta.slugEn}.html`, langue)}
 
     <main id="main-content" class="max-w-5xl mx-auto px-4 md:px-6">
 
@@ -489,41 +499,16 @@ ${blocLieu}
 ${blocReservation}
     </main>
 
-    <footer class="bg-[#050505] border-t border-white/5 py-12">
-        <div class="max-w-5xl mx-auto px-4 md:px-6 flex flex-col md:flex-row justify-between items-start gap-8">
-            <div>
-                <p class="font-display font-bold text-sm tracking-[0.2em] uppercase text-white mb-3">Clean Cars Wash</p>
-                <p class="text-gray-500 text-sm mb-1">AHMED-YAHIA LM</p>
-                <p class="text-gray-500 text-sm mb-1">Chemin des Vergers</p>
-                <p class="text-gray-500 text-sm mb-4">1208 ${t.ville}</p>
-                <a href="mailto:info@clean-cars-wash.ch" class="text-gold-400 text-sm hover:text-white transition">info@clean-cars-wash.ch</a>
-            </div>
-            <div>
-                <p class="font-display font-bold text-[10px] tracking-[0.3em] uppercase text-white mb-3">${t.contactTitre}</p>
-                <a href="tel:${TEL}" class="block text-gold-400 font-display font-bold text-sm hover:text-white transition mb-3">+41 78 265 70 71</a>
-                <ul class="text-gray-500 text-sm space-y-1">
-${t.horaires.map(h => `                    <li>${h}</li>`).join('\n')}
-                </ul>
-            </div>
-            <div>
-                <p class="font-display font-bold text-[10px] tracking-[0.3em] uppercase text-white mb-3">${t.infosTitre}</p>
-                <ul class="text-gray-500 text-sm space-y-2">
-${t.liens.map(([href, lib]) => `                    <li><a href="${href}" class="hover:text-gold-400 transition">${lib}</a></li>`).join('\n')}
-                </ul>
-            </div>
-        </div>
-        <div class="max-w-5xl mx-auto px-4 md:px-6 mt-10 pt-6 border-t border-white/5 text-center text-[10px] text-gray-600 tracking-[0.2em] uppercase">
-            &copy; 2026 Clean Cars Wash &nbsp;|&nbsp; <span style="opacity:.7;">${t.tva}</span>
-        </div>
-    </footer>
+    ${(() => { const b = require('./site-composants.js').aLireAussi(presta.id, langue); return b ? `<section class="max-w-5xl mx-auto px-4 md:px-6 pb-16">\n            ${b}\n        </section>\n` : ''; })()}
+    ${shell.repereFooter(langue === 'fr' ? `${presta.id}.html` : `en/${presta.slugEn}.html`, langue)}
 ${blocModale}
-${PROMO ? `
-    <!-- Garde-fou des promos datees, copie minimale de celui de public/js/app.js.
-         Redondant depuis que ces pages chargent app.js, mais conserve a dessein :
-         app.js est en defer, donc il s'execute apres le premier rendu. Ce script
-         inline, lui, retire le bloc perime AVANT que le client ne le voie. 247
-         octets pour eviter un clignotement sur une offre expiree. -->
-    <script>(function(){var m=new Date();Array.prototype.forEach.call(document.querySelectorAll('[data-promo-until]'),function(e){var f=new Date(e.getAttribute('data-promo-until')+'T23:59:59');if(!isNaN(f.getTime())&&m>f){e.remove();}});})();</script>` : ''}
+
+    <!-- Carte concours + garde-fou des blocs dates, produits par site-shell.js.
+         Le garde inline (redondant avec app.js, conserve a dessein : app.js est
+         en defer et s'execute apres le premier rendu) retire un bloc perime AVANT
+         que le client ne le voie. Il remplace la copie de 247 octets d'avant le
+         23.10.2026 et couvre aussi data-promo-from / data-promo-expired-after. -->
+    ${shell.repereFinDePage(langue)}
 
     <!-- app.js porte la logique de reservation SumUp (creation du panier puis
          redirection vers le calendrier de CE service). Charge en defer : ne

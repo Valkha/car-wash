@@ -1,0 +1,135 @@
+/* Clean Cars Wash — direction artistique 2026 (31.10.2026). Importee par tailwind-src.css apres style.css.
+   Sections de <main> : la 1re reste sombre, puis alternance clair / sombre ; un clair sur deux en blanc. */
+:root{
+  --da-noir:#0a0a0a; --da-noir-2:#141414; --da-or:#D4AF37; --da-or-clair:#F2D675; --da-or-texte:#7A5C0E;
+  --da-ivoire:#F7F4EC; --da-blanc:#ffffff; --da-ligne:#E2DCCD; --da-encre:#1A1A1A; --da-texte:#4A4A4A; --da-doux:#5B5B5B;
+}
+body{background:var(--da-noir)}
+
+/* ---------- Typographie ---------- */
+main:not(.mq-accueil) h1, main:not(.mq-accueil) h2, main:not(.mq-accueil) h3, main:not(.mq-accueil) .font-display.text-4xl, main:not(.mq-accueil) .font-display.text-3xl, main:not(.mq-accueil) p.font-display{ text-transform:none !important }
+main:not(.mq-accueil) h2, main:not(.mq-accueil) p.text-4xl.font-display, main:not(.mq-accueil) p.text-5xl.font-display{ font-weight:900 !important; letter-spacing:-.02em !important; line-height:1.02 !important }
+main:not(.mq-accueil) h2{ font-size:clamp(30px,6.4vw,52px) !important }
+main:not(.mq-accueil) section:first-child p.font-display.text-4xl{ font-size:clamp(40px,8.6vw,76px) !important; font-weight:900 !important; letter-spacing:-.025em !important; line-height:.98 !important }
+main:not(.mq-accueil) h3{ letter-spacing:-.005em !important; font-weight:800 !important; font-size:18px !important }
+main:not(.mq-accueil) h1.text-xs, main:not(.mq-accueil) h1.text-sm{ font-size:14px !important; letter-spacing:.1em !important }
+/* sur-titres : lisibles */
+main:not(.mq-accueil) p.text-\[11px\], main:not(.mq-accueil) p.text-\[10px\], main:not(.mq-accueil) span.text-\[10px\], main:not(.mq-accueil) span.text-\[11px\], main:not(.mq-accueil) .tracking-\[0\.3em\]{ font-size:13px !important; letter-spacing:.1em !important }
+main:not(.mq-accueil) .text-gray-400{ color:#BDBDBD }
+main:not(.mq-accueil) .font-light{ font-weight:400 !important }
+main:not(.mq-accueil) .text-sm.font-light, main:not(.mq-accueil) p.text-sm{ font-size:15px !important }
+
+/* ---------- Boutons ---------- */
+main:not(.mq-accueil) a.bg-gold-400, main:not(.mq-accueil) button.bg-gold-400{
+  text-transform:none !important; letter-spacing:0 !important; font-weight:800 !important; font-size:16px !important;
+  min-height:56px; padding:0 28px !important; display:inline-flex !important; align-items:center; justify-content:center;
+  box-shadow:0 12px 30px rgba(212,175,55,.28); border-radius:999px !important;
+}
+main:not(.mq-accueil) a.border-gold-400.text-gold-400, main:not(.mq-accueil) a.border.border-gold-400{
+  text-transform:none !important; letter-spacing:0 !important; font-weight:700 !important; font-size:16px !important;
+  min-height:56px; padding:0 26px !important; display:inline-flex !important; align-items:center; justify-content:center;
+  border-color:rgba(255,255,255,.6) !important; color:#fff !important;
+}
+main:not(.mq-accueil) a.border-gold-400.text-gold-400:hover{ background:#fff !important; color:var(--da-noir) !important }
+
+/* ---------- Cartes ---------- */
+.premium-card{ border-radius:24px !important }
+
+/* ---------- Sections : alternance sombre / clair, pleine largeur ---------- */
+main:not(.mq-accueil) > section{ padding-top:clamp(56px,9vw,96px) !important; padding-bottom:clamp(56px,9vw,96px) !important }
+main:not(.mq-accueil) > section:first-child{ padding-top:clamp(32px,6vw,64px) !important }
+main:not(.mq-accueil) > section:not(:first-of-type){ position:relative; clip-path:inset(0 -100vmax) }
+main:not(.mq-accueil) > section:nth-of-type(even){ background:var(--da-ivoire); box-shadow:0 0 0 100vmax var(--da-ivoire); color:var(--da-encre) }
+main:not(.mq-accueil) > section:nth-of-type(4n){ background:#fff; box-shadow:0 0 0 100vmax #fff }
+main:not(.mq-accueil) > section:nth-of-type(odd):not(:first-of-type){ background:var(--da-noir); box-shadow:0 0 0 100vmax var(--da-noir) }
+main:not(.mq-accueil) > section:nth-of-type(even) .text-white, main:not(.mq-accueil) > section:nth-of-type(even) .text-gray-100, main:not(.mq-accueil) > section:nth-of-type(even) .text-gray-200{ color:var(--da-encre) !important }
+main:not(.mq-accueil) > section:nth-of-type(even) .text-gray-300, main:not(.mq-accueil) > section:nth-of-type(even) .text-gray-400{ color:var(--da-texte) !important }
+main:not(.mq-accueil) > section:nth-of-type(even) .text-gray-500, main:not(.mq-accueil) > section:nth-of-type(even) .text-gray-600{ color:var(--da-doux) !important }
+main:not(.mq-accueil) > section:nth-of-type(even) .text-gold-400, main:not(.mq-accueil) > section:nth-of-type(even) .text-gold-500{ color:var(--da-or-texte) !important }
+main:not(.mq-accueil) > section:nth-of-type(even) .premium-card, main:not(.mq-accueil) > section:nth-of-type(even) .bg-white\/5, main:not(.mq-accueil) > section:nth-of-type(even) .bg-charcoal-800, main:not(.mq-accueil) > section:nth-of-type(even) .bg-charcoal-900, main:not(.mq-accueil) > section:nth-of-type(even) .bg-black, main:not(.mq-accueil) > section:nth-of-type(even) [class*="bg-black/"]{
+  background:#fff !important; border:1px solid var(--da-ligne) !important; box-shadow:0 1px 0 rgba(10,10,10,.02)
+}
+main:not(.mq-accueil) > section:nth-of-type(4n) .premium-card, main:not(.mq-accueil) > section:nth-of-type(4n) .bg-white\/5{ background:var(--da-ivoire) !important }
+main:not(.mq-accueil) > section:nth-of-type(even) [class*="border-white/"], main:not(.mq-accueil) > section:nth-of-type(even) .border-gray-800, main:not(.mq-accueil) > section:nth-of-type(even) .border-charcoal-700{ border-color:var(--da-ligne) !important }
+main:not(.mq-accueil) > section:nth-of-type(even) .bg-gold-400\/10{ background:#F7F0DA !important }
+main:not(.mq-accueil) > section:nth-of-type(even) a.bg-gold-400, main:not(.mq-accueil) > section:nth-of-type(even) button.bg-gold-400{ color:var(--da-noir) !important }
+main:not(.mq-accueil) > section:nth-of-type(even) a.bg-gold-400 *, main:not(.mq-accueil) > section:nth-of-type(even) button.bg-gold-400 *{ color:var(--da-noir) !important }
+main:not(.mq-accueil) > section:nth-of-type(even) a.border-gold-400.text-gold-400, main:not(.mq-accueil) > section:nth-of-type(even) a.border.border-gold-400{ border-color:var(--da-noir) !important; color:var(--da-noir) !important }
+main:not(.mq-accueil) > section:nth-of-type(even) a.border-gold-400.text-gold-400:hover{ background:var(--da-noir) !important; color:#fff !important }
+main:not(.mq-accueil) > section:nth-of-type(even) details, main:not(.mq-accueil) > section:nth-of-type(even) summary{ color:var(--da-encre) }
+main:not(.mq-accueil) > section:nth-of-type(even) table th, main:not(.mq-accueil) > section:nth-of-type(even) table td{ color:var(--da-encre) }
+main:not(.mq-accueil) > section:nth-of-type(even) .text-charcoal-900{ color:var(--da-noir) !important }
+main:not(.mq-accueil) > section:nth-of-type(even) a:not([class*="bg-"]):not([class*="border-"]){ color:var(--da-or-texte) }
+main:not(.mq-accueil) > section:nth-of-type(even) .section-rule, main:not(.mq-accueil) > section:nth-of-type(even) .h-px{ background:var(--da-ligne) !important }
+
+/* ---------- En-tête (même structure, nouveau rendu) ---------- */
+.ccw-header{ background:rgba(10,10,10,.92) !important }
+.ccw-header__barre{ height:76px !important; max-width:1240px !important }
+.ccw-header__logo img{ height:46px !important }
+.ccw-header__logo span{ font-weight:900 !important; font-size:15px !important; letter-spacing:.08em !important; display:block !important }
+.ccw-nav__liste{ font-family:Inter,system-ui,sans-serif !important; font-size:15px !important; letter-spacing:0 !important; text-transform:none !important; font-weight:500 }
+.ccw-header__reserver{ font-size:14px !important; font-weight:800 !important; letter-spacing:0 !important; text-transform:none !important; height:46px; padding:0 22px !important; border-radius:999px !important }
+.ccw-menu__liste{ text-transform:none !important; letter-spacing:0 !important; font-size:17px !important; font-weight:700 }
+.ccw-menu__reserver, .ccw-menu__contact a{ text-transform:none !important; letter-spacing:0 !important; font-size:16px !important }
+@media (max-width:760px){ .ccw-header__reserver{ display:none !important } .ccw-header__logo span{ font-size:14px !important } }
+
+/* ---------- Pied de page ---------- */
+.ccw-footer{ background:var(--da-noir) !important; padding-bottom:120px !important }
+.ccw-footer__titre{ font-size:14px !important; letter-spacing:0 !important; text-transform:none !important; font-weight:800 !important }
+.ccw-footer__marque{ font-weight:900 !important; letter-spacing:.08em !important }
+.ccw-footer a{ color:#BDBDBD !important } .ccw-footer a:hover{ color:var(--da-or) !important }
+.ccw-footer__bas{ letter-spacing:.04em !important; text-transform:none !important; font-size:13px !important }
+
+/* ---------- Anciennes pièces remplacées ---------- */
+#ccw-sticky-cta{ display:none !important }
+.whatsapp-float{ left:20px !important; right:auto !important }
+@media (max-width:760px){ .whatsapp-float{ display:none !important } }
+
+/* ---------- Pastille concours ---------- */
+.da-pastille{ position:fixed; right:20px; bottom:24px; z-index:200; display:flex; flex-direction:column; align-items:flex-end; gap:10px; max-width:calc(100vw - 40px); font-family:Inter,system-ui,sans-serif }
+.da-pastille[hidden]{ display:none }
+.da-pastille__btn{ display:inline-flex; align-items:center; gap:12px; min-height:60px; padding:8px 18px 8px 8px; border-radius:999px; border:1.5px solid var(--da-or); background:var(--da-noir); color:#fff; cursor:pointer; box-shadow:0 16px 40px rgba(0,0,0,.4); text-align:left; font:inherit; animation:daPulse 2.2s ease-out infinite }
+.da-pastille__ico{ width:44px; height:44px; border-radius:50%; background:var(--da-or); color:var(--da-noir); display:inline-flex; align-items:center; justify-content:center; flex:none }
+.da-pastille__txt{ display:flex; flex-direction:column; line-height:1.2 }
+.da-pastille__eb{ font-size:11px; font-weight:800; letter-spacing:.08em; color:var(--da-or) }
+.da-pastille__t{ font-family:Montserrat,sans-serif; font-weight:800; font-size:15px }
+.da-pastille__s{ font-size:12px; color:#BDBDBD }
+.da-pastille__pop{ width:330px; max-width:100%; background:var(--da-noir); color:#fff; border:1px solid rgba(212,175,55,.55); border-radius:22px; padding:22px; box-shadow:0 24px 60px rgba(0,0,0,.45); display:flex; flex-direction:column; gap:12px; animation:daIn .22s ease-out }
+.da-pastille__pop[hidden]{ display:none }
+.da-pastille__pop h2{ margin:0; font-family:Montserrat,sans-serif; font-weight:900; font-size:22px; line-height:1.1 }
+.da-pastille__pop p{ margin:0; font-size:14px; color:#CFCFCF; line-height:1.5 }
+.da-pastille__cd{ font-size:14px; color:var(--da-or-clair); font-weight:700 }
+.da-pastille__cta{ display:flex; align-items:center; justify-content:center; height:50px; border-radius:12px; background:var(--da-or); color:var(--da-noir) !important; font-family:Montserrat,sans-serif; font-weight:800; text-decoration:none }
+.da-pastille__lien{ text-align:center; color:var(--da-or-clair) !important; font-size:14px; font-weight:600 }
+.da-pastille__x{ position:absolute; top:10px; right:10px; width:32px; height:32px; border:0; border-radius:50%; background:#1F1F1F; color:#fff; cursor:pointer }
+.da-pastille__pop{ position:relative }
+@keyframes daPulse{0%{box-shadow:0 0 0 0 rgba(212,175,55,.55)}70%{box-shadow:0 0 0 16px rgba(212,175,55,0)}100%{box-shadow:0 0 0 0 rgba(212,175,55,0)}}
+@keyframes daIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){ .da-pastille__btn,.da-pastille__pop{ animation:none } }
+
+/* ---------- Barre Réserver mobile ---------- */
+.da-sticky{ display:none; position:fixed; left:12px; right:12px; bottom:12px; z-index:190; background:var(--da-noir); border:1px solid #2E2E2E; border-radius:18px; padding:10px; gap:10px; align-items:center; box-shadow:0 16px 40px rgba(0,0,0,.35) }
+.da-sticky a.da-ico{ width:50px; height:50px; border-radius:12px; border:1px solid #3A3A3A; display:inline-flex; align-items:center; justify-content:center; color:#fff; flex:none }
+.da-sticky a.da-go{ flex:1; height:50px; border-radius:12px; background:var(--da-or); color:var(--da-noir); display:inline-flex; align-items:center; justify-content:center; font-family:Montserrat,sans-serif; font-weight:800; text-decoration:none }
+@media (max-width:760px){ .da-sticky{ display:flex } .da-pastille{ bottom:88px; right:12px } }
+
+/* ---------- Blog ---------- */
+.ccw-article__figure{ margin:28px 0 32px }
+.ccw-article__figure img{ display:block; width:100%; height:auto; border-radius:20px }
+.ccw-article__figure figcaption{ margin-top:10px; font-size:13px; color:var(--da-doux); font-style:italic }
+main:not(.mq-accueil) > .ccw-article .ccw-article__figure figcaption{ color:#9E9E9E }
+.ccw-blog__vignette{ display:block; width:calc(100% + 56px); max-width:none; margin:-28px -28px 20px; aspect-ratio:16/10; object-fit:cover; border-radius:24px 24px 0 0 }
+@media (min-width:768px){ .ccw-blog__vignette{ width:calc(100% + 64px); margin:-32px -32px 22px } }
+.ccw-article{ font-size:17px; line-height:1.7 }
+.ccw-article h1{ text-transform:none !important; font-weight:900 !important; letter-spacing:-.02em !important }
+.ccw-article h2{ font-size:clamp(24px,4.6vw,32px) !important; margin-top:40px }
+
+/* ---------- Correctifs après relecture mobile ---------- */
+main:not(.mq-accueil) .font-display.uppercase:not(.text-xs):not(.text-sm):not(.text-\[10px\]):not(.text-\[11px\]):not(.tracking-widest):not(.tracking-\[0\.3em\]):not(.tracking-\[0\.25em\]){ text-transform:none !important; letter-spacing:-.01em !important }
+@media (max-width:760px){
+  .da-pastille__txt{ display:none }
+  .da-pastille__btn{ padding:7px; min-height:0 }
+}
+#ccw-promo-bar{ display:none !important }
+main:not(.mq-accueil) .premium-card h2, main:not(.mq-accueil) a.premium-card h2{ font-size:22px !important; line-height:1.2 !important; letter-spacing:-.01em !important }
+.da-pastille__titre{ margin:0; font-family:Montserrat,sans-serif; font-weight:900; font-size:22px; line-height:1.1; color:#fff !important }

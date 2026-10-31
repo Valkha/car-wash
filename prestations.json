@@ -72,7 +72,8 @@
       ],
       "lieuAtelier": "Le pavillon doit être déposé puis reposé : la prestation se fait exclusivement dans notre atelier.",
       "lieuDomicile": null,
-      "immobilisation": "Comptez <strong class=\"text-white\">une demi-journée minimum</strong>. Le pavillon est déposé, travaillé puis reposé : le véhicule reste à l'atelier pendant toute l'intervention."
+      "immobilisation": "Comptez <strong class=\"text-white\">une demi-journée minimum</strong>. Le pavillon est déposé, travaillé puis reposé : le véhicule reste à l'atelier pendant toute l'intervention.",
+      "resume": "Fibres optiques posées à la main, quatre coloris, intensité réglable à la télécommande."
     },
     "en": {
       "nom": "Starlight headliner",
@@ -140,7 +141,8 @@
       "motsClesVilles": [],
       "lieuAtelier": "The headliner has to be removed and refitted: this service is carried out in our workshop only.",
       "lieuDomicile": null,
-      "immobilisation": "Allow <strong class=\"text-white\">half a day minimum</strong>. The headliner is removed, worked on and refitted: the vehicle stays in the workshop throughout."
+      "immobilisation": "Allow <strong class=\"text-white\">half a day minimum</strong>. The headliner is removed, worked on and refitted: the vehicle stays in the workshop throughout.",
+      "resume": "Optical fibres laid by hand, four colours, brightness adjustable by remote."
     },
     "domicile": false,
     "acompte": "149.70",
@@ -196,7 +198,8 @@
       ],
       "lieuAtelier": "La pose de film exige un environnement sans poussière : la prestation se fait exclusivement dans notre atelier.",
       "lieuDomicile": null,
-      "immobilisation": "Comptez <strong class=\"text-white\">une journée complète minimum</strong>, davantage pour un véhicule entièrement couvert. Le véhicule reste à l'atelier pendant la pose : prévoyez une solution de mobilité."
+      "immobilisation": "Comptez <strong class=\"text-white\">une journée complète minimum</strong>, davantage pour un véhicule entièrement couvert. Le véhicule reste à l'atelier pendant la pose : prévoyez une solution de mobilité.",
+      "resume": "Film transparent qui encaisse gravillons et rayures à la place de votre laque."
     },
     "en": {
       "nom": "PPF — paint protection film",
@@ -234,7 +237,8 @@
       "motsClesVilles": [],
       "lieuAtelier": "Film application requires a dust-free environment: this service is carried out in our workshop only.",
       "lieuDomicile": null,
-      "immobilisation": "Allow <strong class=\"text-white\">one full day minimum</strong>, more for a fully covered vehicle. The car stays in the workshop while the film is applied: plan alternative transport."
+      "immobilisation": "Allow <strong class=\"text-white\">one full day minimum</strong>, more for a fully covered vehicle. The car stays in the workshop while the film is applied: plan alternative transport.",
+      "resume": "A clear film that takes the stone chips and scratches instead of your lacquer."
     },
     "domicile": false,
     "acompte": "299.70",
@@ -288,7 +292,8 @@
       "motsClesVilles": [],
       "lieuAtelier": "La pose de film exige un environnement sans poussière et une température maîtrisée : la prestation se fait exclusivement dans notre atelier.",
       "lieuDomicile": null,
-      "immobilisation": "Comptez <strong class=\"text-white\">une journée complète minimum</strong>, davantage selon la surface couverte. Le véhicule reste immobilisé : prévoyez une solution de mobilité."
+      "immobilisation": "Comptez <strong class=\"text-white\">une journée complète minimum</strong>, davantage selon la surface couverte. Le véhicule reste immobilisé : prévoyez une solution de mobilité.",
+      "resume": "Changez de couleur sans toucher à la peinture. Mat, brillant, satiné ou carbone."
     },
     "en": {
       "nom": "Vehicle wrapping",
@@ -326,7 +331,8 @@
       "motsClesVilles": [],
       "lieuAtelier": "Film application requires a dust-free environment and controlled temperature: this service is carried out in our workshop only.",
       "lieuDomicile": null,
-      "immobilisation": "Allow <strong class=\"text-white\">one full day minimum</strong>, more depending on the area covered. The vehicle stays off the road: plan alternative transport."
+      "immobilisation": "Allow <strong class=\"text-white\">one full day minimum</strong>, more depending on the area covered. The vehicle stays off the road: plan alternative transport.",
+      "resume": "Change colour without touching the paint. Matt, gloss, satin or carbon."
     },
     "domicile": false,
     "acompte": "299.70",
@@ -421,7 +427,8 @@
       ],
       "lieuAtelier": "Dans notre atelier à Genève, dans les meilleures conditions de lumière et de température.",
       "lieuDomicile": "Possible chez vous, mais <strong class=\"text-white\">uniquement dans un garage fermé</strong>. La céramique ne supporte ni la poussière ni la pluie pendant la prise. Aucun point d'eau n'est nécessaire.",
-      "immobilisation": "Comptez <strong class=\"text-white\">une journée complète minimum</strong>, souvent davantage selon l'état de la laque. Le véhicule reste immobilisé pendant toute la durée de la prise : prévoyez une solution de mobilité."
+      "immobilisation": "Comptez <strong class=\"text-white\">une journée complète minimum</strong>, souvent davantage selon l'état de la laque. Le véhicule reste immobilisé pendant toute la durée de la prise : prévoyez une solution de mobilité.",
+      "resume": "Décontamination, correction des micro-rayures, céramique longue durée et habitacle repris."
     },
     "en": {
       "nom": "Ceramic Polish Pack",
@@ -497,7 +504,8 @@
       "motsClesVilles": [],
       "lieuAtelier": "In our Geneva workshop, under the best light and temperature conditions.",
       "lieuDomicile": "Possible at your place, but <strong class=\"text-white\">only inside a closed garage</strong>. The ceramic tolerates neither dust nor rain while it cures. No water point is needed.",
-      "immobilisation": "Allow <strong class=\"text-white\">one full day minimum</strong>, often more depending on the state of the lacquer. The vehicle stays off the road for the whole curing time: plan alternative transport."
+      "immobilisation": "Allow <strong class=\"text-white\">one full day minimum</strong>, often more depending on the state of the lacquer. The vehicle stays off the road for the whole curing time: plan alternative transport.",
+      "resume": "Decontamination, swirl correction, long-lasting ceramic and the interior brought back."
     },
     "domicile": true,
     "acompte": "299.70",
@@ -552,7 +560,8 @@
       "motsClesVilles": [],
       "lieuAtelier": "Dans notre atelier à Genève, sur pont. Le pont est indispensable : c'est le seul moyen d'atteindre le dessous de caisse en entier, et c'est pourquoi cette prestation ne se fait pas à domicile.",
       "lieuDomicile": null,
-      "immobilisation": null
+      "immobilisation": null,
+      "resume": "Châssis, compartiment moteur et passages de roue. Parfait avant la visite technique."
     },
     "en": {
       "nom": "Chassis & engine cleaning",
@@ -586,7 +595,8 @@
       "motsClesVilles": [],
       "lieuAtelier": "In our Geneva workshop, on a lift. The lift is essential: it is the only way to reach the whole underbody, which is why this service is not carried out at your place.",
       "lieuDomicile": null,
-      "immobilisation": null
+      "immobilisation": null,
+      "resume": "Chassis, engine bay and wheel arches. Ideal before the vehicle inspection."
     },
     "domicile": false,
     "acompte": "47.95",

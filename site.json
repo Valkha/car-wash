@@ -1,0 +1,100 @@
+{
+  "_comment": "Source de verite unique du site : arborescence, URL FR/EN, coordonnees, frais de deplacement, concours. Lu par site-shell.js, inject-shell.js et les generateurs. Une page existe=false est reservee : elle n'entre ni dans le menu, ni dans le sitemap.",
+  "base": "https://www.clean-cars-wash.ch",
+  "marque": "Clean Cars Wash",
+  "contact": {
+    "raisonSociale": "AHMED-YAHIA LM",
+    "tel": "+41782657071",
+    "telAffiche": "+41 78 265 70 71",
+    "whatsapp": "41782657071",
+    "email": "info@clean-cars-wash.ch",
+    "adresse": { "rue": "Chemin des Vergers", "npa": "1208", "ville": "Genève", "pays": "CH" },
+    "horaires": {
+      "fr": ["Tous les jours : 07h30 – 22h00"],
+      "en": ["Every day: 07:30 AM – 10:00 PM"]
+    },
+    "tva": "CHE-377.481.423 TVA",
+    "ficheGoogle": "https://maps.app.goo.gl/HgBjjuKPdWKeo9E46"
+  },
+  "deplacement": {
+    "_comment": "Frais de deplacement, relus par les pages generees. Les pages ecrites a la main (zones, CGV, promos) et les deux cartes images les repetent : a changer ensemble.",
+    "geneve": "0",
+    "orange": { "prix": "39.90", "districts": ["Nyon", "Morges", "Ouest lausannois", "Lausanne", "Gros-de-Vaud"] },
+    "rouge":  { "prix": "59.90", "districts": ["Jura–Nord vaudois", "Broye–Vully", "Lavaux–Oron", "Riviera–Pays-d'Enhaut", "Aigle"] }
+  },
+  "concours": {
+    "_comment": "Dates du concours, declarees une seule fois : carte, bloc Offres, page concours et sitemap les relisent ; le build echoue si un bloc porte une autre date. participation / reglement vides = la page annonce que les modalites seront publiees.",
+    "debut": "2026-11-01",
+    "fin": "2026-11-30",
+    "lotDetail": { "fr": "iPhone 18 Pro Max neuf, 256 Go, violet", "en": "New iPhone 18 Pro Max, 256 GB, purple" },
+    "lot": {
+      "fr": "iPhone 18 Pro Max",
+      "en": "iPhone 18 Pro Max"
+    },
+    "participation": {
+      "fr": [
+        "Réservez, payez et faites réaliser une prestation Clean Cars Wash entre le 1er et le 30 novembre 2026, au tarif habituel.",
+        "Seules les prestations réalisées et intégralement payées pendant cette période comptent.",
+        "Une seule participation par personne, quel que soit le nombre de prestations ou le montant dépensé.",
+        "Ouvert aux personnes majeures domiciliées en Suisse, et aux frontaliers domiciliés en France qui bénéficient d’une prestation en Suisse."
+      ],
+      "en": [
+        "Book, pay for and have a Clean Cars Wash service carried out between 1 and 30 November 2026, at the usual price.",
+        "Only services carried out and paid in full during that period count.",
+        "One entry per person, whatever the number of services or the amount spent.",
+        "Open to adults resident in Switzerland, and to cross-border residents of France who receive a service in Switzerland."
+      ]
+    },
+    "reglement": {
+      "fr": [
+        "<strong>Organisateur.</strong> Le jeu-concours est organisé par AHMED-YAHIA LM, exploitant Clean Cars Wash, Chemin des Vergers, 1208 Genève.",
+        "<strong>Durée.</strong> Du 1er novembre 2026 à 00 h 00 au 30 novembre 2026 à 23 h 59.",
+        "<strong>Participants.</strong> Personnes majeures (18 ans révolus) domiciliées en Suisse, ainsi que frontaliers domiciliés en France bénéficiant d’une prestation Clean Cars Wash en Suisse.",
+        "<strong>Participation.</strong> La participation se fait exclusivement en réservant, payant et faisant réaliser une prestation Clean Cars Wash pendant la durée du jeu. Seules les prestations effectivement réalisées et intégralement payées entre le 1er et le 30 novembre 2026 sont prises en compte : une prestation réservée en novembre mais réalisée en décembre ne permet pas de participer. Les prestations sont facturées au tarif habituel ; aucun supplément n’est demandé pour participer.",
+        "<strong>Une participation par personne.</strong> Chaque personne dispose d’une seule chance de gagner, quel que soit le nombre de prestations réalisées ou le montant dépensé. Les doublons sont supprimés.",
+        "<strong>Refus de participer.</strong> Tout client peut refuser de participer, sans justification, en écrivant à info@clean-cars-wash.ch avant le tirage.",
+        "<strong>Lot.</strong> Un iPhone 18 Pro Max neuf, 256 Go, coloris violet. Il n’y a qu’un seul gagnant.",
+        "<strong>Tirage au sort.</strong> Le 22 décembre 2026, de manière aléatoire, parmi les participants éligibles. Une preuve du tirage est conservée.",
+        "<strong>Gagnant.</strong> Le gagnant est contacté personnellement par téléphone ou par e-mail et dispose de sept jours pour répondre. Son identité n’est pas rendue publique sans son consentement.",
+        "<strong>Données personnelles.</strong> Le jeu utilise uniquement les données déjà fournies lors de la réservation (nom et coordonnées), pour établir la liste des participants, effectuer le tirage et contacter le gagnant. Elles ne sont pas utilisées à d’autres fins. Voir la politique de confidentialité.",
+        "<strong>Contact.</strong> Pour toute question : info@clean-cars-wash.ch ou +41 78 265 70 71."
+      ],
+      "en": [
+        "<strong>Organiser.</strong> The giveaway is organised by AHMED-YAHIA LM, operating Clean Cars Wash, Chemin des Vergers, 1208 Geneva.",
+        "<strong>Duration.</strong> From 1 November 2026 at 00:00 to 30 November 2026 at 23:59.",
+        "<strong>Who may enter.</strong> Adults (18 or over) resident in Switzerland, and cross-border residents of France who receive a Clean Cars Wash service in Switzerland.",
+        "<strong>How to enter.</strong> Entry is exclusively by booking, paying for and having a Clean Cars Wash service carried out during the giveaway period. Only services actually carried out and paid in full between 1 and 30 November 2026 count: a service booked in November but carried out in December does not qualify. Services are charged at the usual price; no surcharge is required to enter.",
+        "<strong>One entry per person.</strong> Each person has a single chance to win, whatever the number of services or the amount spent. Duplicates are removed.",
+        "<strong>Opting out.</strong> Any customer may decline to take part, without giving a reason, by writing to info@clean-cars-wash.ch before the draw.",
+        "<strong>Prize.</strong> One new iPhone 18 Pro Max, 256 GB, purple. There is a single winner.",
+        "<strong>Draw.</strong> On 22 December 2026, at random, among eligible entrants. Proof of the draw is kept.",
+        "<strong>Winner.</strong> The winner is contacted personally by phone or e-mail and has seven days to reply. Their identity is not made public without their consent.",
+        "<strong>Personal data.</strong> The giveaway only uses data already provided when booking (name and contact details), to draw up the list of entrants, run the draw and contact the winner. It is not used for any other purpose. See the privacy policy.",
+        "<strong>Contact.</strong> Any question: info@clean-cars-wash.ch or +41 78 265 70 71."
+      ]
+    },
+    "tirage": {
+      "fr": "Tirage au sort le 22 décembre 2026 parmi les participants éligibles. Le gagnant est contacté personnellement.",
+      "en": "Prize draw on 22 December 2026 among eligible entrants. The winner is contacted personally."
+    },
+    "dateTirage": "2026-12-22"
+  },
+  "pages": {
+    "accueil":        { "fr": "/",                              "en": "/en/",                       "libelle": { "fr": "Accueil",        "en": "Home" },           "existe": true,  "gabarit": null },
+    "particuliers":   { "fr": "/particuliers.html",             "en": "/en/individuals.html",       "libelle": { "fr": "Particuliers",   "en": "Individuals" },    "existe": true , "gabarit": "commercial",   "menu": 1 },
+    "a-domicile":     { "fr": "/a-domicile.html",               "en": "/en/at-home.html",           "libelle": { "fr": "À domicile",     "en": "At home" },        "existe": true , "gabarit": "commercial",   "parent": "particuliers", "ordre": 1 },
+    "atelier":        { "fr": "/atelier.html",                  "en": "/en/workshop.html",          "libelle": { "fr": "En atelier",     "en": "In the workshop" },"existe": true , "gabarit": "commercial",   "parent": "particuliers", "ordre": 2 },
+    "tarifs":         { "fr": "/tarifs.html",                   "en": "/en/prices.html",            "libelle": { "fr": "Tarifs",         "en": "Prices" },         "existe": true , "gabarit": "information",  "parent": "particuliers", "ordre": 3 },
+    "abonnements":    { "fr": "/abonnements.html",              "en": "/en/subscriptions.html",     "libelle": { "fr": "Abonnements",    "en": "Subscriptions" },  "existe": true,  "gabarit": null,           "parent": "particuliers", "ordre": 4 },
+    "professionnels": { "fr": "/professionnels.html",           "en": "/en/business.html",          "libelle": { "fr": "Professionnels", "en": "Business" },       "existe": true , "gabarit": "commercial",   "menu": 2 },
+    "prestations":    { "fr": null,                             "en": null,                         "libelle": { "fr": "Prestations",    "en": "Services" },       "existe": true,  "gabarit": null,           "menu": 3, "_comment": "Entree de menu sans page propre : ses enfants sont les 5 prestations de prestations.json." },
+    "infos":          { "fr": null,                             "en": null,                         "libelle": { "fr": "Infos",          "en": "Info" },           "existe": true,  "gabarit": null,           "menu": 4 },
+    "blog":           { "fr": "/blog/",                         "en": "/en/blog/",                  "libelle": { "fr": "Blog",           "en": "Blog" },           "existe": true , "gabarit": "informatif",   "parent": "infos", "ordre": 1 },
+    "offres":         { "fr": "/promos.html",                   "en": "/en/promos.html",            "libelle": { "fr": "Offres",         "en": "Offers" },         "existe": true,  "gabarit": null,           "parent": "infos", "ordre": 2 },
+    "zones":          { "fr": "/zones.html",                    "en": "/en/zones.html",             "libelle": { "fr": "Zones & frais",  "en": "Areas & fees" },   "existe": true,  "gabarit": null,           "parent": "infos", "ordre": 3 },
+    "reserver":       { "fr": "/reserver.html",                 "en": "/en/book.html",              "libelle": { "fr": "Réserver",       "en": "Book" },           "existe": true , "gabarit": "information",  "menu": 5, "bouton": true },
+    "jeu-concours":   { "fr": "/jeu-concours.html",             "en": "/en/giveaway.html",          "libelle": { "fr": "Jeu-concours",   "en": "Giveaway" },       "existe": true,  "gabarit": "information",  "pied": true },
+    "mentions":       { "fr": "/mentions-legales.html",         "en": "/en/legal-notices.html",     "libelle": { "fr": "Mentions légales & CGV", "en": "Legal notices & T&Cs" }, "existe": true, "gabarit": null, "pied": true },
+    "confidentialite":{ "fr": "/politique-confidentialite.html","en": "/en/privacy-policy.html",    "libelle": { "fr": "Politique de confidentialité", "en": "Privacy policy" }, "existe": true, "gabarit": null, "pied": true }
+  }
+}

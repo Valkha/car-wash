@@ -157,17 +157,30 @@ document.addEventListener('keydown', function (e) { if (e.key === 'Escape') ccwM
 // évite un second <h1> visible des moteurs pendant la promo. Il est inséré une
 // fois l'échéance passée. La polarité reste la même — pendant la promo, un JS
 // en échec laisse l'offre visible et le repli absent.
+//
+// data-promo-from="AAAA-MM-JJ" (23.10.2026, jeu-concours) : l'element est
+// retire TANT QUE la date n'est pas atteinte. Combine a data-promo-until, il
+// borne une periode. Meme logique que le garde inline de site-shell.js, qui
+// s'execute avant celui-ci sur toutes les pages (y compris celles sans app.js).
+//
+// Verification locale : ?ccw-maintenant=AAAA-MM-JJ simule une date, sur
+// localhost / 127.0.0.1 uniquement — meme parametre que la carte concours et le
+// garde inline, pour que les trois voient la meme date.
 (function () {
     var maintenant = new Date();
+    var simulee = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) &&
+        location.search.match(/[?&]ccw-maintenant=(\d{4}-\d{2}-\d{2})/);
+    if (simulee) maintenant = new Date(simulee[1] + 'T12:00:00');
 
-    function echeance(el, attribut) {
-        var d = new Date(el.getAttribute(attribut) + 'T23:59:59');
+    function echeance(el, attribut, heure) {
+        var d = new Date(el.getAttribute(attribut) + (heure || 'T23:59:59'));
         return isNaN(d.getTime()) ? null : d;
     }
 
-    Array.prototype.forEach.call(document.querySelectorAll('[data-promo-until]'), function (el) {
-        var fin = echeance(el, 'data-promo-until');
-        if (fin && maintenant > fin) el.remove();
+    Array.prototype.forEach.call(document.querySelectorAll('[data-promo-until], [data-promo-from]'), function (el) {
+        var fin = el.hasAttribute('data-promo-until') ? echeance(el, 'data-promo-until') : null;
+        var debut = el.hasAttribute('data-promo-from') ? echeance(el, 'data-promo-from', 'T00:00:00') : null;
+        if ((fin && maintenant > fin) || (debut && maintenant < debut)) el.remove();
     });
 
     Array.prototype.forEach.call(document.querySelectorAll('[data-promo-expired-after]'), function (el) {
@@ -225,11 +238,11 @@ var CCW_OFFERS = {
     },
 
     // Prestations specialisees, relevees dans l'API SumUp le 13/10/2026.
-    // Trois d'entre elles n'existent qu'a l'atelier : elles n'ont pas de cle
+    // Quatre d'entre elles n'existent qu'a l'atelier : elles n'ont pas de cle
     // "home", et leurs pages appellent ccwBookingDirect() sans passer par la
-    // modale. Les deux autres ont les deux variantes, comme les packs.
+    // modale. Seul le polish ceramique a les deux variantes, comme les packs.
     // Ces identifiants sont dupliques dans prestations.json ; generate-prestations.js
-    // verifie au build qu'ils concordent et echoue sinon.
+    // les compare cle par cle au build et echoue au moindre ecart.
     'ciel-etoile': {
         garage: { label: '[4] Ciel Étoilé - Au Garage (Acompte 30%)',  service: '67c63ca8-1f4a-4c87-8048-3201c5a32390', variant: '2548318a-16a6-4ee4-90e7-90d3fa20b980' }
     },
@@ -284,7 +297,7 @@ function ccwLocationModalOpen(offerKey) {
     ccwCurrentOffer = CCW_OFFERS[offerKey] || null;
     var homeTxt = document.getElementById('ccw-location-home-label');
     var garageTxt = document.getElementById('ccw-location-garage-label');
-    // Trois prestations specialisees n'existent qu'a l'atelier : pas de cle home.
+    // Quatre prestations specialisees n'existent qu'a l'atelier : pas de cle home.
     if (homeTxt) homeTxt.textContent = (ccwCurrentOffer && ccwCurrentOffer.home) ? ccwCurrentOffer.home.label : '';
     if (garageTxt) garageTxt.textContent = (ccwCurrentOffer && ccwCurrentOffer.garage) ? ccwCurrentOffer.garage.label : '';
     var m = document.getElementById('ccw-location-modal');
@@ -305,8 +318,12 @@ function ccwLocationModalClose() {
 // Reservation sans choix de lieu — pages prestations a l'atelier uniquement.
 // Le bouton declenche directement la creation du panier : pas de modale a
 // ouvrir pour une question qui n'a qu'une reponse possible.
+//
+// Pas de ccwBookingReset() ici : il remettait le verrou a zero a chaque clic, si
+// bien que trois clics rapides creaient trois paniers (audit du 13.10.2026). Le
+// retour arriere est deja gere par l'ecouteur pageshow.
 function ccwBookingDirect(offerKey, place) {
-    ccwBookingReset();
+    if (ccwBookingBusy) return;
     ccwCurrentOffer = CCW_OFFERS[offerKey] || null;
     ccwBookingGo(place || 'garage');
 }

@@ -1,0 +1,28 @@
+/* Accueil 2026 (planche validee le 31.10.2026). Classes mq- : propres a l'accueil. */
+#main-content a{color:#7A5C0E}#main-content a:hover{color:#5C450A}
+.hv{transition:filter .15s ease, transform .15s ease}
+.hv:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.lift{transition:transform .25s ease, box-shadow .25s ease}
+.lift:hover{transform:translateY(-4px);box-shadow:0 24px 50px rgba(0,0,0,.18)}
+.zoom img{transition:transform .5s ease}
+.zoom:hover img{transform:scale(1.06)}
+.mq-burger{display:none}
+.mq-sticky{display:none}
+.mq-pastille{bottom:24px}
+@keyframes ccwPulse{0%{box-shadow:0 0 0 0 rgba(212,175,55,.55)}70%{box-shadow:0 0 0 16px rgba(212,175,55,0)}100%{box-shadow:0 0 0 0 rgba(212,175,55,0)}}
+.pulse{animation:ccwPulse 2.2s ease-out infinite}
+@keyframes ccwIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.pop{animation:ccwIn .22s ease-out}
+@media (prefers-reduced-motion: reduce){.pulse,.pop{animation:none}.lift:hover,.hv:hover{transform:none}}
+@media (max-width: 960px){
+.mq-nav{display:none !important}
+.mq-burger{display:inline-flex !important}
+.mq-hide-m{display:none !important}
+}
+@media (max-width: 760px){
+.mq-sticky{display:flex !important}
+.mq-pastille{bottom:88px;right:12px !important}
+.mq-hide-s{display:none !important}
+.mq-reco{order:-1;top:0 !important}
+.mq-step-line{display:none !important}
+}

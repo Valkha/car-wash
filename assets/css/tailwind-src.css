@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./style.css";
+@import "./da-2026.css";
 
 @theme {
   --font-sans: "Inter", sans-serif;

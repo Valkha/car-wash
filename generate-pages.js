@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const shell = require('./site-shell.js');
 
 // 1. Charger la base de données JSON
 const locationsPath = path.join(__dirname, 'locations.json');
@@ -47,7 +48,7 @@ const generateHTML = (loc) => `<!DOCTYPE html>
           charge = true;
           /* Audit P16 (15.09.2026) : GA4 etait aussi charge en direct ici,
              alors que le conteneur GTM le charge deja lui-meme -- 167 Kio et
-             173 ms de fil principal en double. Voir rapport §21. */
+             173 ms de fil principal en double. */
           ['https://www.googletagmanager.com/gtm.js?id=GTM-5W69QPT3'].forEach(function (src) {
             var s = document.createElement('script');
             s.async = true;
@@ -129,21 +130,7 @@ const generateHTML = (loc) => `<!DOCTYPE html>
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <header class="bg-charcoal-900/90 backdrop-blur-lg border-b border-white/5 sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center gap-4">
-            <a href="/" class="flex items-center gap-3 group" aria-label="Clean Cars Wash — Accueil">
-                <img src="/assets/images/logo-v2-tiny.webp" alt="Logo Clean Cars Wash" width="120" height="34" loading="eager" class="h-9 md:h-11 w-auto object-contain transition-transform group-hover:scale-105">
-                <span class="text-xs md:text-sm font-display font-bold text-white tracking-[0.2em] uppercase whitespace-nowrap group-hover:text-gold-400 transition-colors hidden sm:block">Clean Cars Wash</span>
-            </a>
-            <div class="flex items-center gap-3 md:gap-5">
-                <a href="tel:+41782657071" class="hidden sm:flex items-center justify-center w-9 h-9 shrink-0 rounded-full border border-gold-400/40 text-gold-400 hover:bg-gold-400 hover:text-charcoal-900 transition-colors" title="Appeler +41 78 265 70 71">
-                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                    <span class="sr-only">Appeler Clean Cars Wash au +41 78 265 70 71</span>
-                </a>
-                <a href="/#services" class="text-[10px] md:text-xs font-display font-bold tracking-widest uppercase text-gold-400 border border-gold-400 px-4 py-2 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-colors whitespace-nowrap">Réserver</a>
-            </div>
-        </div>
-    </header>
+    ${shell.repereHeader(`services/${loc.cityId}/index.html`, 'fr')}
 
     <main class="max-w-5xl mx-auto px-4 md:px-6">
         <article>
@@ -169,14 +156,14 @@ const generateHTML = (loc) => `<!DOCTYPE html>
                 <p class="conditions-eyebrow">Intervention à ${loc.cityName}</p>
                 <p class="conditions-title">Déplacement offert à Genève &mdash; <a href="/zones.html" style="color:#D4AF37;text-decoration:underline;">forfait selon le district sur Vaud</a></p>
                 <p class="text-gray-400 font-light text-sm leading-relaxed mb-8 max-w-xl mx-auto">Nous nous déplaçons chez vous ou sur votre lieu de travail, sans frais supplémentaires. Choisissez votre créneau en ligne et réglez un acompte de 30&nbsp;%&nbsp;; le solde se règle sur place.</p>
-                <a href="/#services" class="inline-block bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-4 px-10 rounded-full hover:bg-gold-500 transition-all shadow-[0_0_20px_rgba(212,175,55,0.2)]" data-track="conversion-booking">Réserver à ${loc.cityName}</a>
+                <a href="/reserver.html" class="inline-block bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-4 px-10 rounded-full hover:bg-gold-500 transition-all shadow-[0_0_20px_rgba(212,175,55,0.2)]" data-track="conversion-booking">Réserver à ${loc.cityName}</a>
             </section>
 
             <nav class="pb-16 md:pb-24" aria-label="Autres villes desservies">
                 <p class="text-[10px] font-display font-bold tracking-[0.3em] uppercase text-gold-400 mb-4">Nous intervenons aussi sur le canton de ${loc.region}</p>
                 <ul class="flex flex-wrap gap-x-4 gap-y-2 text-xs md:text-sm text-gray-400 font-light">
                     ${villesVoisines(loc).map(v => `<li><a href="/services/${v.cityId}/" class="hover:text-gold-400 transition">${v.cityName}</a></li>`).join('\n                    ')}
-                    <li><a href="/#services" class="text-gold-400 hover:text-white transition">Toutes nos prestations →</a></li>
+                    <li><a href="/tarifs.html" class="text-gold-400 hover:text-white transition">Toutes nos prestations →</a></li>
                 </ul>
             </nav>
         </article>
@@ -193,38 +180,8 @@ const generateHTML = (loc) => `<!DOCTYPE html>
         </ul>
     </section>
 
-    <footer class="bg-charcoal-900 border-t border-white/10 py-12">
-        <div class="max-w-5xl mx-auto px-4 md:px-6 flex flex-col md:flex-row justify-between items-start gap-8">
-            <div>
-                <p class="font-display font-bold text-sm tracking-[0.2em] uppercase text-white mb-3">Clean Cars Wash</p>
-                <p class="text-gray-400 text-sm mb-1">AHMED-YAHIA LM</p>
-                <p class="text-gray-400 text-sm mb-1">Chemin des Vergers</p>
-                <p class="text-gray-400 text-sm mb-4">1208 Genève</p>
-                <a href="mailto:info@clean-cars-wash.ch" class="text-gold-400 text-sm hover:text-white transition">info@clean-cars-wash.ch</a>
-            </div>
-            <div>
-                <p class="font-display font-bold text-[10px] tracking-[0.3em] uppercase text-white mb-3">Contact &amp; Horaires</p>
-                <a href="tel:+41782657071" class="block text-gold-400 font-display font-bold text-sm hover:text-white transition mb-3">+41 78 265 70 71</a>
-                <ul class="text-gray-400 text-sm space-y-1">
-                    <li>Lun–Sam : 07h30 – 22h00</li>
-                    <li>Dimanche : Fermé</li>
-                </ul>
-            </div>
-            <div>
-                <p class="font-display font-bold text-[10px] tracking-[0.3em] uppercase text-white mb-3">Informations</p>
-                <ul class="text-gray-400 text-sm space-y-2">
-                    <li><a href="/" class="hover:text-gold-400 transition">Accueil</a></li>
-                    <li><a href="/promos.html" class="hover:text-gold-400 transition">Promotions &amp; Offres</a></li>
-                    <li><a href="/zones.html" class="hover:text-gold-400 transition">Zones &amp; frais de déplacement</a></li>
-                    <li><a href="/mentions-legales.html" class="hover:text-gold-400 transition">Mentions Légales &amp; CGV</a></li>
-                    <li><a href="/politique-confidentialite.html" class="hover:text-gold-400 transition">Politique de Confidentialité</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="max-w-5xl mx-auto px-4 md:px-6 mt-10 pt-6 border-t border-white/5 text-center text-[10px] text-gray-400 tracking-[0.2em] uppercase">
-            &copy; 2026 Clean Cars Wash &nbsp;|&nbsp; <span style="opacity:.7;">CHE-377.481.423 TVA</span>
-        </div>
-    </footer>
+    ${shell.repereFooter(`services/${loc.cityId}/index.html`, 'fr')}
+    ${shell.repereFinDePage('fr')}
 </body>
 </html>`;
 
@@ -247,36 +204,38 @@ locations.forEach(loc => {
 const generateSitemap = (locations) => {
     const date = new Date().toISOString().split('T')[0];
 
-    const staticPages = [
-        { url: 'https://www.clean-cars-wash.ch/',                              changefreq: 'weekly',  priority: '1.0' },
-        { url: 'https://www.clean-cars-wash.ch/en/',                           changefreq: 'weekly',  priority: '1.0' },
-        { url: 'https://www.clean-cars-wash.ch/mentions-legales.html',         changefreq: 'yearly',  priority: '0.3' },
-        { url: 'https://www.clean-cars-wash.ch/politique-confidentialite.html',changefreq: 'yearly',  priority: '0.3' },
-        { url: 'https://www.clean-cars-wash.ch/en/legal-notices.html',         changefreq: 'yearly',  priority: '0.3' },
-        { url: 'https://www.clean-cars-wash.ch/en/privacy-policy.html',        changefreq: 'yearly',  priority: '0.3' },
-        { url: 'https://www.clean-cars-wash.ch/abonnements.html',              changefreq: 'monthly', priority: '0.7' },
-        { url: 'https://www.clean-cars-wash.ch/en/subscriptions.html',         changefreq: 'monthly', priority: '0.7' },
-        { url: 'https://www.clean-cars-wash.ch/promos.html',                   changefreq: 'weekly',  priority: '0.9' },
-        { url: 'https://www.clean-cars-wash.ch/en/promos.html',                changefreq: 'weekly',  priority: '0.9' },
-        { url: 'https://www.clean-cars-wash.ch/zones.html',                    changefreq: 'monthly', priority: '0.8' },
-        { url: 'https://www.clean-cars-wash.ch/en/zones.html',                 changefreq: 'monthly', priority: '0.8' },
-        // Prestations spécialisées — pages générées par generate-prestations.js
-        { url: 'https://www.clean-cars-wash.ch/ciel-etoile.html',              changefreq: 'monthly', priority: '0.8' },
-        { url: 'https://www.clean-cars-wash.ch/en/starlight-headliner.html',   changefreq: 'monthly', priority: '0.8' },
-        { url: 'https://www.clean-cars-wash.ch/ppf.html',                      changefreq: 'monthly', priority: '0.8' },
-        { url: 'https://www.clean-cars-wash.ch/en/ppf.html',                   changefreq: 'monthly', priority: '0.8' },
-        { url: 'https://www.clean-cars-wash.ch/covering.html',                 changefreq: 'monthly', priority: '0.8' },
-        { url: 'https://www.clean-cars-wash.ch/en/covering.html',              changefreq: 'monthly', priority: '0.8' },
-        { url: 'https://www.clean-cars-wash.ch/polish-ceramique.html',         changefreq: 'monthly', priority: '0.8' },
-        { url: 'https://www.clean-cars-wash.ch/en/ceramic-polish.html',        changefreq: 'monthly', priority: '0.8' },
-        { url: 'https://www.clean-cars-wash.ch/nettoyage-chassis.html',        changefreq: 'monthly', priority: '0.8' },
-        { url: 'https://www.clean-cars-wash.ch/en/chassis-cleaning.html',      changefreq: 'monthly', priority: '0.8' },
-    ];
+    // Pages statiques : relues dans site.json (pages existantes, FR + EN) et
+    // prestations.json, depuis le 23.10.2026. Une page ajoutee a site.json
+    // entre dans le sitemap sans toucher a ce fichier ; generate-pages.js reste
+    // le SEUL ecrivain de public/sitemap.xml.
+    const PRIORITE = {
+        accueil: ['weekly', '1.0'], offres: ['weekly', '0.9'], zones: ['monthly', '0.8'],
+        abonnements: ['monthly', '0.7'], 'jeu-concours': ['weekly', '0.6'],
+        mentions: ['yearly', '0.3'], confidentialite: ['yearly', '0.3'],
+    };
+    const staticPages = [];
+    Object.entries(shell.SITE.pages).forEach(([cle, pg]) => {
+        if (!pg.existe || !pg.fr) return;
+        const [changefreq, priority] = PRIORITE[cle] || ['monthly', '0.8'];
+        ['fr', 'en'].forEach(l => staticPages.push({ url: shell.SITE.base + pg[l], changefreq, priority }));
+    });
+    // Prestations specialisees — pages generees par generate-prestations.js
+    JSON.parse(fs.readFileSync(path.join(__dirname, 'prestations.json'), 'utf8')).forEach(pr => {
+        staticPages.push({ url: `${shell.SITE.base}/${pr.id}.html`, changefreq: 'monthly', priority: '0.8' });
+        staticPages.push({ url: `${shell.SITE.base}/en/${pr.slugEn}.html`, changefreq: 'monthly', priority: '0.8' });
+    });
+
+    // Articles du blog (blog.json) : lastmod = date de mise a jour reelle.
+    const blogJson = path.join(__dirname, 'blog.json');
+    if (fs.existsSync(blogJson) && shell.SITE.pages.blog.existe) {
+        JSON.parse(fs.readFileSync(blogJson, 'utf8')).articles.forEach(a => ['fr', 'en'].forEach(l =>
+            staticPages.push({ url: `${shell.SITE.base}${shell.SITE.pages.blog[l]}${a.slug[l]}.html`, changefreq: 'monthly', priority: '0.7', lastmod: a.maj })));
+    }
 
     const staticUrls = staticPages.map(p => `
     <url>
         <loc>${p.url}</loc>
-        <lastmod>${date}</lastmod>
+        <lastmod>${p.lastmod || date}</lastmod>
         <changefreq>${p.changefreq}</changefreq>
         <priority>${p.priority}</priority>
     </url>`).join('');
@@ -301,4 +260,5 @@ const generateSitemap = (locations) => {
 };
 
 generateSitemap(locations);
+
 console.log('🚀 Build SEO Programmique terminé avec succès.');

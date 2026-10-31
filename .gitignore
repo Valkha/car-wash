@@ -44,3 +44,13 @@ desktop.ini
 npm-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+
+# Notes de travail, rapports, plans et fichiers d'IA : jamais dans le depot
+# public (protection contre le scraping, 23.10.2026). Ils restent sur le disque.
+*.md
+*.pdf
+.claude/
+.sync-test.txt
+
+# Copie de travail git (worktree) de la branche concours
+.concours/

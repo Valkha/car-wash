@@ -506,6 +506,26 @@ details[open] summary ~ * {
             rgba(10, 10, 10, .60) 100%);
 }
 
+/* Entre 768 et 1023 px, le titre de 60 px occupe presque toute la largeur du
+   bandeau et passe sur le sujet, la ou le voile horizontal est le plus leger :
+   "CHASSIS & MOTEUR" tombait a 2.3:1 sur la brume (seuil 3:1). Le voile y reste
+   donc dense plus loin vers la droite. Mesure sur pixels rendus, audit 13.10.2026 :
+   pire pixel 5.4:1 de 768 a 1023 px. */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .presta-hero-voile {
+        background:
+            linear-gradient(90deg,
+                rgba(10, 10, 10, .97) 0%,
+                rgba(10, 10, 10, .92) 55%,
+                rgba(10, 10, 10, .80) 85%,
+                rgba(10, 10, 10, .65) 100%),
+            linear-gradient(180deg,
+                rgba(10, 10, 10, .30) 0%,
+                rgba(10, 10, 10, 0) 38%,
+                rgba(10, 10, 10, .60) 100%);
+    }
+}
+
 /* Valeurs calees sur une mesure, pas a l'oeil : avec un voile a .70, le surtitre
    dore tombait a 3.6:1 sur le pixel le plus clair de l'image, sous le seuil WCAG
    de 4.5:1 pour le petit texte. A .80, il repasse au-dessus. */
@@ -846,3 +866,114 @@ a:focus-visible .nav-swap > span:last-child {
     .premium-card::after,
     .premium-service-card::after { display: none; }
 }
+
+/* ==========================================================================
+   HEADER & FOOTER UNIFIES (site-shell.js, 23.10.2026)
+   Un seul header pour tout le site. >= 1024 px : menu avec sous-menus (survol,
+   focus clavier, bouton). < 1024 px : logo a gauche, Reserver + burger a
+   droite, visibles sans ouvrir le menu ; menu ouvert = accordeons + Reserver
+   pleine largeur + Appeler + WhatsApp.
+   ========================================================================== */
+.ccw-header { position: sticky; top: 0; z-index: 50; background: rgba(10,10,10,.92); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,.06); }
+.ccw-header__barre { max-width: 80rem; margin: 0 auto; padding: 0 1rem; height: 4rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.ccw-header__logo { display: flex; align-items: center; gap: .75rem; flex: none; }
+.ccw-header__logo img { height: 2.75rem; width: auto; object-fit: contain; }
+.ccw-header__logo span { display: none; font-family: var(--font-display, "Montserrat", sans-serif); font-weight: 700; font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; color: #fff; white-space: nowrap; }
+.ccw-header__logo:hover span { color: #D4AF37; }
+.ccw-header__actions { display: flex; align-items: center; gap: .75rem; }
+.ccw-header__tel { display: none; align-items: center; justify-content: center; width: 2.25rem; height: 2.25rem; border-radius: 999px; border: 1px solid rgba(212,175,55,.4); color: #D4AF37; }
+.ccw-header__tel:hover { background: #D4AF37; color: #0a0a0a; }
+.ccw-lang { display: none; align-items: center; gap: .5rem; font-family: var(--font-display, "Montserrat", sans-serif); font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: #6b6b6b; }
+.ccw-lang a { color: #b5b5b5; padding: .5rem .25rem; }
+.ccw-lang a:hover { color: #fff; }
+.ccw-header__reserver { display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-display, "Montserrat", sans-serif); font-weight: 700; font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: #0a0a0a; background: #D4AF37; padding: .55rem 1rem; border-radius: 999px; white-space: nowrap; transition: background-color .2s; }
+.ccw-header__reserver:hover { background: #e6c24a; }
+.ccw-burger { display: inline-flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; margin-right: -.5rem; color: #fff; background: none; border: 0; cursor: pointer; border-radius: .5rem; }
+.ccw-burger:focus-visible, .ccw-nav a:focus-visible, .ccw-nav button:focus-visible, .ccw-menu a:focus-visible, .ccw-menu summary:focus-visible, .ccw-header a:focus-visible { outline: 2px solid #D4AF37; outline-offset: 2px; }
+
+.ccw-nav { display: none; }
+.ccw-nav__liste { display: flex; align-items: center; gap: 1.75rem; font-family: var(--font-display, "Montserrat", sans-serif); font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; }
+.ccw-nav__item { position: relative; display: flex; align-items: center; }
+.ccw-nav__lien { color: #e5e5e5; padding: .5rem 0; background: none; border: 0; font: inherit; letter-spacing: inherit; text-transform: inherit; cursor: pointer; display: inline-flex; align-items: center; gap: .4rem; }
+.ccw-nav__lien:hover, .ccw-nav__lien[aria-current="page"] { color: #D4AF37; }
+.ccw-nav__toggle { background: none; border: 0; color: #b5b5b5; padding: .5rem .25rem; min-width: 28px; min-height: 32px; justify-content: center; cursor: pointer; display: inline-flex; align-items: center; }
+.ccw-nav__toggle--seul { color: #e5e5e5; padding: .5rem 0; }
+.ccw-chevron { transition: transform .2s; }
+.ccw-nav__toggle[aria-expanded="true"] .ccw-chevron, details[open] > summary .ccw-chevron { transform: rotate(180deg); }
+.ccw-sub { display: none; position: absolute; top: 100%; left: -1rem; min-width: 15rem; padding: .5rem; background: #121212; border: 1px solid rgba(212,175,55,.25); border-radius: .9rem; box-shadow: 0 18px 40px rgba(0,0,0,.5); text-transform: none; letter-spacing: .02em; font-family: var(--font-sans, "Inter", sans-serif); font-size: .9rem; }
+.ccw-sub a { display: block; padding: .6rem .8rem; border-radius: .5rem; color: #e5e5e5; }
+.ccw-sub a:hover, .ccw-sub a[aria-current="page"] { background: rgba(212,175,55,.1); color: #D4AF37; }
+.ccw-nav__item--sub:hover > .ccw-sub, .ccw-nav__item--sub:focus-within > .ccw-sub, .ccw-nav__toggle[aria-expanded="true"] + .ccw-sub { display: block; }
+.ccw-nav__item--sub::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: .5rem; }
+
+.ccw-menu { border-top: 1px solid rgba(255,255,255,.06); background: #0a0a0a; max-height: calc(100vh - 4rem); max-height: calc(100dvh - 4rem); overflow-y: auto; padding: .5rem 1rem 1.5rem; }
+.ccw-menu[hidden] { display: none; }
+.ccw-menu__liste { font-family: var(--font-display, "Montserrat", sans-serif); text-transform: uppercase; letter-spacing: .12em; font-size: .85rem; }
+.ccw-menu__liste > li { border-bottom: 1px solid rgba(255,255,255,.06); }
+.ccw-menu__lien { display: flex; align-items: center; justify-content: space-between; padding: 1rem .25rem; color: #fff; cursor: pointer; list-style: none; }
+.ccw-menu__lien::-webkit-details-marker { display: none; }
+.ccw-menu__lien[aria-current="page"] { color: #D4AF37; }
+.ccw-menu__groupe ul { padding: 0 0 .75rem .75rem; text-transform: none; letter-spacing: .02em; font-family: var(--font-sans, "Inter", sans-serif); font-size: .95rem; }
+.ccw-menu__groupe a { display: block; padding: .6rem .25rem; color: #d4d4d4; }
+.ccw-menu__groupe a[aria-current="page"] { color: #D4AF37; }
+.ccw-menu__bas { display: flex; flex-direction: column; gap: .75rem; padding-top: 1.25rem; }
+.ccw-menu__reserver { display: block; text-align: center; font-family: var(--font-display, "Montserrat", sans-serif); font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #0a0a0a; background: #D4AF37; padding: 1rem; border-radius: 999px; }
+.ccw-menu__contact { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+.ccw-menu__contact a { text-align: center; font-family: var(--font-display, "Montserrat", sans-serif); font-weight: 700; font-size: .75rem; letter-spacing: .15em; text-transform: uppercase; color: #D4AF37; border: 1px solid rgba(212,175,55,.5); padding: .85rem; border-radius: 999px; }
+.ccw-menu .ccw-lang { display: flex; justify-content: center; }
+
+@media (min-width: 640px) { .ccw-header__logo span { display: block; } }
+@media (min-width: 768px) { .ccw-header__barre { padding: 0 1.5rem; } .ccw-header__logo img { height: 3rem; } }
+@media (min-width: 1024px) {
+    .ccw-nav { display: block; }
+    .ccw-burger, .ccw-menu { display: none !important; }
+    .ccw-lang { display: flex; border-left: 1px solid rgba(255,255,255,.1); padding-left: 1rem; }
+    .ccw-header__reserver { padding: .7rem 1.4rem; }
+}
+@media (min-width: 1024px) and (max-width: 1199px) { .ccw-header__logo span { display: none; } }
+@media (min-width: 1200px) { .ccw-header__tel { display: inline-flex; } }
+
+.ccw-footer { background: #050505; border-top: 1px solid rgba(255,255,255,.06); padding: 3.5rem 0 7rem; color: #a3a3a3; font-size: .9rem; }
+.ccw-footer__grille { max-width: 80rem; margin: 0 auto; padding: 0 1rem; display: grid; gap: 2.5rem; grid-template-columns: 1fr; }
+.ccw-footer ul { display: flex; flex-direction: column; gap: .5rem; }
+.ccw-footer a { color: #a3a3a3; }
+.ccw-footer a:hover { color: #D4AF37; }
+.ccw-footer p { margin-bottom: .75rem; line-height: 1.6; }
+.ccw-footer__marque { font-family: var(--font-display, "Montserrat", sans-serif); font-weight: 700; font-size: .85rem; letter-spacing: .2em; text-transform: uppercase; color: #fff; }
+.ccw-footer__titre { font-family: var(--font-display, "Montserrat", sans-serif); font-weight: 700; font-size: .65rem; letter-spacing: .3em; text-transform: uppercase; color: #fff; }
+.ccw-footer__titre--espace { margin-top: 1.75rem; }
+.ccw-footer .ccw-footer__or { color: #D4AF37; }
+.ccw-footer__tel { font-family: var(--font-display, "Montserrat", sans-serif); font-weight: 700; }
+.ccw-footer__villes { max-width: 80rem; margin: 2.5rem auto 0; padding: 2rem 1rem 0; border-top: 1px solid rgba(255,255,255,.05); font-size: .8rem; line-height: 1.9; }
+.ccw-footer__bas { max-width: 80rem; margin: 2.5rem auto 0; padding: 1.5rem 1rem 0; border-top: 1px solid rgba(255,255,255,.05); text-align: center; font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; }
+@media (min-width: 768px) { .ccw-footer { padding-bottom: 3.5rem; } .ccw-footer__grille { grid-template-columns: repeat(2, 1fr); padding: 0 1.5rem; } .ccw-footer__villes, .ccw-footer__bas { padding-left: 1.5rem; padding-right: 1.5rem; } }
+@media (min-width: 1024px) { .ccw-footer__grille { grid-template-columns: 1.2fr 1fr 1fr 1.2fr; } }
+@media (prefers-reduced-motion: reduce) { .ccw-chevron { transition: none; } }
+
+/* ==========================================================================
+   ARTICLES DU BLOG (generate-blog.js, 23.10.2026)
+   ========================================================================== */
+.ccw-article > p, .ccw-article > ul { color: #d4d4d4; font-weight: 300; line-height: 1.8; font-size: 1.05rem; margin-bottom: 1.25rem; }
+.ccw-article > p:first-of-type strong { color: #fff; font-weight: 600; }
+.ccw-article > h2 { font-family: var(--font-display, "Montserrat", sans-serif); font-weight: 700; color: #fff; font-size: 1.5rem; line-height: 1.2; margin: 2.5rem 0 1rem; }
+.ccw-article > ul { list-style: none; padding: 0; }
+.ccw-article > ul li { position: relative; padding-left: 1.5rem; margin-bottom: .6rem; }
+.ccw-article > ul li::before { content: "\25C6"; position: absolute; left: 0; top: .1em; color: #D4AF37; font-size: .75em; }
+.ccw-article a:not([class]) { color: #D4AF37; text-decoration: underline; text-underline-offset: 4px; }
+.ccw-article a:not([class]):hover { color: #fff; }
+.ccw-article strong { color: #fff; font-weight: 600; }
+.ccw-article__encadre, .ccw-article__rappel { margin: 2.5rem 0; padding: 1.75rem; border-radius: 1.25rem; border: 1px solid rgba(212,175,55,.35); background: rgba(212,175,55,.06); }
+.ccw-article__encadre p, .ccw-article__rappel p { color: #e5e5e5; margin-bottom: 1.25rem; line-height: 1.7; }
+.ccw-article__encadre-titre { font-family: var(--font-display, "Montserrat", sans-serif); font-weight: 700; color: #fff !important; font-size: 1.1rem; margin-bottom: .5rem !important; }
+@media (min-width: 768px) { .ccw-article > h2 { font-size: 1.85rem; } }
+
+/* Accroche du hero de l'accueil (refonte 23.10.2026) : c'est un <p>, pas le H1
+   . Plus courte en hauteur que le lockup d'origine, et la seconde
+   ligne en or plein : un contour fin sur photo se lit mal pour un message. */
+.hero-lockup.ccw-accroche { font-size: clamp(2.25rem, min(6.5vw, 9vh), 5.25rem); line-height: 0.95; }
+.hero-lockup.ccw-accroche .line-outline { color: #D4AF37; -webkit-text-stroke: 0; text-stroke: 0; }
+/* Voile du hero de l'accueil, plus dense en haut : le H1 (petit, or) et
+   l'accroche y sont poses sur la photo. Reglage mesure sur pixels rendus
+   (texte masque, pire pixel sous chaque boite de ligne, 360 a 1920 px). */
+.bg-hero.ccw-hero::before { background: linear-gradient(to bottom, rgba(10,10,10,.78) 0%, rgba(10,10,10,.62) 50%, rgba(10,10,10,1) 100%); }
+@media (min-width: 768px) { .bg-hero.ccw-hero::before { background: linear-gradient(90deg, rgba(10,10,10,.82) 0%, rgba(10,10,10,.6) 55%, rgba(10,10,10,.35) 100%), linear-gradient(to bottom, rgba(10,10,10,0) 55%, rgba(10,10,10,1) 100%); } }

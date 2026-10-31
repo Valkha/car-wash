@@ -1,0 +1,218 @@
+{
+  "_comment": "Articles du blog (FR/EN), lus par generate-blog.js. Les prix ne sont jamais ecrits ici : les jetons {prix:argent}, {combo:excellence}, {presta:id}, {depl:orange}, {abo:min} sont remplaces au build. Liens : href=\"@cle\". data-cta = evenement blog_cta. Champ pages : pages ou l'article apparait dans « A lire aussi ».",
+  "auteur": { "fr": "L’équipe Clean Cars Wash", "en": "The Clean Cars Wash team" },
+  "articles": [
+    {"id": "poils-chien-voiture", "publie": "2026-10-30", "maj": "2026-10-30", "slug": {"fr": "nettoyage-poils-chien-voiture-geneve", "en": "dog-hair-car-cleaning-geneva"}, "pages": ["a-domicile", "tarifs", "particuliers"], "fr": {"titreSeo": "Nettoyage poils de chien voiture Genève | Clean Cars Wash", "titre": "Poils de chien dans votre voiture : comment retrouver un intérieur impeccable ?", "description": "Éliminez les poils de chien incrustés dans votre voiture grâce au nettoyage professionnel Clean Cars Wash à Genève et Vaud. Dès 49.90 CHF en supplément.", "corps": [{"p": "Vous adorez votre chien, mais beaucoup moins les poils qu'il laisse dans votre voiture ? Sur les sièges, les tapis, la moquette et jusque dans les moindres recoins du coffre, les poils d'animaux peuvent rapidement transformer un habitacle propre en véritable casse-tête."}, {"p": "Chez Clean Cars Wash, nous proposons un nettoyage automobile professionnel pour éliminer les poils incrustés et redonner à votre véhicule un intérieur propre, agréable et accueillant."}, {"img": {"src": "/assets/images/blog/poils-chien-avant-apres.webp", "alt": "Siège en tissu couvert de poils de chien, puis le même siège nettoyé", "largeur": 1200, "hauteur": 1097, "mention": "Visuel illustratif photoréaliste, non issu d'une intervention réelle de Clean Cars Wash."}}, {"h2": "Pourquoi les poils de chien sont-ils si difficiles à enlever ?"}, {"p": "Les poils s'accrochent aux fibres textiles et peuvent s'enfoncer profondément dans les moquettes. Un simple passage d'aspirateur ne suffit pas toujours."}, {"p": "Avec le temps, ils peuvent également retenir la poussière, les saletés et certaines odeurs, particulièrement lorsque votre animal voyage régulièrement dans le véhicule."}, {"h2": "Notre méthode professionnelle"}, {"p": "Nous adaptons notre intervention à l'état du véhicule."}, {"ul": ["<strong>Inspection de l'habitacle :</strong> identification des zones les plus chargées en poils.", "<strong>Brossage spécialisé :</strong> décrochage des poils incrustés dans les tissus et les moquettes.", "<strong>Aspiration approfondie :</strong> extraction des poils, poussières et résidus.", "<strong>Nettoyage des textiles :</strong> shampoing et injection-extraction lorsque les matériaux le permettent et que la prestation le prévoit.", "<strong>Finitions :</strong> contrôle des sièges, tapis, coffre et zones difficiles d'accès."]}, {"h2": "Combien coûte un nettoyage de poils de chien à Genève ?"}, {"p": "Le supplément pour l'élimination des poils d'animaux est proposé à partir de <strong>49.90 CHF TTC</strong>, selon la quantité de poils et la difficulté de l'intervention. Il s'ajoute à une formule de lavage : le <a href=\"@tarifs\" data-cta>Pack Or</a>, qui comprend déjà le shampoing des sièges et des tapis, est le plus adapté."}, {"encadre": {"titre": "Chez vous, au travail ou à l'atelier", "texte": "Nous intervenons à Genève et dans le canton de Vaud, là où se trouve la voiture. Le déplacement est offert dans tout le canton de Genève.", "bouton": ["Réserver mon nettoyage", "@reserver"]}}, {"h2": "Comment éviter l'accumulation des poils ?"}, {"p": "Pour conserver un intérieur propre plus longtemps : utilisez une housse de protection adaptée, brossez régulièrement votre animal et aspirez les tapis après les trajets."}, {"rappel": {"texte": "Votre voiture est envahie par les poils de chien ? Confiez-la-nous pour retrouver un habitacle agréable et soigné.", "bouton": ["Réserver mon nettoyage", "@reserver"]}}]}, "en": {"titreSeo": "Dog hair car cleaning in Geneva | Clean Cars Wash", "titre": "Dog hair in your car: how to get a spotless interior back", "description": "Remove embedded dog hair from your car with professional cleaning by Clean Cars Wash in Geneva and Vaud. From CHF 49.90 as a surcharge.", "corps": [{"p": "You love your dog, but not the hair it leaves in your car? On the seats, the mats, the carpet and in every corner of the boot, pet hair can quickly turn a clean cabin into a real headache."}, {"p": "Clean Cars Wash offers professional car cleaning that removes embedded hair and gives your vehicle a clean, pleasant interior again."}, {"img": {"src": "/assets/images/blog/poils-chien-avant-apres.webp", "alt": "Fabric seat covered in dog hair, then the same seat cleaned", "largeur": 1200, "hauteur": 1097, "mention": "Photorealistic illustration, not taken from an actual Clean Cars Wash job."}}, {"h2": "Why is dog hair so hard to remove?"}, {"p": "Hair clings to textile fibres and can work its way deep into the carpet. A quick pass of the vacuum is not always enough."}, {"p": "Over time it also traps dust, dirt and some odours, especially when your pet travels in the car regularly."}, {"h2": "Our professional method"}, {"p": "We adapt our work to the condition of the vehicle."}, {"ul": ["<strong>Cabin inspection:</strong> we find the areas with the most hair.", "<strong>Specialist brushing:</strong> we loosen hair embedded in fabrics and carpets.", "<strong>Deep vacuuming:</strong> we extract hair, dust and residue.", "<strong>Textile cleaning:</strong> shampoo and extraction where the materials allow it and the service includes it.", "<strong>Finishing:</strong> we check seats, mats, boot and hard-to-reach areas."]}, {"h2": "How much does dog hair removal cost in Geneva?"}, {"p": "Pet hair removal is a surcharge <strong>from CHF 49.90 incl. VAT</strong>, depending on the amount of hair and how hard the job is. It is added to a wash package: the <a href=\"@tarifs\" data-cta>Gold Pack</a>, which already includes seat and carpet shampoo, is the best fit."}, {"encadre": {"titre": "At home, at work or at the workshop", "texte": "We work in Geneva and the canton of Vaud, wherever the car is. Travel is free throughout the canton of Geneva.", "bouton": ["Book my cleaning", "@reserver"]}}, {"h2": "How to keep hair from building up"}, {"p": "To keep the interior clean for longer: use a suitable seat cover, brush your pet regularly and vacuum the mats after trips."}, {"rappel": {"texte": "Is your car full of dog hair? Leave it to us and get a pleasant, well-kept cabin back.", "bouton": ["Book my cleaning", "@reserver"]}}]}},
+    {"id": "phares-jaunis", "publie": "2026-10-31", "maj": "2026-10-31", "slug": {"fr": "polissage-phares-jaunis-geneve", "en": "yellowed-headlight-restoration-geneva"}, "pages": ["atelier", "polish-ceramique", "particuliers"], "fr": {"titreSeo": "Polissage phares jaunis Genève | Rénovation optiques auto", "titre": "Phares jaunis ou opaques : retrouvez une meilleure visibilité grâce au polissage professionnel", "description": "Vos phares sont jaunes ou opaques ? Découvrez notre rénovation et polissage de phares à Genève et Vaud. Devis chez Clean Cars Wash.", "corps": [{"p": "Avec le temps, les phares de votre véhicule peuvent devenir jaunes, ternes ou opaques. Ce phénomène, fréquent sur les véhicules exposés au soleil et aux intempéries, peut affecter leur esthétique, mais également réduire leur efficacité lumineuse."}, {"p": "Chez Clean Cars Wash, nous proposons un service de rénovation et de polissage des phares pour leur redonner transparence et éclat."}, {"img": {"src": "/assets/images/blog/phares-jaunis-avant-apres.webp", "alt": "Phare avant jauni et opaque, puis le même phare rénové et transparent", "largeur": 1200, "hauteur": 1097, "mention": "Visuel illustratif, non issu d'une intervention réelle de Clean Cars Wash."}}, {"h2": "Pourquoi les phares deviennent-ils jaunes ?"}, {"p": "Les phares modernes sont généralement fabriqués en polycarbonate, un matériau résistant, mais sensible au vieillissement. Plusieurs facteurs accélèrent leur dégradation :"}, {"ul": ["les rayons UV du soleil ;", "la pluie et les variations de température ;", "les produits chimiques agressifs ;", "les micro-rayures et les lavages inadaptés ;", "l'usure progressive de la protection d'origine."]}, {"p": "Résultat : vos phares deviennent ternes, jaunâtres et moins transparents."}, {"h2": "Quels sont les risques de rouler avec des phares opaques ?"}, {"p": "Un phare fortement dégradé peut réduire la quantité de lumière projetée sur la route et diminuer votre visibilité de nuit. Au-delà de l'esthétique, des optiques trop dégradées peuvent également poser problème lors du contrôle technique si leur efficacité lumineuse n'est plus suffisante."}, {"h2": "Notre solution : le polissage professionnel des phares"}, {"p": "Nous adaptons notre méthode à l'état de vos optiques."}, {"ul": ["<strong>Diagnostic :</strong> nous évaluons le jaunissement, les micro-rayures et l'état général des phares.", "<strong>Préparation :</strong> nous nettoyons les optiques et protégeons les éléments de carrosserie environnants.", "<strong>Rénovation :</strong> selon l'état des phares, un ponçage adapté, suivi d'un polissage progressif pour améliorer leur transparence.", "<strong>Protection :</strong> une protection anti-UV adaptée peut être appliquée afin de limiter le retour prématuré du jaunissement."]}, {"encadre": {"titre": "Un devis selon l'état de vos phares", "texte": "Envoyez-nous une photo de vos phares sur WhatsApp : nous vous répondons avec un devis personnalisé.", "bouton": ["Demander un devis sur WhatsApp", "https://wa.me/41782657071"]}}, {"h2": "Pourquoi choisir Clean Cars Wash ?"}, {"p": "Nous prenons soin de votre véhicule avec des techniques professionnelles et une attention particulière aux finitions. Citadine, SUV, berline ou véhicule haut de gamme : nous recherchons le meilleur résultat possible en fonction de l'état de vos phares."}, {"p": "Nous intervenons à Genève et dans le canton de Vaud, à domicile, sur votre lieu de travail ou dans notre <a href=\"@atelier\" data-cta>atelier</a> selon la prestation."}, {"rappel": {"texte": "Des phares plus transparents, un véhicule visuellement rajeuni et une meilleure diffusion de la lumière lorsque l'opacité extérieure était en cause.", "bouton": ["Demander un devis sur WhatsApp", "https://wa.me/41782657071"]}}]}, "en": {"titreSeo": "Yellowed headlight restoration in Geneva | Clean Cars Wash", "titre": "Yellowed or cloudy headlights: better visibility with professional polishing", "description": "Are your headlights yellow or cloudy? Discover our headlight restoration and polishing in Geneva and Vaud. Quote from Clean Cars Wash.", "corps": [{"p": "Over time, your car's headlights can turn yellow, dull or cloudy. This is common on cars exposed to sun and weather, and it affects both their look and how well they light the road."}, {"p": "Clean Cars Wash offers headlight restoration and polishing to bring back their clarity and shine."}, {"img": {"src": "/assets/images/blog/phares-jaunis-avant-apres.webp", "alt": "Yellowed, cloudy headlight, then the same headlight restored and clear", "largeur": 1200, "hauteur": 1097, "mention": "Illustration, not taken from an actual Clean Cars Wash job."}}, {"h2": "Why do headlights turn yellow?"}, {"p": "Modern headlights are usually made of polycarbonate, a tough material that still ages. Several factors speed this up:"}, {"ul": ["UV rays from the sun;", "rain and temperature changes;", "harsh chemicals;", "micro-scratches and unsuitable washing;", "gradual wear of the original protective coating."]}, {"p": "The result: your headlights become dull, yellowish and less transparent."}, {"h2": "What are the risks of driving with cloudy headlights?"}, {"p": "A badly degraded headlight can reduce the light thrown on the road and your visibility at night. Beyond looks, headlights that are too degraded can also be a problem at the vehicle inspection if their light output is no longer sufficient."}, {"h2": "Our solution: professional headlight polishing"}, {"p": "We adapt our method to the condition of your headlights."}, {"ul": ["<strong>Diagnosis:</strong> we assess the yellowing, micro-scratches and overall condition.", "<strong>Preparation:</strong> we clean the lenses and protect the surrounding bodywork.", "<strong>Restoration:</strong> depending on the condition, suitable sanding followed by progressive polishing to improve clarity.", "<strong>Protection:</strong> a suitable UV protection can be applied to slow the yellowing from coming back."]}, {"encadre": {"titre": "A quote based on your headlights", "texte": "Send us a photo of your headlights on WhatsApp and we will reply with a personalised quote.", "bouton": ["Ask for a quote on WhatsApp", "https://wa.me/41782657071"]}}, {"h2": "Why choose Clean Cars Wash?"}, {"p": "We look after your car with professional techniques and close attention to finishing. City car, SUV, saloon or high-end vehicle: we aim for the best possible result given the condition of your headlights."}, {"p": "We work in Geneva and the canton of Vaud, at your home, at your workplace or in our <a href=\"@atelier\" data-cta>workshop</a>, depending on the service."}, {"rappel": {"texte": "Clearer headlights, a car that looks younger, and better light output when the cloudiness was on the outside.", "bouton": ["Ask for a quote on WhatsApp", "https://wa.me/41782657071"]}}]}},
+    {
+      "id": "prix-lavage-domicile",
+      "publie": "2026-10-23", "maj": "2026-10-23",
+      "slug": { "fr": "prix-lavage-auto-domicile-geneve", "en": "car-wash-at-home-price-geneva" },
+      "pages": ["a-domicile", "tarifs", "particuliers"],
+      "fr": {
+        "titre": "Combien coûte un lavage auto à domicile à Genève ?",
+        "description": "Un lavage auto à domicile à Genève coûte à partir de {prix:argent} CHF TTC, déplacement offert. Ce qui fait varier le prix, le cas de Vaud et les abonnements.",
+        "corps": [
+          { "p": "<strong>Chez Clean Cars Wash, un lavage auto à domicile à Genève coûte à partir de {prix:argent} CHF TTC</strong> (Pack Argent), déplacement compris dans tout le canton. Comptez {prix:or} CHF pour le Pack Or et {prix:diamant} CHF pour le Pack Diamant. Ces prix sont fixes, TTC, et il n'y a pas de supplément pour une grande voiture." },
+          { "h2": "Ce qui est compris à chaque niveau" },
+          { "ul": [
+            "<strong>Pack Argent — {prix:argent} CHF :</strong> lavage extérieur à la mousse active, aspiration de l'habitacle et du coffre, vitres, séchage à la microfibre. Environ {dpack:argent}.",
+            "<strong>Pack Or — {prix:or} CHF :</strong> le Pack Argent, plus shampoing des sièges et des tapis, rénovation des plastiques, jantes et pneus, finition parfumée. Environ {dpack:or}.",
+            "<strong>Pack Diamant — {prix:diamant} CHF :</strong> le Pack Or, plus cire premium déperlante, soin du cuir ou de l'Alcantara, traitement anti-odeur. {dpack:diamant}."
+          ] },
+          { "p": "Le détail de chaque formule est sur la <a href=\"@tarifs\" data-cta>page Tarifs</a>, où vous pouvez aussi réserver directement." },
+          { "h2": "Ce qui peut faire varier le prix" },
+          { "p": "Deux suppléments existent, et seulement dans des cas particuliers : un véhicule extrêmement sale (74.60 CHF TTC de l'heure) et la suppression de poils d'animaux (49.90 CHF TTC). Tout le reste est inclus dans le prix affiché." },
+          { "encadre": { "titre": "Votre prix, sans surprise", "texte": "Choisissez votre formule, puis le lieu : chez vous ou au travail. Vous réglez 30 % en ligne, le solde sur place.", "bouton": ["Réserver mon lavage", "@reserver"] } },
+          { "h2": "Et sur le canton de Vaud ?" },
+          { "p": "Les prix des formules sont les mêmes. S'y ajoute un forfait de déplacement fixe selon le district : {depl:orange} CHF TTC en zone orange (Nyon, Morges, Ouest lausannois, Lausanne, Gros-de-Vaud) et {depl:rouge} CHF TTC en zone rouge. Il est ajouté une fois par déplacement et réglé sur place. Tout est détaillé sur la page <a href=\"@a-domicile#zones\" data-cta>service à domicile</a>." },
+          { "h2": "Moins cher avec un abonnement" },
+          { "p": "Si vous faites laver votre voiture régulièrement, un <a href=\"@abonnements\" data-cta>abonnement</a> revient moins cher : de −{abo:min} % à −{abo:max} % selon la formule, la durée et la fréquence. Les combos (un detailing puis un lavage d'entretien sous 30 jours) sont une autre façon d'économiser : le Combo Excellence est à {combo:excellence} CHF." },
+          { "h2": "Ce qu'il faut prévoir chez vous" },
+          { "p": "Une place de parking privative et une prise électrique 230V sont obligatoires ; un point d'eau est recommandé. Le lavage sur la voie publique est interdit en Suisse." },
+          { "rappel": { "texte": "Prêt à réserver ? Choisissez votre formule et votre créneau en ligne.", "bouton": ["Voir les tarifs et réserver", "@tarifs"] } }
+        ]
+      },
+      "en": {
+        "titre": "How much does a car wash at home cost in Geneva?",
+        "description": "A car wash at your home in Geneva costs from CHF {prix:argent} incl. VAT, travel included. What makes the price vary, the case of Vaud and subscriptions.",
+        "corps": [
+          { "p": "<strong>At Clean Cars Wash, a car wash at your home in Geneva costs from CHF {prix:argent} incl. VAT</strong> (Silver Pack), travel included across the canton. Allow CHF {prix:or} for the Gold Pack and CHF {prix:diamant} for the Diamond Pack. These prices are fixed, include VAT, and there is no surcharge for a large car." },
+          { "h2": "What each level includes" },
+          { "ul": [
+            "<strong>Silver Pack — CHF {prix:argent}:</strong> active foam exterior wash, cabin and trunk vacuuming, windows, microfiber drying. About {dpack:argent}.",
+            "<strong>Gold Pack — CHF {prix:or}:</strong> the Silver Pack, plus seat and carpet shampoo, plastic renovation, rims and tyres, scented finish. About {dpack:or}.",
+            "<strong>Diamond Pack — CHF {prix:diamant}:</strong> the Gold Pack, plus premium hydrophobic wax, leather or Alcantara care, anti-odour treatment. {dpack:diamant}."
+          ] },
+          { "p": "Every package is detailed on the <a href=\"@tarifs\" data-cta>Prices page</a>, where you can also book directly." },
+          { "h2": "What can make the price vary" },
+          { "p": "There are two surcharges, only in special cases: an extremely dirty vehicle (CHF 74.60 incl. VAT per hour) and pet hair removal (CHF 49.90 incl. VAT). Everything else is included in the price shown." },
+          { "encadre": { "titre": "Your price, no surprise", "texte": "Choose your package, then the place: your home or your office. You pay 30% online, the balance on site.", "bouton": ["Book my wash", "@reserver"] } },
+          { "h2": "What about the canton of Vaud?" },
+          { "p": "Package prices are the same. A fixed travel fee is added depending on the district: CHF {depl:orange} incl. VAT in the orange zone (Nyon, Morges, Ouest lausannois, Lausanne, Gros-de-Vaud) and CHF {depl:rouge} incl. VAT in the red zone. It is charged once per trip and settled on site. Everything is detailed on the <a href=\"@a-domicile#zones\" data-cta>at-home service</a> page." },
+          { "h2": "Cheaper with a subscription" },
+          { "p": "If you have your car washed regularly, a <a href=\"@abonnements\" data-cta>subscription</a> costs less: −{abo:min}% to −{abo:max}% depending on the plan, term and frequency. Combos (a detailing then a maintenance wash within 30 days) are another way to save: the Excellence Combo is CHF {combo:excellence}." },
+          { "h2": "What you need at your place" },
+          { "p": "A private parking space and a 230V power outlet are required; a water point is recommended. Washing a car on the public road is illegal in Switzerland." },
+          { "rappel": { "texte": "Ready to book? Choose your package and your time slot online.", "bouton": ["See prices and book", "@tarifs"] } }
+        ]
+      }
+    },
+    {
+      "id": "polish-ou-ceramique",
+      "publie": "2026-10-23", "maj": "2026-10-23",
+      "slug": { "fr": "polish-ou-traitement-ceramique", "en": "polish-or-ceramic-coating" },
+      "pages": ["polish-ceramique", "atelier", "tarifs"],
+      "fr": {
+        "titre": "Polish ou traitement céramique : lequel choisir ?",
+        "description": "Le polish corrige la laque, la céramique la protège : ce ne sont pas deux options concurrentes. Comment choisir, et ce que propose Clean Cars Wash.",
+        "corps": [
+          { "p": "<strong>Ce n'est pas l'un ou l'autre : le polish corrige la peinture, la céramique la protège.</strong> Si votre laque est terne ou marquée de micro-rayures, il faut d'abord la polir ; si vous voulez la garder belle longtemps, il faut ensuite la sceller. Dans la plupart des cas, on fait les deux, dans cet ordre — c'est exactement ce que contient notre <a href=\"@polish-ceramique\" data-cta>Pack Polish Céramique</a>." },
+          { "h2": "Le polish : corriger" },
+          { "p": "Le polish est un travail mécanique sur la laque. Il efface les micro-rayures et les traces de lavage pour retrouver la profondeur d'origine de la peinture. Il ne protège pas : une laque polie, laissée sans protection, se marque à nouveau au fil des lavages." },
+          { "h2": "La céramique : protéger" },
+          { "p": "La céramique est une protection appliquée sur la laque. Elle fait perler l'eau et facilite tous les lavages suivants. Elle ne corrige rien : posée sur une peinture rayée, elle scelle les rayures telles qu'elles sont. C'est pourquoi elle vient toujours après la correction." },
+          { "encadre": { "titre": "Les deux, dans le bon ordre", "texte": "Lavage, décontamination, polish, céramique, et l'habitacle repris en même temps. Le devis dépend de l'état de la laque.", "bouton": ["Découvrir le Pack Polish Céramique", "@polish-ceramique"] } },
+          { "h2": "Et si je veux seulement de l'entretien ?" },
+          { "p": "Si votre peinture est en bon état et que vous cherchez avant tout un entretien soigné, le <a href=\"@tarifs#offre-diamant\" data-cta>Pack Diamant</a> ({prix:diamant} CHF TTC) comprend une cire premium déperlante, sans correction de la laque. C'est un soin d'entretien, pas une protection longue durée." },
+          { "h2": "Combien de temps, et où ?" },
+          { "p": "Le Pack Polish Céramique immobilise le véhicule une journée complète minimum, souvent davantage selon l'état de la laque. Il se fait dans notre <a href=\"@atelier\" data-cta>atelier à Genève</a>, ou chez vous à condition de disposer d'un garage fermé : la céramique ne supporte ni la poussière ni la pluie pendant la prise. Il est proposé à partir de {presta:polish-ceramique} CHF TTC, sur devis après examen du véhicule." },
+          { "rappel": { "texte": "Vous hésitez encore ? Décrivez-nous l'état de votre voiture, nous vous orientons.", "bouton": ["Voir le Pack Polish Céramique", "@polish-ceramique"] } }
+        ]
+      },
+      "en": {
+        "titre": "Polish or ceramic coating: which one should you choose?",
+        "description": "Polishing corrects the paint, ceramic protects it: they are not competing options. How to choose, and what Clean Cars Wash offers.",
+        "corps": [
+          { "p": "<strong>It is not one or the other: polishing corrects the paint, ceramic protects it.</strong> If your paint is dull or covered in swirl marks, it must be polished first; if you want it to stay beautiful for a long time, it must then be sealed. In most cases you do both, in that order — which is exactly what our <a href=\"@polish-ceramique\" data-cta>Ceramic Polish Pack</a> contains." },
+          { "h2": "Polishing: correcting" },
+          { "p": "Polishing is mechanical work on the paint. It removes swirl marks and wash marks to bring back the paint's original depth. It does not protect: polished paint left unprotected gets marked again wash after wash." },
+          { "h2": "Ceramic: protecting" },
+          { "p": "Ceramic is a protection applied over the paint. It makes water bead off and makes every following wash easier. It corrects nothing: applied over scratched paint, it seals the scratches as they are. That is why it always comes after the correction." },
+          { "encadre": { "titre": "Both, in the right order", "texte": "Wash, decontamination, polish, ceramic, and the interior done at the same time. The quote depends on the state of the paint.", "bouton": ["Discover the Ceramic Polish Pack", "@polish-ceramique"] } },
+          { "h2": "What if I only want maintenance?" },
+          { "p": "If your paint is in good condition and you mainly want careful maintenance, the <a href=\"@tarifs#offre-diamant\" data-cta>Diamond Pack</a> (CHF {prix:diamant} incl. VAT) includes a premium hydrophobic wax, without paint correction. It is maintenance care, not long-term protection." },
+          { "h2": "How long, and where?" },
+          { "p": "The Ceramic Polish Pack immobilises the vehicle for a full day minimum, often more depending on the paint. It is carried out in our <a href=\"@atelier\" data-cta>workshop in Geneva</a>, or at your place provided you have a closed garage: ceramic tolerates neither dust nor rain while it cures. It is offered from CHF {presta:polish-ceramique} incl. VAT, quoted after examining the vehicle." },
+          { "rappel": { "texte": "Still unsure? Tell us about your car's condition and we will guide you.", "bouton": ["See the Ceramic Polish Pack", "@polish-ceramique"] } }
+        ]
+      }
+    },
+    {
+      "id": "domicile-ou-atelier",
+      "publie": "2026-10-23", "maj": "2026-10-23",
+      "slug": { "fr": "lavage-domicile-ou-atelier", "en": "car-wash-at-home-or-workshop" },
+      "pages": ["a-domicile", "atelier", "particuliers"],
+      "fr": {
+        "titre": "Lavage à domicile ou en atelier : avantages et limites de chacun",
+        "description": "À domicile, vous ne vous déplacez pas ; en atelier, tout est possible. Ce que chaque option permet, ce qu'elle demande, et comment choisir.",
+        "corps": [
+          { "p": "<strong>Les deux donnent le même résultat sur nos formules d'entretien : le choix dépend de votre journée et de la prestation.</strong> À domicile, vous ne bougez pas ; à l'atelier, toutes nos prestations sont possibles, y compris celles qui demandent un pont ou un environnement sans poussière." },
+          { "h2": "À domicile : ce que vous gagnez" },
+          { "ul": [
+            "Aucun déplacement : nous intervenons chez vous ou au travail, vous continuez votre journée.",
+            "Déplacement offert dans tout le canton de Genève.",
+            "Toutes les formules d'entretien : packs, combos, abonnements, et le polish céramique dans un garage fermé."
+          ] },
+          { "h2": "À domicile : ce que cela demande" },
+          { "ul": [
+            "Une place de parking privative et une prise 230V (obligatoires), un point d'eau (recommandé).",
+            "Sur Vaud, un forfait de déplacement de {depl:orange} ou {depl:rouge} CHF TTC selon le district.",
+            "Par conditions extrêmes (orage, neige), nous vous contactons pour adapter le protocole ou reporter sans frais."
+          ] },
+          { "encadre": { "titre": "Le service à domicile en détail", "texte": "Prix par zone, conditions d'intervention et prestations disponibles chez vous.", "bouton": ["Le lavage à domicile", "@a-domicile"] } },
+          { "h2": "En atelier : ce que vous gagnez" },
+          { "ul": [
+            "Le pont élévateur : indispensable pour le nettoyage complet du châssis.",
+            "Un environnement sans poussière : indispensable pour le PPF et le covering.",
+            "Aucune condition à réunir chez vous : ni place, ni prise, ni point d'eau."
+          ] },
+          { "h2": "En atelier : ce que cela demande" },
+          { "ul": [
+            "Vous nous confiez le véhicule à l'atelier, Chemin des Vergers à Genève.",
+            "Pour les prestations longues, le véhicule reste immobilisé : prévoyez une solution de mobilité. La durée réelle est indiquée sur chaque page."
+          ] },
+          { "p": "Tout sur <a href=\"@atelier\" data-cta>notre atelier</a> et les prestations qui s'y font." },
+          { "rappel": { "texte": "Vous choisissez le lieu au moment de réserver, formule par formule.", "bouton": ["Réserver", "@reserver"] } }
+        ]
+      },
+      "en": {
+        "titre": "Car wash at home or in the workshop: pros and limits of each",
+        "description": "At home, you don't travel; in the workshop, everything is possible. What each option allows, what it requires, and how to choose.",
+        "corps": [
+          { "p": "<strong>Both give the same result on our maintenance packages: the choice depends on your day and on the service.</strong> At home, you don't move; in the workshop, all our services are possible, including those that need a lift or a dust-free environment." },
+          { "h2": "At home: what you gain" },
+          { "ul": [
+            "No travel: we work at your home or office, you carry on with your day.",
+            "Travel included across the canton of Geneva.",
+            "Every maintenance package: packs, combos, subscriptions, and the ceramic polish in a closed garage."
+          ] },
+          { "h2": "At home: what it requires" },
+          { "ul": [
+            "A private parking space and a 230V outlet (required), a water point (recommended).",
+            "In Vaud, a travel fee of CHF {depl:orange} or {depl:rouge} incl. VAT depending on the district.",
+            "In extreme conditions (storm, snow), we contact you to adapt the protocol or reschedule free of charge."
+          ] },
+          { "encadre": { "titre": "The at-home service in detail", "texte": "Prices by zone, requirements and services available at your place.", "bouton": ["Car wash at home", "@a-domicile"] } },
+          { "h2": "In the workshop: what you gain" },
+          { "ul": [
+            "The lift: essential for a complete chassis clean.",
+            "A dust-free environment: essential for PPF and wrapping.",
+            "Nothing to provide at your place: no parking space, outlet or water point."
+          ] },
+          { "h2": "In the workshop: what it requires" },
+          { "ul": [
+            "You drop the vehicle off at the workshop, Chemin des Vergers in Geneva.",
+            "For long services, the vehicle stays immobilised: plan alternative transport. The real duration is stated on each page."
+          ] },
+          { "p": "Everything about <a href=\"@atelier\" data-cta>our workshop</a> and the services carried out there." },
+          { "rappel": { "texte": "You choose the place when you book, package by package.", "bouton": ["Book", "@reserver"] } }
+        ]
+      }
+    },
+    {
+      "id": "visite-technique-chassis",
+      "publie": "2026-10-23", "maj": "2026-10-23",
+      "slug": { "fr": "preparer-visite-technique-nettoyage-chassis", "en": "vehicle-inspection-chassis-cleaning" },
+      "pages": ["nettoyage-chassis", "atelier"],
+      "fr": {
+        "titre": "Préparer sa visite technique : le nettoyage du châssis",
+        "description": "Un dessous de caisse propre se contrôle plus vite et ne masque aucun défaut. Ce que comprend un nettoyage châssis & moteur, sa durée et son prix.",
+        "corps": [
+          { "p": "<strong>Avant une visite technique, faites nettoyer le dessous de votre voiture : un châssis propre se contrôle plus vite et ne masque aucun défaut.</strong> Notre <a href=\"@nettoyage-chassis\" data-cta>nettoyage châssis &amp; moteur</a> coûte {presta:nettoyage-chassis} CHF TTC, prix fixe, et dure environ 2 heures : le véhicule vous est rendu dans la foulée." },
+          { "h2": "Ce qui est nettoyé" },
+          { "ul": [
+            "<strong>Le châssis :</strong> dessous de caisse dégagé de la boue, du sel et des dépôts accumulés.",
+            "<strong>Le moteur :</strong> compartiment moteur dégraissé, avec les protections d'usage sur les organes sensibles.",
+            "<strong>Entre les roues :</strong> passages de roue et arches, là où la corrosion commence toujours."
+          ] },
+          { "h2": "Pourquoi à l'atelier" },
+          { "p": "Le pont élévateur est le seul moyen d'atteindre le dessous de caisse en entier. C'est pourquoi cette prestation se fait exclusivement dans notre <a href=\"@atelier\" data-cta>atelier à Genève</a>, et jamais à domicile." },
+          { "encadre": { "titre": "Réservez avant votre contrôle", "texte": "Créneau de 2 heures, prix fixe, véhicule rendu le jour même.", "bouton": ["Réserver le nettoyage châssis", "@nettoyage-chassis"] } },
+          { "h2": "Quand le réserver" },
+          { "p": "Dans les jours qui précèdent votre rendez-vous de contrôle, pour présenter un véhicule propre. Vous réservez votre créneau en ligne et réglez un acompte de 30 % ; le solde est réglé sur place." },
+          { "rappel": { "texte": "Un dessous propre, en deux heures, à prix fixe.", "bouton": ["Voir le nettoyage châssis & moteur", "@nettoyage-chassis"] } }
+        ]
+      },
+      "en": {
+        "titre": "Getting ready for your vehicle inspection: chassis cleaning",
+        "description": "A clean underbody is inspected faster and hides no defect. What a chassis & engine clean includes, how long it takes and what it costs.",
+        "corps": [
+          { "p": "<strong>Before a vehicle inspection, have the underside of your car cleaned: a clean chassis is inspected faster and hides no defect.</strong> Our <a href=\"@nettoyage-chassis\" data-cta>chassis &amp; engine cleaning</a> costs CHF {presta:nettoyage-chassis} incl. VAT, fixed price, and takes about 2 hours: the vehicle is handed straight back to you." },
+          { "h2": "What gets cleaned" },
+          { "ul": [
+            "<strong>The chassis:</strong> underbody cleared of mud, salt and accumulated deposits.",
+            "<strong>The engine:</strong> engine bay degreased, with the usual protection on sensitive parts.",
+            "<strong>Between the wheels:</strong> wheel wells and arches, where corrosion always starts."
+          ] },
+          { "h2": "Why in the workshop" },
+          { "p": "The lift is the only way to reach the whole underbody. That is why this service is carried out exclusively in our <a href=\"@atelier\" data-cta>workshop in Geneva</a>, never at home." },
+          { "encadre": { "titre": "Book before your inspection", "texte": "2-hour slot, fixed price, vehicle returned the same day.", "bouton": ["Book the chassis cleaning", "@nettoyage-chassis"] } },
+          { "h2": "When to book it" },
+          { "p": "In the days before your inspection appointment, to present a clean vehicle. You book your slot online and pay a 30% deposit; the balance is settled on site." },
+          { "rappel": { "texte": "A clean underbody, in two hours, at a fixed price.", "bouton": ["See chassis & engine cleaning", "@nettoyage-chassis"] } }
+        ]
+      }
+    }
+  ]
+}
