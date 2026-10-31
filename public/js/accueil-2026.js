@@ -182,18 +182,31 @@ class Component extends DCLogic {
       : Object.assign({}, p, { cls: '', reco: false, bg: '#ffffff', fg: '#1A1A1A', border: '#E2DCCD', muted: '#5B5B5B', check: '#7A5C0E', priceColor: '#1A1A1A', ctaBg: '#ffffff', ctaFg: '#0a0a0a', ctaBorder: '#0a0a0a', lift: 0, shadow: 'none' }));
 
 
-    const q1 = [['part', 'Un particulier'], ['pro', 'Un professionnel']].map(([id, label]) =>
-      Object.assign({ label: label, sel: s.q1 === id, pick: () => this.setState({ q1: id, q2: null }) }, pillDark(s.q1 === id)));
+    const push = (o) => { try { (window.dataLayer = window.dataLayer || []).push(o); } catch (e) {} };
+    const wa = (m) => 'https://wa.me/41782657071?text=' + encodeURIComponent('Bonjour, je suis un professionnel, ' + m + ', je souhaite un devis.');
+    const q1 = [['pro', 'Je suis un professionnel'], ['particulier', 'Je suis un particulier']].map(([id, label]) =>
+      Object.assign({ label: label, sel: s.q1 === id, pick: () => { push({ event: 'questionnaire_profil', profil: id }); this.setState({ q1: id, q2: null }); } }, pillDark(s.q1 === id)));
     const q2opts = s.q1 === 'pro'
-      ? [['1', '1 véhicule'], ['flotte', 'Plusieurs véhicules']]
-      : [['once', 'Un lavage ponctuel'], ['regulier', 'Un entretien régulier']];
+      ? [['flotte-3-5', 'Une flotte de 3 à 5 véhicules'], ['flotte-5-7', 'Une flotte de 5 à 7 véhicules'], ['flotte-7', 'Une flotte de plus de 7 véhicules'], ['clients', 'Les véhicules de mes clients (garage, concession)'], ['un-vehicule', 'Un seul véhicule de société']]
+      : [['ponctuel', 'Un lavage ponctuel'], ['regulier', 'Un entretien régulier'], ['neuf', 'Remettre à neuf ou protéger ma voiture'], ['domicile', 'Qu’on vienne chez moi']];
     const q2 = q2opts.map(([id, label]) =>
-      Object.assign({ label: label, sel: s.q2 === id, pick: () => this.setState({ q2: id }) }, pillDark(s.q2 === id)));
+      Object.assign({ label: label, sel: s.q2 === id, pick: () => { push({ event: 'questionnaire_besoin', profil: s.q1, besoin: id }); this.setState({ q2: id }); } }, pillDark(s.q2 === id)));
+    const lienBtn = (label, href) => ({ label: label, href: href, bg: '#0a0a0a', fg: '#ffffff' });
+    const contacts = (msg, principal) => [
+      { label: 'Demander un devis sur WhatsApp', href: wa(msg), target: '_blank', rel: 'noopener noreferrer', bg: principal ? '#0a0a0a' : 'transparent', fg: principal ? '#ffffff' : '#0a0a0a' },
+      { label: 'Appeler', href: 'tel:+41782657071', bg: 'transparent', fg: '#0a0a0a' },
+      { label: 'E-mail', href: 'mailto:info@clean-cars-wash.ch', bg: 'transparent', fg: '#0a0a0a' }
+    ];
     const recos = {
-      once: { titre: 'Pack Or — 161.05 CHF TTC', texte: 'Le meilleur équilibre : extérieur et intérieur remis à neuf en 2 h 30 environ.', cta: 'Réserver le Pack Or', href: '/reserver.html' },
-      regulier: { titre: 'Un combo, ou un abonnement', texte: 'Les combos incluent un lavage Argent d’entretien sous 30 jours ; les abonnements assurent un entretien régulier à prix fixe.', cta: 'Voir les combos', href: '#formules' },
-      '1': { titre: 'Pack Or, facturé à l’entreprise', texte: 'Votre véhicule est votre carte de visite : nous intervenons sur votre lieu de travail, facture au nom de la société.', cta: 'Réserver', href: '/reserver.html' },
-      flotte: { titre: 'Offre flotte : jusqu’à −25 %', texte: 'Tarifs dégressifs selon le nombre de véhicules, interventions planifiées et facturation entreprise.', cta: 'Voir l’offre professionnels', href: '/professionnels.html' }
+      'flotte-3-5': { texte: 'Pour une flotte de 3 à 5 véhicules, la remise flotte est de −10 %. Écrivez-nous, nous préparons votre devis.', actions: contacts('flotte de 3 à 5 véhicules', true) },
+      'flotte-5-7': { texte: 'Pour une flotte de 5 à 7 véhicules, la remise flotte est de −20 %. Écrivez-nous, nous préparons votre devis.', actions: contacts('flotte de 5 à 7 véhicules', true) },
+      'flotte-7': { texte: 'Au-delà de 7 véhicules, la remise flotte est de −25 %, et un Pack Or est offert pour un véhicule. Écrivez-nous, nous préparons votre devis.', actions: contacts('flotte de plus de 7 véhicules', true) },
+      'clients': { texte: 'Pour les véhicules de vos clients, parlons volume et fréquence : écrivez-nous, nous préparons votre devis.', actions: contacts('je gère des véhicules de clients (garage, concession)', true) },
+      'un-vehicule': { texte: 'Pour un seul véhicule de société, nos formules s’appliquent telles quelles : à l’atelier, à domicile ou au bureau.', actions: [lienBtn('Voir les tarifs', '/tarifs.html')].concat(contacts('un seul véhicule de société', false)) },
+      'ponctuel': { texte: 'Pour un lavage ponctuel, choisissez votre pack, de l’Argent au Diamant, à l’atelier ou à domicile.', actions: [lienBtn('Voir les tarifs', '/tarifs.html')] },
+      'regulier': { texte: 'Pour un entretien régulier, l’abonnement revient moins cher : de −10 % à −27 % selon la formule et la fréquence.', actions: [lienBtn('Voir les abonnements', '/abonnements.html')] },
+      'neuf': { texte: 'Pour remettre à neuf ou protéger : polish céramique, PPF, covering, ciel étoilé ou nettoyage châssis.', actions: [lienBtn('Voir les prestations', '/tarifs.html#prestations')] },
+      'domicile': { texte: 'Nous venons chez vous ou au travail : déplacement offert à Genève, forfait annoncé à l’avance sur Vaud.', actions: [lienBtn('Le service à domicile', '/a-domicile.html')] }
     };
 
     const faqData = [
@@ -254,7 +267,8 @@ class Component extends DCLogic {
       addr: this.addrVals(),
       q1: q1,
       q2visible: !!s.q1,
-      q2titre: s.q1 === 'pro' ? 'Combien de véhicules ?' : 'Vous cherchez…',
+      q2titre: s.q1 === 'pro' ? 'Que souhaitez-vous faire entretenir ?' : 'De quoi avez-vous besoin ?',
+      recommencer: () => this.setState({ q1: null, q2: null }),
       q2: q2,
       reco: s.q2 ? recos[s.q2] : null,
       faq: faq,
