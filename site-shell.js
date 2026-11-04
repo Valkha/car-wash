@@ -165,8 +165,17 @@ function barreMobile() { return ''; }
 
 // Contenu du repere CCW:CONCOURS d'une page. La page du concours elle-meme ne
 // porte pas la carte, mais garde le garde-fou (elle a des blocs dates).
+// Calque de reflets d'eau anime dans le haut de page des pages (hors accueil,
+// hors bandeaux photo des prestations).
+function scriptEau() {
+    return '<script>(function(){var s=document.querySelector("main:not(.mk-accueil)>section:first-of-type:not(.rounded-3xl)");if(!s)return;' +
+        'var d=document.createElement("div"),i=document.createElement("img");d.className="mk-eau";d.setAttribute("aria-hidden","true");' +
+        'i.className="mk-caus";i.alt="";i.src="/images/mkt/caustique-clair.svg";d.appendChild(i);s.insertBefore(d,s.firstChild);s.classList.add("mk-eau-actif")})();</script>';
+}
+
 function blocFinDePage(langue, { pageConcours = false, actuel = null } = {}) {
     return `${pageConcours ? '' : carteConcours(langue, actuel)}${barreMobile(langue)}
+    ${scriptEau()}
     <!-- Garde-fou des blocs dates (site-shell.js, gardeInline) -->
     ${gardeInline()}`;
 }
@@ -341,7 +350,7 @@ function arbreMenu(langue) {
         .sort((a, b) => a[1].menu - b[1].menu)
         .map(([cle, pg]) => {
             let enfants = cle === 'prestations'
-                ? PRESTATIONS.map(p => ({ cle: p.id, libelle: p[langue].nom, href: urlPrestation(p, langue) }))
+                ? [...enfantsDe(cle), ...PRESTATIONS.map(p => ({ cle: p.id, libelle: p[langue].nom, href: urlPrestation(p, langue) }))]
                 : enfantsDe(cle);
             const href = pg.existe && pg[langue] ? pg[langue] : null;
             return { cle, libelle: (pg.libelleMenu || pg.libelle)[langue], href, enfants };
@@ -518,6 +527,7 @@ ${c.horaires[langue].map(h => `                        <li>${h}</li>`).join('\n'
                 <div>
                     <p class="mk-footer__titre">${t.footerPresta}</p>
                     <ul>
+                        ${P.lavage && P.lavage.existe ? lien(P.lavage[langue], esc(P.lavage.libelle[langue])) : ''}
                         ${lien(P.atelier[langue], esc(P.atelier.libelle[langue]))}
                         ${lien(P['a-domicile'][langue], esc(P['a-domicile'].libelle[langue]))}
 ${PRESTATIONS.map(p => `                        ${lien(urlPrestation(p, langue), esc(p[langue].nom))}`).join('\n')}

@@ -369,7 +369,7 @@ main:not(.mk-accueil)>section:first-of-type.rounded-3xl{padding-left:0 !importan
 .mk-chiffres li{padding:18px 20px 0 0;display:flex;flex-direction:column}
 .mk-chiffres strong{font-family:var(--mk-chiffre);font-weight:700;font-size:34px;letter-spacing:-.03em;line-height:1.1}
 .mk-chiffres span{font-size:14px;color:var(--mk-texte)}
-@media (max-width:900px){.mk-formules{grid-template-columns:minmax(0,1fr)}.mk-formule--principale{order:-1;padding:36px 28px}}
+@media (max-width:900px){.mk-formules{grid-template-columns:minmax(0,1fr)}.mk-formule--principale{padding:36px 28px}}
 
 /* Etapes */
 .mk-a-etapes{padding:56px 0 96px}
@@ -525,3 +525,43 @@ main:not(.mk-accueil) .section-index span,main:not(.mk-accueil) .section-index::
 main:not(.mk-accueil) .section-index em{color:var(--mk-noir) !important;opacity:.6}
 #ccw-location-modal #ccw-location-modal-title,#ccw-contact-modal #ccw-modal-title{font-family:var(--mk-corps) !important;font-size:13px !important}
 
+
+/* Photo de fond du haut de page (pages generees avec "photo") */
+.mk-hero-photo{position:absolute;z-index:-1;top:0;bottom:0;left:calc(50% - 50vw + 12px);width:calc(100vw - 24px);height:100%;object-fit:cover;object-position:center 55%;border-radius:20px;opacity:.5;max-width:none;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.45) 25%,#000 60%);mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.45) 25%,#000 60%)}
+main:not(.mk-accueil)>section:first-of-type .mk-hero-photo{z-index:-2}
+/* Galerie dans une page generee : defile sur toute la largeur du contenu */
+.mk-defile--page{padding:0 0 12px;scroll-padding-inline:0}
+
+/* La mousse garde ses proportions (hauteur = ~16 % de la largeur) : sur les
+   ecrans larges, la partie dense monte plus haut. Le contenu des panneaux
+   garde donc une marge basse proportionnelle a la largeur. */
+main:not(.mk-accueil)>section:first-of-type:not(.rounded-3xl){padding-bottom:clamp(110px,calc(10vw + 40px),200px) !important}
+.mk-a-hero__in{padding-bottom:clamp(150px,calc(8.6vw + 40px),180px)}
+.mk-panneau--section,.mk-a-concours .mk-panneau--section{padding-bottom:clamp(150px,calc(8.6vw + 40px),180px)}
+.mk-a-pro .mk-panneau--section{padding-bottom:clamp(190px,calc(8.6vw + 60px),200px)}
+.mk-final .mk-panneau{padding-bottom:clamp(150px,calc(8.6vw + 40px),180px)}
+@media (max-width:700px){
+  .mk-a-hero__in,.mk-panneau--section,.mk-a-concours .mk-panneau--section,.mk-final .mk-panneau{padding-bottom:120px}
+  .mk-a-pro .mk-panneau--section{padding-bottom:140px}
+}
+
+/* Ecrans tres larges : la mousse ne grandit plus, elle se repete (tuile en miroir, sans raccord visible) */
+@media (min-width:1601px){
+  .mk-panneau>.mk-mousse{display:none}
+  .mk-panneau:has(>.mk-mousse)::after{content:"";position:absolute;z-index:-1;left:0;right:0;bottom:0;height:254px;background:url("/images/mkt/mousse-tuile.webp") repeat-x center bottom/auto 100%;pointer-events:none}
+  main:not(.mk-accueil)>section:first-of-type::after{height:254px;background:url("/images/mkt/mousse-tuile.webp") repeat-x center bottom/auto 100%}
+}
+
+
+/* Photo de fond : jamais plus large que ~1,1 x sa source (1600 px), calee a droite ;
+   un flou tres leger absorbe le reste de l'agrandissement sur les grands ecrans. */
+.mk-hero-photo{left:auto;right:calc(50% - 50vw + 12px);width:min(calc(100vw - 24px),1760px);filter:blur(.6px)}
+@media (max-width:760px){.mk-hero-photo{filter:none}}
+
+/* Reflets d'eau (« marbre ») des hauts de page : calque ajoute par le script de
+   fin de page, anime comme sur l'accueil. Sans script, le reflet reste fixe dans ::before. */
+main:not(.mk-accueil)>section:first-of-type::before{z-index:-3}
+main:not(.mk-accueil)>section.mk-eau-actif::before{background:var(--mk-noir-2)}
+.mk-eau{position:absolute;z-index:-1;top:0;bottom:0;left:calc(50% - 50vw + 12px);width:calc(100vw - 24px);border-radius:20px;overflow:hidden;pointer-events:none}
+.mk-eau .mk-caus{z-index:0;opacity:.13}
+section:has(.mk-hero-photo) .mk-eau .mk-caus{opacity:.18}

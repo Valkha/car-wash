@@ -145,6 +145,7 @@
                 <li class="mk-nav__item"><a class="mk-nav__lien" href="/a-domicile.html">À domicile</a></li>
                 <li class="mk-nav__item mk-nav__item--sub"><button type="button" class="mk-nav__lien mk-nav__toggle mk-nav__toggle--seul" aria-expanded="false" aria-controls="mk-sub-prestations">Prestations<svg class="mk-chevron" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>
                     <ul id="mk-sub-prestations" class="mk-sub">
+                        <li><a href="/lavage-nettoyage.html">Lavage &amp; nettoyage</a></li>
                         <li><a href="/ciel-etoile.html">Ciel étoilé</a></li>
                         <li><a href="/ppf.html">PPF — film de protection</a></li>
                         <li><a href="/covering.html">Covering</a></li>
@@ -179,6 +180,7 @@
             <li><a class="mk-menu__lien" href="/a-domicile.html">À domicile</a></li>
             <li><details class="mk-menu__groupe"><summary class="mk-menu__lien">Prestations<svg class="mk-chevron" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></summary>
                 <ul>
+                    <li><a href="/lavage-nettoyage.html">Lavage &amp; nettoyage</a></li>
                     <li><a href="/ciel-etoile.html">Ciel étoilé</a></li>
                     <li><a href="/ppf.html">PPF — film de protection</a></li>
                     <li><a href="/covering.html">Covering</a></li>
@@ -216,9 +218,10 @@ window.matchMedia("(min-width: 1100px)").addEventListener("change",function(e){i
 
     <main id="main-content" class="max-w-6xl mx-auto px-4 md:px-6">
         <section class="pt-12 pb-10 md:pt-20 md:pb-16">
+            <img class="mk-hero-photo" src="/images/fonds/mousse-jante.webp" srcset="/images/fonds/mousse-jante-800.webp 800w, /images/fonds/mousse-jante.webp 1600w" sizes="100vw" alt="" aria-hidden="true" fetchpriority="high" decoding="async">
             <h1 class="text-xs md:text-sm font-display font-bold text-gold-400 uppercase tracking-[0.25em] mb-5 max-w-3xl leading-relaxed">Tarifs lavage et detailing auto à Genève et Vaud</h1>
             <p class="text-4xl md:text-6xl font-display font-bold text-white uppercase tracking-tight leading-[0.95] mb-6 max-w-4xl">Des prix clairs, affichés TTC.</p>
-            <p class="text-gray-300 font-light leading-relaxed max-w-2xl mb-8 text-base md:text-lg">Aucun supplément grande voiture. Vous réservez en ligne avec un acompte de 30 % ; le solde est réglé sur place. Déplacement offert à Genève, forfait annoncé sur Vaud.</p>
+            <p class="text-gray-300 font-light leading-relaxed max-w-2xl mb-8 text-base md:text-lg">Vous réservez en ligne avec un acompte de 30 % ; le solde est réglé sur place. Déplacement offert à Genève, forfait annoncé sur Vaud.</p>
             <div class="flex flex-col sm:flex-row flex-wrap gap-3">
                 <a href="/reserver.html" class="inline-flex items-center justify-center bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-4 px-8 rounded-full hover:bg-gold-500 transition-all text-sm">Réserver</a>
                 <a href="#abonnements" class="inline-flex items-center justify-center border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-8 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">Abonnements</a>
@@ -582,6 +585,7 @@ r.querySelector("[data-recommencer]").addEventListener("click",function(){profil
                 <div>
                     <p class="mk-footer__titre">Prestations</p>
                     <ul>
+                        <li><a href="/lavage-nettoyage.html">Lavage &amp; nettoyage</a></li>
                         <li><a href="/atelier.html">En atelier</a></li>
                         <li><a href="/a-domicile.html">À domicile</a></li>
                         <li><a href="/ciel-etoile.html">Ciel étoilé</a></li>
@@ -666,6 +670,7 @@ r.querySelector("[data-recommencer]").addEventListener("click",function(){profil
         <button class="mk-bulle__x" type="button" aria-label="Fermer" data-x>&times;</button>
     </aside>
     <script>(function(){var d=document.getElementById("ccw-concours");if(!d)return;var n=new Date(),q=/^(localhost|127\.0\.0\.1)$/.test(location.hostname)&&location.search.match(/[?&]ccw-maintenant=(\d{4}-\d{2}-\d{2})/);if(q)n=new Date(q[1]+'T12:00:00');var st=new Date(d.getAttribute("data-debut")+"T00:00:00"),en=new Date(d.getAttribute("data-promo-until")+"T23:59:59");if(isNaN(st.getTime())||isNaN(en.getTime())||n>en||n<st){d.remove();return}try{if(sessionStorage.getItem("ccwPastille"))return}catch(x){}function v(){d.hidden=false}if(innerWidth<760&&scrollY<innerHeight*.9){var o=function(){if(scrollY>=innerHeight*.9){removeEventListener("scroll",o);v()}};addEventListener("scroll",o,{passive:true})}else v();d.querySelector("[data-x]").addEventListener("click",function(){d.hidden=true;try{sessionStorage.setItem("ccwPastille","1")}catch(x){}});})();</script>
+    <script>(function(){var s=document.querySelector("main:not(.mk-accueil)>section:first-of-type:not(.rounded-3xl)");if(!s)return;var d=document.createElement("div"),i=document.createElement("img");d.className="mk-eau";d.setAttribute("aria-hidden","true");i.className="mk-caus";i.alt="";i.src="/images/mkt/caustique-clair.svg";d.appendChild(i);s.insertBefore(d,s.firstChild);s.classList.add("mk-eau-actif")})();</script>
     <!-- Garde-fou des blocs dates (site-shell.js, gardeInline) -->
     <script>(function(){var n=new Date(),q=/^(localhost|127\.0\.0\.1)$/.test(location.hostname)&&location.search.match(/[?&]ccw-maintenant=(\d{4}-\d{2}-\d{2})/);if(q)n=new Date(q[1]+'T12:00:00');function e(x,a,h){var d=new Date(x.getAttribute(a)+h);return isNaN(d.getTime())?null:d}[].forEach.call(document.querySelectorAll('[data-promo-until],[data-promo-from]'),function(x){var f=x.hasAttribute('data-promo-until')&&e(x,'data-promo-until','T23:59:59'),d=x.hasAttribute('data-promo-from')&&e(x,'data-promo-from','T00:00:00');if((f&&n>f)||(d&&n<d))x.remove()});[].forEach.call(document.querySelectorAll('[data-promo-expired-after]'),function(x){var f=e(x,'data-promo-expired-after','T23:59:59');if(!f||n<=f)return;if(x.tagName==='TEMPLATE'){x.parentNode.insertBefore(x.content.cloneNode(true),x);x.remove()}else x.removeAttribute('hidden')})})();</script>
     <!-- /CCW:CONCOURS -->

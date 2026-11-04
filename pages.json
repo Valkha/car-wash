@@ -2,6 +2,7 @@
   "_comment": "Contenu FR/EN des pages generees, lu par generate-site.js. Liens symboliques : href=\"@cle\" ou \"@cle#ancre\" (page de site.json, prestation ou article).",
 
   "particuliers": {
+    "photo": "/images/fonds/cuir-clair.webp",
     "gabarit": "commercial",
     "fr": {
       "titre": "Lavage auto pour particuliers à Genève et Vaud | Clean Cars Wash",
@@ -60,6 +61,7 @@
   },
 
   "a-domicile": {
+    "photo": "/images/fonds/mousse-aile.webp",
     "gabarit": "commercial",
     "fr": {
       "titre": "Lavage auto à domicile à Genève et Vaud | Clean Cars Wash",
@@ -83,13 +85,13 @@
           "cartes": [
             { "titre": "Chez vous ou au bureau", "texte": "Nous intervenons sur votre place de parking privative, à la maison ou au travail. Vous continuez votre journée." },
             { "titre": "Récupération & livraison", "texte": "Nous pouvons aussi récupérer votre voiture, effectuer la prestation et vous la ramener." },
-            { "titre": "Prix clairs, sans surprise", "texte": "Aucun supplément grande voiture, tarifs affichés TTC, déplacement offert à Genève et forfait annoncé à l'avance sur Vaud." }
+            { "titre": "Prix clairs, sans surprise", "texte": "Tarifs affichés TTC, déplacement offert à Genève et forfait annoncé à l'avance sur Vaud." }
           ] },
         "en": { "label": "What you gain", "titre": "Zero travel, zero waiting",
           "cartes": [
             { "titre": "At home or at the office", "texte": "We work on your private parking space, at home or at work. You carry on with your day." },
             { "titre": "Pick-up & delivery", "texte": "We can also collect your car, perform the service and bring it back to you." },
-            { "titre": "Clear prices, no surprise", "texte": "No large-vehicle surcharge, prices shown incl. VAT, travel included in Geneva and a flat fee announced upfront in Vaud." }
+            { "titre": "Clear prices, no surprise", "texte": "Prices shown incl. VAT, travel included in Geneva and a flat fee announced upfront in Vaud." }
           ] } },
       { "type": "zones", "id": "zones",
         "fr": { "label": "Prix par zone", "titre": "Frais de déplacement", "intro": "Le montant dépend du district dans lequel se trouve votre commune. La page Zones & frais, avec les cartes, fait foi." },
@@ -128,6 +130,7 @@
   },
 
   "atelier": {
+    "photo": "/images/fonds/produits-polish.webp",
     "gabarit": "commercial",
     "fr": {
       "titre": "Lavage et detailing auto en atelier à Genève | Clean Cars Wash",
@@ -181,6 +184,7 @@
   },
 
   "professionnels": {
+    "photo": "/images/fonds/atelier-r8.webp",
     "gabarit": "commercial",
     "fr": {
       "titre": "Lavage auto pour entreprises et flottes à Genève | Clean Cars Wash",
@@ -226,13 +230,14 @@
   },
 
   "tarifs": {
+    "photo": "/images/fonds/mousse-jante.webp",
     "gabarit": "information",
     "fr": {
       "titre": "Tarifs lavage auto en atelier et à domicile, Genève | Clean Cars Wash",
       "description": "Tous nos tarifs TTC : packs Argent, Or, Diamant, combos, abonnements et prestations spécialisées. Prix TTC, acompte de 30 % en ligne, déplacement offert à Genève.",
       "h1": "Tarifs lavage et detailing auto à Genève et Vaud",
       "accroche": "Des prix clairs, affichés TTC.",
-      "intro": "Aucun supplément grande voiture. Vous réservez en ligne avec un acompte de 30 % ; le solde est réglé sur place. Déplacement offert à Genève, forfait annoncé sur Vaud.",
+      "intro": "Vous réservez en ligne avec un acompte de 30 % ; le solde est réglé sur place. Déplacement offert à Genève, forfait annoncé sur Vaud.",
       "ctas": [["Réserver", "@reserver", "or"], ["Abonnements", "#abonnements", "ligne"]]
     },
     "en": {
@@ -240,7 +245,7 @@
       "description": "All our prices incl. VAT: Silver, Gold, Diamond packs, combos, subscriptions and specialist services. Prices incl. VAT, 30% online deposit, travel included in Geneva.",
       "h1": "Car wash and detailing prices in Geneva & Vaud",
       "accroche": "Clear prices, shown incl. VAT.",
-      "intro": "No large-vehicle surcharge. You book online with a 30% deposit; the balance is settled on site. Travel included in Geneva, flat fee announced in Vaud.",
+      "intro": "You book online with a 30% deposit; the balance is settled on site. Travel included in Geneva, flat fee announced in Vaud.",
       "ctas": [["Book", "@reserver", "or"], ["Subscriptions", "#abonnements", "ligne"]]
     },
     "sections": [
@@ -280,6 +285,7 @@
   },
 
   "reserver": {
+    "photo": "/images/fonds/volant.webp",
     "gabarit": "information",
     "fr": {
       "titre": "Réserver un lavage auto à Genève et Vaud | Clean Cars Wash",
@@ -315,6 +321,95 @@
     ]
   },
 
+  "lavage": {
+    "gabarit": "commercial",
+    "photo": "/images/fonds/mousse-suv.webp",
+    "fr": {
+      "titre": "Lavage et nettoyage auto à Genève et Vaud, intérieur et extérieur | Clean Cars Wash",
+      "description": "Lavage et nettoyage de voiture, intérieur et extérieur, dans notre atelier à Genève ou chez vous. Packs dès {prix:argent} CHF TTC. Réservation en ligne.",
+      "h1": "Lavage et nettoyage auto à Genève et Vaud",
+      "accroche": "Intérieur, extérieur, jusque dans le détail.",
+      "intro": "Lavage à la main, mousse active, aspiration, shampoing des sièges et des tapis : nous lavons votre voiture dans notre atelier à Genève, ou chez vous. Trois packs, dès {prix:argent} CHF TTC.",
+      "ctas": [["Voir les packs", "#packs", "or"], ["Réserver", "@reserver", "ligne"]]
+    },
+    "en": {
+      "titre": "Car wash and cleaning in Geneva and Vaud, inside and out | Clean Cars Wash",
+      "description": "Car wash and cleaning, inside and out, in our Geneva workshop or at your home. Packs from CHF {prix:argent} incl. VAT. Online booking.",
+      "h1": "Car wash and cleaning in Geneva and Vaud",
+      "accroche": "Inside, outside, down to the detail.",
+      "intro": "Hand wash, active foam, vacuuming, seat and carpet shampoo: we wash your car in our Geneva workshop, or at your home. Three packs, from CHF {prix:argent} incl. VAT.",
+      "ctas": [["See the packs", "#packs", "or"], ["Book", "@reserver", "ligne"]]
+    },
+    "sections": [
+      { "type": "cartes", "colonnes": 2, "id": "prestation",
+        "fr": { "label": "La prestation", "titre": "Ce que comprend le lavage",
+          "cartes": [
+            { "titre": "L’extérieur", "texte": "Prélavage à la mousse active, lavage manuel de la carrosserie, nettoyage des vitres et séchage à la microfibre. Dès le Pack Argent." },
+            { "titre": "L’habitacle", "texte": "Aspiration de l’habitacle et du coffre, vitres intérieures. Dès le Pack Argent." },
+            { "titre": "L’intérieur en profondeur", "texte": "Shampoing des sièges et des tapis, rénovation des plastiques, jantes et pneus, finition parfumée. Avec le Pack Or." },
+            { "titre": "Les finitions", "texte": "Cire premium déperlante, soin du cuir ou de l’Alcantara, traitement anti-odeur. Avec le Pack Diamant." }
+          ] },
+        "en": { "label": "The service", "titre": "What the wash includes",
+          "cartes": [
+            { "titre": "The exterior", "texte": "Active foam pre-wash, hand wash of the bodywork, window cleaning and microfibre drying. From the Silver Pack." },
+            { "titre": "The cabin", "texte": "Vacuuming of the cabin and boot, inside windows. From the Silver Pack." },
+            { "titre": "The deep interior", "texte": "Seat and carpet shampoo, plastic renovation, wheels and tyres, scented finish. With the Gold Pack." },
+            { "titre": "The finishing touches", "texte": "Premium water-repellent wax, leather or Alcantara care, anti-odour treatment. With the Diamond Pack." }
+          ] } },
+      { "type": "offres", "id": "packs", "prix": true, "packsSeuls": true,
+        "fr": { "label": "Trois packs", "titre": "Choisissez votre lavage", "intro": "Prix TTC, TVA 8,1 % incluse. Chaque pack se réserve à l’atelier ou à domicile." },
+        "en": { "label": "Three packs", "titre": "Choose your wash", "intro": "Prices incl. VAT (8.1%). Each pack can be booked at our workshop or at home." } },
+      { "type": "cartes", "colonnes": 2, "id": "lieu",
+        "fr": { "label": "Le lieu", "titre": "À l’atelier ou chez vous",
+          "cartes": [
+            { "titre": "À l’atelier, à Genève", "texte": "Vous déposez votre voiture au Chemin des Vergers, à Genève. Aucun frais de déplacement, rien à prévoir.", "lien": ["L’atelier", "@atelier"] },
+            { "titre": "À domicile ou au bureau", "texte": "Il faut une place de parking privative et une prise électrique 230V ; un point d’eau est recommandé. Déplacement offert à Genève, forfait de {depl:orange} ou {depl:rouge} CHF sur Vaud.", "lien": ["Le service à domicile", "@a-domicile"] }
+          ] },
+        "en": { "label": "Where", "titre": "At our workshop or at your place",
+          "cartes": [
+            { "titre": "At our workshop, in Geneva", "texte": "You drop your car off at Chemin des Vergers, in Geneva. No travel fee, nothing to prepare.", "lien": ["The workshop", "@atelier"] },
+            { "titre": "At home or at the office", "texte": "We need a private parking space and a 230V power outlet; a water point is recommended. Travel included in Geneva, flat fee of CHF {depl:orange} or {depl:rouge} in Vaud.", "lien": ["The at-home service", "@a-domicile"] }
+          ] } },
+      { "type": "galerie", "id": "resultat",
+        "medias": [
+          { "img": "video-siege-cuir-poster.webp", "video": "video-siege-cuir.mp4", "fr": "Vidéo : nettoyage d’un siège en cuir à la brosse", "en": "Video: brushing a leather seat clean" },
+          { "img": "avant-apres-interieur.webp", "fr": "Avant / après : nettoyage intérieur, sièges arrière et tapis débarrassés des miettes et de la poussière", "en": "Before / after: interior cleaning, rear seats and mats cleared of crumbs and dust" },
+          { "img": "photo-mousse-jante.webp", "fr": "Mousse active et rinçage d’une jante", "en": "Active foam and rinsing of a wheel" },
+          { "img": "video-moquette-poster.webp", "video": "video-moquette.mp4", "fr": "Vidéo : brossage de la moquette", "en": "Video: brushing the carpet" },
+          { "img": "photo-interieur-cuir-creme.webp", "fr": "Habitacle en cuir clair après nettoyage", "en": "Light leather interior after cleaning" },
+          { "img": "video-jante-poster.webp", "video": "video-jante.mp4", "fr": "Vidéo : lavage d’une roue et de sa jante", "en": "Video: washing a wheel and its rim" },
+          { "img": "avant-apres-carrosserie.webp", "fr": "Avant / après : lavage extérieur, avant d’une petite citadine blanche couvert d’insectes puis propre", "en": "Before / after: exterior wash, front of a small white city car covered in insects, then clean" },
+          { "img": "video-console-poster.webp", "video": "video-console.mp4", "fr": "Vidéo : nettoyage de la console centrale au pinceau", "en": "Video: cleaning the centre console with a brush" },
+          { "img": "photo-volant.webp", "fr": "Volant et tableau de bord après nettoyage intérieur", "en": "Steering wheel and dashboard after interior cleaning" },
+          { "img": "video-rincage-poster.webp", "video": "video-rincage.mp4", "fr": "Vidéo : rinçage extérieur vu depuis l’habitacle", "en": "Video: exterior rinse seen from the cabin" },
+          { "img": "photo-interieur-cuir-noir.webp", "fr": "Habitacle en cuir noir après nettoyage", "en": "Black leather interior after cleaning" }
+        ],
+        "fr": { "label": "En images", "titre": "Le résultat", "intro": "Avant / après et travail en cours. Touchez une image pour l’agrandir." },
+        "en": { "label": "In pictures", "titre": "The result", "intro": "Before / after and work in progress. Tap an image to enlarge it." } },
+      { "type": "supplements",
+        "fr": { "label": "Cas particuliers", "titre": "Suppléments éventuels" },
+        "en": { "label": "Special cases", "titre": "Possible surcharges" } },
+      { "type": "faq", "id": "faq",
+        "fr": { "label": "Questions fréquentes", "titre": "Lavage et nettoyage : vos questions",
+          "items": [
+            ["Combien de temps dure un lavage ?", "Comptez {dpack:argent} pour le Pack Argent, {dpack:or} pour le Pack Or et {dpack:diamant} pour le Pack Diamant."],
+            ["Des suppléments peuvent-ils s’ajouter ?", "Oui, dans deux cas, détaillés plus haut : un véhicule extrêmement sale, et la suppression des poils d’animaux."],
+            ["Combien de temps faut-il attendre après un shampoing des sièges ?", "Comptez 4 à 6 heures de séchage minimum avant une utilisation intensive. Nous vous conseillons de laisser les fenêtres légèrement ouvertes pour faciliter l’évaporation."],
+            ["Où se fait le lavage ?", "Dans notre atelier au Chemin des Vergers, à Genève, ou chez vous, au bureau, sur une place privée avec une prise 230V. Le déplacement est offert à Genève ; sur Vaud, un forfait de {depl:orange} ou {depl:rouge} CHF s’ajoute selon le district."],
+            ["Comment se passe le paiement ?", "Vous réglez un acompte de 30 % en ligne, par TWINT ou carte bancaire, via SumUp, puis le solde sur place. Jusqu’à 24 h avant le rendez-vous, l’acompte est reporté sur une prochaine réservation si vous annulez ; moins de 24 h avant, il reste acquis."]
+          ] },
+        "en": { "label": "FAQ", "titre": "Car wash and cleaning: your questions",
+          "items": [
+            ["How long does a wash take?", "Allow {dpack:argent} for the Silver Pack, {dpack:or} for the Gold Pack and {dpack:diamant} for the Diamond Pack."],
+            ["Can surcharges apply?", "Yes, in two cases, listed above: an extremely dirty vehicle, and pet hair removal."],
+            ["How long should I wait after a seat shampoo?", "Allow at least 4 to 6 hours of drying before intensive use. We recommend leaving the windows slightly open to help evaporation."],
+            ["Where is the wash carried out?", "In our workshop at Chemin des Vergers, in Geneva, or at your home or office, on a private space with a 230V outlet. Travel is included in Geneva; in Vaud, a flat fee of CHF {depl:orange} or {depl:rouge} applies depending on the district."],
+            ["How does payment work?", "You pay a 30% deposit online, by TWINT or card, via SumUp, then the balance on site. Up to 24 hours before the appointment, the deposit is carried over to a future booking if you cancel; less than 24 hours before, it is kept."]
+          ] } },
+      { "type": "aLire" },
+      { "type": "cta" }
+    ]
+  },
   "accueil": {
     "_comment": "Sections generees de l'accueil, injectees par inject-shell.js entre reperes CCW:ACCUEIL-*.",
     "fr": {

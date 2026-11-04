@@ -165,14 +165,14 @@ function formules() {
         <div class="mk-conteneur">
             <div class="mk-tete">
                 <h2 class="mk-h2 mk-revele">Trois formules,<br>des prix clairs.</h2>
-                <p class="mk-tete__texte">Citadine, berline ou SUV : même prix, sans supplément grande voiture. Tout est TTC et annoncé avant le rendez-vous.</p>
+                <p class="mk-tete__texte">Tout est TTC et annoncé avant le rendez-vous.</p>
             </div>
             <div class="mk-formules">${ordre.map(carteFormule).join('')}
             </div>
             <p class="mk-a-formules__abo"><a href="${SITE.pages.abonnements.fr}">Un lavage régulier ? Les abonnements reviennent de 10 % à 27 % moins cher →</a></p>
             <ul class="mk-chiffres">
                 <li class="mk-carte-in"><strong>0 CHF</strong><span>de déplacement à l’atelier et sur Genève</span></li>
-                <li class="mk-carte-in"><strong>0 CHF</strong><span>de supplément pour un SUV</span></li>
+                <li class="mk-carte-in"><strong>7 j/7</strong><span>de 7h30 à 22h</span></li>
                 <li class="mk-carte-in"><strong>24 h</strong><span>pour annuler, acompte reporté</span></li>
                 <li class="mk-carte-in"><strong>30 %</strong><span>d’acompte, par TWINT ou carte</span></li>
             </ul>
@@ -463,7 +463,7 @@ ${comp.modales('fr')}
     <script src="/js/app.js" defer></script>
     <script src="/js/galerie-zoom.js" defer></script>
     <script src="/js/accueil-mkt.js" defer></script>
-    <script>addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.src="/js/bulles.js";document.body.appendChild(s)},1500)});</script>
+    <script>addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.src="/js/bulles.js";document.body.appendChild(s)},200)});</script>
     ${shell.repereFinDePage('fr', { actuel: '/' })}
 </body>
 </html>

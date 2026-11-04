@@ -120,7 +120,7 @@ function carteOffre(o, type, langue, { prix = true, action = 'reserver' } = {}) 
 function grilleOffres(langue, opts = {}) {
     const cartes = [
         ...OFFRES.packs.map(o => carteOffre(o, 'pack', langue, opts)),
-        ...OFFRES.combos.map(o => carteOffre(o, 'combo', langue, opts)),
+        ...(opts.packsSeuls ? [] : OFFRES.combos.map(o => carteOffre(o, 'combo', langue, opts))),
     ];
     return `<div class="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3">${cartes.join('')}
             </div>`;

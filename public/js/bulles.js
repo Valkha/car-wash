@@ -147,6 +147,11 @@
   }
 
   dimensionner();
+  // Des bulles deja en vol des la premiere image : pas d'attente le temps qu'elles montent.
+  for (var p = 0; p < MAX * 0.6; p++) {
+    naitre(); var nb = bulles[bulles.length - 1];
+    if (nb) { nb.y = nb.crete + Math.random() * (H - nb.crete); nb.age = 1; }
+  }
   if ('ResizeObserver' in global) new ResizeObserver(dimensionner).observe(hote);
   if ('IntersectionObserver' in global) new IntersectionObserver(function (en) { visible = en[0].isIntersecting; }, { rootMargin: '10% 0px' }).observe(hote);
   global.requestAnimationFrame(tic);

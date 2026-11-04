@@ -119,6 +119,7 @@ ${reglement.map(r => `                    <li>${r}</li>`).join('\n')}
 
         <!-- En-tete PERMANENT : il reste vrai avant, pendant et apres le concours. -->
         <section class="pt-14 pb-10 md:pt-20 md:pb-12">
+            <img class="mk-hero-photo" src="/images/fonds/cuir-noir.webp" srcset="/images/fonds/cuir-noir-800.webp 800w, /images/fonds/cuir-noir.webp 1600w" sizes="100vw" alt="" aria-hidden="true" fetchpriority="high" decoding="async">
             <p class="hero-eyebrow mb-5">${t.eyebrow}</p>
             <h1 class="text-xl md:text-2xl font-display font-bold text-white uppercase tracking-[0.15em] mb-4">${t.h1}</h1>
             <p class="text-4xl md:text-6xl font-display font-bold text-white uppercase tracking-tight leading-[0.95] mb-8">${t.accroche}</p>
@@ -215,7 +216,6 @@ const TX = {
         critere: 'Critère', agences: 'Agences classiques', nous: 'Clean Cars Wash',
         comparatif: [
             ['Frais de déplacement', '+ 100 CHF', 'Offert à Genève · dès {o} CHF sur Vaud'],
-            ['Supplément grande voiture', "Jusqu'à + 50 CHF", '0 CHF'],
             ['Nettoyage complet à domicile', '~ 239 CHF', '{or} CHF (Pack Or)'],
             ['Detailing premium à domicile', '~ 549 CHF', '{diamant} CHF (Pack Diamant)'],
         ],
@@ -237,7 +237,6 @@ const TX = {
         critere: 'Criterion', agences: 'Typical agencies', nous: 'Clean Cars Wash',
         comparatif: [
             ['Travel fees', '+ 100 CHF', 'Included in Geneva · from CHF {o} in Vaud'],
-            ['Large vehicle surcharge', 'Up to + 50 CHF', '0 CHF'],
             ['Full cleaning at home', '~ 239 CHF', '{or} CHF (Gold Pack)'],
             ['Premium detailing at home', '~ 549 CHF', '{diamant} CHF (Diamond Pack)'],
         ],
@@ -258,10 +257,11 @@ const TX = {
 const prixPack = id => OFFRES.packs.find(p => p.id === id).prix;
 const remplir = s => String(s).replace(/\{o\}/g, SITE.deplacement.orange.prix).replace(/\{or\}/g, prixPack('or')).replace(/\{diamant\}/g, prixPack('diamant'));
 
-function hero(d, langue) {
+function hero(d, langue, photo = null) {
     const ctas = (d.ctas || []).map(([t, h, st]) => `<a href="${lien(h, langue)}" class="${st === 'or' ? BTN_OR : BTN_LIGNE}">${t}</a>`).join('\n                ');
     return `
-        <section class="pt-12 pb-10 md:pt-20 md:pb-16">
+        <section class="pt-12 pb-10 md:pt-20 md:pb-16">${photo ? `
+            <img class="mk-hero-photo" src="${photo}" srcset="${photo.replace(/\.webp$/, '-800.webp')} 800w, ${photo} 1600w" sizes="100vw" alt="" aria-hidden="true" fetchpriority="high" decoding="async">` : ''}
             <h1 class="text-xs md:text-sm font-display font-bold text-gold-400 uppercase tracking-[0.25em] mb-5 max-w-3xl leading-relaxed">${esc(d.h1)}</h1>
             <p class="text-4xl md:text-6xl font-display font-bold text-white uppercase tracking-tight leading-[0.95] mb-6 max-w-4xl">${esc(d.accroche)}</p>
             <p class="text-gray-300 font-light leading-relaxed max-w-2xl mb-8 text-base md:text-lg">${liens(d.intro, langue)}</p>
@@ -303,7 +303,17 @@ ${d.paragraphes.map(p => `                <p class="text-gray-300 font-light lea
     case 'offres':
         ctx.reservation = true;
         return enveloppe(s.id, `${tete}
-            ${comp.grilleOffres(langue, { prix: s.prix !== false })}`);
+            ${comp.grilleOffres(langue, { prix: s.prix !== false, packsSeuls: !!s.packsSeuls })}`);
+    case 'galerie':
+        ctx.galerie = true;
+        return enveloppe(s.id, `${tete}
+            <ul id="galerie" class="mk-defile mk-defile--page" aria-label="${esc(d.titre)}">
+${s.medias.map(m => `                <li class="mk-media${m.video ? ' mk-media--video' : ''}">
+                    <button type="button" class="mk-media__btn" data-zoom${m.video ? ` data-video="/images/accueil/${m.video}"` : ''} aria-label="${langue === 'fr' ? (m.video ? 'Lire en grand' : 'Agrandir') : (m.video ? 'Play full screen' : 'Enlarge')} : ${esc(m[langue])}">
+                        <span class="mk-media__cadre"><img src="/images/accueil/${m.img}" alt="${esc(m[langue])}" loading="lazy" decoding="async">${m.video ? '<span class="mk-media__play" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="#0E0E10" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>' : ''}</span>
+                    </button>
+                </li>`).join('\n')}
+            </ul>`);
     case 'abonnements':
         ctx.appjs = true;
         return enveloppe(s.id, `${tete}
@@ -432,7 +442,8 @@ ${ctx.reservation ? comp.modales(langue) : ''}
 ${app ? `
     <!-- app.js : reservation SumUp (CCW_OFFERS, modale, verrou anti-double-clic)
          et widget abonnements. Chemin absolu pour les pages EN. -->
-    <script src="/js/app.js" defer></script>` : ''}
+    <script src="/js/app.js" defer></script>` : ''}${ctx.galerie ? `
+    <script src="/js/galerie-zoom.js" defer></script>` : ''}
     ${shell.repereFinDePage(langue)}
 </body>
 </html>
@@ -440,10 +451,13 @@ ${app ? `
 }
 
 function pageGabarit(cle, langue) {
-    const P = PAGES[cle], d = P[langue];
-    const ctx = { jsonld: [], reservation: false, appjs: false };
+    // Jetons de donnees ({prix:argent}, {dpack:or}…) remplaces dans tout le contenu de la page.
+    const J = v => typeof v === 'string' ? comp.jetons(v, `pages.json (${cle}/${langue})`, langue)
+        : Array.isArray(v) ? v.map(J) : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, J(x)])) : v;
+    const P = J(PAGES[cle]), d = P[langue];
+    const ctx = { jsonld: [], reservation: false, appjs: false, galerie: false };
     const fichier = SITE.pages[cle][langue].replace(/^\//, '');
-    const corps = hero(d, langue) + P.sections.map(s => section(s, langue, cle, ctx)).join('');
+    const corps = hero(d, langue, P.photo || null) + P.sections.map(s => section(s, langue, cle, ctx)).join('');
     return { fichier, html: document_(cle, langue, d, corps, ctx, fichier) };
 }
 

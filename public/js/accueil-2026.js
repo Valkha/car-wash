@@ -280,7 +280,6 @@ class Component extends DCLogic {
       faits: [
         'Atelier à Genève, Chemin des Vergers : environnement sans poussière',
         'Prix TTC, annoncés avant de réserver',
-        'Aucun supplément grande voiture',
         'À domicile : déplacement offert dans tout le canton de Genève',
         'Acompte de 30 % sécurisé par SumUp, solde sur place',
         'Report sans frais jusqu’à 24 h avant : l’acompte passe sur la réservation suivante',
