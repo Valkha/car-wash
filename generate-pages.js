@@ -68,10 +68,8 @@ const generateHTML = (loc) => `<!DOCTYPE html>
     <meta name="description" content="${loc.seoIntroSnippet}">
     <link rel="canonical" href="https://www.clean-cars-wash.ch/services/${loc.cityId}/">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="preload" href="/fonts/syne-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 
     <link rel="stylesheet" href="/assets/css/tailwind-src.css">
     <script type="application/ld+json">

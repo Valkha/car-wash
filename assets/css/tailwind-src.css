@@ -1,15 +1,15 @@
 @import "tailwindcss";
 @import "./style.css";
-@import "./da-2026.css";
+@import "./mkt-2026.css";
 
 @theme {
-  --font-sans: "Inter", sans-serif;
-  --font-display: "Montserrat", sans-serif;
-  --color-gold-400: #D4AF37;
-  --color-gold-500: #AA8C2C;
-  --color-charcoal-700: #1e1e1e;
-  --color-charcoal-800: #141414;
-  --color-charcoal-900: #0a0a0a;
+  --font-sans: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-display: "Syne", system-ui, sans-serif;
+  --color-gold-400: #FFCC00;
+  --color-gold-500: #E6B800;
+  --color-charcoal-700: #1B1B1F;
+  --color-charcoal-800: #141417;
+  --color-charcoal-900: #0E0E10;
 }
 
 @layer components {

@@ -54,7 +54,7 @@ const T = {
         apartir: 'À partir de', ttc: 'CHF TTC', ht: '/période TTC', duree: 'Durée', reserverFormule: 'Réserver cette formule',
         voirDetail: 'Voir le détail', auLieu: 'au lieu de', separement: 'séparément', abonner: "S'abonner",
         mensuel: 'Mensuel', annuel: 'Annuel', fois1: '1×/mois', fois2: '2×/mois', pack: 'Pack', combo: 'Combo',
-        des: 'Dès', fixe: 'Prix fixe', atelier: 'Atelier', atelierDomicile: 'Atelier ou domicile', voirPresta: 'Découvrir',
+        des: 'Dès', fixe: 'Prix', atelier: 'Atelier', atelierDomicile: 'Atelier ou domicile', voirPresta: 'Découvrir',
         prixTtc: 'Prix TTC, TVA 8,1 % incluse.', aLire: 'À lire aussi', lire: "Lire l'article",
         appeler: 'Appeler', email: 'E-mail', offert: 'Offert', geneve: 'Canton de Genève', vaudO: 'Vaud — zone orange', vaudR: 'Vaud — zone rouge',
         communes: 'Les 45 communes, sans frais de déplacement.', districts: 'Districts', voirZones: 'Voir la carte des zones',
@@ -64,7 +64,7 @@ const T = {
         apartir: 'From', ttc: 'CHF incl. VAT', ht: '/period incl. VAT', duree: 'Duration', reserverFormule: 'Book this package',
         voirDetail: 'See details', auLieu: 'instead of', separement: 'separately', abonner: 'Subscribe',
         mensuel: 'Monthly', annuel: 'Annual', fois1: '1×/month', fois2: '2×/month', pack: 'Pack', combo: 'Combo',
-        des: 'From', fixe: 'Fixed price', atelier: 'Workshop', atelierDomicile: 'Workshop or at home', voirPresta: 'Discover',
+        des: 'From', fixe: 'Price', atelier: 'Workshop', atelierDomicile: 'Workshop or at home', voirPresta: 'Discover',
         prixTtc: 'Prices incl. VAT (8.1%).', aLire: 'Further reading', lire: 'Read the article',
         appeler: 'Call', email: 'E-mail', offert: 'Included', geneve: 'Canton of Geneva', vaudO: 'Vaud — orange zone', vaudR: 'Vaud — red zone',
         communes: 'All 45 municipalities, no travel fee.', districts: 'Districts', voirZones: 'See the zone map',
@@ -299,11 +299,11 @@ const MODALE = {
     fr: { fermer: 'Fermer', contactTitre: 'Nous Contacter', contactQ: 'Comment souhaitez-vous<br>nous joindre&nbsp;?', wa: 'Bonjour, je souhaite réserver un créneau.',
         dehors: 'Touchez en dehors pour fermer', resa: 'Réservation', ou: 'Où souhaitez-vous<br>être servi&nbsp;?', creneau: "Vous choisirez votre créneau, puis réglerez l'acompte de 30&nbsp;%.",
         deplacement: (o, r, z) => `Déplacement offert à Genève. Sur Vaud, forfait de ${o} ou ${r}&nbsp;CHF TTC réglé sur place — <a href="${z}" class="text-gold-400 underline underline-offset-2">voir les zones</a>.`,
-        domicile: 'À domicile / au travail', garage: 'Au garage CCW' },
+        domicile: 'À domicile / au travail', garage: 'À l’atelier, Genève' },
     en: { fermer: 'Close', contactTitre: 'Contact Us', contactQ: 'How would you like<br>to reach us?', wa: 'Hello, I would like to book a slot.',
         dehors: 'Tap outside to close', resa: 'Booking', ou: 'Where would you like<br>to be served?', creneau: 'You will pick your time slot, then pay the 30% deposit.',
         deplacement: (o, r, z) => `Travel included in Geneva. In Vaud, a flat CHF ${o} or ${r} incl. VAT settled on site — <a href="${z}" class="text-gold-400 underline underline-offset-2">see the zones</a>.`,
-        domicile: 'At home / at work', garage: 'At the CCW garage' },
+        domicile: 'At home / at work', garage: 'At our workshop, Geneva' },
 };
 const CROIX = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>';
 function modales(langue) {
@@ -336,12 +336,12 @@ function modales(langue) {
             <p class="text-gray-400 text-[11px] leading-snug mb-6">${m.deplacement(D.orange.prix, D.rouge.prix, lien('@zones', langue))}</p>
             <div class="flex flex-col gap-5">
                 <div>
-                    <button type="button" id="ccw-location-home" data-track="conversion-booking" onclick="ccwBookingGo('home')" class="cursor-pointer w-full flex items-center justify-center gap-3 bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-4 px-6 rounded-full hover:bg-gold-500 transition-all text-sm">${m.domicile}</button>
-                    <p class="text-gray-400 text-[10px] leading-snug mt-2"><span id="ccw-location-home-label" class="text-gray-400"></span></p>
+                    <button type="button" id="ccw-location-garage" data-track="conversion-booking" onclick="ccwBookingGo('garage')" class="cursor-pointer w-full flex items-center justify-center gap-3 bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-4 px-6 rounded-full hover:bg-gold-500 transition-all text-sm">${m.garage}</button>
+                    <p class="text-gray-400 text-[10px] leading-snug mt-2"><span id="ccw-location-garage-label" class="text-gray-400"></span></p>
                 </div>
                 <div>
-                    <button type="button" id="ccw-location-garage" data-track="conversion-booking" onclick="ccwBookingGo('garage')" class="cursor-pointer w-full flex items-center justify-center gap-3 border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-6 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">${m.garage}</button>
-                    <p class="text-gray-400 text-[10px] leading-snug mt-2"><span id="ccw-location-garage-label" class="text-gray-400"></span></p>
+                    <button type="button" id="ccw-location-home" data-track="conversion-booking" onclick="ccwBookingGo('home')" class="cursor-pointer w-full flex items-center justify-center gap-3 border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-6 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">${m.domicile}</button>
+                    <p class="text-gray-400 text-[10px] leading-snug mt-2"><span id="ccw-location-home-label" class="text-gray-400"></span></p>
                 </div>
             </div>
             <p class="text-gray-400 text-[10px] mt-5 uppercase tracking-widest font-display">${m.dehors}</p>

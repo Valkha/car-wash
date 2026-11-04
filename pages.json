@@ -83,13 +83,13 @@
           "cartes": [
             { "titre": "Chez vous ou au bureau", "texte": "Nous intervenons sur votre place de parking privative, à la maison ou au travail. Vous continuez votre journée." },
             { "titre": "Récupération & livraison", "texte": "Nous pouvons aussi récupérer votre voiture, effectuer la prestation et vous la ramener." },
-            { "titre": "Prix fixe, sans surprise", "texte": "Aucun supplément grande voiture, tarifs affichés TTC, déplacement offert à Genève et forfait annoncé à l'avance sur Vaud." }
+            { "titre": "Prix clairs, sans surprise", "texte": "Aucun supplément grande voiture, tarifs affichés TTC, déplacement offert à Genève et forfait annoncé à l'avance sur Vaud." }
           ] },
         "en": { "label": "What you gain", "titre": "Zero travel, zero waiting",
           "cartes": [
             { "titre": "At home or at the office", "texte": "We work on your private parking space, at home or at work. You carry on with your day." },
             { "titre": "Pick-up & delivery", "texte": "We can also collect your car, perform the service and bring it back to you." },
-            { "titre": "Fixed price, no surprise", "texte": "No large-vehicle surcharge, prices shown incl. VAT, travel included in Geneva and a flat fee announced upfront in Vaud." }
+            { "titre": "Clear prices, no surprise", "texte": "No large-vehicle surcharge, prices shown incl. VAT, travel included in Geneva and a flat fee announced upfront in Vaud." }
           ] } },
       { "type": "zones", "id": "zones",
         "fr": { "label": "Prix par zone", "titre": "Frais de déplacement", "intro": "Le montant dépend du district dans lequel se trouve votre commune. La page Zones & frais, avec les cartes, fait foi." },
@@ -228,25 +228,28 @@
   "tarifs": {
     "gabarit": "information",
     "fr": {
-      "titre": "Tarifs lavage auto à domicile et en atelier, Genève | Clean Cars Wash",
+      "titre": "Tarifs lavage auto en atelier et à domicile, Genève | Clean Cars Wash",
       "description": "Tous nos tarifs TTC : packs Argent, Or, Diamant, combos, abonnements et prestations spécialisées. Prix TTC, acompte de 30 % en ligne, déplacement offert à Genève.",
       "h1": "Tarifs lavage et detailing auto à Genève et Vaud",
-      "accroche": "Des prix fixes, affichés TTC.",
+      "accroche": "Des prix clairs, affichés TTC.",
       "intro": "Aucun supplément grande voiture. Vous réservez en ligne avec un acompte de 30 % ; le solde est réglé sur place. Déplacement offert à Genève, forfait annoncé sur Vaud.",
       "ctas": [["Réserver", "@reserver", "or"], ["Abonnements", "#abonnements", "ligne"]]
     },
     "en": {
-      "titre": "Car wash prices at home and in the workshop, Geneva | Clean Cars Wash",
+      "titre": "Car wash prices in the workshop and at home, Geneva | Clean Cars Wash",
       "description": "All our prices incl. VAT: Silver, Gold, Diamond packs, combos, subscriptions and specialist services. Prices incl. VAT, 30% online deposit, travel included in Geneva.",
       "h1": "Car wash and detailing prices in Geneva & Vaud",
-      "accroche": "Fixed prices, shown incl. VAT.",
+      "accroche": "Clear prices, shown incl. VAT.",
       "intro": "No large-vehicle surcharge. You book online with a 30% deposit; the balance is settled on site. Travel included in Geneva, flat fee announced in Vaud.",
       "ctas": [["Book", "@reserver", "or"], ["Subscriptions", "#abonnements", "ligne"]]
     },
     "sections": [
+      { "type": "questionnaire", "id": "questionnaire",
+        "fr": { "label": "En deux questions", "titre": "Trouvons la bonne formule", "intro": "Professionnel ou particulier, répondez à deux questions : nous vous orientons vers la formule adaptée. Aucune donnée n'est collectée." },
+        "en": { "label": "In two questions", "titre": "Let’s find the right package", "intro": "Business or private customer, answer two questions: we point you to the right package. No data is collected." } },
       { "type": "offres", "id": "formules", "prix": true, "detail": true,
-        "fr": { "label": "Packs & combos", "titre": "Nos formules", "intro": "Prix TTC, TVA 8,1 % incluse. Chaque formule se réserve à domicile ou au garage." },
-        "en": { "label": "Packs & combos", "titre": "Our packages", "intro": "Prices incl. VAT (8.1%). Each package can be booked at home or at the garage." } },
+        "fr": { "label": "Packs & combos", "titre": "Nos formules", "intro": "Prix TTC, TVA 8,1 % incluse. Chaque formule se réserve à l’atelier ou à domicile." },
+        "en": { "label": "Packs & combos", "titre": "Our packages", "intro": "Prices incl. VAT (8.1%). Each package can be booked at our workshop or at home." } },
       { "type": "abonnements", "id": "abonnements", "prix": true,
         "fr": { "label": "Entretien régulier", "titre": "Abonnements", "intro": "Mensuel ou annuel, une ou deux fois par mois. Prix par période, TTC.", "lien": ["Tout sur les abonnements", "@abonnements"] },
         "en": { "label": "Regular maintenance", "titre": "Subscriptions", "intro": "Monthly or annual, once or twice a month. Prices per period, incl. VAT.", "lien": ["All about subscriptions", "@abonnements"] } },

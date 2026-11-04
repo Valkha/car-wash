@@ -150,7 +150,7 @@ const T = {
         lang: 'fr', autre: 'en', libelleAutre: 'EN', locale: 'fr_CH',
         skip: 'Passer au contenu principal', accueil: 'Accueil',
         appeler: 'Appeler Clean Cars Wash au +41 78 265 70 71',
-        apartirde: 'À partir de', prixFixe: 'Prix fixe', ttc: 'CHF TTC',
+        apartirde: 'À partir de', prixFixe: 'Prix', ttc: 'CHF TTC',
         promoTitre: 'Offre d\'octobre', promoAu: 'jusqu\'au 31 octobre',
         promoTexte: n => `<strong class="text-white">&minus;20 % sur cette prestation</strong> jusqu'au 31 octobre 2026, pour les 100 premiers clients. Soit ${n} CHF TTC au lieu du tarif habituel. La remise est déduite du solde réglé sur place.`,
         lieuTitre: 'Où se déroule la prestation', lieuSurtitre: 'Lieu',
@@ -169,7 +169,7 @@ const T = {
         modaleTitre: 'Réservation', modaleQuestion: 'Où souhaitez-vous<br>être servi&nbsp;?',
         modaleCreneau: 'Vous choisirez votre créneau, puis réglerez l\'acompte de 30&nbsp;%.',
         modaleZones: `Déplacement offert à Genève. Sur Vaud, forfait de ${shell.SITE.deplacement.orange.prix} ou ${shell.SITE.deplacement.rouge.prix}&nbsp;CHF TTC réglé sur place`,
-        modaleZonesLien: 'voir les zones', modaleHome: 'À domicile / au travail', modaleGarage: 'Au garage CCW',
+        modaleZonesLien: 'voir les zones', modaleHome: 'À domicile / au travail', modaleGarage: 'À l’atelier, Genève',
         modaleFermer: 'Fermer', modaleDehors: 'Touchez en dehors pour fermer',
         horaires: ['Tous les jours : 07h30 – 22h00'],
         contactTitre: 'Contact &amp; Horaires', infosTitre: 'Informations',
@@ -179,7 +179,7 @@ const T = {
         lang: 'en', autre: 'fr', libelleAutre: 'FR', locale: 'en_GB',
         skip: 'Skip to main content', accueil: 'Home',
         appeler: 'Call Clean Cars Wash on +41 78 265 70 71',
-        apartirde: 'From', prixFixe: 'Fixed price', ttc: 'CHF incl. VAT',
+        apartirde: 'From', prixFixe: 'Price', ttc: 'CHF incl. VAT',
         promoTitre: 'October offer', promoAu: 'until 31 October',
         promoTexte: n => `<strong class="text-white">20% off this service</strong> until 31 October 2026, for the first 100 customers. That is CHF ${n} incl. VAT instead of the usual rate. The discount comes off the balance settled on site.`,
         lieuTitre: 'Where the work is done', lieuSurtitre: 'Location',
@@ -198,7 +198,7 @@ const T = {
         modaleTitre: 'Booking', modaleQuestion: 'Where would you like<br>to be served?',
         modaleCreneau: 'You will pick your slot, then pay the 30% deposit.',
         modaleZones: `Travel included in Geneva. In Vaud, a flat fee of CHF ${shell.SITE.deplacement.orange.prix} or ${shell.SITE.deplacement.rouge.prix} incl. VAT is settled on site`,
-        modaleZonesLien: 'see the areas', modaleHome: 'At home / at work', modaleGarage: 'At the CCW workshop',
+        modaleZonesLien: 'see the areas', modaleHome: 'At home / at work', modaleGarage: 'At our workshop, Geneva',
         modaleFermer: 'Close', modaleDehors: 'Tap outside to close',
         horaires: ['Every day: 07:30 AM – 10:00 PM'],
         contactTitre: 'Contact &amp; Opening hours', infosTitre: 'Information',
@@ -323,14 +323,14 @@ ${d.lieuDomicile ? `                <div class="premium-card rounded-2xl p-6 md:
             <p class="text-gray-400 text-[11px] leading-snug mb-6">${t.modaleZones} — <a href="./zones.html" class="text-gold-400 underline underline-offset-2">${t.modaleZonesLien}</a>.</p>
             <div class="flex flex-col gap-5">
                 <div>
-                    <button type="button" id="ccw-location-home" data-track="conversion-booking" onclick="ccwBookingGo('home')"
-                            class="cursor-pointer w-full flex items-center justify-center gap-3 bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-4 px-6 rounded-full hover:bg-gold-500 transition-all text-sm">${t.modaleHome}</button>
-                    <p class="text-gray-400 text-[10px] leading-snug mt-2"><span id="ccw-location-home-label" class="text-gray-400"></span></p>
+                    <button type="button" id="ccw-location-garage" data-track="conversion-booking" onclick="ccwBookingGo('garage')"
+                            class="cursor-pointer w-full flex items-center justify-center gap-3 bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-4 px-6 rounded-full hover:bg-gold-500 transition-all text-sm">${t.modaleGarage}</button>
+                    <p class="text-gray-400 text-[10px] leading-snug mt-2"><span id="ccw-location-garage-label" class="text-gray-400"></span></p>
                 </div>
                 <div>
-                    <button type="button" id="ccw-location-garage" data-track="conversion-booking" onclick="ccwBookingGo('garage')"
-                            class="cursor-pointer w-full flex items-center justify-center gap-3 border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-6 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">${t.modaleGarage}</button>
-                    <p class="text-gray-400 text-[10px] leading-snug mt-2"><span id="ccw-location-garage-label" class="text-gray-400"></span></p>
+                    <button type="button" id="ccw-location-home" data-track="conversion-booking" onclick="ccwBookingGo('home')"
+                            class="cursor-pointer w-full flex items-center justify-center gap-3 border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-6 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">${t.modaleHome}</button>
+                    <p class="text-gray-400 text-[10px] leading-snug mt-2"><span id="ccw-location-home-label" class="text-gray-400"></span></p>
                 </div>
             </div>
             <p class="text-gray-400 text-[10px] mt-5 uppercase tracking-widest font-display">${t.modaleDehors}</p>
@@ -350,7 +350,7 @@ ${d.lieuDomicile ? `                <div class="premium-card rounded-2xl p-6 md:
 <html lang="${t.lang}">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.google.com https://api.sumup.com">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.google.com https://api.sumup.com">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <script>
@@ -400,12 +400,10 @@ ${d.lieuDomicile ? `                <div class="premium-card rounded-2xl p-6 md:
 
     <link rel="apple-touch-icon" href="${r}assets/images/logo-v2.png">
     <link rel="icon" type="image/png" href="${r}assets/images/logo-v2.png">
-    <meta name="theme-color" content="#D4AF37">
+    <meta name="theme-color" content="#FFFFFF">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="preload" href="/fonts/syne-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="${r}assets/css/tailwind-src.css">
 
     <!-- Bandeau hero : c'est l'element LCP de la page, donc on le precharge.

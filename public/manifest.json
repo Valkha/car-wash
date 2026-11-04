@@ -4,8 +4,8 @@
   "description": "Lavage Auto & Detailing Premium à Genève",
   "start_url": "/index.html",
   "display": "standalone",
-  "background_color": "#0a0a0a",
-  "theme_color": "#D4AF37",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF",
   "icons": [
     {
       "src": "/icons/icon-192.png",

@@ -118,67 +118,55 @@ const ICO_CADEAU = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" 
 const ICO_TEL = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg>';
 const ICO_WA = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4A8.5 8.5 0 1 1 8 19.6z"></path><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1.2-1.4-2-1-1 .8c-1-.4-1.8-1.2-2.2-2.2l.8-1-1-2z"></path></svg>';
 
+// Pastille du concours (maquette marketing 04.11.2026) : encart noir borde de
+// jaune, fixe en bas a droite, fermable (masque pour la visite). Servie `hidden`,
+// revelee par son script uniquement entre debut et fin du concours.
 const TXT_PASTILLE = {
-    fr: { eb: 'JEU-CONCOURS', ebPop: 'JEU-CONCOURS · NOVEMBRE', titre: `Un ${C.lot.fr} à gagner`, texte: 'Une prestation réalisée et payée du 1er au 30 novembre suffit pour participer (une participation par personne).',
-        reserver: 'Réserver pour participer', voir: 'Voir le concours', masquer: 'Masquer l’offre', avant: 'Dès le 1er novembre', reste: 'Plus que ', commence: 'Commence dans ', fin: 'Fin dans ',
-        appeler: 'Appeler', barre: `Réserver · dès ${'{PRIX}'} CHF` },
-    en: { eb: 'GIVEAWAY', ebPop: 'GIVEAWAY · NOVEMBER', titre: `Win an ${C.lot.en}`, texte: 'One service carried out and paid for between 1 and 30 November is all it takes (one entry per person).',
-        reserver: 'Book to enter', voir: 'See the giveaway', masquer: 'Hide the offer', avant: 'From 1 November', reste: 'Only ', commence: 'Starts in ', fin: 'Ends in ',
-        appeler: 'Call', barre: `Book · from CHF ${'{PRIX}'}` },
+    fr: { eb: 'Jeu concours · novembre', titre: `Gagnez un ${C.lot.fr}`, texte: 'Un lavage en novembre suffit pour participer →', masquer: 'Fermer' },
+    en: { eb: 'Giveaway · November', titre: `Win an ${C.lot.en}`, texte: 'One wash in November is all it takes →', masquer: 'Close' },
 };
 
-function scriptCarte(t) {
+function scriptCarte() {
     return '<script>(function(){var d=document.getElementById("ccw-concours");if(!d)return;' + JS_MAINTENANT +
         'var st=new Date(d.getAttribute("data-debut")+"T00:00:00"),en=new Date(d.getAttribute("data-promo-until")+"T23:59:59");' +
-        'if(isNaN(st.getTime())||isNaN(en.getTime())||n>en){d.remove();return}' +
+        'if(isNaN(st.getTime())||isNaN(en.getTime())||n>en||n<st){d.remove();return}' +
         'try{if(sessionStorage.getItem("ccwPastille"))return}catch(x){}' +
-        'var dec=n.getTime()-Date.now(),pop=d.querySelector("[data-pop]"),b=d.querySelector("[data-b]"),s=d.querySelector("[data-s]"),cd=d.querySelector("[data-cd]");' +
-        'function z(v){return v<10?"0"+v:""+v}' +
-        `function r(){var m=Date.now()+dec,av=m<st.getTime(),x=Math.max(0,(av?st.getTime():en.getTime())-m),j=Math.floor(x/864e5),h=Math.floor(x%864e5/36e5),mi=Math.floor(x%36e5/6e4);` +
-        `if(!av&&x<=0){d.remove();return}s.textContent=av?${JSON.stringify(t.avant)}:${JSON.stringify(t.reste)}+j+" j";cd.textContent=(av?${JSON.stringify(t.commence)}:${JSON.stringify(t.fin)})+j+" j "+z(h)+" h "+z(mi)+" min"}` +
-        'r();d.hidden=false;setInterval(r,3e4);' +
-        'b.addEventListener("click",function(){pop.hidden=!pop.hidden;b.setAttribute("aria-expanded",String(!pop.hidden))});' +
+        // Telephone : la bulle couvrirait le bouton principal du haut de page ;
+        // elle n'apparait qu'une fois le premier ecran depasse.
+        'function v(){d.hidden=false}' +
+        'if(innerWidth<760&&scrollY<innerHeight*.9){var o=function(){if(scrollY>=innerHeight*.9){removeEventListener("scroll",o);v()}};addEventListener("scroll",o,{passive:true})}else v();' +
         'd.querySelector("[data-x]").addEventListener("click",function(){d.hidden=true;try{sessionStorage.setItem("ccwPastille","1")}catch(x){}});' +
         '})();</script>';
 }
 
-function carteConcours(langue) {
-    const t = TXT_PASTILLE[langue];
-    return `
-    <div id="ccw-concours" class="da-pastille" data-concours data-debut="${C.debut}" data-promo-until="${C.fin}" hidden>
-        <div class="da-pastille__pop" id="ccw-concours-pop" role="dialog" aria-label="${esc(t.ebPop)}" data-pop hidden>
-            <button class="da-pastille__x" type="button" aria-label="${esc(t.masquer)}" data-x>&times;</button>
-            <span class="da-pastille__eb">${esc(t.ebPop)}</span>
-            <p class="da-pastille__titre">${esc(t.titre)}</p>
-            <p>${esc(t.texte)}</p>
-            <div class="da-pastille__cd" data-cd></div>
-            <a class="da-pastille__cta" href="${urlReserver(langue)}">${esc(t.reserver)}</a>
-            <a class="da-pastille__lien" href="${url('jeu-concours', langue)}">${esc(t.voir)}</a>
-        </div>
-        <button class="da-pastille__btn" type="button" aria-label="${esc(t.eb)} : ${esc(C.lot[langue])}" aria-expanded="false" aria-controls="ccw-concours-pop" data-b>
-            <span class="da-pastille__ico">${ICO_CADEAU}</span>
-            <span class="da-pastille__txt"><span class="da-pastille__eb">${esc(t.eb)}</span><span class="da-pastille__t">${esc(C.lot[langue])}</span><span class="da-pastille__s" data-s></span></span>
-        </button>
-    </div>
-    ${scriptCarte(t)}`;
+// Lien du concours : la section de l'accueil, sinon la page du concours.
+function lienConcours(langue, actuel) {
+    return actuel === SITE.pages.accueil[langue] ? '#concours' : url('jeu-concours', langue);
 }
 
-// Barre de reservation mobile (DA 31.10.2026) : Appeler, WhatsApp, Reserver.
-function barreMobile(langue) {
+function carteConcours(langue, actuel = null) {
     const t = TXT_PASTILLE[langue];
-    const prix = require('./offres.json').packs[0].prix;
     return `
-    <div class="da-sticky">
-        <a class="da-ico" href="tel:${SITE.contact.tel}" aria-label="${esc(t.appeler)}">${ICO_TEL}</a>
-        <a class="da-ico" href="https://wa.me/${SITE.contact.whatsapp}" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">${ICO_WA}</a>
-        <a class="da-go" href="${urlReserver(langue)}">${esc(t.barre.replace('{PRIX}', prix))}</a>
-    </div>`;
+    <aside id="ccw-concours" class="mk-bulle" aria-label="${esc(t.eb)}" data-concours data-debut="${C.debut}" data-promo-until="${C.fin}" hidden>
+        <span class="mk-bulle__ico" aria-hidden="true">${ICO_CADEAU}</span>
+        <a class="mk-bulle__lien" href="${lienConcours(langue, actuel)}">
+            <span class="mk-bulle__eb">${esc(t.eb)}</span>
+            <span class="mk-bulle__titre">${esc(t.titre)}</span>
+            <span class="mk-bulle__texte">${esc(t.texte)}</span>
+        </a>
+        <button class="mk-bulle__x" type="button" aria-label="${esc(t.masquer)}" data-x>&times;</button>
+    </aside>
+    ${scriptCarte()}`;
 }
+
+// Ancienne barre de reservation mobile : retiree (la maquette n'en a pas, le
+// bouton Reserver reste visible dans l'en-tete sur mobile).
+function barreMobile() { return ''; }
 
 // Contenu du repere CCW:CONCOURS d'une page. La page du concours elle-meme ne
 // porte pas la carte, mais garde le garde-fou (elle a des blocs dates).
-function blocFinDePage(langue, { pageConcours = false } = {}) {
-    return `${pageConcours ? '' : carteConcours(langue)}${barreMobile(langue)}
+function blocFinDePage(langue, { pageConcours = false, actuel = null } = {}) {
+    return `${pageConcours ? '' : carteConcours(langue, actuel)}${barreMobile(langue)}
     <!-- Garde-fou des blocs dates (site-shell.js, gardeInline) -->
     ${gardeInline()}`;
 }
@@ -225,7 +213,7 @@ function blocConcoursOffres(langue) {
 // autorise https://api.sumup.com dans connect-src : toute page qui reserve en
 // a besoin, sinon l'appel panier est bloque en silence (bug de septembre 2026).
 // ---------------------------------------------------------------------------
-const CSP = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.google.com https://api.sumup.com https://api3.geo.admin.ch";
+const CSP = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.google.com https://api.sumup.com https://api3.geo.admin.ch";
 
 function head({ langue, cle, titre, description, ogImage = '/assets/images/MB-01-opt.webp', jsonld = [], extra = '', urls = null, fil: filExtra = null, ogType = 'website' }) {
     // urls = { fr, en, libelle } pour une page hors site.json (article de blog) ;
@@ -289,12 +277,10 @@ function head({ langue, cle, titre, description, ogImage = '/assets/images/MB-01
 
     <link rel="apple-touch-icon" href="/assets/images/logo-v2.png">
     <link rel="icon" type="image/png" href="/assets/images/logo-v2.png">
-    <meta name="theme-color" content="#D4AF37">
+    <meta name="theme-color" content="#FFFFFF">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet"></noscript>
+    <link rel="preload" href="/fonts/syne-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/assets/css/tailwind-src.css">
 ${extra}
 ${blocs.map(b => `    <script type="application/ld+json">\n${JSON.stringify(b, null, 2).replace(/^/gm, '    ')}\n    </script>`).join('\n')}
@@ -316,43 +302,53 @@ const UI = {
     fr: {
         menu: 'Menu principal', ouvrir: 'Ouvrir le menu', fermer: 'Fermer le menu', sous: 'Sous-menu',
         reserver: 'Réserver', appeler: 'Appeler', apercu: 'Vue d’ensemble', accueil: 'Accueil',
-        wa: 'Bonjour, je souhaiterais obtenir un renseignement.', langue: 'Langue',
-        footerPages: 'Pages', footerPresta: 'Prestations spécialisées', footerContact: 'Contact &amp; horaires',
-        footerVilles: 'Nous intervenons à', footerInfos: 'Informations', skip: 'Passer au contenu principal',
+        wa: 'Bonjour, je souhaiterais obtenir un renseignement.', langue: 'Langue', faq: 'FAQ',
+        bandeau: `Jeu concours : un lavage en novembre, un ${C.lot.fr} à gagner →`,
+        footerAccroche: 'Lavage auto premium, en atelier et à domicile. Genève &amp; Vaud.',
+        footerContact: 'Contact', footerHoraires: 'Horaires', footerPresta: 'Prestations', footerInfos: 'Infos',
+        footerVilles: 'Nous intervenons à', footerAvis: 'Nos avis sur Google', skip: 'Passer au contenu principal',
+        finalTitre: 'Votre voiture comme neuve.', finalTexte: 'Réservation en ligne, acompte de 30 %, solde réglé sur place.', finalBouton: 'Réserver en ligne',
     },
     en: {
         menu: 'Main menu', ouvrir: 'Open the menu', fermer: 'Close the menu', sous: 'Submenu',
         reserver: 'Book', appeler: 'Call', apercu: 'Overview', accueil: 'Home',
-        wa: 'Hello, I would like some information.', langue: 'Language',
-        footerPages: 'Pages', footerPresta: 'Specialist services', footerContact: 'Contact &amp; hours',
-        footerVilles: 'We operate in', footerInfos: 'Information', skip: 'Skip to main content',
+        wa: 'Hello, I would like some information.', langue: 'Language', faq: 'FAQ',
+        bandeau: `Giveaway: one wash in November, an ${C.lot.en} to win →`,
+        footerAccroche: 'Premium car care, in our workshop or at your home. Geneva &amp; Vaud.',
+        footerContact: 'Contact', footerHoraires: 'Opening hours', footerPresta: 'Services', footerInfos: 'Info',
+        footerVilles: 'We operate in', footerAvis: 'Our Google reviews', skip: 'Skip to main content',
+        finalTitre: 'Your car, like new.', finalTexte: 'Book online, 30 % deposit, balance paid on site.', finalBouton: 'Book online',
     },
 };
 
-const ICONE_TEL = '<svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>';
-const CHEVRON = '<svg class="ccw-chevron" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>';
+const ICONE_TEL = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>';
+const CHEVRON = '<svg class="mk-chevron" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
+const FLECHE = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 
 // URL des prestations, FR et EN
 function urlPrestation(p, l) { return l === 'fr' ? `/${p.id}.html` : `/en/${p.slugEn}.html`; }
 
-// Arbre du menu, relu dans site.json. Seules les pages existantes y entrent.
+// Arbre du menu, relu dans site.json (champ `menu` = ordre, `libelleMenu` =
+// libelle court du menu). La FAQ, section de l'accueil, ferme le menu.
 function arbreMenu(langue) {
     const P = SITE.pages;
     const enfantsDe = cle => Object.entries(P)
         .filter(([, pg]) => pg.parent === cle && pg.existe && pg[langue])
         .sort((a, b) => a[1].ordre - b[1].ordre)
         .map(([k, pg]) => ({ cle: k, libelle: pg.libelle[langue], href: pg[langue] }));
-    return Object.entries(P)
-        .filter(([, pg]) => pg.menu && !pg.bouton)
+    const items = Object.entries(P)
+        .filter(([, pg]) => pg.menu && !pg.bouton && pg.existe)
         .sort((a, b) => a[1].menu - b[1].menu)
         .map(([cle, pg]) => {
             let enfants = cle === 'prestations'
                 ? PRESTATIONS.map(p => ({ cle: p.id, libelle: p[langue].nom, href: urlPrestation(p, langue) }))
                 : enfantsDe(cle);
             const href = pg.existe && pg[langue] ? pg[langue] : null;
-            return { cle, libelle: pg.libelle[langue], href, enfants };
+            return { cle, libelle: (pg.libelleMenu || pg.libelle)[langue], href, enfants };
         })
         .filter(it => it.href || it.enfants.length);
+    items.push({ cle: 'faq', libelle: UI[langue].faq, href: `${P.accueil[langue]}#faq`, enfants: [] });
+    return items;
 }
 
 function urlReserver(langue) {
@@ -363,143 +359,179 @@ function urlReserver(langue) {
 
 const courant = (href, actuel) => href && actuel && href === actuel ? ' aria-current="page"' : '';
 
+// ===========================================================================
+// EN-TETE (maquette marketing 04.11.2026) : bandeau du concours + barre blanche,
+// collants ensemble. Logo officiel. Menu : liens vers les vraies pages.
+// Le bandeau est un bloc date (data-promo-from / until) : le garde-fou de fin
+// de page le retire hors de la periode du concours.
+// ===========================================================================
 function header(langue, { actuel = null, alternes = {} } = {}) {
     const t = UI[langue], c = SITE.contact, arbre = arbreMenu(langue);
     const fr = alternes.fr || SITE.pages.accueil.fr, en = alternes.en || SITE.pages.accueil.en;
-    const lang = `<div class="ccw-lang" aria-label="${t.langue}">
-                    ${langue === 'fr' ? '<span class="lang-active" aria-current="true">FR</span>' : `<a href="${fr}" hreflang="fr" lang="fr">FR</a>`}
-                    <span aria-hidden="true">|</span>
-                    ${langue === 'en' ? '<span class="lang-active" aria-current="true">EN</span>' : `<a href="${en}" hreflang="en" lang="en">EN</a>`}
-                </div>`;
+    const lang = `<div class="mk-lang" role="group" aria-label="${t.langue}">${langue === 'fr' ? '<span aria-current="true">FR</span>' : `<a href="${fr}" hreflang="fr" lang="fr">FR</a>`}<span aria-hidden="true">/</span>${langue === 'en' ? '<span aria-current="true">EN</span>' : `<a href="${en}" hreflang="en" lang="en">EN</a>`}</div>`;
 
     const desktop = arbre.map(it => {
         if (!it.enfants.length) {
-            return `                    <li class="ccw-nav__item"><a class="ccw-nav__lien" href="${it.href}"${courant(it.href, actuel)}>${esc(it.libelle)}</a></li>`;
+            return `                <li class="mk-nav__item"><a class="mk-nav__lien" href="${it.href}"${courant(it.href, actuel)}>${esc(it.libelle)}</a></li>`;
         }
-        const id = `ccw-sub-${it.cle}`;
+        const id = `mk-sub-${it.cle}`;
         const tete = it.href
-            ? `<a class="ccw-nav__lien" href="${it.href}"${courant(it.href, actuel)}>${esc(it.libelle)}</a><button type="button" class="ccw-nav__toggle" aria-expanded="false" aria-controls="${id}"><span class="sr-only">${t.sous} ${esc(it.libelle)}</span>${CHEVRON}</button>`
-            : `<button type="button" class="ccw-nav__lien ccw-nav__toggle ccw-nav__toggle--seul" aria-expanded="false" aria-controls="${id}">${esc(it.libelle)}${CHEVRON}</button>`;
-        return `                    <li class="ccw-nav__item ccw-nav__item--sub">${tete}
-                        <ul id="${id}" class="ccw-sub">
-${it.enfants.map(e => `                            <li><a href="${e.href}"${courant(e.href, actuel)}>${esc(e.libelle)}</a></li>`).join('\n')}
-                        </ul>
-                    </li>`;
+            ? `<a class="mk-nav__lien" href="${it.href}"${courant(it.href, actuel)}>${esc(it.libelle)}</a><button type="button" class="mk-nav__toggle" aria-expanded="false" aria-controls="${id}"><span class="sr-only">${t.sous} ${esc(it.libelle)}</span>${CHEVRON}</button>`
+            : `<button type="button" class="mk-nav__lien mk-nav__toggle mk-nav__toggle--seul" aria-expanded="false" aria-controls="${id}">${esc(it.libelle)}${CHEVRON}</button>`;
+        return `                <li class="mk-nav__item mk-nav__item--sub">${tete}
+                    <ul id="${id}" class="mk-sub">
+${it.enfants.map(e => `                        <li><a href="${e.href}"${courant(e.href, actuel)}>${esc(e.libelle)}</a></li>`).join('\n')}
+                    </ul>
+                </li>`;
     }).join('\n');
 
     const mobile = arbre.map(it => {
         if (!it.enfants.length) {
-            return `            <li><a class="ccw-menu__lien" href="${it.href}"${courant(it.href, actuel)}>${esc(it.libelle)}</a></li>`;
+            return `            <li><a class="mk-menu__lien" href="${it.href}"${courant(it.href, actuel)}>${esc(it.libelle)}</a></li>`;
         }
         const ouvert = it.enfants.some(e => e.href === actuel) || it.href === actuel ? ' open' : '';
-        return `            <li><details class="ccw-menu__groupe"${ouvert}><summary class="ccw-menu__lien">${esc(it.libelle)}${CHEVRON}</summary>
+        return `            <li><details class="mk-menu__groupe"${ouvert}><summary class="mk-menu__lien">${esc(it.libelle)}${CHEVRON}</summary>
                 <ul>
-${it.href ? `                    <li><a href="${it.href}"${courant(it.href, actuel)}>${t.apercu}</a></li>\n` : ''}${it.enfants.map(e => `                    <li><a href="${e.href}"${courant(e.href, actuel)}>${esc(e.libelle)}</a></li>`).join('\n')}
+${it.href ? `                    <li><a href="${it.href}"${courant(it.href, actuel)}>${esc(it.libelle)} · ${t.apercu}</a></li>\n` : ''}${it.enfants.map(e => `                    <li><a href="${e.href}"${courant(e.href, actuel)}>${esc(e.libelle)}</a></li>`).join('\n')}
                 </ul>
             </details></li>`;
     }).join('\n');
 
+    const lienBandeau = lienConcours(langue, actuel);
     return `
-    <header id="ccw-header" class="ccw-header">
-        <div class="ccw-header__barre">
-            <a href="${SITE.pages.accueil[langue]}" class="ccw-header__logo group" aria-label="${SITE.marque} — ${t.accueil}">
-                <img src="/assets/images/logo-v2-tiny.webp" alt="" width="120" height="120" loading="eager">
-                <span>${SITE.marque}</span>
-            </a>
-            <nav class="ccw-nav" aria-label="${t.menu}">
-                <ul class="ccw-nav__liste">
+    <div id="ccw-header" class="mk-haut">
+        <a class="mk-bandeau" href="${lienBandeau}" data-concours data-promo-from="${C.debut}" data-promo-until="${C.fin}">${esc(t.bandeau)}</a>
+        <header class="mk-header">
+            <div class="mk-header__barre">
+                <a href="${SITE.pages.accueil[langue]}" class="mk-logo" aria-label="${SITE.marque} — ${t.accueil}">
+                    <img src="/assets/images/logo-v2-tiny.webp" alt="" width="120" height="120">
+                    <span class="mk-logo__mot">CLEAN CARS WASH</span>
+                </a>
+                <nav class="mk-nav" aria-label="${t.menu}">
+                    <ul class="mk-nav__liste">
 ${desktop}
-                </ul>
-            </nav>
-            <div class="ccw-header__actions">
-                <a href="tel:${c.tel}" class="ccw-header__tel" title="${t.appeler} ${c.telAffiche}">${ICONE_TEL}<span class="sr-only">${t.appeler} ${SITE.marque} ${c.telAffiche}</span></a>
-                ${lang}
-                <a href="${urlReserver(langue)}" class="ccw-header__reserver"${courant(urlReserver(langue), actuel)}>${t.reserver}</a>
-                <button type="button" id="ccw-burger" class="ccw-burger" aria-expanded="false" aria-controls="ccw-menu" aria-label="${t.ouvrir}" data-label-open="${t.ouvrir}" data-label-close="${t.fermer}">
-                    <svg width="26" height="26" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-                </button>
-            </div>
-        </div>
-        <nav id="ccw-menu" class="ccw-menu" aria-label="${t.menu}" hidden>
-            <ul class="ccw-menu__liste">
-${mobile}
-            </ul>
-            <div class="ccw-menu__bas">
-                <a href="${urlReserver(langue)}" class="ccw-menu__reserver">${t.reserver}</a>
-                <div class="ccw-menu__contact">
-                    <a href="tel:${c.tel}">${t.appeler}</a>
-                    <a href="https://wa.me/${c.whatsapp}?text=${encodeURIComponent(t.wa)}" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                    </ul>
+                </nav>
+                <div class="mk-header__actions">
+                    <a href="tel:${c.tel}" class="mk-tel">${ICONE_TEL}<span class="mk-tel__num">${esc(c.telAffiche.replace(/^\+41 /, '0'))}</span><span class="sr-only"> — ${t.appeler} ${SITE.marque}</span></a>
+                    ${lang}
+                    <a href="${urlReserver(langue)}" class="mk-btn mk-btn--noir mk-header__reserver"${courant(urlReserver(langue), actuel)}>${t.reserver}</a>
+                    <button type="button" id="ccw-burger" class="mk-burger" aria-expanded="false" aria-controls="ccw-menu" aria-label="${t.ouvrir}" data-label-open="${t.ouvrir}" data-label-close="${t.fermer}">
+                        <svg width="26" height="26" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-width="2.2" d="M4 7h16M4 12h16M4 17h16"/></svg>
+                    </button>
                 </div>
-                ${lang}
             </div>
-        </nav>
+            <nav id="ccw-menu" class="mk-menu" aria-label="${t.menu}" hidden>
+                <ul class="mk-menu__liste">
+${mobile}
+                </ul>
+                <div class="mk-menu__bas">
+                    <a href="${urlReserver(langue)}" class="mk-btn mk-btn--jaune">${t.reserver}</a>
+                    <div class="mk-menu__contact">
+                        <a class="mk-btn mk-btn--contour" href="tel:${c.tel}">${t.appeler}</a>
+                        <a class="mk-btn mk-btn--contour" href="https://wa.me/${c.whatsapp}?text=${encodeURIComponent(t.wa)}" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                    </div>
+                    ${lang}
+                </div>
+            </nav>
+        </header>
         <script>(function(){var b=document.getElementById("ccw-burger"),m=document.getElementById("ccw-menu");if(!b||!m)return;
-function o(v){m.hidden=!v;b.setAttribute("aria-expanded",String(v));b.setAttribute("aria-label",v?b.getAttribute("data-label-close"):b.getAttribute("data-label-open"));document.documentElement.classList.toggle("ccw-menu-ouvert",v)}
+function o(v){m.hidden=!v;b.setAttribute("aria-expanded",String(v));b.setAttribute("aria-label",v?b.getAttribute("data-label-close"):b.getAttribute("data-label-open"));document.documentElement.classList.toggle("mk-menu-ouvert",v)}
 b.addEventListener("click",function(){o(m.hidden)});
 [].forEach.call(m.querySelectorAll("a"),function(a){a.addEventListener("click",function(){o(false)})});
-var t=document.querySelectorAll("#ccw-header .ccw-nav__toggle");
+var t=document.querySelectorAll("#ccw-header .mk-nav__toggle");
 function f(x){[].forEach.call(t,function(y){if(y!==x)y.setAttribute("aria-expanded","false")})}
 [].forEach.call(t,function(x){x.addEventListener("click",function(){var v=x.getAttribute("aria-expanded")!=="true";f(x);x.setAttribute("aria-expanded",String(v))})});
-document.addEventListener("keydown",function(e){if(e.key!=="Escape")return;var a=document.activeElement,l=a&&a.closest&&a.closest(".ccw-nav__item--sub");f(null);if(l){var g=l.querySelector(".ccw-nav__toggle");if(g)g.focus()}if(!m.hidden){o(false);b.focus()}});
-document.addEventListener("click",function(e){if(!e.target.closest||!e.target.closest(".ccw-nav__item--sub"))f(null)});
-window.matchMedia("(min-width: 1024px)").addEventListener("change",function(e){if(e.matches)o(false)});
+document.addEventListener("keydown",function(e){if(e.key!=="Escape")return;var a=document.activeElement,l=a&&a.closest&&a.closest(".mk-nav__item--sub");f(null);if(l){var g=l.querySelector(".mk-nav__toggle");if(g)g.focus()}if(!m.hidden){o(false);b.focus()}});
+document.addEventListener("click",function(e){if(!e.target.closest||!e.target.closest(".mk-nav__item--sub"))f(null)});
+window.matchMedia("(min-width: 1100px)").addEventListener("change",function(e){if(e.matches)o(false)});
 })();</script>
-    </header>`;
+    </div>`;
 }
 
-function footer(langue, { villes = true } = {}) {
-    const t = UI[langue], c = SITE.contact, P = SITE.pages, fr = langue === 'fr';
-    const arbre = arbreMenu(langue).filter(it => it.cle !== 'prestations');
-    const pages = [{ libelle: P.accueil.libelle[langue], href: P.accueil[langue] }];
-    arbre.forEach(it => {
-        if (it.href) pages.push({ libelle: it.libelle, href: it.href });
-        it.enfants.forEach(e => pages.push(e));
-    });
-    if (P.reserver.existe) pages.push({ libelle: P.reserver.libelle[langue], href: P.reserver[langue] });
-    const pied = Object.values(P).filter(pg => pg.pied && pg.existe).map(pg => ({ libelle: pg.libelle[langue], href: pg[langue] }));
-    const lis = l => l.map(x => `                    <li><a href="${x.href}">${esc(x.libelle)}</a></li>`).join('\n');
+// ===========================================================================
+// PIED DE PAGE (maquette marketing) : appel final jaune + pied noir.
+// L'appel final est omis sur les pages ou il ferait doublon ou serait deplace
+// (reservation, mentions, confidentialite, 404).
+// ===========================================================================
+const SANS_APPEL_FINAL = ['reserver', 'mentions', 'confidentialite'];
+
+function appelFinal(langue) {
+    const t = UI[langue], c = SITE.contact;
+    return `
+    <section class="mk-final" aria-labelledby="mk-final-titre">
+        <div class="mk-panneau mk-panneau--jaune">
+            <img class="mk-caus" src="/images/mkt/caustique-or.svg" alt="" aria-hidden="true" loading="lazy">
+            <img class="mk-mousse" src="/images/mkt/mousse.webp" srcset="/images/mkt/mousse-800.webp 800w, /images/mkt/mousse.webp 1400w" sizes="100vw" alt="" aria-hidden="true" loading="lazy">
+            <div class="mk-final__in">
+                <p class="mk-final__titre" id="mk-final-titre">${t.finalTitre}</p>
+                <div class="mk-final__cote">
+                    <p>${t.finalTexte}</p>
+                    <div class="mk-final__actions">
+                        <a class="mk-btn mk-btn--noir mk-btn--grand" href="${urlReserver(langue)}">${t.finalBouton}${FLECHE}</a>
+                        <a class="mk-final__tel" href="tel:${c.tel}">${esc(c.telAffiche.replace(/^\+41 /, '0'))}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>`;
+}
+
+function footer(langue, { villes = true, actuel = null } = {}) {
+    const t = UI[langue], c = SITE.contact, P = SITE.pages;
+    const cleActuelle = Object.keys(P).find(k => P[k][langue] && P[k][langue] === actuel);
+    const final = /\/404\.html$/.test(actuel || '') || SANS_APPEL_FINAL.includes(cleActuelle) ? '' : appelFinal(langue);
+    const lien = (href, txt) => `<li><a href="${href}">${txt}</a></li>`;
+    const infos = ['tarifs', 'abonnements', 'offres', 'zones', 'particuliers', 'professionnels', 'blog', 'jeu-concours', 'mentions', 'confidentialite']
+        .filter(k => P[k] && P[k].existe && P[k][langue])
+        .map(k => lien(P[k][langue], esc(P[k].libelle[langue])));
     const listeVilles = villes ? (() => {
         const locs = JSON.parse(fs.readFileSync(path.join(__dirname, 'locations.json'), 'utf8'));
         return `
-        <div class="ccw-footer__villes">
-            <p class="ccw-footer__titre">${t.footerVilles}</p>
-            <p>${locs.map(l => `<a href="/services/${l.cityId}/">${esc(l.cityName)}</a>`).join(' · ')}</p>
-        </div>`;
+            <div class="mk-footer__villes">
+                <p class="mk-footer__titre">${t.footerVilles}</p>
+                <p>${locs.map(l => `<a href="/services/${l.cityId}/">${esc(l.cityName)}</a>`).join(' · ')}</p>
+            </div>`;
     })() : '';
-    return `
-    <footer class="ccw-footer">
-        <div class="ccw-footer__grille">
-            <div>
-                <p class="ccw-footer__marque">${SITE.marque}</p>
-                <p>${c.raisonSociale}<br>${c.adresse.rue}<br>${c.adresse.npa} ${c.adresse.ville}</p>
-                <p><a class="ccw-footer__or" href="mailto:${c.email}">${c.email}</a></p>
-            </div>
-            <div>
-                <p class="ccw-footer__titre">${t.footerContact}</p>
-                <p><a class="ccw-footer__or ccw-footer__tel" href="tel:${c.tel}">${c.telAffiche}</a></p>
-                ${c.ficheGoogle ? `<p><a class="ccw-footer__or" href="${c.ficheGoogle}" target="_blank" rel="noopener noreferrer">${fr ? 'Nos avis sur Google' : 'Our Google reviews'} &rarr;</a></p>` : ''}
-                <ul>
-${c.horaires[langue].map(h => `                    <li>${h}</li>`).join('\n')}
-                </ul>
-            </div>
-            <div>
-                <p class="ccw-footer__titre">${t.footerPages}</p>
-                <ul>
-${lis(pages)}
-                </ul>
-            </div>
-            <div>
-                <p class="ccw-footer__titre">${t.footerPresta}</p>
-                <ul>
-${lis(PRESTATIONS.map(p => ({ libelle: p[langue].nom, href: urlPrestation(p, langue) })))}
-                </ul>
-                <p class="ccw-footer__titre ccw-footer__titre--espace">${t.footerInfos}</p>
-                <ul>
-${lis(pied)}
-                </ul>
-            </div>
-        </div>${listeVilles}
-        <div class="ccw-footer__bas">&copy; 2026 ${SITE.marque} &nbsp;|&nbsp; <span>${c.tva}</span></div>
+    return `${final}
+    <footer class="mk-footer">
+        <div class="mk-footer__in">
+            <div class="mk-footer__grille">
+                <div class="mk-footer__marque">
+                    <img src="/assets/images/logo-v2-tiny.webp" alt="" width="120" height="120" loading="lazy">
+                    <p class="mk-footer__nom">${SITE.marque}</p>
+                    <p>${t.footerAccroche}</p>
+                </div>
+                <div class="mk-footer__contact">
+                    <p class="mk-footer__titre">${t.footerContact}</p>
+                    <ul>
+                        <li><a href="tel:${c.tel}">${c.telAffiche}</a></li>
+                        <li><a href="mailto:${c.email}">${c.email}</a></li>
+                        <li>${c.adresse.rue}, ${c.adresse.npa} ${c.adresse.ville}</li>
+                        ${c.ficheGoogle ? `<li><a href="${c.ficheGoogle}" target="_blank" rel="noopener noreferrer">${t.footerAvis} →</a></li>` : ''}
+                    </ul>
+                    <p class="mk-footer__titre mk-footer__titre--espace">${t.footerHoraires}</p>
+                    <ul>
+${c.horaires[langue].map(h => `                        <li>${h}</li>`).join('\n')}
+                    </ul>
+                </div>
+                <div>
+                    <p class="mk-footer__titre">${t.footerPresta}</p>
+                    <ul>
+                        ${lien(P.atelier[langue], esc(P.atelier.libelle[langue]))}
+                        ${lien(P['a-domicile'][langue], esc(P['a-domicile'].libelle[langue]))}
+${PRESTATIONS.map(p => `                        ${lien(urlPrestation(p, langue), esc(p[langue].nom))}`).join('\n')}
+                    </ul>
+                </div>
+                <div>
+                    <p class="mk-footer__titre">${t.footerInfos}</p>
+                    <ul>
+${infos.map(x => '                        ' + x).join('\n')}
+                    </ul>
+                </div>
+            </div>${listeVilles}
+            <div class="mk-footer__bas">&copy; 2026 ${SITE.marque} · ${c.raisonSociale} · ${c.tva}</div>
+        </div>
     </footer>`;
 }
 
@@ -531,14 +563,14 @@ function contenuHeader(fichier, langue) {
     return header(langue, { actuel: cheminVersUrl(fichier), alternes: a.fr ? a : {} });
 }
 function contenuFooter(fichier, langue) {
-    return footer(langue);
+    return footer(langue, { actuel: cheminVersUrl(fichier) });
 }
 const repereHeader = (f, l) => repere('HEADER', contenuHeader(f, l));
 const repereFooter = (f, l) => repere('FOOTER', contenuFooter(f, l));
 
 module.exports = {
     repereHeader, repereFooter, contenuHeader, contenuFooter, cheminVersUrl,
-    header, footer, alternes, arbreMenu, urlPrestation, urlReserver, PRESTATIONS, UI,
+    header, footer, appelFinal, alternes, arbreMenu, urlPrestation, urlReserver, PRESTATIONS, UI,
     head, CSP,
     SITE, dateLongue, veille, url, esc,
     gardeInline, carteConcours, blocFinDePage, blocConcoursOffres, repere, repereFinDePage,

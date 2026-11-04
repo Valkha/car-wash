@@ -153,7 +153,7 @@ pages.forEach(fichier => {
         else [a.fr, a.en].forEach(u => { if (!existeUrl(u)) erreurs.push(`${fichier} : sa traduction ${u} n'existe pas.`); });
     }
 
-    html = remplacer(html, 'CONCOURS', shell.blocFinDePage(langue, { pageConcours: PAGES_CONCOURS.includes(fichier) }),
+    html = remplacer(html, 'CONCOURS', shell.blocFinDePage(langue, { pageConcours: PAGES_CONCOURS.includes(fichier), actuel: shell.cheminVersUrl(fichier) }),
         fichier, h => h.lastIndexOf('</body>'));
 
     // Accueil EN : sections S3 a S7 generees (site-composants.js, pages.json).
