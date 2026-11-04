@@ -131,7 +131,7 @@ html.mk-menu-ouvert{overflow:hidden}
 .mk-bulle__x{position:absolute;top:-13px;right:-10px;width:30px;height:30px;border-radius:999px;border:2px solid var(--mk-noir);background:var(--mk-jaune);color:var(--mk-noir);font-size:17px;font-weight:700;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}
 .mk-bulle__x::after{content:"";position:absolute;inset:-8px}
 @media (prefers-reduced-motion:no-preference){
-  .mk-bulle{animation:mkGlisse .6s var(--mk-ease) 1.4s both}
+  .mk-bulle{animation:mkGlisse .5s var(--mk-ease) .3s both}
   .mk-bulle__ico svg{animation:mkAgite 5s ease-in-out 2.5s infinite}
 }
 @keyframes mkGlisse{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
@@ -522,7 +522,7 @@ main:not(.mk-accueil) .section-index span,main:not(.mk-accueil) .section-index::
 #ccw-location-modal button[id^="ccw-location-"],#ccw-contact-modal a{font-family:var(--mk-corps) !important;text-transform:none !important;letter-spacing:0 !important;font-size:16px !important;font-weight:800 !important;border-radius:12px !important;min-height:54px}
 #ccw-location-modal button.border-gold-400,#ccw-contact-modal a.border-gold-400{border:2px solid rgba(255,255,255,.8) !important;color:#fff !important}
 #ccw-location-modal button.border-gold-400:hover,#ccw-contact-modal a.border-gold-400:hover{background:#fff !important;color:var(--mk-noir) !important}
-main:not(.mk-accueil) .section-index em{color:var(--mk-noir) !important;opacity:.6}
+main:not(.mk-accueil) .section-index em{color:var(--mk-noir) !important;-webkit-text-fill-color:var(--mk-noir) !important;opacity:.55}
 #ccw-location-modal #ccw-location-modal-title,#ccw-contact-modal #ccw-modal-title{font-family:var(--mk-corps) !important;font-size:13px !important}
 
 
@@ -565,3 +565,46 @@ main:not(.mk-accueil)>section.mk-eau-actif::before{background:var(--mk-noir-2)}
 .mk-eau{position:absolute;z-index:-1;top:0;bottom:0;left:calc(50% - 50vw + 12px);width:calc(100vw - 24px);border-radius:20px;overflow:hidden;pointer-events:none}
 .mk-eau .mk-caus{z-index:0;opacity:.13}
 section:has(.mk-hero-photo) .mk-eau .mk-caus{opacity:.18}
+
+/* ==========================================================================
+   Panneau cle : une section par page passe en panneau sombre arrondi,
+   meme matiere que le hero (marbre anime), sans reprendre la mise en page
+   de l'accueil.
+   ========================================================================== */
+main:not(.mk-accueil)>section.mk-cle:not(:first-of-type){isolation:isolate;color:#fff;background:var(--mk-blanc);box-shadow:0 0 0 100vmax var(--mk-blanc);margin:12px 0;padding-top:clamp(64px,8vw,104px) !important;padding-bottom:clamp(64px,8vw,104px) !important}
+main:not(.mk-accueil)>section.mk-cle:not(:first-of-type)::before{content:"";position:absolute;z-index:-3;top:0;bottom:0;left:calc(50% - 50vw + 12px);right:calc(50% - 50vw + 12px);border-radius:20px;background:var(--mk-noir-2)}
+main:not(.mk-accueil)>section.mk-cle .mk-eau .mk-caus{opacity:.07}
+main:not(.mk-accueil)>section.mk-cle:not(:first-of-type) :is(h2,h3,.text-white,.text-gray-100,.text-gray-200,.text-charcoal-900,details,summary,th,td){color:#fff !important}
+main:not(.mk-accueil)>section.mk-cle:not(:first-of-type) :is(.text-gray-300,.text-gray-400){color:#D9D6CE !important}
+main:not(.mk-accueil)>section.mk-cle:not(:first-of-type) :is(.text-gray-500,.text-gray-600){color:var(--mk-gris) !important}
+main:not(.mk-accueil)>section.mk-cle:not(:first-of-type) :is(.text-gold-400,.text-gold-500){color:var(--mk-jaune) !important}
+main:not(.mk-accueil)>section.mk-cle:not(:first-of-type) .text-green-400{color:#7BD88F !important}
+main:not(.mk-accueil)>section.mk-cle:not(:first-of-type) a:not([class*="bg-"]):not([class*="border"]):not(.premium-card){color:#fff}
+main:not(.mk-accueil)>section.mk-cle:not(:first-of-type) :is(.hover\:text-gold-400:hover,.group:hover .group-hover\:text-gold-400){color:var(--mk-jaune) !important}
+main:not(.mk-accueil)>section.mk-cle:not(:first-of-type) :is(.premium-card,.bg-white\/5,.bg-charcoal-800,.bg-charcoal-900,.bg-black,[class*="bg-black/"],[class*="bg-charcoal-800/"]){background:rgba(255,255,255,.05) !important;border:1px solid rgba(255,255,255,.14) !important;box-shadow:none !important;color:#fff;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
+main:not(.mk-accueil)>section.mk-cle:not(:first-of-type) :is([class*="border-white/"],.border-gray-800,.border-charcoal-700,.border-gold-400\/30){border-color:rgba(255,255,255,.14) !important}
+main:not(.mk-accueil)>section.mk-cle:not(:first-of-type) :is(.h-px,.section-rule){background:rgba(255,255,255,.14) !important}
+main:not(.mk-accueil)>section.mk-cle:not(:first-of-type) :is(.bg-gold-400\/10,.bg-gold-500\/10){background:rgba(255,204,0,.12) !important}
+/* carte mise en avant dans le panneau : liseré jaune au lieu du fond noir */
+main:not(.mk-accueil)>section.mk-cle:not(:first-of-type) .premium-card.border-gold-400\/40{background:rgba(255,255,255,.09) !important;border:2px solid var(--mk-jaune) !important;box-shadow:0 24px 48px rgba(0,0,0,.35) !important}
+main:not(.mk-accueil)>section.mk-cle:not(:first-of-type) .premium-card.border-gold-400\/40 :is(.bg-gold-400.text-charcoal-900){color:var(--mk-noir) !important}
+/* boutons contour : blancs sur le sombre */
+main:not(.mk-accueil)>section.mk-cle:not(:first-of-type) :is(a.border-gold-400.text-gold-400,button.border-gold-400.text-gold-400,a.border.border-gold-400:not(.bg-gold-400)){color:#fff !important;border-color:rgba(255,255,255,.75) !important}
+main:not(.mk-accueil)>section.mk-cle:not(:first-of-type) :is(a.border-gold-400.text-gold-400,button.border-gold-400.text-gold-400,a.border.border-gold-400:not(.bg-gold-400)):hover{background:#fff !important;color:var(--mk-noir) !important}
+main:not(.mk-accueil)>section.mk-cle:not(:first-of-type) :focus-visible{outline-color:var(--mk-jaune) !important}
+
+/* Sections claires : le motif marbre, tres pale et fige, dans un coin */
+main:not(.mk-accueil)>section:not(:first-of-type):not(.mk-cle){isolation:isolate}
+main:not(.mk-accueil)>section:not(:first-of-type):not(.mk-cle):not([class*="max-w-"])::before{content:"";position:absolute;z-index:-1;top:0;right:calc(50% - 50vw);width:min(620px,80vw);height:min(100%,560px);background:url("/images/mkt/caustique-or.svg") center/cover no-repeat;opacity:.09;-webkit-mask-image:radial-gradient(ellipse at 100% 0%,#000 0%,transparent 70%);mask-image:radial-gradient(ellipse at 100% 0%,#000 0%,transparent 70%);pointer-events:none}
+main:not(.mk-accueil)>section:nth-of-type(even):not(:first-of-type):not(.mk-cle):not([class*="max-w-"])::before{top:auto;bottom:0;right:auto;left:calc(50% - 50vw);-webkit-mask-image:radial-gradient(ellipse at 0% 100%,#000 0%,transparent 70%);mask-image:radial-gradient(ellipse at 0% 100%,#000 0%,transparent 70%)}
+/* l'etiquette reste une pastille jaune meme apres l'insertion du calque marbre */
+main:not(.mk-accueil)>section>.mk-eau+p.text-\[11px\],main:not(.mk-accueil)>section.mk-cle:not(:first-of-type)>.mk-eau+p.text-\[11px\].text-gold-400{display:inline-block;background:var(--mk-jaune);color:var(--mk-noir) !important;padding:4px 10px;border-radius:6px;font-size:13px !important;font-weight:800 !important}
+@media (max-width:700px){main:not(.mk-accueil)>section.mk-cle:not(:first-of-type){padding-left:16px !important;padding-right:16px !important}}
+/* Pastille du concours sur telephone : barre centree en bas d'ecran, presque toute la largeur ;
+   masquee quand le menu est ouvert ; la page garde une marge pour ne rien cacher en bas. */
+@media (max-width:759px){
+  .mk-bulle{left:12px;right:12px;width:auto;max-width:none;margin:0 auto;bottom:max(12px,env(safe-area-inset-bottom,0px));padding:10px 14px;gap:12px}
+  .mk-bulle__ico{width:40px;height:40px}
+  body:has(.mk-bulle:not([hidden])){padding-bottom:104px}
+}
+html.mk-menu-ouvert .mk-bulle{display:none}

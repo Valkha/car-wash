@@ -457,7 +457,9 @@ function pageGabarit(cle, langue) {
     const P = J(PAGES[cle]), d = P[langue];
     const ctx = { jsonld: [], reservation: false, appjs: false, galerie: false };
     const fichier = SITE.pages[cle][langue].replace(/^\//, '');
-    const corps = hero(d, langue, P.photo || null) + P.sections.map(s => section(s, langue, cle, ctx)).join('');
+    // "cle": true sur UNE section de la page => panneau sombre (classe mk-cle).
+    const marquer = (s, h) => s.cle ? h.replace(/<section\b([^>]*?)\bclass="/, '<section$1class="mk-cle ') : h;
+    const corps = hero(d, langue, P.photo || null) + P.sections.map(s => marquer(s, section(s, langue, cle, ctx))).join('');
     return { fichier, html: document_(cle, langue, d, corps, ctx, fichier) };
 }
 

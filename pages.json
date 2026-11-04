@@ -32,7 +32,7 @@
             { "titre": "At home or at work", "texte": "We come to you — not the other way around. Your vehicle is taken care of wherever you are, effortlessly. Travel included in Geneva.", "lien": ["The at-home service", "@a-domicile"] },
             { "titre": "In the workshop", "texte": "For deep treatments (polishing, ceramic coating, protection film), your vehicle is handled in our fully equipped workshop, Chemin des Vergers in Geneva.", "lien": ["The workshop", "@atelier"] }
           ] } },
-      { "type": "cartes", "colonnes": 4,
+      { "cle": true, "type": "cartes", "colonnes": 4,
         "fr": { "label": "Choisir votre formule", "titre": "Ce que nous proposons",
           "cartes": [
             { "titre": "Les packs", "texte": "Argent, Or ou Diamant : du lavage complet au detailing le plus poussé, prix TTC.", "lien": ["Voir les tarifs", "@tarifs"] },
@@ -93,7 +93,7 @@
             { "titre": "Pick-up & delivery", "texte": "We can also collect your car, perform the service and bring it back to you." },
             { "titre": "Clear prices, no surprise", "texte": "Prices shown incl. VAT, travel included in Geneva and a flat fee announced upfront in Vaud." }
           ] } },
-      { "type": "zones", "id": "zones",
+      { "cle": true, "type": "zones", "id": "zones",
         "fr": { "label": "Prix par zone", "titre": "Frais de déplacement", "intro": "Le montant dépend du district dans lequel se trouve votre commune. La page Zones & frais, avec les cartes, fait foi." },
         "en": { "label": "Prices by zone", "titre": "Travel fees", "intro": "The amount depends on the district your municipality is in. The Areas & fees page, with the maps, is the reference." } },
       { "type": "conditions", "id": "conditions",
@@ -162,7 +162,7 @@
             { "titre": "A dust-free environment", "texte": "Film application (PPF) and wrapping require it: these services are carried out in the workshop only." },
             { "titre": "The time it takes", "texte": "Starlight headliner, PPF, wrapping or polish: the vehicle stays in the workshop throughout, and the real duration is stated on each page." }
           ] } },
-      { "type": "prestations", "id": "prestations",
+      { "cle": true, "type": "prestations", "id": "prestations",
         "fr": { "label": "Prestations spécialisées", "titre": "Réalisées à l’atelier", "intro": "Quatre prestations se font uniquement à l'atelier ; le polish céramique se fait à l'atelier ou chez vous (garage fermé requis)." },
         "en": { "label": "Specialist services", "titre": "Carried out in the workshop", "intro": "Four services are carried out in the workshop only; the ceramic polish in the workshop or at your place (closed garage required)." } },
       { "type": "texte",
@@ -206,7 +206,7 @@
       { "type": "remises", "id": "remises",
         "fr": { "label": "Avantages flotte", "titre": "Des remises qui suivent votre flotte" },
         "en": { "label": "Fleet benefits", "titre": "Discounts that grow with your fleet" } },
-      { "type": "cartes", "colonnes": 3,
+      { "cle": true, "type": "cartes", "colonnes": 3,
         "fr": { "label": "Pour qui", "titre": "Votre véhicule est votre carte de visite",
           "cartes": [
             { "titre": "Entreprises", "texte": "Flottes de 3 à 50 véhicules et plus. Tarifs dégressifs, facturation entreprise, intervention planifiée." },
@@ -252,7 +252,7 @@
       { "type": "questionnaire", "id": "questionnaire",
         "fr": { "label": "En deux questions", "titre": "Trouvons la bonne formule", "intro": "Professionnel ou particulier, répondez à deux questions : nous vous orientons vers la formule adaptée. Aucune donnée n'est collectée." },
         "en": { "label": "In two questions", "titre": "Let’s find the right package", "intro": "Business or private customer, answer two questions: we point you to the right package. No data is collected." } },
-      { "type": "offres", "id": "formules", "prix": true, "detail": true,
+      { "cle": true, "type": "offres", "id": "formules", "prix": true, "detail": true,
         "fr": { "label": "Packs & combos", "titre": "Nos formules", "intro": "Prix TTC, TVA 8,1 % incluse. Chaque formule se réserve à l’atelier ou à domicile." },
         "en": { "label": "Packs & combos", "titre": "Our packages", "intro": "Prices incl. VAT (8.1%). Each package can be booked at our workshop or at home." } },
       { "type": "abonnements", "id": "abonnements", "prix": true,
@@ -305,7 +305,7 @@
     },
     "sections": [
       { "type": "etapes" },
-      { "type": "offres", "id": "formules", "prix": true, "detail": false,
+      { "cle": true, "type": "offres", "id": "formules", "prix": true, "detail": false,
         "fr": { "label": "Étape 1", "titre": "Choisissez votre formule", "intro": "Puis le lieu : à domicile / au travail, ou au garage CCW." },
         "en": { "label": "Step 1", "titre": "Choose your package", "intro": "Then the place: at home / at work, or at the CCW garage." } },
       { "type": "prestations", "id": "prestations", "prix": true,
@@ -356,7 +356,7 @@
             { "titre": "The deep interior", "texte": "Seat and carpet shampoo, plastic renovation, wheels and tyres, scented finish. With the Gold Pack." },
             { "titre": "The finishing touches", "texte": "Premium water-repellent wax, leather or Alcantara care, anti-odour treatment. With the Diamond Pack." }
           ] } },
-      { "type": "offres", "id": "packs", "prix": true, "packsSeuls": true,
+      { "cle": true, "type": "offres", "id": "packs", "prix": true, "packsSeuls": true,
         "fr": { "label": "Trois packs", "titre": "Choisissez votre lavage", "intro": "Prix TTC, TVA 8,1 % incluse. Chaque pack se réserve à l’atelier ou à domicile." },
         "en": { "label": "Three packs", "titre": "Choose your wash", "intro": "Prices incl. VAT (8.1%). Each pack can be booked at our workshop or at home." } },
       { "type": "cartes", "colonnes": 2, "id": "lieu",

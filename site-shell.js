@@ -131,10 +131,8 @@ function scriptCarte() {
         'var st=new Date(d.getAttribute("data-debut")+"T00:00:00"),en=new Date(d.getAttribute("data-promo-until")+"T23:59:59");' +
         'if(isNaN(st.getTime())||isNaN(en.getTime())||n>en||n<st){d.remove();return}' +
         'try{if(sessionStorage.getItem("ccwPastille"))return}catch(x){}' +
-        // Telephone : la bulle couvrirait le bouton principal du haut de page ;
-        // elle n'apparait qu'une fois le premier ecran depasse.
-        'function v(){d.hidden=false}' +
-        'if(innerWidth<760&&scrollY<innerHeight*.9){var o=function(){if(scrollY>=innerHeight*.9){removeEventListener("scroll",o);v()}};addEventListener("scroll",o,{passive:true})}else v();' +
+        // Visible des l'arrivee, sur ordinateur comme sur telephone.
+        'd.hidden=false;' +
         'd.querySelector("[data-x]").addEventListener("click",function(){d.hidden=true;try{sessionStorage.setItem("ccwPastille","1")}catch(x){}});' +
         '})();</script>';
 }
@@ -168,9 +166,9 @@ function barreMobile() { return ''; }
 // Calque de reflets d'eau anime dans le haut de page des pages (hors accueil,
 // hors bandeaux photo des prestations).
 function scriptEau() {
-    return '<script>(function(){var s=document.querySelector("main:not(.mk-accueil)>section:first-of-type:not(.rounded-3xl)");if(!s)return;' +
+    return '<script>(function(){document.querySelectorAll("main:not(.mk-accueil)>section:first-of-type:not(.rounded-3xl),main:not(.mk-accueil)>section.mk-cle").forEach(function(s){' +
         'var d=document.createElement("div"),i=document.createElement("img");d.className="mk-eau";d.setAttribute("aria-hidden","true");' +
-        'i.className="mk-caus";i.alt="";i.src="/images/mkt/caustique-clair.svg";d.appendChild(i);s.insertBefore(d,s.firstChild);s.classList.add("mk-eau-actif")})();</script>';
+        'i.className="mk-caus";i.alt="";i.loading="lazy";i.src="/images/mkt/caustique-clair.svg";d.appendChild(i);s.insertBefore(d,s.firstChild);s.classList.add("mk-eau-actif")})})();</script>';
 }
 
 function blocFinDePage(langue, { pageConcours = false, actuel = null } = {}) {

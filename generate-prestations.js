@@ -219,7 +219,7 @@ function page(presta, langue) {
     const lienAutre = langue === 'fr' ? `en/${slugEn}.html` : `../${slugFr}.html`;
 
     const sections = d.sections.map((s, i) => `
-        <section class="pb-14 md:pb-20">
+        <section class="${i === 0 ? 'mk-cle ' : ''}pb-14 md:pb-20">
             <p class="section-index mb-3"><em>0${i + 1}</em>${s.surtitre}</p>
             <h2 class="text-2xl md:text-4xl font-display font-bold text-white uppercase tracking-tight leading-[0.95] mb-8">${s.titre}</h2>
             <div class="grid gap-6 md:grid-cols-2">
