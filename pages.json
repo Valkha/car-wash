@@ -22,12 +22,12 @@
     },
     "sections": [
       { "type": "cartes", "colonnes": 2,
-        "fr": { "label": "Deux façons de nous confier votre voiture", "titre": "À domicile ou en atelier", "intro": "Les deux se valent : choisissez selon votre journée et selon la prestation.",
+        "fr": { "label": "Deux façons de nous confier votre voiture", "titre": "En atelier ou à domicile", "intro": "Les deux se valent : choisissez selon votre journée et selon la prestation.",
           "cartes": [
             { "titre": "À domicile ou au travail", "texte": "Nous venons à vous — pas l'inverse. Votre véhicule est pris en charge là où vous êtes, sans effort de votre part. Déplacement offert à Genève.", "lien": ["Le service à domicile", "@a-domicile"] },
             { "titre": "En atelier", "texte": "Pour les prestations profondes (polissage, traitement céramique, film de protection), votre véhicule est pris en charge dans notre atelier équipé, Chemin des Vergers à Genève.", "lien": ["L’atelier", "@atelier"] }
           ] },
-        "en": { "label": "Two ways to entrust us with your car", "titre": "At home or in the workshop", "intro": "Both are equally good: choose according to your day and to the service.",
+        "en": { "label": "Two ways to entrust us with your car", "titre": "In the workshop or at home", "intro": "Both are equally good: choose according to your day and to the service.",
           "cartes": [
             { "titre": "At home or at work", "texte": "We come to you — not the other way around. Your vehicle is taken care of wherever you are, effortlessly. Travel included in Geneva.", "lien": ["The at-home service", "@a-domicile"] },
             { "titre": "In the workshop", "texte": "For deep treatments (polishing, ceramic coating, protection film), your vehicle is handled in our fully equipped workshop, Chemin des Vergers in Geneva.", "lien": ["The workshop", "@atelier"] }
@@ -81,13 +81,13 @@
     },
     "sections": [
       { "type": "cartes", "colonnes": 3,
-        "fr": { "label": "Ce que vous y gagnez", "titre": "Zéro déplacement, zéro attente",
+        "fr": { "label": "Ce que vous y gagnez", "titre": "Vous restez où vous êtes",
           "cartes": [
             { "titre": "Chez vous ou au bureau", "texte": "Nous intervenons sur votre place de parking privative, à la maison ou au travail. Vous continuez votre journée." },
             { "titre": "Récupération & livraison", "texte": "Nous pouvons aussi récupérer votre voiture, effectuer la prestation et vous la ramener." },
             { "titre": "Prix clairs, sans surprise", "texte": "Tarifs affichés TTC, déplacement offert à Genève et forfait annoncé à l'avance sur Vaud." }
           ] },
-        "en": { "label": "What you gain", "titre": "Zero travel, zero waiting",
+        "en": { "label": "What you gain", "titre": "You stay where you are",
           "cartes": [
             { "titre": "At home or at the office", "texte": "We work on your private parking space, at home or at work. You carry on with your day." },
             { "titre": "Pick-up & delivery", "texte": "We can also collect your car, perform the service and bring it back to you." },
@@ -270,13 +270,13 @@
       { "type": "faq",
         "fr": { "label": "Questions pratiques", "titre": "Paiement & déroulement", "items": [
           ["Quels moyens de paiement acceptez-vous ?", "Un acompte de 30 % est requis en ligne lors de la réservation via notre lien SumUp sécurisé (carte bancaire, Apple Pay, Google Pay). Le solde est réglé directement à la fin de la prestation."],
-          ["Puis-je annuler ?", "Oui. Jusqu'à 24 h avant le rendez-vous, l'annulation est sans frais : l'acompte est reporté sur une prochaine réservation. Moins de 24 h avant, il reste acquis."],
+          ["Puis-je annuler ?", "Oui. Jusqu'à 24 h avant le rendez-vous, l'acompte est reporté sur une prochaine réservation. Moins de 24 h avant, il reste acquis."],
           ["Quels sont les suppléments éventuels ?", "Un supplément de 74.60 CHF TTC de l'heure s'applique pour les véhicules extrêmement sales. Nous proposons aussi la suppression de poils d'animaux (dès 49.90 CHF TTC)."],
           ["Combien de temps faut-il attendre après un shampoing des sièges ?", "Comptez 4 à 6 heures de séchage minimum avant une utilisation intensive. En période estivale, le séchage est généralement plus rapide. Nous vous conseillons de laisser les fenêtres légèrement ouvertes pour faciliter l'évaporation."]
         ] },
         "en": { "label": "Practical questions", "titre": "Payment & how it works", "items": [
           ["What payment methods do you accept?", "A 30% deposit is required online at the time of booking via our secure SumUp link (credit card, Apple Pay, Google Pay). The balance is settled at the end of the service."],
-          ["Can I cancel?", "Yes. Up to 24 hours before the appointment, cancelling costs nothing: the deposit is carried over to a future booking. Less than 24 hours before, it is kept."],
+          ["Can I cancel?", "Yes. Up to 24 hours before the appointment, the deposit is carried over to a future booking. Less than 24 hours before, it is kept."],
           ["Are there any additional fees?", "An additional charge of CHF 74.60 incl. VAT per hour applies for extremely dirty vehicles. We also offer pet hair removal (from CHF 49.90 incl. VAT)."],
           ["How long should I wait after a seat shampoo?", "Allow a minimum of 4 to 6 hours of drying time before heavy use. In summer, drying is usually faster. We recommend leaving the windows slightly open to help ventilation."]
         ] } },

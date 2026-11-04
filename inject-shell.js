@@ -156,14 +156,7 @@ pages.forEach(fichier => {
     html = remplacer(html, 'CONCOURS', shell.blocFinDePage(langue, { pageConcours: PAGES_CONCOURS.includes(fichier), actuel: shell.cheminVersUrl(fichier) }),
         fichier, h => h.lastIndexOf('</body>'));
 
-    // Accueil EN : sections S3 a S7 generees (site-composants.js, pages.json).
-    // L'accueil FR suit la planche DA 2026 (public/js/accueil-2026.js) : plus de reperes ACCUEIL-*.
-    if (fichier === 'en/index.html') {
-        const blocs = comp.accueil(langue);
-        Object.keys(blocs).forEach(n => {
-            html = remplacer(html, 'ACCUEIL-' + n, blocs[n], fichier, () => -1);
-        });
-    }
+    // Les deux accueils sont ecrits en entier par generate-accueil.js : plus de reperes ACCUEIL-*.
 
     if (PAGES_OFFRES.includes(fichier)) {
         html = remplacer(html, 'CONCOURS-OFFRES', shell.blocConcoursOffres(langue), fichier,

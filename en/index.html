@@ -5,10 +5,9 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.google.com https://api.sumup.com https://api3.geo.admin.ch">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-    <!-- Google Tag Manager + Google Analytics -->
-    <!-- Chargés après le premier rendu (audit perf du 14.09.2026) : les deux scripts
-         pèsent ~290 Ko et passaient avant l'image du hero sur mobile. La file
-         dataLayer est créée tout de suite : aucun évènement n'est perdu. -->
+    <!-- PAGE GENEREE par generate-accueil.js : ne pas l'editer a la main. -->
+
+    <!-- Google Tag Manager — chargement differe (audit perf 14.09.2026) -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -20,21 +19,10 @@
         function charger() {
           if (charge) return;
           charge = true;
-          /* Audit P16 (15.09.2026) : cette liste chargeait AUSSI
-             gtag/js?id=G-QMTGD5E2NW en direct. Or le conteneur GTM charge
-             deja GA4 lui-meme (PageSpeed le voit arriver en
-             gtag/js?id=G-QMTGD5E2NW&cx=c&gtm=...). La meme bibliotheque de
-             167 Kio etait donc telechargee et executee DEUX FOIS : 448 Kio de
-             Tag Manager au total, 319 ms de fil principal, 4 des 5 taches
-             longues de la page. GTM seul suffit -- la mesure part du meme
-             conteneur, par le meme dataLayer. Pour revenir en arriere : remettre
-             l'URL gtag/js dans le tableau. */
-          ['https://www.googletagmanager.com/gtm.js?id=GTM-5W69QPT3'].forEach(function (src) {
-            var s = document.createElement('script');
-            s.async = true;
-            s.src = src;
-            document.head.appendChild(s);
-          });
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-5W69QPT3';
+          document.head.appendChild(s);
         }
         ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function (type) {
           window.addEventListener(type, charger, { once: true, passive: true });
@@ -42,64 +30,50 @@
         window.addEventListener('load', function () { setTimeout(charger, 3500); });
       })();
     </script>
-    <!-- End Google Tag Manager + Google Analytics -->
 
-    <title>Mobile car wash at home Geneva &amp; Vaud | Clean Cars Wash</title>
-    <meta name="description" content="Premium mobile car wash and detailing across Geneva &amp; Vaud. Packs from CHF 98.60 incl. VAT, travel included across the whole canton of Geneva. Book online.">
-    <meta name="keywords" content="clean cars wash, car wash geneva, mobile detailing, ceramic coating geneva, auto care vaud, AHMED-YAHIA LM">
+    <title>Car wash in our workshop and at home, Geneva &amp; Vaud | Clean Cars Wash</title>
+    <meta name="description" content="Car wash and detailing in our Geneva workshop or at your place, across Geneva and Vaud. Packs from CHF 98.60 incl. VAT, travel included in Geneva. Book online.">
     <meta name="author" content="Clean Cars Wash">
     <meta name="robots" content="index, follow">
-    
     <link rel="canonical" href="https://www.clean-cars-wash.ch/en/">
     <link rel="alternate" hreflang="fr" href="https://www.clean-cars-wash.ch/">
     <link rel="alternate" hreflang="en" href="https://www.clean-cars-wash.ch/en/">
     <link rel="alternate" hreflang="x-default" href="https://www.clean-cars-wash.ch/">
-
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.clean-cars-wash.ch/en/">
-    <meta property="og:title" content="Mobile car wash at home Geneva &amp; Vaud | Clean Cars Wash">
-    <meta property="og:description" content="Professional mobile detailing service in Geneva and Vaud. Home pick-up, showroom results. Silver, Gold, and Diamond packages.">
+    <meta property="og:title" content="Car wash in our workshop and at home, Geneva &amp; Vaud | Clean Cars Wash">
+    <meta property="og:description" content="Car wash and detailing in our Geneva workshop or at your place. Silver, Gold and Diamond packs, prices incl. VAT shown before you book.">
     <meta property="og:image" content="https://www.clean-cars-wash.ch/assets/images/MB-01-opt.webp">
-    <meta property="og:image:alt" content="Premium Mercedes detailing — Clean Cars Wash Geneva">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:locale" content="en_US">
+    <meta property="og:locale" content="en_GB">
     <meta property="og:site_name" content="Clean Cars Wash">
-
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Mobile car wash at home Geneva &amp; Vaud | Clean Cars Wash">
-    <meta name="twitter:image" content="https://www.clean-cars-wash.ch/assets/images/MB-01-opt.webp">
-    <meta name="twitter:image:alt" content="Premium Mercedes detailing — Clean Cars Wash Geneva">
-    <meta name="twitter:description" content="Professional mobile detailing in Geneva and Vaud. Home pick-up, showroom results. Silver, Gold, Diamond packages.">
-
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Clean Cars">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#FFFFFF">
-    <meta name="mobile-web-app-capable" content="yes">
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
-
-    <link rel="preload" as="image" href="../assets/images/hero-bg-opt.webp" media="(min-width: 769px)" fetchpriority="high">
-    <link rel="preload" as="image" href="../assets/images/hero-bg-mobile.webp" media="(max-width: 768px)" fetchpriority="high">
-
+    <link rel="preload" as="image" href="/images/accueil/hero-bg-opt.webp" media="(min-width: 769px)" fetchpriority="high">
+    <link rel="preload" as="image" href="/images/accueil/hero-bg-mobile.webp" media="(max-width: 768px)" fetchpriority="high">
+    <link rel="preload" href="/fonts/syne-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/css/tailwind-src.css">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "AutoWash",
-      "name": "Clean Cars Wash Geneva",
+      "name": "Clean Cars Wash Genève",
       "image": "https://www.clean-cars-wash.ch/assets/images/MB-01-opt.webp",
-      "@id": "https://www.clean-cars-wash.ch/en/",
-      "url": "https://www.clean-cars-wash.ch/en/",
+      "@id": "https://www.clean-cars-wash.ch",
+      "url": "https://www.clean-cars-wash.ch",
       "telephone": "+41782657071",
       "vatID": "CHE-377.481.423",
-      "priceRange": "CHF 96–312",
+      "priceRange": "CHF 98–320",
       "currenciesAccepted": "CHF",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Chemin des Vergers",
-        "addressLocality": "Geneva",
+        "addressLocality": "Genève",
         "postalCode": "1208",
         "addressCountry": "CH"
       },
@@ -108,60 +82,120 @@
         "latitude": 46.1989683,
         "longitude": 6.1615317
       },
-      "areaServed": [{ "@type": "City", "name": "Geneva" }, { "@type": "State", "name": "Vaud" }],
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Genève"
+        },
+        {
+          "@type": "State",
+          "name": "Vaud"
+        }
+      ],
       "openingHoursSpecification": [
-        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "07:30", "closes": "22:00" }
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "07:30",
+          "closes": "22:00"
+        }
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
-        "name": "Detailing Packages",
+        "name": "Packs Detailing",
         "itemListElement": [
-          { "@type": "Offer", "name": "Silver Pack", "price": "98.60", "priceCurrency": "CHF" },
-          { "@type": "Offer", "name": "Gold Pack", "price": "165.10", "priceCurrency": "CHF" },
-          { "@type": "Offer", "name": "Diamond Pack", "price": "320.20", "priceCurrency": "CHF" }
+          {
+            "@type": "Offer",
+            "name": "Silver Pack",
+            "price": "98.60",
+            "priceCurrency": "CHF"
+          },
+          {
+            "@type": "Offer",
+            "name": "Gold Pack",
+            "price": "165.10",
+            "priceCurrency": "CHF"
+          },
+          {
+            "@type": "Offer",
+            "name": "Diamond Pack",
+            "price": "320.20",
+            "priceCurrency": "CHF"
+          }
         ]
       }
     }
     </script>
-
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "@id": "https://www.clean-cars-wash.ch/en/#website",
+      "@id": "https://www.clean-cars-wash.ch/#website",
       "url": "https://www.clean-cars-wash.ch/en/",
       "name": "Clean Cars Wash",
-      "description": "Premium mobile car wash service in Geneva and Vaud.",
+      "description": "Car wash and detailing in our workshop and at home, in Geneva and Vaud.",
       "inLanguage": "en"
     }
     </script>
-
-    <link rel="preload" href="/fonts/syne-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="../assets/css/tailwind-src.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What do I need for a wash at home?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A private parking space (garage, driveway or residential car park) and a 230V power socket, both required; a water point is recommended. At the workshop, you don’t need anything."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much is the travel fee?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nothing at the workshop. At home, travel is included across the canton of Geneva. In Vaud, a flat fee is added depending on the district: CHF 39.90 (Nyon, Morges, Ouest lausannois, Lausanne, Gros-de-Vaud) or CHF 59.90 for the other districts. It is shown before you pay."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does payment work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You choose your pack, the place and your time slot, then pay a 30% deposit online by TWINT or card, secured by SumUp. The balance is settled on site. Up to 24 hours before the appointment, the deposit is carried over to a future booking. Less than 24 hours before, it is retained."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between a polish and a ceramic coating?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A polish corrects the paint (swirls, wash marks); a ceramic coating protects it and makes water bead. The coating always comes after the correction: that is what the Polish Ceramic Pack combines, from CHF 999 incl. VAT on quotation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is PPF?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A clear film that takes stone chips and scratches instead of your paint. Fitting it requires a dust-free environment: it is done exclusively at the workshop and takes at least one full day."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
-<body class="bg-charcoal-900 text-gray-300 font-sans antialiased relative overflow-x-hidden" style="background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px); background-size: 30px 30px;">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5W69QPT3"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gold-400 z-100 transition-all duration-150" style="width: 0%;"></div>
-
+<body class="mk-corps">
     <a href="#main-content" class="skip-link">Skip to main content</a>
-
-    <!-- PROMO-OCT-2026 — banner. Removes itself on 31/10/2026 at midnight.
-         Remove by hand as soon as the owner reports the 100 customers reached:
-         `grep -rn "PROMO-OCT-2026"` lists the 4 places (2 homepages + 2 offers hubs). -->
-    <div id="ccw-promo-bar" data-promo-until="2026-10-31" class="bg-gold-400 text-charcoal-900">
-        <a href="promos.html" class="max-w-7xl mx-auto px-4 py-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center font-display font-bold text-[11px] md:text-xs tracking-widest uppercase hover:opacity-80 transition-opacity">
-            <span>20% off all through October</span>
-            <span class="hidden sm:inline opacity-60" aria-hidden="true">|</span>
-            <span class="font-normal tracking-wide normal-case">On every service except subscriptions, for the first 100 customers</span>
-            <span class="underline underline-offset-2">Get the deal &rarr;</span>
-        </a>
-    </div>
-
     <!-- CCW:HEADER -->
     <div id="ccw-header" class="mk-haut">
         <a class="mk-bandeau" href="#concours" data-concours data-promo-from="2026-11-01" data-promo-until="2026-11-30">Giveaway: one wash in November, an iPhone 18 Pro Max to win →</a>
@@ -254,527 +288,423 @@ window.matchMedia("(min-width: 1100px)").addEventListener("change",function(e){i
     </div>
     <!-- /CCW:HEADER -->
 
-    <main id="main-content">
-        <section class="bg-hero ccw-hero min-h-[80vh] flex items-center pt-16 pb-28 md:py-20 px-4 relative">
-            <picture>
-                <source media="(max-width: 768px)" srcset="../assets/images/hero-bg-mobile.webp">
-                <img src="../assets/images/hero-bg-opt.webp" alt="Clean Cars Wash hero" class="absolute inset-0 w-full h-full object-cover object-[70%_80%] md:object-[75%_78%] z-0" fetchpriority="high" loading="eager" aria-hidden="true">
+    <main id="main-content" class="mk-accueil">
+    <section id="top" class="mk-a-hero" aria-labelledby="mk-h1">
+        <div class="mk-panneau mk-panneau--noir" data-bulles>
+            <picture class="mk-a-hero__photo">
+                <source media="(max-width: 768px)" srcset="/images/accueil/hero-bg-mobile.webp">
+                <img src="/images/accueil/hero-bg-opt.webp" alt="" aria-hidden="true" fetchpriority="high" decoding="async">
             </picture>
-            <span class="hero-monogram" aria-hidden="true">CCW</span>
-            <div class="relative w-full max-w-7xl mx-auto text-center md:text-left z-10">
-                <!-- Le H1 porte le mot-cle principal, en petit ; l'accroche est un <p>. -->
-                <h1 class="text-xs md:text-sm font-display font-bold text-gold-400 uppercase tracking-[0.25em] mb-6 max-w-2xl mx-auto md:mx-0 leading-relaxed">Car wash and detailing at home or in our workshop, Geneva & Vaud</h1>
-                <p class="hero-lockup ccw-accroche mb-8 drop-shadow-2xl">
-                    <span class="line-fill">Your car like new,</span>
-                    <span class="line-outline">without leaving home.</span>
-                </p>
-                <p class="text-sm md:text-base text-white font-light mb-10 flex flex-col md:flex-row md:flex-wrap items-center md:items-start gap-1 md:gap-x-2"><span>Travel included in Geneva</span> <span class="hidden md:inline text-gold-400" aria-hidden="true">·</span> <span>Prices incl. VAT</span> <span class="hidden md:inline text-gold-400" aria-hidden="true">·</span> <span>Secure deposit</span></p>
-                <div class="flex flex-wrap justify-center md:justify-start gap-3 mb-8">
-                    <a href="/en/at-home.html" class="inline-flex items-center justify-center bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-4 px-8 rounded-full hover:bg-gold-500 transition-all text-sm">At home</a>
-                    <a href="/en/workshop.html" class="inline-flex items-center justify-center border border-white/40 text-white font-display font-bold tracking-widest uppercase py-4 px-8 rounded-full hover:border-gold-400 hover:text-gold-400 transition-all text-sm bg-black/40">In the workshop</a>
-                </div>
-                <a href="/en/business.html" class="inline-block text-white underline underline-offset-4 decoration-gold-400 hover:text-gold-400 font-display font-bold text-sm tracking-wide">Are you a business? &rarr;</a>
-            </div>
-        </section>
-
-        <!-- S1 : avis, realisations, faits verifiables. -->
-        <section id="avis" class="py-24 md:py-32 max-w-7xl mx-auto px-4 relative z-10">
-            <div class="text-center mb-16 md:mb-20 reveal">
-                <h2 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Customer Reviews Car Wash Geneva</h2>
-                <div class="w-20 h-1 bg-linear-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
-                <p class="text-gray-400 font-light max-w-xl mx-auto mt-6 text-sm md:text-base">Our clients' high standards are our best business card.</p>
-                <p class="mt-4"><a href="https://maps.app.goo.gl/HgBjjuKPdWKeo9E46" target="_blank" rel="noopener noreferrer" class="text-gold-400 underline underline-offset-4 text-sm">Read all our Google reviews &rarr;</a></p>
-            </div>
-            <div id="avis-track" class="flex flex-nowrap overflow-x-auto overflow-y-hidden snap-x snap-mandatory hide-scrollbar items-stretch scroll-pl-4 py-4 md:grid md:grid-cols-3 md:overflow-visible md:snap-none md:py-0 gap-6 md:gap-8">
-                <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full reveal snap-center shrink-0 w-[85vw] md:w-auto">
-                    <div class="text-gold-400 text-xl tracking-widest mb-4">
-                        <span aria-hidden="true">★★★★★</span>
-                        <span class="sr-only">Rating: 5 out of 5 stars</span>
+            <div class="mk-a-hero__voile" aria-hidden="true"></div>
+            <img class="mk-caus" src="/images/mkt/caustique-clair.svg" alt="" aria-hidden="true">
+            <img class="mk-mousse mk-mousse--hero" src="/images/mkt/mousse.webp" srcset="/images/mkt/mousse-800.webp 800w, /images/mkt/mousse.webp 1400w" sizes="100vw" alt="" aria-hidden="true">
+            <div class="mk-a-hero__in">
+                <div class="mk-a-hero__texte">
+                    <p class="mk-a-hero__eb mk-in mk-d1"><span class="mk-suisse" aria-hidden="true">+</span>Swiss company<span class="mk-trait" aria-hidden="true"></span>Geneva &amp; Vaud</p>
+                    <h1 id="mk-h1" class="mk-a-hero__h1 mk-in mk-d2">Car wash <span class="mk-brille">in our workshop and at home</span> in Geneva and Vaud</h1>
+                    <p class="mk-a-hero__lead mk-in mk-d3">Interior, exterior and detailing. In our workshop or at your place.</p>
+                    <p class="mk-a-hero__ligne mk-in mk-d3">Workshop at Chemin des Vergers, Geneva · <strong>travel included in Geneva</strong></p>
+                    <div class="mk-a-hero__ctas mk-in mk-d4">
+                        <a href="#formules" class="mk-btn mk-btn--jaune mk-btn--grand mk-reflet">See packs and prices<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                        <a href="https://wa.me/41782657071" class="mk-a-hero__wa" target="_blank" rel="noopener noreferrer">or message us on WhatsApp</a>
                     </div>
-                    <p class="text-gray-300 font-light italic mb-8 grow leading-relaxed text-sm md:text-base">“Flawless service in every respect: easy and very friendly pick-up, perfect interior and exterior cleaning, right into the smallest corners. Not a speck of dirt left, excellent value for money. I’ll be back without hesitation.”</p>
-                    <div class="flex items-center gap-4 border-t border-white/5 pt-6">
-                        <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-400 font-display font-bold text-sm" aria-hidden="true">OD</div>
-                        <div>
-                            <p class="text-white font-display font-bold text-xs uppercase">Olivier D.</p>
-                            <span class="text-gray-400 text-[10px]">Google review, translated from French</span>
-                        </div>
-                    </div>
+                    <p class="mk-a-hero__note mk-in mk-d5"><a href="#avis"><span class="mk-etoiles" aria-hidden="true">★★★★★</span> 4.8 on Google · 25 reviews</a> · 7 days a week, 7:30am–10pm</p>
                 </div>
-                <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full relative transform md:-translate-y-4 reveal delay-100 snap-center shrink-0 w-[85vw] md:w-auto">
-                    <div class="text-gold-400 text-xl tracking-widest mb-4">
-                        <span aria-hidden="true">★★★★★</span>
-                        <span class="sr-only">Rating: 5 out of 5 stars</span>
-                    </div>
-                    <p class="text-gray-300 font-light italic mb-8 grow leading-relaxed text-sm md:text-base">“Excellent service, I’m really happy with the result. The team is professional, welcoming and very efficient. My car came out spotless, like new! I highly recommend this car wash and will gladly come back!”</p>
-                    <div class="flex items-center gap-4 border-t border-white/5 pt-6">
-                        <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-400 font-display font-bold text-sm" aria-hidden="true">AS</div>
-                        <div>
-                            <p class="text-white font-display font-bold text-xs uppercase">Aymen S.</p>
-                            <span class="text-gray-400 text-[10px]">Google review, translated from French</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="premium-card p-8 md:p-10 rounded-2xl flex flex-col h-full reveal delay-200 snap-center shrink-0 w-[85vw] md:w-auto">
-                    <div class="text-gold-400 text-xl tracking-widest mb-4">
-                        <span aria-hidden="true">★★★★★</span>
-                        <span class="sr-only">Rating: 5 out of 5 stars</span>
-                    </div>
-                    <p class="text-gray-300 font-light italic mb-8 grow leading-relaxed text-sm md:text-base">“My car was in a catastrophic state and I got it back spotless, clean down to the smallest detail. Beyond the quality of the work, I appreciated the reliability, kindness and professionalism of the team. It’s nice to come across people this committed.”</p>
-                    <div class="flex items-center gap-4 border-t border-white/5 pt-6">
-                        <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center text-gold-400 font-display font-bold text-sm" aria-hidden="true">AD</div>
-                        <div>
-                            <p class="text-white font-display font-bold text-xs uppercase">Amina D.</p>
-                            <span class="text-gray-400 text-[10px]">Google review, translated from French</span>
-                        </div>
-                    </div>
-                </div>
-            <div class="flex justify-center items-center gap-2 mt-6 md:hidden" id="avis-dots" aria-label="Review pagination" role="group">
-                <button class="ccw-dot active" aria-label="Olivier D.'s review"></button>
-                <button class="ccw-dot" aria-label="Aymen S.'s review"></button>
-                <button class="ccw-dot" aria-label="Amina D.'s review"></button>
-            </div>
-        </section>
-
-        <section id="galerie" class="py-24 md:py-32 relative overflow-hidden">
-            <div class="text-center mb-12 md:mb-16 px-4 reveal">
-                <h2 class="text-3xl md:text-4xl font-display font-semibold text-white mb-6 tracking-wide uppercase">Car Detailing Results Geneva</h2>
-                <div class="w-20 h-1 bg-linear-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
-            </div>
-            
-            <div class="max-w-5xl mx-auto px-4 reveal delay-100">
-                <div class="relative overflow-hidden rounded-2xl shadow-2xl border border-white/5 bg-charcoal-800" aria-label="Achievements Gallery" aria-roledescription="carousel">
-                    <div id="slider-track" class="flex transition-transform duration-700 ease-in-out w-full overflow-x-auto overflow-y-hidden snap-x snap-mandatory hide-scrollbar scroll-pl-4 md:overflow-visible md:snap-none">
-                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-87.5 overflow-hidden snap-center bg-black" role="group" aria-roledescription="slide" aria-label="1 of 18">
-                            <button type="button" data-zoom aria-label="Enlarge: Before / after: interior cleaning, rear seats and mats cleared of crumbs and dust" class="block w-full h-full p-0 border-0 bg-transparent"><img src="/images/accueil/avant-apres-interieur.webp" alt="Before / after: interior cleaning, rear seats and mats cleared of crumbs and dust" width="800" height="1200" class="w-full h-full object-contain" loading="lazy" decoding="async"></button>
-                        </div>
-
-                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-87.5 overflow-hidden snap-center bg-black" role="group" aria-roledescription="slide" aria-label="2 of 18">
-                            <button type="button" data-zoom aria-label="Enlarge: Before / after: exterior wash, front of a small white city car covered in insects, then clean" class="block w-full h-full p-0 border-0 bg-transparent"><img src="/images/accueil/avant-apres-carrosserie.webp" alt="Before / after: exterior wash, front of a small white city car covered in insects, then clean" width="800" height="866" class="w-full h-full object-contain" loading="lazy" decoding="async"></button>
-                        </div>
-
-                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-87.5 overflow-hidden snap-center bg-black" role="group" aria-roledescription="slide" aria-label="3 of 18">
-                            <button type="button" data-zoom aria-label="Enlarge: Before / after: leather inner door panel, stains and marks removed" class="block w-full h-full p-0 border-0 bg-transparent"><img src="/images/accueil/avant-apres-portiere.webp" alt="Before / after: leather inner door panel, stains and marks removed" width="800" height="1200" class="w-full h-full object-contain" loading="lazy" decoding="async"></button>
-                        </div>
-
-                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-87.5 overflow-hidden snap-center bg-black" role="group" aria-roledescription="slide" aria-label="4 of 18">
-                            <button type="button" data-zoom data-video="/images/accueil/avant-apres-video.mp4" aria-label="Play full screen: Before / after video: boot cleaning, carpet cleared of dust and debris" class="relative block w-full h-full p-0 border-0 bg-transparent"><img src="/images/accueil/avant-apres-video-poster.webp" alt="Before / after video: boot cleaning, carpet cleared of dust and debris" width="720" height="900" class="w-full h-full object-contain" loading="lazy" decoding="async"><span aria-hidden="true" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-gold-400/90 flex items-center justify-center"><svg width="26" height="26" viewBox="0 0 24 24" fill="#0a0a0a"><path d="M8 5v14l11-7z"></path></svg></span></button>
-                        </div>
-
-                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-87.5 overflow-hidden snap-center bg-black" role="group" aria-roledescription="slide" aria-label="5 of 18">
-                            <button type="button" data-zoom aria-label="Enlarge: Machine polishing of the bodywork" class="block w-full h-full p-0 border-0 bg-transparent"><img src="/images/accueil/photo-polissage.webp" alt="Machine polishing of the bodywork" width="1200" height="798" class="w-full h-full object-contain" loading="lazy" decoding="async"></button>
-                        </div>
-
-                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-87.5 overflow-hidden snap-center bg-black" role="group" aria-roledescription="slide" aria-label="6 of 18">
-                            <button type="button" data-zoom data-video="/images/accueil/video-polissage.mp4" aria-label="Play full screen: Video: polishing a bonnet with a machine polisher" class="relative block w-full h-full p-0 border-0 bg-transparent"><img src="/images/accueil/video-polissage-poster.webp" alt="Video: polishing a bonnet with a machine polisher" width="720" height="405" class="w-full h-full object-contain" loading="lazy" decoding="async"><span aria-hidden="true" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-gold-400/90 flex items-center justify-center"><svg width="26" height="26" viewBox="0 0 24 24" fill="#0a0a0a"><path d="M8 5v14l11-7z"></path></svg></span></button>
-                        </div>
-
-                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-87.5 overflow-hidden snap-center bg-black" role="group" aria-roledescription="slide" aria-label="7 of 18">
-                            <button type="button" data-zoom aria-label="Enlarge: Polishing compounds, polisher and microfibre cloths in the workshop" class="block w-full h-full p-0 border-0 bg-transparent"><img src="/images/accueil/photo-produits-polish.webp" alt="Polishing compounds, polisher and microfibre cloths in the workshop" width="798" height="1200" class="w-full h-full object-contain" loading="lazy" decoding="async"></button>
-                        </div>
-
-                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-87.5 overflow-hidden snap-center bg-black" role="group" aria-roledescription="slide" aria-label="8 of 18">
-                            <button type="button" data-zoom data-video="/images/accueil/video-siege-cuir.mp4" aria-label="Play full screen: Video: brushing a leather seat clean" class="relative block w-full h-full p-0 border-0 bg-transparent"><img src="/images/accueil/video-siege-cuir-poster.webp" alt="Video: brushing a leather seat clean" width="720" height="405" class="w-full h-full object-contain" loading="lazy" decoding="async"><span aria-hidden="true" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-gold-400/90 flex items-center justify-center"><svg width="26" height="26" viewBox="0 0 24 24" fill="#0a0a0a"><path d="M8 5v14l11-7z"></path></svg></span></button>
-                        </div>
-
-                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-87.5 overflow-hidden snap-center bg-black" role="group" aria-roledescription="slide" aria-label="9 of 18">
-                            <button type="button" data-zoom aria-label="Enlarge: Pre-wash of an SUV with snow foam" class="block w-full h-full p-0 border-0 bg-transparent"><img src="/images/accueil/photo-mousse-suv.webp" alt="Pre-wash of an SUV with snow foam" width="960" height="1200" class="w-full h-full object-contain" loading="lazy" decoding="async"></button>
-                        </div>
-
-                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-87.5 overflow-hidden snap-center bg-black" role="group" aria-roledescription="slide" aria-label="10 of 18">
-                            <button type="button" data-zoom data-video="/images/accueil/video-jante.mp4" aria-label="Play full screen: Video: washing a wheel and its rim" class="relative block w-full h-full p-0 border-0 bg-transparent"><img src="/images/accueil/video-jante-poster.webp" alt="Video: washing a wheel and its rim" width="576" height="576" class="w-full h-full object-contain" loading="lazy" decoding="async"><span aria-hidden="true" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-gold-400/90 flex items-center justify-center"><svg width="26" height="26" viewBox="0 0 24 24" fill="#0a0a0a"><path d="M8 5v14l11-7z"></path></svg></span></button>
-                        </div>
-
-                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-87.5 overflow-hidden snap-center bg-black" role="group" aria-roledescription="slide" aria-label="11 of 18">
-                            <button type="button" data-zoom aria-label="Enlarge: Snow foam and rinse on a rim" class="block w-full h-full p-0 border-0 bg-transparent"><img src="/images/accueil/photo-mousse-jante.webp" alt="Snow foam and rinse on a rim" width="799" height="1200" class="w-full h-full object-contain" loading="lazy" decoding="async"></button>
-                        </div>
-
-                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-87.5 overflow-hidden snap-center bg-black" role="group" aria-roledescription="slide" aria-label="12 of 18">
-                            <button type="button" data-zoom data-video="/images/accueil/video-rincage.mp4" aria-label="Play full screen: Video: exterior rinse seen from the cabin" class="relative block w-full h-full p-0 border-0 bg-transparent"><img src="/images/accueil/video-rincage-poster.webp" alt="Video: exterior rinse seen from the cabin" width="720" height="405" class="w-full h-full object-contain" loading="lazy" decoding="async"><span aria-hidden="true" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-gold-400/90 flex items-center justify-center"><svg width="26" height="26" viewBox="0 0 24 24" fill="#0a0a0a"><path d="M8 5v14l11-7z"></path></svg></span></button>
-                        </div>
-
-                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-87.5 overflow-hidden snap-center bg-black" role="group" aria-roledescription="slide" aria-label="13 of 18">
-                            <button type="button" data-zoom aria-label="Enlarge: Snow foam on the front wing of a saloon" class="block w-full h-full p-0 border-0 bg-transparent"><img src="/images/accueil/photo-mousse-aile.webp" alt="Snow foam on the front wing of a saloon" width="799" height="1200" class="w-full h-full object-contain" loading="lazy" decoding="async"></button>
-                        </div>
-
-                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-87.5 overflow-hidden snap-center bg-black" role="group" aria-roledescription="slide" aria-label="14 of 18">
-                            <button type="button" data-zoom data-video="/images/accueil/video-console.mp4" aria-label="Play full screen: Video: cleaning the centre console with a brush" class="relative block w-full h-full p-0 border-0 bg-transparent"><img src="/images/accueil/video-console-poster.webp" alt="Video: cleaning the centre console with a brush" width="720" height="405" class="w-full h-full object-contain" loading="lazy" decoding="async"><span aria-hidden="true" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-gold-400/90 flex items-center justify-center"><svg width="26" height="26" viewBox="0 0 24 24" fill="#0a0a0a"><path d="M8 5v14l11-7z"></path></svg></span></button>
-                        </div>
-
-                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-87.5 overflow-hidden snap-center bg-black" role="group" aria-roledescription="slide" aria-label="15 of 18">
-                            <button type="button" data-zoom aria-label="Enlarge: Light leather cabin after cleaning" class="block w-full h-full p-0 border-0 bg-transparent"><img src="/images/accueil/photo-interieur-cuir-creme.webp" alt="Light leather cabin after cleaning" width="1200" height="800" class="w-full h-full object-contain" loading="lazy" decoding="async"></button>
-                        </div>
-
-                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-87.5 overflow-hidden snap-center bg-black" role="group" aria-roledescription="slide" aria-label="16 of 18">
-                            <button type="button" data-zoom data-video="/images/accueil/video-moquette.mp4" aria-label="Play full screen: Video: brushing the carpet" class="relative block w-full h-full p-0 border-0 bg-transparent"><img src="/images/accueil/video-moquette-poster.webp" alt="Video: brushing the carpet" width="405" height="720" class="w-full h-full object-contain" loading="lazy" decoding="async"><span aria-hidden="true" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-gold-400/90 flex items-center justify-center"><svg width="26" height="26" viewBox="0 0 24 24" fill="#0a0a0a"><path d="M8 5v14l11-7z"></path></svg></span></button>
-                        </div>
-
-                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-87.5 overflow-hidden snap-center bg-black" role="group" aria-roledescription="slide" aria-label="17 of 18">
-                            <button type="button" data-zoom aria-label="Enlarge: Steering wheel and dashboard after interior cleaning" class="block w-full h-full p-0 border-0 bg-transparent"><img src="/images/accueil/photo-volant.webp" alt="Steering wheel and dashboard after interior cleaning" width="960" height="1200" class="w-full h-full object-contain" loading="lazy" decoding="async"></button>
-                        </div>
-
-                        <div class="w-full shrink-0 relative group h-[50vh] md:h-[60vh] min-h-87.5 overflow-hidden snap-center bg-black" role="group" aria-roledescription="slide" aria-label="18 of 18">
-                            <button type="button" data-zoom aria-label="Enlarge: Black leather cabin after cleaning" class="block w-full h-full p-0 border-0 bg-transparent"><img src="/images/accueil/photo-interieur-cuir-noir.webp" alt="Black leather cabin after cleaning" width="1200" height="674" class="w-full h-full object-contain" loading="lazy" decoding="async"></button>
-                        </div>
-
-</div>
-
-                    <button onclick="prevSlide()" class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center rounded-full bg-black/50 text-white backdrop-blur border border-white/10 z-20 group" aria-label="Previous image">
-                        <svg class="w-5 h-5 transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                    </button>
-                    <button onclick="nextSlide()" class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center rounded-full bg-black/50 text-white backdrop-blur border border-white/10 z-20 group" aria-label="Next image">
-                        <svg class="w-5 h-5 transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                    </button>
-                    
-                    <div class="hidden absolute bottom-4 left-1/2 transform -translate-x-1/2 space-x-2 z-20" id="slider-dots">
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 active p-4.5 -m-4.5" onclick="goToSlide(0)" aria-label="Go to slide 1"></button>
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-4.5 -m-4.5" onclick="goToSlide(1)" aria-label="Go to slide 2"></button>
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-4.5 -m-4.5" onclick="goToSlide(2)" aria-label="Go to slide 3"></button>
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-4.5 -m-4.5" onclick="goToSlide(3)" aria-label="Go to slide 4"></button>
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-4.5 -m-4.5" onclick="goToSlide(4)" aria-label="Go to slide 5"></button>
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-4.5 -m-4.5" onclick="goToSlide(5)" aria-label="Go to slide 6"></button>
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-4.5 -m-4.5" onclick="goToSlide(6)" aria-label="Go to slide 7"></button>
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-4.5 -m-4.5" onclick="goToSlide(7)" aria-label="Go to slide 8"></button>
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-4.5 -m-4.5" onclick="goToSlide(8)" aria-label="Go to slide 9"></button>
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-4.5 -m-4.5" onclick="goToSlide(9)" aria-label="Go to slide 10"></button>
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-4.5 -m-4.5" onclick="goToSlide(10)" aria-label="Go to slide 11"></button>
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-4.5 -m-4.5" onclick="goToSlide(11)" aria-label="Go to slide 12"></button>
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-4.5 -m-4.5" onclick="goToSlide(12)" aria-label="Go to slide 13"></button>
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-4.5 -m-4.5" onclick="goToSlide(13)" aria-label="Go to slide 14"></button>
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-4.5 -m-4.5" onclick="goToSlide(14)" aria-label="Go to slide 15"></button>
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-4.5 -m-4.5" onclick="goToSlide(15)" aria-label="Go to slide 16"></button>
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-4.5 -m-4.5" onclick="goToSlide(16)" aria-label="Go to slide 17"></button>
-                        <button class="slider-dot w-2 h-2 rounded-full bg-white/50 p-4.5 -m-4.5" onclick="goToSlide(17)" aria-label="Go to slide 18"></button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="confiance" class="py-16 md:py-24 max-w-6xl mx-auto px-4 md:px-6">
-            <p class="text-[11px] font-display font-bold tracking-[0.3em] uppercase text-gold-400 mb-3">Why trust us</p>
-            <h2 class="text-3xl md:text-5xl font-display font-bold text-white uppercase tracking-tight leading-[0.95] mb-6">Facts, not promises</h2>
-            <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" role="list">
-                <li class="premium-card rounded-2xl p-5 flex gap-3 text-sm text-gray-200"><span class="text-gold-400" aria-hidden="true">◆</span><span>Prices incl. VAT, shown before you book</span></li>
-                <li class="premium-card rounded-2xl p-5 flex gap-3 text-sm text-gray-200"><span class="text-gold-400" aria-hidden="true">◆</span><span>Travel included across the canton of Geneva</span></li>
-                <li class="premium-card rounded-2xl p-5 flex gap-3 text-sm text-gray-200"><span class="text-gold-400" aria-hidden="true">◆</span><span>30% deposit secured by SumUp, balance on site</span></li>
-                <li class="premium-card rounded-2xl p-5 flex gap-3 text-sm text-gray-200"><span class="text-gold-400" aria-hidden="true">◆</span><span>Rescheduling at no cost up to 24 hours before: the deposit carries over to your next booking</span></li>
-                <li class="premium-card rounded-2xl p-5 flex gap-3 text-sm text-gray-200"><span class="text-gold-400" aria-hidden="true">◆</span><span>Registered company — VAT CHE-377.481.423</span></li>
-            </ul>
-        </section>
-
-        <!-- ===== S2 — Domicile / atelier, deux colonnes EQUIVALENTES (aucun denigrement). ===== -->
-        <section id="domicile-atelier" class="py-16 md:py-24 max-w-6xl mx-auto px-4 md:px-6">
-            <p class="text-[11px] font-display font-bold tracking-[0.3em] uppercase text-gold-400 mb-3">At home or in the workshop</p>
-            <h2 class="text-3xl md:text-5xl font-display font-bold text-white uppercase tracking-tight leading-[0.95] mb-6">Two ways to entrust us with your car</h2>
-            <p class="text-gray-400 font-light leading-relaxed max-w-2xl mb-10">Both are equally good on our maintenance packages: choose according to your day and to the service.</p>
-            <div class="grid gap-6 md:grid-cols-2">
-                <div class="premium-card rounded-3xl p-7 md:p-10 flex flex-col">
-                    <h3 class="text-2xl font-display font-bold uppercase text-white tracking-wide mb-5">We come to you</h3>
-                    <ul class="space-y-3 text-gray-300 font-light grow mb-8">
-                        <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>At home or at work: you carry on with your day</span></li>
-                        <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Travel included in Geneva, flat fee announced in Vaud</span></li>
-                        <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Packs, combos, subscriptions — and the ceramic polish in a closed garage</span></li>
-                    </ul>
-                    <a href="/en/at-home.html" class="inline-flex items-center justify-center border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-8 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm self-start">The at-home service</a>
-                </div>
-                <div class="premium-card rounded-3xl p-7 md:p-10 flex flex-col">
-                    <h3 class="text-2xl font-display font-bold uppercase text-white tracking-wide mb-5">You come to us</h3>
-                    <ul class="space-y-3 text-gray-300 font-light grow mb-8">
-                        <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>A dust-free environment for film work</span></li>
-                        <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>All our services, including PPF, wrapping, starlight headliner and chassis</span></li>
-                        <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Nothing to provide at your place: no parking space, outlet or water point</span></li>
-                    </ul>
-                    <a href="/en/workshop.html" class="inline-flex items-center justify-center border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-8 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm self-start">The workshop</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== S3 a S7 : GENERES (site-composants.js, pages.json « accueil »),
-             injectes par inject-shell.js. Ne pas editer entre les reperes. ===== -->
-        <!-- CCW:ACCUEIL-QUESTIONNAIRE -->
-        <section id="questionnaire" class="py-16 md:py-24 max-w-6xl mx-auto px-4 md:px-6" style="scroll-margin-top:5rem">
-            <p class="text-[11px] font-display font-bold tracking-[0.3em] uppercase text-gold-400 mb-3">Are you a business?</p>
-            <h2 class="text-3xl md:text-5xl font-display font-bold text-white uppercase tracking-tight leading-[0.95] mb-6">The right package, in two questions</h2>
-            <p class="text-gray-400 font-light leading-relaxed  max-w-2xl mb-10">Business or private customer, answer two questions: we point you to the right package. No data is collected.</p>
-            <div id="ccw-quiz-accueil" class="premium-card rounded-3xl p-6 md:p-10" data-quiz>
-                <div data-etape="profil">
-                    <p class="text-white font-display font-bold text-xl md:text-2xl mb-5">You are…</p>
-                    <div class="grid gap-3 sm:grid-cols-2">
-                    <button type="button" class="cursor-pointer w-full text-left border border-white/15 hover:border-gold-400 hover:text-gold-400 text-white rounded-2xl px-5 py-4 font-display font-bold text-sm tracking-wide transition-colors" data-profil="pro">I'm a business</button>
-                    <button type="button" class="cursor-pointer w-full text-left border border-white/15 hover:border-gold-400 hover:text-gold-400 text-white rounded-2xl px-5 py-4 font-display font-bold text-sm tracking-wide transition-colors" data-profil="particulier">I'm a private customer</button>
-                </div>
-                </div>
-                <div data-etape="pro" hidden>
-                    <p class="text-white font-display font-bold text-xl md:text-2xl mb-5">What do you need looked after?</p>
-                    <div class="grid gap-3 sm:grid-cols-2">
-                    <button type="button" class="cursor-pointer w-full text-left border border-white/15 hover:border-gold-400 hover:text-gold-400 text-white rounded-2xl px-5 py-4 font-display font-bold text-sm tracking-wide transition-colors" data-besoin="flotte-3-5">A fleet of 3 to 5 vehicles</button>
-                    <button type="button" class="cursor-pointer w-full text-left border border-white/15 hover:border-gold-400 hover:text-gold-400 text-white rounded-2xl px-5 py-4 font-display font-bold text-sm tracking-wide transition-colors" data-besoin="flotte-5-7">A fleet of 5 to 7 vehicles</button>
-                    <button type="button" class="cursor-pointer w-full text-left border border-white/15 hover:border-gold-400 hover:text-gold-400 text-white rounded-2xl px-5 py-4 font-display font-bold text-sm tracking-wide transition-colors" data-besoin="flotte-7">A fleet of more than 7 vehicles</button>
-                    <button type="button" class="cursor-pointer w-full text-left border border-white/15 hover:border-gold-400 hover:text-gold-400 text-white rounded-2xl px-5 py-4 font-display font-bold text-sm tracking-wide transition-colors" data-besoin="clients">My customers’ vehicles (garage, dealership)</button>
-                    <button type="button" class="cursor-pointer w-full text-left border border-white/15 hover:border-gold-400 hover:text-gold-400 text-white rounded-2xl px-5 py-4 font-display font-bold text-sm tracking-wide transition-colors" data-besoin="un-vehicule">A single company vehicle</button>
-                </div>
-                    <button type="button" class="mt-5 text-gray-400 text-sm underline underline-offset-4" data-retour>Back</button>
-                </div>
-                <div data-etape="particulier" hidden>
-                    <p class="text-white font-display font-bold text-xl md:text-2xl mb-5">What do you need?</p>
-                    <div class="grid gap-3 sm:grid-cols-2">
-                    <button type="button" class="cursor-pointer w-full text-left border border-white/15 hover:border-gold-400 hover:text-gold-400 text-white rounded-2xl px-5 py-4 font-display font-bold text-sm tracking-wide transition-colors" data-besoin="ponctuel">A one-off wash</button>
-                    <button type="button" class="cursor-pointer w-full text-left border border-white/15 hover:border-gold-400 hover:text-gold-400 text-white rounded-2xl px-5 py-4 font-display font-bold text-sm tracking-wide transition-colors" data-besoin="regulier">Regular maintenance</button>
-                    <button type="button" class="cursor-pointer w-full text-left border border-white/15 hover:border-gold-400 hover:text-gold-400 text-white rounded-2xl px-5 py-4 font-display font-bold text-sm tracking-wide transition-colors" data-besoin="neuf">Restore or protect my car</button>
-                    <button type="button" class="cursor-pointer w-full text-left border border-white/15 hover:border-gold-400 hover:text-gold-400 text-white rounded-2xl px-5 py-4 font-display font-bold text-sm tracking-wide transition-colors" data-besoin="domicile">Someone to come to my place</button>
-                </div>
-                    <button type="button" class="mt-5 text-gray-400 text-sm underline underline-offset-4" data-retour>Back</button>
-                </div>
-                <div data-etape="resultat" hidden>
-                    <p class="text-white text-lg md:text-xl font-light leading-relaxed mb-6" data-res-texte tabindex="-1"></p>
-                    <div class="flex flex-col sm:flex-row flex-wrap gap-3" data-res-actions></div>
-                    <button type="button" class="mt-6 text-gray-400 text-sm underline underline-offset-4" data-recommencer>Start again</button>
-                </div>
-                <p class="text-gray-400 text-sm mt-6" data-repli>Direct links: <a class="text-gold-400 underline underline-offset-4" href="/en/business.html">Business</a> · <a class="text-gold-400 underline underline-offset-4" href="/en/prices.html">Prices</a> · <a class="text-gold-400 underline underline-offset-4" href="/en/subscriptions.html">Subscriptions</a> · <a class="text-gold-400 underline underline-offset-4" href="/en/at-home.html">At home</a> · <a class="text-gold-400 underline underline-offset-4" href="/en/workshop.html">Workshop</a></p>
-                <script type="application/json" data-quiz-donnees>{"resultats":{"flotte-3-5":{"texte":"For a fleet of 3 to 5 vehicles, the fleet discount is −10%. Message us and we will prepare your quote.","wa":"https://wa.me/41782657071?text=Hello%2C%20I'm%20a%20business%20customer%2C%20fleet%20of%203%20to%205%20vehicles%2C%20I%20would%20like%20a%20quote."},"flotte-5-7":{"texte":"For a fleet of 5 to 7 vehicles, the fleet discount is −20%. Message us and we will prepare your quote.","wa":"https://wa.me/41782657071?text=Hello%2C%20I'm%20a%20business%20customer%2C%20fleet%20of%205%20to%207%20vehicles%2C%20I%20would%20like%20a%20quote."},"flotte-7":{"texte":"Beyond 7 vehicles, the fleet discount is −25%, plus one free Gold Pack for one vehicle. Message us and we will prepare your quote.","wa":"https://wa.me/41782657071?text=Hello%2C%20I'm%20a%20business%20customer%2C%20fleet%20of%20more%20than%207%20vehicles%2C%20I%20would%20like%20a%20quote."},"clients":{"texte":"For your customers' vehicles, let's talk volume and frequency: message us and we will prepare your quote.","wa":"https://wa.me/41782657071?text=Hello%2C%20I'm%20a%20business%20customer%2C%20I%20handle%20customer%20vehicles%20(garage%2C%20dealership)%2C%20I%20would%20like%20a%20quote."},"un-vehicule":{"texte":"For a single company vehicle, our packages apply as they are: at home, at the office or in our workshop.","lien":"/en/prices.html","bouton":"See the prices","wa":"https://wa.me/41782657071?text=Hello%2C%20I'm%20a%20business%20customer%2C%20a%20single%20company%20vehicle%2C%20I%20would%20like%20a%20quote."},"ponctuel":{"texte":"For a one-off wash, pick your pack, from Silver to Diamond, at home or in our workshop.","lien":"/en/prices.html","bouton":"See the prices"},"regulier":{"texte":"For regular maintenance, a subscription costs less: −10% to −27% depending on the plan and frequency.","lien":"/en/subscriptions.html","bouton":"See subscriptions"},"neuf":{"texte":"To restore or protect: ceramic polish, PPF, wrapping, starlight headliner or chassis cleaning.","lien":"/en/prices.html#prestations","bouton":"See the services"},"domicile":{"texte":"We come to your home or office: travel included in Geneva, a flat fee announced upfront in Vaud.","lien":"/en/at-home.html","bouton":"The at-home service"}},"appeler":"Call","email":"E-mail","whatsapp":"Ask for a quote on WhatsApp","tel":"+41782657071","mail":"info@clean-cars-wash.ch"}</script>
-            </div>
-            <script>(function(){var r=document.getElementById("ccw-quiz-accueil");if(!r)return;
-var D=JSON.parse(r.querySelector("[data-quiz-donnees]").textContent),profil=null;
-var rp=r.querySelector("[data-repli]");if(rp)rp.hidden=true;
-function e(n){[].forEach.call(r.querySelectorAll("[data-etape]"),function(x){x.hidden=x.getAttribute("data-etape")!==n});var t=r.querySelector('[data-etape="'+n+'"] p,[data-etape="'+n+'"] [tabindex]');if(t&&n!=="profil"){t.setAttribute("tabindex","-1");t.focus()}}
-function push(o){try{(window.dataLayer=window.dataLayer||[]).push(o)}catch(x){}}
-var B="inline-flex items-center justify-center font-display font-bold tracking-widest uppercase py-4 px-8 rounded-full transition-all text-sm ";
-function a(h,t,c,ext){return '<a href="'+h+'" class="'+B+c+'"'+(ext?' target="_blank" rel="noopener noreferrer"':'')+'>'+t+'</a>'}
-[].forEach.call(r.querySelectorAll("[data-profil]"),function(b){b.addEventListener("click",function(){profil=b.getAttribute("data-profil");push({event:"questionnaire_profil",profil:profil});e(profil)})});
-[].forEach.call(r.querySelectorAll("[data-besoin]"),function(b){b.addEventListener("click",function(){var k=b.getAttribute("data-besoin"),x=D.resultats[k];push({event:"questionnaire_besoin",profil:profil,besoin:k});
-r.querySelector("[data-res-texte]").textContent=x.texte;var h="";
-if(x.lien)h+=a(x.lien,x.bouton,"bg-gold-400 text-charcoal-900 hover:bg-gold-500");
-if(x.wa){h+=a(x.wa,D.whatsapp,(x.lien?"border border-gold-400 text-gold-400 hover:bg-gold-400 hover:text-charcoal-900":"bg-gold-400 text-charcoal-900 hover:bg-gold-500"),1);h+=a("tel:"+D.tel,D.appeler,"border border-white/20 text-white hover:border-gold-400");h+=a("mailto:"+D.mail,D.email,"border border-white/20 text-white hover:border-gold-400")}
-r.querySelector("[data-res-actions]").innerHTML=h;e("resultat")})});
-[].forEach.call(r.querySelectorAll("[data-retour]"),function(b){b.addEventListener("click",function(){e("profil")})});
-r.querySelector("[data-recommencer]").addEventListener("click",function(){profil=null;e("profil");var f=r.querySelector("[data-profil]");if(f)f.focus()});
-})();</script>
-        </section>
-        <!-- /CCW:ACCUEIL-QUESTIONNAIRE -->
-        <!-- CCW:ACCUEIL-OFFRES -->
-        <section id="offres" class="py-16 md:py-24 max-w-6xl mx-auto px-4 md:px-6" style="scroll-margin-top:5rem">
-            <p class="text-[11px] font-display font-bold tracking-[0.3em] uppercase text-gold-400 mb-3">Our offers</p>
-            <h2 class="text-3xl md:text-5xl font-display font-bold text-white uppercase tracking-tight leading-[0.95] mb-6">Packs, combos, subscriptions</h2>
-            <p class="text-gray-400 font-light leading-relaxed  max-w-2xl mb-10">From the complete wash to the most thorough detailing, at home or in our workshop. All prices incl. VAT are on the Prices page.</p>
-            <div class="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3">
-            <article id="offre-argent" class="premium-card rounded-2xl p-7 md:p-8 flex flex-col relative" style="scroll-margin-top:6rem">
-                
-                <p class="text-[11px] font-display font-bold tracking-[0.3em] uppercase text-gold-400 mb-3 mt-1">Pack</p>
-                <h3 class="text-xl font-display font-bold uppercase text-white tracking-wider mb-2">Silver Pack</h3>
-                <p class="text-gray-400 text-sm font-light mb-2">The complete wash, outside and in.</p>
-                
-                <div class="grow"><ul class="space-y-2 text-sm font-light text-gray-300">
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Manual exterior wash</span></li>
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Cabin & trunk vacuum</span></li>
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Window cleaning</span></li>
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Microfiber drying</span></li>
-                </ul></div>
-                <a href="/en/prices.html#offre-argent" class="inline-flex items-center justify-center border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-8 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm w-full mt-6">See details</a>
-            </article>
-            <article id="offre-or" class="premium-card rounded-2xl p-7 md:p-8 flex flex-col relative border-gold-400/40" style="scroll-margin-top:6rem">
-                <span class="absolute -top-3 left-6 bg-gold-400 text-charcoal-900 text-[10px] font-display font-bold tracking-widest uppercase py-1 px-3 rounded-full">Recommended service</span>
-                <p class="text-[11px] font-display font-bold tracking-[0.3em] uppercase text-gold-400 mb-3 mt-1">Pack</p>
-                <h3 class="text-xl font-display font-bold uppercase text-white tracking-wider mb-2">Gold Pack</h3>
-                <p class="text-gray-400 text-sm font-light mb-2">The Silver Pack, plus the interior brought back.</p>
-                
-                <div class="grow"><ul class="space-y-2 text-sm font-light text-gray-300">
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Includes Silver Pack</span></li>
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Seat & carpet shampoo</span></li>
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Plastic renovation</span></li>
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Rim & tire cleaning</span></li>
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Scented finish</span></li>
-                </ul></div>
-                <a href="/en/prices.html#offre-or" class="inline-flex items-center justify-center border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-8 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm w-full mt-6">See details</a>
-            </article>
-            <article id="offre-diamant" class="premium-card rounded-2xl p-7 md:p-8 flex flex-col relative" style="scroll-margin-top:6rem">
-                
-                <p class="text-[11px] font-display font-bold tracking-[0.3em] uppercase text-gold-400 mb-3 mt-1">Pack</p>
-                <h3 class="text-xl font-display font-bold uppercase text-white tracking-wider mb-2">Diamond Pack</h3>
-                <p class="text-gray-400 text-sm font-light mb-2">The most complete care: protection and leather.</p>
-                
-                <div class="grow"><ul class="space-y-2 text-sm font-light text-gray-300">
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Includes Gold Pack</span></li>
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Premium hydrophobic wax</span></li>
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Leather or Alcantara care</span></li>
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Anti-odor treatment</span></li>
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Ultra-precise finishing</span></li>
-                </ul></div>
-                <a href="/en/prices.html#offre-diamant" class="inline-flex items-center justify-center border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-8 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm w-full mt-6">See details</a>
-            </article>
-            <article id="offre-excellence" class="premium-card rounded-2xl p-7 md:p-8 flex flex-col relative" style="scroll-margin-top:6rem">
-                
-                <p class="text-[11px] font-display font-bold tracking-[0.3em] uppercase text-gold-400 mb-3 mt-1">Combo · Gold Pack + Silver Pack</p>
-                <h3 class="text-xl font-display font-bold uppercase text-white tracking-wider mb-2">Combo Excellence</h3>
-                <p class="text-gray-400 text-sm font-light mb-2">One Gold detailing, then a Silver maintenance wash.</p>
-                
-                <div class="grow"><ul class="space-y-2 text-sm font-light text-gray-300">
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>1 Gold detailing + 1 Silver wash</span></li>
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Valid for 30 days</span></li>
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Flexible scheduling</span></li>
-                </ul></div>
-                <a href="/en/prices.html#offre-excellence" class="inline-flex items-center justify-center border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-8 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm w-full mt-6">See details</a>
-            </article>
-            <article id="offre-prestige" class="premium-card rounded-2xl p-7 md:p-8 flex flex-col relative border-gold-400/40" style="scroll-margin-top:6rem">
-                <span class="absolute -top-3 left-6 bg-gold-400 text-charcoal-900 text-[10px] font-display font-bold tracking-widest uppercase py-1 px-3 rounded-full">Best value</span>
-                <p class="text-[11px] font-display font-bold tracking-[0.3em] uppercase text-gold-400 mb-3 mt-1">Combo · Diamond Pack + Silver Pack</p>
-                <h3 class="text-xl font-display font-bold uppercase text-white tracking-wider mb-2">Combo Prestige</h3>
-                <p class="text-gray-400 text-sm font-light mb-2">One Diamond detailing, then a Silver maintenance wash.</p>
-                
-                <div class="grow"><ul class="space-y-2 text-sm font-light text-gray-300">
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>1 Diamond detailing + 1 Silver wash</span></li>
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Valid for 30 days</span></li>
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Pick-up included</span></li>
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Before/after photo report</span></li>
-                </ul></div>
-                <a href="/en/prices.html#offre-prestige" class="inline-flex items-center justify-center border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-8 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm w-full mt-6">See details</a>
-            </article>
-            </div>
-            <p class="text-[11px] font-display font-bold tracking-[0.3em] uppercase text-gold-400 mb-3 mt-14">Subscriptions — regular maintenance</p>
-            
-            <div class="grid gap-6 md:gap-8 md:grid-cols-3">
-            <article class="premium-card rounded-2xl p-7 md:p-8 flex flex-col relative">
-                
-                <p class="text-[11px] font-display font-bold tracking-[0.3em] uppercase text-gold-400 mb-3 mt-1">Pack</p>
-                <h3 class="text-2xl font-display font-bold text-white mb-3">Silver</h3>
-                
-                <div class="grow"><ul class="space-y-2 text-sm font-light text-gray-300">
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Manual exterior wash</span></li>
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Cabin & trunk vacuum</span></li>
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Window cleaning</span></li>
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Microfiber drying</span></li>
-                </ul></div>
-                <a href="/en/subscriptions.html" class="inline-flex items-center justify-center border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-8 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm w-full mt-6">See details</a>
-            </article>
-            <article class="premium-card rounded-2xl p-7 md:p-8 flex flex-col relative">
-                
-                <p class="text-[11px] font-display font-bold tracking-[0.3em] uppercase text-gold-400 mb-3 mt-1">Pack</p>
-                <h3 class="text-2xl font-display font-bold text-white mb-3">Gold</h3>
-                
-                <div class="grow"><ul class="space-y-2 text-sm font-light text-gray-300">
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Includes Silver Pack</span></li>
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Seat & carpet shampoo</span></li>
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Plastic renovation</span></li>
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Rim & tire cleaning</span></li>
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Scented finish</span></li>
-                </ul></div>
-                <a href="/en/subscriptions.html" class="inline-flex items-center justify-center border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-8 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm w-full mt-6">See details</a>
-            </article>
-            <article class="premium-card rounded-2xl p-7 md:p-8 flex flex-col relative">
-                
-                <p class="text-[11px] font-display font-bold tracking-[0.3em] uppercase text-gold-400 mb-3 mt-1">Pack</p>
-                <h3 class="text-2xl font-display font-bold text-white mb-3">Diamond</h3>
-                
-                <div class="grow"><ul class="space-y-2 text-sm font-light text-gray-300">
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Includes Gold Pack</span></li>
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Premium hydrophobic wax</span></li>
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Leather or Alcantara care</span></li>
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Anti-odor treatment</span></li>
-                    <li class="flex gap-3"><span class="text-gold-400" aria-hidden="true">✓</span><span>Ultra-precise finishing</span></li>
-                </ul></div>
-                <a href="/en/subscriptions.html" class="inline-flex items-center justify-center border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-8 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm w-full mt-6">See details</a>
-            </article>
-            </div>
-            <p class="text-gray-300 font-light mt-10">And to go further: <a href="/en/ceramic-polish.html" class="text-gold-400 underline underline-offset-4">ceramic polish</a>, <a href="/en/ppf.html" class="text-gold-400 underline underline-offset-4">PPF</a>, <a href="/en/covering.html" class="text-gold-400 underline underline-offset-4">wrapping</a>, <a href="/en/starlight-headliner.html" class="text-gold-400 underline underline-offset-4">starlight headliner</a> and <a href="/en/chassis-cleaning.html" class="text-gold-400 underline underline-offset-4">chassis &amp; engine cleaning</a>.</p>
-            <a href="/en/prices.html" class="inline-flex items-center justify-center bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-4 px-8 rounded-full hover:bg-gold-500 transition-all text-sm mt-8">See all prices</a>
-        </section>
-        <!-- /CCW:ACCUEIL-OFFRES -->
-        <!-- CCW:ACCUEIL-BLOG -->
-        <section id="blog" class="py-16 md:py-24 max-w-6xl mx-auto px-4 md:px-6" style="scroll-margin-top:5rem">
-            <p class="text-[11px] font-display font-bold tracking-[0.3em] uppercase text-gold-400 mb-3">The blog</p>
-            <h2 class="text-3xl md:text-5xl font-display font-bold text-white uppercase tracking-tight leading-[0.95] mb-6">Our latest articles</h2>
-            
-            <div class="grid gap-5 md:grid-cols-3">
-                <a href="/en/blog/yellowed-headlight-restoration-geneva.html" class="premium-card rounded-2xl p-6 flex flex-col group">
-                    <p class="text-gray-400 text-xs mb-3"><time datetime="2026-10-31">31 October 2026</time></p>
-                    <h3 class="text-white font-display font-bold text-base leading-snug mb-3 group-hover:text-gold-400 transition-colors">Yellowed or cloudy headlights: better visibility with professional polishing</h3>
-                    <p class="text-gray-400 text-sm font-light leading-relaxed grow">Are your headlights yellow or cloudy? Discover our headlight restoration and polishing in Geneva and Vaud. Quote from Clean Cars Wash.</p>
-                    <span class="text-gold-400 text-xs font-display font-bold tracking-widest uppercase mt-4">Read the article &rarr;</span>
-                </a>
-                <a href="/en/blog/dog-hair-car-cleaning-geneva.html" class="premium-card rounded-2xl p-6 flex flex-col group">
-                    <p class="text-gray-400 text-xs mb-3"><time datetime="2026-10-30">30 October 2026</time></p>
-                    <h3 class="text-white font-display font-bold text-base leading-snug mb-3 group-hover:text-gold-400 transition-colors">Dog hair in your car: how to get a spotless interior back</h3>
-                    <p class="text-gray-400 text-sm font-light leading-relaxed grow">Remove embedded dog hair from your car with professional cleaning by Clean Cars Wash in Geneva and Vaud. From CHF 49.90 as a surcharge.</p>
-                    <span class="text-gold-400 text-xs font-display font-bold tracking-widest uppercase mt-4">Read the article &rarr;</span>
-                </a>
-                <a href="/en/blog/car-wash-at-home-price-geneva.html" class="premium-card rounded-2xl p-6 flex flex-col group">
-                    <p class="text-gray-400 text-xs mb-3"><time datetime="2026-10-23">23 October 2026</time></p>
-                    <h3 class="text-white font-display font-bold text-base leading-snug mb-3 group-hover:text-gold-400 transition-colors">How much does a car wash at home cost in Geneva?</h3>
-                    <p class="text-gray-400 text-sm font-light leading-relaxed grow">A car wash at your home in Geneva costs from CHF {prix:argent} incl. VAT, travel included. What makes the price vary, the case of Vaud and subscriptions.</p>
-                    <span class="text-gold-400 text-xs font-display font-bold tracking-widest uppercase mt-4">Read the article &rarr;</span>
+                <a href="#concours" class="mk-a-hero__carte mk-in mk-d5" data-concours data-promo-from="2026-11-01" data-promo-until="2026-11-30">
+                    <span class="mk-a-hero__carte-haut"><span>Giveaway</span><span class="mk-pastille">1–30 Nov</span></span>
+                    <span class="mk-lot mk-lot--petit" aria-hidden="true"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"></rect><path d="M12 8v13M3 12h18M12 8S10 3 7.5 4.5 9 8 12 8zM12 8s2-5 4.5-3.5S15 8 12 8z"></path></svg><span>iPhone 18 Pro Max</span></span>
+                    <span class="mk-a-hero__carte-titre">Win an iPhone 18 Pro Max</span>
+                    <span class="mk-a-hero__carte-texte">One service carried out and paid for in November is all it takes to enter (one entry per person).</span>
+                    <span class="mk-a-hero__carte-lien">How to enter →</span>
                 </a>
             </div>
-            <a href="/en/blog/" class="inline-flex items-center justify-center border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-8 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm mt-8">All articles</a>
-        </section>
-        <!-- /CCW:ACCUEIL-BLOG -->
-        <!-- CCW:ACCUEIL-FAQ -->
-        <section id="faq" class="py-16 md:py-24 max-w-6xl mx-auto px-4 md:px-6" style="scroll-margin-top:5rem">
-            <p class="text-[11px] font-display font-bold tracking-[0.3em] uppercase text-gold-400 mb-3">Technical questions</p>
-            <h2 class="text-3xl md:text-5xl font-display font-bold text-white uppercase tracking-tight leading-[0.95] mb-6">Options, polish, ceramic, PPF</h2>
-            
-            <div class="space-y-3 max-w-3xl">
-                <details class="premium-card rounded-xl px-5 md:px-6 group">
-                    <summary class="cursor-pointer list-none flex justify-between items-center gap-4 py-5 text-white font-display font-bold text-sm md:text-base">What is the difference between polishing and a ceramic coating?<span class="text-gold-400 text-xl group-open:rotate-45 transition-transform" aria-hidden="true">+</span></summary>
-                    <div class="text-gray-400 font-light leading-relaxed pb-5 text-sm md:text-base">Polishing corrects the paint (swirl marks, wash marks); ceramic protects it and makes water bead off. Ceramic always comes after the correction: that is what the <a href="/en/ceramic-polish.html">Ceramic Polish Pack</a> combines, from CHF 999.00 incl. VAT on quote. It is all explained in <a href="/en/blog/polish-or-ceramic-coating.html">our article</a>.</div>
-                </details>
-                <details class="premium-card rounded-xl px-5 md:px-6 group">
-                    <summary class="cursor-pointer list-none flex justify-between items-center gap-4 py-5 text-white font-display font-bold text-sm md:text-base">How long is the vehicle immobilised for a ceramic polish?<span class="text-gold-400 text-xl group-open:rotate-45 transition-transform" aria-hidden="true">+</span></summary>
-                    <div class="text-gray-400 font-light leading-relaxed pb-5 text-sm md:text-base">Allow one full day minimum, often more depending on the paint. The ceramic polish is carried out in the workshop, or at your place in a closed garage: ceramic tolerates neither dust nor rain while it cures.</div>
-                </details>
-                <details class="premium-card rounded-xl px-5 md:px-6 group">
-                    <summary class="cursor-pointer list-none flex justify-between items-center gap-4 py-5 text-white font-display font-bold text-sm md:text-base">What is PPF?<span class="text-gold-400 text-xl group-open:rotate-45 transition-transform" aria-hidden="true">+</span></summary>
-                    <div class="text-gray-400 font-light leading-relaxed pb-5 text-sm md:text-base">A clear film that takes the stone chips and scratches instead of your paint. Application requires a dust-free environment: it is carried out in the workshop only, and takes one full day minimum. <a href="/en/ppf.html">PPF in detail</a>.</div>
-                </details>
-                <details class="premium-card rounded-xl px-5 md:px-6 group">
-                    <summary class="cursor-pointer list-none flex justify-between items-center gap-4 py-5 text-white font-display font-bold text-sm md:text-base">Does wrapping touch the paint?<span class="text-gold-400 text-xl group-open:rotate-45 transition-transform" aria-hidden="true">+</span></summary>
-                    <div class="text-gray-400 font-light leading-relaxed pb-5 text-sm md:text-base">No: wrapping changes the colour of the vehicle without touching the paint — matt, gloss, satin or carbon. It is carried out in the workshop; allow one full day minimum. <a href="/en/covering.html">Wrapping in detail</a>.</div>
-                </details>
-                <details class="premium-card rounded-xl px-5 md:px-6 group">
-                    <summary class="cursor-pointer list-none flex justify-between items-center gap-4 py-5 text-white font-display font-bold text-sm md:text-base">What interior options are there?<span class="text-gold-400 text-xl group-open:rotate-45 transition-transform" aria-hidden="true">+</span></summary>
-                    <div class="text-gray-400 font-light leading-relaxed pb-5 text-sm md:text-base">The Gold Pack adds seat and carpet shampoo and plastic renovation; the Diamond Pack, leather or Alcantara care and an anti-odour treatment. Pet hair removal is optional. After a shampoo, allow 4 to 6 hours of drying before heavy use.</div>
-                </details>
-                <details class="premium-card rounded-xl px-5 md:px-6 group">
-                    <summary class="cursor-pointer list-none flex justify-between items-center gap-4 py-5 text-white font-display font-bold text-sm md:text-base">What is a starlight headliner?<span class="text-gold-400 text-xl group-open:rotate-45 transition-transform" aria-hidden="true">+</span></summary>
-                    <div class="text-gray-400 font-light leading-relaxed pb-5 text-sm md:text-base">Optical fibres laid by hand in the headliner, four colours, brightness adjustable by remote. The headliner has to be removed: the service is carried out in the workshop and takes half a day minimum. <a href="/en/starlight-headliner.html">The starlight headliner in detail</a>.</div>
-                </details>
-                <details class="premium-card rounded-xl px-5 md:px-6 group">
-                    <summary class="cursor-pointer list-none flex justify-between items-center gap-4 py-5 text-white font-display font-bold text-sm md:text-base">How do I keep the result after a detailing?<span class="text-gold-400 text-xl group-open:rotate-45 transition-transform" aria-hidden="true">+</span></summary>
-                    <div class="text-gray-400 font-light leading-relaxed pb-5 text-sm md:text-base">With regular washing: combos include a Silver maintenance wash within 30 days, and <a href="/en/subscriptions.html">subscriptions</a> cost −10% to −27% less than one-off washes.</div>
-                </details>
-            </div>
-        </section>
-        <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the difference between polishing and a ceramic coating?","acceptedAnswer":{"@type":"Answer","text":"Polishing corrects the paint (swirl marks, wash marks); ceramic protects it and makes water bead off. Ceramic always comes after the correction: that is what the Ceramic Polish Pack combines, from CHF 999.00 incl. VAT on quote. It is all explained in our article."}},{"@type":"Question","name":"How long is the vehicle immobilised for a ceramic polish?","acceptedAnswer":{"@type":"Answer","text":"Allow one full day minimum, often more depending on the paint. The ceramic polish is carried out in the workshop, or at your place in a closed garage: ceramic tolerates neither dust nor rain while it cures."}},{"@type":"Question","name":"What is PPF?","acceptedAnswer":{"@type":"Answer","text":"A clear film that takes the stone chips and scratches instead of your paint. Application requires a dust-free environment: it is carried out in the workshop only, and takes one full day minimum. PPF in detail."}},{"@type":"Question","name":"Does wrapping touch the paint?","acceptedAnswer":{"@type":"Answer","text":"No: wrapping changes the colour of the vehicle without touching the paint — matt, gloss, satin or carbon. It is carried out in the workshop; allow one full day minimum. Wrapping in detail."}},{"@type":"Question","name":"What interior options are there?","acceptedAnswer":{"@type":"Answer","text":"The Gold Pack adds seat and carpet shampoo and plastic renovation; the Diamond Pack, leather or Alcantara care and an anti-odour treatment. Pet hair removal is optional. After a shampoo, allow 4 to 6 hours of drying before heavy use."}},{"@type":"Question","name":"What is a starlight headliner?","acceptedAnswer":{"@type":"Answer","text":"Optical fibres laid by hand in the headliner, four colours, brightness adjustable by remote. The headliner has to be removed: the service is carried out in the workshop and takes half a day minimum. The starlight headliner in detail."}},{"@type":"Question","name":"How do I keep the result after a detailing?","acceptedAnswer":{"@type":"Answer","text":"With regular washing: combos include a Silver maintenance wash within 30 days, and subscriptions cost −10% to −27% less than one-off washes."}}]}</script>
-        <!-- /CCW:ACCUEIL-FAQ -->
-        <!-- CCW:ACCUEIL-CTA --><div class="max-w-6xl mx-auto px-4 md:px-6">
-        <section class="py-12 md:py-20">
-            <div class="premium-card rounded-3xl p-8 md:p-14 text-center" style="border-color:rgba(212,175,55,.35)">
-                <p class="text-[11px] font-display font-bold tracking-[0.3em] uppercase text-gold-400 mb-3">Ready?</p>
-                <p class="text-3xl md:text-5xl font-display font-bold text-white uppercase tracking-tight leading-[0.95] mb-6">Book your time slot</p>
-                <p class="text-gray-400 font-light leading-relaxed max-w-xl mx-auto mb-8">Choose your package, the place and the time: the 30% deposit is paid online, the balance on site.</p>
-                <div class="flex flex-col sm:flex-row gap-3 justify-center">
-                    <a href="/en/book.html" class="inline-flex items-center justify-center bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-4 px-8 rounded-full hover:bg-gold-500 transition-all text-sm">Book</a>
-                    <a href="tel:+41782657071" class="inline-flex items-center justify-center border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-8 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">Call +41 78 265 70 71</a>
-                </div>
-            </div>
-        </section>
         </div>
-        <!-- /CCW:ACCUEIL-CTA -->
-        <!-- CCW:ACCUEIL-ANCRES -->
-    <div aria-hidden="true"><span id="services"></span><span id="combos"></span><span id="prestations"></span><span id="reservation"></span><span id="abonnements"></span><span id="zones"></span><span id="comparatif"></span><span id="conditions-intervention"></span><span id="entreprises"></span><span id="qui-sommes-nous"></span><span id="referral-section"></span></div>
-    <script>(function(){var m={"services":"/en/prices.html","combos":"/en/prices.html#offre-excellence","prestations":"/en/prices.html#prestations","reservation":"/en/book.html","abonnements":"/en/subscriptions.html","zones":"/en/at-home.html#zones","comparatif":"/en/at-home.html","conditions-intervention":"/en/at-home.html#conditions","entreprises":"/en/business.html","qui-sommes-nous":"/en/individuals.html","referral-section":"/en/individuals.html#parrainage"};function g(){var h=location.hash.slice(1);if(m.hasOwnProperty(h))location.replace(m[h])}g();window.addEventListener("hashchange",g)})();</script>
-        <!-- /CCW:ACCUEIL-ANCRES -->
-
-
-
-
-
-
-
-        
-
-
-
-
-        
-
+    </section>
+    <section class="mk-bande" aria-label="Our services">
+        <div class="mk-bande__ruban">
+            <ul class="mk-bande__piste"><li>Workshop<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li><li>Polish<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li><li>Ceramic<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li><li>Car wash at home<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li><li>Seat shampoo<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li><li>Rims<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li><li>Detailing<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li><li aria-hidden="true">Workshop<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li><li aria-hidden="true">Polish<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li><li aria-hidden="true">Ceramic<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li><li aria-hidden="true">Car wash at home<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li><li aria-hidden="true">Seat shampoo<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li><li aria-hidden="true">Rims<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li><li aria-hidden="true">Detailing<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li><li aria-hidden="true">Workshop<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li><li aria-hidden="true">Polish<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li><li aria-hidden="true">Ceramic<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li><li aria-hidden="true">Car wash at home<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li><li aria-hidden="true">Seat shampoo<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li><li aria-hidden="true">Rims<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li><li aria-hidden="true">Detailing<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li><li aria-hidden="true">Workshop<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li><li aria-hidden="true">Polish<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li><li aria-hidden="true">Ceramic<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li><li aria-hidden="true">Car wash at home<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li><li aria-hidden="true">Seat shampoo<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li><li aria-hidden="true">Rims<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li><li aria-hidden="true">Detailing<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg></li></ul>
+        </div>
+    </section>
+    <section id="formules" class="mk-a-formules">
+        <div class="mk-conteneur">
+            <div class="mk-tete">
+                <h2 class="mk-h2 mk-revele">Three packs,<br>clear prices.</h2>
+                <p class="mk-tete__texte">Prices incl. VAT, shown before you book.</p>
+            </div>
+            <div class="mk-formules">
+                <article class="mk-formule mk-carte-in" id="offre-argent">
+                    
+                    <h3 class="mk-formule__nom">Silver</h3>
+                    <p class="mk-formule__sous">The full wash, outside and in · 1 h 30</p>
+                    <p class="mk-formule__prix"><span>98.60</span> CHF incl. VAT</p>
+                    <ul class="mk-formule__liste">
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E0E10" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Manual exterior wash</span></li>
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E0E10" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Cabin &amp; trunk vacuum</span></li>
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E0E10" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Window cleaning</span></li>
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E0E10" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Microfiber drying</span></li>
+                    </ul>
+                    <button type="button" class="mk-btn mk-btn--contour" onclick="ccwLocationModalOpen('argent')">Book Silver<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+                    <a href="#deplacement" class="mk-formule__depl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5a7 7 0 0 1 14 0C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Work out my travel fee</span></a>
+                </article>
+                <article class="mk-formule mk-formule--principale mk-carte-in" id="offre-or">
+                    <span class="mk-formule__badge">Recommended service</span>
+                    <h3 class="mk-formule__nom">Gold</h3>
+                    <p class="mk-formule__sous">The full wash, interior brought back · 2 h 30</p>
+                    <p class="mk-formule__prix"><span>165.10</span> CHF incl. VAT</p>
+                    <ul class="mk-formule__liste">
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFCC00" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Includes Silver Pack</span></li>
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFCC00" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Seat &amp; carpet shampoo</span></li>
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFCC00" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Plastic renovation</span></li>
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFCC00" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Rim &amp; tire cleaning</span></li>
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFCC00" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Scented finish</span></li>
+                    </ul>
+                    <button type="button" class="mk-btn mk-btn--jaune mk-reflet" onclick="ccwLocationModalOpen('or')">Book Gold<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+                    <a href="#deplacement" class="mk-formule__depl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5a7 7 0 0 1 14 0C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Work out my travel fee</span></a>
+                </article>
+                <article class="mk-formule mk-carte-in" id="offre-diamant">
+                    
+                    <h3 class="mk-formule__nom">Diamond</h3>
+                    <p class="mk-formule__sous">High-end detailing · 3 h 30</p>
+                    <p class="mk-formule__prix"><span>320.20</span> CHF incl. VAT</p>
+                    <ul class="mk-formule__liste">
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E0E10" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Includes Gold Pack</span></li>
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E0E10" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Premium hydrophobic wax</span></li>
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E0E10" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Leather or Alcantara care</span></li>
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E0E10" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Anti-odor treatment</span></li>
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E0E10" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Ultra-precise finishing</span></li>
+                    </ul>
+                    <button type="button" class="mk-btn mk-btn--contour" onclick="ccwLocationModalOpen('diamant')">Book Diamond<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+                    <a href="#deplacement" class="mk-formule__depl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5a7 7 0 0 1 14 0C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Work out my travel fee</span></a>
+                </article>
+            </div>
+            <p class="mk-a-formules__abo"><a href="/en/subscriptions.html">Washing regularly? Subscriptions work out 10% to 27% cheaper →</a></p>
+            <ul class="mk-chiffres">
+                <li class="mk-carte-in"><strong>CHF 0</strong><span>travel fee at the workshop and in Geneva</span></li>
+                <li class="mk-carte-in"><strong>7/7</strong><span>from 7:30am to 10pm</span></li>
+                <li class="mk-carte-in"><strong>24 h</strong><span>to cancel, deposit carried over</span></li>
+                <li class="mk-carte-in"><strong>30%</strong><span>deposit, by TWINT or card</span></li>
+            </ul>
+        </div>
+    </section>
+    <section class="mk-a-etapes" aria-labelledby="mk-etapes-titre">
+        <div class="mk-conteneur mk-etapes">
+            <h2 class="mk-h2 mk-h2--moyen mk-revele" id="mk-etapes-titre">Booked in a few clicks.</h2>
+            <div class="mk-etape mk-carte-in"><span class="mk-etape__n">1</span><h3>You choose</h3><p>Pack, place and time slot online, 30% deposit by TWINT or card.</p></div>
+            <div class="mk-etape mk-carte-in"><span class="mk-etape__n">2</span><h3>We take care of everything</h3><p>In our workshop, at your home or at the office. At home, we need a private parking space and a 230V socket.</p></div>
+            <div class="mk-etape mk-carte-in"><span class="mk-etape__n">3</span><h3>You get a clean car back</h3><p>The balance is settled on site, once the work is done.</p></div>
+        </div>
+    </section>
+    <section id="realisations" class="mk-a-resultat">
+        <div class="mk-conteneur">
+            <div class="mk-tete">
+                <h2 class="mk-h2 mk-revele">The result.</h2>
+                <p class="mk-tete__texte">Before / after and work in progress, in our workshop and at our customers’. Tap an image to enlarge it.</p>
+            </div>
+        </div>
+        <ul id="galerie" class="mk-defile" aria-label="Gallery of our work">
+                <li class="mk-media mk-carte-in">
+                    <button type="button" class="mk-media__btn" data-zoom aria-label="Enlarge : Before / after: interior cleaning, rear seats and mats cleared of crumbs and dust">
+                        <span class="mk-media__cadre">
+                            <img src="/images/accueil/avant-apres-interieur.webp" alt="Before / after: interior cleaning, rear seats and mats cleared of crumbs and dust">
+                            
+                        </span>
+                    </button>
+                    <p class="mk-media__titre">Interior</p>
+                    <p class="mk-media__sous">Before / after</p>
+                </li>
+                <li class="mk-media mk-carte-in mk-media--video">
+                    <button type="button" class="mk-media__btn" data-zoom data-video="/images/accueil/avant-apres-video.mp4" aria-label="Play full size : Before / after video: boot cleaning, carpet cleared of dust and debris">
+                        <span class="mk-media__cadre">
+                            <img src="/images/accueil/avant-apres-video-poster.webp" alt="Before / after video: boot cleaning, carpet cleared of dust and debris">
+                            <span class="mk-media__play" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="#0E0E10" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+                        </span>
+                    </button>
+                    <p class="mk-media__titre">Boot</p>
+                    <p class="mk-media__sous">Before / after · video</p>
+                </li>
+                <li class="mk-media mk-carte-in">
+                    <button type="button" class="mk-media__btn" data-zoom aria-label="Enlarge : Before / after: exterior wash, front of a small white city car covered in insects, then clean">
+                        <span class="mk-media__cadre">
+                            <img src="/images/accueil/avant-apres-carrosserie.webp" alt="Before / after: exterior wash, front of a small white city car covered in insects, then clean" loading="lazy" decoding="async">
+                            
+                        </span>
+                    </button>
+                    <p class="mk-media__titre">Bodywork</p>
+                    <p class="mk-media__sous">Before / after</p>
+                </li>
+                <li class="mk-media mk-carte-in">
+                    <button type="button" class="mk-media__btn" data-zoom aria-label="Enlarge : Before / after: leather door panel, stains and marks removed">
+                        <span class="mk-media__cadre">
+                            <img src="/images/accueil/avant-apres-portiere.webp" alt="Before / after: leather door panel, stains and marks removed" loading="lazy" decoding="async">
+                            
+                        </span>
+                    </button>
+                    <p class="mk-media__titre">Leather door</p>
+                    <p class="mk-media__sous">Before / after</p>
+                </li>
+                <li class="mk-media mk-carte-in mk-media--video">
+                    <button type="button" class="mk-media__btn" data-zoom data-video="/images/accueil/video-polissage.mp4" aria-label="Play full size : Video: polishing a bonnet with a machine polisher">
+                        <span class="mk-media__cadre">
+                            <img src="/images/accueil/video-polissage-poster.webp" alt="Video: polishing a bonnet with a machine polisher" loading="lazy" decoding="async">
+                            <span class="mk-media__play" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="#0E0E10" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+                        </span>
+                    </button>
+                    <p class="mk-media__titre">Polishing</p>
+                    <p class="mk-media__sous">In the workshop · video</p>
+                </li>
+                <li class="mk-media mk-carte-in mk-media--video">
+                    <button type="button" class="mk-media__btn" data-zoom data-video="/images/accueil/video-siege-cuir.mp4" aria-label="Play full size : Video: brushing a leather seat clean">
+                        <span class="mk-media__cadre">
+                            <img src="/images/accueil/video-siege-cuir-poster.webp" alt="Video: brushing a leather seat clean" loading="lazy" decoding="async">
+                            <span class="mk-media__play" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="#0E0E10" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+                        </span>
+                    </button>
+                    <p class="mk-media__titre">Leather seat</p>
+                    <p class="mk-media__sous">Interior · video</p>
+                </li>
+                <li class="mk-media mk-carte-in">
+                    <button type="button" class="mk-media__btn" data-zoom aria-label="Enlarge : Pre-wash of an SUV with snow foam">
+                        <span class="mk-media__cadre">
+                            <img src="/images/accueil/photo-mousse-suv.webp" alt="Pre-wash of an SUV with snow foam" loading="lazy" decoding="async">
+                            
+                        </span>
+                    </button>
+                    <p class="mk-media__titre">Snow foam</p>
+                    <p class="mk-media__sous">Pre-wash</p>
+                </li>
+                <li class="mk-media mk-carte-in mk-media--video">
+                    <button type="button" class="mk-media__btn" data-zoom data-video="/images/accueil/video-jante.mp4" aria-label="Play full size : Video: washing a wheel and its rim">
+                        <span class="mk-media__cadre">
+                            <img src="/images/accueil/video-jante-poster.webp" alt="Video: washing a wheel and its rim" loading="lazy" decoding="async">
+                            <span class="mk-media__play" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="#0E0E10" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+                        </span>
+                    </button>
+                    <p class="mk-media__titre">Rims</p>
+                    <p class="mk-media__sous">Wash · video</p>
+                </li>
+                <li class="mk-media mk-carte-in">
+                    <button type="button" class="mk-media__btn" data-zoom aria-label="Enlarge : Machine polishing the bodywork">
+                        <span class="mk-media__cadre">
+                            <img src="/images/accueil/photo-polissage.webp" alt="Machine polishing the bodywork" loading="lazy" decoding="async">
+                            
+                        </span>
+                    </button>
+                    <p class="mk-media__titre">Polish</p>
+                    <p class="mk-media__sous">Paint correction</p>
+                </li>
+                <li class="mk-media mk-carte-in mk-media--video">
+                    <button type="button" class="mk-media__btn" data-zoom data-video="/images/accueil/video-console.mp4" aria-label="Play full size : Video: cleaning the centre console with a brush">
+                        <span class="mk-media__cadre">
+                            <img src="/images/accueil/video-console-poster.webp" alt="Video: cleaning the centre console with a brush" loading="lazy" decoding="async">
+                            <span class="mk-media__play" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="#0E0E10" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+                        </span>
+                    </button>
+                    <p class="mk-media__titre">Console</p>
+                    <p class="mk-media__sous">Interior · video</p>
+                </li>
+                <li class="mk-media mk-carte-in">
+                    <button type="button" class="mk-media__btn" data-zoom aria-label="Enlarge : Light leather interior after cleaning">
+                        <span class="mk-media__cadre">
+                            <img src="/images/accueil/photo-interieur-cuir-creme.webp" alt="Light leather interior after cleaning" loading="lazy" decoding="async">
+                            
+                        </span>
+                    </button>
+                    <p class="mk-media__titre">Light leather</p>
+                    <p class="mk-media__sous">After cleaning</p>
+                </li>
+                <li class="mk-media mk-carte-in mk-media--video">
+                    <button type="button" class="mk-media__btn" data-zoom data-video="/images/accueil/video-moquette.mp4" aria-label="Play full size : Video: brushing the carpet">
+                        <span class="mk-media__cadre">
+                            <img src="/images/accueil/video-moquette-poster.webp" alt="Video: brushing the carpet" loading="lazy" decoding="async">
+                            <span class="mk-media__play" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="#0E0E10" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+                        </span>
+                    </button>
+                    <p class="mk-media__titre">Carpet</p>
+                    <p class="mk-media__sous">Interior · video</p>
+                </li>
+                <li class="mk-media mk-carte-in">
+                    <button type="button" class="mk-media__btn" data-zoom aria-label="Enlarge : Snow foam and rinsing on a rim">
+                        <span class="mk-media__cadre">
+                            <img src="/images/accueil/photo-mousse-jante.webp" alt="Snow foam and rinsing on a rim" loading="lazy" decoding="async">
+                            
+                        </span>
+                    </button>
+                    <p class="mk-media__titre">Rim</p>
+                    <p class="mk-media__sous">Snow foam</p>
+                </li>
+                <li class="mk-media mk-carte-in mk-media--video">
+                    <button type="button" class="mk-media__btn" data-zoom data-video="/images/accueil/video-rincage.mp4" aria-label="Play full size : Video: exterior rinse seen from inside the car">
+                        <span class="mk-media__cadre">
+                            <img src="/images/accueil/video-rincage-poster.webp" alt="Video: exterior rinse seen from inside the car" loading="lazy" decoding="async">
+                            <span class="mk-media__play" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="#0E0E10" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+                        </span>
+                    </button>
+                    <p class="mk-media__titre">Rinse</p>
+                    <p class="mk-media__sous">Exterior · video</p>
+                </li>
+                <li class="mk-media mk-carte-in">
+                    <button type="button" class="mk-media__btn" data-zoom aria-label="Enlarge : Polishing products, polisher and microfibres in the workshop">
+                        <span class="mk-media__cadre">
+                            <img src="/images/accueil/photo-produits-polish.webp" alt="Polishing products, polisher and microfibres in the workshop" loading="lazy" decoding="async">
+                            
+                        </span>
+                    </button>
+                    <p class="mk-media__titre">The workshop</p>
+                    <p class="mk-media__sous">Products and polisher</p>
+                </li>
+                <li class="mk-media mk-carte-in">
+                    <button type="button" class="mk-media__btn" data-zoom aria-label="Enlarge : Steering wheel and dashboard after interior cleaning">
+                        <span class="mk-media__cadre">
+                            <img src="/images/accueil/photo-volant.webp" alt="Steering wheel and dashboard after interior cleaning" loading="lazy" decoding="async">
+                            
+                        </span>
+                    </button>
+                    <p class="mk-media__titre">Driver’s seat</p>
+                    <p class="mk-media__sous">After cleaning</p>
+                </li>
+                <li class="mk-media mk-carte-in">
+                    <button type="button" class="mk-media__btn" data-zoom aria-label="Enlarge : Snow foam on the front wing of a saloon">
+                        <span class="mk-media__cadre">
+                            <img src="/images/accueil/photo-mousse-aile.webp" alt="Snow foam on the front wing of a saloon" loading="lazy" decoding="async">
+                            
+                        </span>
+                    </button>
+                    <p class="mk-media__titre">Saloon</p>
+                    <p class="mk-media__sous">Snow foam</p>
+                </li>
+                <li class="mk-media mk-carte-in">
+                    <button type="button" class="mk-media__btn" data-zoom aria-label="Enlarge : Black leather interior after cleaning">
+                        <span class="mk-media__cadre">
+                            <img src="/images/accueil/photo-interieur-cuir-noir.webp" alt="Black leather interior after cleaning" loading="lazy" decoding="async">
+                            
+                        </span>
+                    </button>
+                    <p class="mk-media__titre">Black leather</p>
+                    <p class="mk-media__sous">After cleaning</p>
+                </li>
+        </ul>
+    </section>
+    <section id="entreprises" class="mk-a-pro">
+        <div class="mk-panneau mk-panneau--noir mk-panneau--section">
+            <img class="mk-caus" src="/images/mkt/caustique-clair.svg" alt="" aria-hidden="true">
+            <img class="mk-mousse" src="/images/mkt/mousse.webp" srcset="/images/mkt/mousse-800.webp 800w, /images/mkt/mousse.webp 1400w" sizes="100vw" alt="" aria-hidden="true" loading="lazy">
+            <div class="mk-a-pro__in">
+                <div class="mk-a-pro__texte">
+                    <p class="mk-eb mk-eb--jaune">For businesses</p>
+                    <h2 class="mk-h2 mk-revele">Your fleet washed in your car park.</h2>
+                    <p class="mk-a-pro__lead">From 3 to more than 50 vehicles. One contact, centralised invoicing, scheduled visits at your site or at our workshop.</p>
+                    <div class="mk-a-pro__ctas">
+                        <a href="/en/business.html" class="mk-btn mk-btn--jaune mk-btn--grand mk-reflet">Request a business quote<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                        <a href="mailto:info@clean-cars-wash.ch" class="mk-a-pro__mail">info@clean-cars-wash.ch</a>
+                    </div>
+                </div>
+                <div class="mk-a-pro__remises">
+                    <p class="mk-a-pro__remises-titre">Discount by fleet size</p>
+                    <div class="mk-remise mk-carte-in"><div><strong>3 to 5 vehicles</strong><span>on every wash</span></div><span class="mk-remise__val">−10%</span></div>
+                    <div class="mk-remise mk-carte-in"><div><strong>5 to 7 vehicles</strong><span>on every wash</span></div><span class="mk-remise__val">−20%</span></div>
+                    <div class="mk-remise mk-carte-in"><div><strong>More than 7 vehicles</strong><span>+ one free Gold Pack (for 1 vehicle)</span></div><span class="mk-remise__val mk-remise__val--jaune">−25%</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="atelier" class="mk-a-atelier">
+        <div class="mk-conteneur mk-a-atelier__in">
+            <div class="mk-a-atelier__texte">
+                <h2 class="mk-h2 mk-h2--atelier mk-revele">In the workshop.</h2>
+                <p>Protection and customisation, in our workshop at Chemin des Vergers, Geneva. For polish, PPF, wrapping and starlight headliners, we can collect your vehicle and bring it back.</p>
+                <a href="/en/workshop.html" class="mk-lien-fort">Discover the workshop →</a>
+                <a href="tel:+41782657071" class="mk-lien-fort">Ask for a quote on 078 265 70 71 →</a>
+            </div>
+            <ul class="mk-a-atelier__liste">
+                <li class="mk-carte-in"><a href="/en/ceramic-polish.html" class="mk-a-atelier__nom">Polish & ceramic</a><span class="mk-a-atelier__prix">from CHF <strong>999.00</strong></span><p>Swirl correction, mirror gloss and long-lasting protection.</p></li>
+                <li class="mk-carte-in"><a href="/en/ppf.html" class="mk-a-atelier__nom">PPF film</a><span class="mk-a-atelier__prix">from CHF <strong>999.00</strong></span><p>Clear film that protects the bodywork from stone chips and scratches.</p></li>
+                <li class="mk-carte-in"><a href="/en/covering.html" class="mk-a-atelier__nom">Wrapping</a><span class="mk-a-atelier__prix">from CHF <strong>999.00</strong></span><p>A new colour without paint: matte, gloss, satin or carbon.</p></li>
+                <li class="mk-carte-in"><a href="/en/starlight-headliner.html" class="mk-a-atelier__nom">Starlight headliner</a><span class="mk-a-atelier__prix">from CHF <strong>499.00</strong></span><p>Fibre optics fitted by hand in the roof lining.</p></li>
+                <li class="mk-carte-in"><a href="/en/chassis-cleaning.html" class="mk-a-atelier__nom">Chassis & engine</a><span class="mk-a-atelier__prix">CHF <strong>159.90</strong></span><p>Chassis, engine bay and wheel arches, for example before the vehicle inspection.</p></li>
+            </ul>
+        </div>
+    </section>
+    <section id="concours" class="mk-a-concours" data-concours data-promo-from="2026-11-01" data-promo-until="2026-11-30">
+        <div class="mk-panneau mk-panneau--jaune mk-panneau--section">
+            <img class="mk-caus" src="/images/mkt/caustique-or.svg" alt="" aria-hidden="true">
+            <img class="mk-mousse" src="/images/mkt/mousse.webp" srcset="/images/mkt/mousse-800.webp 800w, /images/mkt/mousse.webp 1400w" sizes="100vw" alt="" aria-hidden="true" loading="lazy">
+            <div class="mk-a-concours__in">
+                <div class="mk-a-concours__texte">
+                    <p class="mk-eb">Giveaway · 1 to 30 November</p>
+                    <h2 class="mk-h2 mk-h2--grand mk-revele">A wash in November, an iPhone 18 Pro Max to win.</h2>
+                    <ol class="mk-a-concours__etapes">
+                        <li class="mk-carte-in"><span>1</span>Have a service carried out between 1 and 30 November.</li>
+                        <li class="mk-carte-in"><span>2</span>Once the service is paid for, you are entered in the draw (one entry per person).</li>
+                        <li class="mk-carte-in"><span>3</span>Draw on 22 December 2026. The winner is contacted personally.</li>
+                    </ol>
+                    <div class="mk-a-concours__ctas">
+                        <a href="/en/book.html" class="mk-btn mk-btn--noir mk-btn--grand mk-reflet">Book and enter<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                        <a href="/en/giveaway.html" class="mk-lien-fort">Giveaway rules</a>
+                    </div>
+                </div>
+                <div class="mk-lot mk-lot--grand mk-incline" aria-hidden="true"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"></rect><path d="M12 8v13M3 12h18M12 8S10 3 7.5 4.5 9 8 12 8zM12 8s2-5 4.5-3.5S15 8 12 8z"></path></svg><span>New iPhone 18 Pro Max, 256 GB, purple</span></div>
+            </div>
+        </div>
+    </section>
+    <section id="avis" class="mk-a-avis">
+        <div class="mk-conteneur">
+            <div class="mk-tete">
+                <h2 class="mk-h2 mk-revele">They say it better than we do.</h2>
+                <a href="https://maps.app.goo.gl/HgBjjuKPdWKeo9E46" class="mk-a-avis__note" target="_blank" rel="noopener noreferrer"><strong>4.8</strong><span><span class="mk-etoiles mk-etoiles--fonce" aria-hidden="true">★★★★★</span> 25 Google reviews →</span></a>
+            </div>
+            <div class="mk-a-avis__grille">
+                <figure class="mk-avis mk-avis--grand mk-carte-in"><blockquote lang="fr">« Excellent service, je suis vraiment satisfait du résultat. […] Ma voiture est ressortie impeccable, comme neuve ! »</blockquote><figcaption><strong>Aymen S.</strong> · Google review, in French</figcaption></figure>
+                <figure class="mk-avis mk-carte-in"><blockquote lang="fr">« Service impeccable à tous points de vue : prise en charge facile et très sympathique, nettoyage intérieur et extérieur parfait, jusque dans les moindres recoins. Plus aucune saleté, excellent rapport qualité-prix. J’y retournerai sans hésiter. »</blockquote><figcaption><strong>Olivier D.</strong> · Google review, in French</figcaption></figure>
+                <figure class="mk-avis mk-carte-in"><blockquote lang="fr">« Ma voiture était dans un état catastrophique et je l’ai récupérée impeccable, propre dans les moindres détails. En plus de la qualité du travail, j’ai apprécié le sérieux, la gentillesse et le professionnalisme de l’équipe. […] »</blockquote><figcaption><strong>Amina D.</strong> · Google review, in French</figcaption></figure>
+            </div>
+        </div>
+    </section>
+    <section id="deplacement" class="mk-a-depl">
+        <div class="mk-conteneur mk-a-depl__in">
+            <div class="mk-a-depl__texte">
+                <h2 class="mk-h2 mk-revele">How much is the travel fee?</h2>
+                <p class="mk-tete__texte">Nothing at the workshop. For a wash at your place, type your address or municipality, or tap the map.</p>
+                <div class="mk-depl" data-depl>
+                    <label for="zr-input" class="mk-depl__label">Address or municipality of the car</label>
+                    <div class="mk-depl__champ">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5a7 7 0 0 1 14 0C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+                        <input id="zr-input" type="text" autocomplete="off" placeholder="E.g. Rue de la Gare 1, Nyon" aria-describedby="zr-note" aria-controls="zr-liste" aria-autocomplete="list" role="combobox" aria-expanded="false">
+                        <ul id="zr-liste" class="mk-depl__liste" role="listbox" hidden></ul>
+                    </div>
+                    <div id="zr-card" class="mk-depl__carte" aria-live="polite">
+                        <div><p id="zr-place" class="mk-depl__lieu">Your municipality</p><p id="zr-note" class="mk-depl__note">Type an address or tap the map</p></div>
+                        <p id="zr-price" class="mk-depl__prix">—</p>
+                    </div>
+                    <ul class="mk-depl__legende">
+                        <li><span style="background:#FFCC00"></span>Geneva · free</li>
+                        <li><span style="background:#F2994A"></span>Vaud orange zone · CHF 39.90</li>
+                        <li><span style="background:#D9483B"></span>Vaud red zone · CHF 59.90</li>
+                    </ul>
+                    <p class="mk-depl__fr">Car in neighbouring France? <a href="tel:+41782657071">Call us</a> for a quote. <a href="/en/zones.html">All areas</a></p>
+                </div>
+            </div>
+            <div class="mk-a-depl__carte">
+                <div class="mk-carte" id="zr-carte" data-src="/data/carte-zones.svg" data-communes="/data/communes.json" data-label="Travel zones map: canton of Geneva free, orange zone CHF 39.90, red zone CHF 59.90"></div>
+                <p id="zr-hover" class="mk-carte__aide">Hover or tap a municipality</p>
+            </div>
+        </div>
+    </section>
+    <section id="faq" class="mk-a-faq">
+        <div class="mk-conteneur mk-a-faq__in">
+            <div class="mk-a-faq__texte">
+                <h2 class="mk-h2 mk-h2--atelier mk-revele">Frequently asked questions</h2>
+                <p>Another question? Call us on <a href="tel:+41782657071">078 265 70 71</a>.</p>
+            </div>
+            <div class="mk-a-faq__liste">
+                <details class="mk-faq mk-carte-in"><summary><span>What do I need for a wash at home?</span><span class="mk-faq__plus" aria-hidden="true">+</span></summary><p>A private parking space (garage, driveway or residential car park) and a 230V power socket, both required; a water point is recommended. At the workshop, you don’t need anything.</p></details>
+                <details class="mk-faq mk-carte-in"><summary><span>How much is the travel fee?</span><span class="mk-faq__plus" aria-hidden="true">+</span></summary><p>Nothing at the workshop. At home, travel is included across the canton of Geneva. In Vaud, a flat fee is added depending on the district: CHF 39.90 (Nyon, Morges, Ouest lausannois, Lausanne, Gros-de-Vaud) or CHF 59.90 for the other districts. It is shown before you pay.</p></details>
+                <details class="mk-faq mk-carte-in"><summary><span>How does payment work?</span><span class="mk-faq__plus" aria-hidden="true">+</span></summary><p>You choose your pack, the place and your time slot, then pay a 30% deposit online by TWINT or card, secured by SumUp. The balance is settled on site. Up to 24 hours before the appointment, the deposit is carried over to a future booking. Less than 24 hours before, it is retained.</p></details>
+                <details class="mk-faq mk-carte-in" data-concours data-promo-from="2026-11-01" data-promo-until="2026-11-30"><summary><span>How do I enter the giveaway?</span><span class="mk-faq__plus" aria-hidden="true">+</span></summary><p>A service carried out and paid for between 1 and 30 November 2026 is all it takes: you are entered automatically, one entry per person. Draw on 22 December 2026.</p></details>
+                <details class="mk-faq mk-carte-in"><summary><span>What is the difference between a polish and a ceramic coating?</span><span class="mk-faq__plus" aria-hidden="true">+</span></summary><p>A polish corrects the paint (swirls, wash marks); a ceramic coating protects it and makes water bead. The coating always comes after the correction: that is what the Polish Ceramic Pack combines, from CHF 999 incl. VAT on quotation.</p></details>
+                <details class="mk-faq mk-carte-in"><summary><span>What is PPF?</span><span class="mk-faq__plus" aria-hidden="true">+</span></summary><p>A clear film that takes stone chips and scratches instead of your paint. Fitting it requires a dust-free environment: it is done exclusively at the workshop and takes at least one full day.</p></details>
+            </div>
+        </div>
+    </section>
     </main>
 
     <!-- CCW:FOOTER -->
@@ -785,7 +715,7 @@ r.querySelector("[data-recommencer]").addEventListener("click",function(){profil
             <div class="mk-final__in">
                 <p class="mk-final__titre" id="mk-final-titre">Your car, like new.</p>
                 <div class="mk-final__cote">
-                    <p>Book online, 30 % deposit, balance paid on site.</p>
+                    <p>Book online, 30% deposit, balance paid on site.</p>
                     <div class="mk-final__actions">
                         <a class="mk-btn mk-btn--noir mk-btn--grand" href="/en/book.html">Book online<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
                         <a class="mk-final__tel" href="tel:+41782657071">078 265 70 71</a>
@@ -853,36 +783,53 @@ r.querySelector("[data-recommencer]").addEventListener("click",function(){profil
     </footer>
     <!-- /CCW:FOOTER -->
 
-    <a href="https://wa.me/41782657071?text=Hello,%20I%20would%20like%20to%20get%20a%20quote." target="_blank" rel="noopener noreferrer" class="whatsapp-float bg-[#25D366] flex items-center justify-center w-12 h-12 md:w-14 md:h-14 bottom-24 md:bottom-6 right-4 md:right-6 rounded-full shadow-2xl hover:bg-[#128C7E] transition-all group" aria-label="Chat with us on WhatsApp">
-        <svg class="w-6 h-6 md:w-8 md:h-8 text-white fill-current" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.4 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-5.5-2.8-23.2-8.5-44.2-27.1-16.4-14.6-27.4-32.7-30.6-38.1-3.2-5.5-.3-8.4 2.4-11.2 2.5-2.5 5.5-6.4 8.3-9.6 2.8-3.2 3.7-5.5 5.5-9.3 1.9-3.7.9-6.9-.5-9.7-1.4-2.8-12.4-29.8-17-40.7-4.5-10.7-9-9.2-12.4-9.4h-10.6c-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 13.2 5.8 23.5 9.2 31.5 11.8 13.3 4.2 25.4 3.6 35 2.2 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"></path></svg>
-    </a>
-
+    <div id="ccw-contact-modal" class="hidden fixed inset-0 items-center justify-center px-4" style="z-index:300;" role="dialog" aria-modal="true" aria-labelledby="ccw-modal-title">
+        <div class="absolute inset-0 backdrop-blur" style="background:rgba(0,0,0,0.75);" onclick="ccwModalClose()" aria-hidden="true"></div>
+        <div class="relative bg-charcoal-800 border border-gold-400/30 rounded-2xl p-8 w-full max-w-xs text-center" style="box-shadow:0 25px 50px rgba(0,0,0,.6);">
+            <button type="button" onclick="ccwModalClose()" class="absolute top-3 right-3 w-9 h-9 flex items-center justify-center text-gray-400 hover:text-white rounded-full hover:bg-white/10 transition-colors" aria-label="Close"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+            <p class="text-[10px] font-display tracking-[0.3em] uppercase text-gold-400 mb-3" id="ccw-modal-title">Contact Us</p>
+            <p class="text-white font-display font-bold text-lg leading-snug mb-7">How would you like<br>to reach us?</p>
+            <div class="flex flex-col gap-4">
+                <a href="https://wa.me/41782657071?text=Hello%2C%20I%20would%20like%20to%20book%20a%20slot." target="_blank" rel="noopener noreferrer" onclick="ccwModalClose()" class="flex items-center justify-center gap-3 bg-[#25D366] text-charcoal-900 font-display font-bold tracking-widest uppercase py-4 px-6 rounded-full hover:bg-[#1fb857] transition-all text-sm">WhatsApp</a>
+                <a href="tel:+41782657071" onclick="ccwModalClose()" class="flex items-center justify-center gap-3 border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-6 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">+41 78 265 70 71</a>
+            </div>
+            <p class="text-gray-400 text-[10px] mt-5 uppercase tracking-widest font-display">Tap outside to close</p>
         </div>
     </div>
 
-
+    <div id="ccw-location-modal" class="hidden fixed inset-0 items-center justify-center px-4" style="z-index:300;" role="dialog" aria-modal="true" aria-labelledby="ccw-location-modal-title">
+        <div class="absolute inset-0 backdrop-blur" style="background:rgba(0,0,0,0.75);" onclick="ccwLocationModalClose()" aria-hidden="true"></div>
+        <div class="relative bg-charcoal-800 border border-gold-400/30 rounded-2xl p-8 w-full max-w-xs text-center" style="box-shadow:0 25px 50px rgba(0,0,0,.6);">
+            <button type="button" onclick="ccwLocationModalClose()" class="absolute top-3 right-3 w-9 h-9 flex items-center justify-center text-gray-400 hover:text-white rounded-full hover:bg-white/10 transition-colors" aria-label="Close"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+            <p class="text-[10px] font-display tracking-[0.3em] uppercase text-gold-400 mb-3" id="ccw-location-modal-title">Booking</p>
+            <p class="text-white font-display font-bold text-lg leading-snug mb-3">Where would you like<br>to be served?</p>
+            <p class="text-gray-400 text-xs leading-snug mb-3">You will pick your time slot, then pay the 30% deposit.</p>
+            <p class="text-gray-400 text-[11px] leading-snug mb-6">Travel included in Geneva. In Vaud, a flat CHF 39.90 or 59.90 incl. VAT settled on site — <a href="/en/zones.html" class="text-gold-400 underline underline-offset-2">see the zones</a>.</p>
+            <div class="flex flex-col gap-5">
+                <div>
+                    <button type="button" id="ccw-location-garage" data-track="conversion-booking" onclick="ccwBookingGo('garage')" class="cursor-pointer w-full flex items-center justify-center gap-3 bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-4 px-6 rounded-full hover:bg-gold-500 transition-all text-sm">At our workshop, Geneva</button>
+                    <p class="text-gray-400 text-[10px] leading-snug mt-2"><span id="ccw-location-garage-label" class="text-gray-400"></span></p>
+                </div>
+                <div>
+                    <button type="button" id="ccw-location-home" data-track="conversion-booking" onclick="ccwBookingGo('home')" class="cursor-pointer w-full flex items-center justify-center gap-3 border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-6 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">At home / at work</button>
+                    <p class="text-gray-400 text-[10px] leading-snug mt-2"><span id="ccw-location-home-label" class="text-gray-400"></span></p>
+                </div>
+            </div>
+            <p class="text-gray-400 text-[10px] mt-5 uppercase tracking-widest font-display">Tap outside to close</p>
+        </div>
+    </div>
 
     <script src="/js/app.js" defer></script>
     <script src="/js/galerie-zoom.js" defer></script>
-
-    <!-- REC-01 : Sticky Bottom CTA Mobile -->
-    <div id="ccw-sticky-cta" class="fixed bottom-0 left-0 right-0 z-200 md:hidden px-6 pb-3 pt-2 bg-linear-to-t from-charcoal-900/95 to-transparent pointer-events-none">
-        <a href="/en/book.html" class="pointer-events-auto flex items-center justify-center gap-2 w-full bg-linear-to-r from-gold-400 to-yellow-500 text-charcoal-900 font-display font-black tracking-widest uppercase py-2.5 rounded-full shadow-lg text-base active:scale-95 transition-transform">
-            <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-            <div class="flex flex-col items-start leading-tight">
-                <span class="font-black tracking-widest uppercase text-base text-charcoal-900">BOOK NOW</span>
-                <span class="font-medium tracking-normal text-[10px] text-charcoal-900/80 -mt-0.5">Travel included in Geneva</span>
-            </div>
-        </a>
-    </div>
-
+    <script src="/js/accueil-mkt.js" defer></script>
+    <script>addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.src="/js/bulles.js";document.body.appendChild(s)},200)});</script>
     <!-- CCW:CONCOURS -->
     <aside id="ccw-concours" class="mk-bulle" aria-label="Giveaway · November" data-concours data-debut="2026-11-01" data-promo-until="2026-11-30" hidden>
         <span class="mk-bulle__ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"></rect><path d="M12 8v13M3 12h18M12 8S10 3 7.5 4.5 9 8 12 8zM12 8s2-5 4.5-3.5S15 8 12 8z"></path></svg></span>
         <a class="mk-bulle__lien" href="#concours">
             <span class="mk-bulle__eb">Giveaway · November</span>
             <span class="mk-bulle__titre">Win an iPhone 18 Pro Max</span>
-            <span class="mk-bulle__texte">One wash in November is all it takes →</span>
+            <span class="mk-bulle__texte">One wash done and paid in November is all it takes →</span>
         </a>
         <button class="mk-bulle__x" type="button" aria-label="Close" data-x>&times;</button>
     </aside>

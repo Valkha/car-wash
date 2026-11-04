@@ -270,8 +270,8 @@ function aLireAussi(cle, langue, { titre = true, max = 3 } = {}) {
     return `${titre ? `<p class="${LABEL}">${t.aLire}</p>` : ''}
             <div class="grid gap-5 md:grid-cols-3">
 ${arts.map(a => `                <a href="${urlArticle(a, langue)}" class="premium-card rounded-2xl p-6 flex flex-col group">
-                    <h3 class="text-white font-display font-bold text-base leading-snug mb-3 group-hover:text-gold-400 transition-colors">${esc(a[langue].titre)}</h3>
-                    <p class="text-gray-400 text-sm font-light leading-relaxed grow">${esc(a[langue].description)}</p>
+                    <h3 class="text-white font-display font-bold text-base leading-snug mb-3 group-hover:text-gold-400 transition-colors">${esc(jetons(a[langue].titre, `blog ${a.id}`, langue))}</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed grow">${esc(jetons(a[langue].description, `blog ${a.id}`, langue))}</p>
                     <span class="text-gold-400 text-xs font-display font-bold tracking-widest uppercase mt-4">${t.lire} &rarr;</span>
                 </a>`).join('\n')}
             </div>`;
@@ -284,8 +284,8 @@ function derniersArticles(langue, n = 3) {
     return `<div class="grid gap-5 md:grid-cols-3">
 ${arts.map(a => `                <a href="${urlArticle(a, langue)}" class="premium-card rounded-2xl p-6 flex flex-col group">
                     <p class="text-gray-400 text-xs mb-3"><time datetime="${a.publie}">${shell.dateLongue(a.publie, langue)}</time></p>
-                    <h3 class="text-white font-display font-bold text-base leading-snug mb-3 group-hover:text-gold-400 transition-colors">${esc(a[langue].titre)}</h3>
-                    <p class="text-gray-400 text-sm font-light leading-relaxed grow">${esc(a[langue].description)}</p>
+                    <h3 class="text-white font-display font-bold text-base leading-snug mb-3 group-hover:text-gold-400 transition-colors">${esc(jetons(a[langue].titre, `blog ${a.id}`, langue))}</h3>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed grow">${esc(jetons(a[langue].description, `blog ${a.id}`, langue))}</p>
                     <span class="text-gold-400 text-xs font-display font-bold tracking-widest uppercase mt-4">${t.lire} &rarr;</span>
                 </a>`).join('\n')}
             </div>`;

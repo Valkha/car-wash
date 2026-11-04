@@ -25,6 +25,9 @@ const villesVoisines = (loc, max = 6) => locations
     .sort((a, b) => a.cityName.localeCompare(b.cityName, 'fr'))
     .slice(0, max);
 
+// Premiere lettre en minuscule (en milieu de phrase), le reste tel quel.
+const minus = t => String(t).charAt(0).toLowerCase() + String(t).slice(1);
+
 const generateHTML = (loc) => `<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -78,16 +81,17 @@ const generateHTML = (loc) => `<!DOCTYPE html>
       "@graph": [
         {
           "@type": ["LocalBusiness", "AutoWash"],
-          "name": "Clean Cars Wash ${loc.cityName}",
-          "@id": "https://www.clean-cars-wash.ch/services/${loc.cityId}/",
-          "url": "https://www.clean-cars-wash.ch/services/${loc.cityId}/",
+          "name": "Clean Cars Wash",
+          "@id": "https://www.clean-cars-wash.ch",
+          "url": "https://www.clean-cars-wash.ch/",
           "telephone": "+41782657071",
-          "priceRange": "CHF 96–312",
+          "priceRange": "CHF 98–320",
           "image": "https://www.clean-cars-wash.ch/assets/images/MB-01-opt.webp",
           "address": {
             "@type": "PostalAddress",
-            "addressLocality": "${loc.cityName}",
-            "addressRegion": "${loc.region}",
+            "streetAddress": "Chemin des Vergers",
+            "postalCode": "1208",
+            "addressLocality": "Genève",
             "addressCountry": "CH"
           },
           "areaServed": {
@@ -128,55 +132,54 @@ const generateHTML = (loc) => `<!DOCTYPE html>
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
+    <a href="#main-content" class="skip-link">${shell.UI.fr.skip}</a>
     ${shell.repereHeader(`services/${loc.cityId}/index.html`, 'fr')}
 
-    <main class="max-w-5xl mx-auto px-4 md:px-6">
-        <article>
-            <header class="pt-16 pb-12 md:pt-24 md:pb-16">
-                <p class="section-index mb-4"><em>${loc.region}</em>${loc.typology}</p>
-                <h1 class="text-4xl md:text-6xl font-display font-bold text-white uppercase tracking-tight leading-[0.95] mb-6">${loc.recommendedService}<br><span class="text-gold-400">à ${loc.cityName}</span></h1>
-                <div class="section-rule mb-6"></div>
-                <p class="text-base md:text-lg font-light text-gray-400 max-w-2xl leading-relaxed">${loc.seoIntroSnippet}</p>
-            </header>
+    <main id="main-content" class="max-w-5xl mx-auto px-4 md:px-6">
+        <section class="pt-14 pb-10 md:pt-20 md:pb-12">
+            <p class="section-index mb-4"><em>${loc.region}</em>${loc.typology}</p>
+            <h1 class="text-4xl md:text-6xl font-display font-bold text-white uppercase tracking-tight leading-[0.95] mb-6">${loc.recommendedService}<br><span class="text-gold-400">à ${loc.cityName}</span></h1>
+            <p class="text-base md:text-lg font-light text-gray-400 max-w-2xl leading-relaxed">${loc.seoIntroSnippet}</p>
+        </section>
 
-            <section class="grid md:grid-cols-2 gap-6 md:gap-8 pb-12">
+        <section class="pb-12">
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8">
                 <div class="premium-card p-8 md:p-10 rounded-2xl">
-                    <h2 class="text-xl md:text-2xl font-display font-bold text-white uppercase tracking-wide mb-4">L'exigence du marché local</h2>
-                    <p class="text-gray-400 font-light leading-relaxed">Notre clientèle composée de ${loc.clienteleType.toLowerCase()} exige une discrétion et une qualité sans faille. Intervenant sur le canton de ${loc.region}, notamment ${loc.localLandmark}, nous adaptons nos process à votre environnement.</p>
+                    <h2 class="text-xl md:text-2xl font-display font-bold text-white uppercase tracking-wide mb-4">Le soin, au plus près de chez vous</h2>
+                    <p class="text-gray-400 font-light leading-relaxed">Nous intervenons dans le canton de ${loc.region}, ${minus(loc.localLandmark)}. Chaque intervention s'adapte à votre véhicule et à votre environnement.</p>
                 </div>
                 <div class="premium-card p-8 md:p-10 rounded-2xl">
                     <h2 class="text-xl md:text-2xl font-display font-bold text-white uppercase tracking-wide mb-4">Protection ciblée</h2>
-                    <p class="text-gray-400 font-light leading-relaxed">Le contexte environnemental de ${loc.cityName} (${loc.typology.toLowerCase()}) implique des risques spécifiques : ${loc.environmentalPainPoint.toLowerCase()}. Notre ${loc.recommendedService.toLowerCase()} agit comme un bouclier définitif contre ces agressions.</p>
+                    <p class="text-gray-400 font-light leading-relaxed">Le contexte environnemental de ${loc.cityName} (${loc.typology.toLowerCase()}) implique des risques spécifiques : ${minus(loc.environmentalPainPoint).replace(/\.+$/, '')}. Notre ${loc.recommendedService.toLowerCase()} agit comme un bouclier contre ces agressions.</p>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section class="conditions-intervention text-center mb-16 md:mb-24">
-                <p class="conditions-eyebrow">Intervention à ${loc.cityName}</p>
-                <p class="conditions-title">Déplacement offert à Genève &mdash; <a href="/zones.html" style="color:#D4AF37;text-decoration:underline;">forfait selon le district sur Vaud</a></p>
-                <p class="text-gray-400 font-light text-sm leading-relaxed mb-8 max-w-xl mx-auto">Nous nous déplaçons chez vous ou sur votre lieu de travail, sans frais supplémentaires. Choisissez votre créneau en ligne et réglez un acompte de 30&nbsp;%&nbsp;; le solde se règle sur place.</p>
-                <a href="/reserver.html" class="inline-block bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-4 px-10 rounded-full hover:bg-gold-500 transition-all shadow-[0_0_20px_rgba(212,175,55,0.2)]" data-track="conversion-booking">Réserver à ${loc.cityName}</a>
-            </section>
+        <section class="mk-cle">
+            <p class="text-[11px] font-display font-bold tracking-[0.3em] uppercase text-gold-400 mb-3">Intervention à ${loc.cityName}</p>
+            <h2 class="text-2xl md:text-4xl font-display font-bold text-white uppercase tracking-tight leading-[0.95] mb-4">À notre atelier ou chez vous</h2>
+            <p class="text-gray-300 font-light leading-relaxed max-w-2xl mb-8">Déposez votre véhicule à notre atelier, ${shell.SITE.contact.adresse.rue} à Genève, ou recevez-nous chez vous ou sur votre lieu de travail. Le déplacement est offert dans le canton de Genève&nbsp;; sur Vaud, <a href="/zones.html">un forfait selon le district</a> est annoncé avant de payer. Choisissez votre créneau en ligne et réglez un acompte de 30&nbsp;%&nbsp;; le solde se règle sur place.</p>
+            <a href="/reserver.html" class="inline-block bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-4 px-10 rounded-full hover:bg-gold-500 transition-all" data-track="conversion-booking">Réserver à ${loc.cityName}</a>
+        </section>
 
-            <nav class="pb-16 md:pb-24" aria-label="Autres villes desservies">
-                <p class="text-[10px] font-display font-bold tracking-[0.3em] uppercase text-gold-400 mb-4">Nous intervenons aussi sur le canton de ${loc.region}</p>
-                <ul class="flex flex-wrap gap-x-4 gap-y-2 text-xs md:text-sm text-gray-400 font-light">
-                    ${villesVoisines(loc).map(v => `<li><a href="/services/${v.cityId}/" class="hover:text-gold-400 transition">${v.cityName}</a></li>`).join('\n                    ')}
-                    <li><a href="/tarifs.html" class="text-gold-400 hover:text-white transition">Toutes nos prestations →</a></li>
+        <section class="pb-16 md:pb-24">
+            <nav aria-label="Autres villes desservies">
+                <p class="text-[11px] font-display font-bold tracking-[0.3em] uppercase text-gold-400 mb-4">Nous intervenons aussi sur le canton de ${loc.region}</p>
+                <ul class="flex flex-wrap gap-x-4 gap-y-2 text-sm text-gray-400 font-light">
+                    ${villesVoisines(loc).map(v => `<li><a href="/services/${v.cityId}/">${v.cityName}</a></li>`).join('\n                    ')}
+                    <li><a href="/tarifs.html">Toutes nos prestations →</a></li>
                 </ul>
             </nav>
-        </article>
+            <p class="font-display font-bold text-[11px] tracking-[0.3em] uppercase text-gold-400 mt-10 mb-4">Nos prestations spécialisées</p>
+            <ul class="flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-400 font-light">
+                <li><a href="/ciel-etoile.html">Ciel étoilé</a></li>
+                <li><a href="/ppf.html">PPF &mdash; film de protection</a></li>
+                <li><a href="/covering.html">Covering</a></li>
+                <li><a href="/polish-ceramique.html">Pack Polish Céramique</a></li>
+                <li><a href="/nettoyage-chassis.html">Nettoyage châssis &amp; moteur</a></li>
+            </ul>
+        </section>
     </main>
-
-    <section class="max-w-5xl mx-auto px-4 md:px-6 pb-16">
-        <p class="font-display font-bold text-[10px] tracking-[0.3em] uppercase text-gold-400 mb-4">Nos prestations spécialisées</p>
-        <ul class="flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-400 font-light">
-            <li><a href="/ciel-etoile.html" class="hover:text-gold-400 transition">Ciel étoilé</a></li>
-            <li><a href="/ppf.html" class="hover:text-gold-400 transition">PPF &mdash; film de protection</a></li>
-            <li><a href="/covering.html" class="hover:text-gold-400 transition">Covering</a></li>
-            <li><a href="/polish-ceramique.html" class="hover:text-gold-400 transition">Pack Polish Céramique</a></li>
-            <li><a href="/nettoyage-chassis.html" class="hover:text-gold-400 transition">Nettoyage châssis &amp; moteur</a></li>
-        </ul>
-    </section>
 
     ${shell.repereFooter(`services/${loc.cityId}/index.html`, 'fr')}
     ${shell.repereFinDePage('fr')}

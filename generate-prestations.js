@@ -36,11 +36,12 @@ const TEL = '+41782657071';
 
 // Promo en cours. Mettre a null des qu'elle est terminee : les blocs dates
 // disparaissent alors des 10 pages d'un coup.
-const PROMO = { remise: 0.20, jusquAu: '2026-10-31', marqueur: 'PROMO-OCT-2026' };
+// Promo d'octobre 2026 terminee le 31.10 : plus de bloc promo sur les pages prestations.
+const PROMO = null;
 
 // Arrondi suisse aux 5 centimes
 function remise(prix) {
-    const n = parseFloat(prix) * (1 - PROMO.remise);
+    const n = parseFloat(prix) * (1 - (PROMO ? PROMO.remise : 0));
     return (Math.round(n * 20) / 20).toFixed(2);
 }
 

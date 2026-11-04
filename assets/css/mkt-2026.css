@@ -608,3 +608,20 @@ main:not(.mk-accueil)>section>.mk-eau+p.text-\[11px\],main:not(.mk-accueil)>sect
   body:has(.mk-bulle:not([hidden])){padding-bottom:104px}
 }
 html.mk-menu-ouvert .mk-bulle{display:none}
+/* Article de blog : en-tete = panneau sombre (comme les autres pages), corps sur fond clair */
+main:not(.mk-accueil)>section.ccw-article__tete h1{font-family:var(--mk-titre) !important;font-weight:700 !important;font-size:clamp(34px,5vw,64px) !important;letter-spacing:-.045em !important;line-height:1.02 !important;color:#fff !important}
+main:not(.mk-accueil)>.ccw-article{color:var(--mk-texte)}
+main:not(.mk-accueil)>.ccw-article>p,main:not(.mk-accueil)>.ccw-article>ul{color:var(--mk-texte) !important;font-weight:400}
+main:not(.mk-accueil)>.ccw-article :is(h2,h3,strong){color:var(--mk-noir) !important}
+main:not(.mk-accueil)>.ccw-article>h2{font-family:var(--mk-titre) !important;font-weight:700 !important;letter-spacing:-.04em !important;line-height:1.05 !important}
+main:not(.mk-accueil)>.ccw-article>ul li::before{color:var(--mk-noir);content:"\2022";font-size:1.2em;top:-.1em}
+main:not(.mk-accueil)>.ccw-article a:not([class]){color:var(--mk-noir);text-decoration:underline;text-decoration-color:var(--mk-jaune);text-decoration-thickness:2px;text-underline-offset:4px}
+main:not(.mk-accueil)>.ccw-article a:not([class]):hover{background:var(--mk-jaune)}
+main:not(.mk-accueil)>.ccw-article :is(.ccw-article__encadre,.ccw-article__rappel){background:var(--mk-creme);border:2px solid var(--mk-ligne);border-radius:16px}
+main:not(.mk-accueil)>.ccw-article :is(.ccw-article__encadre,.ccw-article__rappel) p{color:var(--mk-texte)}
+main:not(.mk-accueil)>.ccw-article .ccw-article__encadre-titre{color:var(--mk-noir) !important;font-family:var(--mk-titre) !important}
+main:not(.mk-accueil)>.ccw-article :is(.text-white,.text-gray-200,.text-gray-300){color:var(--mk-noir) !important}
+main:not(.mk-accueil)>.ccw-article :is(.text-gray-400,.text-gray-500){color:var(--mk-texte) !important}
+main:not(.mk-accueil)>.ccw-article :is(table th,table td){color:var(--mk-noir);border-color:var(--mk-ligne) !important}
+main:not(.mk-accueil)>section.mk-cle:not(:first-of-type) :is(a,button).bg-gold-400{color:var(--mk-noir) !important}
+main:not(.mk-accueil)>section.mk-legal :is(h2,h3){font-size:clamp(22px,2.6vw,28px) !important}

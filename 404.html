@@ -147,15 +147,13 @@ window.matchMedia("(min-width: 1100px)").addEventListener("change",function(e){i
     </div>
     <!-- /CCW:HEADER -->
 
-    <main class="grow flex items-center justify-center px-4 py-20">
-        <div class="text-center">
-            <h1 class="text-7xl md:text-9xl font-display font-bold text-transparent bg-clip-text bg-linear-to-r from-gold-400 to-yellow-200 mb-6">404</h1>
-            <h2 class="text-2xl md:text-3xl font-display font-semibold text-white mb-4 uppercase tracking-wider">Oups, ce véhicule a quitté le garage.</h2>
-            <p class="text-gray-400 font-light mb-10 max-w-md mx-auto">La page que vous recherchez n'existe pas, a été déplacée ou n'est plus disponible.</p>
-            <a href="index.html" class="inline-block bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-3 px-8 rounded-lg hover:bg-gold-500 hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all duration-300">
-                Retour à l'accueil
-            </a>
-        </div>
+    <main id="main-content" class="max-w-6xl mx-auto px-4 md:px-6">
+        <section class="pt-14 pb-10 md:pt-20 md:pb-12">
+            <h1 class="text-xs md:text-sm font-display font-bold text-gold-400 uppercase tracking-[0.25em] mb-5">404</h1>
+            <p class="text-4xl md:text-6xl font-display font-bold text-white tracking-tight leading-[0.95] mb-6 max-w-3xl">Oups, ce véhicule a quitté le garage.</p>
+            <p class="text-gray-300 font-light leading-relaxed max-w-2xl mb-8 text-base md:text-lg">La page que vous recherchez n'existe pas, a été déplacée ou n'est plus disponible.</p>
+            <a href="/" class="inline-block bg-gold-400 text-charcoal-900 font-display font-bold">Retour à l'accueil</a>
+        </section>
     </main>
 
     <!-- CCW:FOOTER -->
@@ -223,7 +221,7 @@ window.matchMedia("(min-width: 1100px)").addEventListener("change",function(e){i
         <a class="mk-bulle__lien" href="/jeu-concours.html">
             <span class="mk-bulle__eb">Jeu concours · novembre</span>
             <span class="mk-bulle__titre">Gagnez un iPhone 18 Pro Max</span>
-            <span class="mk-bulle__texte">Un lavage en novembre suffit pour participer →</span>
+            <span class="mk-bulle__texte">Un lavage réalisé et payé en novembre suffit →</span>
         </a>
         <button class="mk-bulle__x" type="button" aria-label="Fermer" data-x>&times;</button>
     </aside>

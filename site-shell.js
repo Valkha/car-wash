@@ -122,8 +122,8 @@ const ICO_WA = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stro
 // jaune, fixe en bas a droite, fermable (masque pour la visite). Servie `hidden`,
 // revelee par son script uniquement entre debut et fin du concours.
 const TXT_PASTILLE = {
-    fr: { eb: 'Jeu concours · novembre', titre: `Gagnez un ${C.lot.fr}`, texte: 'Un lavage en novembre suffit pour participer →', masquer: 'Fermer' },
-    en: { eb: 'Giveaway · November', titre: `Win an ${C.lot.en}`, texte: 'One wash in November is all it takes →', masquer: 'Close' },
+    fr: { eb: 'Jeu concours · novembre', titre: `Gagnez un ${C.lot.fr}`, texte: 'Un lavage réalisé et payé en novembre suffit →', masquer: 'Fermer' },
+    en: { eb: 'Giveaway · November', titre: `Win an ${C.lot.en}`, texte: 'One wash done and paid in November is all it takes →', masquer: 'Close' },
 };
 
 function scriptCarte() {
@@ -324,7 +324,7 @@ const UI = {
         footerAccroche: 'Premium car care, in our workshop or at your home. Geneva &amp; Vaud.',
         footerContact: 'Contact', footerHoraires: 'Opening hours', footerPresta: 'Services', footerInfos: 'Info',
         footerVilles: 'We operate in', footerAvis: 'Our Google reviews', skip: 'Skip to main content',
-        finalTitre: 'Your car, like new.', finalTexte: 'Book online, 30 % deposit, balance paid on site.', finalBouton: 'Book online',
+        finalTitre: 'Your car, like new.', finalTexte: 'Book online, 30% deposit, balance paid on site.', finalBouton: 'Book online',
     },
 };
 

@@ -100,10 +100,12 @@ function pageArticle(a, langue) {
     }];
     const autres = BLOG.articles.filter(x => x.id !== a.id).slice(0, 3);
     const corps = `
-        <article data-article="${a.id}" class="ccw-article pt-12 md:pt-20 pb-6 max-w-3xl">
+        <section class="ccw-article__tete pt-12 pb-10 md:pt-20 md:pb-14">
             <p class="${LABEL}"><a href="${SITE.pages.blog[langue]}" class="hover:text-white">Blog</a></p>
-            <h1 class="text-3xl md:text-5xl font-display font-bold text-white tracking-tight leading-[1.05] mb-6">${esc(jetons(d.titre, ou))}</h1>
-            <p class="text-gray-400 text-sm mb-10">${t.par} ${BLOG.auteur[langue]} · ${t.publie} <time datetime="${a.publie}">${dateLongue(a.publie, langue)}</time> · ${t.maj} <time datetime="${a.maj}">${dateLongue(a.maj, langue)}</time></p>
+            <h1 class="text-3xl md:text-5xl font-display font-bold text-white tracking-tight leading-[1.05] mb-6 max-w-4xl">${esc(jetons(d.titre, ou))}</h1>
+            <p class="text-gray-400 text-sm">${t.par} ${BLOG.auteur[langue]} · ${t.publie} <time datetime="${a.publie}">${dateLongue(a.publie, langue)}</time> · ${t.maj} <time datetime="${a.maj}">${dateLongue(a.maj, langue)}</time></p>
+        </section>
+        <article data-article="${a.id}" class="ccw-article pt-12 md:pt-16 pb-6 max-w-3xl" aria-label="${esc(jetons(d.titre, ou))}">
 ${blocs(d.corps, langue, ou)}
         </article>
         ${autres.length ? `<section class="py-12 md:py-16 border-t border-white/5">
