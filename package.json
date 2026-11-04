@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite --host",
-    "build": "npm run generate && npm run optimize && vite build",
+    "avis": "node scripts/avis-google.js",
+    "build": "npm run avis && npm run generate && npm run optimize && vite build",
     "preview": "vite preview",
     "test": "echo \"Error: no test specified\" && exit 1",
     "generate": "node generate-pages.js && node generate-prestations.js && node generate-site.js && node generate-blog.js && node generate-accueil.js && node inject-shell.js",

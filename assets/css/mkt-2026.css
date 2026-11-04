@@ -643,3 +643,11 @@ main:not(.mk-accueil)>section.mk-legal :is(h2,h3){font-size:clamp(22px,2.6vw,28p
 .mk-lot__photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .mk-lot__legende{position:absolute;left:10px;right:10px;bottom:10px;background:rgba(14,14,16,.82);color:#fff;border-radius:8px;padding:6px 10px;font-size:13px;font-family:var(--mk-corps);letter-spacing:0;line-height:1.3}
 .mk-lot--grand .mk-lot__legende{left:16px;right:16px;bottom:16px;font-size:15px;color:var(--mk-jaune)}
+/* Photo du lot detouree : posee en bas, sur un fond sombre eclaire */
+.mk-lot--photo{background:radial-gradient(ellipse at 50% 70%,#3a2430 0%,#141417 62%) !important}
+.mk-lot--photo .mk-lot__photo{inset:auto 0 0 0;height:88%;width:100%;object-fit:contain;object-position:center bottom}
+.mk-lot--petit.mk-lot--photo .mk-lot__photo{height:96%;object-position:50% 100%;left:-18%}
+.mk-lot--grand.mk-lot--photo .mk-lot__legende{bottom:auto;top:16px}
+.mk-lot--petit.mk-lot--photo .mk-lot__legende{left:auto;right:10px;bottom:auto;top:50%;translate:0 -50%;max-width:48%;text-align:left}
+.mk-formule__des{font-size:13px;font-weight:700;color:var(--mk-doux);margin-bottom:-14px !important}
+.mk-formule--principale .mk-formule__des{color:var(--mk-gris)}

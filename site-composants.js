@@ -186,7 +186,7 @@ function prestations(langue, { prix = true, filtre = null } = {}) {
 ${liste.map(p => `                <a href="${urlPrestation(p, langue)}" class="premium-card rounded-2xl p-6 flex flex-col group">
                     <p class="${LABEL}">${p.domicile ? t.atelierDomicile : t.atelier}</p>
                     <h3 class="text-lg font-display font-bold uppercase text-white tracking-wider mb-2 group-hover:text-gold-400 transition-colors">${esc(p[langue].nom)}</h3>
-                    ${prix ? `<p class="text-gold-400 font-display font-semibold mb-2">${p.prixDes ? t.des + ' ' : ''}${p.prix} <span class="text-xs">${t.ttc}</span></p>` : ''}
+                    ${prix ? `<p class="text-gold-400 font-display font-semibold mb-2">${t.des} ${p.prix} <span class="text-xs">${t.ttc}</span></p>` : ''}
                     <p class="text-gray-400 text-sm font-light leading-relaxed grow">${p[langue].resume}</p>
                     <span class="text-gold-400 text-xs font-display font-bold tracking-widest uppercase mt-4">${t.voirPresta} &rarr;</span>
                 </a>`).join('\n')}

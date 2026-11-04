@@ -485,7 +485,7 @@ ${d.lieuDomicile ? `                <div class="premium-card rounded-2xl p-6 md:
                 </h1>
                 <p class="text-gray-300 font-light leading-relaxed max-w-2xl mb-8">${d.accroche}</p>
                 <p class="flex items-end flex-wrap gap-x-4 gap-y-1">
-                    <span class="text-gray-400 text-sm">${presta.prixDes ? t.apartirde : t.prixFixe}</span>
+                    <span class="text-gray-400 text-sm">${t.apartirde}</span>
                     <span class="text-4xl md:text-5xl font-display font-bold text-gold-400 leading-none">${presta.prix}</span>
                     <span class="text-gray-300 text-sm">${t.ttc}</span>
                 </p>

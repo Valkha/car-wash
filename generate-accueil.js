@@ -20,6 +20,10 @@ const comp = require('./site-composants.js');
 const ROOT = __dirname;
 const SITE = shell.SITE, C = SITE.concours, CT = SITE.contact, D = SITE.deplacement, P = SITE.pages;
 const OFFRES = JSON.parse(fs.readFileSync(path.join(ROOT, 'offres.json'), 'utf8'));
+// Avis Google : avis.json, mis a jour au build par scripts/avis-google.js.
+const AVIS_G = JSON.parse(fs.readFileSync(path.join(ROOT, 'avis.json'), 'utf8'));
+const noteTxt = L => L === 'fr' ? String(AVIS_G.note).replace('.', ',') : String(AVIS_G.note);
+const extrait = (t, max = 150) => t.length <= max ? t : t.slice(0, t.lastIndexOf(' ', max)).replace(/[,;:]$/, '') + ' […]';
 const PRESTA = shell.PRESTATIONS;
 const esc = shell.esc;
 const telCourt = CT.telAffiche.replace(/^\+41 /, '0');
@@ -56,13 +60,13 @@ const T = {
         lead: 'Intérieur, extérieur et detailing. Dans notre atelier ou chez vous.',
         ligne: (rue, ville) => `Atelier au ${rue}, ${ville} · <strong>déplacement offert sur Genève</strong>`,
         ctaFormules: 'Voir les formules et prix', wa: 'ou écrivez-nous sur WhatsApp',
-        note: '4,8 sur Google · 25 avis', horaires: '7 j/7, 7h30–22h',
+        note: () => `${noteTxt('fr')} sur Google · ${AVIS_G.nombre} avis`, horaires: '7 j/7, 7h30–22h',
         carte: { eb: 'Jeu concours', dates: '1–30 nov.', titre: lot => `Gagnez un ${lot}`, texte: 'Un lavage réalisé et payé en novembre suffit pour participer (une participation par personne).', lien: 'Comment participer →' },
         bandeLabel: 'Nos prestations',
         bande: ['Atelier', 'Polish', 'Céramique', 'Lavage à domicile', 'Shampoing sièges', 'Jantes', 'Detailing'],
         packsSous: { argent: 'Le lavage complet, dehors et dedans', or: 'Le lavage complet, intérieur remis à neuf', diamant: 'Le detailing haut de gamme' },
         nomCourt: n => n.replace(/^Pack /, ''),
-        ttc: 'CHF TTC', reserver: 'Réserver', depl: 'Calculer mon déplacement',
+        ttc: 'CHF TTC', apartir: 'À partir de', reserver: 'Réserver', depl: 'Calculer mon déplacement',
         formulesH2: 'Trois formules,<br>des prix clairs.', formulesTxt: 'Prix TTC, affichés avant de réserver.',
         abo: 'Un lavage régulier ? Les abonnements reviennent de 10 % à 27 % moins cher →',
         chiffres: [['0 CHF', 'de déplacement à l’atelier et sur Genève'], ['7 j/7', 'de 7h30 à 22h'], ['24 h', 'pour annuler, acompte reporté'], ['30 %', 'd’acompte, par TWINT ou carte']],
@@ -92,7 +96,7 @@ const T = {
         concoursEb: 'Jeu concours · du 1er au 30 novembre', concoursH2: lot => `Un lavage en novembre, un ${lot} à gagner.`,
         concoursEtapes: ['Faites réaliser une prestation entre le 1er et le 30 novembre.', 'Une fois la prestation payée, vous êtes inscrit au tirage (une participation par personne).', 'Tirage au sort le 22 décembre 2026. Le gagnant est contacté personnellement.'],
         concoursCta: 'Réserver et participer', reglement: 'Règlement du jeu',
-        avisH2: 'Ils en parlent mieux que nous.', avisNote: '25 avis Google →', avisSource: 'Avis Google',
+        avisH2: 'Ils en parlent mieux que nous.', avisNote: () => `${AVIS_G.nombre} avis Google →`, avisSource: 'Avis Google',
         deplH2: 'Combien coûte le déplacement ?', deplTxt: 'À l’atelier, aucun frais. Pour un lavage chez vous, tapez votre adresse ou votre commune, ou touchez la carte.',
         deplLabel: 'Adresse ou commune de la voiture', deplPlaceholder: 'Ex. Rue de la Gare 1, Nyon', deplVide: 'Votre commune', deplNote: 'Tapez une adresse ou touchez la carte',
         legende: [`Genève · offert`, `Vaud zone orange · ${D.orange.prix} CHF`, `Vaud zone rouge · ${D.rouge.prix} CHF`],
@@ -139,13 +143,13 @@ const T = {
         lead: 'Interior, exterior and detailing. In our workshop or at your place.',
         ligne: (rue, ville) => `Workshop at ${rue}, ${ville === 'Genève' ? 'Geneva' : ville} · <strong>travel included in Geneva</strong>`,
         ctaFormules: 'See packs and prices', wa: 'or message us on WhatsApp',
-        note: '4.8 on Google · 25 reviews', horaires: '7 days a week, 7:30am–10pm',
+        note: () => `${noteTxt('en')} on Google · ${AVIS_G.nombre} reviews`, horaires: '7 days a week, 7:30am–10pm',
         carte: { eb: 'Giveaway', dates: '1–30 Nov', titre: lot => `Win an ${lot}`, texte: 'One service carried out and paid for in November is all it takes to enter (one entry per person).', lien: 'How to enter →' },
         bandeLabel: 'Our services',
         bande: ['Workshop', 'Polish', 'Ceramic', 'Car wash at home', 'Seat shampoo', 'Rims', 'Detailing'],
         packsSous: { argent: 'The full wash, outside and in', or: 'The full wash, interior brought back', diamant: 'High-end detailing' },
         nomCourt: n => n.replace(/ Pack$/, ''),
-        ttc: 'CHF incl. VAT', reserver: 'Book', depl: 'Work out my travel fee',
+        ttc: 'CHF incl. VAT', apartir: 'From', reserver: 'Book', depl: 'Work out my travel fee',
         formulesH2: 'Three packs,<br>clear prices.', formulesTxt: 'Prices incl. VAT, shown before you book.',
         abo: 'Washing regularly? Subscriptions work out 10% to 27% cheaper →',
         chiffres: [['CHF 0', 'travel fee at the workshop and in Geneva'], ['7/7', 'from 7:30am to 10pm'], ['24 h', 'to cancel, deposit carried over'], ['30%', 'deposit, by TWINT or card']],
@@ -175,7 +179,7 @@ const T = {
         concoursEb: 'Giveaway · 1 to 30 November', concoursH2: lot => `A wash in November, an ${lot} to win.`,
         concoursEtapes: ['Have a service carried out between 1 and 30 November.', 'Once the service is paid for, you are entered in the draw (one entry per person).', 'Draw on 22 December 2026. The winner is contacted personally.'],
         concoursCta: 'Book and enter', reglement: 'Giveaway rules',
-        avisH2: 'They say it better than we do.', avisNote: '25 Google reviews →', avisSource: 'Google review, in French',
+        avisH2: 'They say it better than we do.', avisNote: () => `${AVIS_G.nombre} Google reviews →`, avisSource: 'Google review, in French',
         deplH2: 'How much is the travel fee?', deplTxt: 'Nothing at the workshop. For a wash at your place, type your address or municipality, or tap the map.',
         deplLabel: 'Address or municipality of the car', deplPlaceholder: 'E.g. Rue de la Gare 1, Nyon', deplVide: 'Your municipality', deplNote: 'Type an address or tap the map',
         legende: [`Geneva · free`, `Vaud orange zone · CHF ${D.orange.prix}`, `Vaud red zone · CHF ${D.rouge.prix}`],
@@ -236,13 +240,9 @@ const MEDIAS = [
     { img: 'photo-interieur-cuir-noir.webp' },
 ];
 
-// Avis Google reels, cites mot pour mot (fiche Google, 25 avis, 4,8). Ils
-// restent en francais sur la page anglaise : on ne traduit pas un avis.
-const AVIS = [
-    { texte: 'Excellent service, je suis vraiment satisfait du résultat. L’équipe est professionnelle, accueillante et très efficace. Ma voiture est ressortie impeccable, comme neuve ! […]', extrait: 'Excellent service, je suis vraiment satisfait du résultat. […] Ma voiture est ressortie impeccable, comme neuve !', nom: 'Aymen S.' },
-    { texte: 'Service impeccable à tous points de vue : prise en charge facile et très sympathique, nettoyage intérieur et extérieur parfait, jusque dans les moindres recoins. Plus aucune saleté, excellent rapport qualité-prix. J’y retournerai sans hésiter.', nom: 'Olivier D.' },
-    { texte: 'Ma voiture était dans un état catastrophique et je l’ai récupérée impeccable, propre dans les moindres détails. En plus de la qualité du travail, j’ai apprécié le sérieux, la gentillesse et le professionnalisme de l’équipe. […]', nom: 'Amina D.' },
-];
+// Avis Google reels, cites mot pour mot depuis avis.json. Ils restent dans leur
+// langue d'origine sur la page anglaise : on ne traduit pas un avis.
+const AVIS = AVIS_G.avis;
 
 // ---------------------------------------------------------------------------
 function img(src, alt, { w, h, lazy = true, cls = '' } = {}) {
@@ -273,7 +273,7 @@ function hero(L) {
                         <a href="#formules" class="mk-btn mk-btn--jaune mk-btn--grand mk-reflet">${t.ctaFormules}${FLECHE}</a>
                         <a href="https://wa.me/${CT.whatsapp}" class="mk-a-hero__wa" target="_blank" rel="noopener noreferrer">${t.wa}</a>
                     </div>
-                    <p class="mk-a-hero__note mk-in mk-d5"><a href="#avis"><span class="mk-etoiles" aria-hidden="true">★★★★★</span> ${t.note}</a> · ${t.horaires}</p>
+                    <p class="mk-a-hero__note mk-in mk-d5"><a href="#avis"><span class="mk-etoiles" aria-hidden="true">★★★★★</span> ${t.note()}</a> · ${t.horaires}</p>
                 </div>
                 <a href="#concours" class="mk-a-hero__carte mk-in mk-d5" data-concours data-promo-from="${C.debut}" data-promo-until="${C.fin}">
                     <span class="mk-a-hero__carte-haut"><span>${t.carte.eb}</span><span class="mk-pastille">${t.carte.dates}</span></span>
@@ -307,6 +307,7 @@ function carteFormule(p, L) {
                     ${principal ? `<span class="mk-formule__badge">${esc(p.badge[L])}</span>` : ''}
                     <h3 class="mk-formule__nom">${esc(nomCourt)}</h3>
                     <p class="mk-formule__sous">${esc(t.packsSous[p.id])} · ${nbsp(esc(d.duree))}</p>
+                    <p class="mk-formule__des">${t.apartir}</p>
                     <p class="mk-formule__prix"><span>${p.prix}</span> ${t.ttc}</p>
                     <ul class="mk-formule__liste">
 ${d.inclus.map(x => `                        <li>${COCHE(principal ? '#FFCC00' : '#0E0E10')}<span>${esc(x)}</span></li>`).join('\n')}
@@ -428,7 +429,7 @@ function atelier(L) {
                 <a href="tel:${CT.tel}" class="mk-lien-fort">${t.atelierDevis(telCourt)}</a>
             </div>
             <ul class="mk-a-atelier__liste">
-${t.atelierLignes.map(([id, nom, txt]) => { const p = presta(id); return `                <li class="mk-carte-in"><a href="${shell.urlPrestation(p, L)}" class="mk-a-atelier__nom">${nom}</a><span class="mk-a-atelier__prix">${p.prixDes ? t.des : ''}${prix(p)}</span><p>${txt}</p></li>`; }).join('\n')}
+${t.atelierLignes.map(([id, nom, txt]) => { const p = presta(id); return `                <li class="mk-carte-in"><a href="${shell.urlPrestation(p, L)}" class="mk-a-atelier__nom">${nom}</a><span class="mk-a-atelier__prix">${t.des}${prix(p)}</span><p>${txt}</p></li>`; }).join('\n')}
             </ul>
         </div>
     </section>`;
@@ -461,18 +462,20 @@ ${t.concoursEtapes.map((x, i) => `                        <li class="mk-carte-in
 function avis(L) {
     const t = T[L];
     const [a0, ...autres] = AVIS;
-    const lang = L === 'fr' ? '' : ' lang="fr"';
-    const note = L === 'fr' ? '4,8' : '4.8';
+    const lang = a => (a.langue || 'fr') === L ? '' : ` lang="${esc(a.langue || 'fr')}"`;
+    // Page anglaise : on precise la langue quand l'avis est en francais.
+    const source = a => L === 'en' && (a.langue || 'fr') !== 'fr' ? 'Google review' : t.avisSource;
+    const nom = a => a.lien ? `<a href="${esc(a.lien)}" target="_blank" rel="noopener noreferrer nofollow">${esc(a.nom)}</a>` : esc(a.nom);
     return `
     <section id="avis" class="mk-a-avis">
         <div class="mk-conteneur">
             <div class="mk-tete">
                 <h2 class="mk-h2 mk-revele">${t.avisH2}</h2>
-                <a href="${CT.ficheGoogle}" class="mk-a-avis__note" target="_blank" rel="noopener noreferrer"><strong>${note}</strong><span><span class="mk-etoiles mk-etoiles--fonce" aria-hidden="true">★★★★★</span> ${t.avisNote}</span></a>
+                <a href="${esc(AVIS_G.fiche || CT.ficheGoogle)}" class="mk-a-avis__note" target="_blank" rel="noopener noreferrer"><strong>${noteTxt(L)}</strong><span><span class="mk-etoiles mk-etoiles--fonce" aria-hidden="true">★★★★★</span> ${t.avisNote()}</span></a>
             </div>
             <div class="mk-a-avis__grille">
-                <figure class="mk-avis mk-avis--grand mk-carte-in"><blockquote${lang}>« ${esc(a0.extrait)} »</blockquote><figcaption><strong>${esc(a0.nom)}</strong> · ${t.avisSource}</figcaption></figure>
-${autres.map(a => `                <figure class="mk-avis mk-carte-in"><blockquote${lang}>« ${esc(a.texte)} »</blockquote><figcaption><strong>${esc(a.nom)}</strong> · ${t.avisSource}</figcaption></figure>`).join('\n')}
+                <figure class="mk-avis mk-avis--grand mk-carte-in"><blockquote${lang(a0)}>« ${esc(extrait(a0.texte))} »</blockquote><figcaption><strong>${nom(a0)}</strong> · ${source(a0)}</figcaption></figure>
+${autres.map(a => `                <figure class="mk-avis mk-carte-in"><blockquote${lang(a)}>« ${esc(a.texte)} »</blockquote><figcaption><strong>${nom(a)}</strong> · ${source(a)}</figcaption></figure>`).join('\n')}
             </div>
         </div>
     </section>`;

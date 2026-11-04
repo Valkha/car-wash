@@ -120,6 +120,27 @@ function remplacer(html, nom, contenu, fichier, amorce) {
     return html.slice(0, i + ouv.length) + contenu + '\n' + retrait + html.slice(j);
 }
 
+
+// En-tete : chaque page porte la CSP du site et des balises Open Graph completes
+// (titre, description, URL, image). Ajoutees ici quand une page n'en a pas.
+function completerHead(html, langue) {
+    if (!html.includes('Content-Security-Policy')) {
+        html = html.replace(/(<meta charset="[^"]*">)/i, `$1\n    <meta http-equiv="Content-Security-Policy" content="${shell.CSP}">`);
+    }
+    if (!/property="og:title"/.test(html)) {
+        const g = r => (html.match(r) || [])[1] || '';
+        const titre = g(/<title>([\s\S]*?)<\/title>/), desc = g(/<meta name="description" content="([^"]*)"/), url = g(/<link rel="canonical" href="([^"]*)"/);
+        const og = [
+            ['og:type', 'website'], url && ['og:url', url], ['og:title', titre.trim()], desc && ['og:description', desc],
+            ['og:image', `${shell.SITE.base}/assets/images/MB-01-opt.webp`], ['og:locale', langue === 'fr' ? 'fr_CH' : 'en_GB'], ['og:site_name', shell.SITE.marque],
+        ].filter(Boolean).map(([k, v]) => `    <meta property="${k}" content="${v}">`).join('\n');
+        html = html.replace(/(\n\s*<\/head>)/i, `\n${og}$1`);
+    } else if (!/property="og:image"/.test(html)) {
+        html = html.replace(/(<meta property="og:title"[^>]*>)/, `$1\n    <meta property="og:image" content="${shell.SITE.base}/assets/images/MB-01-opt.webp">`);
+    }
+    return html;
+}
+
 function verifierDates(html, fichier) {
     const re = /<[a-z]+\b[^>]*\bdata-concours\b[^>]*>/gi;
     let m;
@@ -152,6 +173,8 @@ pages.forEach(fichier => {
         if (!a.fr) erreurs.push(`${fichier} : aucune traduction declaree (site.json, prestations.json, blog.json).`);
         else [a.fr, a.en].forEach(u => { if (!existeUrl(u)) erreurs.push(`${fichier} : sa traduction ${u} n'existe pas.`); });
     }
+
+    html = completerHead(html, langue);
 
     html = remplacer(html, 'CONCOURS', shell.blocFinDePage(langue, { pageConcours: PAGES_CONCOURS.includes(fichier), actuel: shell.cheminVersUrl(fichier) }),
         fichier, h => h.lastIndexOf('</body>'));

@@ -325,7 +325,7 @@
     "gabarit": "commercial",
     "photo": "/images/fonds/mousse-suv.webp",
     "fr": {
-      "titre": "Lavage et nettoyage auto à Genève et Vaud, intérieur et extérieur | Clean Cars Wash",
+      "titre": "Lavage et nettoyage auto, Genève et Vaud | Clean Cars Wash",
       "description": "Lavage et nettoyage de voiture, intérieur et extérieur, dans notre atelier à Genève ou chez vous. Packs dès {prix:argent} CHF TTC. Réservation en ligne.",
       "h1": "Lavage et nettoyage auto à Genève et Vaud",
       "accroche": "Intérieur, extérieur, jusque dans le détail.",
@@ -333,7 +333,7 @@
       "ctas": [["Voir les packs", "#packs", "or"], ["Réserver", "@reserver", "ligne"]]
     },
     "en": {
-      "titre": "Car wash and cleaning in Geneva and Vaud, inside and out | Clean Cars Wash",
+      "titre": "Car wash and cleaning, Geneva and Vaud | Clean Cars Wash",
       "description": "Car wash and cleaning, inside and out, in our Geneva workshop or at your home. Packs from CHF {prix:argent} incl. VAT. Online booking.",
       "h1": "Car wash and cleaning in Geneva and Vaud",
       "accroche": "Inside, outside, down to the detail.",

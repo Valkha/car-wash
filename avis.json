@@ -1,0 +1,12 @@
+{
+  "source": "Google",
+  "majLe": "2026-11-04",
+  "note": 4.8,
+  "nombre": 25,
+  "fiche": "https://maps.app.goo.gl/HgBjjuKPdWKeo9E46",
+  "avis": [
+    { "nom": "Aymen S.", "note": 5, "texte": "Excellent service, je suis vraiment satisfait du résultat. L’équipe est professionnelle, accueillante et très efficace. Ma voiture est ressortie impeccable, comme neuve ! […]", "langue": "fr" },
+    { "nom": "Olivier D.", "note": 5, "texte": "Service impeccable à tous points de vue : prise en charge facile et très sympathique, nettoyage intérieur et extérieur parfait, jusque dans les moindres recoins. Plus aucune saleté, excellent rapport qualité-prix. J’y retournerai sans hésiter.", "langue": "fr" },
+    { "nom": "Amina D.", "note": 5, "texte": "Ma voiture était dans un état catastrophique et je l’ai récupérée impeccable, propre dans les moindres détails. En plus de la qualité du travail, j’ai apprécié le sérieux, la gentillesse et le professionnalisme de l’équipe. […]", "langue": "fr" }
+  ]
+}
