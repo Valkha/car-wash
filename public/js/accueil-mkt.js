@@ -24,7 +24,7 @@
     charge: 'Recherche…', erreur: 'Recherche indisponible', erreurNote: 'Tapez le nom de votre commune, ou appelez-nous', aide: 'Survolez ou touchez une commune'
   };
   var Z = {
-    ge: { prix: L.offert, fee: 0, bg: '#FFCC00', fg: '#0E0E10' },
+    ge: { prix: L.offert, fee: 0, bg: '#3BAF62', fg: '#0E0E10' },
     orange: { prix: '39.90 CHF', fee: 39.9, bg: '#F2994A', fg: '#0E0E10' },
     red: { prix: '59.90 CHF', fee: 59.9, bg: '#D9483B', fg: '#FFFFFF' }
   };

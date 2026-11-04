@@ -173,7 +173,7 @@ const generateHTML = (loc) => `<!DOCTYPE html>
             <p class="font-display font-bold text-[11px] tracking-[0.3em] uppercase text-gold-400 mt-10 mb-4">Nos prestations spécialisées</p>
             <ul class="flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-400 font-light">
                 <li><a href="/ciel-etoile.html">Ciel étoilé</a></li>
-                <li><a href="/ppf.html">PPF &mdash; film de protection</a></li>
+                <li><a href="/ppf.html">PPF, film de protection</a></li>
                 <li><a href="/covering.html">Covering</a></li>
                 <li><a href="/polish-ceramique.html">Pack Polish Céramique</a></li>
                 <li><a href="/nettoyage-chassis.html">Nettoyage châssis &amp; moteur</a></li>

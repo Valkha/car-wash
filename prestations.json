@@ -6,7 +6,7 @@
     "prixDes": true,
     "fr": {
       "nom": "Ciel étoilé",
-      "titrePage": "Ciel étoilé voiture Genève — à partir de 499 CHF | Clean Cars Wash",
+      "titrePage": "Ciel étoilé voiture Genève, à partir de 499 CHF | Clean Cars Wash",
       "description": "Installation sur mesure d'un ciel étoilé dans votre véhicule à Genève. Effet réaliste, plusieurs couleurs, intensité réglable et contrôle à distance. Dès 499 CHF TTC.",
       "eyebrow": "Personnalisation intérieure",
       "h1a": "Ciel",
@@ -19,7 +19,7 @@
           "items": [
             [
               "Effet étoilé réaliste",
-              "Des fibres optiques de diamètres variés, réparties à la main pour imiter une vraie voûte céleste — pas une grille régulière."
+              "Des fibres optiques de diamètres variés, réparties à la main pour imiter une vraie voûte céleste, pas une grille régulière."
             ],
             [
               "Plusieurs couleurs",
@@ -77,7 +77,7 @@
     },
     "en": {
       "nom": "Starlight headliner",
-      "titrePage": "Car Starlight Headliner Geneva — from CHF 499 | Clean Cars Wash",
+      "titrePage": "Car Starlight Headliner Geneva, from CHF 499 | Clean Cars Wash",
       "description": "Bespoke starlight headliner fitted in your vehicle in Geneva. Realistic effect, several colours, adjustable brightness and remote control. From CHF 499 incl. VAT.",
       "eyebrow": "Interior customisation",
       "h1a": "Starlight",
@@ -90,7 +90,7 @@
           "items": [
             [
               "Realistic star effect",
-              "Optical fibres of varying diameters, laid out by hand to imitate a real night sky — not a regular grid."
+              "Optical fibres of varying diameters, laid out by hand to imitate a real night sky, not a regular grid."
             ],
             [
               "Several colours",
@@ -161,8 +161,8 @@
     "prix": "999.00",
     "prixDes": true,
     "fr": {
-      "nom": "PPF — film de protection",
-      "titrePage": "PPF Genève — film de protection carrosserie dès 999 CHF | Clean Cars Wash",
+      "nom": "PPF, film de protection",
+      "titrePage": "PPF Genève, film de protection carrosserie dès 999 CHF | Clean Cars Wash",
       "description": "Pose de film de protection PPF à Genève. Protection contre les rayures, les impacts et les gravillons, finition transparente qui préserve la peinture d'origine. Dès 999 CHF TTC.",
       "eyebrow": "Protection de carrosserie",
       "h1a": "PPF",
@@ -179,7 +179,7 @@
             ],
             [
               "Résistance aux projections de gravillons",
-              "Face avant, bas de caisse, arêtes de capot — les zones qui prennent tout sur autoroute."
+              "Face avant, bas de caisse, arêtes de capot : les zones qui prennent tout sur autoroute."
             ],
             [
               "Préserve la peinture d'origine",
@@ -202,8 +202,8 @@
       "resume": "Film transparent qui encaisse gravillons et rayures à la place de votre laque."
     },
     "en": {
-      "nom": "PPF — paint protection film",
-      "titrePage": "PPF Geneva — paint protection film from CHF 999 | Clean Cars Wash",
+      "nom": "PPF, paint protection film",
+      "titrePage": "PPF Geneva, paint protection film from CHF 999 | Clean Cars Wash",
       "description": "Paint protection film fitted in Geneva. Protection against scratches, stone chips and impacts, with a clear finish that preserves the original paint. From CHF 999 incl. VAT.",
       "eyebrow": "Bodywork protection",
       "h1a": "PPF",
@@ -220,7 +220,7 @@
             ],
             [
               "Resistance to stone chips",
-              "Front end, sills, bonnet edges — the areas that take everything on the motorway."
+              "Front end, sills, bonnet edges: the areas that take everything on the motorway."
             ],
             [
               "Preserves the original paint",
@@ -258,7 +258,7 @@
     "prixDes": true,
     "fr": {
       "nom": "Covering",
-      "titrePage": "Covering voiture Genève — changement de couleur dès 999 CHF | Clean Cars Wash",
+      "titrePage": "Covering voiture Genève, changement de couleur dès 999 CHF | Clean Cars Wash",
       "description": "Covering intégral ou partiel à Genève. Large choix de couleurs et de finitions mat, brillant, satiné ou carbone. Solution réversible qui préserve la peinture d'origine. Dès 999 CHF TTC.",
       "eyebrow": "Personnalisation extérieure",
       "h1a": "Covering",
@@ -297,8 +297,8 @@
     },
     "en": {
       "nom": "Vehicle wrapping",
-      "titrePage": "Car Wrapping Geneva — colour change from CHF 999 | Clean Cars Wash",
-      "description": "Full or partial vehicle wrapping in Geneva. Wide choice of colours and finishes — matt, gloss, satin or carbon. Fully reversible, preserves the original paint. From CHF 999 incl. VAT.",
+      "titrePage": "Car Wrapping Geneva, colour change from CHF 999 | Clean Cars Wash",
+      "description": "Full or partial vehicle wrapping in Geneva. Wide choice of colours and finishes, matt, gloss, satin or carbon. Fully reversible, preserves the original paint. From CHF 999 incl. VAT.",
       "eyebrow": "Exterior customisation",
       "h1a": "Wrapping",
       "h1b": "your style",
@@ -357,7 +357,7 @@
       "eyebrow": "Remise à neuf complète",
       "h1a": "Pack polish",
       "h1b": "céramique",
-      "accroche": "La prestation la plus complète du catalogue. La carrosserie est décontaminée, corrigée, puis scellée sous une protection céramique — et l'habitacle est repris dans le même mouvement.",
+      "accroche": "La prestation la plus complète du catalogue. La carrosserie est décontaminée, corrigée, puis scellée sous une protection céramique, et l'habitacle est repris dans le même mouvement.",
       "sections": [
         {
           "titre": "Extérieur",
@@ -369,7 +369,7 @@
             ],
             [
               "Décontamination",
-              "Goudron, résine et particules ferreuses retirés un à un — ce qu'un lavage ne décroche jamais."
+              "Goudron, résine et particules ferreuses retirés un à un, ce qu'un lavage ne décroche jamais."
             ],
             [
               "Polish professionnel",
@@ -437,7 +437,7 @@
       "eyebrow": "Complete restoration",
       "h1a": "Ceramic polish",
       "h1b": "pack",
-      "accroche": "The most complete service in the catalogue. The bodywork is decontaminated, corrected, then sealed under a ceramic coating — and the interior is brought back in the same pass.",
+      "accroche": "The most complete service in the catalogue. The bodywork is decontaminated, corrected, then sealed under a ceramic coating, and the interior is brought back in the same pass.",
       "sections": [
         {
           "titre": "Exterior",
@@ -449,7 +449,7 @@
             ],
             [
               "Decontamination",
-              "Tar, resin and ferrous particles removed one by one — what a wash never lifts."
+              "Tar, resin and ferrous particles removed one by one, what a wash never lifts."
             ],
             [
               "Professional polish",
@@ -530,7 +530,7 @@
     "prixDes": false,
     "fr": {
       "nom": "Nettoyage châssis & moteur",
-      "titrePage": "Nettoyage châssis et moteur Genève — 159.90 CHF | Clean Cars Wash",
+      "titrePage": "Nettoyage châssis et moteur Genève, 159.90 CHF | Clean Cars Wash",
       "description": "Nettoyage du châssis, du compartiment moteur et des passages de roue à Genève. 159.90 CHF TTC. La préparation idéale avant la visite technique du véhicule.",
       "eyebrow": "Dessous de caisse",
       "h1a": "Nettoyage",
@@ -565,7 +565,7 @@
     },
     "en": {
       "nom": "Chassis & engine cleaning",
-      "titrePage": "Chassis & Engine Cleaning Geneva — CHF 159.90 | Clean Cars Wash",
+      "titrePage": "Chassis & Engine Cleaning Geneva, CHF 159.90 | Clean Cars Wash",
       "description": "Chassis, engine bay and wheel arch cleaning in Geneva. CHF 159.90 incl. VAT. The ideal preparation before the vehicle inspection.",
       "eyebrow": "Underbody",
       "h1a": "Chassis &",

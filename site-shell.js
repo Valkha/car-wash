@@ -197,7 +197,7 @@ function blocConcoursOffres(langue) {
     return `
         <section data-concours data-promo-until="${C.fin}" class="pb-14 md:pb-20">
             <div class="premium-card rounded-3xl p-8 md:p-12" style="border-color:rgba(212,175,55,.35);">
-                <p class="hero-eyebrow mb-4">${fr ? 'Jeu-concours' : 'Giveaway'} &mdash; ${fr ? `du ${du} au ${au}` : `${du} to ${au}`}</p>
+                <p class="hero-eyebrow mb-4">${fr ? 'Jeu-concours' : 'Giveaway'} · ${fr ? `du ${du} au ${au}` : `${du} to ${au}`}</p>
                 <h2 class="text-3xl md:text-5xl font-display font-bold text-white uppercase tracking-tight leading-[0.95] mb-6">
                     ${fr ? 'Un' : 'An'} <span class="text-gold-400">${esc(C.lot[langue])}</span><br>${fr ? 'à gagner' : 'to win'}
                 </h2>
@@ -410,7 +410,7 @@ ${it.href ? `                    <li><a href="${it.href}"${courant(it.href, actu
         <a class="mk-bandeau" href="${lienBandeau}" data-concours data-promo-from="${C.debut}" data-promo-until="${C.fin}">${esc(t.bandeau)}</a>
         <header class="mk-header">
             <div class="mk-header__barre">
-                <a href="${SITE.pages.accueil[langue]}" class="mk-logo" aria-label="${SITE.marque} — ${t.accueil}">
+                <a href="${SITE.pages.accueil[langue]}" class="mk-logo" aria-label="${SITE.marque}, ${t.accueil}">
                     <img src="/assets/images/logo-v2-tiny.webp" alt="" width="120" height="120">
                     <span class="mk-logo__mot">CLEAN CARS WASH</span>
                 </a>
@@ -420,7 +420,7 @@ ${desktop}
                     </ul>
                 </nav>
                 <div class="mk-header__actions">
-                    <a href="tel:${c.tel}" class="mk-tel">${ICONE_TEL}<span class="mk-tel__num">${esc(c.telAffiche.replace(/^\+41 /, '0'))}</span><span class="sr-only"> — ${t.appeler} ${SITE.marque}</span></a>
+                    <a href="tel:${c.tel}" class="mk-tel">${ICONE_TEL}<span class="mk-tel__num">${esc(c.telAffiche.replace(/^\+41 /, '0'))}</span><span class="sr-only">, ${t.appeler} ${SITE.marque}</span></a>
                     ${lang}
                     <a href="${urlReserver(langue)}" class="mk-btn mk-btn--noir mk-header__reserver"${courant(urlReserver(langue), actuel)}>${t.reserver}</a>
                     <button type="button" id="ccw-burger" class="mk-burger" aria-expanded="false" aria-controls="ccw-menu" aria-label="${t.ouvrir}" data-label-open="${t.ouvrir}" data-label-close="${t.fermer}">

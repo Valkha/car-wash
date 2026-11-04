@@ -9,7 +9,7 @@
       "description": "Lavage et detailing auto pour particuliers, à domicile ou en atelier, à Genève et dans le canton de Vaud. Prix TTC, acompte en ligne, déplacement offert à Genève.",
       "h1": "Lavage et detailing auto pour particuliers à Genève et Vaud",
       "accroche": "Votre voiture, traitée avec le soin qu’elle mérite.",
-      "intro": "Berlines, SUV, sportives, véhicules de collection — nous traitons chaque voiture avec le soin qu'elle mérite, chez vous ou dans notre atelier, à Genève et dans le canton de Vaud.",
+      "intro": "Berlines, SUV, sportives, véhicules de collection : nous traitons chaque voiture avec le soin qu'elle mérite, chez vous ou dans notre atelier, à Genève et dans le canton de Vaud.",
       "ctas": [["Voir les tarifs", "@tarifs", "or"], ["Réserver", "@reserver", "ligne"]]
     },
     "en": {
@@ -17,19 +17,19 @@
       "description": "Car wash and detailing for private customers, at home or in our workshop, in Geneva and the canton of Vaud. Prices incl. VAT, online deposit, travel included in Geneva.",
       "h1": "Car wash and detailing for private customers in Geneva & Vaud",
       "accroche": "Your car, treated with the care it deserves.",
-      "intro": "Sedans, SUVs, sports cars, collector vehicles — we treat every car with the care it deserves, at your place or in our workshop, across Geneva and the canton of Vaud.",
+      "intro": "Sedans, SUVs, sports cars, collector vehicles: we treat every car with the care it deserves, at your place or in our workshop, across Geneva and the canton of Vaud.",
       "ctas": [["See the prices", "@tarifs", "or"], ["Book", "@reserver", "ligne"]]
     },
     "sections": [
       { "type": "cartes", "colonnes": 2,
         "fr": { "label": "Deux façons de nous confier votre voiture", "titre": "En atelier ou à domicile", "intro": "Les deux se valent : choisissez selon votre journée et selon la prestation.",
           "cartes": [
-            { "titre": "À domicile ou au travail", "texte": "Nous venons à vous — pas l'inverse. Votre véhicule est pris en charge là où vous êtes, sans effort de votre part. Déplacement offert à Genève.", "lien": ["Le service à domicile", "@a-domicile"] },
+            { "titre": "À domicile ou au travail", "texte": "Nous venons à vous, pas l'inverse. Votre véhicule est pris en charge là où vous êtes, sans effort de votre part. Déplacement offert à Genève.", "lien": ["Le service à domicile", "@a-domicile"] },
             { "titre": "En atelier", "texte": "Pour les prestations profondes (polissage, traitement céramique, film de protection), votre véhicule est pris en charge dans notre atelier équipé, Chemin des Vergers à Genève.", "lien": ["L’atelier", "@atelier"] }
           ] },
         "en": { "label": "Two ways to entrust us with your car", "titre": "In the workshop or at home", "intro": "Both are equally good: choose according to your day and to the service.",
           "cartes": [
-            { "titre": "At home or at work", "texte": "We come to you — not the other way around. Your vehicle is taken care of wherever you are, effortlessly. Travel included in Geneva.", "lien": ["The at-home service", "@a-domicile"] },
+            { "titre": "At home or at work", "texte": "We come to you, not the other way around. Your vehicle is taken care of wherever you are, effortlessly. Travel included in Geneva.", "lien": ["The at-home service", "@a-domicile"] },
             { "titre": "In the workshop", "texte": "For deep treatments (polishing, ceramic coating, protection film), your vehicle is handled in our fully equipped workshop, Chemin des Vergers in Geneva.", "lien": ["The workshop", "@atelier"] }
           ] } },
       { "cle": true, "type": "cartes", "colonnes": 4,
@@ -67,7 +67,7 @@
       "titre": "Lavage auto à domicile à Genève et Vaud | Clean Cars Wash",
       "description": "Lavage et detailing auto à domicile ou au travail à Genève et dans le canton de Vaud. Déplacement offert à Genève, forfait annoncé sur Vaud. Conditions et prix par zone.",
       "h1": "Lavage auto à domicile à Genève et Vaud",
-      "accroche": "Nous venons à vous — pas l’inverse.",
+      "accroche": "Nous venons à vous, pas l’inverse.",
       "intro": "Votre véhicule est pris en charge chez vous ou sur votre lieu de travail, sans effort de votre part. Le déplacement est offert dans tout le canton de Genève ; sur Vaud, un forfait fixe selon le district, annoncé avant que vous réserviez.",
       "ctas": [["Réserver à domicile", "@reserver", "or"], ["Prix par zone", "#zones", "ligne"]]
     },
@@ -75,7 +75,7 @@
       "titre": "Mobile car wash at home in Geneva & Vaud | Clean Cars Wash",
       "description": "Car wash and detailing at your home or office in Geneva and the canton of Vaud. Travel included in Geneva, flat fee announced upfront in Vaud. Requirements and prices by zone.",
       "h1": "Mobile car wash at your home in Geneva & Vaud",
-      "accroche": "We come to you — not the other way around.",
+      "accroche": "We come to you, not the other way around.",
       "intro": "Your vehicle is taken care of at your home or workplace, effortlessly. Travel is included across the canton of Geneva; in Vaud, a fixed fee depending on the district, announced before you book.",
       "ctas": [["Book at home", "@reserver", "or"], ["Prices by zone", "#zones", "ligne"]]
     },
@@ -115,12 +115,12 @@
           ] } },
       { "type": "faq",
         "fr": { "label": "Questions pratiques", "titre": "Le service à domicile en pratique", "items": [
-          ["Comment fonctionne la récupération à domicile ?", "Nous venons récupérer votre véhicule chez vous ou sur votre lieu de travail (Genève et Vaud) et vous le ramenons après la prestation. Le déplacement est offert dans le canton de Genève ; sur Vaud, le forfait de la zone s'applique — <a href=\"@zones\">voir la carte des zones</a>."],
+          ["Comment fonctionne la récupération à domicile ?", "Nous venons récupérer votre véhicule chez vous ou sur votre lieu de travail (Genève et Vaud) et vous le ramenons après la prestation. Le déplacement est offert dans le canton de Genève ; sur Vaud, le forfait de la zone s'applique, <a href=\"@zones\">voir la carte des zones</a>."],
           ["Que faut-il prévoir pour une intervention à domicile ?", "Une place de parking privative et une prise électrique 230V (obligatoires), un point d'eau (recommandé). Sans emplacement ou prise à notre arrivée, la prestation reste due et sera facturée intégralement."],
           ["Intervenez-vous par mauvais temps ?", "Oui, nous intervenons par tous les temps grâce à notre matériel professionnel adapté. En cas de conditions extrêmes (orage, neige), nous vous contactons pour adapter le protocole ou convenir ensemble d'un report sans frais."]
         ] },
         "en": { "label": "Practical questions", "titre": "The at-home service in practice", "items": [
-          ["How does home pick-up work?", "We pick up your vehicle from your home or office (across Geneva and Vaud) and return it after the service. Travel is included within the canton of Geneva; in Vaud, the zone fee applies — <a href=\"@zones\">see the zone map</a>."],
+          ["How does home pick-up work?", "We pick up your vehicle from your home or office (across Geneva and Vaud) and return it after the service. Travel is included within the canton of Geneva; in Vaud, the zone fee applies, <a href=\"@zones\">see the zone map</a>."],
           ["What do I need to prepare for a home service?", "A private parking space and a 230V power outlet (required), a water point (recommended). If no parking or outlet is available on our arrival, the full service fee remains due and will be invoiced."],
           ["Do you operate in bad weather?", "Yes, we operate in all weather conditions thanks to our professional equipment. In case of extreme conditions (storm, snow), we contact you to adapt the protocol or agree on a free reschedule."]
         ] } },
@@ -210,13 +210,13 @@
         "fr": { "label": "Pour qui", "titre": "Votre véhicule est votre carte de visite",
           "cartes": [
             { "titre": "Entreprises", "texte": "Flottes de 3 à 50 véhicules et plus. Tarifs dégressifs, facturation entreprise, intervention planifiée." },
-            { "titre": "Professionnels", "texte": "Agents immobiliers, avocats, dirigeants — maintenez une image irréprochable en permanence." },
+            { "titre": "Professionnels", "texte": "Agents immobiliers, avocats, dirigeants : maintenez une image irréprochable en permanence." },
             { "titre": "Sur votre site", "texte": "Nous intervenons sur le parking de l'entreprise, ou à notre atelier pour les prestations qui l'exigent." }
           ] },
         "en": { "label": "Who for", "titre": "Your vehicle is your business card",
           "cartes": [
             { "titre": "Businesses", "texte": "Fleets of 3 to 50+ vehicles. Volume discounts, corporate invoicing, scheduled servicing." },
-            { "titre": "Professionals", "texte": "Real estate agents, lawyers, executives — maintain an impeccable image at all times." },
+            { "titre": "Professionals", "texte": "Real estate agents, lawyers, executives: maintain an impeccable image at all times." },
             { "titre": "On your premises", "texte": "We work in your company car park, or in our workshop for the services that require it." }
           ] } },
       { "type": "questionnaire", "id": "questionnaire",
@@ -414,13 +414,13 @@
     "_comment": "Sections generees de l'accueil, injectees par inject-shell.js entre reperes CCW:ACCUEIL-*.",
     "fr": {
       "questionnaire": { "label": "Vous êtes un professionnel ?", "titre": "La bonne formule, en deux questions", "intro": "Professionnel ou particulier, répondez à deux questions : nous vous orientons vers la formule adaptée. Aucune donnée n'est collectée." },
-      "offres": { "label": "Nos offres", "titre": "Packs, combos, abonnements", "intro": "Du lavage complet au detailing le plus poussé, à domicile ou en atelier. Tous les prix TTC sont sur la page Tarifs.", "aboLabel": "Abonnements — entretien régulier", "prestations": "Et pour aller plus loin : <a href=\"@polish-ceramique\" class=\"text-gold-400 underline underline-offset-4\">polish céramique</a>, <a href=\"@ppf\" class=\"text-gold-400 underline underline-offset-4\">PPF</a>, <a href=\"@covering\" class=\"text-gold-400 underline underline-offset-4\">covering</a>, <a href=\"@ciel-etoile\" class=\"text-gold-400 underline underline-offset-4\">ciel étoilé</a> et <a href=\"@nettoyage-chassis\" class=\"text-gold-400 underline underline-offset-4\">nettoyage châssis &amp; moteur</a>.", "bouton": "Voir tous les tarifs" },
+      "offres": { "label": "Nos offres", "titre": "Packs, combos, abonnements", "intro": "Du lavage complet au detailing le plus poussé, à domicile ou en atelier. Tous les prix TTC sont sur la page Tarifs.", "aboLabel": "Abonnements, entretien régulier", "prestations": "Et pour aller plus loin : <a href=\"@polish-ceramique\" class=\"text-gold-400 underline underline-offset-4\">polish céramique</a>, <a href=\"@ppf\" class=\"text-gold-400 underline underline-offset-4\">PPF</a>, <a href=\"@covering\" class=\"text-gold-400 underline underline-offset-4\">covering</a>, <a href=\"@ciel-etoile\" class=\"text-gold-400 underline underline-offset-4\">ciel étoilé</a> et <a href=\"@nettoyage-chassis\" class=\"text-gold-400 underline underline-offset-4\">nettoyage châssis &amp; moteur</a>.", "bouton": "Voir tous les tarifs" },
       "blog": { "label": "Le blog", "titre": "Nos derniers articles", "bouton": "Tous les articles" },
       "faq": { "label": "Questions techniques", "titre": "Options, polish, céramique, PPF", "items": [
         ["Quelle différence entre un polish et un traitement céramique ?", "Le polish corrige la laque (micro-rayures, traces de lavage) ; la céramique la protège et fait perler l'eau. La céramique vient toujours après la correction : c'est ce que réunit le <a href=\"@polish-ceramique\">Pack Polish Céramique</a>, à partir de {presta:polish-ceramique} CHF TTC sur devis. Tout est expliqué dans <a href=\"@polish-ou-ceramique\">notre article</a>."],
         ["Combien de temps le véhicule est-il immobilisé pour un polish céramique ?", "Comptez {duree:polish-ceramique}, souvent davantage selon l'état de la laque. Le polish céramique se fait à l'atelier, ou chez vous dans un garage fermé : la céramique ne supporte ni la poussière ni la pluie pendant la prise."],
         ["Qu'est-ce que le PPF ?", "Un film transparent qui encaisse gravillons et rayures à la place de votre laque. La pose exige un environnement sans poussière : elle se fait exclusivement à l'atelier, et demande {duree:ppf}. <a href=\"@ppf\">Le PPF en détail</a>."],
-        ["Le covering touche-t-il à la peinture ?", "Non : le covering change la couleur du véhicule sans toucher à la peinture — mat, brillant, satiné ou carbone. Il se fait à l'atelier ; comptez {duree:covering}. <a href=\"@covering\">Le covering en détail</a>."],
+        ["Le covering touche-t-il à la peinture ?", "Non : le covering change la couleur du véhicule sans toucher à la peinture, mat, brillant, satiné ou carbone. Il se fait à l'atelier ; comptez {duree:covering}. <a href=\"@covering\">Le covering en détail</a>."],
         ["Quelles options pour l'intérieur ?", "Le Pack Or ajoute le shampoing des sièges et des tapis et la rénovation des plastiques ; le Pack Diamant, le soin du cuir ou de l'Alcantara et un traitement anti-odeur. La suppression de poils d'animaux est en option. Après un shampoing, comptez 4 à 6 heures de séchage avant une utilisation intensive."],
         ["Qu'est-ce que le ciel étoilé ?", "Des fibres optiques posées à la main dans le pavillon, quatre coloris, intensité réglable à la télécommande. Le pavillon doit être déposé : la prestation se fait à l'atelier et demande {duree:ciel-etoile}. <a href=\"@ciel-etoile\">Le ciel étoilé en détail</a>."],
         ["Comment garder le résultat après un detailing ?", "Avec un lavage régulier : les combos incluent un lavage Argent d'entretien dans les 30 jours, et les <a href=\"@abonnements\">abonnements</a> reviennent de −{abo:min} % à −{abo:max} % moins cher qu'à l'unité."]
@@ -428,13 +428,13 @@
     },
     "en": {
       "questionnaire": { "label": "Are you a business?", "titre": "The right package, in two questions", "intro": "Business or private customer, answer two questions: we point you to the right package. No data is collected." },
-      "offres": { "label": "Our offers", "titre": "Packs, combos, subscriptions", "intro": "From the complete wash to the most thorough detailing, at home or in our workshop. All prices incl. VAT are on the Prices page.", "aboLabel": "Subscriptions — regular maintenance", "prestations": "And to go further: <a href=\"@polish-ceramique\" class=\"text-gold-400 underline underline-offset-4\">ceramic polish</a>, <a href=\"@ppf\" class=\"text-gold-400 underline underline-offset-4\">PPF</a>, <a href=\"@covering\" class=\"text-gold-400 underline underline-offset-4\">wrapping</a>, <a href=\"@ciel-etoile\" class=\"text-gold-400 underline underline-offset-4\">starlight headliner</a> and <a href=\"@nettoyage-chassis\" class=\"text-gold-400 underline underline-offset-4\">chassis &amp; engine cleaning</a>.", "bouton": "See all prices" },
+      "offres": { "label": "Our offers", "titre": "Packs, combos, subscriptions", "intro": "From the complete wash to the most thorough detailing, at home or in our workshop. All prices incl. VAT are on the Prices page.", "aboLabel": "Subscriptions, regular maintenance", "prestations": "And to go further: <a href=\"@polish-ceramique\" class=\"text-gold-400 underline underline-offset-4\">ceramic polish</a>, <a href=\"@ppf\" class=\"text-gold-400 underline underline-offset-4\">PPF</a>, <a href=\"@covering\" class=\"text-gold-400 underline underline-offset-4\">wrapping</a>, <a href=\"@ciel-etoile\" class=\"text-gold-400 underline underline-offset-4\">starlight headliner</a> and <a href=\"@nettoyage-chassis\" class=\"text-gold-400 underline underline-offset-4\">chassis &amp; engine cleaning</a>.", "bouton": "See all prices" },
       "blog": { "label": "The blog", "titre": "Our latest articles", "bouton": "All articles" },
       "faq": { "label": "Technical questions", "titre": "Options, polish, ceramic, PPF", "items": [
         ["What is the difference between polishing and a ceramic coating?", "Polishing corrects the paint (swirl marks, wash marks); ceramic protects it and makes water bead off. Ceramic always comes after the correction: that is what the <a href=\"@polish-ceramique\">Ceramic Polish Pack</a> combines, from CHF {presta:polish-ceramique} incl. VAT on quote. It is all explained in <a href=\"@polish-ou-ceramique\">our article</a>."],
         ["How long is the vehicle immobilised for a ceramic polish?", "Allow {duree:polish-ceramique}, often more depending on the paint. The ceramic polish is carried out in the workshop, or at your place in a closed garage: ceramic tolerates neither dust nor rain while it cures."],
         ["What is PPF?", "A clear film that takes the stone chips and scratches instead of your paint. Application requires a dust-free environment: it is carried out in the workshop only, and takes {duree:ppf}. <a href=\"@ppf\">PPF in detail</a>."],
-        ["Does wrapping touch the paint?", "No: wrapping changes the colour of the vehicle without touching the paint — matt, gloss, satin or carbon. It is carried out in the workshop; allow {duree:covering}. <a href=\"@covering\">Wrapping in detail</a>."],
+        ["Does wrapping touch the paint?", "No: wrapping changes the colour of the vehicle without touching the paint, matt, gloss, satin or carbon. It is carried out in the workshop; allow {duree:covering}. <a href=\"@covering\">Wrapping in detail</a>."],
         ["What interior options are there?", "The Gold Pack adds seat and carpet shampoo and plastic renovation; the Diamond Pack, leather or Alcantara care and an anti-odour treatment. Pet hair removal is optional. After a shampoo, allow 4 to 6 hours of drying before heavy use."],
         ["What is a starlight headliner?", "Optical fibres laid by hand in the headliner, four colours, brightness adjustable by remote. The headliner has to be removed: the service is carried out in the workshop and takes {duree:ciel-etoile}. <a href=\"@ciel-etoile\">The starlight headliner in detail</a>."],
         ["How do I keep the result after a detailing?", "With regular washing: combos include a Silver maintenance wash within 30 days, and <a href=\"@abonnements\">subscriptions</a> cost −{abo:min}% to −{abo:max}% less than one-off washes."]

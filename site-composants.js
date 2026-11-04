@@ -56,7 +56,7 @@ const T = {
         mensuel: 'Mensuel', annuel: 'Annuel', fois1: '1×/mois', fois2: '2×/mois', pack: 'Pack', combo: 'Combo',
         des: 'Dès', fixe: 'Prix', atelier: 'Atelier', atelierDomicile: 'Atelier ou domicile', voirPresta: 'Découvrir',
         prixTtc: 'Prix TTC, TVA 8,1 % incluse.', aLire: 'À lire aussi', lire: "Lire l'article",
-        appeler: 'Appeler', email: 'E-mail', offert: 'Offert', geneve: 'Canton de Genève', vaudO: 'Vaud — zone orange', vaudR: 'Vaud — zone rouge',
+        appeler: 'Appeler', email: 'E-mail', offert: 'Offert', geneve: 'Canton de Genève', vaudO: 'Vaud, zone orange', vaudR: 'Vaud, zone rouge',
         communes: 'Les 45 communes, sans frais de déplacement.', districts: 'Districts', voirZones: 'Voir la carte des zones',
         zonesNote: 'Le forfait est ajouté une fois par déplacement, réglé sur place avec le solde. Il ne fait pas partie de l’acompte en ligne.',
     },
@@ -66,7 +66,7 @@ const T = {
         mensuel: 'Monthly', annuel: 'Annual', fois1: '1×/month', fois2: '2×/month', pack: 'Pack', combo: 'Combo',
         des: 'From', fixe: 'Price', atelier: 'Workshop', atelierDomicile: 'Workshop or at home', voirPresta: 'Discover',
         prixTtc: 'Prices incl. VAT (8.1%).', aLire: 'Further reading', lire: 'Read the article',
-        appeler: 'Call', email: 'E-mail', offert: 'Included', geneve: 'Canton of Geneva', vaudO: 'Vaud — orange zone', vaudR: 'Vaud — red zone',
+        appeler: 'Call', email: 'E-mail', offert: 'Included', geneve: 'Canton of Geneva', vaudO: 'Vaud, orange zone', vaudR: 'Vaud, red zone',
         communes: 'All 45 municipalities, no travel fee.', districts: 'Districts', voirZones: 'See the zone map',
         zonesNote: 'The fee is charged once per trip and settled on site with the balance. It is not part of the online deposit.',
     },
@@ -217,7 +217,7 @@ const CONDITIONS = {
         items: [
             ['🅿️', 'Place de parking privative', 'Obligatoire', 'Garage, allée ou parking résidentiel. Le lavage sur voie publique est interdit en Suisse.'],
             ['⚡', 'Prise électrique 230V', 'Obligatoire', "Accessible depuis l'emplacement du véhicule pendant toute la durée de la prestation."],
-            ['💧', "Point d'eau", 'Recommandé', 'Non indispensable selon la prestation — notre équipe vous le précisera à la confirmation.'],
+            ['💧', "Point d'eau", 'Recommandé', 'Non indispensable selon la prestation : notre équipe vous le précisera à la confirmation.'],
         ],
         clause: "En confirmant votre réservation, vous attestez que ces conditions sont réunies à l'adresse indiquée. <strong class=\"text-white\">En cas d'impossibilité d'intervention à notre arrivée</strong> (absence d'emplacement, de prise ou d'accès au véhicule), la prestation reste due et sera facturée intégralement.",
     },
@@ -225,7 +225,7 @@ const CONDITIONS = {
         items: [
             ['🅿️', 'Private parking space', 'Required', 'Garage, driveway, or residential parking. Car washing on public roads is illegal in Switzerland.'],
             ['⚡', '230V power outlet', 'Required', "Accessible from the vehicle's location for the full duration of the service."],
-            ['💧', 'Water point', 'Recommended', 'Not essential depending on the chosen service — our team will confirm at booking.'],
+            ['💧', 'Water point', 'Recommended', 'Not essential depending on the chosen service: our team will confirm at booking.'],
         ],
         clause: 'By confirming your booking, you confirm these conditions are met at the given address. <strong class="text-white">If our team cannot intervene on arrival</strong> (no parking, no outlet, or no vehicle access), the full service fee remains due and will be invoiced.',
     },
@@ -298,11 +298,11 @@ ${arts.map(a => `                <a href="${urlArticle(a, langue)}" class="premi
 const MODALE = {
     fr: { fermer: 'Fermer', contactTitre: 'Nous Contacter', contactQ: 'Comment souhaitez-vous<br>nous joindre&nbsp;?', wa: 'Bonjour, je souhaite réserver un créneau.',
         dehors: 'Touchez en dehors pour fermer', resa: 'Réservation', ou: 'Où souhaitez-vous<br>être servi&nbsp;?', creneau: "Vous choisirez votre créneau, puis réglerez l'acompte de 30&nbsp;%.",
-        deplacement: (o, r, z) => `Déplacement offert à Genève. Sur Vaud, forfait de ${o} ou ${r}&nbsp;CHF TTC réglé sur place — <a href="${z}" class="text-gold-400 underline underline-offset-2">voir les zones</a>.`,
+        deplacement: (o, r, z) => `Déplacement offert à Genève. Sur Vaud, forfait de ${o} ou ${r}&nbsp;CHF TTC réglé sur place, <a href="${z}" class="text-gold-400 underline underline-offset-2">voir les zones</a>.`,
         domicile: 'À domicile / au travail', garage: 'À l’atelier, Genève' },
     en: { fermer: 'Close', contactTitre: 'Contact Us', contactQ: 'How would you like<br>to reach us?', wa: 'Hello, I would like to book a slot.',
         dehors: 'Tap outside to close', resa: 'Booking', ou: 'Where would you like<br>to be served?', creneau: 'You will pick your time slot, then pay the 30% deposit.',
-        deplacement: (o, r, z) => `Travel included in Geneva. In Vaud, a flat CHF ${o} or ${r} incl. VAT settled on site — <a href="${z}" class="text-gold-400 underline underline-offset-2">see the zones</a>.`,
+        deplacement: (o, r, z) => `Travel included in Geneva. In Vaud, a flat CHF ${o} or ${r} incl. VAT settled on site, <a href="${z}" class="text-gold-400 underline underline-offset-2">see the zones</a>.`,
         domicile: 'At home / at work', garage: 'At our workshop, Geneva' },
 };
 const CROIX = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>';

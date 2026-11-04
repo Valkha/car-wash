@@ -10,8 +10,8 @@
     "email": "info@clean-cars-wash.ch",
     "adresse": { "rue": "Chemin des Vergers", "npa": "1208", "ville": "Genève", "pays": "CH" },
     "horaires": {
-      "fr": ["Tous les jours : 07h30 – 22h00"],
-      "en": ["Every day: 07:30 AM – 10:00 PM"]
+      "fr": ["Tous les jours, de 7h30 à 22h"],
+      "en": ["Every day, 7:30 am to 10 pm"]
     },
     "tva": "CHE-377.481.423 TVA",
     "ficheGoogle": "https://maps.app.goo.gl/HgBjjuKPdWKeo9E46"

@@ -36,7 +36,7 @@ const TC = {
     fr: {
         titre: `Jeu-concours : un ${C.lot.fr} à gagner | ${SITE.marque}`,
         description: `Jeu-concours ${SITE.marque} du ${dateLongue(C.debut, 'fr', false)} au ${dateLongue(C.fin, 'fr')} : un ${C.lot.fr} à gagner. Lot, dates et modalités de participation.`,
-        eyebrow: `Genève &amp; Vaud — du ${dateLongue(C.debut, 'fr', false)} au ${dateLongue(C.fin, 'fr')}`,
+        eyebrow: `Genève &amp; Vaud · du ${dateLongue(C.debut, 'fr', false)} au ${dateLongue(C.fin, 'fr')}`,
         h1: `Jeu-concours ${SITE.marque}`,
         accroche: `Un <span class="text-gold-400">${esc(C.lot.fr)}</span> à gagner`,
         avant: `Le jeu-concours commence le <strong class="text-white">${dateLongue(C.debut, 'fr')}</strong>.`,
@@ -59,7 +59,7 @@ const TC = {
     en: {
         titre: `Giveaway: win an ${C.lot.en} | ${SITE.marque}`,
         description: `${SITE.marque} giveaway from ${dateLongue(C.debut, 'en', false)} to ${dateLongue(C.fin, 'en')}: win an ${C.lot.en}. Prize, dates and how to enter.`,
-        eyebrow: `Geneva &amp; Vaud — ${dateLongue(C.debut, 'en', false)} to ${dateLongue(C.fin, 'en')}`,
+        eyebrow: `Geneva &amp; Vaud · ${dateLongue(C.debut, 'en', false)} to ${dateLongue(C.fin, 'en')}`,
         h1: `${SITE.marque} giveaway`,
         accroche: `Win an <span class="text-gold-400">${esc(C.lot.en)}</span>`,
         avant: `The giveaway starts on <strong class="text-white">${dateLongue(C.debut, 'en')}</strong>.`,
@@ -137,7 +137,7 @@ ${reglement.map(r => `                    <li>${r}</li>`).join('\n')}
                 <dl class="grid gap-6 md:grid-cols-3 text-sm">
                     <div><dt class="font-display font-bold text-[10px] tracking-[0.3em] uppercase text-gold-400 mb-2">${t.lot}</dt><dd class="text-white">${esc((C.lotDetail && C.lotDetail[langue]) || C.lot[langue])}</dd></div>
                     <div><dt class="font-display font-bold text-[10px] tracking-[0.3em] uppercase text-gold-400 mb-2">${t.dates}</dt><dd class="text-white">${t.datesVal}</dd></div>
-                    <div><dt class="font-display font-bold text-[10px] tracking-[0.3em] uppercase text-gold-400 mb-2">${t.organisateur}</dt><dd class="text-white">${SITE.marque} — ${c.raisonSociale}<br><span class="text-gray-400">${c.adresse.rue}, ${c.adresse.npa} ${c.adresse.ville}</span></dd></div>
+                    <div><dt class="font-display font-bold text-[10px] tracking-[0.3em] uppercase text-gold-400 mb-2">${t.organisateur}</dt><dd class="text-white">${SITE.marque}, ${c.raisonSociale}<br><span class="text-gray-400">${c.adresse.rue}, ${c.adresse.npa} ${c.adresse.ville}</span></dd></div>
                 </dl>
             </div>
         </section>

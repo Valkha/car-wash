@@ -625,3 +625,21 @@ main:not(.mk-accueil)>.ccw-article :is(.text-gray-400,.text-gray-500){color:var(
 main:not(.mk-accueil)>.ccw-article :is(table th,table td){color:var(--mk-noir);border-color:var(--mk-ligne) !important}
 main:not(.mk-accueil)>section.mk-cle:not(:first-of-type) :is(a,button).bg-gold-400{color:var(--mk-noir) !important}
 main:not(.mk-accueil)>section.mk-legal :is(h2,h3){font-size:clamp(22px,2.6vw,28px) !important}
+/* Questionnaire sur l'accueil (meme composant que Tarifs et Entreprises, theme clair) */
+.mk-a-quiz{padding:80px 0;background:var(--mk-creme)}
+.mk-a-quiz [data-quiz]{background:#fff !important;border:2px solid var(--mk-ligne) !important;border-radius:20px !important;box-shadow:none !important;color:var(--mk-noir)}
+.mk-a-quiz [data-quiz] :is(.text-white,p.text-white){color:var(--mk-noir) !important;font-family:var(--mk-titre) !important;letter-spacing:-.02em}
+.mk-a-quiz [data-quiz] .text-gray-400{color:var(--mk-texte) !important}
+.mk-a-quiz [data-quiz] button[data-profil],.mk-a-quiz [data-quiz] button[data-besoin]{border:2px solid var(--mk-ligne) !important;color:var(--mk-noir) !important;border-radius:12px !important;font-family:var(--mk-corps) !important;font-weight:800 !important;font-size:16px !important;letter-spacing:0 !important;background:#fff;transition:border-color .15s,background-color .15s}
+.mk-a-quiz [data-quiz] button[data-profil]:hover,.mk-a-quiz [data-quiz] button[data-besoin]:hover{border-color:var(--mk-noir) !important;background:var(--mk-jaune)}
+.mk-a-quiz [data-quiz] [data-res-actions] a{border-radius:12px !important;letter-spacing:0 !important;text-transform:none !important;font-family:var(--mk-corps) !important;font-weight:800 !important;font-size:16px !important;min-height:54px}
+.mk-a-quiz [data-quiz] [data-res-actions] a.bg-gold-400{background:var(--mk-jaune) !important;color:var(--mk-noir) !important}
+.mk-a-quiz [data-quiz] [data-res-actions] a:not(.bg-gold-400){background:transparent !important;color:var(--mk-noir) !important;border:2px solid var(--mk-noir) !important}
+.mk-a-quiz [data-quiz] :is([data-retour],[data-recommencer]){color:var(--mk-texte) !important}
+.mk-a-quiz [data-quiz] a.text-gold-400{color:var(--mk-noir) !important}
+@media (max-width:700px){.mk-a-quiz{padding:56px 0}}
+/* Photo du lot (iPhone) quand elle est fournie */
+.mk-lot--photo{position:relative;overflow:hidden;padding:0 !important;background:var(--mk-noir)}
+.mk-lot__photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.mk-lot__legende{position:absolute;left:10px;right:10px;bottom:10px;background:rgba(14,14,16,.82);color:#fff;border-radius:8px;padding:6px 10px;font-size:13px;font-family:var(--mk-corps);letter-spacing:0;line-height:1.3}
+.mk-lot--grand .mk-lot__legende{left:16px;right:16px;bottom:16px;font-size:15px;color:var(--mk-jaune)}

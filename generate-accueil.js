@@ -32,6 +32,13 @@ const GOUTTE = '<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" a
 const CADEAU = '<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"></rect><path d="M12 8v13M3 12h18M12 8S10 3 7.5 4.5 9 8 12 8zM12 8s2-5 4.5-3.5S15 8 12 8z"></path></svg>';
 
 const pack = id => OFFRES.packs.find(p => p.id === id);
+
+// Photo du lot : deposer public/images/concours/iphone-18-pro-max.webp (format portrait 4/5
+// conseille, ~1000 px de haut). Sans fichier, l'emplacement garde le pictogramme.
+const PHOTO_LOT = fs.existsSync(path.join(ROOT, 'public/images/concours/iphone-18-pro-max.webp')) ? '/images/concours/iphone-18-pro-max.webp' : null;
+const lotVisuel = (texte, alt, grand) => PHOTO_LOT
+    ? `<img class="mk-lot__photo" src="${PHOTO_LOT}" alt="${esc(alt)}" loading="${grand ? 'lazy' : 'eager'}" decoding="async"><span class="mk-lot__legende">${esc(texte)}</span>`
+    : `${CADEAU}<span>${esc(texte)}</span>`;
 const presta = id => PRESTA.find(p => p.id === id);
 const nbsp = s => String(s).replace(/ /g, ' ');
 
@@ -59,6 +66,7 @@ const T = {
         formulesH2: 'Trois formules,<br>des prix clairs.', formulesTxt: 'Prix TTC, affichés avant de réserver.',
         abo: 'Un lavage régulier ? Les abonnements reviennent de 10 % à 27 % moins cher →',
         chiffres: [['0 CHF', 'de déplacement à l’atelier et sur Genève'], ['7 j/7', 'de 7h30 à 22h'], ['24 h', 'pour annuler, acompte reporté'], ['30 %', 'd’acompte, par TWINT ou carte']],
+        quizH2: 'Vous hésitez ?', quizTxt: 'Deux questions, et on vous oriente vers la bonne formule. Aucune donnée n’est collectée.',
         etapesH2: 'Réservé en quelques clics.',
         etapes: [
             ['Vous choisissez', 'Formule, lieu et créneau en ligne, acompte de 30 % par TWINT ou carte.'],
@@ -141,6 +149,7 @@ const T = {
         formulesH2: 'Three packs,<br>clear prices.', formulesTxt: 'Prices incl. VAT, shown before you book.',
         abo: 'Washing regularly? Subscriptions work out 10% to 27% cheaper →',
         chiffres: [['CHF 0', 'travel fee at the workshop and in Geneva'], ['7/7', 'from 7:30am to 10pm'], ['24 h', 'to cancel, deposit carried over'], ['30%', 'deposit, by TWINT or card']],
+        quizH2: 'Not sure?', quizTxt: 'Two questions and we point you to the right package. No data is collected.',
         etapesH2: 'Booked in a few clicks.',
         etapes: [
             ['You choose', 'Pack, place and time slot online, 30% deposit by TWINT or card.'],
@@ -268,7 +277,7 @@ function hero(L) {
                 </div>
                 <a href="#concours" class="mk-a-hero__carte mk-in mk-d5" data-concours data-promo-from="${C.debut}" data-promo-until="${C.fin}">
                     <span class="mk-a-hero__carte-haut"><span>${t.carte.eb}</span><span class="mk-pastille">${t.carte.dates}</span></span>
-                    <span class="mk-lot mk-lot--petit" aria-hidden="true">${CADEAU}<span>${esc(C.lot[L])}</span></span>
+                    <span class="mk-lot mk-lot--petit${PHOTO_LOT ? ' mk-lot--photo' : ''}" aria-hidden="true">${lotVisuel(C.lot[L], C.lotDetail[L], false)}</span>
                     <span class="mk-a-hero__carte-titre">${esc(t.carte.titre(C.lot[L]))}</span>
                     <span class="mk-a-hero__carte-texte">${t.carte.texte}</span>
                     <span class="mk-a-hero__carte-lien">${t.carte.lien}</span>
@@ -323,6 +332,20 @@ function formules(L) {
             <ul class="mk-chiffres">
 ${t.chiffres.map(([a, b]) => `                <li class="mk-carte-in"><strong>${a}</strong><span>${b}</span></li>`).join('\n')}
             </ul>
+        </div>
+    </section>`;
+}
+
+function questionnaire(L) {
+    const t = T[L];
+    return `
+    <section id="questionnaire" class="mk-a-quiz">
+        <div class="mk-conteneur">
+            <div class="mk-tete">
+                <h2 class="mk-h2 mk-h2--moyen mk-revele">${t.quizH2}</h2>
+                <p class="mk-tete__texte">${t.quizTxt}</p>
+            </div>
+            ${comp.questionnaire(L, { id: 'ccw-quiz-accueil' })}
         </div>
     </section>`;
 }
@@ -429,7 +452,7 @@ ${t.concoursEtapes.map((x, i) => `                        <li class="mk-carte-in
                         <a href="${P['jeu-concours'][L]}" class="mk-lien-fort">${t.reglement}</a>
                     </div>
                 </div>
-                <div class="mk-lot mk-lot--grand mk-incline" aria-hidden="true">${CADEAU}<span>${esc(C.lotDetail[L])}</span></div>
+                <div class="mk-lot mk-lot--grand mk-incline${PHOTO_LOT ? ' mk-lot--photo' : ''}"${PHOTO_LOT ? '' : ' aria-hidden="true"'}>${lotVisuel(C.lotDetail[L], C.lotDetail[L], true)}</div>
             </div>
         </div>
     </section>`;
@@ -475,7 +498,7 @@ function deplacement(L) {
                         <p id="zr-price" class="mk-depl__prix">—</p>
                     </div>
                     <ul class="mk-depl__legende">
-                        <li><span style="background:#FFCC00"></span>${t.legende[0]}</li>
+                        <li><span style="background:#3BAF62"></span>${t.legende[0]}</li>
                         <li><span style="background:#F2994A"></span>${t.legende[1]}</li>
                         <li><span style="background:#D9483B"></span>${t.legende[2]}</li>
                     </ul>
@@ -517,6 +540,7 @@ function jsonld(L) {
         priceRange: `CHF ${Math.floor(Math.min(...prix))}–${Math.floor(Math.max(...prix))}`, currenciesAccepted: 'CHF',
         address: { '@type': 'PostalAddress', streetAddress: CT.adresse.rue, addressLocality: CT.adresse.ville, postalCode: CT.adresse.npa, addressCountry: CT.adresse.pays },
         geo: { '@type': 'GeoCoordinates', latitude: 46.1989683, longitude: 6.1615317 },
+        hasMap: CT.ficheGoogle, logo: `${base}/assets/images/logo-v2.png`,
         areaServed: [{ '@type': 'City', name: 'Genève' }, { '@type': 'State', name: 'Vaud' }],
         openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], opens: '07:30', closes: '22:00' }],
         hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Packs Detailing', itemListElement: OFFRES.packs.map(p => ({ '@type': 'Offer', name: p[L].nom, price: p.prix, priceCurrency: 'CHF' })) },
@@ -602,7 +626,7 @@ function page(L) {
     <a href="#main-content" class="skip-link">${shell.UI[L].skip}</a>
     ${shell.repereHeader(fichier, L)}
 
-    <main id="main-content" class="mk-accueil">${hero(L)}${bande(L)}${formules(L)}${etapes(L)}${resultat(L)}${entreprises(L)}${atelier(L)}${concours(L)}${avis(L)}${deplacement(L)}${faq(L)}
+    <main id="main-content" class="mk-accueil">${hero(L)}${bande(L)}${formules(L)}${questionnaire(L)}${etapes(L)}${resultat(L)}${entreprises(L)}${atelier(L)}${concours(L)}${avis(L)}${deplacement(L)}${faq(L)}
     </main>
 
     ${shell.repereFooter(fichier, L)}

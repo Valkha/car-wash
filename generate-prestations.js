@@ -161,7 +161,7 @@ const T = {
         reserverTitre: 'Réserver cette prestation',
         reserverDevis: a => `Vous bloquez votre rendez-vous en ligne et réglez un acompte de <strong class="text-white">${a} CHF</strong>, soit 30 % du tarif de base. Le solde est confirmé après examen du véhicule et réglé sur place.`,
         reserverFerme: (a, s) => `Vous bloquez votre créneau en ligne et réglez un acompte de <strong class="text-white">${a} CHF</strong>, soit 30 % du prix. Le solde de ${s} CHF est réglé sur place à la fin de la prestation.`,
-        bullePriseEnCharge: duree => `Le créneau de 30 minutes que vous réservez est un <strong class="text-white">rendez-vous de prise en charge</strong> — le temps de déposer le véhicule et de faire le point. La prestation, elle, demande <strong class="text-white">${duree}</strong>.`,
+        bullePriseEnCharge: duree => `Le créneau de 30 minutes que vous réservez est un <strong class="text-white">rendez-vous de prise en charge</strong>, le temps de déposer le véhicule et de faire le point. La prestation, elle, demande <strong class="text-white">${duree}</strong>.`,
         bulleDureeReelle: 'Le créneau que vous réservez correspond à la <strong class="text-white">durée réelle de la prestation</strong>, et non à un simple rendez-vous de dépôt.',
         ctaReserverPriseEnCharge: 'Réserver ma prise en charge', ctaReserver: 'Réserver mon créneau',
         sansJs: 'Réservation en ligne',
@@ -172,7 +172,7 @@ const T = {
         modaleZones: `Déplacement offert à Genève. Sur Vaud, forfait de ${shell.SITE.deplacement.orange.prix} ou ${shell.SITE.deplacement.rouge.prix}&nbsp;CHF TTC réglé sur place`,
         modaleZonesLien: 'voir les zones', modaleHome: 'À domicile / au travail', modaleGarage: 'À l’atelier, Genève',
         modaleFermer: 'Fermer', modaleDehors: 'Touchez en dehors pour fermer',
-        horaires: ['Tous les jours : 07h30 – 22h00'],
+        horaires: ['Tous les jours, de 7h30 à 22h'],
         contactTitre: 'Contact &amp; Horaires', infosTitre: 'Informations',
         ville: 'Genève', tva: 'CHE-377.481.423 TVA'
     },
@@ -190,7 +190,7 @@ const T = {
         reserverTitre: 'Book this service',
         reserverDevis: a => `You book your appointment online and pay a deposit of <strong class="text-white">CHF ${a}</strong>, which is 30% of the base rate. The balance is confirmed after an inspection and settled on site.`,
         reserverFerme: (a, s) => `You book your slot online and pay a deposit of <strong class="text-white">CHF ${a}</strong>, which is 30% of the price. The balance of CHF ${s} is settled on site once the work is done.`,
-        bullePriseEnCharge: duree => `The 30-minute slot you book is a <strong class="text-white">drop-off appointment</strong> — time to hand the vehicle over and go through the details. The work itself takes <strong class="text-white">${duree}</strong>.`,
+        bullePriseEnCharge: duree => `The 30-minute slot you book is a <strong class="text-white">drop-off appointment</strong>, time to hand the vehicle over and go through the details. The work itself takes <strong class="text-white">${duree}</strong>.`,
         bulleDureeReelle: 'The slot you book matches the <strong class="text-white">actual duration of the work</strong>, not just a drop-off appointment.',
         ctaReserverPriseEnCharge: 'Book my drop-off', ctaReserver: 'Book my slot',
         sansJs: 'Book online',
@@ -201,7 +201,7 @@ const T = {
         modaleZones: `Travel included in Geneva. In Vaud, a flat fee of CHF ${shell.SITE.deplacement.orange.prix} or ${shell.SITE.deplacement.rouge.prix} incl. VAT is settled on site`,
         modaleZonesLien: 'see the areas', modaleHome: 'At home / at work', modaleGarage: 'At our workshop, Geneva',
         modaleFermer: 'Close', modaleDehors: 'Tap outside to close',
-        horaires: ['Every day: 07:30 AM – 10:00 PM'],
+        horaires: ['Every day, 7:30 am to 10 pm'],
         contactTitre: 'Contact &amp; Opening hours', infosTitre: 'Information',
         ville: 'Geneva', tva: 'CHE-377.481.423 VAT'
     }
@@ -321,7 +321,7 @@ ${d.lieuDomicile ? `                <div class="premium-card rounded-2xl p-6 md:
             <p class="text-[10px] font-display tracking-[0.3em] uppercase text-gold-400 mb-3" id="ccw-location-modal-title">${t.modaleTitre}</p>
             <p class="text-white font-display font-bold text-lg leading-snug mb-3">${t.modaleQuestion}</p>
             <p class="text-gray-400 text-xs leading-snug mb-3">${t.modaleCreneau}</p>
-            <p class="text-gray-400 text-[11px] leading-snug mb-6">${t.modaleZones} — <a href="./zones.html" class="text-gold-400 underline underline-offset-2">${t.modaleZonesLien}</a>.</p>
+            <p class="text-gray-400 text-[11px] leading-snug mb-6">${t.modaleZones}, <a href="./zones.html" class="text-gold-400 underline underline-offset-2">${t.modaleZonesLien}</a>.</p>
             <div class="flex flex-col gap-5">
                 <div>
                     <button type="button" id="ccw-location-garage" data-track="conversion-booking" onclick="ccwBookingGo('garage')"
@@ -391,12 +391,12 @@ ${d.lieuDomicile ? `                <div class="premium-card rounded-2xl p-6 md:
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="${url}">
-    <meta property="og:title" content="${d.nom} — Clean Cars Wash ${t.ville}">
+    <meta property="og:title" content="${d.nom} | Clean Cars Wash ${t.ville}">
     <meta property="og:description" content="${d.description}">
     <meta property="og:locale" content="${t.locale}">
     <meta property="og:site_name" content="Clean Cars Wash">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="${d.nom} — Clean Cars Wash ${t.ville}">
+    <meta name="twitter:title" content="${d.nom} | Clean Cars Wash ${t.ville}">
     <meta name="twitter:description" content="${d.description}">
 
     <link rel="apple-touch-icon" href="${r}assets/images/logo-v2.png">

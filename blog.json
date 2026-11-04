@@ -16,9 +16,9 @@
           { "p": "<strong>Chez Clean Cars Wash, un lavage auto à domicile à Genève coûte à partir de {prix:argent} CHF TTC</strong> (Pack Argent), déplacement compris dans tout le canton. Comptez {prix:or} CHF pour le Pack Or et {prix:diamant} CHF pour le Pack Diamant. Ces prix sont TTC." },
           { "h2": "Ce qui est compris à chaque niveau" },
           { "ul": [
-            "<strong>Pack Argent — {prix:argent} CHF :</strong> lavage extérieur à la mousse active, aspiration de l'habitacle et du coffre, vitres, séchage à la microfibre. Environ {dpack:argent}.",
-            "<strong>Pack Or — {prix:or} CHF :</strong> le Pack Argent, plus shampoing des sièges et des tapis, rénovation des plastiques, jantes et pneus, finition parfumée. Environ {dpack:or}.",
-            "<strong>Pack Diamant — {prix:diamant} CHF :</strong> le Pack Or, plus cire premium déperlante, soin du cuir ou de l'Alcantara, traitement anti-odeur. {dpack:diamant}."
+            "<strong>Pack Argent, {prix:argent} CHF :</strong> lavage extérieur à la mousse active, aspiration de l'habitacle et du coffre, vitres, séchage à la microfibre. Environ {dpack:argent}.",
+            "<strong>Pack Or, {prix:or} CHF :</strong> le Pack Argent, plus shampoing des sièges et des tapis, rénovation des plastiques, jantes et pneus, finition parfumée. Environ {dpack:or}.",
+            "<strong>Pack Diamant, {prix:diamant} CHF :</strong> le Pack Or, plus cire premium déperlante, soin du cuir ou de l'Alcantara, traitement anti-odeur. {dpack:diamant}."
           ] },
           { "p": "Le détail de chaque formule est sur la <a href=\"@tarifs\" data-cta>page Tarifs</a>, où vous pouvez aussi réserver directement." },
           { "h2": "Ce qui peut faire varier le prix" },
@@ -40,9 +40,9 @@
           { "p": "<strong>At Clean Cars Wash, a car wash at your home in Geneva costs from CHF {prix:argent} incl. VAT</strong> (Silver Pack), travel included across the canton. Allow CHF {prix:or} for the Gold Pack and CHF {prix:diamant} for the Diamond Pack. These prices include VAT." },
           { "h2": "What each level includes" },
           { "ul": [
-            "<strong>Silver Pack — CHF {prix:argent}:</strong> active foam exterior wash, cabin and trunk vacuuming, windows, microfiber drying. About {dpack:argent}.",
-            "<strong>Gold Pack — CHF {prix:or}:</strong> the Silver Pack, plus seat and carpet shampoo, plastic renovation, rims and tyres, scented finish. About {dpack:or}.",
-            "<strong>Diamond Pack — CHF {prix:diamant}:</strong> the Gold Pack, plus premium hydrophobic wax, leather or Alcantara care, anti-odour treatment. {dpack:diamant}."
+            "<strong>Silver Pack, CHF {prix:argent}:</strong> active foam exterior wash, cabin and trunk vacuuming, windows, microfiber drying. About {dpack:argent}.",
+            "<strong>Gold Pack, CHF {prix:or}:</strong> the Silver Pack, plus seat and carpet shampoo, plastic renovation, rims and tyres, scented finish. About {dpack:or}.",
+            "<strong>Diamond Pack, CHF {prix:diamant}:</strong> the Gold Pack, plus premium hydrophobic wax, leather or Alcantara care, anti-odour treatment. {dpack:diamant}."
           ] },
           { "p": "Every package is detailed on the <a href=\"@tarifs\" data-cta>Prices page</a>, where you can also book directly." },
           { "h2": "What can make the price vary" },
@@ -67,7 +67,7 @@
         "titre": "Polish ou traitement céramique : lequel choisir ?",
         "description": "Le polish corrige la laque, la céramique la protège : ce ne sont pas deux options concurrentes. Comment choisir, et ce que propose Clean Cars Wash.",
         "corps": [
-          { "p": "<strong>Ce n'est pas l'un ou l'autre : le polish corrige la peinture, la céramique la protège.</strong> Si votre laque est terne ou marquée de micro-rayures, il faut d'abord la polir ; si vous voulez la garder belle longtemps, il faut ensuite la sceller. Dans la plupart des cas, on fait les deux, dans cet ordre — c'est exactement ce que contient notre <a href=\"@polish-ceramique\" data-cta>Pack Polish Céramique</a>." },
+          { "p": "<strong>Ce n'est pas l'un ou l'autre : le polish corrige la peinture, la céramique la protège.</strong> Si votre laque est terne ou marquée de micro-rayures, il faut d'abord la polir ; si vous voulez la garder belle longtemps, il faut ensuite la sceller. Dans la plupart des cas, on fait les deux, dans cet ordre, c'est exactement ce que contient notre <a href=\"@polish-ceramique\" data-cta>Pack Polish Céramique</a>." },
           { "h2": "Le polish : corriger" },
           { "p": "Le polish est un travail mécanique sur la laque. Il efface les micro-rayures et les traces de lavage pour retrouver la profondeur d'origine de la peinture. Il ne protège pas : une laque polie, laissée sans protection, se marque à nouveau au fil des lavages." },
           { "h2": "La céramique : protéger" },
@@ -84,7 +84,7 @@
         "titre": "Polish or ceramic coating: which one should you choose?",
         "description": "Polishing corrects the paint, ceramic protects it: they are not competing options. How to choose, and what Clean Cars Wash offers.",
         "corps": [
-          { "p": "<strong>It is not one or the other: polishing corrects the paint, ceramic protects it.</strong> If your paint is dull or covered in swirl marks, it must be polished first; if you want it to stay beautiful for a long time, it must then be sealed. In most cases you do both, in that order — which is exactly what our <a href=\"@polish-ceramique\" data-cta>Ceramic Polish Pack</a> contains." },
+          { "p": "<strong>It is not one or the other: polishing corrects the paint, ceramic protects it.</strong> If your paint is dull or covered in swirl marks, it must be polished first; if you want it to stay beautiful for a long time, it must then be sealed. In most cases you do both, in that order, which is exactly what our <a href=\"@polish-ceramique\" data-cta>Ceramic Polish Pack</a> contains." },
           { "h2": "Polishing: correcting" },
           { "p": "Polishing is mechanical work on the paint. It removes swirl marks and wash marks to bring back the paint's original depth. It does not protect: polished paint left unprotected gets marked again wash after wash." },
           { "h2": "Ceramic: protecting" },
