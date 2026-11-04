@@ -127,6 +127,9 @@ function completerHead(html, langue) {
     if (!html.includes('Content-Security-Policy')) {
         html = html.replace(/(<meta charset="[^"]*">)/i, `$1\n    <meta http-equiv="Content-Security-Policy" content="${shell.CSP}">`);
     }
+    if (!/rel="icon"/.test(html)) {
+        html = html.replace(/(\n\s*<\/head>)/i, `\n    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">\n    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">$1`);
+    }
     if (!/property="og:title"/.test(html)) {
         const g = r => (html.match(r) || [])[1] || '';
         const titre = g(/<title>([\s\S]*?)<\/title>/), desc = g(/<meta name="description" content="([^"]*)"/), url = g(/<link rel="canonical" href="([^"]*)"/);

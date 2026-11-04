@@ -35,7 +35,8 @@ async function trouverPlace() {
 }
 
 // Initiale du nom de famille seulement, comme sur le site jusqu'ici.
-const nomCourt = n => { const m = String(n || '').trim().split(/\s+/); return m.length > 1 ? `${m[0]} ${m[m.length - 1][0].toUpperCase()}.` : m[0]; };
+const maj = w => w.charAt(0).toUpperCase() + w.slice(1);
+const nomCourt = n => { const m = String(n || '').trim().split(/\s+/); return m.length > 1 ? `${maj(m[0])} ${m[m.length - 1][0].toUpperCase()}.` : maj(m[0]); };
 const couper = (t, max = 260) => t.length <= max ? t : t.slice(0, t.lastIndexOf(' ', max)).replace(/[,;:]$/, '') + ' […]';
 
 async function main() {
@@ -52,6 +53,8 @@ async function main() {
             .filter(({ r, t }) => r.rating >= 5 && t.length >= 40)
             .sort((a, b) => String(b.r.publishTime).localeCompare(String(a.r.publishTime)))
             .slice(0, 3)
+            // le plus long en premier : c'est lui qui occupe la grande carte
+            .sort((a, b) => b.t.length - a.t.length)
             .map(({ r, t }) => ({
                 nom: nomCourt(r.authorAttribution && r.authorAttribution.displayName),
                 note: r.rating, texte: couper(t),
