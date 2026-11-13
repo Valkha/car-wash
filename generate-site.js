@@ -19,7 +19,6 @@ const path = require('path');
 const shell = require('./site-shell.js');
 
 const { SITE, esc, dateLongue, veille } = shell;
-const C = SITE.concours;
 
 function ecrire(urlPage, html) {
     const rel = urlPage.replace(/^\//, '').replace(/\/$/, '/index.html');
@@ -29,155 +28,8 @@ function ecrire(urlPage, html) {
     return rel;
 }
 
-// ---------------------------------------------------------------------------
-// Jeu-concours
-// ---------------------------------------------------------------------------
-const TC = {
-    fr: {
-        titre: `Jeu-concours : un ${C.lot.fr} à gagner | ${SITE.marque}`,
-        description: `Jeu-concours ${SITE.marque} du ${dateLongue(C.debut, 'fr', false)} au ${dateLongue(C.fin, 'fr')} : un ${C.lot.fr} à gagner. Lot, dates et modalités de participation.`,
-        eyebrow: `Genève &amp; Vaud · du ${dateLongue(C.debut, 'fr', false)} au ${dateLongue(C.fin, 'fr')}`,
-        h1: `Jeu-concours ${SITE.marque}`,
-        accroche: `Un <span class="text-gold-400">${esc(C.lot.fr)}</span> à gagner`,
-        avant: `Le jeu-concours commence le <strong class="text-white">${dateLongue(C.debut, 'fr')}</strong>.`,
-        pendant: `Le jeu-concours est ouvert jusqu'au <strong class="text-white">${dateLongue(C.fin, 'fr')}</strong>.`,
-        apres: `<strong class="text-white">Ce jeu-concours est terminé.</strong> ${C.dateTirage ? `Le tirage au sort a lieu le ${dateLongue(C.dateTirage, 'fr')} ; le` : 'Le'} gagnant est contacté personnellement. Merci à toutes et à tous pour votre participation.`,
-        reserver: 'Réserver une prestation', lireReglement: 'Lire le règlement',
-        essentiel: 'L’essentiel',
-        lot: 'Lot', dates: 'Dates', organisateur: 'Organisateur',
-        datesVal: `Du ${dateLongue(C.debut, 'fr')} au ${dateLongue(C.fin, 'fr')}`,
-        participer: 'Comment participer',
-        reglement: 'Règlement',
-        modalitesAvant: `Les modalités complètes de participation et le règlement seront publiés sur cette page avant le ${dateLongue(C.debut, 'fr')}.`,
-        modalitesPendant: 'Pour toute question sur les modalités de participation, contactez-nous directement.',
-        tirage: 'Désignation du gagnant',
-        question: 'Une question sur le jeu-concours ?',
-        whatsapp: `Bonjour, j'ai une question sur le jeu-concours (${C.lot.fr}).`,
-        offres: 'Voir nos offres',
-        accueil: 'Découvrir nos prestations',
-    },
-    en: {
-        titre: `Giveaway: win an ${C.lot.en} | ${SITE.marque}`,
-        description: `${SITE.marque} giveaway from ${dateLongue(C.debut, 'en', false)} to ${dateLongue(C.fin, 'en')}: win an ${C.lot.en}. Prize, dates and how to enter.`,
-        eyebrow: `Geneva &amp; Vaud · ${dateLongue(C.debut, 'en', false)} to ${dateLongue(C.fin, 'en')}`,
-        h1: `${SITE.marque} giveaway`,
-        accroche: `Win an <span class="text-gold-400">${esc(C.lot.en)}</span>`,
-        avant: `The giveaway starts on <strong class="text-white">${dateLongue(C.debut, 'en')}</strong>.`,
-        pendant: `The giveaway is open until <strong class="text-white">${dateLongue(C.fin, 'en')}</strong>.`,
-        apres: `<strong class="text-white">This giveaway has ended.</strong> ${C.dateTirage ? `The prize draw takes place on ${dateLongue(C.dateTirage, 'en')}; the` : 'The'} winner is contacted personally. Thank you all for taking part.`,
-        reserver: 'Book a service', lireReglement: 'Read the official rules',
-        essentiel: 'At a glance',
-        lot: 'Prize', dates: 'Dates', organisateur: 'Organiser',
-        datesVal: `${dateLongue(C.debut, 'en')} to ${dateLongue(C.fin, 'en')}`,
-        participer: 'How to enter',
-        reglement: 'Official rules',
-        modalitesAvant: `The full entry conditions and official rules will be published on this page before ${dateLongue(C.debut, 'en')}.`,
-        modalitesPendant: 'For any question about how to enter, please contact us directly.',
-        tirage: 'How the winner is chosen',
-        question: 'A question about the giveaway?',
-        whatsapp: `Hello, I have a question about the giveaway (${C.lot.en}).`,
-        offres: 'See our offers',
-        accueil: 'Discover our services',
-    },
-};
-
-function liste(items) {
-    return `<ul class="text-gray-300 font-light leading-relaxed space-y-2 list-disc pl-5">
-${items.map(i => `                    <li>${i}</li>`).join('\n')}
-                </ul>`;
-}
-
-function pageConcours(langue) {
-    const t = TC[langue], c = SITE.contact;
-    const participation = C.participation[langue] || [];
-    const reglement = C.reglement[langue] || [];
-    const tirage = (C.tirage && C.tirage[langue]) || '';
-    const avantDebut = veille(C.debut);
-
-    // Tant que site.json ne porte pas les modalites, un seul bloc les remplace :
-    // une annonce avant le debut, un renvoi vers le contact pendant.
-    const modalites = (participation.length || reglement.length) ? `
-            ${participation.length ? `<h2 class="text-2xl md:text-3xl font-display font-bold text-white uppercase tracking-tight mb-4">${t.participer}</h2>
-                ${liste(participation)}` : ''}
-            ${reglement.length ? `<h2 id="reglement" class="text-2xl md:text-3xl font-display font-bold text-white uppercase tracking-tight mt-12 mb-4" style="scroll-margin-top:6rem">${t.reglement}</h2>
-                <ol class="text-gray-300 font-light leading-relaxed space-y-3 list-decimal pl-5">
-${reglement.map(r => `                    <li>${r}</li>`).join('\n')}
-                </ol>` : ''}` : `
-            <h2 class="text-2xl md:text-3xl font-display font-bold text-white uppercase tracking-tight mb-4">${t.participer}</h2>
-            <p data-concours data-promo-until="${avantDebut}" class="text-gray-300 font-light leading-relaxed">${t.modalitesAvant}</p>
-            <p data-concours data-promo-from="${C.debut}" data-promo-until="${C.fin}" class="text-gray-300 font-light leading-relaxed">${t.modalitesPendant}</p>`;
-
-    return `${shell.head({ langue, cle: 'jeu-concours', titre: t.titre, description: t.description })}
-<body class="text-gray-300 antialiased">
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5W69QPT3"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
-    <a href="#main-content" class="skip-link">${langue === 'fr' ? 'Passer au contenu principal' : 'Skip to main content'}</a>
-    ${shell.repereHeader(shell.SITE.pages['jeu-concours'][langue].slice(1), langue)}
-
-    <main id="main-content" class="max-w-5xl mx-auto px-4 md:px-6">
-
-        <!-- En-tete PERMANENT : il reste vrai avant, pendant et apres le concours. -->
-        <section class="pt-14 pb-10 md:pt-20 md:pb-12">
-            <img class="mk-hero-photo" src="/images/fonds/cuir-noir.webp" srcset="/images/fonds/cuir-noir-800.webp 800w, /images/fonds/cuir-noir.webp 1600w" sizes="100vw" alt="" aria-hidden="true" fetchpriority="high" decoding="async">
-            <p class="hero-eyebrow mb-5">${t.eyebrow}</p>
-            <h1 class="text-xl md:text-2xl font-display font-bold text-white uppercase tracking-[0.15em] mb-4">${t.h1}</h1>
-            <p class="text-4xl md:text-6xl font-display font-bold text-white uppercase tracking-tight leading-[0.95] mb-8">${t.accroche}</p>
-
-            <!-- Trois etats, dates relues dans site.json. Le garde-fou (site-shell.js,
-                 gardeInline) retire ceux qui ne s'appliquent pas encore ou plus. -->
-            <p data-concours data-promo-until="${avantDebut}" class="inline-block bg-gold-400/10 border border-gold-400/40 text-gray-200 text-sm px-5 py-3 rounded-2xl">${t.avant}</p>
-            <p data-concours data-promo-from="${C.debut}" data-promo-until="${C.fin}" class="inline-block bg-gold-400/10 border border-gold-400/40 text-gray-200 text-sm px-5 py-3 rounded-2xl">${t.pendant}</p>
-            <template data-concours data-promo-expired-after="${C.fin}"><p class="inline-block bg-white/5 border border-white/10 text-gray-200 text-sm px-5 py-3 rounded-2xl">${t.apres}</p></template>
-        </section>
-
-        <section class="pb-14 md:pb-20">
-            <div class="premium-card rounded-3xl p-8 md:p-12">
-                <h2 class="text-2xl md:text-3xl font-display font-bold text-white uppercase tracking-tight mb-6">${t.essentiel}</h2>
-                <dl class="grid gap-6 md:grid-cols-3 text-sm">
-                    <div><dt class="font-display font-bold text-[10px] tracking-[0.3em] uppercase text-gold-400 mb-2">${t.lot}</dt><dd class="text-white">${esc((C.lotDetail && C.lotDetail[langue]) || C.lot[langue])}</dd></div>
-                    <div><dt class="font-display font-bold text-[10px] tracking-[0.3em] uppercase text-gold-400 mb-2">${t.dates}</dt><dd class="text-white">${t.datesVal}</dd></div>
-                    <div><dt class="font-display font-bold text-[10px] tracking-[0.3em] uppercase text-gold-400 mb-2">${t.organisateur}</dt><dd class="text-white">${SITE.marque}, ${c.raisonSociale}<br><span class="text-gray-400">${c.adresse.rue}, ${c.adresse.npa} ${c.adresse.ville}</span></dd></div>
-                </dl>
-            </div>
-        </section>
-
-        <!-- Pendant le concours : participer = reserver une prestation. -->
-        <section data-concours data-promo-until="${C.fin}" class="pb-14 md:pb-20">
-            <div class="flex flex-col sm:flex-row gap-3">
-                <a href="${SITE.pages.reserver.existe ? SITE.pages.reserver[langue] : (langue === 'fr' ? '/#services' : '/en/#services')}" class="inline-flex items-center justify-center bg-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-4 px-8 rounded-full hover:bg-gold-500 transition-all text-sm">${t.reserver}</a>
-                ${reglement.length ? `<a href="#reglement" class="inline-flex items-center justify-center border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-4 px-8 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">${t.lireReglement}</a>` : ''}
-            </div>
-        </section>
-
-        <section class="pb-14 md:pb-20 max-w-3xl">${modalites}
-            ${tirage ? `<h2 class="text-2xl md:text-3xl font-display font-bold text-white uppercase tracking-tight mt-10 mb-4">${t.tirage}</h2>
-            <p class="text-gray-300 font-light leading-relaxed">${tirage}</p>` : ''}
-        </section>
-
-        <section class="pb-16 md:pb-24">
-            <div class="premium-card rounded-3xl p-8 md:p-12 text-center">
-                <p class="text-white font-display font-bold uppercase tracking-wider mb-6">${t.question}</p>
-                <div class="flex flex-col sm:flex-row gap-3 justify-center mb-8">
-                    <a href="https://wa.me/${c.whatsapp}?text=${encodeURIComponent(t.whatsapp)}" target="_blank" rel="noopener noreferrer" class="inline-block bg-[#25D366] text-charcoal-900 font-display font-bold tracking-widest uppercase py-3 px-8 rounded-full hover:bg-[#1fb857] transition-all text-sm">WhatsApp</a>
-                    <a href="tel:${c.tel}" class="inline-block border border-gold-400 text-gold-400 font-display font-bold tracking-widest uppercase py-3 px-8 rounded-full hover:bg-gold-400 hover:text-charcoal-900 transition-all text-sm">${c.telAffiche}</a>
-                    <a href="mailto:${c.email}" class="inline-block border border-white/20 text-white font-display font-bold tracking-widest uppercase py-3 px-8 rounded-full hover:border-gold-400 hover:text-gold-400 transition-all text-sm">E-mail</a>
-                </div>
-                <p class="text-gray-400 text-sm">
-                    <a href="${SITE.pages.offres[langue]}" class="text-gold-400 underline underline-offset-4 hover:text-white transition">${t.offres}</a>
-                    &nbsp;·&nbsp;
-                    <a href="${SITE.pages.accueil[langue]}" class="text-gold-400 underline underline-offset-4 hover:text-white transition">${t.accueil}</a>
-                </p>
-            </div>
-        </section>
-    </main>
-    ${shell.repereFooter(shell.SITE.pages['jeu-concours'][langue].slice(1), langue)}
-
-    ${shell.repereFinDePage(langue, { pageConcours: true })}
-</body>
-</html>
-`;
-}
+// Jeu-concours de novembre 2026 : annule le 12.11.2026, page retiree
+// (site.json pages.jeu-concours.existe = false).
 
 // ===========================================================================
 // PHASE 1 — pages des gabarits commercial / prise d'information (pages.json)
@@ -467,10 +319,6 @@ function pageGabarit(cle, langue) {
 if (require.main === module) {
 verifierSumUpOffres();
 
-['fr', 'en'].forEach(l => {
-    const rel = ecrire(SITE.pages['jeu-concours'][l], pageConcours(l));
-    console.log(`✅ ${rel}`);
-});
 
 Object.keys(PAGES).filter(k => !k.startsWith('_') && k !== 'accueil').forEach(cle => {
     if (!SITE.pages[cle]) throw new Error(`pages.json : "${cle}" n'existe pas dans site.json.`);
@@ -483,11 +331,6 @@ Object.keys(PAGES).filter(k => !k.startsWith('_') && k !== 'accueil').forEach(cl
 
 // Le blog (index + articles) est produit par generate-blog.js.
 
-if (!C.participation.fr.length && !C.reglement.fr.length) {
-    console.warn(`⚠️  site.json : concours.participation et concours.reglement sont vides. ` +
-        `La page jeu-concours annonce les modalites « avant le ${dateLongue(C.debut, 'fr')} » : ` +
-        `a renseigner dans site.json avant le debut du concours.`);
-}
 
 }
 

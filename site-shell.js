@@ -36,7 +36,10 @@ const fs = require('fs');
 const path = require('path');
 
 const SITE = JSON.parse(fs.readFileSync(path.join(__dirname, 'site.json'), 'utf8'));
-const C = SITE.concours;
+// Evenement mis en avant (site.json "evenement") : offre d'hiver depuis le
+// 12.11.2026, en remplacement du jeu-concours annule. Les noms internes
+// (data-concours, repere CCW:CONCOURS) restent ceux du mecanisme d'origine.
+const C = SITE.evenement;
 
 const MOIS = {
     fr: ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'],
@@ -46,16 +49,23 @@ const MOIS = {
 const ISO = /^\d{4}-\d{2}-\d{2}$/;
 
 function verifierConcours() {
-    if (!C) throw new Error('site.json : bloc "concours" absent.');
+    if (!C) throw new Error('site.json : bloc "evenement" absent.');
     if (!ISO.test(C.debut || '') || !ISO.test(C.fin || '')) {
-        throw new Error(`site.json : dates du concours invalides (debut="${C.debut}", fin="${C.fin}"), format AAAA-MM-JJ attendu.`);
+        throw new Error(`site.json : dates de l'evenement invalides (debut="${C.debut}", fin="${C.fin}"), format AAAA-MM-JJ attendu.`);
     }
-    if (C.fin < C.debut) throw new Error(`site.json : le concours finit (${C.fin}) avant de commencer (${C.debut}).`);
+    if (C.fin < C.debut) throw new Error(`site.json : l'evenement finit (${C.fin}) avant de commencer (${C.debut}).`);
     ['fr', 'en'].forEach(l => {
-        if (!C.lot || !C.lot[l]) throw new Error(`site.json : concours.lot.${l} manquant.`);
+        ['eb', 'titre', 'cta', 'court', 'bandeau'].forEach(k => {
+            if (!C[l] || !C[l][k]) throw new Error(`site.json : evenement.${l}.${k} manquant.`);
+        });
     });
 }
 verifierConcours();
+
+// Date du jour a Geneve (AAAA-MM-JJ) : apres la fin, les blocs de l'evenement
+// ne sont plus generes du tout (le site est reconstruit chaque matin).
+const AUJOURDHUI = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Zurich', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+const evenementActif = () => AUJOURDHUI <= C.fin;
 
 // "2026-11-01" -> "1er novembre 2026" / "1 November 2026"
 function dateLongue(iso, langue, avecAnnee = true) {
@@ -114,7 +124,6 @@ function gardeInline() {
 // data-debut et non data-promo-from : le garde-fou des dates la retirerait avant le debut.
 // Masquee pour la visite si on la ferme (sessionStorage, dans un try/catch).
 // Ses styles sont dans assets/css/da-2026.css.
-const ICO_CADEAU = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"></rect><path d="M12 8v13M3 12h18M12 8S10 3 7.5 4.5 9 8 12 8zM12 8s2-5 4.5-3.5S15 8 12 8z"></path></svg>';
 const ICO_TEL = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg>';
 const ICO_WA = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4A8.5 8.5 0 1 1 8 19.6z"></path><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1.2-1.4-2-1-1 .8c-1-.4-1.8-1.2-2.2-2.2l.8-1-1-2z"></path></svg>';
 
@@ -122,9 +131,10 @@ const ICO_WA = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stro
 // jaune, fixe en bas a droite, fermable (masque pour la visite). Servie `hidden`,
 // revelee par son script uniquement entre debut et fin du concours.
 const TXT_PASTILLE = {
-    fr: { eb: 'Jeu concours · novembre', titre: `Gagnez un ${C.lot.fr}`, texte: 'Un lavage réalisé et payé en novembre suffit →', masquer: 'Fermer' },
-    en: { eb: 'Giveaway · November', titre: `Win an ${C.lot.en}`, texte: 'One wash done and paid in November is all it takes →', masquer: 'Close' },
+    fr: { eb: C.fr.eb, titre: C.fr.titre, texte: 'Jusqu’au 30 novembre, je réserve →', masquer: 'Fermer' },
+    en: { eb: C.en.eb, titre: C.en.titre, texte: 'Until 30 November, book now →', masquer: 'Close' },
 };
+const ICO_FLOCON = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M4.2 6.5l15.6 11M4.2 17.5l15.6-11M9.5 3.8 12 6l2.5-2.2M9.5 20.2 12 18l2.5 2.2M2.9 9.8l3.4.9-.6 3.3M21.1 14.2l-3.4-.9.6-3.3M2.9 14.2l3.4-.9-.6-3.3M21.1 9.8l-3.4.9.6 3.3"/></svg>';
 
 function scriptCarte() {
     return '<script>(function(){var d=document.getElementById("ccw-concours");if(!d)return;' + JS_MAINTENANT +
@@ -137,16 +147,17 @@ function scriptCarte() {
         '})();</script>';
 }
 
-// Lien du concours : la section de l'accueil, sinon la page du concours.
+// Lien de l'evenement : sa section sur l'accueil.
 function lienConcours(langue, actuel) {
-    return actuel === SITE.pages.accueil[langue] ? '#concours' : url('jeu-concours', langue);
+    return actuel === SITE.pages.accueil[langue] ? `#offre-${C.id}` : `${SITE.pages.accueil[langue]}#offre-${C.id}`;
 }
 
 function carteConcours(langue, actuel = null) {
+    if (!evenementActif()) return '';
     const t = TXT_PASTILLE[langue];
     return `
     <aside id="ccw-concours" class="mk-bulle" aria-label="${esc(t.eb)}" data-concours data-debut="${C.debut}" data-promo-until="${C.fin}" hidden>
-        <span class="mk-bulle__ico" aria-hidden="true">${ICO_CADEAU}</span>
+        <span class="mk-bulle__ico" aria-hidden="true">${ICO_FLOCON}</span>
         <a class="mk-bulle__lien" href="${lienConcours(langue, actuel)}">
             <span class="mk-bulle__eb">${esc(t.eb)}</span>
             <span class="mk-bulle__titre">${esc(t.titre)}</span>
@@ -192,22 +203,17 @@ function repereFinDePage(langue, opts) {
 // Visible des aujourd'hui (annonce), retire seul au lendemain de la fin.
 // ---------------------------------------------------------------------------
 function blocConcoursOffres(langue) {
-    const fr = langue === 'fr';
-    const du = dateLongue(C.debut, langue, false), au = dateLongue(C.fin, langue);
+    if (!evenementActif()) return '';
+    const fr = langue === 'fr', t = C[langue];
+    const au = dateLongue(C.fin, langue);
     return `
-        <section data-concours data-promo-until="${C.fin}" class="pb-14 md:pb-20">
+        <section data-concours data-promo-from="${C.debut}" data-promo-until="${C.fin}" class="pb-14 md:pb-20">
             <div class="premium-card rounded-3xl p-8 md:p-12" style="border-color:rgba(212,175,55,.35);">
-                <p class="hero-eyebrow mb-4">${fr ? 'Jeu-concours' : 'Giveaway'} · ${fr ? `du ${du} au ${au}` : `${du} to ${au}`}</p>
-                <h2 class="text-3xl md:text-5xl font-display font-bold text-white uppercase tracking-tight leading-[0.95] mb-6">
-                    ${fr ? 'Un' : 'An'} <span class="text-gold-400">${esc(C.lot[langue])}</span><br>${fr ? 'à gagner' : 'to win'}
-                </h2>
-                <p class="text-gray-400 font-light leading-relaxed mb-8 max-w-2xl">
-                    ${fr
-                        ? `Clean Cars Wash organise un jeu-concours du ${du} au ${au}. Le lot, les dates et les modalités de participation sont réunis sur la page du jeu-concours.`
-                        : `Clean Cars Wash is running a giveaway from ${du} to ${au}. The prize, the dates and how to enter are all on the giveaway page.`}
-                </p>
-                <a href="${url('jeu-concours', langue)}" class="cta-star inline-block bg-gold-400 border border-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-4 px-10 rounded-full hover:bg-gold-500 transition-all">
-                    ${fr ? 'Voir le jeu-concours' : 'See the giveaway'}
+                <p class="hero-eyebrow mb-4">${esc(t.eb)} · ${fr ? `jusqu’au ${au}` : `until ${au}`}</p>
+                <h2 class="text-3xl md:text-5xl font-display font-bold text-white tracking-tight leading-[0.95] mb-6">${esc(t.titre)}</h2>
+                <p class="text-gray-400 font-light leading-relaxed mb-8 max-w-2xl">${esc(t.texte)} ${fr ? 'Habitacle, sièges et tapis aspirés, vitres nettoyées à l’intérieur et à l’extérieur, coffre aspiré.' : 'Cabin, seats and mats vacuumed, windows cleaned inside and out, boot vacuumed.'}</p>
+                <a href="${lienConcours(langue, null)}" class="cta-star inline-block bg-gold-400 border border-gold-400 text-charcoal-900 font-display font-bold tracking-widest uppercase py-4 px-10 rounded-full hover:bg-gold-500 transition-all">
+                    ${esc(t.cta)}
                 </a>
             </div>
         </section>`;
@@ -310,7 +316,7 @@ const UI = {
         menu: 'Menu principal', ouvrir: 'Ouvrir le menu', fermer: 'Fermer le menu', sous: 'Sous-menu',
         reserver: 'Réserver', appeler: 'Appeler', apercu: 'Vue d’ensemble', accueil: 'Accueil',
         wa: 'Bonjour, je souhaiterais obtenir un renseignement.', langue: 'Langue', faq: 'FAQ',
-        bandeau: `Jeu concours : un lavage en novembre, un ${C.lot.fr} à gagner →`,
+        bandeau: C.fr.bandeau,
         footerAccroche: 'Lavage auto premium, en atelier et à domicile. Genève &amp; Vaud.',
         footerContact: 'Contact', footerHoraires: 'Horaires', footerPresta: 'Prestations', footerInfos: 'Infos',
         footerVilles: 'Nous intervenons à', footerAvis: 'Nos avis sur Google', skip: 'Passer au contenu principal',
@@ -320,7 +326,7 @@ const UI = {
         menu: 'Main menu', ouvrir: 'Open the menu', fermer: 'Close the menu', sous: 'Submenu',
         reserver: 'Book', appeler: 'Call', apercu: 'Overview', accueil: 'Home',
         wa: 'Hello, I would like some information.', langue: 'Language', faq: 'FAQ',
-        bandeau: `Giveaway: one wash in November, an ${C.lot.en} to win →`,
+        bandeau: C.en.bandeau,
         footerAccroche: 'Premium car care, in our workshop or at your home. Geneva &amp; Vaud.',
         footerContact: 'Contact', footerHoraires: 'Opening hours', footerPresta: 'Services', footerInfos: 'Info',
         footerVilles: 'We operate in', footerAvis: 'Our Google reviews', skip: 'Skip to main content',
@@ -407,7 +413,7 @@ ${it.href ? `                    <li><a href="${it.href}"${courant(it.href, actu
     const lienBandeau = lienConcours(langue, actuel);
     return `
     <div id="ccw-header" class="mk-haut">
-        <a class="mk-bandeau" href="${lienBandeau}" data-concours data-promo-from="${C.debut}" data-promo-until="${C.fin}">${esc(t.bandeau)}</a>
+        ${evenementActif() ? `<a class="mk-bandeau" href="${lienBandeau}" data-concours data-promo-from="${C.debut}" data-promo-until="${C.fin}">${esc(t.bandeau)}</a>` : ''}
         <header class="mk-header">
             <div class="mk-header__barre">
                 <a href="${SITE.pages.accueil[langue]}" class="mk-logo" aria-label="${SITE.marque}, ${t.accueil}">
@@ -489,7 +495,7 @@ function footer(langue, { villes = true, actuel = null } = {}) {
     const cleActuelle = Object.keys(P).find(k => P[k][langue] && P[k][langue] === actuel);
     const final = /\/404\.html$/.test(actuel || '') || SANS_APPEL_FINAL.includes(cleActuelle) ? '' : appelFinal(langue);
     const lien = (href, txt) => `<li><a href="${href}">${txt}</a></li>`;
-    const infos = ['tarifs', 'abonnements', 'offres', 'zones', 'particuliers', 'professionnels', 'blog', 'jeu-concours', 'mentions', 'confidentialite']
+    const infos = ['tarifs', 'abonnements', 'offres', 'zones', 'particuliers', 'professionnels', 'blog', 'mentions', 'confidentialite']
         .filter(k => P[k] && P[k].existe && P[k][langue])
         .map(k => lien(P[k][langue], esc(P[k].libelle[langue])));
     const listeVilles = villes ? (() => {
@@ -581,6 +587,6 @@ module.exports = {
     header, footer, appelFinal, alternes, arbreMenu, urlPrestation, urlReserver, PRESTATIONS, UI,
     head, CSP,
     SITE, dateLongue, veille, url, esc,
-    gardeInline, carteConcours, blocFinDePage, blocConcoursOffres, repere, repereFinDePage,
+    gardeInline, carteConcours, evenementActif, AUJOURDHUI, blocFinDePage, blocConcoursOffres, repere, repereFinDePage,
     JS_MAINTENANT,
 };

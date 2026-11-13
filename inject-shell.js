@@ -44,7 +44,7 @@ const shell = require('./site-shell.js');
 const comp = require('./site-composants.js');
 
 const AMORCER = process.argv.includes('--amorcer');
-const C = shell.SITE.concours;
+const C = shell.SITE.evenement;
 const ROOT = __dirname;
 
 const pages = globSync('**/*.html', { cwd: ROOT, ignore: ['node_modules/**', 'dist/**'] }).sort();

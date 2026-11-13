@@ -651,3 +651,64 @@ main:not(.mk-accueil)>section.mk-legal :is(h2,h3){font-size:clamp(22px,2.6vw,28p
 .mk-lot--petit.mk-lot--photo .mk-lot__legende{left:auto;right:10px;bottom:auto;top:50%;translate:0 -50%;max-width:48%;text-align:left}
 .mk-formule__des{font-size:13px;font-weight:700;color:var(--mk-doux);margin-bottom:-14px !important}
 .mk-formule--principale .mk-formule__des{color:var(--mk-gris)}
+/* Offre d'hiver (evenement mis en avant, 12.11.2026) : panneau jaune de l'ancien concours */
+.mk-a-offre{margin-top:12px}
+.mk-a-offre__accroche{font-size:18px;font-weight:600;line-height:1.5;max-width:620px;margin:0}
+.mk-a-offre__texte{font-size:16px;line-height:1.5;margin:0}
+.mk-a-offre__inclus-titre{font-weight:800;font-size:15px;margin:0 0 4px}
+.mk-a-offre .mk-a-concours__etapes li{align-items:center;gap:12px;font-size:15px}
+.mk-a-offre .mk-a-concours__etapes li svg{flex:none}
+.mk-a-offre__prix{margin:0;font-family:var(--mk-titre);font-weight:700;font-size:20px;letter-spacing:-.02em}
+.mk-a-offre__prix small{display:block;font-family:var(--mk-corps);font-size:13px;font-weight:700;letter-spacing:0;opacity:.75}
+.mk-a-offre__prix span{font-size:clamp(48px,6vw,72px);line-height:1;letter-spacing:-.04em}
+.mk-a-offre__valable{margin:0;font-size:13px;font-weight:600;opacity:.8}
+.mk-a-offre .mk-lot--photo .mk-lot__photo,.mk-a-hero__carte .mk-lot--photo .mk-lot__photo{inset:0;left:0;height:100%;width:100%;object-fit:cover;object-position:center}
+@media (max-width:700px){.mk-a-offre .mk-lot--grand{aspect-ratio:16/10;max-width:none}}
+/* Offre d'hiver, version hivernale (12.11.2026, ajustee) : on reste dans la DA CCW
+   (noir, jaune, blanc). L'hiver est porte par la matiere, pas par la couleur :
+   neige qui tombe, givre blanc sur les bords, congere en bas, flocons. */
+:root{--mk-givre:#E6F2FA}
+.mk-panneau--hiver{background:radial-gradient(ellipse 70% 60% at 80% 10%,#1B2229 0%,var(--mk-noir) 60%);color:#fff}
+.mk-panneau--hiver .mk-caus{opacity:.12}
+.mk-panneau--hiver .mk-a-concours__in{position:relative;z-index:2}
+.mk-givre{position:absolute;inset:0;z-index:0;pointer-events:none;background:
+  radial-gradient(ellipse 45% 30% at 0% 0%,rgba(230,242,250,.16),transparent 70%),
+  radial-gradient(ellipse 35% 25% at 100% 0%,rgba(230,242,250,.10),transparent 70%)}
+.mk-neige{position:absolute;inset:0;z-index:1;pointer-events:none;width:100%;height:100%}
+.mk-neige-sol{position:absolute;left:0;right:0;bottom:-2px;height:110px;z-index:1;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath d='M0 70 C120 40 220 95 360 72 S600 30 760 62 S1040 98 1180 64 S1380 40 1440 58 V120 H0Z' fill='%23FFFFFF' opacity='.35'/%3E%3Cpath d='M0 92 C160 70 300 110 470 90 S760 62 930 88 S1240 112 1440 84 V120 H0Z' fill='%23FFFFFF'/%3E%3C/svg%3E") bottom/100% 100% no-repeat}
+.mk-panneau--hiver .mk-eb,.mk-panneau--hiver .mk-eb--hiver{display:inline-flex;align-items:center;gap:8px;color:var(--mk-jaune)}
+.mk-eb--hiver{display:inline-flex;align-items:center;gap:6px}
+.mk-flocon{flex:none}
+.mk-panneau--hiver .mk-h2,.mk-panneau--hiver .mk-a-offre__accroche{color:#fff}
+.mk-panneau--hiver .mk-a-offre__texte,.mk-panneau--hiver .mk-a-offre__valable{color:#C9C6BE;opacity:1}
+.mk-panneau--hiver .mk-a-offre__inclus-titre{color:#fff}
+.mk-panneau--hiver .mk-a-concours__etapes li{border-top-color:rgba(255,255,255,.16);color:#fff}
+.mk-panneau--hiver .mk-a-offre__prix{color:#fff}
+.mk-panneau--hiver .mk-a-offre__prix span{color:var(--mk-jaune)}
+.mk-panneau--hiver .mk-a-offre__prix small{color:#C9C6BE;opacity:1}
+/* photo : bords givres blancs, couleurs d'origine */
+.mk-lot--givre{isolation:isolate}
+.mk-lot--givre::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse 120% 90% at 50% 50%,transparent 60%,rgba(255,255,255,.45) 100%)}
+.mk-lot--givre .mk-neige{z-index:3}
+/* carte du haut de page : carte blanche habituelle, flocon et pastille jaune */
+.mk-a-hero__carte--hiver .mk-eb--hiver{font-weight:800}
+@media (prefers-reduced-motion:reduce){.mk-neige{display:none}}
+/* Dosage final (12.11.2026) : une touche de bleu d'hiver sur le noir CCW, jaune conserve pour l'action */
+:root{--mk-glace:#BFE0F5}
+.mk-panneau--hiver{background:radial-gradient(ellipse 75% 65% at 82% 8%,#1C3550 0%,#122236 38%,var(--mk-noir) 78%)}
+.mk-givre{background:
+  radial-gradient(ellipse 50% 32% at 0% 0%,rgba(191,224,245,.22),transparent 70%),
+  radial-gradient(ellipse 40% 28% at 100% 0%,rgba(191,224,245,.14),transparent 70%)}
+.mk-panneau--hiver .mk-eb,.mk-panneau--hiver .mk-eb--hiver{color:var(--mk-glace)}
+.mk-panneau--hiver .mk-a-offre__inclus-titre{color:var(--mk-glace)}
+.mk-panneau--hiver .mk-a-concours__etapes li{border-top-color:rgba(191,224,245,.18)}
+.mk-lot--givre .mk-lot__photo{filter:saturate(.88) hue-rotate(-4deg)}
+.mk-lot--givre::after{background:linear-gradient(180deg,rgba(28,53,80,.22),transparent 40%),radial-gradient(ellipse 120% 90% at 50% 50%,transparent 58%,rgba(225,242,255,.5) 100%)}
+.mk-a-hero__carte--hiver{background:linear-gradient(180deg,#EEF7FD 0%,#fff 32%)}
+.mk-a-hero__carte--hiver .mk-eb--hiver{color:#1F4A72}
+.mk-bulle__ico{background:var(--mk-glace)}
+/* Carte du hero : rappel bleu d'hiver un peu plus present (13.11.2026) */
+.mk-a-hero__carte--hiver{background:linear-gradient(180deg,#E2F0FA 0%,#F3F9FD 30%,#fff 55%);box-shadow:inset 0 0 0 1px #CFE5F4,0 18px 40px rgba(14,14,16,.28)}
+.mk-a-hero__carte--hiver .mk-eb--hiver{color:#1F5A8C}
+.mk-a-hero__carte--hiver .mk-lot--givre{box-shadow:0 0 0 2px #D6EAF7}
+.mk-a-hero__carte--hiver .mk-a-hero__carte-lien{color:#1F5A8C}

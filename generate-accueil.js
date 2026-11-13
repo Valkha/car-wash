@@ -4,9 +4,9 @@
  * ----------------------------------------------------------------------------
  * Ecrit index.html (FR) et en/index.html (EN) depuis les donnees du site :
  * prix (offres.json, alignes sur SumUp TTC), prestations (prestations.json),
- * contact, horaires, deplacement et concours (site.json). Les textes suivent la
- * maquette du marketing, corriges sur les faits verifies (CGV, reglement du
- * concours, fiche Google).
+ * contact, horaires, deplacement et evenement mis en avant (site.json). Les
+ * textes suivent la maquette du marketing, corriges sur les faits verifies (CGV,
+ * fiche Google).
  * Regles : jamais de « prix fixe », jamais de pont elevateur, jamais « aucun
  * supplement », l'atelier passe toujours avant le domicile.
  * Lance par `npm run generate`, avant inject-shell.js.
@@ -18,7 +18,7 @@ const shell = require('./site-shell.js');
 const comp = require('./site-composants.js');
 
 const ROOT = __dirname;
-const SITE = shell.SITE, C = SITE.concours, CT = SITE.contact, D = SITE.deplacement, P = SITE.pages;
+const SITE = shell.SITE, C = SITE.evenement, CT = SITE.contact, D = SITE.deplacement, P = SITE.pages;
 const OFFRES = JSON.parse(fs.readFileSync(path.join(ROOT, 'offres.json'), 'utf8'));
 // Avis Google : avis.json, mis a jour au build par scripts/avis-google.js.
 const AVIS_G = JSON.parse(fs.readFileSync(path.join(ROOT, 'avis.json'), 'utf8'));
@@ -33,16 +33,10 @@ const COCHE = c => `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" 
 const PIN = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5a7 7 0 0 1 14 0C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>';
 const LECTURE = '<svg width="20" height="20" viewBox="0 0 24 24" fill="#0E0E10" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>';
 const GOUTTE = '<svg width="20" height="20" viewBox="0 0 24 24" fill="#FFCC00" aria-hidden="true"><path d="M12 2.5s-6.5 7.4-6.5 12a6.5 6.5 0 0 0 13 0c0-4.6-6.5-12-6.5-12z"/></svg>';
-const CADEAU = '<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"></rect><path d="M12 8v13M3 12h18M12 8S10 3 7.5 4.5 9 8 12 8zM12 8s2-5 4.5-3.5S15 8 12 8z"></path></svg>';
 
+const FLOCON = '<svg class="mk-flocon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 2v20M4.2 6.5l15.6 11M4.2 17.5l15.6-11M9.5 3.8 12 6l2.5-2.2M9.5 20.2 12 18l2.5 2.2M2.9 9.8l3.4.9-.6 3.3M21.1 14.2l-3.4-.9.6-3.3M2.9 14.2l3.4-.9-.6-3.3M21.1 9.8l-3.4.9.6 3.3"/></svg>';
 const pack = id => OFFRES.packs.find(p => p.id === id);
 
-// Photo du lot : deposer public/images/concours/iphone-18-pro-max.webp (format portrait 4/5
-// conseille, ~1000 px de haut). Sans fichier, l'emplacement garde le pictogramme.
-const PHOTO_LOT = fs.existsSync(path.join(ROOT, 'public/images/concours/iphone-18-pro-max.webp')) ? '/images/concours/iphone-18-pro-max.webp' : null;
-const lotVisuel = (texte, alt, grand) => PHOTO_LOT
-    ? `<img class="mk-lot__photo" src="${PHOTO_LOT}" alt="${esc(alt)}" loading="${grand ? 'lazy' : 'eager'}" decoding="async"><span class="mk-lot__legende">${esc(texte)}</span>`
-    : `${CADEAU}<span>${esc(texte)}</span>`;
 const presta = id => PRESTA.find(p => p.id === id);
 const nbsp = s => String(s).replace(/ /g, ' ');
 
@@ -61,7 +55,7 @@ const T = {
         ligne: (rue, ville) => `Atelier au ${rue}, ${ville} · <strong>déplacement offert sur Genève</strong>`,
         ctaFormules: 'Voir les formules et prix', wa: 'ou écrivez-nous sur WhatsApp',
         note: () => `${noteTxt('fr')} sur Google · ${AVIS_G.nombre} avis`, horaires: '7 j/7, 7h30–22h',
-        carte: { eb: 'Jeu concours', dates: '1–30 nov.', titre: lot => `Gagnez un ${lot}`, texte: 'Un lavage réalisé et payé en novembre suffit pour participer (une participation par personne).', lien: 'Comment participer →' },
+        carte: { dates: 'jusqu’au 30.11', texte: 'Habitacle, sièges, tapis, vitres et coffre : l’intérieur au tarif hiver.', lien: 'Je réserve →' },
         bandeLabel: 'Nos prestations',
         bande: ['Atelier', 'Polish', 'Céramique', 'Lavage à domicile', 'Shampoing sièges', 'Jantes', 'Detailing'],
         packsSous: { argent: 'Le lavage complet, dehors et dedans', or: 'Le lavage complet, intérieur remis à neuf', diamant: 'Le detailing haut de gamme' },
@@ -93,9 +87,7 @@ const T = {
             ['ciel-etoile', 'Ciel étoilé', 'Fibres optiques posées à la main dans le pavillon.'],
             ['nettoyage-chassis', 'Châssis & moteur', 'Châssis, compartiment moteur et passages de roue, par exemple avant la visite technique.'],
         ],
-        concoursEb: 'Jeu concours · du 1er au 30 novembre', concoursH2: lot => `Un lavage en novembre, un ${lot} à gagner.`,
-        concoursEtapes: ['Faites réaliser une prestation entre le 1er et le 30 novembre.', 'Une fois la prestation payée, vous êtes inscrit au tirage (une participation par personne).', 'Tirage au sort le 22 décembre 2026. Le gagnant est contacté personnellement.'],
-        concoursCta: 'Réserver et participer', reglement: 'Règlement du jeu',
+        offreJusqu: 'jusqu’au 30 novembre', apartirOffre: 'À partir de', offreValable: 'Offre valable jusqu’au 30 novembre 2026.',
         avisH2: 'Ils en parlent mieux que nous.', avisNote: () => `${AVIS_G.nombre} avis Google →`, avisSource: 'Avis Google',
         deplH2: 'Combien coûte le déplacement ?', deplTxt: 'À l’atelier, aucun frais. Pour un lavage chez vous, tapez votre adresse ou votre commune, ou touchez la carte.',
         deplLabel: 'Adresse ou commune de la voiture', deplPlaceholder: 'Ex. Rue de la Gare 1, Nyon', deplVide: 'Votre commune', deplNote: 'Tapez une adresse ou touchez la carte',
@@ -108,7 +100,6 @@ const T = {
             ['Que dois-je prévoir pour un lavage chez moi ?', 'Une place de parking privative (garage, allée ou parking résidentiel) et une prise électrique 230V, toutes deux obligatoires ; un point d’eau est recommandé. À l’atelier, vous n’avez rien à prévoir.'],
             ['Combien coûte le déplacement ?', `Rien à l’atelier. À domicile, il est offert dans tout le canton de Genève. Sur Vaud, un forfait s’ajoute selon le district : ${D.orange.prix} CHF (Nyon, Morges, Ouest lausannois, Lausanne, Gros-de-Vaud) ou ${D.rouge.prix} CHF pour les autres districts. Il est annoncé avant de payer.`],
             ['Comment se passe le paiement ?', 'Vous choisissez votre formule, le lieu et votre créneau, puis vous réglez un acompte de 30 % en ligne, par TWINT ou carte bancaire, sécurisé par SumUp. Le solde se règle sur place. Jusqu’à 24 h avant le rendez-vous, l’acompte est reporté sur une prochaine réservation. Moins de 24 h avant, il reste acquis.'],
-            ['Comment participer au jeu concours ?', 'Il suffit qu’une prestation soit réalisée et payée entre le 1er et le 30 novembre 2026 : vous êtes inscrit automatiquement, une participation par personne. Tirage au sort le 22 décembre 2026.', 'concours'],
             ['Quelle différence entre un polish et un traitement céramique ?', 'Le polish corrige la laque (micro-rayures, traces de lavage) ; la céramique la protège et fait perler l’eau. La céramique vient toujours après la correction : c’est ce que réunit le Pack Polish Céramique, dès 999 CHF TTC sur devis.'],
             ['Qu’est-ce que le PPF ?', 'Un film transparent qui encaisse gravillons et rayures à la place de votre laque. La pose exige un environnement sans poussière : elle se fait exclusivement à l’atelier, et demande une journée complète minimum.'],
         ],
@@ -144,7 +135,7 @@ const T = {
         ligne: (rue, ville) => `Workshop at ${rue}, ${ville === 'Genève' ? 'Geneva' : ville} · <strong>travel included in Geneva</strong>`,
         ctaFormules: 'See packs and prices', wa: 'or message us on WhatsApp',
         note: () => `${noteTxt('en')} on Google · ${AVIS_G.nombre} reviews`, horaires: '7 days a week, 7:30am–10pm',
-        carte: { eb: 'Giveaway', dates: '1–30 Nov', titre: lot => `Win an ${lot}`, texte: 'One service carried out and paid for in November is all it takes to enter (one entry per person).', lien: 'How to enter →' },
+        carte: { dates: 'until 30 Nov', texte: 'Cabin, seats, mats, windows and boot: the interior at the winter rate.', lien: 'Book now →' },
         bandeLabel: 'Our services',
         bande: ['Workshop', 'Polish', 'Ceramic', 'Car wash at home', 'Seat shampoo', 'Rims', 'Detailing'],
         packsSous: { argent: 'The full wash, outside and in', or: 'The full wash, interior brought back', diamant: 'High-end detailing' },
@@ -176,9 +167,7 @@ const T = {
             ['ciel-etoile', 'Starlight headliner', 'Fibre optics fitted by hand in the roof lining.'],
             ['nettoyage-chassis', 'Chassis & engine', 'Chassis, engine bay and wheel arches, for example before the vehicle inspection.'],
         ],
-        concoursEb: 'Giveaway · 1 to 30 November', concoursH2: lot => `A wash in November, an ${lot} to win.`,
-        concoursEtapes: ['Have a service carried out between 1 and 30 November.', 'Once the service is paid for, you are entered in the draw (one entry per person).', 'Draw on 22 December 2026. The winner is contacted personally.'],
-        concoursCta: 'Book and enter', reglement: 'Giveaway rules',
+        offreJusqu: 'until 30 November', apartirOffre: 'From', offreValable: 'Offer valid until 30 November 2026.',
         avisH2: 'They say it better than we do.', avisNote: () => `${AVIS_G.nombre} Google reviews →`, avisSource: 'Google review, in French',
         deplH2: 'How much is the travel fee?', deplTxt: 'Nothing at the workshop. For a wash at your place, type your address or municipality, or tap the map.',
         deplLabel: 'Address or municipality of the car', deplPlaceholder: 'E.g. Rue de la Gare 1, Nyon', deplVide: 'Your municipality', deplNote: 'Type an address or tap the map',
@@ -191,7 +180,6 @@ const T = {
             ['What do I need for a wash at home?', 'A private parking space (garage, driveway or residential car park) and a 230V power socket, both required; a water point is recommended. At the workshop, you don’t need anything.'],
             ['How much is the travel fee?', `Nothing at the workshop. At home, travel is included across the canton of Geneva. In Vaud, a flat fee is added depending on the district: CHF ${D.orange.prix} (Nyon, Morges, Ouest lausannois, Lausanne, Gros-de-Vaud) or CHF ${D.rouge.prix} for the other districts. It is shown before you pay.`],
             ['How does payment work?', 'You choose your pack, the place and your time slot, then pay a 30% deposit online by TWINT or card, secured by SumUp. The balance is settled on site. Up to 24 hours before the appointment, the deposit is carried over to a future booking. Less than 24 hours before, it is retained.'],
-            ['How do I enter the giveaway?', 'A service carried out and paid for between 1 and 30 November 2026 is all it takes: you are entered automatically, one entry per person. Draw on 22 December 2026.', 'concours'],
             ['What is the difference between a polish and a ceramic coating?', 'A polish corrects the paint (swirls, wash marks); a ceramic coating protects it and makes water bead. The coating always comes after the correction: that is what the Polish Ceramic Pack combines, from CHF 999 incl. VAT on quotation.'],
             ['What is PPF?', 'A clear film that takes stone chips and scratches instead of your paint. Fitting it requires a dust-free environment: it is done exclusively at the workshop and takes at least one full day.'],
         ],
@@ -275,13 +263,13 @@ function hero(L) {
                     </div>
                     <p class="mk-a-hero__note mk-in mk-d5"><a href="#avis"><span class="mk-etoiles" aria-hidden="true">★★★★★</span> ${t.note()}</a> · ${t.horaires}</p>
                 </div>
-                <a href="#concours" class="mk-a-hero__carte mk-in mk-d5" data-concours data-promo-from="${C.debut}" data-promo-until="${C.fin}">
-                    <span class="mk-a-hero__carte-haut"><span>${t.carte.eb}</span><span class="mk-pastille">${t.carte.dates}</span></span>
-                    <span class="mk-lot mk-lot--petit${PHOTO_LOT ? ' mk-lot--photo' : ''}" aria-hidden="true">${lotVisuel(C.lot[L], C.lotDetail[L], false)}</span>
-                    <span class="mk-a-hero__carte-titre">${esc(t.carte.titre(C.lot[L]))}</span>
+                ${shell.evenementActif() ? `<a href="#offre-${C.id}" class="mk-a-hero__carte mk-a-hero__carte--hiver mk-in mk-d5" data-concours data-promo-from="${C.debut}" data-promo-until="${C.fin}">
+                    <span class="mk-a-hero__carte-haut"><span class="mk-eb--hiver">${FLOCON}${esc(C[L].eb)}</span><span class="mk-pastille">${t.carte.dates}</span></span>
+                    <span class="mk-lot mk-lot--petit mk-lot--photo mk-lot--givre" aria-hidden="true" data-neige><img class="mk-lot__photo" src="/images/accueil/photo-interieur-cuir-noir.webp" alt="" decoding="async"></span>
+                    <span class="mk-a-hero__carte-titre">${esc(C[L].titre)}</span>
                     <span class="mk-a-hero__carte-texte">${t.carte.texte}</span>
                     <span class="mk-a-hero__carte-lien">${t.carte.lien}</span>
-                </a>
+                </a>` : ''}
             </div>
         </div>
     </section>`;
@@ -435,25 +423,47 @@ ${t.atelierLignes.map(([id, nom, txt]) => { const p = presta(id); return `      
     </section>`;
 }
 
+// Evenement mis en avant (site.json "evenement") : l'offre d'hiver. Le bouton
+// reserve via SumUp des que offres.json porte le service "${C.id}" avec ses
+// identifiants ; d'ici la, il ouvre WhatsApp avec un message pre-rempli.
+function boutonOffre(L) {
+    const o = (OFFRES.evenements || []).find(x => x.id === C.id);
+    const pret = o && o.sumup && Object.values(o.sumup).some(v => v && v.service && v.variant);
+    const label = `${esc(C[L].cta)}${FLECHE}`;
+    return pret
+        ? `<button type="button" class="mk-btn mk-btn--jaune mk-btn--grand mk-reflet" onclick="ccwLocationModalOpen('${C.id}')">${label}</button>`
+        : `<a href="https://wa.me/${CT.whatsapp}?text=${encodeURIComponent(C.whatsapp[L])}" class="mk-btn mk-btn--jaune mk-btn--grand mk-reflet" target="_blank" rel="noopener noreferrer">${label}</a>`;
+}
+
 function concours(L) {
-    const t = T[L];
+    if (!shell.evenementActif()) return '';
+    const t = T[L], e = C[L];
+    const prix = L === 'fr' ? `<span>${C.prix}</span> CHF TTC` : `CHF <span>${C.prix}</span> incl. VAT`;
     return `
-    <section id="concours" class="mk-a-concours" data-concours data-promo-from="${C.debut}" data-promo-until="${C.fin}">
-        <div class="mk-panneau mk-panneau--jaune mk-panneau--section">
-            ${texture(true)}
+    <section id="offre-${C.id}" class="mk-a-concours mk-a-offre" data-concours data-promo-from="${C.debut}" data-promo-until="${C.fin}">
+        <div class="mk-panneau mk-panneau--hiver mk-panneau--section" data-neige>
+            <img class="mk-caus" src="/images/mkt/caustique-clair.svg" alt="" aria-hidden="true">
+            <span class="mk-givre" aria-hidden="true"></span>
+            <span class="mk-neige-sol" aria-hidden="true"></span>
             <div class="mk-a-concours__in">
                 <div class="mk-a-concours__texte">
-                    <p class="mk-eb">${t.concoursEb}</p>
-                    <h2 class="mk-h2 mk-h2--grand mk-revele">${esc(t.concoursH2(C.lot[L]))}</h2>
-                    <ol class="mk-a-concours__etapes">
-${t.concoursEtapes.map((x, i) => `                        <li class="mk-carte-in"><span>${i + 1}</span>${x}</li>`).join('\n')}
-                    </ol>
-                    <div class="mk-a-concours__ctas">
-                        <a href="${shell.urlReserver(L)}" class="mk-btn mk-btn--noir mk-btn--grand mk-reflet">${t.concoursCta}${FLECHE}</a>
-                        <a href="${P['jeu-concours'][L]}" class="mk-lien-fort">${t.reglement}</a>
+                    <p class="mk-eb mk-eb--hiver">${FLOCON}${esc(e.eb)} · ${t.offreJusqu}</p>
+                    <h2 class="mk-h2 mk-h2--grand mk-revele">${esc(e.titre)}.</h2>
+                    <p class="mk-a-offre__accroche">${esc(e.accroche)}</p>
+                    <p class="mk-a-offre__texte">${esc(e.texte)}</p>
+                    <div class="mk-a-offre__inclus">
+                        <p class="mk-a-offre__inclus-titre">${esc(e.inclusTitre)}</p>
+                        <ul class="mk-a-concours__etapes">
+${e.inclus.map(x => `                            <li class="mk-carte-in">${COCHE('#FFCC00')}${esc(x)}</li>`).join('\n')}
+                        </ul>
                     </div>
+                    <p class="mk-a-offre__prix"><small>${t.apartirOffre}</small> ${prix}</p>
+                    <div class="mk-a-concours__ctas">
+                        ${boutonOffre(L)}
+                    </div>
+                    <p class="mk-a-offre__valable">${t.offreValable}</p>
                 </div>
-                <div class="mk-lot mk-lot--grand mk-incline${PHOTO_LOT ? ' mk-lot--photo' : ''}"${PHOTO_LOT ? '' : ' aria-hidden="true"'}>${lotVisuel(C.lotDetail[L], C.lotDetail[L], true)}</div>
+                <div class="mk-lot mk-lot--grand mk-lot--photo mk-lot--givre mk-incline" aria-hidden="true"><img class="mk-lot__photo" src="/images/accueil/photo-interieur-cuir-creme.webp" alt="" loading="lazy" decoding="async"></div>
             </div>
         </div>
     </section>`;
@@ -629,7 +639,7 @@ function page(L) {
     <a href="#main-content" class="skip-link">${shell.UI[L].skip}</a>
     ${shell.repereHeader(fichier, L)}
 
-    <main id="main-content" class="mk-accueil">${hero(L)}${bande(L)}${formules(L)}${questionnaire(L)}${etapes(L)}${resultat(L)}${entreprises(L)}${atelier(L)}${concours(L)}${avis(L)}${deplacement(L)}${faq(L)}
+    <main id="main-content" class="mk-accueil">${hero(L)}${bande(L)}${concours(L)}${formules(L)}${questionnaire(L)}${etapes(L)}${resultat(L)}${entreprises(L)}${atelier(L)}${avis(L)}${deplacement(L)}${faq(L)}
     </main>
 
     ${shell.repereFooter(fichier, L)}
@@ -638,6 +648,7 @@ ${comp.modales(L)}
     <script src="/js/app.js" defer></script>
     <script src="/js/galerie-zoom.js" defer></script>
     <script src="/js/accueil-mkt.js" defer></script>
+    ${shell.evenementActif() ? '<script src="/js/neige.js" defer></script>' : ''}
     <script>addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.src="/js/bulles.js";document.body.appendChild(s)},200)});</script>
     ${shell.repereFinDePage(L, { actuel: P.accueil[L] })}
 </body>
