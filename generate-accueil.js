@@ -429,6 +429,7 @@ ${t.atelierLignes.map(([id, nom, txt]) => { const p = presta(id); return `      
 function boutonOffre(L) {
     const o = (OFFRES.evenements || []).find(x => x.id === C.id);
     const pret = o && o.sumup && Object.values(o.sumup).some(v => v && v.service && v.variant);
+    if (o && o.prix !== C.prix) throw new Error(`[evenement/${C.id}] prix different : site.json="${C.prix}", offres.json="${o.prix}".`);
     const label = `${esc(C[L].cta)}${FLECHE}`;
     return pret
         ? `<button type="button" class="mk-btn mk-btn--jaune mk-btn--grand mk-reflet" onclick="ccwLocationModalOpen('${C.id}')">${label}</button>`

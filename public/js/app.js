@@ -260,6 +260,14 @@ var CCW_OFFERS = {
     // heures, elle est retiree ici et desactivee dans SumUp.
     'nettoyage-chassis': {
         garage: { label: '[8] Nettoyage Châssis & Moteur - Au Garage (Acompte 30%)',           service: 'd5c18d11-013b-4692-996a-500ecc0db199', variant: '40bc67e3-ddc8-43c1-a436-0bb53199a2a2' }
+    },
+
+    // Offre d'hiver (site.json "evenement", jusqu'au 30.11.2026), relevee dans l'API
+    // SumUp le 13/11/2026. Dupliquee dans offres.json "evenements" : generate-site.js
+    // compare les deux cle par cle au build.
+    'hiver': {
+        home:   { label: "[9] Lavage intérieur, offre d'hiver - Au Domicile/Travail (Acompte 30%)", service: '13651d46-9a6d-4ccc-8484-baf84aca5397', variant: 'c5d928ed-53d4-4ff4-83b0-bd29e25886b1' },
+        garage: { label: "[9] Lavage intérieur, offre d'hiver - Au Garage (Acompte 30%)",           service: '2b254b8a-42ed-40e8-8125-aee22b0fbbf3', variant: '3f12a48f-6e07-49c1-bf3e-bb9dd36a7de5' }
     }
 };
 

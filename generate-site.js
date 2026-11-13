@@ -48,7 +48,8 @@ function verifierSumUpOffres() {
     const i = appjs.indexOf('var CCW_OFFERS = {'), j = appjs.indexOf('\n};', i);
     if (i < 0 || j < 0) throw new Error('CCW_OFFERS introuvable dans public/js/app.js.');
     const app = new Function('return (' + appjs.slice(i + 'var CCW_OFFERS = '.length, j + 2) + ');')();
-    [...OFFRES.packs, ...OFFRES.combos].forEach(o => {
+    // Les evenements (offre d'hiver) passent par la meme modale : meme garde.
+    [...OFFRES.packs, ...OFFRES.combos, ...(OFFRES.evenements || [])].forEach(o => {
         const a = app[o.id];
         if (!a) throw new Error(`[offres/${o.id}] cle absente de CCW_OFFERS dans public/js/app.js.`);
         const lj = Object.keys(o.sumup || {}).sort().join(','), la = Object.keys(a).sort().join(',');
