@@ -86,7 +86,7 @@ const generateHTML = (loc) => `<!DOCTYPE html>
           "url": "https://www.clean-cars-wash.ch/",
           "telephone": "+41782657071",
           "priceRange": "CHF 98–320",
-          "image": "https://www.clean-cars-wash.ch/assets/images/MB-01-opt.webp",
+          "image": "https://www.clean-cars-wash.ch/images/accueil/MB-01-opt.webp",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "Chemin des Vergers",

@@ -85,6 +85,16 @@ function enveloppe({ langue, fichier, headOpts, corps, cta = true }) {
 `;
 }
 
+// Image de partage et du JSON-LD : la premiere image de l'article, sinon celle
+// du site. Elle doit vivre dans public/ : une URL absolue n'est pas reecrite par
+// Vite, un fichier de assets/ y serait servi sous un nom hache (404).
+function imageArticle(d) {
+    const im = (d.corps.find(b => b.img) || {}).img;
+    const src = im ? im.src : '/images/accueil/MB-01-opt.webp';
+    if (!fs.existsSync(path.join(__dirname, 'public', src))) throw new Error(`blog.json : image introuvable dans public/ : ${src}`);
+    return src;
+}
+
 function pageArticle(a, langue) {
     const t = TB[langue], d = a[langue], ou = `${a.id}/${langue}`;
     const url = urlArticle(a, langue);
@@ -95,8 +105,8 @@ function pageArticle(a, langue) {
         datePublished: a.publie, dateModified: a.maj, inLanguage: langue === 'fr' ? 'fr-CH' : 'en',
         mainEntityOfPage: SITE.base + url,
         author: { '@type': 'Organization', name: BLOG.auteur[langue], url: SITE.base + SITE.pages.accueil[langue] },
-        publisher: { '@type': 'Organization', name: SITE.marque, logo: { '@type': 'ImageObject', url: SITE.base + '/assets/images/logo-v2.png' } },
-        image: SITE.base + ((d.corps.find(b => b.img) || {}).img ? d.corps.find(b => b.img).img.src : '/assets/images/MB-01-opt.webp'),
+        publisher: { '@type': 'Organization', name: SITE.marque, logo: { '@type': 'ImageObject', url: SITE.base + '/images/accueil/logo-v2.png' } },
+        image: SITE.base + imageArticle(d),
     }];
     const autres = BLOG.articles.filter(x => x.id !== a.id).slice(0, 3);
     const corps = `
@@ -116,7 +126,7 @@ ${autres.map(x => `                <a href="${urlArticle(x, langue)}" class="pre
         </section>` : ''}
         ${scriptCta(a.id)}`;
     return { url, html: enveloppe({ langue, fichier, corps, cta: false, headOpts: {
-        titre: d.titreSeo ? jetons(d.titreSeo, ou) : `${jetons(d.titre, ou)} | ${SITE.marque}`, description: jetons(d.description, ou), jsonld, ogType: 'article',
+        titre: d.titreSeo ? jetons(d.titreSeo, ou) : `${jetons(d.titre, ou)} | ${SITE.marque}`, description: jetons(d.description, ou), jsonld, ogType: 'article', ogImage: imageArticle(d),
         urls: { fr: urlArticle(a, 'fr'), en: urlArticle(a, 'en'), libelle: { fr: jetons(a.fr.titre, ou), en: jetons(a.en.titre, ou) } },
         fil: [{ name: SITE.pages.blog.libelle[langue], url: SITE.pages.blog[langue] }],
     } }) };

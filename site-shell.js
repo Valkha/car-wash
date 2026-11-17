@@ -228,7 +228,7 @@ function blocConcoursOffres(langue) {
 // ---------------------------------------------------------------------------
 const CSP = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.google.com https://api.sumup.com https://api3.geo.admin.ch";
 
-function head({ langue, cle, titre, description, ogImage = '/assets/images/MB-01-opt.webp', jsonld = [], extra = '', urls = null, fil: filExtra = null, ogType = 'website' }) {
+function head({ langue, cle, titre, description, ogImage = '/images/accueil/MB-01-opt.webp', jsonld = [], extra = '', urls = null, fil: filExtra = null, ogType = 'website' }) {
     // urls = { fr, en, libelle } pour une page hors site.json (article de blog) ;
     // fil = niveaux intermediaires du fil d'Ariane [{ name, url }].
     const p = urls || SITE.pages[cle];

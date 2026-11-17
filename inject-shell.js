@@ -135,11 +135,11 @@ function completerHead(html, langue) {
         const titre = g(/<title>([\s\S]*?)<\/title>/), desc = g(/<meta name="description" content="([^"]*)"/), url = g(/<link rel="canonical" href="([^"]*)"/);
         const og = [
             ['og:type', 'website'], url && ['og:url', url], ['og:title', titre.trim()], desc && ['og:description', desc],
-            ['og:image', `${shell.SITE.base}/assets/images/MB-01-opt.webp`], ['og:locale', langue === 'fr' ? 'fr_CH' : 'en_GB'], ['og:site_name', shell.SITE.marque],
+            ['og:image', `${shell.SITE.base}/images/accueil/MB-01-opt.webp`], ['og:locale', langue === 'fr' ? 'fr_CH' : 'en_GB'], ['og:site_name', shell.SITE.marque],
         ].filter(Boolean).map(([k, v]) => `    <meta property="${k}" content="${v}">`).join('\n');
         html = html.replace(/(\n\s*<\/head>)/i, `\n${og}$1`);
     } else if (!/property="og:image"/.test(html)) {
-        html = html.replace(/(<meta property="og:title"[^>]*>)/, `$1\n    <meta property="og:image" content="${shell.SITE.base}/assets/images/MB-01-opt.webp">`);
+        html = html.replace(/(<meta property="og:title"[^>]*>)/, `$1\n    <meta property="og:image" content="${shell.SITE.base}/images/accueil/MB-01-opt.webp">`);
     }
     return html;
 }

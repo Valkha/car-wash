@@ -53,6 +53,13 @@ function publicationPropre() {
         const t = fs.readFileSync(resolve('dist', f), 'utf8');
         if (/\.html$/i.test(f) && t.includes('<!--')) fautes.push(`${f} : commentaire HTML publie`);
         INTERDITS.forEach(re => { if (re.test(t)) fautes.push(`${f} : trace interdite ${re}`); });
+        // Images en URL absolue (og:image, twitter:image, JSON-LD) : Vite ne les
+        // reecrit pas, elles doivent exister telles quelles dans dist/.
+        if (/\.(html|xml)$/i.test(f)) {
+          for (const m of t.matchAll(/https:\/\/www\.clean-cars-wash\.ch(\/[^"'\s<>#?]+\.(?:webp|png|jpe?g|avif|gif|svg))/gi)) {
+            if (!fs.existsSync(resolve('dist', '.' + decodeURI(m[1])))) fautes.push(`${f} : image absente de dist ${m[1]}`);
+          }
+        }
       });
       if (fautes.length) throw new Error('Publication refusee :\n - ' + fautes.join('\n - '));
       console.log(`ccw-publication-propre : ${fichiers.length} fichiers verifies, aucune trace.`);

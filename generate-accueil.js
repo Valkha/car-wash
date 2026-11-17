@@ -550,11 +550,11 @@ function jsonld(L) {
     const prix = OFFRES.packs.map(p => Number(p.prix));
     const autoWash = {
         '@context': 'https://schema.org', '@type': 'AutoWash', name: 'Clean Cars Wash Genève',
-        image: `${base}/assets/images/MB-01-opt.webp`, '@id': base, url: base, telephone: CT.tel, vatID: CT.tva.replace(/ TVA$/, ''),
+        image: `${base}/images/accueil/MB-01-opt.webp`, '@id': base, url: base, telephone: CT.tel, vatID: CT.tva.replace(/ TVA$/, ''),
         priceRange: `CHF ${Math.floor(Math.min(...prix))}–${Math.floor(Math.max(...prix))}`, currenciesAccepted: 'CHF',
         address: { '@type': 'PostalAddress', streetAddress: CT.adresse.rue, addressLocality: CT.adresse.ville, postalCode: CT.adresse.npa, addressCountry: CT.adresse.pays },
         geo: { '@type': 'GeoCoordinates', latitude: 46.1989683, longitude: 6.1615317 },
-        hasMap: CT.ficheGoogle, logo: `${base}/assets/images/logo-v2.png`,
+        hasMap: CT.ficheGoogle, logo: `${base}/images/accueil/logo-v2.png`,
         areaServed: [{ '@type': 'City', name: 'Genève' }, { '@type': 'State', name: 'Vaud' }],
         openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], opens: '07:30', closes: '22:00' }],
         hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Packs Detailing', itemListElement: OFFRES.packs.map(p => ({ '@type': 'Offer', name: p[L].nom, price: p.prix, priceCurrency: 'CHF' })) },
@@ -614,7 +614,7 @@ function head(L) {
     <meta property="og:url" content="${url}">
     <meta property="og:title" content="${esc(t.titre)}">
     <meta property="og:description" content="${esc(t.ogDescription)}">
-    <meta property="og:image" content="${base}/assets/images/MB-01-opt.webp">
+    <meta property="og:image" content="${base}/images/accueil/MB-01-opt.webp">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:locale" content="${t.locale}">
